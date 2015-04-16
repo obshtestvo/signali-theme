@@ -1,0 +1,27 @@
+{% load restful %}
+{% load i18n %}
+
+<script>
+    LANGUAGES = {{ LANGUAGES | jsonify | safe }}
+</script>
+<script id="langPreviewTmpl" type="text/x-template">
+    <div class="help-block trans-ref">
+        <div class="accordion-heading">
+          <a class="toggle" href="#">
+             <i class=" icon-eye-open"></i> {% trans 'Show original ' %}[{{ LANGUAGE_CODE }}]
+          </a>
+        </div>
+        <div class="accordion-body collapse">
+          <pre class="accordion-inner ref"></pre>
+        </div>
+    </div>
+</script>
+<script id="modelLangSwitchTmpl" type="text/x-template">
+    <div class="modelLangSwitch">
+        <select data-placeholder="{{ opts.verbose_name }}">
+            {% for code, name in LANGUAGES.items %}
+                <option value="{{ code }}" {% if code == LANGUAGE_CODE %} selected="selected"{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</script>
