@@ -1,0 +1,2 @@
+{% load restful %}
+{{ errors | jsonify | safe}}

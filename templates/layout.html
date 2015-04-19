@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -19,12 +20,19 @@
             Unlucky
         <![endif]-->
 
-	    <header></header>
+	    <header>
+            <search>
+
+            </search>
+        </header>
+        <featured>
+
+        </featured>
         <div id="content">
             {% block content %}{% endblock %}
 		</div>
 
-
+        <google-analytics account="{{ site.google_analytics }}"></google-analytics>
         <script src="{% static 'bundle.js' %}"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
