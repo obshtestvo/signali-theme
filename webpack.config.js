@@ -2,7 +2,8 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: 'app/script',
+        app: 'app/script'
+        //style: 'app/style/app.scss',
         //vendors: [
         //    //'./static/lib/angular/angular',
         //    //'./static/lib/jquery/dist/jquery',
@@ -11,7 +12,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/build',
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/static/'
     },
     cache: false,
@@ -32,7 +33,17 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp/, loader: "imports?this=>window&module=>false&exports=>false&define=>false" }
+            {
+                test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp/,
+                loader: "imports?this=>window&module=>false&exports=>false&define=>false"
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css!ruby-sass'
+            },
+            {test: /\.css$/, loader: "style-loader!css-loader"},
+            {test: /\.png$/, loader: "url-loader?limit=100000&mimetype=image/png"},
+            {test: /\.jpg$/, loader: "file?name=[path][name].[ext]?[hash]"}
         ],
         noParse: [
             /packery/,
