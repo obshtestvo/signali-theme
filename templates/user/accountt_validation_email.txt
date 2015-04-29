@@ -1,3 +1,4 @@
+{% load i18n %}
 {% trans 'Validate your account' %}
 
 {% blocktrans %}Validate your account {{url}}{% endblocktrans %}

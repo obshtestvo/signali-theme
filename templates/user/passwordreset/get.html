@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+  <form action="" method="post">
+       {% csrf_token %}
+
+        <input type="text" class="form-control email" placeholder="email" required name="email"
+               autofocus>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{% blocktrans %}Send reset link{% endblocktrans %}
+        </button>
+  </form>
+{% endblock %}

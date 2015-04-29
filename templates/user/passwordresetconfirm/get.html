@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+  <form action="" method="post">
+       {% csrf_token %}
+        <input type="password" class="form-control email" placeholder="password" required name="new_password1"
+               autofodecus>
+        <input type="password" class="form-control email" placeholder="password" required name="new_password2"
+               autofocus>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{% blocktrans %}Change password{% endblocktrans %}
+        </button>
+  </form>
+{% endblock %}
