@@ -1,2 +1,4 @@
-{% load restful %}
-{{ errors | jsonify | safe}}
+{% load restful %}{
+    "Status": "Error",
+    "errors": {{ errors | jsonify | safe}}
+}
