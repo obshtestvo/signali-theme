@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load url from future %}
+
+{% block content %}
+    <form class="form-profile" role="form" action="" method="post">
+        {% csrf_token %}
+        <input name="retry" type="hidden" value="{{ request.get_full_path }}"/>
+        <input name="disallow_existing" type="hidden" />
+        <h2 class="form-signin-heading">Update profile</h2>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email:</label>
+            <input type="email" class="form-control" placeholder="Email address"  name="email" required
+                   autofocus value={{ user.email }}>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Fullname:</label>
+            <input type="text" class="form-control" name="fullname" value="{{ user.first_name }} {{ user.last_name }}">
+        </div>
+        <input type="password" name="new_password1" class="form-control" placeholder="Password" >
+        <input type="password" name="new_password2" class="form-control" placeholder="Password (again)" >
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    </form>
+{% endblock %}
