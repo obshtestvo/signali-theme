@@ -24,6 +24,7 @@ module.exports = {
     ],
     resolve: {
         root: [
+            __dirname + '/elements/app/script',
             __dirname + '/elements',
             __dirname + '/vendor',
         ],
@@ -44,8 +45,9 @@ module.exports = {
                 loader: ExtractTextPlugin.extract("style", "css!ruby-sass")
             },
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
-            {test: /\.png$/, loader: "url-loader?limit=100000&mimetype=image/png"},
+            {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
             {test: /\.jpg$/, loader: "file"},
+            {test: /\.html$/, loader: "raw"},
             //{test: /\.jpg$/, loader: "file?name=[path][name].[ext]?[hash]"}
         ],
         noParse: [

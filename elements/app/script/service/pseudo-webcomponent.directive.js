@@ -44,7 +44,6 @@ ComponentService.prototype.has = function (name) {
 ComponentService.prototype._transformOptionsForAngular = function (o) {
     var keySwaps = {
         "publish": "scope",
-        "template": "templateUrl",
         "created": "link",
     }
     for (var key in keySwaps) {
