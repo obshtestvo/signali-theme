@@ -1,0 +1,22 @@
+@import '../styleguide';
+.checkbox input[type=checkbox]:not(old) {
+  width   : 16px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+  & + label {
+    @extend %nano-radius;
+    display      : inline-block;
+    margin-left  : -16px;
+    padding-left : 16px;
+    background   : red;
+    line-height  : 16px;
+    border: 1px solid $greyColor80;
+  }
+  &:checked + label {
+    background : green;
+  }
+  &:focus + label {
+    border-color: $greyColor;
+  }
+}

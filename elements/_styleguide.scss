@@ -87,6 +87,7 @@ $errorsContrastColor: $bodyTextColor;
 /*shapes*/
 %large-radius { border-radius: 19px;}
 %small-radius { border-radius: 5px;}
+%nano-radius { border-radius: 2px;}
 
 /*shadows*/
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {

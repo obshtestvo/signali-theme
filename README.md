@@ -95,6 +95,10 @@ module.exports = function (componentService) {
 }
 ```
 
+##### Known issues
+ - Don't put `<content>` tags inside destrucitve directives like `ng-if`.
+ The webcomponent directive wont be able to find them otherwise.
+
 ## Common scenarios
 
 ### Webcomponent related
