@@ -1,6 +1,7 @@
 var webpack = require('webpack');
+var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+var pwd = __dirname
 module.exports = {
     entry: {
         app: 'app/script',
@@ -15,7 +16,7 @@ module.exports = {
         //]
     },
     output: {
-        path: __dirname + '/build',
+        path: path.normalize(pwd + '/build'),
         filename: 'bundle.js',
         publicPath: '/static/'
     },
@@ -27,9 +28,9 @@ module.exports = {
     ],
     resolve: {
         root: [
-            __dirname + '/elements/app/script',
-            __dirname + '/elements',
-            __dirname + '/vendor',
+            path.normalize(pwd + '/elements/app/script'),
+            path.normalize(pwd + '/elements'),
+            path.normalize(pwd + '/vendor'),
         ],
         alias: {
             'jquery': 'jquery/dist/jquery',

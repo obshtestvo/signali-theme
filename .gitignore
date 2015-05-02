@@ -3,5 +3,6 @@
 vendor
 node_modules
 build
+research/build
 
 
