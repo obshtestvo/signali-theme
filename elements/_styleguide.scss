@@ -1,0 +1,35 @@
+$white: #fff;
+
+$mainColor100: #101340;
+$mainColor80: #414167;
+$mainColor60: #6f708c;
+$mainColor40: #9e9fb3;
+$mainColor20: #d0d0da;
+
+$mainColor: $mainColor100;
+
+$secondaryColor100: #f22e52;
+$secondaryColor80: #f65775;
+$secondaryColor60: #f78295;
+$secondaryColor40: #f9abb9;
+$secondaryColor20: #fcd4dc;
+
+$secondaryColor: $secondaryColor100;
+
+$bodyTextColor: #1c1526;
+$greyColor100: #a4a6a5;
+$greyColor80: #d9d9d9;
+$greyColor60: #f2f2f2;
+$greyColor: $greyColor100;
+
+$successColor: #9ad22e;
+$successContrastColor: $white;
+
+$successColor: #9ad22e;
+$successContrastColor: $white;
+
+$errorColor: $secondaryColor100;
+$errorsContrastColor: $white;
+
+$infoColor: $white;
+$errorsContrastColor: $bodyTextColor;

@@ -72,7 +72,6 @@ ComponentService.componentDefaults = {
         if ($transclude) {
             $transclude(function (content) {
                 $scope.content = content;
-                //console.log(content)
             })
         }
     },

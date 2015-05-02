@@ -3,7 +3,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        app: 'app/script'
+        app: 'app/script',
+        head: [
+            'modernizr/modernizr',
+        ]
         //style: 'app/style/app.scss',
         //vendors: [
         //    //'./static/lib/angular/angular',
@@ -20,7 +23,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("[name].css"),
         //new webpack.optimize.UglifyJsPlugin({minimize: true}),
-        //new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+        new webpack.optimize.CommonsChunkPlugin('head', 'head.js')
     ],
     resolve: {
         root: [
@@ -37,7 +40,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp/,
+                test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr/,
                 loader: "imports?this=>window&module=>false&exports=>false&define=>false"
             },
             {
@@ -52,6 +55,7 @@ module.exports = {
         ],
         noParse: [
             /packery/,
+            /modernizr/,
             /draggabilly/,
             /zepto/,
             /angular/,

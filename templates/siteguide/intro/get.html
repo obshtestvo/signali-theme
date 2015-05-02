@@ -1,4 +1,25 @@
 {% extends 'layout.html' %}
 {% block content %}
+    <cover>
+        <top-nav>
+            <menu></menu>
+            <login-prompt></login-prompt>
+            <logo></logo>
+            <search-prompt>
+                <location-search></location-search>
+                <topic-search></topic-search>
+                <standard-button></standard-button>
+            </search-prompt>
+        </top-nav>
+        <intro>
+            <call-to-action>
+                <h1>Пoдай сигнал</h1>
+                <p>Намери и подай сигнал към над <strong>121</strong> институции в над <strong>23</strong> области.</p>
+            </call-to-action>
+        </intro>
+    </cover>
+    <featured>
+        :)
+    </featured>
     <picker>{{ request.user }}</picker>
 {% endblock %}
