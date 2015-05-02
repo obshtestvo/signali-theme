@@ -27,7 +27,7 @@ a {
   }
   .outlined & {
     background: $white;
-    &:hover {background: $white;}
+    &:hover {background: transparent; }
     &.red {
       @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
       color: $secondaryColor100;
@@ -44,3 +44,4 @@ a {
     }
   }
 }
+
