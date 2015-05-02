@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load restful %}
 {% block content %}
     <cover>
         <top-nav>
@@ -8,7 +9,7 @@
             <search-prompt>
                 <location-search></location-search>
                 <topic-search></topic-search>
-                <standard-button></standard-button>
+                <standard-button action="{% url 'home' %}">Test standard</standard-button>
             </search-prompt>
         </top-nav>
         <intro>

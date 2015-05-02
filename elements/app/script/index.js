@@ -18,3 +18,6 @@ openSansFont(componentService)
 
 var calltoaction = require('calltoaction');
 calltoaction(componentService)
+
+var standardButtonEl = require('standard-button');
+standardButtonEl(componentService)

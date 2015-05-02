@@ -1,6 +1,7 @@
 function ComponentService(angularApp) {
     this.app = angularApp;
     this.registered = [];
+    // if we want to import something: https://docs.angularjs.org/api/ng/service/$compile#example
     this.app.directive('webComponentTemplate', function () {
         return {
             restrict: 'A',

@@ -68,6 +68,7 @@ The key aspects of web components that are replicated:
  - allow passing data to custom web component through attributes
  - allow distributing the elements nested in the custom element to different
  locations in its template using the `<content select='...'></content>` tag
+ - **no shadowdom**
  
 The emulation is happening through a script called [pseudo-webcomponent.directive.js](elements/app/script/service/pseudo-webcomponent.directive.js).
 This is basically a factory-pattern script that can register custom elements in a webcomponent-like manner:
@@ -93,3 +94,45 @@ module.exports = function (componentService) {
     })
 }
 ```
+
+## Common scenarios
+
+### Webcomponent related
+
+If you want to parse some attribute:
+
+```html
+<custom-element data='{"a": 1, "b":2}' disabled></custom-element>
+```
+
+you can define the element like this:
+
+```js
+module.exports = function (componentService) {
+    var name = 'customElement';
+    if (componentService.has(name)) return;
+
+    componentService.register(name, {
+        template: require('./custom.html'),
+        publish: {
+            data: '@',
+            disabled: '@',
+        },
+        attached: function (scope, $el, attrs, ctrls, transclude) {
+            scope.data = JSON.parse(scope.data)
+            scope.disabled = 'disabled' in scope 
+        }
+    })
+}
+```
+
+and use these attributes in the template:
+
+```html
+<div class="custom-element" ng-if="!disabled">
+  {{data}}
+</div>
+```
+
+The `publish` attribute mimics the way webcomponents expose access to attributes. 
+Behind the scenes it just maps to angular `scope` attribute.

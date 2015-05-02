@@ -34,3 +34,6 @@ $errorsContrastColor: $white;
 $infoColor: $white;
 $errorsContrastColor: $bodyTextColor;
 
+@mixin reset-link {
+  text-decoration: none;
+}
