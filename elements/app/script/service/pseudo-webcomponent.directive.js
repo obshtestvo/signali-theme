@@ -59,6 +59,7 @@ ComponentService.prototype._transformOptionsForAngular = function (o) {
         o.link = function (scope, $el, attrs, ctrls, transclude) {
             $el.ready(function () {
                 callback(scope, $el, attrs, ctrls, transclude);
+                scope.$apply()
             })
         }
         delete o['attached'];
