@@ -8,8 +8,6 @@ module.exports = function (componentService) {
         template: require('./standard-button.html'),
         publish: {
             action: '@',
-            disabled: '@',
-            settings: '@',
         },
         attached: function (scope) {
             //console.log(JSON.parse(scope.settings))
