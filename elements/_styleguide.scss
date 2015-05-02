@@ -1,3 +1,55 @@
+@import 'reset.scss';
+
+/*Fonts*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext);
+
+%main-font { font-family:"Open Sans", sans-serif }
+%secondary-font { font-family: 'Roboto', sans-serif; }
+
+%headilme-font {
+  @extend %main-font;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 55px;
+}
+
+%bodytext-font {
+  @extend %main-font;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+%bodytext-large-font {
+  @extend %bodytext-font;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+%mainnavigation-font {
+  @extend %bodytext-large-font;
+  font-weight: 600;
+}
+
+%popup-font {
+  @extend %secondary-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+%label-font {
+  @extend %popup-font;
+  text-transform: uppercase;
+}
+
+%button-font{
+  @extend %bodytext-font;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/*Colors*/
 $white: #fff;
 
 $mainColor100: #101340;
@@ -37,3 +89,7 @@ $errorsContrastColor: $bodyTextColor;
 @mixin reset-link {
   text-decoration: none;
 }
+/* abstract classes*/
+/*shapes*/
+%large-radius { border-radius: 19px;}
+%small-radius { border-radius: 5px;}

@@ -6,8 +6,12 @@ module.exports = function (componentService) {
 
     componentService.register(name, {
         template: require('./calltoaction.html'),
-        attached: function (scope, $el, attrs, ctrls, transclude) {
-            // javascript to run after the element is rendered in te dom
+        publish:{
+            "align":"@",
+            "outlined":"@",
+        },
+        attached: function (scope) {
+            scope.outlined = 'outlined' in scope ? 'outlined' : ''
         }
     })
 }

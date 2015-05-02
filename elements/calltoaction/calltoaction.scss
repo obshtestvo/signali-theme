@@ -1,5 +1,22 @@
 @import '../styleguide';
-header {
-  background: $mainColor;
-  padding: 100px;
+a{
+  @extend %large-radius, %button-font;
+  padding: 10px 30px;
+  display: inline-block;
+  color: $white;
+  &.red {
+    background: $secondaryColor100;
+      &:hover { background: $secondaryColor60;
+      }
+    }
+  &.purple {
+    background: $mainColor100;-
+      &:hover{
+        background: $mainColor60;
+      }
+    }
+  .align-left & { text-align: left; }
+  .align-right & { text-align: right; }
+  .align-center & { text-align: center; }
+  .outlined & { background: red;}
 }

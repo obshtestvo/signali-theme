@@ -1,4 +1,5 @@
 require('app/style/app.scss');
+require('normalize.css/normalize.css');
 
 window.$ = window.jQuery = require('jquery/dist/jquery');
 require('angular/angular');
