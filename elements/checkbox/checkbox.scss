@@ -4,11 +4,13 @@
   background: $greyColor60;
 }
 
-.checkbox > input[type=checkbox]:not(old) {
-  width: 16px;
+.checkbox > .sizer > input[type=checkbox]:not(old) {
   margin: 0;
   padding: 0;
   opacity: 0;
+  position: absolute;
+  top:-9999em;
+  left:-9999em;
   + .check {
     background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
     @extend %nano-radius;

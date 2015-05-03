@@ -5,10 +5,12 @@
 }
 
 .radio-button > input[type=radio]:not(old) {
-  width: 16px;
   margin: 0;
   padding: 0;
   opacity: 0;
+  position: absolute;
+  top:-9999em;
+  left:-9999em;
   + .check {
     background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
     @extend %circle;
