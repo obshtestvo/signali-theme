@@ -13,11 +13,8 @@ coverElement(componentService)
 var googleAnalyticsElement = require('google-analytics');
 googleAnalyticsElement(componentService)
 
-var calltoaction = require('calltoaction');
-calltoaction(componentService)
-
-var standardButtonEl = require('standard-button');
-standardButtonEl(componentService)
+var actionButtonEl = require('action-button');
+actionButtonEl(componentService)
 
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)

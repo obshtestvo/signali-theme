@@ -1,11 +1,11 @@
-require('./calltoaction.scss')
+require('./action-button.scss')
 
 module.exports = function (componentService) {
-    var name = 'calltoaction';
+    var name = 'actionButton';
     if (componentService.has(name)) return;
 
     componentService.register(name, {
-        template: require('./calltoaction.html'),
+        template: require('./action-button.html'),
         publish:{
             "align":"@",
             "outlined":"@",
