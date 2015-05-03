@@ -1,7 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
+
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var pwd = __dirname
+var devtoolModuleFilenameTemplate = process.platform === "win32" ? "[resource-path]" : "file:///[resource-path]";
+
 module.exports = {
     entry: {
         app: 'app/script',
@@ -19,7 +22,7 @@ module.exports = {
         path: path.normalize(pwd + '/build'),
         filename: 'bundle.js',
         publicPath: '/static/',
-        devtoolModuleFilenameTemplate: 'file:///[resource-path]'
+        devtoolModuleFilenameTemplate: devtoolModuleFilenameTemplate
     },
     cache: false,
     plugins: [
