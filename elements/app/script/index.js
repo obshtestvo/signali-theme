@@ -13,9 +13,6 @@ coverElement(componentService)
 var googleAnalyticsElement = require('google-analytics');
 googleAnalyticsElement(componentService)
 
-var openSansFont = require('opensans-font');
-openSansFont(componentService)
-
 var calltoaction = require('calltoaction');
 calltoaction(componentService)
 
