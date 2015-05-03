@@ -9,9 +9,13 @@ module.exports = function (componentService) {
         publish:{
             "align":"@",
             "outlined":"@",
+            "action": '@',
+            "color": '@',
+            "secondary": '@',
         },
         attached: function (scope) {
             scope.outlined = 'outlined' in scope ? 'outlined' : ''
+            scope.secondary = 'secondary' in scope ? 'secondary' : ''
         }
     })
 }

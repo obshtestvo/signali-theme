@@ -18,17 +18,15 @@
         background: $mainColor60;
       }
     }
-    .align-left & {
-      text-align: left;
+    &.white {
+      color: $mainColor100;
+      background: $white;
+      &:hover {
+        color: $mainColor80;
+        background: $mainColor20;
+      }
     }
-    .align-right & {
-      text-align: right;
-    }
-    .align-center & {
-      text-align: center;
-    }
-    .outlined & {
-      background: transparent;
+    &.outlined { background: transparent;
       &:hover {background: transparent; }
       &.red {
         @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
@@ -40,13 +38,28 @@
       }
       &.purple {
         @include box-shadow(0, 0, 0, 3px $mainColor100, inset );
-        color: $mainColor60;
+        color: $mainColor100;
         &:hover {
           @include box-shadow(0, 0, 0, 3px $mainColor60, inset );
           color: $mainColor60;
         }
       }
+      &.white {
+        @include box-shadow(0, 0, 0, 3px $white, inset );
+        color: $white;
+        &:hover {
+          @include box-shadow(0, 0, 0, 3px $mainColor20, inset );
+          color: $mainColor20;
+        }
+      }
+    }
+    &.secondary {
+      @extend %small-radius;
     }
   }
-  svg { fill:$white;}
 }
+
+/*
+
+
+*/
