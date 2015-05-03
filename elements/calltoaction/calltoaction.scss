@@ -1,49 +1,52 @@
 @import '../styleguide';
-a {
-  @extend %large-radius, %button-font;
-  padding: 10px 30px;
-  display: inline-block;
-  color: $white;
-  &.red {
-    background: $secondaryColor100;
-    &:hover {
-      background: $secondaryColor60;
-    }
-  }
-  &.purple {
-    background: $mainColor100;
-    &:hover {
-      background: $mainColor60;
-    }
-  }
-  .align-left & {
-    text-align: left;
-  }
-  .align-right & {
-    text-align: right;
-  }
-  .align-center & {
-    text-align: center;
-  }
-  .outlined & {
-    background: transparent;
-    &:hover {background: transparent; }
+
+.wrap-calltoaction {
+  a {
+    @extend %large-radius, %button-font;
+    padding: 10px 30px;
+    display: inline-block;
+    color: $white;
     &.red {
-      @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
-      color: $secondaryColor100;
+      background: $secondaryColor100;
       &:hover {
-        @include box-shadow(0, 0, 0, 3px $secondaryColor60, inset );
-        color: $secondaryColor60;
+        background: $secondaryColor60;
       }
     }
     &.purple {
-      @include box-shadow(0, 0, 0, 3px $mainColor100, inset );
-      color: $mainColor60;
+      background: $mainColor100;
       &:hover {
-        @include box-shadow(0, 0, 0, 3px $mainColor60, inset );
+        background: $mainColor60;
+      }
+    }
+    .align-left & {
+      text-align: left;
+    }
+    .align-right & {
+      text-align: right;
+    }
+    .align-center & {
+      text-align: center;
+    }
+    .outlined & {
+      background: transparent;
+      &:hover {background: transparent; }
+      &.red {
+        @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
+        color: $secondaryColor100;
+        &:hover {
+          @include box-shadow(0, 0, 0, 3px $secondaryColor60, inset );
+          color: $secondaryColor60;
+        }
+      }
+      &.purple {
+        @include box-shadow(0, 0, 0, 3px $mainColor100, inset );
         color: $mainColor60;
+        &:hover {
+          @include box-shadow(0, 0, 0, 3px $mainColor60, inset );
+          color: $mainColor60;
+        }
       }
     }
   }
+  svg { fill:$white;}
 }
-svg { fill:$white;}
