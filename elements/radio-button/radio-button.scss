@@ -1,17 +1,17 @@
 @import '../styleguide';
 
-.checkbox {
+.radio-button {
   background: $greyColor60;
 }
 
-.checkbox > input[type=checkbox]:not(old) {
+.radio-button > input[type=radio]:not(old) {
   width: 16px;
   margin: 0;
   padding: 0;
   opacity: 0;
   + .check {
     background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
-    @extend %nano-radius;
+    @extend %circle;
     display: inline-block;
     position: relative;
     width: 16px;
@@ -20,7 +20,7 @@
     line-height: 16px;
     border: 1px solid $greyColor80;
     &:after {
-      @extend %nano-radius;
+      @extend %circle;
       content: "";
       display: block;
       height: 6px;
@@ -36,10 +36,14 @@
   &:checked + .check:after {
     background: $secondaryColor;
   }
+  &:hover + .check,
   &:focus + .check {
     border-color: $greyColor;
   }
   &:active + .check {
     border-color: $secondaryColor60;
+  }
+  &:target + .check {
+    background: red;
   }
 }

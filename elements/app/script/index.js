@@ -21,3 +21,6 @@ standardButtonEl(componentService)
 
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)
+
+var radioEl = require('radio-button');
+radioEl(componentService)

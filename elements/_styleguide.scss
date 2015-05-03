@@ -45,7 +45,6 @@
 }
 /*Colors*/
 $white: #fff;
-$almostWhite: #f2f2f2;
 
 $mainColor100: #101340;
 $mainColor80: #414167;
@@ -86,6 +85,7 @@ $errorsContrastColor: $bodyTextColor;
 }
 /* abstract classes*/
 /*shapes*/
+%circle { border-radius: 50%;}
 %large-radius { border-radius: 19px;}
 %small-radius { border-radius: 5px;}
 %nano-radius { border-radius: 2px;}

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var autoprefixer = require('autoprefixer-core');
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var pwd = __dirname
@@ -51,7 +52,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style", "css?sourceMap!ruby-sass")
+                loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!ruby-sass")
             },
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
             {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
@@ -72,5 +73,6 @@ module.exports = {
             /lumx/,
             /blueimp/,
         ]
-    }
+    },
+    postcss: [autoprefixer]
 };
