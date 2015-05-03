@@ -26,13 +26,14 @@ a {
     text-align: center;
   }
   .outlined & {
-    background: $white;
+    background: transparent;
     &:hover {background: transparent; }
     &.red {
       @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
       color: $secondaryColor100;
       &:hover {
         @include box-shadow(0, 0, 0, 3px $secondaryColor60, inset );
+        color: $secondaryColor60;
       }
     }
     &.purple {
@@ -40,8 +41,9 @@ a {
       color: $mainColor60;
       &:hover {
         @include box-shadow(0, 0, 0, 3px $mainColor60, inset );
+        color: $mainColor60;
       }
     }
   }
 }
-
+svg { fill:$white;}
