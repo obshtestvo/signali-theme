@@ -4,7 +4,7 @@
   background: $greyColor60;
 }
 
-.checkbox > .sizer > input[type=checkbox]:not(old) {
+.checkbox > input[type=checkbox]:not(old) {
   margin: 0;
   padding: 0;
   opacity: 0;
