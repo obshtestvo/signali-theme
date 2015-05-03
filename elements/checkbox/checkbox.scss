@@ -19,4 +19,7 @@
   &:focus + label {
     border-color: $greyColor;
   }
+  &:active + label {
+    border-color: $secondaryColor;
+  }
 }

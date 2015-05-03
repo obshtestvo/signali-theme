@@ -8,8 +8,8 @@ Templates (*html and other formats*), styling, scripts.
 ### OS
 
 Requires:
- - `sass` (which requires `ruby`)
- - `nodejs` (with `npm`)
+ - `sass` (which requires `ruby`); **versions tested**: sass 3.4.9 and 3.4.13, ruby 2.15 and 2.2
+ - `nodejs` (with `npm`); **versions tested**: 0.12
 
 ### Project
 After OS requirements are satisfied just run:

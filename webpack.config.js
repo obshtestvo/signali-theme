@@ -18,7 +18,8 @@ module.exports = {
     output: {
         path: path.normalize(pwd + '/build'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/static/',
+        devtoolModuleFilenameTemplate: 'file:///[resource-path]'
     },
     cache: false,
     plugins: [
@@ -38,6 +39,7 @@ module.exports = {
         // you can now require('file') instead of require('file.js')
         extensions: ['', '.js', '.json']
     },
+    devtool: "sourcemap",
     module: {
         loaders: [
             {
@@ -46,7 +48,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style", "css!ruby-sass")
+                loader: ExtractTextPlugin.extract("style", "css?sourceMap!ruby-sass")
             },
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
             {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
