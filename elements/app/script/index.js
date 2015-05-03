@@ -24,3 +24,6 @@ checkboxEl(componentService)
 
 var radioEl = require('radio-button');
 radioEl(componentService)
+
+var selectEl = require('select-dropdown');
+selectEl(componentService)
