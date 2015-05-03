@@ -20,6 +20,12 @@ bower install
 ```
 to install the dependencies.
 
+#### Deployment notes:
+
+```
+webpack --config ./webpack.config.production.js
+```
+
 ## Architecture decisions
 The frontend ecosystem right now is diverse. There are things 
 like [angularjs](https://github.com/angular/angular.js),
