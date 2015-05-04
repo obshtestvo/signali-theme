@@ -8,6 +8,7 @@ function ComponentService(angularApp) {
             link: function (scope, $template) {
                 var domContent = [];
                 var $content = scope.content;
+                var allContentFound = false;
                 $template = $($template[0]);
                 angular.forEach($content, function (el) {
                     domContent.push(el)
@@ -21,11 +22,12 @@ function ComponentService(angularApp) {
                     $content = $content.not(filter)
                 });
                 $template.find('content').each(function () {
+                    allContentFound = true;
                     var $placeholder = $(this);
-                    $placeholder.after($content)
+                    $placeholder.after($content);
                     $placeholder.remove();
                 });
-                delete scope.content;
+                if (allContentFound) delete scope.content;
             }
         }
     });
@@ -40,7 +42,7 @@ ComponentService.prototype.register = function (name, options) {
     });
 }
 ComponentService.prototype.has = function (name) {
-    return this.registered.indexOf('name') > -1;
+    return this.registered.indexOf(name) > -1;
 }
 ComponentService.prototype._transformOptionsForAngular = function (o) {
     var keySwaps = {

@@ -34,16 +34,18 @@ like [angularjs](https://github.com/angular/angular.js),
  each have their drawbacks.
 
 ### Conventions
- - Assets' management should be independent from any chosen backend framework or language
- - Web components are coming, so their concept should be followed as closely as possible
- - Always think modular, extract all files related to a single element as web-component (styling, scripts, template, images... everything)
- - Assets must be combined and minified to achieve minimum requests
- - Embed small images as base64
- - The asset combination mechanism should allow splitting into chunks, so that the initial load is not too big
- - All assets must be compressed (including images) to achieve minimum transfer size
- - Source maps should work in the compiled versions
+ - **Backend-agnostic**: assets' management should be independent from any chosen backend framework or language
+ - **Web components**: they are coming, so their concept should be followed as closely as possible
+ - **Modularity**: always think modular, extract all files related to a single element as web-component (styling, scripts, template, images... everything)
+ - **Compression**:
+   - All assets must be compressed (including images) to achieve minimum transfer size
+   - Embed small images as base64
+   - All assets of common file types must be combined into 1 file
+   - The asset combination mechanism should allow splitting into chunks, so that the initial load is not too big
+   - Source maps should work in the compiled versions
  - A universal import/require mechanism should be used. It should be capable of importing different type of files:
  javascript, css, images, fonts, html templates, sass, etc.
+ - The template language used in web components must be easy to change
 
 ### Specificity
 The conventions are implemented through:
