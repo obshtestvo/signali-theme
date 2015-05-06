@@ -1,0 +1,40 @@
+@import '../styleguide';
+
+li{
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0 17px;
+  &:before {
+    width: 4px;
+    height: 4px;
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+    content: '';
+    border-right: 1px solid $bodyTextColor;
+    border-top: 1px solid $bodyTextColor;
+    @include rotate (45)
+  }
+  a {
+    @extend %popup-font;
+    color: $bodyTextColor;
+
+  }
+  &:first-child{
+    padding: 0;
+      &:before {
+        display: none;
+      }
+  }
+  &:last-child {
+    &:before{
+      border-color: $mainColor40;
+    }
+    a {
+      color: $mainColor40;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}

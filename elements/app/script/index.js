@@ -19,6 +19,9 @@ actionButtonEl(componentService)
 var breadCrumbEl = require('breadcrumb');
 breadCrumbEl(componentService)
 
+var crumbEl = require('crumb');
+crumbEl(componentService)
+
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)
 
