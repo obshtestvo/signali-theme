@@ -16,6 +16,9 @@ googleAnalyticsElement(componentService)
 var actionButtonEl = require('action-button');
 actionButtonEl(componentService)
 
+var breadCrumbEl = require('breadcrumb');
+breadCrumbEl(componentService)
+
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)
 

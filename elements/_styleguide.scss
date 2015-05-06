@@ -27,7 +27,7 @@
 }
 
 %popup-font {
-  @extend %secondary-font;
+  @extend %main-font;
   font-weight: 500;
   font-size: 12px;
   line-height: 17px;
@@ -83,6 +83,7 @@ $errorsContrastColor: $bodyTextColor;
 @mixin reset-link {
   text-decoration: none;
 }
+
 /* abstract classes*/
 /*shapes*/
 %circle { border-radius: 50%;}
