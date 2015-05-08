@@ -1,10 +1,13 @@
+var skate = require('skatejs');
+var $ = require('jquery');
+
 function ComponentService() {
     this.registered = [];
 }
 ComponentService.prototype.register = function (name, options) {
     if (this.has('name')) throw Error("Component with the same name already exists");
     options = this._transformOptionsForSkate(options)
-    var definition = angular.extend({}, ComponentService.componentDefaults, options)
+    var definition = $.extend({}, ComponentService.componentDefaults, options)
     this.registered.push(name);
     skate(name, definition);
 }
@@ -12,9 +15,16 @@ ComponentService.prototype.has = function (name) {
     return this.registered.indexOf(name) > -1;
 }
 ComponentService.prototype._transformOptionsForSkate = function (o) {
-    o.template = makeTemplate(o);
+    if (o.template) {
+        o = $.extend({}, o, {
+            template: makeTemplate(o)
+        });
+    }
+    return o
 }
-ComponentService.componentDefaults = {}
+ComponentService.componentDefaults = {
+    publish: []
+}
 
 function makeTemplate(options) {
     return function (element) {
@@ -22,11 +32,9 @@ function makeTemplate(options) {
         var $el = $(element);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
-            if (attr.name in options.publish) {
-                data[attr.name] = attr.value;
-            }
+            data[attr.name] = attr.value;
         }
-        var $template = $(options.template.render(data));
+        var $template = $(options.template(data));
         if (options.type == skate.type.ATTRIBUTE) {
             $el.after($template);
             var $placeholder = $template.find('content');
@@ -47,6 +55,7 @@ function makeTemplate(options) {
             $placeholder.after($content);
             $placeholder.remove();
         });
+        $el.append($template)
     }
 }
 

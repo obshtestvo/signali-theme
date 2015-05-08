@@ -1,10 +1,10 @@
 @import '../styleguide';
 
-.radio-button {
+radio-button {
   background: $greyColor60;
 }
 
-.radio-button > input[type=radio]:not(old) {
+radio-button > input[type=radio]:not(old) {
   margin: 0;
   padding: 0;
   opacity: 0;
