@@ -20,7 +20,6 @@
     "postcss-loader": "^0.4.2",
     "raw-loader": "^0.5.1",
     "ruby-sass-loader ": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
-    "selectize": "0.12.1",
     "skatejs": "0.13.4",
     "style-loader": "^0.10.2",
     "throttle-debounce": "^0.1.1",
