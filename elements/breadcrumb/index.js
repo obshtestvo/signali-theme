@@ -1,10 +1,7 @@
 require('./breadcrumb.scss')
 
 module.exports = function (componentService) {
-    var name = 'breadcrumb';
-    if (componentService.has(name)) return;
-
-    componentService.register(name, {
+    componentService.register('breadcrumb', {
         template: require('./breadcrumb.html')
     })
 }
