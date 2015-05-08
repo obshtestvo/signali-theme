@@ -9,8 +9,7 @@ radio-button > input[type=radio]:not(old) {
   padding: 0;
   opacity: 0;
   position: absolute;
-  top:-9999em;
-  left:-9999em;
+  transform:  scale(0.1);
   + .check {
     background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
     @extend %circle;
