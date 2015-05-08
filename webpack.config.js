@@ -35,7 +35,6 @@ module.exports = {
         root: [
             path.normalize(pwd + '/elements/app/script'),
             path.normalize(pwd + '/elements'),
-            path.normalize(pwd + '/vendor'),
         ],
         alias: {
             'jquery': 'jquery/dist/jquery',

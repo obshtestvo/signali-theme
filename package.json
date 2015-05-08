@@ -12,12 +12,18 @@
     "hogan.js": "^3.0.2",
     "html-loader": "^0.2.3",
     "imports-loader": "^0.6.3",
+    "jquery": "2.1.4",
     "loader-utils": "^0.2.7",
+    "magnific-popup": "1.0.0",
     "mustache-loader": "^0.3.0",
+    "normalize.css": "3.0.3",
     "postcss-loader": "^0.4.2",
     "raw-loader": "^0.5.1",
     "ruby-sass-loader ": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
+    "selectize": "0.12.1",
+    "skatejs": "0.13.4",
     "style-loader": "^0.10.2",
+    "throttle-debounce": "^0.1.1",
     "webpack": "^1.8.11"
   },
   "repository": {
