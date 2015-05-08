@@ -35,7 +35,6 @@ module.exports = {
         root: [
             path.normalize(pwd + '/elements/app/script'),
             path.normalize(pwd + '/elements'),
-            path.normalize(pwd + '/vendor'),
         ],
         alias: {
             'jquery': 'jquery/dist/jquery',
@@ -57,7 +56,7 @@ module.exports = {
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
             {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
             {test: /\.jpg$/, loader: "file"},
-            {test: /\.html$/, loader: "raw"},
+            {test: /\.html$/, loader: "mustache"},
             //{test: /\.jpg$/, loader: "file?name=[path][name].[ext]?[hash]"}
         ],
         noParse: [

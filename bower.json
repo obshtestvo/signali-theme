@@ -6,15 +6,7 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "bootstrap": "*",
-    "magnific-popup": "~1.0.0",
-    "jquery-throttle-debounce": "*",
-    "angular": "~1.3.14",
-    "jquery": "~2.1.3",
-    "modernizr": "~2.8.3",
-    "normalize.css": "~3.0.3",
-    "selectize": "~0.12.1",
-    "selectize-scss": "~0.8.9",
-    "skatejs": "~0.13.4"
+    "modernizr": "2.8.3",
+    "selectize-scss": "~0.8.9"
   }
 }
