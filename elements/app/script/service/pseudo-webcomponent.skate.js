@@ -6,8 +6,11 @@ function ComponentService() {
 }
 ComponentService.prototype.register = function (name, options) {
     if (this.has('name')) throw Error("Component with the same name already exists");
-    options = this._transformOptionsForSkate(options)
-    var definition = $.extend({}, ComponentService.componentDefaults, options)
+    var definition = {};
+    if (options) {
+        options = this._transformOptionsForSkate(options)
+        definition = $.extend({}, ComponentService.componentDefaults, options)
+    }
     this.registered.push(name);
     skate(name, definition);
 }
@@ -32,7 +35,7 @@ function makeTemplate(options) {
         var $el = $(element);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
-            data[attr.name] = attr.value;
+            data[attr.name] = attr.value == '' ? true : attr.value;
         }
         var $template = $(options.template(data));
         if (options.type == skate.type.ATTRIBUTE) {
@@ -54,7 +57,13 @@ function makeTemplate(options) {
             var $placeholder = $(this);
             $placeholder.after($content);
             $placeholder.remove();
+            $content = []
         });
+        // if there is remaining custom-element content detach it
+        if ($content.length > 0) {
+            $content.detach()
+            this.$detachedContent = $content
+        }
         $el.append($template)
     }
 }

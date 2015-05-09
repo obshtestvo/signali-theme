@@ -1,5 +1,4 @@
 module.exports = function (componentService) {
-
     componentService.register('google-analytics', {
         attached: function (element) {
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

@@ -15,7 +15,7 @@ var actionButtonEl = require('action-button');
 actionButtonEl(componentService)
 
 var breadCrumbEl = require('breadcrumb');
-breadCrumbEl(componentService)
+breadCrumbEl(componentService);
 
 var crumbEl = require('crumb');
 crumbEl(componentService)
@@ -28,3 +28,6 @@ radioEl(componentService)
 
 var selectEl = require('select-dropdown');
 selectEl(componentService)
+
+var valueEl = require('value');
+valueEl(componentService)

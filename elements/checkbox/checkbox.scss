@@ -10,32 +10,33 @@ checkbox > input[type=checkbox]:not(old) {
   opacity: 0;
   position: absolute;
   transform:  scale(0.1);
+  $size: 16px;
   + .check {
+    box-sizing: border-box;
     background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
     @extend %nano-radius;
     display: inline-block;
     position: relative;
-    width: 16px;
+    width: $size;
     vertical-align: middle;
-    height: 16px;
-    line-height: 16px;
+    height: $size;
+    line-height: $size;
     border: 1px solid $greyColor80;
-    &:after {
-      @extend %nano-radius;
-      content: "";
-      display: block;
-      height: 6px;
-      width: 6px;
+    svg {
+      $size: $size * 0.65;
       position: absolute;
-      top: 50%;
-      background: transparent;
-      margin-top: -3px;
-      left: 50%;
-      margin-left: -3px;
+      opacity:0;
+      fill: $secondaryColor;
+      height:$size;
+      width:$size;
+      left:50%;
+      margin-left: -($size/2);
+      top:50%;
+      margin-top: -($size/2)
     }
   }
-  &:checked + .check:after {
-    background: $secondaryColor;
+  &:checked + .check svg {
+      opacity:1;
   }
   &:focus + .check {
     border-color: $greyColor;
