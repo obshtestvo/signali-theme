@@ -5,7 +5,10 @@ select-dropdown {
   $padding-vertical: 10px;
   $padding-horizontal: 9px;
   $arrow-color: $bodyTextColor;
+  $remove-button-active-background: darken($secondaryColor, 10%);
+  $remove-icon-size: 11px;
   $remove-icon-color: $bodyTextColor;
+  $remove-icon-active-color: $white;
   $arrow-width: 12px;
   $arrow-height: 7px;
   $text-color: $bodyTextColor;
@@ -13,31 +16,46 @@ select-dropdown {
   $search-match-highlight-color: $white;
   $dropdown-selected-option-background: $secondaryColor20;
   $create-new-color: $greyColor80;
+  $tag-padding-vertical: 3px;
+  $tag-padding-horizontal: 6px;
+  $tag-margin-vertical: 3px;
+  $tag-margin-horizontal: 3px;
+  $tag-border-width: 0;
+  $tag-color: $bodyTextColor;
+  $tag-background: linear-gradient(to bottom, $greyColor60 0%, $greyColor80 100%);
+  $tag-selected-color: $white;
+  $tag-selected-background: $secondaryColor;
 
   .selectize-control.plugin-remove_button {
     [data-value] {
       position: relative;
-      padding-right: 24px !important;
+      padding-right: 19px !important;
     }
     [data-value] .remove {
       top: 0;
       right: 0;
       bottom: 0;
-      width: 17px;
+      width: 19px;
       display: inline-block;
-      padding: $padding-vertical 0 0 0;
+      padding: $padding-vertical - ($remove-icon-size/2) 0 0 0;
       border-left: none;
       svg {
-        fill:$remove-icon-color;
-        width:11px;
-        height:11px;
+        fill: $remove-icon-color;
+        width: $remove-icon-size;
+        height: $remove-icon-size;
       }
     }
     [data-value] .remove:hover {
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(0, 0, 0, 0.09);
     }
     [data-value].active .remove {
-      background: red;
+      @extend %small-radius;
+      background: $remove-button-active-background;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      svg {
+        fill:$remove-icon-active-color;
+      }
     }
     .disabled [data-value] .remove:hover {
       background: none;
@@ -66,6 +84,30 @@ select-dropdown {
     color: $text-color;
   }
 
+  .selectize-control.multi {
+    .selectize-input {
+      &.has-items {
+        $padding-top: $padding-vertical - $tag-padding-vertical - $tag-border-width -1;
+        $padding-bottom: $padding-vertical - $tag-padding-vertical - $tag-margin-vertical - $tag-border-width;
+        padding: $padding-top $padding-horizontal $padding-bottom;
+      }
+      > div {
+        @extend %small-radius;
+        cursor: pointer;
+        margin: 0 $tag-margin-horizontal $tag-margin-vertical 0;
+        padding: $tag-padding-vertical $tag-padding-horizontal;
+        background: $tag-background;
+        color: $tag-color;
+        border: none;
+
+        &.active {
+          background: $tag-selected-background;
+          color: $tag-selected-color;
+          border: none;
+        }
+      }
+    }
+  }
   .selectize-control.single {
     .selectize-input {
       background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
