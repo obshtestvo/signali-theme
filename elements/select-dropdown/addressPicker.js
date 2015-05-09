@@ -34,7 +34,6 @@ AddressSearch.prototype = {
         var lastResults = {}
         $el.selectize({
             create: false,
-            maxItems: 1,
             options: [],
             plugins: ['restore_on_backspace'],
             score: function(search) {

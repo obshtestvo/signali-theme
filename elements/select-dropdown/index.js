@@ -7,9 +7,9 @@ module.exports = function (componentService) {
     componentService.register('select-dropdown', {
         template: require('./select-dropdown.html'),
         created: function (el) {
-            var $el =  $(el);
+            var $input =  $(el).find('> select');
             if (el.hasAttribute('location')) {
-                var picker = new AddressPicker($el, $('<h1>').get(0));
+                var picker = new AddressPicker($input, $('<h1>').get(0));
             } else {
                 var values = this.$detachedContent.filter('value');
                 var selected = values.filter('[selected]').map(function() {
@@ -19,13 +19,14 @@ module.exports = function (componentService) {
                     var $this = $(this)
                     return {id: this.id, title: $this.text()}
                 }).get();
-                $(el).find('> select').selectize({
+                $input.selectize({
                     valueField: 'id',
                     labelField: 'title',
                     searchField: 'title',
+                    plugins: el.hasAttribute('multiple') ? ['remove_button'] : [],
                     create: true,
                     options: options,
-                    items: selected,
+                    items: selected
                 });
             }
         }

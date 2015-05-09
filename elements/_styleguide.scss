@@ -1,48 +1,4 @@
 %main-font { font-family:"Open Sans", sans-serif }
-%secondary-font { font-family: 'Roboto', sans-serif; }
-
-%headilme-font {
-  @extend %main-font;
-  font-weight: 600;
-  font-size: 38px;
-  line-height: 55px;
-}
-
-%bodytext-font {
-  @extend %main-font;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-%bodytext-large-font {
-  @extend %bodytext-font;
-  font-size: 16px;
-  line-height: 23px;
-}
-
-%mainnavigation-font {
-  @extend %bodytext-large-font;
-  font-weight: 600;
-}
-
-%popup-font {
-  @extend %main-font;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 17px;
-}
-
-%label-font {
-  @extend %popup-font;
-  text-transform: uppercase;
-}
-
-%button-font{
-  @extend %bodytext-font;
-  font-weight: 600;
-  text-transform: uppercase;
-}
 /*Colors*/
 $white: #fff;
 
@@ -94,38 +50,75 @@ $errorsContrastColor: $bodyTextColor;
 /*shadows*/
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
   @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $spread $color;
-    -moz-box-shadow:inset $top $left $blur $spread $color;
     box-shadow:inset $top $left $blur $spread $color;
   } @else {
-    -webkit-box-shadow: $top $left $blur $spread $color;
-    -moz-box-shadow: $top $left $blur $spread $color;
     box-shadow: $top $left $blur $spread $color;
   }
 }
 
-// generic transform
-@mixin transform($transforms) {
-  -moz-transform: $transforms;
-  -o-transform: $transforms;
-  -ms-transform: $transforms;
-  -webkit-transform: $transforms;
-  transform: $transforms;
-}
 // rotate
 @mixin rotate ($deg) {
-  @include transform(rotate(#{$deg}deg));
+  transform: rotate(#{$deg}deg);
 }
 
 // scale
 @mixin scale($scale) {
-  @include transform(scale($scale));
+  transform: scale($scale);
 }
 // translate
 @mixin translate ($x, $y) {
-  @include transform(translate($x, $y));
+  transform: translate($x, $y);
 }
 // skew
 @mixin skew ($x, $y) {
-  @include transform(skew(#{$x}deg, #{$y}deg));
+  transform: skew(#{$x}deg, #{$y}deg);
+}
+
+
+%headilme-font {
+  @extend %main-font;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 55px;
+}
+
+%bodytext-font {
+  @extend %main-font;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+%bodytext-large-font {
+  @extend %bodytext-font;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+%mainnavigation-font {
+  @extend %bodytext-large-font;
+  font-weight: 600;
+}
+
+%popup-font {
+  @extend %main-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+%label-font {
+  @extend %popup-font;
+  text-transform: uppercase;
+}
+
+%button-font{
+  @extend %bodytext-font;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+%standard-input {
+  @extend %small-radius;
+  height: 40px;
+  border: 1px solid $greyColor80;
 }

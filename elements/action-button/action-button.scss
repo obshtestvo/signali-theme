@@ -3,7 +3,7 @@
 /*Colors: white, red, purple*/
 /*Attributes: secondary, outlined*/
 
-.wrap-calltoaction {
+action-button {
   a {
     @extend %large-radius, %button-font;
     padding: 10px 30px;
@@ -61,8 +61,3 @@
     }
   }
 }
-
-/*
-
-
-*/

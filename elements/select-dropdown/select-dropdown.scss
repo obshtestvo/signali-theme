@@ -1,4 +1,16 @@
 @import '../styleguide';
 @import '../../node_modules/selectize/dist/css/selectize.css';
 select-dropdown {
+//    background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+  .selectize-input {
+    box-shadow: none;
+    @extend %standard-input;
+  }
+  .selectize-control {
+    &.single {
+      .selectize-input {
+        background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+      }
+    }
+  }
 }
