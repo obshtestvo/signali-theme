@@ -31,7 +31,7 @@ module.exports = function (componentService) {
                 if (el.hasAttribute('multiple')) {
                     options.plugins = {
                         remove_button: {
-                            label: require('times-circle.svg')
+                            label: require('icons/times-circle.svg')
                         }
                     }
                 }
