@@ -9,8 +9,9 @@ var googlemap = require('service/google.maps');
  */
 var AddressSearch = function($el, creditsEl, queryTransformation) {
     var _self = this;
+    _self._initUI($el)
     googlemap.load(function(gMap) {
-        _self._init(gMap, $el, creditsEl, queryTransformation)
+        _self._initGeo(gMap, $el, creditsEl, queryTransformation)
     })
 }
 
@@ -20,17 +21,21 @@ AddressSearch.prototype = {
     map: null,
     autocomplete: null,
 
-    _init: function(gMap, $el, creditsEl, queryTransformation) {
+    _initGeo: function(gMap, $el, creditsEl, queryTransformation) {
         var _self = this;
         _self.events = {};
         _self.$el = $el;
+        _self.autocompleteService = new gMap.places.AutocompleteService();
+        _self.geocoder = new gMap.Geocoder();
+        _self.placesService = new gMap.places.PlacesService(creditsEl);
+    },
+
+    _initUI: function($el) {
+        var _self = this;
         var googleOptions = {
             types: ['geocode'],
             componentRestrictions: {country: 'BG'}
         };
-        _self.autocompleteService = new gMap.places.AutocompleteService();
-        _self.geocoder = new gMap.Geocoder();
-        _self.placesService = new gMap.places.PlacesService(creditsEl);
         var lastResults = {}
         $el.selectize({
             create: false,
@@ -68,7 +73,7 @@ AddressSearch.prototype = {
                                     results.push({value: value, text: text, source: {term: query, pos: length-i}})
                                 }
                                 lastResults[loc.formatted_address] = loc
-                            })
+                            });
                             callback(results)
                         })
                     } else {
@@ -80,7 +85,7 @@ AddressSearch.prototype = {
                             if (!_self.pickerAPI.getOption(value).length) {
                                 results.push({value: value, text: text, source: {term: query, pos: length-i}})
                             }
-                        })
+                        });
                         callback(results)
                     }
                 });
