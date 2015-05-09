@@ -36,6 +36,8 @@ $errorsContrastColor: $white;
 $infoColor: $white;
 $errorsContrastColor: $bodyTextColor;
 
+$standard-border: 1px solid $greyColor80;
+
 @mixin reset-link {
   text-decoration: none;
 }
@@ -117,7 +119,6 @@ $errorsContrastColor: $bodyTextColor;
   font-weight: 600;
   text-transform: uppercase;
 }
-$standard-border: 1px solid $greyColor80;
 %standard-input {
   @extend %small-radius;
   height: 40px;

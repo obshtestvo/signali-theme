@@ -37,7 +37,7 @@ select-dropdown {
       bottom: 0;
       width: 17px;
       display: inline-block;
-      padding: $padding-vertical - ($remove-icon-size/2) 0 0 0;
+      padding: $padding-vertical - ($remove-icon-size/2)*0.9 0 0 0;
       border-left: none;
       svg {
         fill: $remove-icon-color;
@@ -50,7 +50,7 @@ select-dropdown {
     }
     [data-value].active .remove {
       @extend %small-radius;
-      background: $remove-button-active-background;
+//      background: $remove-button-active-background;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       svg {
@@ -67,6 +67,7 @@ select-dropdown {
 
   .selectize-input {
     box-shadow: none;
+    border: $standard-border;
     padding: $padding-vertical $padding-horizontal;
     &.focus {
       box-shadow: none;
