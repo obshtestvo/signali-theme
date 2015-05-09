@@ -2,8 +2,8 @@
 @import '../../node_modules/selectize/dist/css/selectize.css';
 
 select-dropdown {
-  $padding-vertical: 10px;
-  $padding-horizontal: 9px;
+  $padding-vertical: 9px;
+  $padding-horizontal: 7px;
   $arrow-color: $bodyTextColor;
   $remove-button-active-background: darken($secondaryColor, 10%);
   $remove-icon-size: 11px;
@@ -18,7 +18,7 @@ select-dropdown {
   $create-new-color: $greyColor80;
   $tag-padding-vertical: 3px;
   $tag-padding-horizontal: 6px;
-  $tag-margin-vertical: 3px;
+  $tag-margin-vertical: 4px;
   $tag-margin-horizontal: 3px;
   $tag-border-width: 0;
   $tag-color: $bodyTextColor;
@@ -35,7 +35,7 @@ select-dropdown {
       top: 0;
       right: 0;
       bottom: 0;
-      width: 19px;
+      width: 17px;
       display: inline-block;
       padding: $padding-vertical - ($remove-icon-size/2) 0 0 0;
       border-left: none;
@@ -66,7 +66,6 @@ select-dropdown {
   }
 
   .selectize-input {
-    @extend %standard-input;
     box-shadow: none;
     padding: $padding-vertical $padding-horizontal;
     &.focus {
@@ -87,7 +86,7 @@ select-dropdown {
   .selectize-control.multi {
     .selectize-input {
       &.has-items {
-        $padding-top: $padding-vertical - $tag-padding-vertical - $tag-border-width -1;
+        $padding-top: $padding-vertical - $tag-padding-vertical - $tag-border-width;
         $padding-bottom: $padding-vertical - $tag-padding-vertical - $tag-margin-vertical - $tag-border-width;
         padding: $padding-top $padding-horizontal $padding-bottom;
       }
