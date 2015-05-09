@@ -1,15 +1,114 @@
 @import '../styleguide';
 @import '../../node_modules/selectize/dist/css/selectize.css';
+
 select-dropdown {
-//    background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
-  .selectize-input {
-    box-shadow: none;
-    @extend %standard-input;
+  $padding-vertical: 10px;
+  $padding-horizontal: 9px;
+  $arrow-color: $bodyTextColor;
+  $remove-icon-color: $bodyTextColor;
+  $arrow-width: 12px;
+  $arrow-height: 7px;
+  $text-color: $bodyTextColor;
+  $search-match-highlight-background: $secondaryColor;
+  $search-match-highlight-color: $white;
+  $dropdown-selected-option-background: $secondaryColor20;
+  $create-new-color: $greyColor80;
+
+  .selectize-control.plugin-remove_button {
+    [data-value] {
+      position: relative;
+      padding-right: 24px !important;
+    }
+    [data-value] .remove {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 17px;
+      display: inline-block;
+      padding: $padding-vertical 0 0 0;
+      border-left: none;
+      svg {
+        fill:$remove-icon-color;
+        width:11px;
+        height:11px;
+      }
+    }
+    [data-value] .remove:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    [data-value].active .remove {
+      background: red;
+    }
+    .disabled [data-value] .remove:hover {
+      background: none;
+    }
+    .disabled [data-value] .remove {
+      border-left: none;
+    }
   }
-  .selectize-control {
-    &.single {
-      .selectize-input {
-        background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+
+  .selectize-input {
+    @extend %standard-input;
+    box-shadow: none;
+    padding: $padding-vertical $padding-horizontal;
+    &.focus {
+      box-shadow: none;
+      border-color: $greyColor;
+    }
+    &.dropdown-active {
+      @extend %small-radius;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  .selectize-dropdown, .selectize-input, .selectize-input input {
+    @extend %bodytext-font;
+    color: $text-color;
+  }
+
+  .selectize-control.single {
+    .selectize-input {
+      background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+      &:after {
+        margin-top: round(-1 * $arrow-height / 2);
+        height: 0;
+        border-width: $arrow-height $arrow-width/2 0 $arrow-width/2;
+        border-color: $arrow-color transparent transparent transparent;
+      }
+      &.dropdown-active:after {
+        margin-top: $arrow-height * -0.8;
+        border-width: 0 $arrow-width/2 $arrow-height $arrow-width/2;
+        border-color: transparent transparent $arrow-color
+      }
+    }
+  }
+
+  .selectize-dropdown {
+    @extend %small-radius;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background: $white;
+    border-color: $greyColor;
+
+    [data-selectable] {
+      .highlight {
+        background: $search-match-highlight-background;
+        color: $search-match-highlight-color;
+      }
+      &:last-child {
+        @extend %small-radius;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+    [data-selectable], .optgroup-header {
+      padding: $padding-vertical $padding-horizontal;
+    }
+    .active {
+      background-color: $dropdown-selected-option-background;
+      color: $text-color;
+      &.create {
+        color: $create-new-color;
       }
     }
   }

@@ -15,19 +15,27 @@ module.exports = function (componentService) {
                 var selected = values.filter('[selected]').map(function() {
                     return this.id
                 }).get();
-                var options = values.map(function() {
+                var choices = values.map(function() {
                     var $this = $(this)
                     return {id: this.id, title: $this.text()}
                 }).get();
-                $input.selectize({
+
+                var options = {
                     valueField: 'id',
                     labelField: 'title',
                     searchField: 'title',
-                    plugins: el.hasAttribute('multiple') ? ['remove_button'] : [],
                     create: true,
-                    options: options,
+                    options: choices,
                     items: selected
-                });
+                }
+                if (el.hasAttribute('multiple')) {
+                    options.plugins = {
+                        remove_button: {
+                            label: require('./close.svg')
+                        }
+                    }
+                }
+                $input.selectize(options);
             }
         }
     })

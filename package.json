@@ -23,6 +23,8 @@
     "ruby-sass-loader ": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
     "skatejs": "0.13.4",
     "style-loader": "^0.10.2",
+    "svgo": "^0.5.1",
+    "svgo-loader": "^1.1.0",
     "throttle-debounce": "^0.1.1",
     "webpack": "^1.8.11"
   },

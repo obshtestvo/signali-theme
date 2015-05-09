@@ -7,7 +7,6 @@
   ],
   "dependencies": {
     "modernizr": "2.8.3",
-    "selectize": "0.12.1",
-    "selectize-scss": "~0.8.9"
+    "selectize": "0.12.1"
   }
 }

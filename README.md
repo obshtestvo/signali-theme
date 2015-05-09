@@ -23,7 +23,7 @@ to install the dependencies.
 #### Deployment notes:
 
 ```
-webpack --config ./webpack.config.production.js
+(export PRODUCTION=1 && webpack)
 ```
 
 ## Architecture decisions
@@ -50,7 +50,7 @@ like [angularjs](https://github.com/angular/angular.js),
 ### Specificity
 The conventions are implemented through:
  
- - emulation of web components via angularjs directives
+ - emulation of web components via [`skatejs`](http://skatejs.github.io/)
  - [webpack](http://webpack.github.io/docs/) for everything else
 
 #### Webpack
@@ -66,9 +66,7 @@ rendering template engines; rendering gettext files into json and many many othe
 The project doesn't use the [webcomponents polyfill](https://github.com/webcomponents/webcomponentsjs) 
 because it too cutting-edge and easily causes problems even in modern browsers.
 
-Instead, the project makes use of angular directives to emulate web components. 
-The directives work well across browsers and angular has a 
-large community if any problems occur.
+Instead, the project makes use of [`skatejs`](http://skatejs.github.io/) to emulate web components. 
 
 The key aspects of web components that are replicated:
  - html tags with custom names that use their own template
@@ -78,12 +76,13 @@ The key aspects of web components that are replicated:
  locations in its template using the `<content select='...'></content>` tag
  - **no shadowdom**
  
-The emulation is happening through a script called [pseudo-webcomponent.directive.js](elements/app/script/service/pseudo-webcomponent.directive.js).
+The emulation is happening through a script called [pseudo-webcomponent.skate.js](elements/app/script/service/pseudo-webcomponent.skate.js).
 This is basically a factory-pattern script that can register custom elements in a webcomponent-like manner:
 
 *in main script file*:
 ```js
-var ComponentService = require('service/pseudo-webcomponent.directive');
+var ComponentService = require('service/pseudo-webcomponent.skate');
+componentService = new ComponentService()
 var customElement = require('custom');
 customElement(componentService)
 ```
@@ -91,10 +90,7 @@ customElement(componentService)
 *in element's file*
 ```js
 module.exports = function (componentService) {
-    var name = 'custom';
-    if (componentService.has(name)) return;
-
-    componentService.register(name, {
+    componentService.register('custom', {
         template: require('./custom.html'),
         attached: function (scope, $el, attrs, ctrls, transclude) {
             // javascript to run after the element is rendered in te dom

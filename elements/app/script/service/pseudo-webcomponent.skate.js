@@ -31,7 +31,7 @@ ComponentService.componentDefaults = {
 
 function makeTemplate(options) {
     return function (element) {
-        var data = {};
+        var data = this.include || {};
         var $el = $(element);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
