@@ -20,6 +20,9 @@ breadCrumbEl(componentService);
 var crumbEl = require('crumb');
 crumbEl(componentService)
 
+var tabsNavEl = require('tabs-nav');
+tabsNavEl(componentService)
+
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)
 

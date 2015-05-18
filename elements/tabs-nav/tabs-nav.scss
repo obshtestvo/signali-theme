@@ -1,0 +1,20 @@
+@import '../styleguide';
+tabs-nav {
+  & > ul{
+    font-size: 0;
+    display: block;
+    list-style-type: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    &.align-left {
+      text-align: left;
+    }
+    &.align-center {
+      text-align: center;
+    }
+    &.align-right {
+      text-align: right;
+    }
+  }
+}
