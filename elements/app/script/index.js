@@ -8,6 +8,12 @@ var componentService = new ComponentService();
 var coverElement = require('cover');
 coverElement(componentService)
 
+var callToActionElement = require('call-to-action');
+callToActionElement(componentService)
+
+var underlineElement = require('underline');
+underlineElement(componentService)
+
 var googleAnalyticsElement = require('google-analytics');
 googleAnalyticsElement(componentService)
 

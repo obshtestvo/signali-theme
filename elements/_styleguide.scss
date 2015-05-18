@@ -79,14 +79,14 @@ $standard-border: 1px solid $greyColor80;
 
 %headilme-font {
   @extend %main-font;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 38px;
   line-height: 55px;
 }
 
 %bodytext-font {
   @extend %main-font;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }

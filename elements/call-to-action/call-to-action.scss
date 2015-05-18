@@ -1,0 +1,24 @@
+@import '../styleguide';
+call-to-action {
+  color: $white;
+  & > div {
+    &.align-center {
+      text-align: center;
+    }
+    &.align-left {
+      text-align: left;
+    }
+    &.align-right {
+      text-align: right;
+    }
+    h1 {
+      @extend %headilme-font;
+      padding: 0 0 11px;
+    }
+    p {
+      @extend %bodytext-large-font;
+    }
+  }
+
+
+}
