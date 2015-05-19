@@ -30,22 +30,28 @@ to install the dependencies.
 The frontend ecosystem right now is diverse. There are things 
 like [angularjs](https://github.com/angular/angular.js),
 [facebook react](https://github.com/facebook/react),
-[web components](http://www.w3.org/TR/components-intro/) and other frameworks. Each have their advantages and
- each have their drawbacks.
+[web components](http://www.w3.org/TR/components-intro/) and other frameworks/emerging standards.
+Each have their advantages and each have their drawbacks.
 
 ### Conventions
  - **Backend-agnostic**: assets' management should be independent from any chosen backend framework or language
  - **Web components**: they are coming, so their concept should be followed as closely as possible
  - **Modularity**: always think modular, extract all files related to a single element as web-component (styling, scripts, template, images... everything)
+ - **Readability over performance**
  - **Compression**:
    - All assets must be compressed (including images) to achieve minimum transfer size
    - Embed small images as base64
-   - All assets of common file types must be combined into 1 file
+   - All assets [of common file types] must be combined into 1 file
    - The asset combination mechanism should allow splitting into chunks, so that the initial load is not too big
-   - Source maps should work in the compiled versions
- - A universal import/require mechanism should be used. It should be capable of importing different type of files:
+   - Source maps should work in the compiled versions but should be removable for production
+ - A **universal import/require** mechanism should be used. It should be capable of importing different type of files:
  javascript, css, images, fonts, html templates, sass, etc.
- - The template language used in web components must be easy to change
+ - **The template language** used in web components must be easy to change
+ - **Icons** should be svg-based. 
+ - **Javascripts**:
+   - Should be in a isolated scope
+   - Should explicitly state requirments in code (*not comments or meta-lanaguages*) 
+ 
 
 ### Specificity
 The conventions are implemented through:
