@@ -44,37 +44,41 @@ function makeTemplate(options) {
             $placeholder.remove()
             return;
         }
-        var el, i, j, k, placeholder, docfrag;
+        var node, i, j, k, placeholder, docfrag, toAppend, parentNode;
         for (i = 0; i < $template.length; i++) {
-            el = $template[i]
-            var queriedPlacehoders = el.querySelectorAll('content[select]')
-            for (j = 0; j < queriedPlacehoders.length; j++) {
-                placeholder = queriedPlacehoders[j];
+            node = $template[i];
+            if (node.nodeType != Node.ELEMENT_NODE) continue;
+            if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
+                queriedPlaceholders = [node]
+            } else {
+                var queriedPlaceholders = [].slice.call(node.querySelectorAll('content[select]'));
+            }
+            for (j = 0; j < queriedPlaceholders.length; j++) {
+                placeholder = queriedPlaceholders[j];
                 var selector = placeholder.getAttribute("select")
                 var matching = element.querySelectorAll(selector)
                 docfrag = document.createDocumentFragment();
-                var toAppend = [].slice.call(matching.childNodes);
+                toAppend = [].slice.call(matching);
                 for (k = 0; k < toAppend.length; k++) {
                     docfrag.appendChild(toAppend[k])
                 }
-                placeholder.parentNode.insertBefore(docfrag.cloneNode(true), placeholder);
-                placeholder.parentNode.removeChild(placeholder);
+                parentNode = placeholder.parentNode;
+                parentNode.replaceChild(docfrag.cloneNode(true), placeholder);
             }
         }
         if (element.childNodes.length > 0) {
             for (i = 0; i < $template.length; i++) {
-                el = $template[i]
-                var contentPlaceholders = el.getElementsByTagName('content')
+                node = $template[i]
+                var contentPlaceholders = node.getElementsByTagName('content')
                 if (!contentPlaceholders.length) continue;
                 placeholder = contentPlaceholders[0];
                 docfrag = document.createDocumentFragment();
-                var toAppend = [].slice.call(element.childNodes);
+                toAppend = [].slice.call(element.childNodes);
                 for (j = 0; j < toAppend.length; j++) {
                     docfrag.appendChild(toAppend[j])
                 }
-                var parentNode = placeholder.parentNode;
-                parentNode.insertBefore(docfrag.cloneNode(true), placeholder);
-                parentNode.removeChild(placeholder);
+                parentNode = placeholder.parentNode;
+                parentNode.replaceChild(docfrag.cloneNode(true), placeholder);
                 break;
             }
         }
@@ -84,11 +88,7 @@ function makeTemplate(options) {
             remaining.detach();
             this.$detachedContent = remaining;
         }
-        docfrag = document.createDocumentFragment();
-        $template = [].slice.call($template);
-        for (i = 0; i < $template.length; i++) {
-            docfrag.appendChild($template[i])
-        }
+        docfrag = $template[0].parentNode;
         element.appendChild(docfrag.cloneNode(true))
     }
 }

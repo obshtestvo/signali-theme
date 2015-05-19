@@ -40,3 +40,6 @@ selectEl(componentService)
 
 var valueEl = require('value');
 valueEl(componentService)
+
+var menuEl = require('menu');
+menuEl(componentService)

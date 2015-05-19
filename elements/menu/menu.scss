@@ -1,0 +1,27 @@
+@import '../styleguide';
+@import '../../node_modules/sass-burger/burger';
+
+$main-text-color: $white;
+$main-text-color-focus: $mainColor20;
+
+menu {
+  .burger-icon {
+    @include burger(17px, 3px, 2px, $main-text-color, 1px);
+  }
+  .burger-icon, .burger-icon::before, .burger-icon::after {
+    display: inline-block;
+  }
+  .trigger.active .burger-icon {
+    @include burger-to-cross;
+  }
+  .trigger:focus .burger-icon,
+  .trigger:hover .burger-icon {
+    color:$main-text-color-focus;
+  }
+}
+menu .trigger {
+  @extend %bodytext-large-font;
+  color: $main-text-color;
+  font-weight: 600;
+  cursor: pointer;
+}
