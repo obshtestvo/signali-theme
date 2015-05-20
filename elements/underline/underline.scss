@@ -1,24 +1,18 @@
 @import '../styleguide';
-call-to-action {
-  color: $white;
-  & > div {
-    &.align-center {
-      text-align: center;
-    }
-    &.align-left {
-      text-align: left;
-    }
-    &.align-right {
-      text-align: right;
-    }
-    h1 {
-      @extend %headilme-font;
-      padding: 0 0 11px;
-    }
-    p {
-      @extend %bodytext-large-font;
-    }
+underline{
+  strong {
+    position: relative;
+      svg {
+        position: absolute;
+        max-width: 120%;
+        max-height: 8px;
+        bottom: -7px;
+        left: -10%;
+          & > * {
+            fill: $secondaryColor100;
+          }
+      }
   }
-
-
+  &:nth-child(2) svg {
+    @include rotate(180);}
 }
