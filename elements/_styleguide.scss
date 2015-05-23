@@ -124,3 +124,9 @@ $standard-border: 1px solid $greyColor80;
   height: 40px;
   border: $standard-border;
 }
+%wrapper {
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 20px;
+  position: relative;
+}
