@@ -6,8 +6,11 @@ $main-text-color-focus: $mainColor20;
 
 menu {
   margin: 0;
+  padding: 0;
+  float: left;
   .burger-icon {
     @include burger(17px, 3px, 2px, $main-text-color, 1px);
+    margin-right: 2px;
   }
   .burger-icon, .burger-icon::before, .burger-icon::after {
     display: inline-block;
@@ -20,9 +23,31 @@ menu {
     color:$main-text-color-focus;
   }
   .categories{
+    opacity: 0;
+    visibility: hidden;
     background: $white;
     width: 54.2%;
-    @extend %small-radius;
+    @extend %small-radius, %anime;
+    @include box-shadow( 0, 0, 5px, rgba($mainColor40, 1));
+    position: absolute;
+    margin: 8px 0 0 0;
+    padding: 0 0 31px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      top:-6px;
+      left: 8%;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid $white;
+      width: 2px;
+      height: 0;
+    }
+    &.active{
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
 menu .trigger {

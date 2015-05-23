@@ -3,4 +3,25 @@
 menu-column {
   display: block;
   width: 50%;
+  float: left;
+  padding: 25px 30px 3px 30px;
+  h2 {
+    @extend %bodytext-large-font ;
+    font-weight: 600;
+    color: $bodyTextColor;
+    padding: 0 0 7px;
+  }
+  ul{
+    @extend %stripped;
+    li{
+      @extend %bodytext-font;
+      line-height: 24px;
+      a {
+        color: $secondaryColor100;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
