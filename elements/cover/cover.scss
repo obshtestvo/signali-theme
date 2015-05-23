@@ -1,5 +1,8 @@
 @import '../styleguide';
-header {
+cover {
+  display: block;
   background: $mainColor100;
-  padding: 100px;
+  header {
+    @extend %wrapper;
+  }
 }

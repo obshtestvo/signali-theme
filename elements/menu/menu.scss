@@ -5,6 +5,7 @@ $main-text-color: $white;
 $main-text-color-focus: $mainColor20;
 
 menu {
+  margin: 0;
   .burger-icon {
     @include burger(17px, 3px, 2px, $main-text-color, 1px);
   }
@@ -18,10 +19,17 @@ menu {
   .trigger:hover .burger-icon {
     color:$main-text-color-focus;
   }
+  .categories{
+    background: $white;
+    width: 54.2%;
+    @extend %small-radius;
+  }
 }
 menu .trigger {
   @extend %bodytext-large-font;
   color: $main-text-color;
   font-weight: 600;
   cursor: pointer;
+  line-height: 30px;
+
 }
