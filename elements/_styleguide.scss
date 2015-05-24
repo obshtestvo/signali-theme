@@ -81,7 +81,26 @@ $standard-border: 1px solid $greyColor80;
   -moz-box-shadow:$top $left $blur $color #{$inset};
   box-shadow:$top $left $blur $color #{$inset};
 }
+//Align
 
+%center-xy {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%center-x {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+%center-y {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 
 %headilme-font {
   @extend %main-font;

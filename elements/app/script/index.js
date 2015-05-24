@@ -11,6 +11,9 @@ coverElement(componentService)
 var topNavElement = require('top-nav');
 topNavElement(componentService)
 
+var logoElement = require('logo');
+logoElement(componentService)
+
 var callToActionElement = require('call-to-action');
 callToActionElement(componentService)
 
