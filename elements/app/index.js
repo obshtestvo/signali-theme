@@ -1,4 +1,6 @@
-require('app/style/app.scss');
+require('normalize.css/normalize.css');
+require('_styleguide.scss');
+require('_reset.scss');
 
 // jquery plugins are not yet all used to CommonJS
 window.$ = window.jQuery = require('jquery/dist/jquery');

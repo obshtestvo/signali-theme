@@ -10,7 +10,7 @@ var config = {};
 
 /**************** INPUT ***************/
 config.entry = {
-    app: 'app/script',
+    app: 'app',
     head: [
         'modernizr/modernizr',
     ]
@@ -40,7 +40,7 @@ if (process.env.PRODUCTION) {
 /**************** RESOLVING NAMES ***************/
 config.resolve = {
     root: [
-        path.normalize(pwd + '/elements/app/script'),
+        path.normalize(pwd + '/elements/app'),
         path.normalize(pwd + '/elements'),
     ],
     alias: {
@@ -65,7 +65,7 @@ config.module = {
     loaders: [
         {
             test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr/,
-            loader: "imports?this=>window&module=>false&exports=>false&define=>false"
+            loader: "script"
         },
         {
             test: /\.scss$/,
@@ -77,19 +77,6 @@ config.module = {
         {test: /\.html$/, loader: "mustache"},
         {test: /\.svg/, loader: "raw"+svgExtraLoaders},
         //{test: /\.jpg$/, loader: "file?name=[path][name].[ext]?[hash]"}
-    ],
-    noParse: [
-        /packery/,
-        /modernizr/,
-        /draggabilly/,
-        /zepto/,
-        /angular/,
-        /drop\/drop/,
-        /dist\/waves/,
-        /throttle-debounce/,
-        /holderjs\/holder/,
-        /lumx/,
-        /blueimp/,
     ]
 };
 
