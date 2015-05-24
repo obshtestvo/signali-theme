@@ -10,6 +10,12 @@ var componentService = new ComponentService();
 var coverElement = require('cover');
 coverElement(componentService)
 
+var topNavElement = require('top-nav');
+topNavElement(componentService)
+
+var logoElement = require('logo');
+logoElement(componentService)
+
 var callToActionElement = require('call-to-action');
 callToActionElement(componentService)
 
@@ -45,3 +51,6 @@ valueEl(componentService)
 
 var menuEl = require('menu');
 menuEl(componentService)
+
+var menuColumnEl = require('menu-column');
+menuColumnEl(componentService)

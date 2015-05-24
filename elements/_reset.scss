@@ -3,7 +3,10 @@
 html {
   @extend %bodytext-font;
 }
-
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box
+}
 a {
   text-decoration: none;
 }

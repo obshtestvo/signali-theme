@@ -6,6 +6,7 @@ module.exports = function (componentService) {
         attached: function (el) {
             $(el).find('.trigger').click(function(){
                 $(this).toggleClass('active')
+                $(".categories").toggleClass('active')
             })
         }
     })
