@@ -7,8 +7,10 @@
 {{^anonymous}}
 <div id="loggedin">
     <div class="profile">
-        <content select="img"></content>
-        <content select="strong"></content>
+        <a class="clearfix" href="{{action}}">
+            <span><content select="img"></content></span>
+            <content select="strong"></content>
+        </a>
     </div>
     <content select="ul"></content>
 </div>
