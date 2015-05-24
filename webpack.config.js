@@ -83,4 +83,9 @@ config.module = {
 /**************** POSTCSS module ***************/
 config.postcss = [autoprefixer];
 
+/**************** File changes watching/monitoring options ***************/
+config.watchOptions = {
+    aggregateTimeout: 100
+};
+
 module.exports = config;

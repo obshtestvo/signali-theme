@@ -4,7 +4,7 @@ var pwd = __dirname;
 standardConfig.output.publicPath = 'build/';
 standardConfig.output.path = path.normalize(pwd + '/build');
 standardConfig.resolve.root = [
-    path.normalize(pwd + '/../elements/app/script'),
+    path.normalize(pwd + '/../elements/app'),
     path.normalize(pwd + '/../elements'),
     path.normalize(pwd + '/../vendor'),
 ]
