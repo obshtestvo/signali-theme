@@ -1,0 +1,14 @@
+@import '../styleguide';
+
+login-box{
+  float: left;
+  padding: 0 0 0 20px;
+    #anonymous {
+      a {
+        @extend %bodytext-large-font;
+        color: $white;
+        font-weight: 600;
+        line-height: 30px;
+      }
+    }
+}

@@ -11,6 +11,9 @@ coverElement(componentService)
 var topNavElement = require('top-nav');
 topNavElement(componentService)
 
+var loginBoxElement = require('login-box');
+loginBoxElement(componentService)
+
 var logoElement = require('logo');
 logoElement(componentService)
 

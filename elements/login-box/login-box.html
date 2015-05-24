@@ -1,0 +1,15 @@
+{{#anonymous}}
+<div id="anonymous" >
+    <a href="{{action}}"><content></content></a>
+</div>
+{{/anonymous}}
+
+{{^anonymous}}
+<div id="loggedin">
+    <div class="profile">
+        <content select="img"></content>
+        <content select="strong"></content>
+    </div>
+    <content select="ul"></content>
+</div>
+{{/anonymous}}

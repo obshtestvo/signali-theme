@@ -5,3 +5,4 @@ module.exports = function (componentService) {
         template: require('./menu-column.html')
     })
 }
+
