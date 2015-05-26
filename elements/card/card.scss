@@ -1,0 +1,11 @@
+@import '../styleguide';
+
+card{
+  width: 25%;
+  float: left;
+  padding: 0 5px;
+    section {
+      @extend %small-radius;
+      box-shadow: 0 0 5px 0 $greyColor80;
+    }
+}
