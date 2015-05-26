@@ -1,0 +1,9 @@
+@import '../styleguide';
+
+cards-area {
+  @extend %wrapper;
+  display: block;
+  & > section {
+
+  }
+}

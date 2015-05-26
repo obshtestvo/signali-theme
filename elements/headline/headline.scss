@@ -1,0 +1,19 @@
+@import '../styleguide';
+
+headline {
+  .large h3{
+    @extend %headilme-font;
+    padding: 25px 0 17px 0;
+  }
+  .medium h3{}
+  .small h3{}
+  &.left{
+    text-align: left;
+  }
+  &.right{
+    text-align: right;
+  }
+  &.center{
+    text-align: center;
+  }
+}

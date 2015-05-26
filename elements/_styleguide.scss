@@ -2,6 +2,7 @@
 /*Colors*/
 $white: #fff;
 
+$mainColor120: #0a0b26;
 $mainColor100: #101340;
 $mainColor80: #414167;
 $mainColor60: #6f708c;
@@ -149,6 +150,7 @@ $standard-border: 1px solid $greyColor80;
   height: 40px;
   border: $standard-border;
 }
+
 %wrapper {
   margin: 0 auto;
   max-width: 1220px;

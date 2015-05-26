@@ -1,11 +1,11 @@
-require('./tabs-nav.scss')
+require('./secondary-nav.scss')
 
 module.exports = function (componentService) {
-    var name = 'tabs-nav';
+    var name = 'secondary-nav';
     if (componentService.has(name)) return;
 
     componentService.register(name, {
-        template: require('./tabs-nav.html'),
+        template: require('./secondary-nav.html'),
         publish: {
             "align": "@"
         }

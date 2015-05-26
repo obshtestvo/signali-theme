@@ -39,8 +39,8 @@ breadCrumbEl(componentService);
 var crumbEl = require('crumb');
 crumbEl(componentService)
 
-var tabsNavEl = require('tabs-nav');
-tabsNavEl(componentService)
+var secondaryNavEl = require('secondary-nav');
+secondaryNavEl(componentService)
 
 var checkboxEl = require('checkbox');
 checkboxEl(componentService)
@@ -59,3 +59,11 @@ menuEl(componentService)
 
 var menuColumnEl = require('menu-column');
 menuColumnEl(componentService)
+
+var headlineEl = require('headline');
+headlineEl(componentService)
+
+var cardsAreaEl = require('cards-area');
+cardsAreaEl(componentService)
+
+

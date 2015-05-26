@@ -1,0 +1,45 @@
+@import '../styleguide';
+secondary-nav {
+  & > ul{
+    font-size: 0;
+    display: block;
+    list-style-type: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    &.align-left {
+      text-align: left;
+    }
+    &.align-center {
+      text-align: center;
+    }
+    &.align-right {
+      text-align: right;
+    }
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        padding: 0 15px;
+        @extend %large-radius, %bodytext-font ;
+        line-height: 30px;
+        font-weight: 600;
+        color: $bodyTextColor;
+        background: $white;
+        &.active {
+          background: $mainColor100;
+          color: $white;
+          pointer-events: none;
+          cursor: default;
+        }
+        &:hover {
+          background: $greyColor60;
+        }
+        &:active {
+          background: $mainColor120;
+          color: $white;
+        }
+      }
+    }
+  }
+}
