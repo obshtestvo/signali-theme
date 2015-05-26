@@ -86,7 +86,7 @@
             </search-prompt>
 
         </top-nav>
-        <intro>
+        <intro interval="medium">
 
             <call-to-action align="center">
                 <h1>Пoдай сигнал</h1>
@@ -95,31 +95,53 @@
         </intro>
     </cover>
     <featured>
-        :)
-    </featured>
-    <picker>admin</picker>
-    <playground>
-        <action-button align="center" action="google.com" color="white">
-            Логни Са Ва!
-        </action-button>
-        <action-button align="center" action="google.com" color="purple" secondary outlined>
-            Ари Ва!
-        </action-button>
-        <checkbox id="asdasd" name="test" checked>Test checkbox</checkbox>
-        <radio-button id="rarar" name="test" >Test radio</radio-button>
-        <radio-button id="rarar2" name="test" >Test radio</radio-button>
-        <radio-button id="rarar3" name="test" >Test radio</radio-button>
-        <select-dropdown id="drop" name="dropdown" value="corruption, ecology" ></select-dropdown>
-        <breadcrumb>
-            <crumb action="google.com">Home</crumb>
-            <crumb action="google.com">This is not so home</crumb>
-            <crumb action="google.com">Far away from home</crumb>
-        </breadcrumb>
+        <cards-area>
+            <h3>Популярни сайтове</h3>
+            <secondary-nav>
+                <li><a href="#">София</a></li>
+                <li><a href="#">Пловдив</a></li>
+                <li><a href="#">Варна</a></li>
+                <li><a href="#">Бургас</a></li>
+                <li><a href="#">Стара загора</a></li>
+            </secondary-nav>
+            <cards>
+                <card action="sofia">
+                    <img src="test/logo1.jpg" alt=""/>
+                    <a href="#" class="name">Държавно Горско Стопанство гр. Враца</a>
+                    <a href="#" class="category">Тютюнопушене на обществени места</a>
+                    <a href="#" class="location">София - град</a>
+                    <a href="#" class="tag">конфликт на интереси</a>
+                    <a href="#" class="tag">полиция</a>
+                    <a href="#" class="tag">граница</a>
+                    <a href="#" class="tag">връзка</a>
+                </card>
+            </cards>
 
-        <tabs-nav align="left">
-            asasas
-        </tabs-nav>
-    </playground>
+        </cards-area>
+    </featured>
+    <!--<picker>admin</picker>-->
+    <!--<playground>-->
+        <!--<action-button align="center" action="google.com" color="white">-->
+            <!--Логни Са Ва!-->
+        <!--</action-button>-->
+        <!--<action-button align="center" action="google.com" color="purple" secondary outlined>-->
+            <!--Ари Ва!-->
+        <!--</action-button>-->
+        <!--<checkbox id="asdasd" name="test" checked>Test checkbox</checkbox>-->
+        <!--<radio-button id="rarar" name="test" >Test radio</radio-button>-->
+        <!--<radio-button id="rarar2" name="test" >Test radio</radio-button>-->
+        <!--<radio-button id="rarar3" name="test" >Test radio</radio-button>-->
+        <!--<select-dropdown id="drop" name="dropdown" value="corruption, ecology" ></select-dropdown>-->
+        <!--<breadcrumb>-->
+            <!--<crumb action="google.com">Home</crumb>-->
+            <!--<crumb action="google.com">This is not so home</crumb>-->
+            <!--<crumb action="google.com">Far away from home</crumb>-->
+        <!--</breadcrumb>-->
+
+        <!--<tabs-nav align="left">-->
+            <!--asasas-->
+        <!--</tabs-nav>-->
+    <!--</playground>-->
         </page>
         <google-analytics account="asd"></google-analytics>
         <script src="build/bundle.js"></script>

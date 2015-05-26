@@ -9,6 +9,9 @@ var componentService = new ComponentService();
 var coverElement = require('cover');
 coverElement(componentService)
 
+var introElement = require('intro');
+introElement(componentService)
+
 var topNavElement = require('top-nav');
 topNavElement(componentService)
 
