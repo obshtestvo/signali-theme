@@ -79,10 +79,11 @@ login-box {
       }
     }
     &:hover {
+      border-color: $white;
+      box-shadow: -5px 0 0 0 $white, 0 0 0 0 $white, 5px 0 0 0 $white, 0 0 0 0 $white;
       @extend %anime;
       position: absolute;
       a{
-        padding: 5px 10px;
         strong{
           display: block;
           opacity: 1;
