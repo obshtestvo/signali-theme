@@ -1,0 +1,18 @@
+@import '../styleguide';
+
+footer-wrapper{
+  display: block;
+  padding: 70px 0 40px;
+  background: $white;
+    footer{
+      @extend %wrapper;
+      .left{
+        float: left;
+        width: 25%;
+      }
+      .right{
+        width: 75%;
+        float: right;
+      }
+    }
+}

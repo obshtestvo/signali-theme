@@ -72,4 +72,34 @@ cardsEl(componentService)
 var cardEl = require('card');
 cardEl(componentService)
 
+var tagsEl = require('tags');
+tagsEl(componentService)
+
+var tagEl = require('tag');
+tagEl(componentService)
+
+var ratingEl = require('rating');
+ratingEl(componentService)
+
+var starEl = require('star');
+starEl(componentService)
+
+var moreButtonEl = require('more-button');
+moreButtonEl(componentService)
+
+var donationEl = require('donation');
+donationEl(componentService)
+
+
+var footerWrapperEl = require('footer-wrapper');
+footerWrapperEl(componentService)
+
+var footerNavigationEl = require('footer-navigation');
+footerNavigationEl(componentService)
+
+var footerColumnEl = require('footer-column');
+footerColumnEl(componentService)
+
+var sponsorsEl = require('sponsors');
+sponsorsEl(componentService)
 

@@ -1,0 +1,37 @@
+@import '../styleguide';
+star{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 3px 0 0;
+    svg{
+      width: 100%;
+      height: 100%;
+    }
+    li {
+    &.type-full {
+      .full {
+        fill: $raitingColor
+      }
+      .half, .outline {
+        fill: transparent;
+      }
+    }
+    &.type-half{
+      .half, .outline {
+      fill: $raitingColor;
+      }
+      .full{
+        fill: transparent;
+      }
+    }
+    &.type-empty {
+      .half, .full {
+        fill: transparent;
+      }
+      .outline {
+        fill: $raitingColor;
+      }
+    }
+  }
+}

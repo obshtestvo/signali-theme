@@ -1,5 +1,7 @@
 @import '../styleguide';
 secondary-nav {
+  display: block;
+  padding: 0 0 20px;
   & > ul{
     font-size: 0;
     display: block;

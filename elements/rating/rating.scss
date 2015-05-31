@@ -1,0 +1,21 @@
+@import '../styleguide';
+rating {
+  & > ul{
+    @extend %stripped;
+    padding: 7px 0;
+    & > li {
+      position: relative;
+      display: inline-block;
+      &:last-of-type {
+        color: $greyColor100;
+        top: -2px;
+        a {
+          color: $greyColor100;
+          &:hover{
+            color: $secondaryColor100;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
-require('./secondary-nav.scss')
+require('./rating.scss')
 
 module.exports = function (componentService) {
-    var name = 'secondary-nav';
+    var name = 'rating';
     if (componentService.has(name)) return;
 
     componentService.register(name, {
-        template: require('./secondary-nav.html')
+        template: require('./rating.html')
     })
 }

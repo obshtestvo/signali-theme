@@ -1,8 +1,6 @@
 <section>
-    <div class="img-wrap1">
-        <a href="{{action}}">
-            <content select="img"></content>
-        </a>
+    <div class="logo-wrap">
+        <content select=".logo"><content select="img"></content></content>
     </div>
     <h4><content select=".name"></content></h4>
     <div class="item">
@@ -15,6 +13,11 @@
     </div>
     <div class="item">
         <strong>етикети</strong>
-        <content select=".tag"></content>
+        <content select="tags"></content>
     </div>
+    <div class="item">
+        <strong>Рейтинг</strong>
+        <content select="rating"></content>
+    </div>
+    <content select=".action"></content>
 </section>

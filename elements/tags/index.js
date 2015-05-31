@@ -1,10 +1,10 @@
-require('./secondary-nav.scss')
+require('./tags.scss')
 
 module.exports = function (componentService) {
-    var name = 'secondary-nav';
+    var name = 'tags';
     if (componentService.has(name)) return;
 
     componentService.register(name, {
-        template: require('./secondary-nav.html')
+        template: require('./tags.html')
     })
 }

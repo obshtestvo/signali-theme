@@ -1,0 +1,45 @@
+@import '../styleguide';
+
+/*How To Use*/
+
+/*Attributes: inline*/
+
+more-button {
+  div {
+  font-size: 14px;
+  line-height: 50px;
+    span {
+      color :$greyColor100;
+      font-style: italic;
+    }
+    a {
+      color: $secondaryColor100;
+      svg {
+        width: 11px;
+        height: 11px;
+        fill: $secondaryColor100;
+        position: relative;
+        bottom: -1px;
+      }
+      &:hover {
+        text-decoration: underline;
+        color: $secondaryColor100Hover;
+        svg {
+          fill: $secondaryColor100Hover;
+        }
+      }
+    }
+    &.inline {
+      display: inline-block;
+    }
+    &.align-right{
+      text-align: right;
+    }
+    &.align-center{
+      text-align: center;
+    }
+    &.align-left{
+      text-align: left;
+    }
+  }
+}
