@@ -37,6 +37,9 @@ module.exports = function (componentService) {
                 }
                 $input.selectize(options);
             }
+        },
+        include: {
+            logo: require('./logo.svg')
         }
     })
 }

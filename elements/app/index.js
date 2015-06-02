@@ -103,3 +103,9 @@ footerColumnEl(componentService)
 var sponsorsEl = require('sponsors');
 sponsorsEl(componentService)
 
+var faderEl = require('fader');
+faderEl(componentService)
+
+var modalEl = require('modal');
+modalEl(componentService)
+

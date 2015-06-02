@@ -1,0 +1,10 @@
+@import '../styleguide';
+
+modal{
+  display: block;
+  background: $white;
+  @extend %small-radius;
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
