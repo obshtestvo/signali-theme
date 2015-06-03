@@ -20,11 +20,18 @@ bower install
 ```
 to install the dependencies.
 
-#### Deployment notes:
+## Quick start
 
+Open `research` directory in terminal and run `webpack --watch`. Windows-based developers can use `compile.bat` to ease the process.
+
+## Deployment notes:
+
+Compile with:
 ```
 (export PRODUCTION=1 && webpack)
 ```
+
+And transfer the `build` directory to deployment server.
 
 ## Architecture decisions
 The frontend ecosystem right now is diverse. There are things 
@@ -37,7 +44,8 @@ Each have their advantages and each have their drawbacks.
  - **Backend-agnostic**: assets' management should be independent from any chosen backend framework or language
  - **Web components**: they are coming, so their concept should be followed as closely as possible
  - **Modularity**: always think modular, extract all files related to a single element as web-component (styling, scripts, template, images... everything)
- - **Readability over performance**
+ - **Readability & perceived performance over code optimisation**: always write readable code, performance can be achieved through
+  best practices and creating a user feeling of a responsive system
  - **Compression**:
    - All assets must be compressed (including images) to achieve minimum transfer size
    - Embed small images as base64
@@ -50,7 +58,7 @@ Each have their advantages and each have their drawbacks.
  - **Icons** should be svg-based. 
  - **Javascripts**:
    - Should be in a isolated scope
-   - Should explicitly state requirments in code (*not comments or meta-lanaguages*) 
+   - Should explicitly state requirements in code (*not comments or meta-lanaguages*)
  
 
 ### Specificity
@@ -98,55 +106,11 @@ customElement(componentService)
 module.exports = function (componentService) {
     componentService.register('custom', {
         template: require('./custom.html'),
-        attached: function (scope, $el, attrs, ctrls, transclude) {
+        attached: function (element) {
             // javascript to run after the element is rendered in te dom
         }
     })
 }
 ```
 
-##### Known issues
- - Don't put `<content>` tags inside destrucitve directives like `ng-if`.
- The webcomponent directive wont be able to find them otherwise.
-
-## Common scenarios
-
-### Webcomponent related
-
-If you want to parse some attribute:
-
-```html
-<custom-element data='{"a": 1, "b":2}' disabled></custom-element>
-```
-
-you can define the element like this:
-
-```js
-module.exports = function (componentService) {
-    var name = 'customElement';
-    if (componentService.has(name)) return;
-
-    componentService.register(name, {
-        template: require('./custom.html'),
-        publish: {
-            data: '@',
-            disabled: '@',
-        },
-        attached: function (scope, $el, attrs, ctrls, transclude) {
-            scope.data = JSON.parse(scope.data)
-            scope.disabled = 'disabled' in scope 
-        }
-    })
-}
-```
-
-and use these attributes in the template:
-
-```html
-<div class="custom-element" ng-if="!disabled">
-  {{data}}
-</div>
-```
-
-The `publish` attribute mimics the way webcomponents expose access to attributes. 
-Behind the scenes it just maps to angular `scope` attribute.
+[Mustache.js](https://github.com/janl/mustache.js/) is used as template language in `custom.html`.
