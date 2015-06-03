@@ -8,15 +8,15 @@ ComponentService.prototype.register = function (name, options) {
     if (this.has('name')) throw Error("Component with the same name already exists");
     var definition = {};
     if (options) {
-        options = this._transformOptionsForSkate(options)
+        options = this._transformOptionsForSkate(options);
         definition = $.extend({}, ComponentService.componentDefaults, options)
     }
     this.registered.push(name);
     skate(name, definition);
-}
+};
 ComponentService.prototype.has = function (name) {
     return this.registered.indexOf(name) > -1;
-}
+};
 ComponentService.prototype._transformOptionsForSkate = function (o) {
     if (o.template) {
         o = $.extend({}, o, {
@@ -24,10 +24,10 @@ ComponentService.prototype._transformOptionsForSkate = function (o) {
         });
     }
     return o
-}
+};
 ComponentService.componentDefaults = {
     publish: []
-}
+};
 
 function makeTemplate(options) {
     return function (element) {
@@ -41,10 +41,11 @@ function makeTemplate(options) {
             $el.after($template);
             var $placeholder = $template.find('content');
             $placeholder.after($el);
-            $placeholder.remove()
+            $placeholder.remove();
             return;
         }
         var node, i, j, k, placeholder, docfrag, toAppend, parentNode;
+        console.log(element.tagName);
         for (i = 0; i < $template.length; i++) {
             node = $template[i];
             if (node.nodeType != Node.ELEMENT_NODE) continue;
@@ -55,8 +56,8 @@ function makeTemplate(options) {
             }
             for (j = 0; j < queriedPlaceholders.length; j++) {
                 placeholder = queriedPlaceholders[j];
-                var selector = placeholder.getAttribute("select")
-                var matching = element.querySelectorAll(selector)
+                var selector = placeholder.getAttribute("select");
+                var matching = element.querySelectorAll(selector);
                 docfrag = document.createDocumentFragment();
                 toAppend = [].slice.call(matching);
                 for (k = 0; k < toAppend.length; k++) {
@@ -68,8 +69,13 @@ function makeTemplate(options) {
         }
         if (element.childNodes.length > 0) {
             for (i = 0; i < $template.length; i++) {
-                node = $template[i]
-                var contentPlaceholders = node.getElementsByTagName('content')
+                node = $template[i];
+                if (node.nodeType != Node.ELEMENT_NODE) continue;
+                if (node.tagName == 'CONTENT' && !node.hasAttribute('select')) {
+                    placeholder = [node]
+                } else {
+                    var contentPlaceholders = [].slice.call(node.querySelectorAll('content:not([select])'));
+                }
                 if (!contentPlaceholders.length) continue;
                 placeholder = contentPlaceholders[0];
                 docfrag = document.createDocumentFragment();
@@ -84,12 +90,17 @@ function makeTemplate(options) {
         }
         // if there is remaining custom-element content detach it
         if (element.childNodes.length > 0) {
-            var remaining = $(element.childNodes)
+            var remaining = $(element.childNodes);
             remaining.detach();
             this.$detachedContent = remaining;
         }
-        docfrag = $template[0].parentNode;
-        element.appendChild(docfrag.cloneNode(true))
+
+        docfrag = false;
+        for (i = 0; i < $template.length; i++) {
+            node = $template[i];
+            if (node.parentNode) docfrag = node.parentNode;
+        }
+        if (docfrag) element.appendChild(docfrag.cloneNode(true))
     }
 }
 
