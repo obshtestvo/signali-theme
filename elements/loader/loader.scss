@@ -1,0 +1,49 @@
+@import '../styleguide';
+
+loader {
+  display: block;
+  z-index: 1;
+  font-size: 10px;
+  position: fixed;
+  top:0;
+  background: $secondary-color;
+  left:0;
+  right:0;
+  bottom:0;
+  border: 1.1em solid $secondary-color;
+  transform: translateZ(0);
+  animation: load8 0.9s infinite linear;
+}
+loader,
+loader:after {
+  border-radius: 50%;
+  top:50%;
+  margin:-3em auto 0 auto;
+  width: 6em;
+  height: 6em;
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    transform: scale(0.0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+@keyframes load8 {
+  0% {
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    transform: scale(0.0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}

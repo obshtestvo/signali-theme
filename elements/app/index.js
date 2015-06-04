@@ -7,6 +7,9 @@ window.$ = window.jQuery = require('jquery/dist/jquery');
 var ComponentService = require('service/pseudo-webcomponent.skate');
 var componentService = new ComponentService();
 
+var loaderElement = require('loader');
+loaderElement(componentService);
+
 var coverElement = require('cover');
 coverElement(componentService);
 
