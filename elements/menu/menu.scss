@@ -2,7 +2,7 @@
 @import '../../node_modules/sass-burger/burger';
 
 $main-text-color: $white;
-$main-text-color-focus: $mainColor20;
+$main-text-color-focus: $main-color-20;
 
 menu {
   margin: 0;
@@ -28,7 +28,7 @@ menu {
     background: $white;
     width: 54.2%;
     @extend %small-radius, %anime;
-    @include box-shadow( 0, 0, 5px, rgba($mainColor40, 1));
+    @include box-shadow( 0, 0, 5px, rgba($main-color-40, 1));
     position: absolute;
     margin: 8px 0 0 0;
     padding: 0 0 31px;

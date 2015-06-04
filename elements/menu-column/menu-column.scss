@@ -8,7 +8,7 @@ menu-column {
   h2 {
     @extend %bodytext-large-font ;
     font-weight: 600;
-    color: $bodyTextColor;
+    color: $body-text-color;
     padding: 0 0 7px;
   }
   ul{
@@ -17,7 +17,7 @@ menu-column {
       @extend %bodytext-font;
       line-height: 24px;
       a {
-        color: $secondaryColor100;
+        color: $secondary-color-100;
         &:hover {
           text-decoration: underline;
         }

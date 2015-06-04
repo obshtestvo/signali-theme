@@ -11,41 +11,41 @@ action-button {
     display: inline-block;
     color: $white;
     &.red {
-      background: $secondaryColor100;
+      background: $secondary-color-100;
       &:hover {
-        background: $secondaryColor60;
+        background: $secondary-color-60;
       }
     }
     &.purple {
-      background: $mainColor100;
+      background: $main-color-100;
       &:hover {
-        background: $mainColor60;
+        background: $main-color-60;
       }
     }
     &.white {
-      color: $mainColor100;
+      color: $main-color-100;
       background: $white;
       &:hover {
-        color: $mainColor80;
+        color: $main-color-80;
         background: rgba($white, .8);
       }
     }
     &.outlined { background: transparent;
       &:hover {background: transparent; }
       &.red {
-        @include box-shadow(0, 0, 0, 3px $secondaryColor100, inset );
-        color: $secondaryColor100;
+        @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset );
+        color: $secondary-color-100;
         &:hover {
-          @include box-shadow(0, 0, 0, 3px $secondaryColor60, inset );
-          color: $secondaryColor60;
+          @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset );
+          color: $secondary-color-60;
         }
       }
       &.purple {
-        @include box-shadow(0, 0, 0, 3px $mainColor100, inset );
-        color: $mainColor100;
+        @include box-shadow(0, 0, 0, 3px $main-color-100, inset );
+        color: $main-color-100;
         &:hover {
-          @include box-shadow(0, 0, 0, 3px $mainColor60, inset );
-          color: $mainColor60;
+          @include box-shadow(0, 0, 0, 3px $main-color-60, inset );
+          color: $main-color-60;
         }
       }
       &.white {

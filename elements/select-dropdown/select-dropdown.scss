@@ -4,27 +4,27 @@
 select-dropdown {
   $padding-vertical: 9px;
   $padding-horizontal: 7px;
-  $arrow-color: $bodyTextColor;
-  $remove-button-active-background: darken($secondaryColor, 10%);
+  $arrow-color: $body-text-color;
+  $remove-button-active-background: darken($secondary-color, 10%);
   $remove-icon-size: 11px;
-  $remove-icon-color: $bodyTextColor;
+  $remove-icon-color: $body-text-color;
   $remove-icon-active-color: $white;
   $arrow-width: 12px;
   $arrow-height: 7px;
-  $text-color: $bodyTextColor;
-  $search-match-highlight-background: $secondaryColor;
+  $text-color: $body-text-color;
+  $search-match-highlight-background: $secondary-color;
   $search-match-highlight-color: $white;
-  $dropdown-selected-option-background: $secondaryColor20;
-  $create-new-color: $greyColor80;
+  $dropdown-selected-option-background: $secondary-color-20;
+  $create-new-color: $grey-color-80;
   $tag-padding-vertical: 3px;
   $tag-padding-horizontal: 6px;
   $tag-margin-vertical: 4px;
   $tag-margin-horizontal: 3px;
   $tag-border-width: 0;
-  $tag-color: $bodyTextColor;
-  $tag-background: linear-gradient(to bottom, $greyColor60 0%, $greyColor80 100%);
+  $tag-color: $body-text-color;
+  $tag-background: linear-gradient(to bottom, $grey-color-60 0%, $grey-color-80 100%);
   $tag-selected-color: $white;
-  $tag-selected-background: $secondaryColor;
+  $tag-selected-background: $secondary-color;
 
   .selectize-control.plugin-remove_button {
     [data-value] {
@@ -71,7 +71,7 @@ select-dropdown {
     padding: $padding-vertical $padding-horizontal;
     &.focus {
       box-shadow: none;
-      border-color: $greyColor;
+      border-color: $grey-color;
     }
     &.dropdown-active {
       @extend %small-radius;
@@ -110,7 +110,7 @@ select-dropdown {
   }
   .selectize-control.single {
     .selectize-input {
-      background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+      background: linear-gradient(to bottom, $white 0%, $grey-color-60 100%);
       &:after {
         margin-top: round(-1 * $arrow-height / 2);
         height: 0;
@@ -130,7 +130,7 @@ select-dropdown {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background: $white;
-    border-color: $greyColor;
+    border-color: $grey-color;
 
     [data-selectable] {
       .highlight {

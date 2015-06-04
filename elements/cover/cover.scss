@@ -1,7 +1,7 @@
 @import '../styleguide';
 cover {
   display: block;
-  background: $mainColor100;
+  background: $main-color-100;
   header {
     @extend %wrapper;
   }

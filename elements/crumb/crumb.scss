@@ -12,13 +12,13 @@ crumb {
     left: 5px;
     bottom: 12px;
     content: '';
-    border-right: 1px solid $bodyTextColor;
-    border-top: 1px solid $bodyTextColor;
+    border-right: 1px solid $body-text-color;
+    border-top: 1px solid $body-text-color;
     @include rotate (45)
   }
   a {
     @extend %popup-font;
-    color: $bodyTextColor;
+    color: $body-text-color;
 
   }
   &:first-child{
@@ -29,10 +29,10 @@ crumb {
   }
   &:last-child {
     &:before{
-      border-color: $mainColor40;
+      border-color: $main-color-40;
     }
     a {
-      color: $mainColor40;
+      color: $main-color-40;
       pointer-events: none;
       cursor: default;
     }

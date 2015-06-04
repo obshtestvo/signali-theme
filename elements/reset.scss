@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700&subset=latin,cyrillic-ext,cyrillic,latin-ext");
 html {
   @extend %bodytext-font;
-  color: $bodyTextColor;
+  color: $body-text-color;
 }
 *{
   box-sizing:border-box;

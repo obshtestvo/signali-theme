@@ -1,7 +1,7 @@
 @import '../styleguide';
 
 checkbox {
-  background: $greyColor60;
+  background: $grey-color-60;
 }
 
 checkbox > input[type=checkbox]:not(old) {
@@ -13,7 +13,7 @@ checkbox > input[type=checkbox]:not(old) {
   $size: 16px;
   + .check {
     box-sizing: border-box;
-    background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+    background: linear-gradient(to bottom, $white 0%, $grey-color-60 100%);
     @extend %nano-radius;
     display: inline-block;
     position: relative;
@@ -21,12 +21,12 @@ checkbox > input[type=checkbox]:not(old) {
     vertical-align: middle;
     height: $size;
     line-height: $size;
-    border: 1px solid $greyColor80;
+    border: 1px solid $grey-color-80;
     svg {
       $size: $size * 0.65;
       position: absolute;
       opacity:0;
-      fill: $secondaryColor;
+      fill: $secondary-color;
       height:$size;
       width:$size;
       left:50%;
@@ -39,9 +39,9 @@ checkbox > input[type=checkbox]:not(old) {
       opacity:1;
   }
   &:focus + .check {
-    border-color: $greyColor;
+    border-color: $grey-color;
   }
   &:active + .check {
-    border-color: $secondaryColor60;
+    border-color: $secondary-color-60;
   }
 }

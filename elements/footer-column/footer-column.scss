@@ -20,7 +20,7 @@ footer-column{
         line-height: 24px;
         @extend %text-hidden;
         a {
-          color: $bodyTextColor;
+          color: $body-text-color;
           &:hover{
             text-decoration: underline;
           }

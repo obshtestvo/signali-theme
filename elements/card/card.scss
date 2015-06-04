@@ -7,7 +7,7 @@ card{
     section {
       @extend %small-radius;
       overflow: hidden;
-      box-shadow: 0 0 5px 0 $greyColor80;
+      box-shadow: 0 0 5px 0 $grey-color-80;
       height: 475px;
       padding: 0 0 60px;
       position: relative;
@@ -35,7 +35,7 @@ card{
           line-height: 14px;
           margin: 14px 0 0;
           text-transform: uppercase;
-          color: $greyColor100;
+          color: $grey-color-100;
           font-weight: 400;
           position: relative;
           &:before{
@@ -44,7 +44,7 @@ card{
             height: 11px;
             margin: 1px 0 0 ;
             width: 5px;
-            background: $greyColor60;
+            background: $grey-color-60;
             left: -20px;
           }
         }
@@ -53,7 +53,7 @@ card{
         }
       }
       a {
-        color: $secondaryColor100;
+        color: $secondary-color-100;
         &:hover{
           text-decoration: underline;
         }
@@ -62,8 +62,8 @@ card{
         display: block;
         position: absolute;
         bottom: 0;
-        background: $greyColor60;
-        color: $mainColor100;
+        background: $grey-color-60;
+        color: $main-color-100;
         font-size: 16px;
         line-height: 50px;
         width: 100%;
@@ -71,7 +71,7 @@ card{
         &:hover{
           text-decoration: none;
           color: $white;
-          background: $secondaryColor100;
+          background: $secondary-color-100;
         }
       }
       h4 {
@@ -79,7 +79,7 @@ card{
         margin: 0 20px;
         padding: 15px 0 0;
         @extend %bodytext-large-font;
-        border-top: 1px solid $greyColor60;
+        border-top: 1px solid $grey-color-60;
       }
     }
 }

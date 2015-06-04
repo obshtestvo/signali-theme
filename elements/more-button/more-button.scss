@@ -9,23 +9,23 @@ more-button {
   font-size: 14px;
   line-height: 50px;
     span {
-      color :$greyColor100;
+      color :$grey-color-100;
       font-style: italic;
     }
     a {
-      color: $secondaryColor100;
+      color: $secondary-color-100;
       svg {
         width: 11px;
         height: 11px;
-        fill: $secondaryColor100;
+        fill: $secondary-color-100;
         position: relative;
         bottom: -1px;
       }
       &:hover {
         text-decoration: underline;
-        color: $secondaryColor100Hover;
+        color: $secondary-color-hover;
         svg {
-          fill: $secondaryColor100Hover;
+          fill: $secondary-color-hover;
         }
       }
     }

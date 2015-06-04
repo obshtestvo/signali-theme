@@ -26,19 +26,19 @@ secondary-nav {
         @extend %large-radius, %bodytext-font ;
         line-height: 30px;
         font-weight: 600;
-        color: $bodyTextColor;
+        color: $body-text-color;
         background: $white;
         &.active {
-          background: $mainColor100;
+          background: $main-color-100;
           color: $white;
           pointer-events: none;
           cursor: default;
         }
         &:hover {
-          background: $greyColor60;
+          background: $grey-color-60;
         }
         &:active {
-          background: $mainColor120;
+          background: $main-color-120;
           color: $white;
         }
       }

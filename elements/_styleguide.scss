@@ -2,46 +2,43 @@
 /*Colors*/
 $white: #fff;
 
-$mainColor120: #0a0b26;
-$mainColor100: #101340;
-$mainColor80: #414167;
-$mainColor60: #6f708c;
-$mainColor40: #9e9fb3;
-$mainColor20: #d0d0da;
+$main-color-120: #0a0b26;
+$main-color-100: #101340;
+$main-color-80: #414167;
+$main-color-60: #6f708c;
+$main-color-40: #9e9fb3;
+$main-color-20: #d0d0da;
 
-$mainColor: $mainColor100;
+$main-color: $main-color-100;
 
-$secondaryColor100: #f22e52;
-$secondaryColor100Hover: #f55775;
-$secondaryColor80: #f65775;
-$secondaryColor60: #f78295;
-$secondaryColor40: #f9abb9;
-$secondaryColor20: #fcd4dc;
+$secondary-color-100: #f22e52;
+$secondary-color-80: #f65775;
+$secondary-color-60: #f78295;
+$secondary-color-40: #f9abb9;
+$secondary-color-20: #fcd4dc;
 
 
-$secondaryColor: $secondaryColor100;
+$secondary-color: $secondary-color-100;
+$secondary-color-hover: $secondary-color-80;
 
-$bodyTextColor: #1c1526;
-$greyColor100: #a4a6a5;
-$greyColor80: #d9d9d9;
-$greyColor60: #f2f2f2 ;
-$greyColor: $greyColor100;
+$body-text-color: #1c1526;
+$grey-color-100: #a4a6a5;
+$grey-color-80: #d9d9d9;
+$grey-color-60: #f2f2f2 ;
+$grey-color: $grey-color-100;
 
-$raitingColor: #ffba00;
+$rating-color: #ffba00;
 
-$successColor: #9ad22e;
-$successContrastColor: $white;
+$success-color: #9ad22e;
+$success-contrast-color: $white;
 
-$successColor: #9ad22e;
-$successContrastColor: $white;
+$error-color: $secondary-color-100;
+$error-contrast-color: $white;
 
-$errorColor: $secondaryColor100;
-$errorsContrastColor: $white;
+$info-color: $white;
+$info-contrast-color: $body-text-color;
 
-$infoColor: $white;
-$errorsContrastColor: $bodyTextColor;
-
-$standard-border: 1px solid $greyColor80;
+$standard-border: 1px solid $grey-color-80;
 
 @mixin reset-link {
   text-decoration: none;

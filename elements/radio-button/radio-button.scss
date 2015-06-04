@@ -1,7 +1,7 @@
 @import '../styleguide';
 
 radio-button {
-  background: $greyColor60;
+  background: $grey-color-60;
 }
 
 radio-button > input[type=radio]:not(old) {
@@ -12,7 +12,7 @@ radio-button > input[type=radio]:not(old) {
   transform:  scale(0.1);
   + .check {
     box-sizing: border-box;
-    background: linear-gradient(to bottom, $white 0%, $greyColor60 100%);
+    background: linear-gradient(to bottom, $white 0%, $grey-color-60 100%);
     @extend %circle;
     display: inline-block;
     position: relative;
@@ -20,7 +20,7 @@ radio-button > input[type=radio]:not(old) {
     vertical-align: middle;
     height: 16px;
     line-height: 16px;
-    border: 1px solid $greyColor80;
+    border: 1px solid $grey-color-80;
     &:after {
       @extend %circle;
       content: "";
@@ -36,13 +36,13 @@ radio-button > input[type=radio]:not(old) {
     }
   }
   &:checked + .check:after {
-    background: $secondaryColor;
+    background: $secondary-color;
   }
   &:hover + .check,
   &:focus + .check {
-    border-color: $greyColor;
+    border-color: $grey-color;
   }
   &:active + .check {
-    border-color: $secondaryColor60;
+    border-color: $secondary-color-60;
   }
 }

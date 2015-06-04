@@ -11,7 +11,7 @@ star{
     li {
     &.type-full {
       .full {
-        fill: $raitingColor
+        fill: $rating-color
       }
       .half, .outline {
         fill: transparent;
@@ -19,7 +19,7 @@ star{
     }
     &.type-half{
       .half, .outline {
-      fill: $raitingColor;
+      fill: $rating-color;
       }
       .full{
         fill: transparent;
@@ -30,7 +30,7 @@ star{
         fill: transparent;
       }
       .outline {
-        fill: $raitingColor;
+        fill: $rating-color;
       }
     }
   }

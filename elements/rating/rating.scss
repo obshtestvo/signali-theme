@@ -7,12 +7,12 @@ rating {
       position: relative;
       display: inline-block;
       &:last-of-type {
-        color: $greyColor100;
+        color: $grey-color-100;
         top: -2px;
         a {
-          color: $greyColor100;
+          color: $grey-color-100;
           &:hover{
-            color: $secondaryColor100;
+            color: $secondary-color-100;
           }
         }
       }

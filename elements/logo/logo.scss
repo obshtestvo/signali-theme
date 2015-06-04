@@ -34,7 +34,7 @@ logo {
     }
     &.light svg{
       .circle {
-        fill: $secondaryColor100;
+        fill: $secondary-color-100;
       }
       .path {
         fill: $white;
@@ -42,10 +42,10 @@ logo {
     }
     &.dark {
       .circle {
-        fill: $secondaryColor100;
+        fill: $secondary-color-100;
       }
       .path {
-        fill: $mainColor100;
+        fill: $main-color-100;
       }
     }
     svg {
