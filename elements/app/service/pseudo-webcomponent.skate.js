@@ -105,10 +105,8 @@ function makeTemplate(options) {
             remaining.detach();
             this.$detachedContent = remaining;
         }
-
         for (i = 0; i < nodes.length; i++) {
-            node = nodes[i];
-            element.appendChild(node)
+            element.appendChild(nodes[i])
         }
     }
 }
