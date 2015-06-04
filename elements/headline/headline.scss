@@ -1,19 +1,19 @@
 @import '../styleguide';
 
 headline {
-  .large h3{
+  &[size='large'] h3{
     @extend %headilme-font;
     padding: 25px 0 17px 0;
   }
   .medium h3{}
   .small h3{}
-  &.left{
+  &[align="left"]{
     text-align: left;
   }
-  &.right{
+  &[align="right"]{
     text-align: right;
   }
-  &.center{
+  &[align="center"]{
     text-align: center;
   }
 }

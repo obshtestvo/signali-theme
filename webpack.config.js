@@ -72,7 +72,7 @@ config.module = {
             loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!ruby-sass")
         },
         {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
-        {test: /\.png$/, loader: "file"},
+        {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
         {test: /\.jpg$/, loader: "file"},
         {test: /\.html$/, loader: "mustache"},
         {test: /\.svg/, loader: "raw"+svgExtraLoaders},
