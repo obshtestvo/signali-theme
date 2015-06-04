@@ -18,14 +18,6 @@
             Unlucky
         <![endif]-->
         <page>
-        <select-dropdown includein="header" id="drop" name="dropdown" multiple location>
-            <value id="2" selected>corruption</value>
-            <value id="3" >ecology</value>
-            <value id="5" >Красота майна</value>
-            <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-            <value id="6" >асдасда сд РАСФДАСФасдасд </value>
-        </select-dropdown>
-        <select-dropdown id="drop2" name="dropdown2" location></select-dropdown>
     <cover>
         <top-nav>
             <menu>Категории
@@ -42,8 +34,8 @@
                     </ul>
                 </menu-column>
                 <menu-column>
+                    <h2>Престъпност</h2>
                     <ul>
-                        <h2>Престъпност</h2>
                         <li><a href="#">Нарушаване на човешки права</a></li>
                         <li><a href="#">Изборни нарушения</a></li>
                         <li><a href="#">Хранителна индустрия</a></li>
@@ -64,8 +56,8 @@
                     </ul>
                 </menu-column>
                 <menu-column>
+                    <h2>Потребителски</h2>
                     <ul>
-                        <h2>Потребителски</h2>
                         <li><a href="#">Нарушаване на човешки права</a></li>
                         <li><a href="#">Изборни нарушения</a></li>
                         <li><a href="#">Хранителна индустрия</a></li>
@@ -86,20 +78,21 @@
                 </ul>
             </login-box>
             <logo align="center-xy" action="home" color="light" size="large"></logo>
-            <search-prompt>
-                <location-search></location-search>
-                <topic-search></topic-search>
-                <standard-button></standard-button>
-            </search-prompt>
-
         </top-nav>
         <intro interval="medium">
-
             <call-to-action align="center">
                 <h1>Пoдай сигнал</h1>
                 <p>Намери и подай сигнал към над <underline>121</underline> институции в над <underline>23</underline> области.</p>
             </call-to-action>
 
+            <select-dropdown id="drop" name="dropdown" multiple >
+                <value id="2" selected>corruption</value>
+                <value id="3" >ecology</value>
+                <value id="5" >Красота майна</value>
+                <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
+                <value id="6" >асдасда сд РАСФДАСФасдасд </value>
+            </select-dropdown>
+            <select-dropdown id="drop2" name="dropdown2" location></select-dropdown>
         </intro>
     </cover>
     <featured>

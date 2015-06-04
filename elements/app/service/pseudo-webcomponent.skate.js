@@ -1,4 +1,4 @@
-var skate = require('skatejs');
+require('skatejs/dist/skatejs');
 var $ = require('jquery');
 
 function ComponentService() {
@@ -44,47 +44,58 @@ function makeTemplate(options) {
             $placeholder.remove();
             return;
         }
-        var node, i, j, k, placeholder, docfrag, toAppend, parentNode;
-        console.log(element.tagName);
+        var node, i, j, k, placeholder, toAppend, parentNode, nodes = [], isDirect;
         for (i = 0; i < $template.length; i++) {
             node = $template[i];
-            if (node.nodeType != Node.ELEMENT_NODE) continue;
+            isDirect = false;
+            if (node.nodeType != Node.ELEMENT_NODE) {
+                nodes.push(node);
+                continue;
+            }
             if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
                 queriedPlaceholders = [node]
+                isDirect = true;
             } else {
                 var queriedPlaceholders = [].slice.call(node.querySelectorAll('content[select]'));
+                nodes.push(node)
             }
             for (j = 0; j < queriedPlaceholders.length; j++) {
                 placeholder = queriedPlaceholders[j];
                 var selector = placeholder.getAttribute("select");
                 var matching = element.querySelectorAll(selector);
-                docfrag = document.createDocumentFragment();
                 toAppend = [].slice.call(matching);
-                for (k = 0; k < toAppend.length; k++) {
-                    docfrag.appendChild(toAppend[k])
-                }
                 parentNode = placeholder.parentNode;
-                parentNode.replaceChild(docfrag.cloneNode(true), placeholder);
+                for (k = 0; k < toAppend.length; k++) {
+                    parentNode.insertBefore(toAppend[k], placeholder);
+                    if (isDirect) {
+                        nodes.push(toAppend[k])
+                    }
+                }
+                parentNode.removeChild(placeholder)
             }
         }
         if (element.childNodes.length > 0) {
-            for (i = 0; i < $template.length; i++) {
+            for (i = 0; i < nodes.length; i++) {
                 node = $template[i];
+                isDirect = false;
                 if (node.nodeType != Node.ELEMENT_NODE) continue;
                 if (node.tagName == 'CONTENT' && !node.hasAttribute('select')) {
-                    placeholder = [node]
+                    contentPlaceholders = [node]
+                    isDirect = true;
                 } else {
                     var contentPlaceholders = [].slice.call(node.querySelectorAll('content:not([select])'));
                 }
                 if (!contentPlaceholders.length) continue;
                 placeholder = contentPlaceholders[0];
-                docfrag = document.createDocumentFragment();
+                parentNode = placeholder.parentNode;
                 toAppend = [].slice.call(element.childNodes);
                 for (j = 0; j < toAppend.length; j++) {
-                    docfrag.appendChild(toAppend[j])
+                    parentNode.insertBefore(toAppend[j], placeholder);
+                    if (isDirect) {
+                        nodes.push(toAppend[j])
+                    }
                 }
-                parentNode = placeholder.parentNode;
-                parentNode.replaceChild(docfrag.cloneNode(true), placeholder);
+                parentNode.removeChild(placeholder)
                 break;
             }
         }
@@ -95,12 +106,10 @@ function makeTemplate(options) {
             this.$detachedContent = remaining;
         }
 
-        docfrag = false;
-        for (i = 0; i < $template.length; i++) {
-            node = $template[i];
-            if (node.parentNode) docfrag = node.parentNode;
+        for (i = 0; i < nodes.length; i++) {
+            node = nodes[i];
+            element.appendChild(node)
         }
-        if (docfrag) element.appendChild(docfrag.cloneNode(true))
     }
 }
 
