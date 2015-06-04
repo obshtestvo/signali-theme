@@ -1,5 +1,5 @@
-# Byte-compiled / optimized / DLL files
 .idea
+*.iml
 vendor
 node_modules
 build
