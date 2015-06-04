@@ -1,8 +1,7 @@
 @import '../styleguide';
 
 donation {
-//  background: $main-color-100 url('background.png') no-repeat center center;  !not working with ruby, some bug
-  background: $main-color-100;
+  background: $main-color-100 url('./background.png') no-repeat center center;
   display: block;
   div {
     @extend %wrapper;

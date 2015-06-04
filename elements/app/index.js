@@ -1,3 +1,4 @@
+require('app/fonts.scss');
 require('normalize.css/normalize.css');
 require('reset.scss');
 

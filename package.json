@@ -7,7 +7,7 @@
     "bower": "^1.3.12",
     "css-loader": "^0.10.1",
     "expose-loader": "^0.6.0",
-    "extract-text-webpack-plugin": "0.3.8",
+    "extract-text-webpack-plugin": "*",
     "file-loader": "^0.8.3",
     "google-maps": "^2.1.1",
     "hogan.js": "^3.0.2",

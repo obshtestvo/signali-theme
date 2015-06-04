@@ -26,10 +26,10 @@ config.output = {
 
 /**************** PLUGINS ***************/
 config.plugins = [
+    new ExtractTextPlugin("[name].css"),
     new webpack.optimize.CommonsChunkPlugin('head', 'head.js')
 ];
 if (process.env.PRODUCTION) {
-    config.unshift(new ExtractTextPlugin("[name].css"));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         minimize: false,
         sourceMap: false,
@@ -69,10 +69,10 @@ config.module = {
         },
         {
             test: /\.scss$/,
-            loader: !process.env.PRODUCTION ? "style!css?sourceMap!ruby-sass" : ExtractTextPlugin.extract("style", "css!postcss!ruby-sass")
+            loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!ruby-sass")
         },
-        {test: /\.css$/, loader: !process.env.PRODUCTION ? "style!css" : ExtractTextPlugin.extract("style", "css")},
-        {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
+        {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
+        {test: /\.png$/, loader: "file"},
         {test: /\.jpg$/, loader: "file"},
         {test: /\.html$/, loader: "mustache"},
         {test: /\.svg/, loader: "raw"+svgExtraLoaders},
