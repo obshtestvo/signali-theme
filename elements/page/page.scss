@@ -1,0 +1,10 @@
+@import '../styleguide';
+
+page {
+  @extend %anime;
+  display: block;
+  opacity:0;
+}
+page[resolved] {
+  opacity:1;
+}

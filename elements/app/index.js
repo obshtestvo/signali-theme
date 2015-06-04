@@ -8,105 +8,107 @@ var ComponentService = require('service/pseudo-webcomponent.skate');
 var componentService = new ComponentService();
 
 var coverElement = require('cover');
-coverElement(componentService)
+coverElement(componentService);
 
 var introElement = require('intro');
-introElement(componentService)
+introElement(componentService);
 
 var topNavElement = require('top-nav');
-topNavElement(componentService)
+topNavElement(componentService);
 
 var loginBoxElement = require('login-box');
-loginBoxElement(componentService)
+loginBoxElement(componentService);
 
 var logoElement = require('logo');
-logoElement(componentService)
+logoElement(componentService);
 
 var callToActionElement = require('call-to-action');
-callToActionElement(componentService)
+callToActionElement(componentService);
 
 var underlineElement = require('underline');
-underlineElement(componentService)
+underlineElement(componentService);
 
 var googleAnalyticsElement = require('google-analytics');
-googleAnalyticsElement(componentService)
+googleAnalyticsElement(componentService);
 
 var actionButtonEl = require('action-button');
-actionButtonEl(componentService)
+actionButtonEl(componentService);
 
 var breadCrumbEl = require('breadcrumb');
 breadCrumbEl(componentService);
 
 var crumbEl = require('crumb');
-crumbEl(componentService)
+crumbEl(componentService);
 
 var secondaryNavEl = require('secondary-nav');
-secondaryNavEl(componentService)
+secondaryNavEl(componentService);
 
 var checkboxEl = require('checkbox');
-checkboxEl(componentService)
+checkboxEl(componentService);
 
 var radioEl = require('radio-button');
-radioEl(componentService)
+radioEl(componentService);
 
 var selectEl = require('select-dropdown');
-selectEl(componentService)
+selectEl(componentService);
 
 var valueEl = require('value');
-valueEl(componentService)
+valueEl(componentService);
 
 var menuEl = require('menu');
-menuEl(componentService)
+menuEl(componentService);
 
 var menuColumnEl = require('menu-column');
-menuColumnEl(componentService)
+menuColumnEl(componentService);
 
 var headlineEl = require('headline');
-headlineEl(componentService)
+headlineEl(componentService);
 
 var cardsAreaEl = require('cards-area');
-cardsAreaEl(componentService)
+cardsAreaEl(componentService);
 
 var cardsEl = require('cards');
-cardsEl(componentService)
+cardsEl(componentService);
 
 var cardEl = require('card');
-cardEl(componentService)
+cardEl(componentService);
 
 var tagsEl = require('tags');
-tagsEl(componentService)
+tagsEl(componentService);
 
 var tagEl = require('tag');
-tagEl(componentService)
+tagEl(componentService);
 
 var ratingEl = require('rating');
-ratingEl(componentService)
+ratingEl(componentService);
 
 var starEl = require('star');
-starEl(componentService)
+starEl(componentService);
 
 var moreButtonEl = require('more-button');
-moreButtonEl(componentService)
+moreButtonEl(componentService);
 
 var donationEl = require('donation');
-donationEl(componentService)
+donationEl(componentService);
 
 
 var footerWrapperEl = require('footer-wrapper');
-footerWrapperEl(componentService)
+footerWrapperEl(componentService);
 
 var footerNavigationEl = require('footer-navigation');
-footerNavigationEl(componentService)
+footerNavigationEl(componentService);
 
 var footerColumnEl = require('footer-column');
-footerColumnEl(componentService)
+footerColumnEl(componentService);
 
 var sponsorsEl = require('sponsors');
-sponsorsEl(componentService)
+sponsorsEl(componentService);
 
 var faderEl = require('fader');
-faderEl(componentService)
+faderEl(componentService);
 
 var modalEl = require('modal');
-modalEl(componentService)
+modalEl(componentService);
 
+var pageElement = require('page');
+pageElement(componentService);
