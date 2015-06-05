@@ -9,16 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-        <link rel="stylesheet" href="{% static 'app.css' %}">
+        <link rel="stylesheet" href="{% static 'app.css' %}" type>
         <script src="{% static 'head.js' %}"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
             Unlucky
         <![endif]-->
-        <page>
-            {% block content %}{% endblock %}
-        </page>
+        {% block content %}{% endblock %}
         <google-analytics account="{{ site.google_analytics }}"></google-analytics>
         <script src="{% static 'bundle.js' %}"></script>
     </body>
