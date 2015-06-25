@@ -2,15 +2,13 @@
 
 intro {
   display: block;
-  div {
-    &.interval-large {
+    &[interval="large"] {
       padding: 120px 0;
     }
-    &.interval-medium {
+    &[interval="medium"]{
       padding: 80px 0;
     }
-    &.interval-small {
+    &[interval="small"] {
       padding: 40px 0;
     }
-  }
 }
