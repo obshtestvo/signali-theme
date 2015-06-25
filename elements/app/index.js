@@ -112,9 +112,6 @@ faderEl(componentService);
 var modalEl = require('modal');
 modalEl(componentService);
 
-var loginAreaEl = require('login-area');
-loginAreaEl(componentService);
-
 var inputFieldEl = require('input-field');
 inputFieldEl(componentService);
 
