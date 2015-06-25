@@ -1,0 +1,8 @@
+@import '../styleguide';
+
+profile-settings{
+  display: block;
+  @extend %small-radius;
+  padding: 30px;
+  background: $grey-color-60;
+}

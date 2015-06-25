@@ -1,10 +1,55 @@
 @import '../styleguide';
 
 modal{
-  display: block;
-  background: $white;
-  @extend %small-radius;
-  max-width: 750px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 200px auto 0;
   position: relative;
+  display: block;
+  .modal-box{
+    background: $white;
+    @extend %small-radius;
+    position: relative;
+    padding: 0 40px 40px;
+    #close-modal{
+      width: 34px;
+      height: 34px;
+      display: block;
+      @extend %circle;
+      position: absolute;
+      right: -44px;
+      top: 0;
+      svg{
+        width: 100%;
+        height: 100%;
+        fill: $white;
+      }
+      &:hover svg{
+        fill: rgba($white, .8);
+      }
+    }
+  }
+  footer {
+    display: none;
+    background: #404166;
+    border-radius: 0 0  5px 5px;
+    line-height: 60px;
+    font-size: 14px;
+    text-align: center;
+    a{
+      color: $white;
+      &:hover{
+        text-decoration: underline;
+        color: rgba($white, .8);
+      }
+    }
+  }
+  &[login]{
+    section{
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    footer{
+      display: block;
+    }
+  }
 }

@@ -30,6 +30,7 @@ action-button {
         background: rgba($white, .8);
       }
     }
+    &.align-right { float:right;}
     &.outlined { background: transparent;
       &:hover {background: transparent; }
       &.red {

@@ -1,7 +1,7 @@
 @import '../styleguide';
 
 checkbox {
-  background: $grey-color-60;
+  display: inline-block;
 }
 
 checkbox > input[type=checkbox]:not(old) {
@@ -33,6 +33,11 @@ checkbox > input[type=checkbox]:not(old) {
       margin-left: -($size/2);
       top:50%;
       margin-top: -($size/2)
+    }
+    + label {
+      font-size: 14px;
+      line-height: 31px;
+      padding: 0 20px 0 3px;
     }
   }
   &:checked + .check svg {

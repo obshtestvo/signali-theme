@@ -1,0 +1,41 @@
+@import '../styleguide';
+
+input-field{
+  display: block;
+  position: relative;
+  &[size="full"]{
+    width: 100%;
+  }
+  &[size="half"]{
+    width: 50%;
+  }
+  &[size="standart"]{
+    max-width: 380px;
+  }
+  &[state="error"] {
+  }
+  &[state="disabled"] {
+  }
+  label {
+    display: block;
+    @extend %label-font;
+    color: $grey-color-100;
+    padding: 0 0 5px;
+  }
+  input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"]{
+    display: block;
+    width: 100%;
+    position: relative;
+    @extend %small-radius;
+    padding: 0 10px;
+    border: 1px solid $grey-color-80;
+    outline: none;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 17px;
+    &:focus{
+      border-color: $grey-color-100;
+    }
+  }
+
+}

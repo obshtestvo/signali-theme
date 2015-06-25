@@ -2,6 +2,9 @@
 @import '../../node_modules/selectize/dist/css/selectize.css';
 
 select-dropdown {
+  margin: 0 0 17px;
+  display: block;
+  position: relative;
   $padding-vertical: 9px;
   $padding-horizontal: 7px;
   $arrow-color: $body-text-color;
@@ -153,5 +156,41 @@ select-dropdown {
         color: $create-new-color;
       }
     }
+  }
+  label {
+    display: block;
+    @extend %label-font;
+    color: $grey-color-100;
+    padding: 0 0 5px;
+  }
+  &[size="full"]{
+    width: 100%;
+  }
+  &[size="half"]{
+    width: 50%;
+  }
+  &[size="standart"]{
+    max-width: 380px;
+  }
+  &[mainsearch]{
+    float: left;
+    &:first-of-type{
+      width: 34%;
+      .selectize-input{
+      border-radius: 3px 0 0 3px;
+      }
+    }
+    &:last-of-type{
+      width: 55.5%;
+      .selectize-input {
+        border-radius: 0 3px 3px 0;
+      }
+    }
+    .selectize-input {
+      padding: 19px 15px;
+    }
+   .selectize-control.multi .selectize-input.has-items {
+     padding: 15px 10px 13px;
+   }
   }
 }

@@ -43,8 +43,8 @@ breadCrumbEl(componentService);
 var crumbEl = require('crumb');
 crumbEl(componentService);
 
-var secondaryNavEl = require('secondary-nav');
-secondaryNavEl(componentService);
+var tabsEl = require('tabs');
+tabsEl(componentService);
 
 var checkboxEl = require('checkbox');
 checkboxEl(componentService);
@@ -94,7 +94,6 @@ moreButtonEl(componentService);
 var donationEl = require('donation');
 donationEl(componentService);
 
-
 var footerWrapperEl = require('footer-wrapper');
 footerWrapperEl(componentService);
 
@@ -112,6 +111,27 @@ faderEl(componentService);
 
 var modalEl = require('modal');
 modalEl(componentService);
+
+var loginAreaEl = require('login-area');
+loginAreaEl(componentService);
+
+var inputFieldEl = require('input-field');
+inputFieldEl(componentService);
+
+var notificationEl = require('notification');
+notificationEl(componentService);
+
+var socialButtonEl = require('social-button');
+socialButtonEl(componentService);
+
+var forbiddenPasswordEl = require('forbidden-password');
+forbiddenPasswordEl(componentService);
+
+var profileSettingsEl = require('profile-settings');
+profileSettingsEl(componentService);
+
+var filtersEl = require('filters');
+filtersEl(componentService);
 
 var pageElement = require('page');
 pageElement(componentService);

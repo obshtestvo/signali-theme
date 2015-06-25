@@ -5,8 +5,11 @@ headline {
     @extend %headilme-font;
     padding: 25px 0 17px 0;
   }
-  .medium h3{}
-  .small h3{}
+  &[size='medium'] h3{}
+  &[size='small'] h3{
+    @extend %bodytext-large-font;
+    padding: 10px 0 7px;
+  }
   &[align="left"]{
     text-align: left;
   }
@@ -15,5 +18,8 @@ headline {
   }
   &[align="center"]{
     text-align: center;
+  }
+  &[placement="modal"] h3{
+    padding: 18px 0 32px 0;
   }
 }
