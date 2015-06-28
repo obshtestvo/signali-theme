@@ -6,4 +6,7 @@ top-nav {
   padding: 32px 0;
   position: relative;
   z-index: 10;
+  & > div {
+    padding: 4px 0 0;
+  }
 }

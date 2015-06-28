@@ -30,7 +30,7 @@ action-button {
         background: rgba($white, .8);
       }
     }
-    &.align-right { float:right;}
+    &.align-right { text-align: right}
     &.outlined { background: transparent;
       &:hover {background: transparent; }
       &.red {
@@ -60,6 +60,12 @@ action-button {
     }
     &.secondary {
       @extend %small-radius;
+    }
+  }
+  &[mainsearch] {
+    a{
+      @extend %center-y;
+      right: 0;
     }
   }
 }

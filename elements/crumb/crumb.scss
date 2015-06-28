@@ -4,32 +4,33 @@ crumb {
   display: inline-block;
   position: relative;
   padding: 0 0 0 17px;
-  &:before {
-    width: 4px;
-    height: 4px;
+  .icon {
+    width: 5px;
+    height: 8px;
     display: block;
     position: absolute;
     left: 5px;
     bottom: 12px;
-    content: '';
-    border-right: 1px solid $body-text-color;
-    border-top: 1px solid $body-text-color;
-    @include rotate (45)
+    svg{
+      width: 100%;
+      height: 100%;
+      fill: $white;
+    }
   }
   a {
     @extend %popup-font;
-    color: $body-text-color;
+    color: $white;
 
   }
   &:first-child{
     padding: 0;
-      &:before {
+      .icon {
         display: none;
       }
   }
   &:last-child {
-    &:before{
-      border-color: $main-color-40;
+    .icon svg{
+      fill: $main-color-40;
     }
     a {
       color: $main-color-40;

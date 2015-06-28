@@ -1,6 +1,7 @@
 @import '../styleguide';
 call-to-action {
   color: $white;
+  display: block;
   & > div {
     &.align-center {
       text-align: center;
@@ -19,6 +20,8 @@ call-to-action {
       @extend %bodytext-large-font;
     }
   }
-
-
+  &[mainsearch]{
+    position: relative;
+    padding: 40px 0 77px;
+  }
 }

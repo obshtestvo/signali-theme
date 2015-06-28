@@ -17,7 +17,7 @@
         <![endif]-->
 <loader target="page"></loader>
 <page>
-    <cover mainsearch>
+    <cover base>
         <top-nav>
             <menu>
                 Категории
@@ -77,30 +77,19 @@
             </login-box>
             <logo align="center-xy" action="home" color="light" size="large"></logo>
         </top-nav>
-        <intro mainsearch>
-            <call-to-action align="center" mainsearch>
-                <h1>Пoдай сигнал</h1>
-                <p>Намери и подай сигнал към над <underline>121</underline> институции в над <underline>23</underline> области.</p>
+        <intro base>
+            <call-to-action align="left" base>
+                <h1>Гореща линия за безопасен Интернет</h1>
             </call-to-action>
-            <form action="">
-                <select-dropdown id="drop2" name="dropdown2" location mainsearch>
-                    <label>къде?</label>
-                </select-dropdown>
-                <select-dropdown id="drop" name="dropdown" multiple mainsearch>
-                    <label>проблем</label>
-                    <value id="2" selected>corruption</value>
-                    <value id="3" >ecology</value>
-                    <value id="5" >Красота майна</value>
-                    <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                    <value id="6" >асдасда сд РАСФДАСФасдасд </value>
-                </select-dropdown>
-                <action-button link action="google.com" color="red" mainsearch>
-                    търси
-                </action-button>
-            </form>
+            <breadcrumb>
+                <crumb action="google.com">Home</crumb>
+                <crumb action="google.com">This is not so home</crumb>
+                <crumb action="google.com">Far away from home</crumb>
+            </breadcrumb>
         </intro>
     </cover>
     <featured>
+
         <cards-area>
             <headline size="large" align="center">Популярни сайтове</headline>
             <tabs align="center">
@@ -331,28 +320,6 @@
             <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
         </sponsors>
     </footer-wrapper>
-    <!--<picker>admin</picker>-->
-    <!--<playground>-->
-        <!--<action-button align="center" action="google.com" color="white">-->
-            <!--Логни Са Ва!-->
-        <!--</action-button>-->
-        <!--<action-button align="center" action="google.com" color="purple" secondary outlined>-->
-            <!--Ари Ва!-->
-        <!--</action-button>-->
-        <!--<checkbox id="asdasd" name="test" checked>Test checkbox</checkbox>-->
-        <!--<radio-button id="rarar" name="test" >Test radio</radio-button>-->
-        <!--<radio-button id="rarar2" name="test" >Test radio</radio-button>-->
-        <!--<radio-button id="rarar3" name="test" >Test radio</radio-button>-->
-        <!--<breadcrumb>-->
-            <!--<crumb action="google.com">Home</crumb>-->
-            <!--<crumb action="google.com">This is not so home</crumb>-->
-            <!--<crumb action="google.com">Far away from home</crumb>-->
-        <!--</breadcrumb>-->
-
-        <!--<tabs-nav align="left">-->
-            <!--asasas-->
-        <!--</tabs-nav>-->
-    <!--</playground>-->
     <fader style="display:none; ">
         <!--Modal Window Login-->
         <modal login style="display: ">
