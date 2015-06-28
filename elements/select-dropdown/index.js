@@ -9,7 +9,8 @@ module.exports = function (componentService) {
         include: {
             locationArrow: require('icons/location-arrow.svg')
         },
-        created: function (el) {
+        created: function () {
+            var el = this;
             var $input =  $(el).find('> select');
             if (el.hasAttribute('location')) {
                 var picker = new AddressPicker($input, $('<h1>').get(0));

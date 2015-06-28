@@ -23,6 +23,14 @@ ComponentService.prototype._transformOptionsForSkate = function (o) {
             template: makeTemplate(o)
         });
     }
+    if (o.type) {
+        var types = {
+            "attribute": skate.type.ATTRIBUTE,
+            "element": skate.type.ELEMENT,
+            "class": skate.type.CLASSNAME
+        };
+        o.type = types[o.type]
+    }
     return o
 };
 ComponentService.componentDefaults = {
@@ -30,8 +38,9 @@ ComponentService.componentDefaults = {
 };
 
 function makeTemplate(options) {
-    return function (element) {
-        var data = $.extend({}, this.include);
+    return function () {
+        var element = this;
+        var data = $.extend({}, options.include);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
             data[attr.name] = attr.value == '' ? true : attr.value;
@@ -47,10 +56,6 @@ function makeTemplate(options) {
         var node, i, j, k, placeholder, toAppend, parentNode, nodes = [], isDirect;
         for (i = 0; i < $template.length; i++) {
             node = $template[i];
-            if (element.tagName == 'LOGIN-AREA') {
-                console.log('node.parentNode', node.parentNode);
-                console.log('$template.eq(i).parent()', $template.eq(i).parent());
-            }
             isDirect = false;
             if (node.nodeType != Node.ELEMENT_NODE) {
                 nodes.push(node);
@@ -92,10 +97,6 @@ function makeTemplate(options) {
                 if (!contentPlaceholders.length) continue;
                 placeholder = contentPlaceholders[0];
                 parentNode = placeholder.parentNode;
-                if (parentNode == null) {
-                    console.log('placeholder', placeholder);
-                    console.log('element.tagName', element.tagName);
-                }
                 toAppend = [].slice.call(element.childNodes);
                 for (j = 0; j < toAppend.length; j++) {
                     parentNode.insertBefore(toAppend[j], placeholder);
@@ -116,6 +117,7 @@ function makeTemplate(options) {
         for (i = 0; i < nodes.length; i++) {
             element.appendChild(nodes[i])
         }
+        console.log(this.tagName)
     }
 }
 

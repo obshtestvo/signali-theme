@@ -6,8 +6,8 @@ module.exports = function (componentService) {
         include: {
             close: require('./close.svg')
         },
-        created: function (el) {
-            $(el).find('#close-modal').click(function(){
+        created: function () {
+            $(this).find('#close-modal').click(function(){
                 $('fader').hide(400);
             })
         }

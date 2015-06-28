@@ -2,9 +2,6 @@ require('./cover.scss')
 
 module.exports = function (componentService) {
     componentService.register('cover', {
-        template: require('./cover.html'),
-        created: function (el) {
-            // javascript to run after the element is rendered in the dom
-        }
+        template: require('./cover.html')
     })
 }
