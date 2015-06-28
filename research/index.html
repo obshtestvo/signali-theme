@@ -331,145 +331,163 @@
             <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
         </sponsors>
     </footer-wrapper>
+    <!--<picker>admin</picker>-->
+    <!--<playground>-->
+        <!--<action-button align="center" action="google.com" color="white">-->
+            <!--Логни Са Ва!-->
+        <!--</action-button>-->
+        <!--<action-button align="center" action="google.com" color="purple" secondary outlined>-->
+            <!--Ари Ва!-->
+        <!--</action-button>-->
+        <!--<checkbox id="asdasd" name="test" checked>Test checkbox</checkbox>-->
+        <!--<radio-button id="rarar" name="test" >Test radio</radio-button>-->
+        <!--<radio-button id="rarar2" name="test" >Test radio</radio-button>-->
+        <!--<radio-button id="rarar3" name="test" >Test radio</radio-button>-->
+        <!--<breadcrumb>-->
+            <!--<crumb action="google.com">Home</crumb>-->
+            <!--<crumb action="google.com">This is not so home</crumb>-->
+            <!--<crumb action="google.com">Far away from home</crumb>-->
+        <!--</breadcrumb>-->
+
+        <!--<tabs-nav align="left">-->
+            <!--asasas-->
+        <!--</tabs-nav>-->
+    <!--</playground>-->
     <fader style="display:none; ">
         <!--Modal Window Login-->
-        <modal id="login" login class="mfp-with-anim mfp-hide">
-            <headline size="large" placement="modal" align="center">Вход</headline>
-            <section>
-                <form action="">
-                    <input-field size="full" id="name" type="text">
-                        потребителско име
-                    </input-field>
-                    <input-field size="full" id="password" type="password">
-                        Парола
-                    </input-field>
-                    <div class="clearfix">
-                        <action-button link align="left" action="google.com" color="red">
-                            вход
-                        </action-button>
-                        <forbidden-password action="gotoregister.com">
-                            Забравена парола?
-                        </forbidden-password>
-                    </div>
-
-                </form>
-            </section>
-            <section>
+    <modal id="login">
+        <headline size="large" placement="modal" align="center">Вход</headline>
+        <login>
+            <site-auth action="" class="auth">
+                <input-field size="full" id="name" type="text">
+                    потребителско име
+                </input-field>
+                <input-field size="full" id="password" type="password">
+                    Парола
+                </input-field>
+                <action-button link align="left" action="google.com" color="red">
+                    вход
+                </action-button>
+                <forbidden-password action="gotoregister.com">
+                    Забравена парола?
+                </forbidden-password>
+            </site-auth>
+            <social-auth>
                 <headline size="small">Вход през Facebook</headline>
                 <notification information size="small">
                     <p>Easy one click sign in. We won't post anything without your permission.</p>
                 </notification>
                 <social-button facebook action="google3.com"></social-button>
                 <social-button google action="fb.com"></social-button>
-            </section>
+            </social-auth>
             <footer>
                 <a href="#">Направи си регистрация</a>
             </footer>
-        </modal>
-        <!--Modal window Register-->
-        <modal style="display: none;">
-            <headline size="large" placement="modal" align="center">Регистрация</headline>
-                <section>
-                    <form action="">
-                        <input-field size="full" id="name" type="text">
-                            Име
-                        </input-field>
-                        <input-field size="full" id="email" type="email">
-                            имейл адрес
-                        </input-field>
-                        <notification information size="small">
-                            <p>
-                                Easy one click sign in. We won't post anything without your permission.
-                            </p>
-                        </notification>
-                        <input-field size="full" id="password" type="password">
-                            Парола
-                        </input-field>
-                        <input-field size="full" id="password2" type="password">
-                            повторете паролата
-                        </input-field>
-                        <action-button link align="left" action="google.com" color="red">
-                            вход
-                        </action-button>
-                    </form>
-                </section>
-                <section>
-                    <headline size="small">Вход през Facebook</headline>
-                    <notification information size="small">
-                        <p>Easy one click sign in. We won't post anything without your permission.</p>
-                    </notification>
-                    <social-button facebook action="google3.com"></social-button>
-                    <social-button google action="fb.com"></social-button>
-                </section>
-        </modal>
-        <!--Modal Settings-->
-        <modal style="display: none;">
-            <headline size="large" placement="modal" align="center">Настройки</headline>
+        </login>
+    </modal>
+    <!--Modal window Register-->
+    <modal>
+        <headline size="large" placement="modal" align="center">Регистрация</headline>
+        <registration>
+            <site-auth action="" class="auth">
+                <input-field size="full" id="name" type="text">
+                    Име
+                </input-field>
+                <input-field size="full" id="email" type="email">
+                    имейл адрес
+                </input-field>
+                <notification information size="small">
+                    <p>
+                        Easy one click sign in. We won't post anything without your permission.
+                    </p>
+                </notification>
+                <input-field size="full" id="password" type="password">
+                    Парола
+                </input-field>
+                <input-field size="full" id="password2" type="password">
+                    повторете паролата
+                </input-field>
+                <action-button link align="left" action="google.com" color="red">
+                    вход
+                </action-button>
+            </site-auth>
+            <social-auth>
+                <headline size="small">Вход през Facebook</headline>
+                <notification information size="small">
+                    <p>Easy one click sign in. We won't post anything without your permission.</p>
+                </notification>
+                <social-button facebook action="google3.com"></social-button>
+                <social-button google action="fb.com"></social-button>
+            </social-auth>
+        </registration>
+    </modal>
+    <!--Modal Settings-->
+    <modal>
+        <headline size="large" placement="modal" align="center">Настройки</headline>
+        <setting>
             <tabs align="center">
                 <li><a href="#">Име</a></li>
                 <li><a class="active" href="#">Имейл</a></li>
                 <li><a href="#">Парола</a></li>
             </tabs>
-            <profile-settings>
-                <form action="">
-                    <input-field size="standart" id="email" type="email" placeholder="office@obshtestvo.bg">
-                        имейл адрес
-                    </input-field>
-                    <action-button link align="left" action="google.com" color="red">
-                        запази
-                    </action-button>
-                </form>
-            </profile-settings>
-        </modal>
-        <!--Modal Add Signal-->
-        <modal style="display: none;">
-            <headline size="large" placement="modal" align="center">Добави сигнал</headline>
-            <select-dropdown id="drop" name="dropdown" multiple size="standart" >
-                <label>Местонахождение</label>
-                <value id="2" selected>corruption</value>
-                <value id="3" >ecology</value>
-                <value id="5" >Красота майна</value>
-                <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                <value id="6" >асдасда сд РАСФДАСФасдасд </value>
-            </select-dropdown>
-            <select-dropdown id="drop2" name="dropdown2" location size="standart">
-                <label>Категория</label>
-            </select-dropdown>
-            <filters>
-                <strong>изисквания</strong>
-                <checkbox id="register" name="register" unchecked>Регистрация</checkbox>
-                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-                <checkbox id="name" name="name">Име</checkbox>
-                <checkbox id="email" name="email">Е-mail</checkbox>
-                <checkbox id="egn" name="egn">EГН</checkbox>
-                <checkbox id="address" name="address">Адрес на подателя</checkbox>
-                <checkbox id="location" name="location">Локация на сигнала</checkbox>
-            </filters>
-            <filters>
-                <strong>Други опции</strong>
-                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-                <checkbox id="verification" name="verification">Верификация на сигнала? </checkbox>
-                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-            </filters>
+            <form action="">
+                <input-field size="standart" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <action-button link align="left" action="google.com" color="red">
+                    запази
+                </action-button>
+            </form>
+        </setting>
+    </modal>
+    <!--Modal Add Signal-->
+    <modal style="display: none;">
+        <headline size="large" placement="modal" align="center">Добави сигнал</headline>
+        <select-dropdown id="drop" name="dropdown" multiple size="standart" >
+            <label>Местонахождение</label>
+            <value id="2" selected>corruption</value>
+            <value id="3" >ecology</value>
+            <value id="5" >Красота майна</value>
+            <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
+            <value id="6" >асдасда сд РАСФДАСФасдасд </value>
+        </select-dropdown>
+        <select-dropdown id="drop2" name="dropdown2" location size="standart">
+            <label>Категория</label>
+        </select-dropdown>
+        <filters>
+            <strong>изисквания</strong>
+            <checkbox id="register" name="register" unchecked>Регистрация</checkbox>
+            <checkbox id="photo" name="photo" checked>Снимка</checkbox>
+            <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
+            <checkbox id="name" name="name">Име</checkbox>
+            <checkbox id="email" name="email">Е-mail</checkbox>
+            <checkbox id="egn" name="egn">EГН</checkbox>
+            <checkbox id="address" name="address">Адрес на подателя</checkbox>
+            <checkbox id="location" name="location">Локация на сигнала</checkbox>
+        </filters>
+        <filters>
+            <strong>Други опции</strong>
+            <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
+            <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
+            <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
+            <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
+            <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
+            <checkbox id="verification" name="verification">Верификация на сигнала? </checkbox>
+            <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
+        </filters>
 
-            <action-button link align="left" action="google.com" color="red">
-                Добави
-            </action-button>
-        </modal>
-        <!--Modal messege for allert, success, error-->
-        <modal style="display: none;">
-            <headline size="large" placement="modal" align="center">Регистрация</headline>
-            <notification success size="popup">
-                <strong>Успешна регистрация</strong>
-                <p>Easy one click sign in. We won't post anything without your permission.</p>
-            </notification>
-        </modal>
-    </fader>
+        <action-button link align="left" action="google.com" color="red">
+            Добави
+        </action-button>
+    </modal>
+    <!--Modal messege for allert, success, error-->
+    <modal style="display: none;">
+        <headline size="large" placement="modal" align="center">Регистрация</headline>
+        <notification success size="popup">
+            <strong>Успешна регистрация</strong>
+            <p>Easy one click sign in. We won't post anything without your permission.</p>
+        </notification>
+    </modal>
 
 </page>
         <google-analytics account="asd"></google-analytics>
