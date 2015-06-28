@@ -1,6 +1,6 @@
 @import '../styleguide';
 
-modal{
+modal {
   max-width: 700px;
   position: relative;
   display: block;
@@ -52,15 +52,6 @@ modal{
         text-decoration: underline;
         color: rgba($white, .8);
       }
-    }
-  }
-  &[login]{
-    section{
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    footer{
-      display: block;
     }
   }
 }

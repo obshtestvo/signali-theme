@@ -133,5 +133,5 @@ filtersEl(componentService);
 var pageElement = require('page');
 pageElement(componentService);
 
-var popupElement = require('popup');
-popupElement(componentService);
+var loginElement = require('login');
+loginElement(componentService);
