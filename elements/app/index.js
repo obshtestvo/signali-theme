@@ -88,9 +88,6 @@ ratingEl(componentService);
 var starEl = require('star');
 starEl(componentService);
 
-var moreButtonEl = require('more-button');
-moreButtonEl(componentService);
-
 var donationEl = require('donation');
 donationEl(componentService);
 
@@ -120,9 +117,6 @@ notificationEl(componentService);
 
 var socialButtonEl = require('social-button');
 socialButtonEl(componentService);
-
-var forbiddenPasswordEl = require('forbidden-password');
-forbiddenPasswordEl(componentService);
 
 var profileSettingsEl = require('profile-settings');
 profileSettingsEl(componentService);

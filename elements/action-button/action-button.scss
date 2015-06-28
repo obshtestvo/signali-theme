@@ -5,61 +5,63 @@
 /*Attributes: secondary, outlined*/
 
 action-button {
-  a {
-    @extend %large-radius, %button-font;
-    padding: 10px 30px;
-    display: inline-block;
-    color: $white;
-    &.red {
-      background: $secondary-color-100;
-      &:hover {
-        background: $secondary-color-60;
-      }
-    }
-    &.purple {
-      background: $main-color-100;
-      &:hover {
-        background: $main-color-60;
-      }
-    }
-    &.white {
-      color: $main-color-100;
-      background: $white;
-      &:hover {
-        color: $main-color-80;
-        background: rgba($white, .8);
-      }
-    }
-    &.align-right { text-align: right}
-    &.outlined { background: transparent;
-      &:hover {background: transparent; }
+  &[link], &[button]{
+    a {
+      @extend %large-radius, %button-font;
+      padding: 10px 30px;
+      display: inline-block;
+      color: $white;
       &.red {
-        @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset );
-        color: $secondary-color-100;
+        background: $secondary-color-100;
         &:hover {
-          @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset );
-          color: $secondary-color-60;
+          background: $secondary-color-60;
         }
       }
       &.purple {
-        @include box-shadow(0, 0, 0, 3px $main-color-100, inset );
-        color: $main-color-100;
+        background: $main-color-100;
         &:hover {
-          @include box-shadow(0, 0, 0, 3px $main-color-60, inset );
-          color: $main-color-60;
+          background: $main-color-60;
         }
       }
       &.white {
-        @include box-shadow(0, 0, 0, 3px $white, inset );
-        color: $white;
+        color: $main-color-100;
+        background: $white;
         &:hover {
-          @include box-shadow(0, 0, 0, 3px rgba($white, .8), inset );
-          color: rgba($white, .8);
+          color: $main-color-80;
+          background: rgba($white, .8);
         }
       }
-    }
-    &.secondary {
-      @extend %small-radius;
+      &.align-right { text-align: right}
+      &.outlined { background: transparent;
+        &:hover {background: transparent; }
+        &.red {
+          @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset );
+          color: $secondary-color-100;
+          &:hover {
+            @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset );
+            color: $secondary-color-60;
+          }
+        }
+        &.purple {
+          @include box-shadow(0, 0, 0, 3px $main-color-100, inset );
+          color: $main-color-100;
+          &:hover {
+            @include box-shadow(0, 0, 0, 3px $main-color-60, inset );
+            color: $main-color-60;
+          }
+        }
+        &.white {
+          @include box-shadow(0, 0, 0, 3px $white, inset );
+          color: $white;
+          &:hover {
+            @include box-shadow(0, 0, 0, 3px rgba($white, .8), inset );
+            color: rgba($white, .8);
+          }
+        }
+      }
+      &.secondary {
+        @extend %small-radius;
+      }
     }
   }
   &[mainsearch] {
@@ -68,4 +70,55 @@ action-button {
       right: 0;
     }
   }
+  &[more] {
+    div {
+      font-size: 14px;
+      line-height: 50px;
+      span {
+        color :$grey-color-100;
+        font-style: italic;
+      }
+      a {
+        color: $secondary-color-100;
+        svg {
+          width: 11px;
+          height: 11px;
+          fill: $secondary-color-100;
+          position: relative;
+          bottom: -1px;
+        }
+        &:hover {
+          text-decoration: underline;
+          color: $secondary-color-hover;
+          svg {
+            fill: $secondary-color-hover;
+          }
+        }
+      }
+      &.inline {
+        display: inline-block;
+      }
+      &.align-right{
+        text-align: right;
+      }
+      &.align-center{
+        text-align: center;
+      }
+      &.align-left{
+        text-align: left;
+      }
+    }
+  }
+  &[forgotten-password] {
+    float: right;
+    line-height: 40px;
+    a{
+      font-size: 12px;
+      color: $secondary-color-100;
+      &:hover{
+        color: $secondary-color-hover;
+      }
+    }
+  }
+
 }
