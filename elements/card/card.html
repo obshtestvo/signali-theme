@@ -1,8 +1,8 @@
 <section>
     <div class="logo-wrap">
-        <content select=".logo"></content>
+        <a href="{{action}}"><content select="img"></content></a>
     </div>
-    <h4><content select=".name"></content></h4>
+    <h4><a href="{{action}}"><content select="strong"></content></a></h4>
     <div class="item">
         <strong>категория</strong>
         <content select=".category"></content>
@@ -19,5 +19,5 @@
         <strong>Рейтинг</strong>
         <content select="rating"></content>
     </div>
-    <content select=".action"></content>
+    <a class="action" href="{{action}}">Подаване на сгинал</a>
 </section>
