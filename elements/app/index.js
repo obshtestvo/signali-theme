@@ -115,8 +115,8 @@ notificationEl(componentService);
 var socialButtonEl = require('social-button');
 socialButtonEl(componentService);
 
-var profileSettingsEl = require('profile-settings');
-profileSettingsEl(componentService);
+var settingsEl = require('settings');
+settingsEl(componentService);
 
 var filtersEl = require('filters');
 filtersEl(componentService);
