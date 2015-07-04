@@ -64,7 +64,7 @@
                     </ul>
                 </menu-column>
             </menu>
-            <login-box anonymous action="#login">
+            <login-box anonymous action="#auth">
                 Вход
             </login-box>
             <login-box action="profile">
@@ -343,15 +343,15 @@
     <!--</playground>-->
     <div style="display:none; ">
         <!--Modal Window Login-->
-    <modal id="login">
-        <headline size="large" placement="modal" align="center">Вход</headline>
-        <headline size="large" placement="modal" align="center">Регистрация</headline>
+    <modal id="auth">
+        <headline size="large" placement="modal" align="center" for="login">Вход</headline>
+        <headline size="large" placement="modal" align="center" for="registration" hidden>Регистрация</headline>
         <auth>
-            <site-auth registration-action="" login-action="" type="login" size="compact">
-                <input-field for="registration" size="full" id="name" type="text">
+            <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
+                <input-field for="registration" size="full" id="name" name="name" type="text" hidden>
                     Име
                 </input-field>
-                <input-field size="full" id="email" type="email">
+                <input-field size="full" id="email" name="email" type="email">
                     имейл адрес
                 </input-field>
                 <notification information size="small">
@@ -362,21 +362,21 @@
                 <input-field size="full" id="password" type="password">
                     Парола
                 </input-field>
-                <input-field for="registration" size="full" id="password2" type="password">
-                    повторете паролата
+                <input-field for="registration" size="full" id="password2" type="password" hidden>
+                    Парола (пак)
                 </input-field>
-                <action-button button align="left" color="red">
+                <action-button button for="login" align="left" color="red">
                     вход
                 </action-button>
-                <action-button button for="registration" align="left" color="red">
+                <action-button button for="registration" align="left" color="red" hidden>
                     регистрация
                 </action-button>
-                <action-button forgotten-password action="google.com">
+                <action-button forgotten-password for="login" action="google.com">
                     Забравена парола?
                 </action-button>
             </site-auth>
-            <social-auth type="login" size="compact">
-                <headline size="small">Вход през Facebook</headline>
+            <social-auth type="login" size="compact" class="half">
+                <headline size="small">Или чрез Facebook</headline>
                 <notification information size="small">
                     <p>Easy one click sign in. We won't post anything without your permission.</p>
                 </notification>
@@ -384,8 +384,8 @@
                 <social-button google login-action="fb.com" registration-action=""></social-button>
             </social-auth>
         </auth>
-        <footer>
-            <a href="#">Направи си регистрация</a>
+        <footer for="login">
+            <a href="#" registration-trigger>Направи си регистрация</a>
         </footer>
     </modal>
     <!--Modal Settings-->

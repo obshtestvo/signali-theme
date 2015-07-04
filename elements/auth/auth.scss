@@ -1,0 +1,14 @@
+@import '../styleguide';
+
+auth {
+  .half {
+    float:left;
+    width: 50%;
+    border-right: 1px solid $grey-color-60;
+    padding: 7px 40px 7px 0;
+    ~ .half {
+      padding: 7px 0 7px 40px;
+      border-right: 0;
+    }
+  }
+}

@@ -30,15 +30,23 @@ module.exports = function (componentService) {
         // Called when an attribute is created, updated or removed.
         attribute: function (name, oldValue, newValue) {
             if (name != 'target' || newValue != 'modal') return;
-            var $trigger = $(this)
+            var $trigger = $(this);
+            var delay = 300;
             $trigger.magnificPopup({
                 type: 'inline',
                 showCloseBtn: false,
                 // Delay in milliseconds before popup is removed
-                removalDelay: 300,
+                removalDelay: delay,
                 // Class that is added to popup wrapper and background
                 // make it unique to apply your CSS animations just to this exact popup
                 mainClass: 'mfp-zoom-in',
+                callbacks: {
+                    open: function() {
+                        setTimeout(function(){
+                            $trigger.trigger('done')
+                        }, delay)
+                    }
+                },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
         }

@@ -124,5 +124,5 @@ filtersEl(componentService);
 var pageElement = require('page');
 pageElement(componentService);
 
-var loginElement = require('login');
-loginElement(componentService);
+var authElement = require('auth');
+authElement(componentService);

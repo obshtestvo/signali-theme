@@ -46,10 +46,13 @@ $standard-border: 1px solid $grey-color-80;
 
 /* abstract classes*/
 /*shapes*/
+$large-radius:19px;
+$small-radius:5px;
+$nano-radius:2px;
 %circle { border-radius: 50%;}
-%large-radius { border-radius: 19px;}
-%small-radius { border-radius: 5px;}
-%nano-radius { border-radius: 2px;}
+%large-radius { border-radius: $large-radius;}
+%small-radius { border-radius: $small-radius;}
+%nano-radius { border-radius: $nano-radius;}
 
 /*shadows*/
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {

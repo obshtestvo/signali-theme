@@ -1,4 +1,5 @@
 @import '../styleguide';
+$footer-background: #404166;
 
 modal {
   max-width: 700px;
@@ -9,7 +10,9 @@ modal {
     background: $white;
     @extend %small-radius;
     position: relative;
-    padding: 0 40px 40px;
+    .padder {
+      padding: 0 40px 40px;
+    }
     #close-modal{
       width: 34px;
       height: 34px;
@@ -27,22 +30,14 @@ modal {
         fill: rgba($white, .8);
       }
     }
-    section {
-      float:left;
-      padding: 7px 0;
-      width: 50%;
-      &:nth-of-type(1) {
-        border-right: 1px solid $grey-color-60;
-        padding: 7px 40px 7px 0;
-      }
-      &:nth-of-type(2){
-        padding: 7px 0 7px 40px;
-      }
-    }
+  }
+  .footwrap {
+    margin-top: -$small-radius;
+    position: relative;
+    top: $small-radius;
   }
   footer {
-    display: none;
-    background: #404166;
+    background: $footer-background;
     border-radius: 0 0  5px 5px;
     line-height: 60px;
     font-size: 14px;
