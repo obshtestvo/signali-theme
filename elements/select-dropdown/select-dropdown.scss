@@ -157,27 +157,34 @@ select-dropdown {
       }
     }
   }
-  label {
+
+
+  > label {
     display: block;
     @extend %label-font;
     color: $grey-color-100;
     padding: 0 0 5px;
   }
+
   &[size="full"]{
     width: 100%;
   }
+
   &[size="half"]{
     width: 50%;
   }
+
   &[size="standart"]{
     max-width: 380px;
   }
-  &[mainsearch]{
+
+
+  &[mainsearch] {
     float: left;
     &:first-of-type{
       width: 34%;
       .selectize-input{
-      border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;
       }
     }
     &:last-of-type{
@@ -193,6 +200,7 @@ select-dropdown {
      padding: 15px 10px 13px;
    }
   }
+
   &[location]{
     .selectize-control.single {
       .selectize-input {
