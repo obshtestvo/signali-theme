@@ -6,9 +6,6 @@ require('./select-dropdown.scss');
 module.exports = function (componentService) {
     componentService.register('select-dropdown', {
         template: require('./select-dropdown.html'),
-        include: {
-            locationArrow: require('icons/location-arrow.svg')
-        },
         created: function () {
             var el = this;
             var $el = $(el);

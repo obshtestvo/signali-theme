@@ -1,4 +1,6 @@
+var selectize = require('selectize/dist/js/standalone/selectize.js');
 var googlemap = require('service/google.maps');
+var navarrow = require('icons/location-arrow.svg');
 
 /**
  * Places autocomplete
@@ -40,7 +42,7 @@ AddressSearch.prototype = {
         $el.selectize({
             create: false,
             options: [],
-            plugins: ['restore_on_backspace'],
+            plugins: ['restore_on_backspace', 'navarrow'],
             score: function(search) {
                 var textScore = this.getScoreFunction(search);
                 return function(item) {
@@ -135,5 +137,17 @@ AddressSearch.prototype = {
         _self.gMap = null;
     }
 }
+
+selectize.define('navarrow', function() {
+    var self = this;
+    this.setup = (function() {
+        var original = self.setup;
+        return function() {
+            var ret = original.apply(this, arguments);
+            self.$control.append(navarrow)
+            return ret;
+        };
+    })();
+});
 
 module.exports =  AddressSearch;
