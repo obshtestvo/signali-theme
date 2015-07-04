@@ -1,14 +1,59 @@
 @import '../styleguide';
 
+/*How To Use*/
+//<headline size="small/medium/large" density="airy/comfortable/cozy/compact" align="left/center/right"></headline>
+//For each size ther is diferent density
+
 headline {
-  &[size='large'] h3{
-    @extend %headilme-font;
-    padding: 25px 0 17px 0;
+  display: block;
+  &[size='large']{
+    &[density="airy"]{
+      padding: 18px 0 32px 0
+    }
+    &[density="comfortable"]{
+      padding: 25px 0 17px 0;
+    }
+    &[density="cozy"]{
+
+    }
+    &[density="compact"]{
+
+    }
+    h3{
+      @extend %headilme-font;
+    }
   }
-  &[size='medium'] h3{}
-  &[size='small'] h3{
-    @extend %bodytext-large-font;
-    padding: 10px 0 7px;
+  &[size='medium'] {
+    &[density="airy"]{
+
+    }
+    &[density="comfortable"]{
+
+    }
+    &[density="cozy"]{
+
+    }
+    &[density="compact"]{
+
+    }
+    h3{}
+  }
+  &[size='small'] {
+    &[density="airy"]{
+      padding: 4px 0 13px;
+    }
+    &[density="comfortable"]{
+      padding: 10px 0 7px;
+    }
+    &[density="cozy"]{
+
+    }
+    &[density="compact"]{
+
+    }
+    h3{
+      @extend %bodytext-large-font;
+    }
   }
   &[align="left"]{
     text-align: left;
@@ -18,8 +63,5 @@ headline {
   }
   &[align="center"]{
     text-align: center;
-  }
-  &[placement="modal"] h3{
-    padding: 18px 0 32px 0;
   }
 }

@@ -1,4 +1,9 @@
 @import '../styleguide';
+$yellow: #c8a815;
+$green: #8aad39;
+$blue: #3a8eb3;
+$purple: #8484a6;
+$red: #d76d6d;
 
 intro {
   display: block;
@@ -11,5 +16,34 @@ intro {
   &[base]{
     position: absolute;
     bottom: 0px;
+  }
+  .popular{
+    color: $white;
+    & > div {
+      line-height: 0;
+      a{
+        display: inline-block;
+        line-height: 23px;
+        padding: 1px 10px;
+        margin: 0 10px 10px 0;
+        @extend %large-radius;
+        color: $white;
+        &[color="yellow"]{
+          background: $yellow;
+        }
+        &[color="green"]{
+          background: $green;
+        }
+        &[color="blue"]{
+          background: $blue;
+        }
+        &[color="purple"]{
+          background: $purple;
+        }
+        &[color="red"]{
+          background: $red;
+        }
+      }
+    }
   }
 }
