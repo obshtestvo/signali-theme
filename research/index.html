@@ -399,16 +399,31 @@
         <headline size="large" placement="modal" align="center">Настройки</headline>
         <settings>
             <tabs align="center">
-                <li><a href="#">Общо</a></li>
-                <li><a class="active" href="#">Смяна на парола</a></li>
+                <li><a class="active" href="#generalSettings">Общо</a></li>
+                <li><a href="#passwordSettings">Смяна на парола</a></li>
             </tabs>
             <form action="">
-                <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </input-field>
-                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </input-field>
+                <div>
+                    <section id="generalSettings" tab>
+                        <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
+                            имейл адрес
+                        </input-field>
+                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                            имейл адрес
+                        </input-field>
+                    </section>
+                    <section id="passwordSettings" tab hidden>
+                        <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
+                            имейл адрес
+                        </input-field>
+                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                            имейл адрес
+                        </input-field>
+                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                            имейл адрес
+                        </input-field>
+                    </section>
+                </div>
                 <action-button link align="left" type="primary" fill="solid" color="red" action="google.com">
                     запази
                 </action-button>

@@ -28,14 +28,15 @@ tabs {
         font-weight: 600;
         color: $body-text-color;
         background: $white;
+        &:hover,
+        &:focus {
+          background: $grey-color-60;
+        }
         &.active {
           background: $main-color-100;
           color: $white;
           pointer-events: none;
           cursor: default;
-        }
-        &:hover {
-          background: $grey-color-60;
         }
         &:active {
           background: $main-color-120;
