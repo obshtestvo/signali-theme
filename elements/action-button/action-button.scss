@@ -89,6 +89,11 @@ action-button {
       width: 100%;
     }
   }
+  &[size="medium"] {
+    a, input[type="submit"] {
+      padding: 10px 30px;
+    }
+  }
   &[mainsearch] {
     a, input[type="submit"]{
       @extend %center-y;
