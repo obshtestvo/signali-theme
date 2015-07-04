@@ -13,17 +13,17 @@ module.exports = function (componentService) {
 
             $('[registration-trigger]').click(function(e) {
                 e.preventDefault();
-                $registrationElements.show();
-                $loginElements.hide()
+                $registrationElements.prop('hidden', false)
+                $loginElements.prop('hidden', true)
                 $name.focus();
             });
             $showTrigger.click(function() {
                 if ($(this).attr('type')=='registration') {
-                    $registrationElements.show();
-                    $loginElements.hide()
+                    $registrationElements.prop('hidden', false)
+                    $loginElements.prop('hidden', true)
                 } else {
-                    $registrationElements.hide();
-                    $loginElements.show();
+                    $registrationElements.prop('hidden', true)
+                    $loginElements.prop('hidden', false)
                 }
             });
             $showTrigger.on('done', function() {
