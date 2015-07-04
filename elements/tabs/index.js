@@ -26,7 +26,6 @@ module.exports = function (componentService) {
                         width: false,
                         speed: 100,
                         final: function () {
-                            console.log('pa');
                             toggleFixedHeight($container, false)
                         }
                     });

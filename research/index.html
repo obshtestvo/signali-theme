@@ -397,37 +397,33 @@
     <!--Modal Settings-->
     <modal id="settings">
         <headline size="large" placement="modal" align="center">Настройки</headline>
-        <settings>
+        <settings action="#">
             <tabs align="center">
                 <li><a class="active" href="#generalSettings">Общо</a></li>
                 <li><a href="#passwordSettings">Смяна на парола</a></li>
             </tabs>
-            <form action="">
-                <div>
-                    <section id="generalSettings" tab>
-                        <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
-                            имейл адрес
-                        </input-field>
-                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                            имейл адрес
-                        </input-field>
-                    </section>
-                    <section id="passwordSettings" tab hidden>
-                        <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
-                            имейл адрес
-                        </input-field>
-                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                            имейл адрес
-                        </input-field>
-                        <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                            имейл адрес
-                        </input-field>
-                    </section>
-                </div>
-                <action-button link align="left" type="primary" fill="solid" color="red" action="google.com">
-                    запази
-                </action-button>
-            </form>
+            <section id="generalSettings" tab>
+                <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+            </section>
+            <section id="passwordSettings" tab hidden>
+                <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+            </section>
+            <action-button button align="left" type="primary" fill="solid" color="red">
+                запази
+            </action-button>
         </settings>
     </modal>
     <!--Modal Add Signal-->

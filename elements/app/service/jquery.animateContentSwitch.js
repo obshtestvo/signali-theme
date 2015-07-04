@@ -59,8 +59,6 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
             }
         }
         targetHeight = originalHeight - ($toHide.outerHeight(true) - $toShow.outerHeight(true));
-        console.log('targetHeight');
-        console.log(targetHeight);
         targetWidth = originalWidth - ($toHide.outerWidth(true) - $toShow.outerWidth(true));
         //save current animation data
         var data = {
