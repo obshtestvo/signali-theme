@@ -6,11 +6,13 @@
 
 action-button {
   &[link], &[button]{
-    a {
+    a, input[type="submit"] {
       @extend %large-radius, %button-font;
       padding: 10px 30px;
       display: inline-block;
       color: $white;
+      border: none;
+      outline: none;
       &.red {
         background: $secondary-color-100;
         &:hover {
@@ -65,7 +67,7 @@ action-button {
     }
   }
   &[mainsearch] {
-    a{
+    a, input[type="submit"]{
       @extend %center-y;
       right: 0;
     }
