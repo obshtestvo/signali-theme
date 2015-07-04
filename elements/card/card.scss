@@ -13,7 +13,7 @@ card{
       position: relative;
       & > div {
         line-height: 17px;
-        margin: 0 20px;
+        padding: 0 20px;
         position: relative;
         &:first-child {
           margin: 0;
@@ -27,6 +27,16 @@ card{
                max-height: 100%;
                @extend %center-xy;
              }
+           }
+        }
+        &:last-of-type{
+          display: block;
+          position: absolute;
+          bottom: 20px;
+          width: 100%;
+          text-align: center;
+           a{
+             text-decoration: none;
            }
         }
         strong{
@@ -56,22 +66,6 @@ card{
         color: $secondary-color-100;
         &:hover{
           text-decoration: underline;
-        }
-      }
-      .action {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        background: $grey-color-60;
-        color: $main-color-100;
-        font-size: 16px;
-        line-height: 50px;
-        width: 100%;
-        text-align: center;
-        &:hover{
-          text-decoration: none;
-          color: $white;
-          background: $secondary-color-100;
         }
       }
       h4 {

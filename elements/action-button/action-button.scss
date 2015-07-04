@@ -1,31 +1,38 @@
 @import '../styleguide';
 
 /*How To Use*/
-/*Colors: white, red, purple*/
-/*Attributes: secondary, outlined*/
+//<action-button link/button/helper type="primary/secondary" fill="solid/outlined" color="red/purple/white" size="small/medium/large" align="left,center,right" action="{{action}}">
+//if helper attributes [type],[fill],[size] and [color] are not required
 
 action-button {
-  &[link], &[button]{
+  &[link], &[button] {
     a, input[type="submit"] {
       @extend %large-radius, %button-font;
-      padding: 10px 30px;
+      padding: 10px 20px;
       display: inline-block;
       color: $white;
       border: none;
       outline: none;
-      &.red {
-        background: $secondary-color-100;
-        &:hover {
-          background: $secondary-color-60;
-        }
+    }
+    &[color="red"] {
+      a, input[type="submit"] {
+      background: $secondary-color-100;
+      &:hover {
+        background: $secondary-color-60;
       }
-      &.purple {
-        background: $main-color-100;
-        &:hover {
-          background: $main-color-60;
-        }
+    }
+  }
+    &[color="purple"]{
+      a, input[type="submit"]{
       }
-      &.white {
+      background: $main-color-100;
+      &:hover {
+        background: $main-color-60;
+      }
+    }
+  }
+    &[color="white"] {
+      a, input[type="submit"] {
         color: $main-color-100;
         background: $white;
         &:hover {
@@ -33,37 +40,53 @@ action-button {
           background: rgba($white, .8);
         }
       }
-      &.align-right { text-align: right}
-      &.outlined { background: transparent;
-        &:hover {background: transparent; }
-        &.red {
-          @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset );
+    }
+    &[fill="outlined"] {
+      &[color="red"] {
+        a, input[type="submit"] {
+          background: transparent;
+          @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
           color: $secondary-color-100;
           &:hover {
-            @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset );
+            background: transparent;
+            @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset);
             color: $secondary-color-60;
           }
         }
-        &.purple {
-          @include box-shadow(0, 0, 0, 3px $main-color-100, inset );
+      }
+      &[color="purple"] {
+        a, input[type="submit"] {
+          background: transparent;
+          @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
           color: $main-color-100;
           &:hover {
-            @include box-shadow(0, 0, 0, 3px $main-color-60, inset );
+            background: transparent;
+            @include box-shadow(0, 0, 0, 3px $main-color-60, inset);
             color: $main-color-60;
           }
         }
-        &.white {
-          @include box-shadow(0, 0, 0, 3px $white, inset );
+      }
+      &[color="white"] {
+        a, input[type="submit"] {
+          background: transparent;
+          @include box-shadow(0, 0, 0, 3px $white, inset);
           color: $white;
           &:hover {
-            @include box-shadow(0, 0, 0, 3px rgba($white, .8), inset );
+            background: transparent;
+            @include box-shadow(0, 0, 0, 3px rgba($white, .8), inset);
             color: rgba($white, .8);
           }
         }
       }
-      &.secondary {
+    }
+    &[type="secondary"] {
+      a, input[type="submit"] {
         @extend %small-radius;
       }
+    }
+  &[size="large"] {
+    a, input[type="submit"] {
+      width: 100%;
     }
   }
   &[mainsearch] {
@@ -122,5 +145,4 @@ action-button {
       }
     }
   }
-
 }
