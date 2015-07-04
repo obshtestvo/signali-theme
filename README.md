@@ -106,11 +106,47 @@ customElement(componentService)
 module.exports = function (componentService) {
     componentService.register('custom', {
         template: require('./custom.html'),
-        attached: function (element) {
+        created: function () {
             // javascript to run after the element is rendered in te dom
+            // `this` is the element
         }
     })
 }
 ```
 
 [Mustache.js](https://github.com/janl/mustache.js/) is used as template language in `custom.html`.
+
+If the element appeared in the html like so:
+
+```
+<custom>
+    <h1>Headline</h1>
+    <p>...content...</p>
+    Left over text
+</custom>
+```
+
+and had a template like this:
+```
+<section class="heading-wrapper">
+    <content select="h1"></content>
+</section>
+<section class="content-wrapper">
+    <content select="p"></content>
+</section>
+```
+
+will produce final html:
+```
+<custom>
+    <section class="heading-wrapper">
+        <h1>Headline</h1>
+    </section>
+    <section class="content-wrapper">
+        <p>...content...</p>
+    </section>
+</custom>
+```
+
+The remaining unmatched content (`"Left over text"`) will be stored in `$detachedContent` element property.
+If the template included a all-matching `<content></content>` the same would have been inserted there.
