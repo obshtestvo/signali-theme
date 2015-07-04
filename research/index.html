@@ -67,11 +67,11 @@
             <login-box anonymous action="#auth">
                 Вход
             </login-box>
-            <login-box action="profile">
+            <login-box action="#settings">
                 <img src="">
                 <strong>Boyan Stoychev</strong>
                 <ul>
-                    <li><a href="#">Настройки</a></li>
+                    <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
                     <li><a href="#">Изход</a></li>
                 </ul>
             </login-box>
@@ -397,26 +397,39 @@
         </footer>
     </modal>
     <!--Modal Settings-->
-    <modal>
+    <modal id="settings">
         <headline size="large" placement="modal" align="center">Настройки</headline>
-        <setting>
+        <settings action="#">
             <tabs align="center">
-                <li><a href="#">Име</a></li>
-                <li><a class="active" href="#">Имейл</a></li>
-                <li><a href="#">Парола</a></li>
+                <li><a class="active" href="#generalSettings">Общо</a></li>
+                <li><a href="#passwordSettings">Смяна на парола</a></li>
             </tabs>
-            <form action="">
-                <input-field size="standart" id="email" type="email" placeholder="office@obshtestvo.bg">
+            <section id="generalSettings" tab>
+                <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
                     имейл адрес
                 </input-field>
-                <action-button link align="left" type="primary" fill="solid" color="red" action="google.com">
-                    запази
-                </action-button>
-            </form>
-        </setting>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+            </section>
+            <section id="passwordSettings" tab hidden>
+                <input-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+                <input-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
+                    имейл адрес
+                </input-field>
+            </section>
+            <action-button button align="left" type="primary" fill="solid" color="red">
+                запази
+            </action-button>
+        </settings>
     </modal>
     <!--Modal Add Signal-->
-    <modal style="display: none;">
+    <modal>
         <headline size="large" placement="modal" align="center">Добави сигнал</headline>
         <select-dropdown id="drop" name="dropdown" multiple size="standart" >
             <label>Местонахождение</label>

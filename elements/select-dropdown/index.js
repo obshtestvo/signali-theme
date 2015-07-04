@@ -85,13 +85,7 @@ selectize.define('filtering', function(options) {
             var onBlurArgs = arguments;
             setTimeout(function(){
                 if (!dest) return;
-                if ($.contains(self.$dropdown_filters[0], dest)) {
-                    console.log('in filters')
-                    //setTimeout(function() {
-                    //    self.focus();
-                    //}, 1)
-                    return;
-                }
+                if ($.contains(self.$dropdown_filters[0], dest)) return;
                 original.apply(self, onBlurArgs);
             }, 1);
         };

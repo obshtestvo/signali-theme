@@ -3,7 +3,7 @@ require('normalize.css/normalize.css');
 require('reset.scss');
 
 // jquery plugins are not yet all used to CommonJS
-window.$ = window.jQuery = require('jquery/dist/jquery');
+window.$ = window.jQuery = require('jquery');
 var ComponentService = require('service/pseudo-webcomponent.skate');
 var componentService = new ComponentService();
 
@@ -115,8 +115,8 @@ notificationEl(componentService);
 var socialButtonEl = require('social-button');
 socialButtonEl(componentService);
 
-var profileSettingsEl = require('profile-settings');
-profileSettingsEl(componentService);
+var settingsEl = require('settings');
+settingsEl(componentService);
 
 var filtersEl = require('filters');
 filtersEl(componentService);

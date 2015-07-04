@@ -1,0 +1,10 @@
+@import '../styleguide';
+
+settings {
+  form {
+    display: block;
+    @extend %small-radius;
+    padding: 30px;
+    background: $grey-color-60;
+  }
+}
