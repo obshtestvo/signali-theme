@@ -341,44 +341,14 @@
             <!--asasas-->
         <!--</tabs-nav>-->
     <!--</playground>-->
-    <fader style="display:none; ">
+    <div style="display:none; ">
         <!--Modal Window Login-->
     <modal id="login">
         <headline size="large" placement="modal" align="center">Вход</headline>
-        <login>
-            <site-auth action="" class="auth">
-                <input-field size="full" id="name" type="text">
-                    потребителско име
-                </input-field>
-                <input-field size="full" id="password" type="password">
-                    Парола
-                </input-field>
-                <action-button link align="left" action="google.com" color="red">
-                    вход
-                </action-button>
-                <action-button forgotten-password action="google.com">
-                    Забравена парола?
-                </action-button>
-            </site-auth>
-            <social-auth>
-                <headline size="small">Вход през Facebook</headline>
-                <notification information size="small">
-                    <p>Easy one click sign in. We won't post anything without your permission.</p>
-                </notification>
-                <social-button facebook action="google3.com"></social-button>
-                <social-button google action="fb.com"></social-button>
-            </social-auth>
-            <footer>
-                <a href="#">Направи си регистрация</a>
-            </footer>
-        </login>
-    </modal>
-    <!--Modal window Register-->
-    <modal>
         <headline size="large" placement="modal" align="center">Регистрация</headline>
-        <registration>
-            <site-auth action="" class="auth">
-                <input-field size="full" id="name" type="text">
+        <auth>
+            <site-auth registration-action="" login-action="" type="login" size="compact">
+                <input-field for="registration" size="full" id="name" type="text">
                     Име
                 </input-field>
                 <input-field size="full" id="email" type="email">
@@ -392,22 +362,31 @@
                 <input-field size="full" id="password" type="password">
                     Парола
                 </input-field>
-                <input-field size="full" id="password2" type="password">
+                <input-field for="registration" size="full" id="password2" type="password">
                     повторете паролата
                 </input-field>
-                <action-button link align="left" action="google.com" color="red">
+                <action-button button align="left" color="red">
                     вход
                 </action-button>
+                <action-button button for="registration" align="left" color="red">
+                    регистрация
+                </action-button>
+                <action-button forgotten-password action="google.com">
+                    Забравена парола?
+                </action-button>
             </site-auth>
-            <social-auth>
+            <social-auth type="login" size="compact">
                 <headline size="small">Вход през Facebook</headline>
                 <notification information size="small">
                     <p>Easy one click sign in. We won't post anything without your permission.</p>
                 </notification>
-                <social-button facebook action="google3.com"></social-button>
-                <social-button google action="fb.com"></social-button>
+                <social-button facebook login-action="google3.com" registration-action=""></social-button>
+                <social-button google login-action="fb.com" registration-action=""></social-button>
             </social-auth>
-        </registration>
+        </auth>
+        <footer>
+            <a href="#">Направи си регистрация</a>
+        </footer>
     </modal>
     <!--Modal Settings-->
     <modal>
@@ -476,7 +455,7 @@
             <p>Easy one click sign in. We won't post anything without your permission.</p>
         </notification>
     </modal>
-
+    </div>
 </page>
         <google-analytics account="asd"></google-analytics>
         <script src="build/bundle.js"></script>

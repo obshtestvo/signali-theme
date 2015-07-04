@@ -5,6 +5,11 @@ module.exports = function (componentService) {
         template: require('./action-button.html'),
         include: {
             arrow: require('./chevron-circle-right.svg')
+        },
+        created: function() {
+            if (this.$detachedContent) {
+                $(this).find('input').val(this.$detachedContent.text().trim())
+            }
         }
     })
 }

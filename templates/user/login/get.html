@@ -2,7 +2,7 @@
 {% load url from future %}
 
 {% block content %}
-    <form class="form-signin" role="form" action="{% url 'security:complete' "email" %}"
+    <form class="form-signin" role="form" action="{% url 'security:complete' 'email' %}"
           method="post">
         <input name="retry" type="hidden" value="{{ request.get_full_path }}"/>
         <h2 class="form-signin-heading">Enter Signali.bg</h2>

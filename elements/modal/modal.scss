@@ -4,6 +4,7 @@ modal {
   max-width: 700px;
   position: relative;
   display: block;
+  margin: 20px auto;
   .modal-box{
     background: $white;
     @extend %small-radius;
