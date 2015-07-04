@@ -77,7 +77,6 @@ select-dropdown {
     &.focus {
       box-shadow: none;
       border-color: $grey-color-80;
-      background: $grey-color-60 !important;
     }
     &.dropdown-active {
       @extend %small-radius;

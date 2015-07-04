@@ -7,7 +7,7 @@
 action-button {
   &[link], &[button] {
     a, input[type="submit"] {
-      @extend %large-radius, %button-font;
+      @extend %large-radius, %button-font, %anime;
       padding: 10px 20px;
       display: inline-block;
       color: $white;
