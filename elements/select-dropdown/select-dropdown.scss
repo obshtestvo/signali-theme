@@ -187,6 +187,13 @@ select-dropdown {
           margin-top: round(-1 * $arrow-height / 2);
           border: none;
         }
+          svg{
+            width: 16px;
+            height: 100%;
+            @extend %center-y;
+            right: 8px;
+            fill: $grey-color-80;
+          }
         &.dropdown-active:after {
           margin-top: $arrow-height * -0.8;
           border-width: 0 $arrow-width/2 $arrow-height $arrow-width/2;
@@ -201,14 +208,14 @@ select-dropdown {
   &[mainsearch] {
     float: left;
     &:first-of-type{
-      width: 34%;
+      width: 23.8%;
       .selectize-input{
         border-radius: 5px 0 0 5px;
         z-index: 10;
       }
     }
     &:last-of-type{
-      width: 55.5%;
+      width: 65.7%;
       margin: 0 0 0 -1px;
       .selectize-input {
         border-radius: 0 5px 5px 0;
@@ -231,11 +238,11 @@ select-dropdown {
       }
     }
     .selectize-input {
-      padding: $padding-vertical-main-search $padding-horizontal-main-search;
+      padding: $padding-vertical-main-search+4px $padding-horizontal-main-search;
     }
     .selectize-control.multi {
       .selectize-input.has-items {
-        padding: $arrow-width ($padding-horizontal*2)-2px $arrow-height+1px ;
+        padding: $arrow-width+4px ($padding-horizontal*2)-2px $arrow-height+5px ;
       }
     }
   }
