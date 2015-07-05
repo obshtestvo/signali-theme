@@ -20,8 +20,20 @@ call-to-action {
       @extend %bodytext-large-font;
     }
   }
-  &[mainsearch]{
+  &[density="airy"]{
     position: relative;
     padding: 40px 0 77px;
+  }
+  &[density="comfortable"]{
+    position: relative;
+    padding: 40px 0 77px;
+  }
+  &[density="cozy"]{
+    position: relative;
+    padding: 40px 0 77px;
+  }
+  &[density="compact"]{
+    position: relative;
+    padding: 0;
   }
 }

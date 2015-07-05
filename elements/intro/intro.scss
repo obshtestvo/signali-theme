@@ -11,9 +11,11 @@ intro {
   & > .clearfix {
     position: relative;
   }
-  &[mainsearch]{
+  &[density="airy"]{
+    padding: 40px 0;
+    position: relative;
   }
-  &[base]{
+  &[density="comfortable"]{
     position: absolute;
     bottom: 0px;
   }
