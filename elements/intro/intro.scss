@@ -23,6 +23,8 @@ intro {
     color: $white;
     & > div {
       line-height: 0;
+      position: relative;
+      left: -3px;
       a{
         display: inline-block;
         line-height: 23px;

@@ -135,3 +135,6 @@ listElement(componentService);
 
 var listItemElement = require('list-item');
 listItemElement(componentService);
+
+var commentsElement = require('comments');
+commentsElement(componentService);

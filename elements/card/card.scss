@@ -99,5 +99,11 @@ card{
         }
       }
     }
+    p{
+      @extend %popup-font;
+      text-align: center;
+      color: $grey-color-100;
+      padding: 10px 0 0;
+    }
   }
 }

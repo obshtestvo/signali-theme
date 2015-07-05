@@ -1,0 +1,11 @@
+@import '../styleguide';
+
+comments{
+  background: $white;
+  display: block;
+  @extend %wrapper;
+  & > section {
+    width: 75%;
+    padding: 0 5px 0 0;
+  }
+}
