@@ -1,0 +1,10 @@
+@import '../styleguide';
+list {
+  ul{
+    display: block;
+    list-style-type: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+}

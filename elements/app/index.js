@@ -126,3 +126,12 @@ pageElement(componentService);
 
 var authElement = require('auth');
 authElement(componentService);
+
+var resumeElement = require('resume');
+resumeElement(componentService);
+
+var listElement = require('list');
+listElement(componentService);
+
+var listItemElement = require('list-item');
+listItemElement(componentService);
