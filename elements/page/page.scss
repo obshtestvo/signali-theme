@@ -5,10 +5,15 @@ page {
   transition-delay: 0.3s;
   transition-duration: 0.3s;
   display: block;
-  background: $grey-color-20;
   position: relative;
   z-index: 2;
   opacity:0;
+  &[color="semilight"]{
+    background: $grey-color-20;
+  }
+  &[color="light"]{
+    background: $white;
+  }
 }
 page[resolved] {
   opacity:1;

@@ -138,3 +138,6 @@ listItemElement(componentService);
 
 var commentsElement = require('comments');
 commentsElement(componentService);
+
+var commentElement = require('comment');
+commentElement(componentService);

@@ -1,0 +1,16 @@
+<content select="article"></content>
+<footer class="clearfix">
+    <content select="span"></content>
+    <div class="prfile">
+        {{#various}}
+            <span class="avatar">
+                {{{circle}}}
+                <content select="img"></content>
+            </span>
+        {{/various}}
+        <content select=".name"></content>
+    </div>
+    {{#various}}
+        <content select=".answer"></content>
+    {{/various}}
+</footer>
