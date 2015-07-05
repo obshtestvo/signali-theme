@@ -12,7 +12,7 @@ module.exports = function (componentService) {
         },
         created: function () {
             var el = this;
-            $(el).on( 'click', '[id^="close"]', function(e) {
+            $(el).on( 'click', '.close-modal', function(e) {
                 e.preventDefault();
                 el.close();
             });
