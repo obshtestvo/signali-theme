@@ -7,6 +7,7 @@ card{
     section {
       @extend %small-radius;
       overflow: hidden;
+      background: $white;
       box-shadow: 0 0 5px 0 $grey-color-80;
       height: 475px;
       padding: 0 0 60px;
@@ -32,7 +33,8 @@ card{
         &:last-of-type{
           display: block;
           position: absolute;
-          bottom: 20px;
+          bottom: 17px;
+          padding: 0 18px;
           width: 100%;
           text-align: center;
            a{

@@ -24,6 +24,7 @@ module.exports = function (componentService) {
                 }).get();
 
                 var options = {
+                    //openOnFocus: false,
                     valueField: 'id',
                     labelField: 'title',
                     searchField: 'title',

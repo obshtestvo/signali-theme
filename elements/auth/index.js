@@ -8,7 +8,7 @@ module.exports = function (componentService) {
             var $email = $el.find('input[name="email"]');
             var $name = $el.find('input[name="name"]');
             var $registrationElements = $('[for="registration"]');
-            var $loginElements = $('[for="login"]');
+            var $loginElements = $('[for="login"]') ;
             var $showTrigger = $('[auth-trigger]');
 
             $('[registration-trigger]').click(function(e) {
