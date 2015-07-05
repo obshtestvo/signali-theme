@@ -46,7 +46,7 @@
     </menu>
     {% if user.is_authenticated %}
     <login-box action="#settings">
-        <img src="">
+        <img src="{{ user.get_avatar }}">
         <strong>{{ user.get_full_name }}</strong>
         <ul>
             <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
