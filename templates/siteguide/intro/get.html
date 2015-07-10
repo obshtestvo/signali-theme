@@ -4,7 +4,7 @@
 <loader target="page"></loader>
 <page>
     <cover density="airy" src="test/base-header-background.jpg">
-        {% include 'siteguide/intro/_topnav.html' %}
+        {% include '_topnav.html' with request=request %}
         <intro>
             <call-to-action align="center" density="airy">
                 <h1>Пoдай сигнал</h1>
@@ -17,10 +17,10 @@
                 <select-dropdown id="drop" name="dropdown" multiple mainsearch>
                     <label>проблем</label>
                     <value id="2">corruption</value>
-                    <value id="3" >ecology</value>
-                    <value id="5" >Красота майна</value>
-                    <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                    <value id="6" >асдасда сд РАСФДАСФасдасд </value>
+                    <value id="3">ecology</value>
+                    <value id="5">Красота майна</value>
+                    <value id="4">Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
+                    <value id="6">асдасда сд РАСФДАСФасдасд </value>
                     <div class="filters">
                         <p>Доп. опции</p>
                         <section>
