@@ -1,15 +1,14 @@
 {% extends 'layout.html' %}
 {% load restful %}
+{% load contactpoint %}
+{% load visibility %}
 {% block content %}
 <loader target="page"></loader>
 <page>
     <cover density="airy" src="test/base-header-background.jpg">
         {% include '_topnav.html' with request=request %}
+        {% contactpoint_stats %}
         <intro>
-            <call-to-action align="center" density="airy">
-                <h1>Пoдай сигнал</h1>
-                <p>Намери и подай сигнал към над <underline>121</underline> институции в над <underline>23</underline> области.</p>
-            </call-to-action>
             <form action="">
                 <select-dropdown id="drop2" name="dropdown2" location mainsearch>
                     <label>къде?</label>
@@ -33,22 +32,7 @@
                     търси
                 </action-button>
             </form>
-            <section>
-                <headline size="small" density="airy">Популярни теми</headline>
-                <a href="#" color="purple">Бездомни кучета</a>
-                <a href="#" color="blue">Пътно-транспортни</a>
-                <a href="#" color="green">Насилие</a>
-                <a href="#" color="yellow">Дупки</a>
-                <a href="#" color="purple">Бездомни кучета</a>
-                <a href="#" color="blue">Пътно-транспортни</a>
-                <a href="#" color="red">Пътно-транспортни</a>
-                <a href="#" color="green">Насилие</a>
-                <a href="#" color="yellow">Дупки по пътищата</a>
-                <a href="#" color="purple">Бездомни кучета</a>
-                <a href="#" color="blue">Пътно-транспортни</a>
-                <a href="#" color="green">Насилие</a>
-
-            </section>
+            {% popular_categories %}
         </intro>
     </cover>
     <featured>

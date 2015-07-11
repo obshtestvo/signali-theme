@@ -1,0 +1,19 @@
+{% load restful %}
+<section>
+    <headline size="small" density="airy">Популярни теми</headline>
+    {% for category in categories %}
+    <a href="{% url 'contact-point-list' %}{% query category=category.pk %}" color="purple">{{ category.title }}</a>
+    {% endfor %}
+{#    <a href="#" color="purple">Бездомни кучета</a>#}
+{#    <a href="#" color="blue">Пътно-транспортни</a>#}
+{#    <a href="#" color="green">Насилие</a>#}
+{#    <a href="#" color="yellow">Дупки</a>#}
+{#    <a href="#" color="purple">Бездомни кучета</a>#}
+{#    <a href="#" color="blue">Пътно-транспортни</a>#}
+{#    <a href="#" color="red">Пътно-транспортни</a>#}
+{#    <a href="#" color="green">Насилие</a>#}
+{#    <a href="#" color="yellow">Дупки по пътищата</a>#}
+{#    <a href="#" color="purple">Бездомни кучета</a>#}
+{#    <a href="#" color="blue">Пътно-транспортни</a>#}
+{#    <a href="#" color="green">Насилие</a>#}
+</section>
