@@ -40,19 +40,16 @@ ComponentService.componentDefaults = {
 function makeTemplate(options) {
     return function () {
         var element = this;
+        var parent = element.parentNode;
+        var shadeid = 'shade-' + Math.floor(Math.random() * 1000) + '-' + Date.now();
+        var qyueryPrefix = '[shadeid="'+shadeid+'"] > ';
+        element.setAttribute('shadeid', shadeid)
         var data = $.extend({}, options.include);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
             data[attr.name] = attr.value == '' ? true : attr.value;
         }
         var $template = $(options.template(data));
-        if (options.type == skate.type.ATTRIBUTE) {
-            $el.after($template);
-            var $placeholder = $template.find('content');
-            $placeholder.after($el);
-            $placeholder.remove();
-            return;
-        }
         var node, i, j, k, placeholder, toAppend, parentNode, nodes = [], isDirect;
         for (i = 0; i < $template.length; i++) {
             node = $template[i];
@@ -71,7 +68,7 @@ function makeTemplate(options) {
             for (j = 0; j < queriedPlaceholders.length; j++) {
                 placeholder = queriedPlaceholders[j];
                 var selector = placeholder.getAttribute("select");
-                var matching = element.querySelectorAll(selector);
+                var matching = parent.querySelectorAll(qyueryPrefix + selector);
                 toAppend = [].slice.call(matching);
                 parentNode = placeholder.parentNode;
                 for (k = 0; k < toAppend.length; k++) {
@@ -112,7 +109,7 @@ function makeTemplate(options) {
         if (element.childNodes.length > 0) {
             var remaining = $(element.childNodes);
             remaining.detach();
-            this.$detachedContent = remaining;
+            element.$detachedContent = remaining;
         }
         for (i = 0; i < nodes.length; i++) {
             element.appendChild(nodes[i])
