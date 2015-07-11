@@ -141,3 +141,6 @@ commentsElement(componentService);
 
 var commentElement = require('comment');
 commentElement(componentService);
+
+var popularElement = require('popular');
+popularElement(componentService);

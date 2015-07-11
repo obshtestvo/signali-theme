@@ -19,35 +19,4 @@ intro {
     position: absolute;
     bottom: 0px;
   }
-  .popular{
-    color: $white;
-    & > div {
-      line-height: 0;
-      position: relative;
-      left: -3px;
-      a{
-        display: inline-block;
-        line-height: 23px;
-        padding: 1px 10px;
-        margin: 0 10px 10px 0;
-        @extend %large-radius;
-        color: $white;
-        &[color="yellow"]{
-          background: $yellow;
-        }
-        &[color="green"]{
-          background: $green;
-        }
-        &[color="blue"]{
-          background: $blue;
-        }
-        &[color="purple"]{
-          background: $purple;
-        }
-        &[color="red"]{
-          background: $red;
-        }
-      }
-    }
-  }
 }

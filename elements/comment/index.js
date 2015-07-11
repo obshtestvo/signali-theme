@@ -4,7 +4,8 @@ module.exports = function (componentService) {
     componentService.register('comment', {
         template: require('./comment.html'),
         include: {
-            circle: require('./circle.svg')
+            circle: require('./circle.svg'),
+            reply: require('./reply.svg')
         }
     })
 }

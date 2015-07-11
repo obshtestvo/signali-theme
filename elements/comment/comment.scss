@@ -4,6 +4,9 @@ comment{
   display: block;
   @extend %small-radius;
   margin: 0 0 10px 0;
+  &:first-of-type{
+    margin: 20px 0 10px;
+  }
   article{
     padding: 15px 20px 17px;
     p{
@@ -61,8 +64,14 @@ comment{
   }
   &[mine]{
     background: none;
-    footer{
-      padding: 0;
+    article {
+      padding: 6px 20px 7px;
+      p {
+        @extend %popup-font;
+      }
+    }
+    footer {
+      padding: 0 0 5px;
       border-bottom: 1px solid $grey-color-60;
       margin: 0 20px;
     }
