@@ -13,40 +13,62 @@ module.exports = function (componentService) {
             var $filters =  $el.find('.filters');
             if (el.hasAttribute('location')) {
                 var picker = new AddressPicker($input, $('<h1>').get(0));
-            } else {
-                var values = this.$detachedContent.filter('value');
-                var selected = values.filter('[selected]').map(function() {
-                    return this.id
-                }).get();
-                var choices = values.map(function() {
-                    var $this = $(this);
-                    return {id: this.id, title: $this.text()}
-                }).get();
-
-                var options = {
-                    //openOnFocus: false,
-                    valueField: 'id',
-                    labelField: 'title',
-                    searchField: 'title',
-                    options: choices,
-                    items: selected,
-                    plugins: {}
-                };
-                if (el.hasAttribute('multiple')) {
-                    options.plugins['remove_button']= {
-                        label: require('icons/times-circle.svg')
-                    };
-                }
-                if (el.hasAttribute('freetext')) {
-                    options.create = true
-                }
-                if ($filters.length) {
-                    options.plugins['filtering']= {
-                        filters: $filters
-                    };
-                }
-                $input.selectize(options);
+                return;
             }
+
+            var isMultiple = el.hasAttribute('multiple');
+            var values = this.$detachedContent.filter('value');
+            var selected = values.filter('[selected]').map(function() {
+                return this.id
+            }).get();
+            var inputMap = {};
+            var choices = values.map(function() {
+                var $this = $(this);
+                var item = {id: this.id, title: $this.text()};
+                if (this.hasAttribute('input')) {
+                    var inputName = this.attributes.input.value;
+                    inputMap[inputName] = null;
+                    item.input = inputName
+                }
+                return item
+            }).get();
+
+            for (var inputName in inputMap) {
+                var selectEl = document.createElement("select");
+                selectEl.setAttribute('name', inputName);
+                if (isMultiple) selectEl.setAttribute('multiple', true);
+                el.appendChild(selectEl);
+                inputMap[inputName] = $(selectEl)
+            }
+
+            var options = {
+                //openOnFocus: false,
+                valueField: 'id',
+                labelField: 'title',
+                searchField: 'title',
+                options: choices,
+                items: selected,
+                plugins: {}
+            };
+            if (isMultiple) {
+                options.plugins['remove_button']= {
+                    label: require('icons/times-circle.svg')
+                };
+            }
+            if (el.hasAttribute('freetext')) {
+                options.create = true
+            }
+            if (!el.hasAttribute('name')) {
+                options.plugins['multiple_inputs']= {
+                    inputMap: inputMap
+                };
+            }
+            if ($filters.length) {
+                options.plugins['filtering']= {
+                    filters: $filters
+                };
+            }
+            $input.selectize(options);
         }
     })
 };
@@ -72,7 +94,7 @@ selectize.define('filtering', function(options) {
                     self.onBlur(null, document.activeElement)
                 }, 1)
             });
-            self.$dropdown.append(self.$dropdown_filters)
+            self.$dropdown.append(self.$dropdown_filters);
             return ret;
         };
     })();
@@ -86,6 +108,28 @@ selectize.define('filtering', function(options) {
                 if ($.contains(self.$dropdown_filters[0], dest)) return;
                 original.apply(self, onBlurArgs);
             }, 1);
+        };
+    })();
+});
+
+selectize.define('multiple_inputs', function(settings) {
+    var self = this;
+    this.updateOriginalInput = (function() {
+        var original = self.updateOriginalInput;
+        return function() {
+            console.log('updateOriginalInput')
+            var ret = original.apply(this, arguments);
+            var val, inputName, i, n, optionsHTMLByInput = {};
+            for (i = 0, n = self.items.length; i < n; i++) {
+                val = self.items[i];
+                inputName = self.options[val].input;
+                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = []
+                optionsHTMLByInput[inputName].push('<option value="' + val + '" selected="selected"></option>');
+            }
+            for (inputName in optionsHTMLByInput) {
+                settings.inputMap[inputName].html(optionsHTMLByInput[inputName].join(''));
+            }
+            return ret;
         };
     })();
 });

@@ -31,6 +31,10 @@ select-dropdown {
   $tag-selected-color: $white;
   $tag-selected-background: $secondary-color;
 
+  select {
+    display: none;
+  }
+
   .selectize-control.plugin-remove_button {
     [data-value] {
       position: relative;
