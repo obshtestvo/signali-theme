@@ -112,6 +112,9 @@ textareaFieldEl(componentService);
 var inputFieldEl = require('input-field');
 inputFieldEl(componentService);
 
+var nameTagEl = require('name-tag');
+nameTagEl(componentService);
+
 var notificationEl = require('notification');
 notificationEl(componentService);
 
