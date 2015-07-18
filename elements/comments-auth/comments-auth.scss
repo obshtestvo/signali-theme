@@ -4,4 +4,8 @@ comments-auth{
   @extend %wrapper;
   display: block;
   padding: 0 0 30px;
+  p{
+    @extend %popup-font;
+    padding: 7px 0 0;
+  }
 }
