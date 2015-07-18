@@ -150,6 +150,11 @@ action-button {
       line-height: 40px
     }
   }
+  &[icon="false"]{
+    svg{
+      display: none;
+    }
+  }
   &[password]{
     float: right;
   }
