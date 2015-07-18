@@ -1,93 +1,21 @@
 @import '../styleguide';
 
-comment{
+survey{
   display: block;
+  background: $grey-color-60;
   @extend %small-radius;
-  margin: 0 0 10px 0;
-  &:first-of-type{
-    margin: 20px 0 10px;
-  }
-  article{
-    padding: 15px 20px 17px;
-    p{
-      @extend %bodytext-font;
+  margin: 20px 0;
+  padding: 15px 20px 20px ;
+  h5{
+    @extend %bodytext-large-font;
+    padding: 0 0 11px 0;
+    strong{
+      font-weight: 400;
     }
   }
-  footer{
-    display: block;
-    line-height: 18px;
-    font-size: 12px;
-    & > span {
-      float: left;
-      color: $grey-color-100;
-    }
-    .prfile{
-      margin: 0 0 0 5px;
-      float: left;
-      .avatar{
-        width: 18px;
-        height: 18px;
-        position: relative;
-        background: $grey-color-80;
-        float: left;
-        margin: 0 5px 0 0;
-        svg{
-          width: 6px;
-          height: 6px;
-          @extend %center-xy;
-          fill: $grey-color-100;
-          z-index: 1;
-        }
-        img{
-          max-width: 100%;
-          z-index: 2;
-          position: relative;
-        }
-      }
-    }
-    a {
-      color: $secondary-color-100;
-      &:hover{
-        text-decoration: underline;
-      }
-    }
-    .answer{
-      float: right;
-      position: relative;
-      padding: 0 0 0 16px;
-      svg{
-        display: none;
-        width: 12px;
-        height: 11px;
-        fill: $secondary-color-100;
-        position: absolute;
-        left: 0;
-        top: 3px;
-        &:first-of-type{
-          display: block;
-        }
-      }
-    }
-  }
-  &[various]{
-    background: $grey-color-20;
-    footer{
-      padding: 10px 10px;
-      border-top: 1px solid $grey-color-60;
-    }
-  }
-  &[mine]{
-    background: none;
-    article {
-      padding: 6px 20px 7px;
-      p {
-        @extend %popup-font;
-      }
-    }
-    footer {
-      padding: 0 0 5px;
-      border-bottom: 1px solid $grey-color-60;
-      margin: 0 20px;
+  &[yesandno]{
+    action-button {
+      margin: 0 5px 0 0;
     }
   }
 }

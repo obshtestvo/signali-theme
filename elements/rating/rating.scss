@@ -19,6 +19,9 @@ rating {
     }
   }
   &[survey]{
-    background: red;
+    & > ul {
+      padding: 0;
+      line-height: 13px;
+    }
   }
 }

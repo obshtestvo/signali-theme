@@ -83,9 +83,14 @@ action-button {
         @extend %small-radius;
       }
     }
-    &[size="large"] {
+    &[size="extralarge"] {
       a, input[type="submit"] {
         width: 100%;
+      }
+    }
+    &[size="large"] {
+      a, input[type="submit"] {
+        padding: 10px 40px;
       }
     }
     &[size="medium"] {
