@@ -34,4 +34,15 @@ star{
       }
     }
   }
+  [survey] &  {
+    width:19px;
+    height: 18px;
+    li{
+      &.type-empty {
+        .outline {
+          fill: $grey-color-100;
+        }
+      }
+    }
+  }
 }
