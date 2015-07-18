@@ -169,14 +169,16 @@ Unlucky
     <comments-auth notlogged>
         <headline size="small" density="compact">Моля влезте за да коментирате</headline>
         <action-button link type="primary" fill="solid" color="red" size="medium" align="left" action="{{action}}">Вход</action-button>
-        <action-button link type="primary" fill="solid" color="red" size="medium" align="left" action="{{action}}">регистрация</action-button>
+        <action-button helper density="comfortable" align="left inline" action="google.com">
+            <span>или се</span>регистрирай
+        </action-button>
     </comments-auth>
     <comments-auth logged>
         <headline size="small" density="compact">Коментирай</headline>
-        <strong>Пишете като Димитър Райков (me@dreamture.net)</strong>
-        <text-areafield id="comment">
+        <p>Пишете като Димитър Райков (me@dreamture.net)</p>
+        <textarea-field id="comment-area" size="full">
 
-        </text-areafield>
+        </textarea-field>
         <survey yesandno>
             <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
             <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">Да</action-button>

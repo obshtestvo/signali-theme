@@ -4,7 +4,7 @@ survey{
   display: block;
   background: $grey-color-60;
   @extend %small-radius;
-  margin: 20px 0;
+  margin: 0 0 20px 0;
   padding: 15px 20px 20px ;
   h5{
     @extend %bodytext-large-font;

@@ -12,9 +12,9 @@
         <script src="build/head.js"></script>
     </head>
     <body>
-        <!--[if lt IE 8]>
-            Unlucky
-        <![endif]-->
+    <!--[if lt IE 8]>
+        Unlucky
+    <![endif]-->
 <loader target="page"></loader>
 <page color="semilight">
     <cover density="airy" src="test/base-header-background.jpg">
@@ -211,8 +211,8 @@
                     </rating>
                 </card>
             </cards>
-            <action-button more align="right" action="google.com">
-                виж всички
+            <action-button helper density="airy" align="right" action="google.com">
+                <span>или</span>виж всички
             </action-button>
         </cards-area>
         <cards-area>
@@ -296,8 +296,8 @@
                     </rating>
                 </card>
             </cards>
-            <action-button more align="right" action="google.com">
-                виж всички
+            <action-button helper density="airy" align="right" action="google.com">
+              <span>или</span>виж всички
             </action-button>
         </cards-area>
         <donation>
@@ -341,28 +341,6 @@
             <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
         </sponsors>
     </footer-wrapper>
-    <!--<picker>admin</picker>-->
-    <!--<playground>-->
-        <!--<action-button align="center" action="google.com" color="white">-->
-            <!--Логни Са Ва!-->
-        <!--</action-button>-->
-        <!--<action-button align="center" action="google.com" color="purple" secondary outlined>-->
-            <!--Ари Ва!-->
-        <!--</action-button>-->
-        <!--<checkbox id="asdasd" name="test" checked>Test checkbox</checkbox>-->
-        <!--<radio-button id="rarar" name="test" >Test radio</radio-button>-->
-        <!--<radio-button id="rarar2" name="test" >Test radio</radio-button>-->
-        <!--<radio-button id="rarar3" name="test" >Test radio</radio-button>-->
-        <!--<breadcrumb>-->
-            <!--<crumb action="google.com">Home</crumb>-->
-            <!--<crumb action="google.com">This is not so home</crumb>-->
-            <!--<crumb action="google.com">Far away from home</crumb>-->
-        <!--</breadcrumb>-->
-
-        <!--<tabs-nav align="left">-->
-            <!--asasas-->
-        <!--</tabs-nav>-->
-    <!--</playground>-->
     <div style="display:none; ">
         <!--Modal Window Login-->
     <modal id="auth">
@@ -393,7 +371,7 @@
                 <action-button button for="registration" type="primary" fill="solid" align="left" color="red" hidden>
                     регистрация
                 </action-button>
-                <action-button forgotten-password for="login" action="google.com">
+                <action-button helper password align="right" density="comfortable" for="login" action="google.com">
                     Забравена парола?
                 </action-button>
             </site-auth>

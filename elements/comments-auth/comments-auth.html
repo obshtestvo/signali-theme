@@ -1,15 +1,20 @@
+<content select="comments-auth > headline"></content>
+{{#notlogged}}
 <section class="not-logged">
-    {{{#notlogged}}}
+    <div class="clearfix">
+    <content select="action-button"></content>
+    </div>
     <content></content>
-    {{{/notlogged}}}
 </section>
+{{/notlogged}}
 
+{{#logged}}
 <section class="logged">
-    {{{#logged}}}
-    <contnet select="p"></contnet>
-    <form action="#">
-
-        <content select="zahah"></content>
+    <content select="p"></content>
+    <form action="">
+        <content select="textarea-field"></content>
+        <content select="survey"></content>
+        <content select="action-button"></content>
     </form>
-    {{{/logged}}}
 </section>
+{{/logged}}

@@ -105,13 +105,13 @@ action-button {
       }
     }
   }
-  &[more] {
+  &[helper] {
     div {
       font-size: 14px;
-      line-height: 50px;
       span {
         color :$grey-color-100;
         font-style: italic;
+        padding: 0 0 0 10px;
       }
       a {
         color: $secondary-color-100;
@@ -143,17 +143,15 @@ action-button {
         text-align: left;
       }
     }
-  }
-  &[forgotten-password] {
-    float: right;
-    line-height: 40px;
-    a{
-      font-size: 12px;
-      color: $secondary-color-100;
-      &:hover{
-        color: $secondary-color-hover;
-      }
+    &[density="airy"]{
+      line-height: 50px
     }
+    &[density="comfortable"]{
+      line-height: 40px
+    }
+  }
+  &[password]{
+    float: right;
   }
 }
 

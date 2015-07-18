@@ -6,14 +6,10 @@
     <input type="submit" value="">
 {{/button}}
 
-{{#more}}
+{{#helper}}
     <div class="
         {{#align}}align-{{align}}{{/align}}
         {{#inline}}inline{{/inline}}">
-        <span>или</span> <a href="{{action}}"><content></content>{{{arrow}}}</a>
+         <content select="span"></content> <a href="{{action}}"><content></content>{{^password}}{{{arrow}}}{{/password}}<content></content></a>
     </div>
-{{/more}}
-
-{{#forgotten-password}}
-    <a href="{{action}}"><content></content></a>
-{{/forgotten-password}}
+{{/helper}}
