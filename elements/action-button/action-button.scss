@@ -16,21 +16,20 @@ action-button {
     }
     &[color="red"] {
       a, input[type="submit"] {
-      background: $secondary-color-100;
-      &:hover {
-        background: $secondary-color-60;
+        background: $secondary-color-100;
+        &:hover {
+          background: $secondary-color-60;
+        }
       }
     }
-  }
-    &[color="purple"]{
-      a, input[type="submit"]{
-      }
-      background: $main-color-100;
-      &:hover {
-        background: $main-color-60;
+    &[color="purple"] {
+      a, input[type="submit"] {
+        background: $main-color-100;
+        &:hover {
+          background: $main-color-60;
+        }
       }
     }
-  }
     &[color="white"] {
       a, input[type="submit"] {
         color: $main-color-100;
@@ -84,20 +83,21 @@ action-button {
         @extend %small-radius;
       }
     }
-  &[size="large"] {
-    a, input[type="submit"] {
-      width: 100%;
+    &[size="large"] {
+      a, input[type="submit"] {
+        width: 100%;
+      }
     }
-  }
-  &[size="medium"] {
-    a, input[type="submit"] {
-      padding: 10px 30px;
+    &[size="medium"] {
+      a, input[type="submit"] {
+        padding: 10px 30px;
+      }
     }
-  }
-  &[mainsearch] {
-    a, input[type="submit"]{
-      @extend %center-y;
-      right: 0;
+    &[mainsearch] {
+      a, input[type="submit"] {
+        @extend %center-y;
+        right: 0;
+      }
     }
   }
   &[more] {
@@ -151,3 +151,4 @@ action-button {
     }
   }
 }
+

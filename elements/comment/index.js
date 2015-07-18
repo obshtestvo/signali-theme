@@ -6,6 +6,9 @@ module.exports = function (componentService) {
         include: {
             circle: require('./circle.svg'),
             reply: require('./reply.svg')
+        },
+        created: function () {
+            $(".reply-icon").appendTo($(".answer"));
         }
     })
 }

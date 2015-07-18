@@ -136,8 +136,14 @@ listElement(componentService);
 var listItemElement = require('list-item');
 listItemElement(componentService);
 
+var surveyElement = require('survey');
+surveyElement(componentService);
+
 var commentsElement = require('comments');
 commentsElement(componentService);
+
+var commentsAuthElement = require('comments-auth');
+commentsAuthElement(componentService);
 
 var commentElement = require('comment');
 commentElement(componentService);
