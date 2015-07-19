@@ -180,6 +180,15 @@ select-dropdown {
     width: 50%;
   }
 
+  &[size="one-third"]{
+    width: 33.33%;
+    float: left;
+    padding: 0 0 0 20px;
+    &:first-of-type{
+      padding: 0;
+    }
+  }
+
   &[size="standart"]{
     max-width: 380px;
   }
