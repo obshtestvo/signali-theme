@@ -30,7 +30,9 @@ select-dropdown {
   $tag-background: linear-gradient(to bottom, $grey-color-60 0%, $grey-color-80 100%);
   $tag-selected-color: $white;
   $tag-selected-background: $secondary-color;
-
+&[density="compact"]{
+  margin:0px;
+}
   select {
     display: none;
   }
@@ -191,6 +193,9 @@ select-dropdown {
 
   &[size="standart"]{
     max-width: 380px;
+  }
+  &[size="small"]{
+    width: 220px;
   }
   &[location]{
     .selectize-control.single {

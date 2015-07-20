@@ -115,8 +115,8 @@ inputFieldEl(componentService);
 var nameTagEl = require('name-tag');
 nameTagEl(componentService);
 
-var listingSearchEl = require('listing-search');
-listingSearchEl(componentService);
+var filteringEl = require('filtering');
+filteringEl(componentService);
 
 var notificationEl = require('notification');
 notificationEl(componentService);
