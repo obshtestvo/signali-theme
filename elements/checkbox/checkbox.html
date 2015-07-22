@@ -1,9 +1,9 @@
+{{^checked-disabled}}
 <input type="checkbox" {{#name}}name="{{name}}"{{/name}} id="{{id}}Input" {{#checked}}checked="checked"{{/checked}}/><label class="check" for="{{id}}Input">{{{tick}}}</label><label for="{{id}}Input">
 <content></content>
 </label>
+{{/checked-disabled}}
 
-{{#disck}}
-<div>
-    <content></content>
-</div>
-{{/disck}}
+{{#checked-disabled}}
+    {{{tick}}}<content></content>
+{{/checked-disabled}}

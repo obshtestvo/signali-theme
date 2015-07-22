@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js" lang="bg" ng-app="signali" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="robots" content="all" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Signali.bg</title>
+    <meta name="description" content="Signali.bg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="build/app.css">
+    <script src="build/head.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+Unlucky
+<![endif]-->
+<loader target="page"></loader>
+<page color="light">
+<cover density="comfortable" src="test/smoking.jpg">
+    <top-nav>
+        <menu>
+            Категории
+            <menu-column>
+                <h2>Граждански</h2>
+                <ul>
+                    <li><a href="#">Бракониерство</a></li>
+                    <li><a href="#">Престъпления - кражба, насилие...</a></li>
+                    <li><a href="#">Изгубени вещи</a></li>
+                    <li><a href="#">Пътно-транспортни</a></li>
+                    <li><a href="#">Градска среда</a></li>
+                    <li><a href="#">Корупция, измама</a></li>
+                </ul>
+            </menu-column>
+            <menu-column>
+                <h2>Престъпност</h2>
+                <ul>
+                    <li><a href="#">Нарушаване на човешки права</a></li>
+                    <li><a href="#">Изборни нарушения</a></li>
+                    <li><a href="#">Хранителна индустрия</a></li>
+                    <li><a href="#">Тютюнопушене</a></li>
+                    <li><a href="#">Изгубени вещи</a></li>
+                    <li><a href="#">Пътно-транспортни</a></li>
+                </ul>
+            </menu-column>
+            <menu-column>
+                <h2>Градски</h2>
+                <ul>
+                    <li><a href="#">Бракониерство</a></li>
+                    <li><a href="#">Престъпления - кражба, насилие...</a></li>
+                    <li><a href="#">Изгубени вещи</a></li>
+                    <li><a href="#">Пътно-транспортни</a></li>
+                    <li><a href="#">Градска среда</a></li>
+                    <li><a href="#">Корупция, измама</a></li>
+                </ul>
+            </menu-column>
+            <menu-column>
+                <h2>Потребителски</h2>
+                <ul>
+                    <li><a href="#">Нарушаване на човешки права</a></li>
+                    <li><a href="#">Изборни нарушения</a></li>
+                    <li><a href="#">Хранителна индустрия</a></li>
+                    <li><a href="#">Тютюнопушене</a></li>
+                </ul>
+            </menu-column>
+        </menu>
+        <login-box anonymous action="#auth">
+            Вход
+        </login-box>
+        <login-box action="#settings">
+            <img src="">
+            <strong>Boyan Stoychev</strong>
+            <ul>
+                <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
+                <li><a href="#">Изход</a></li>
+            </ul>
+        </login-box>
+        <logo align="center-xy" action="home" color="light" size="large"></logo>
+    </top-nav>
+    <intro density="comfortable">
+        <call-to-action align="left" density="compact">
+            <h1>Teкстова страница</h1>
+        </call-to-action>
+        <breadcrumb>
+            <crumb action="google.com">Начало </crumb>
+            <crumb action="google.com">Teкстова страница</crumb>
+        </breadcrumb>
+    </intro>
+</cover>
+<featured>
+    <story>
+        <headline size="large" align="left" density="comfortable">
+            Donec eris felix, multos numerabis amicos, tempora si fuerint nubila, solus eris.
+        </headline>
+        <headline size="small" align="left" density="comfortable">
+            Въпроси и отговори
+        </headline>
+    </story>
+
+    <donation>
+        <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
+        <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
+            Добави
+        </action-button>
+    </donation>
+</featured>
+<footer-wrapper>
+    <logo action="home" color="dark" size="medium" align="right"></logo>
+    <footer-navigation>
+        <footer-column>
+            <h5>За проекта</h5>
+            <li><a href="#">За нас</a></li>
+            <li><a href="#">За контакти</a></li>
+            <li><a href="#">За Общество.БГ</a></li>
+        </footer-column>
+        <footer-column emphasis>
+            <h5>Избрани категории</h5>
+            <li><a href="#">Бракониерство</a></li>
+            <li><a href="#">Престъпления - кражба, насилие </a></li>
+            <li><a href="#">Изгубени вещи</a></li>
+            <li><a href="#">Пътно-транспортни</a></li>
+            <li><a href="#">Градска среда</a></li>
+            <li><a href="#">Корупция, измама</a></li>
+        </footer-column>
+        <footer-column>
+            <li><a href="#">Бракониерство</a></li>
+            <li><a href="#">Престъпления - кражба, насилие  кражба, насилие </a></li>
+            <li><a href="#">Изгубени вещи</a></li>
+            <li><a href="#">Пътно-транспортни</a></li>
+            <li><a href="#">Градска среда</a></li>
+            <li><a href="#">Корупция, измама</a></li>
+        </footer-column>
+    </footer-navigation>
+    <sponsors>
+        <h5>Спонсори</h5>
+        <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
+        <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
+        <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
+    </sponsors>
+</footer-wrapper>
+</page>
+<google-analytics account="asd"></google-analytics>
+<script src="build/bundle.js"></script>
+</body>
+</html>
