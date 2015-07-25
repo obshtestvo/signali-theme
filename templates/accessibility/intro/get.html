@@ -14,7 +14,17 @@
                 <select-dropdown id="drop2" name="dropdown2" location mainsearch>
                     <label>къде?</label>
                 </select-dropdown>
-                {% taxonomy_picker request %}
+                <select-dropdown id="drop" multiple mainsearch>
+                    <label>проблем</label>
+                    {% taxonomy_mixed_options request %}
+                    <div class="filters">
+                        <p>Доп. опции</p>
+                        <section>
+                            <checkbox id="register" name="register">Регистрация</checkbox>
+                            <checkbox id="asdasd" name="asdasdasd" checked>asdasdasd</checkbox>
+                        </section>
+                    </div>
+                </select-dropdown>
                 <action-button button type="primary" fill="solid" color="red" size="medium" action="google.com" mainsearch>
                     търси
                 </action-button>
@@ -23,183 +33,8 @@
         </intro>
     </cover>
     <featured>
-        <cards-area>
-            <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
-            <tabs align="center">
-                <li><a href="#">София</a></li>
-                <li><a href="#">Пловдив</a></li>
-                <li><a class="active" href="#">Варна</a></li>
-                <li><a href="#">Бургас</a></li>
-                <li><a href="#">Стара загора</a></li>
-            </tabs>
-            <cards>
-                <card action="gogo">
-                    <img src="test/logo1.jpg" alt=""/>
-                    <strong>Държавно Горско Стопанство гр. Враца</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card action="go">
-                    <img src="test/logo2.png" alt=""/>
-                    <strong>Гранична полиция</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card action="go">
-                    <img src="test/logo3.jpg" alt=""/>
-                    <strong>Омбудсман Република България</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card>
-                    <img src="test/logo4.jpg" alt=""/>
-                    <strong>Гореща линия за безопасен Интернет</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-            </cards>
-            <action-button more align="right" action="google.com">
-                виж всички
-            </action-button>
-        </cards-area>
-        <cards-area>
-            <headline size="large" align="center" density="comfortable">Изборни нарушения</headline>
-            <cards>
-                <card action="gogo">
-                    <img src="test/logo1.jpg" alt=""/>
-                    <strong>Държавно Горско Стопанство гр. Враца</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card action="go">
-                    <img src="test/logo2.png" alt=""/>
-                    <strong>Гранична полиция</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card action="go">
-                    <img src="test/logo3.jpg" alt=""/>
-                    <strong>Омбудсман Република България</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-                <card>
-                    <img src="test/logo4.jpg" alt=""/>
-                    <strong>Гореща линия за безопасен Интернет</strong>
-                    <a href="#" class="category">Тютюнопушене на обществени места</a>
-                    <a href="#" class="location">София - град</a>
-                    <tags>
-                        <tag action="google.com">конфликт на интереси</tag>
-                        <tag action="google.com">полиция</tag>
-                        <tag action="google.com">граница</tag>
-                        <tag action="google.com">връзка</tag>
-                    </tags>
-                    <rating>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">14 коментара</a>
-                    </rating>
-                </card>
-            </cards>
-            <action-button more align="right" action="google.com">
-                виж всички
-            </action-button>
-        </cards-area>
+        {% featured_areas request %}
+        {% featured_category request %}
         <donation>
             <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
             <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">

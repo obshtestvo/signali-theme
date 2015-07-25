@@ -1,0 +1,20 @@
+{% load static %}
+{% load restful %}
+<cards-area>
+    <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
+    <tabs align="center">
+        {% for area in locations %}
+            <li><a href="{% url 'contact-point-list' %}{% query area=area.pk %}">{{ area.title }}</a></li>
+        {% endfor %}
+    </tabs>
+    <cards>
+        {% for area in locations %}
+            {% for point in area.contact_points %}
+                {% include "_card.html" with point=point request=request %}
+            {% endfor %}
+        {% endfor %}
+    </cards>
+    <action-button more align="right" action="{% url 'contact-point-list' %}">
+        виж всички
+    </action-button>
+</cards-area>

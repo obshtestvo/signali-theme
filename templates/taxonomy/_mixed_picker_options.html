@@ -1,0 +1,4 @@
+{% load utils %}
+{% for choice in choices %}
+<value id="{{ choice.pk }}" input="{{ choice|fieldname:form  }}">{{ choice.title }}</value>
+{% endfor %}
