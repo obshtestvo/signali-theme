@@ -14,24 +14,7 @@
                 <select-dropdown id="drop2" name="dropdown2" location mainsearch>
                     <label>къде?</label>
                 </select-dropdown>
-
-                {% taxonomy_picker %}
-                <select-dropdown id="drop" multiple mainsearch>
-                    <label>проблем</label>
-                    <value id="2" input="tag">corruption</value>
-                    <value id="3" selected input="category">ecology</value>
-                    <value id="5" input="category">Красота майна</value>
-                    <value id="5" input="category">Красота майна</value>
-                    <value id="4" input="tag">Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                    <value id="6" input="tag">асдасда сд РАСФДАСФасдасд </value>
-                    <div class="filters">
-                        <p>Доп. опции</p>
-                        <section>
-                            <checkbox id="register" name="register">Регистрация</checkbox>
-                            <checkbox id="asdasd" name="asdasdasd" checked>asdasdasd</checkbox>
-                        </section>
-                    </div>
-                </select-dropdown>
+                {% taxonomy_picker request %}
                 <action-button button type="primary" fill="solid" color="red" size="medium" action="google.com" mainsearch>
                     търси
                 </action-button>

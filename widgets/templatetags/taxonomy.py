@@ -1,5 +1,8 @@
-from taxonomy.models import Category
+from taxonomy.models import Category, Keyword
+from contact.forms import UserCriteria
 from django import template
+from itertools import chain
+from operator import attrgetter
 
 register = template.Library()
 
@@ -10,9 +13,17 @@ def categories_menu(context):
         "request": context.get('request')
     }
 
-@register.inclusion_tag('taxonomy/_picker.html', takes_context=True)
-def taxonomy_picker(context):
+@register.inclusion_tag('taxonomy/_picker.html')
+def taxonomy_picker(request, form=None):
+    if form is None:
+        form = UserCriteria(data=request.params.copy())
+
+    choices = sorted(
+        chain(Category.objects.children(), Keyword.objects.all()),
+        key=attrgetter('title'))
     return {
-        "categories": Category.objects.root_categories_plus_children(),
-        "request": context.get('request')
+        "choices": choices,
+        "request": request,
+        "form": form
     }
+
