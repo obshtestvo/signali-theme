@@ -13,6 +13,8 @@
                 <select-dropdown id="drop2" name="dropdown2" location mainsearch>
                     <label>къде?</label>
                 </select-dropdown>
+
+                {% taxonomy_picker %}
                 <select-dropdown id="drop" multiple mainsearch>
                     <label>проблем</label>
                     <value id="2" input="tag">corruption</value>
@@ -33,7 +35,7 @@
                     търси
                 </action-button>
             </form>
-            {% popular_categories %}
+            {% popular_categories request %}
         </intro>
     </cover>
     <featured>
