@@ -9,7 +9,7 @@
     </tabs>
     <cards>
         {% for area in locations %}
-            {% for point in area.contact_points %}
+            {% for point in area.contact_points.all|slice:":5" %}
                 {% include "_card.html" with point=point request=request %}
             {% endfor %}
         {% endfor %}

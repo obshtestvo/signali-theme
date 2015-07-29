@@ -3,7 +3,7 @@
 <cards-area>
     <headline size="large" align="center" density="comfortable">{{ category.title }}</headline>
     <cards>
-        {% for point in category.contact_points %}
+        {% for point in category.contact_points.all|slice:":5" %}
             {% include "_card.html" with point=point request=request %}
         {% endfor %}
     </cards>

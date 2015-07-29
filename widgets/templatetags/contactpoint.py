@@ -21,7 +21,7 @@ def featured_areas(request):
     return {
         "locations": Area.objects.prefetch_related(
             Prefetch('contact_points',
-                     queryset=ContactPointProxy.objects.featured()[:5])
+                     queryset=ContactPointProxy.objects.featured())
         ),
         "request": request
     }
