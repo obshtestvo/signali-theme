@@ -28,8 +28,8 @@ module.exports = function (componentService) {
                 if (this.hasAttribute('input')) {
                     var inputName = this.attributes.input.value;
                     inputMap[inputName] = null;
-                    item.input = inputName
-                    item.id += "-"+inputName
+                    item.input = inputName;
+                    item.id = $this.attr('site-wide-id')
                 }
                 return item
             }).get();
@@ -69,9 +69,30 @@ module.exports = function (componentService) {
                     filters: $filters
                 };
             }
-            $input.selectize(options);
+            this.API = $input.selectize(options)[0].selectize;
+        },
+        prototype: {
+            select: function(id) {
+                this.API.addItem(id)
+            }
         }
-    })
+    });
+
+    componentService.register('target', {
+        extends: 'a',
+        type: 'attribute',
+        // Called when an attribute is created, updated or removed.
+        attribute: function (name, oldValue, newValue) {
+            if (name != 'target' || newValue != 'select-dropdown') return;
+            var $trigger = $(this);
+            var $target = $($trigger.attr('href'));
+            $trigger.click(function(e) {
+                e.preventDefault();
+                console.log($trigger.attr('value'));
+                $target[0].select($trigger.attr('value'))
+            });
+        }
+    });
 };
 
 
@@ -123,7 +144,7 @@ selectize.define('multiple_inputs', function(settings) {
             for (i = 0, n = self.items.length; i < n; i++) {
                 option = self.options[self.items[i]];
                 inputName = option.input;
-                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = []
+                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = [];
                 optionsHTMLByInput[inputName].push('<option value="' + option.value + '" selected="selected"></option>');
             }
             for (inputName in optionsHTMLByInput) {
