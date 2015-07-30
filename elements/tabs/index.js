@@ -10,6 +10,7 @@ module.exports = function (componentService) {
     componentService.register(name, {
         template: require('./tabs.html'),
         created: function() {
+            if (this.hasAttribute('links')) return;
             var $tabLinks = $(this).find('a');
             $tabLinks.each(function() {
                 var $link = $(this);
