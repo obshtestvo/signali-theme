@@ -1,4 +1,4 @@
-require('./input-field.scss')
+require('./input-field.scss');
 
 module.exports = function (componentService) {
     componentService.register('input-field', {
