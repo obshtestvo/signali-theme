@@ -4,7 +4,8 @@
     <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
     <tabs align="center" links>
         {% for area in locations %}
-            <li><a href="{% url 'contact-point-list' %}{% query area=area.pk %}">{{ area.title }}</a></li>
+            <li><a {% if forloop.counter == 1 %}class="active"{% endif %}
+                   href="{% url 'contact-point-list' %}{% query area=area.pk %}">{{ area.title }}</a></li>
         {% endfor %}
     </tabs>
     <cards>
@@ -14,7 +15,7 @@
             {% endfor %}
         {% endfor %}
     </cards>
-    <action-button more align="right" action="{% url 'contact-point-list' %}">
-        виж всички
+    <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}">
+        <span>или</span>виж всички
     </action-button>
 </cards-area>

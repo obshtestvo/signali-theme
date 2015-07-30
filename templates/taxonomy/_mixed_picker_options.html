@@ -1,4 +1,4 @@
 {% load utils %}
 {% for choice in choices %}
-<value id="{{ choice.pk }}" input="{{ choice|fieldname:form  }}">{{ choice.title }}</value>
+<value id="{{ choice.pk }}" site-wide-id="{{ choice.site_wide_pk }}" input="{{ choice|fieldname:form  }}">{{ choice.title }}</value>
 {% endfor %}
