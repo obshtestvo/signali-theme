@@ -1,10 +1,9 @@
-{% load static %}
 {% load restful %}
 <cards-area>
     <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
     <tabs align="center" links>
         {% for area in locations %}
-            <li><a {% if forloop.counter == 1 %}class="active"{% endif %}
+            <li><a {% if forloop.first %}class="active"{% endif %}
                    href="{% url 'contact-point-list' %}{% query area=area.pk %}">{{ area.title }}</a></li>
         {% endfor %}
     </tabs>
