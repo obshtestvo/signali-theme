@@ -15,8 +15,8 @@ module.exports = function (componentService) {
             $tabLinks.each(function() {
                 var $link = $(this);
                 var $target = $($link.attr('href'));
-                var $container = $target.parent();
                 $link.click(function(e) {
+                    var $container = $target.parent();
                     e.preventDefault();
                     var $toHide = $container.children('[tab]:visible').eq(0);
                     if ($toHide.is($target)) return;
