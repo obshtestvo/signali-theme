@@ -1,4 +1,5 @@
 require('skatejs/dist/skatejs');
+var attrTypeDef = require('skatejs-type-attribute/lib');
 var $ = require('jquery');
 
 function ComponentService() {
@@ -12,10 +13,11 @@ ComponentService.prototype.register = function (name, options) {
     }
     var definition = {};
     if (options) {
+        var elementType = options.type;
         options = service._transformOptionsForSkate(options);
         // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
         // custom attributes with the same name
-        if (options.type == skate.type.ATTRIBUTE) {
+        if (elementType == 'attribute') {
             if (!service.callbacksPerAttribute.hasOwnProperty(name)) {
                 service.callbacksPerAttribute[name] = [];
                 service.addAttributeCallback(name, options.attribute);
@@ -49,12 +51,14 @@ ComponentService.prototype._transformOptionsForSkate = function (o) {
         });
     }
     if (o.type) {
-        var types = {
-            "attribute": skate.type.ATTRIBUTE,
-            "element": skate.type.ELEMENT,
-            "class": skate.type.CLASSNAME
-        };
-        o.type = types[o.type]
+        if (o.type == 'element') {
+            delete o['type'];
+        } else {
+            var types = {
+                "attribute": attrTypeDef,
+            };
+            o.type = types[o.type]
+        }
     }
     return o
 };
@@ -139,7 +143,6 @@ function makeTemplate(options) {
         for (i = 0; i < nodes.length; i++) {
             element.appendChild(nodes[i])
         }
-        console.log(this.tagName)
     }
 }
 
