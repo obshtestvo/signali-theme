@@ -1,18 +1,45 @@
 require('skatejs/dist/skatejs');
+var attrTypeDef = require('skatejs-type-attribute/lib');
 var $ = require('jquery');
 
 function ComponentService() {
     this.registered = [];
+    this.callbacksPerAttribute = {};
 }
 ComponentService.prototype.register = function (name, options) {
-    if (this.has('name')) throw Error("Component with the same name already exists");
+    var service = this;
+    if (service.has(name) && (!options.type || (options.type && options.type == 'element'))) {
+        throw Error("Component with the same name already exists");
+    }
     var definition = {};
     if (options) {
-        options = this._transformOptionsForSkate(options);
+        var elementType = options.type;
+        options = service._transformOptionsForSkate(options);
+        // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
+        // custom attributes with the same name
+        if (elementType == 'attribute') {
+            if (!service.callbacksPerAttribute.hasOwnProperty(name)) {
+                service.callbacksPerAttribute[name] = [];
+                service.addAttributeCallback(name, options.attribute);
+                var attrName = name;
+                options.attribute = function(name, oldValue, newValue) {
+                    var el = this;
+                    service.callbacksPerAttribute[attrName].forEach(function(callback) {
+                        callback.call(el, name, oldValue, newValue)
+                    })
+                }
+            } else {
+                service.addAttributeCallback(name, options.attribute);
+                return
+            }
+        }
         definition = $.extend({}, ComponentService.componentDefaults, options)
     }
-    this.registered.push(name);
+    service.registered.push(name);
     skate(name, definition);
+};
+ComponentService.prototype.addAttributeCallback = function (name, callback) {
+    this.callbacksPerAttribute[name].push(callback)
 };
 ComponentService.prototype.has = function (name) {
     return this.registered.indexOf(name) > -1;
@@ -24,12 +51,14 @@ ComponentService.prototype._transformOptionsForSkate = function (o) {
         });
     }
     if (o.type) {
-        var types = {
-            "attribute": skate.type.ATTRIBUTE,
-            "element": skate.type.ELEMENT,
-            "class": skate.type.CLASSNAME
-        };
-        o.type = types[o.type]
+        if (o.type == 'element') {
+            delete o['type'];
+        } else {
+            var types = {
+                "attribute": attrTypeDef,
+            };
+            o.type = types[o.type]
+        }
     }
     return o
 };
@@ -43,7 +72,7 @@ function makeTemplate(options) {
         var parent = element.parentNode;
         var shadeid = 'shade-' + Math.floor(Math.random() * 1000) + '-' + Date.now();
         var qyueryPrefix = '[shadeid="'+shadeid+'"] > ';
-        element.setAttribute('shadeid', shadeid)
+        element.setAttribute('shadeid', shadeid);
         var data = $.extend({}, options.include);
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
@@ -59,7 +88,7 @@ function makeTemplate(options) {
                 continue;
             }
             if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
-                queriedPlaceholders = [node]
+                queriedPlaceholders = [node];
                 isDirect = true;
             } else {
                 var queriedPlaceholders = [].slice.call(node.querySelectorAll('content[select]'));
@@ -86,7 +115,7 @@ function makeTemplate(options) {
                 isDirect = false;
                 if (node.nodeType != Node.ELEMENT_NODE) continue;
                 if (node.tagName == 'CONTENT' && !node.hasAttribute('select')) {
-                    contentPlaceholders = [node]
+                    contentPlaceholders = [node];
                     isDirect = true;
                 } else {
                     var contentPlaceholders = [].slice.call(node.querySelectorAll('content:not([select])'));
@@ -101,7 +130,7 @@ function makeTemplate(options) {
                         nodes.push(toAppend[j])
                     }
                 }
-                parentNode.removeChild(placeholder)
+                parentNode.removeChild(placeholder);
                 break;
             }
         }
@@ -114,7 +143,6 @@ function makeTemplate(options) {
         for (i = 0; i < nodes.length; i++) {
             element.appendChild(nodes[i])
         }
-        console.log(this.tagName)
     }
 }
 

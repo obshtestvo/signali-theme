@@ -1,0 +1,22 @@
+{% load restful %}
+<cards-area>
+    <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
+    <tabs align="center">
+        {% for area in locations %}
+            <li><a {% if forloop.first %}class="active"{% endif %}
+                   href="#categoryTab{{ area.pk }}">{{ area.title }}</a></li>
+        {% endfor %}
+    </tabs>
+    <cards>
+        {% for area in locations %}
+            <section id="categoryTab{{ area.pk }}" class="clearfix" tab {% if not forloop.first %}hidden{% endif %}>
+            {% for point in area.contact_points.all|slice:":5" %}
+                {% include "_card.html" with point=point request=request %}
+            {% endfor %}
+            </section>
+        {% endfor %}
+    </cards>
+    <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}">
+        <span>или</span>виж всички
+    </action-button>
+</cards-area>

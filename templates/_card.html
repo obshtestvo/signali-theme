@@ -1,0 +1,23 @@
+{% load static %}
+{% load restful %}
+<card action="{% url 'contact-point' slug=point.slug %}">
+    <img src="{% get_media_prefix %}test/logo1.jpg" alt="Снимка от сайта на {{ point.title }}"/>
+    <strong>{{ point.title }}</strong>
+    <a href="{% url 'contact-point-list' %}{% query category=point.category.pk %}"
+       class="category">{{ point.category.title }}</a>
+    <a href="{% url 'contact-point-list' %}{% query area=point.operational_area.pk %}"
+       class="location">{{ point.operational_area.title }}</a>
+    <tags>
+        {% for tag in point.keywords.all %}
+            <tag action="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</tag>
+        {% endfor %}
+    </tags>
+    <rating>
+        <star type="full"></star>
+        <star type="full"></star>
+        <star type="full"></star>
+        <star type="half"></star>
+        <star type="empty"></star>
+        <a class="comments" href="#">14 коментара</a>
+    </rating>
+</card>

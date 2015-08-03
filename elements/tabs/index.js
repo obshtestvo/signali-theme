@@ -10,12 +10,13 @@ module.exports = function (componentService) {
     componentService.register(name, {
         template: require('./tabs.html'),
         created: function() {
+            if (this.hasAttribute('links')) return;
             var $tabLinks = $(this).find('a');
             $tabLinks.each(function() {
                 var $link = $(this);
                 var $target = $($link.attr('href'));
-                var $container = $target.parent();
                 $link.click(function(e) {
+                    var $container = $target.parent();
                     e.preventDefault();
                     var $toHide = $container.children('[tab]:visible').eq(0);
                     if ($toHide.is($target)) return;

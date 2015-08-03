@@ -1,4 +1,4 @@
-require('./intro.scss')
+require('./intro.scss');
 
 module.exports = function (componentService) {
     componentService.register('intro', {

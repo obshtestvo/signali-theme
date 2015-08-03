@@ -24,11 +24,12 @@ module.exports = function (componentService) {
             var inputMap = {};
             var choices = values.map(function() {
                 var $this = $(this);
-                var item = {id: this.id, title: $this.text()};
+                var item = {id: this.id, value: this.id, title: $this.text()};
                 if (this.hasAttribute('input')) {
                     var inputName = this.attributes.input.value;
                     inputMap[inputName] = null;
-                    item.input = inputName
+                    item.input = inputName;
+                    item.id = $this.attr('site-wide-id')
                 }
                 return item
             }).get();
@@ -68,9 +69,30 @@ module.exports = function (componentService) {
                     filters: $filters
                 };
             }
-            $input.selectize(options);
+            this.API = $input.selectize(options)[0].selectize;
+        },
+        prototype: {
+            select: function(id) {
+                this.API.addItem(id)
+            }
         }
-    })
+    });
+
+    componentService.register('target', {
+        extends: 'a',
+        type: 'attribute',
+        // Called when an attribute is created, updated or removed.
+        attribute: function (name, oldValue, newValue) {
+            if (name != 'target' || newValue != 'select-dropdown') return;
+            var $trigger = $(this);
+            var $target = $($trigger.attr('href'));
+            $trigger.click(function(e) {
+                e.preventDefault();
+                console.log($trigger.attr('value'));
+                $target[0].select($trigger.attr('value'))
+            });
+        }
+    });
 };
 
 
@@ -117,14 +139,13 @@ selectize.define('multiple_inputs', function(settings) {
     this.updateOriginalInput = (function() {
         var original = self.updateOriginalInput;
         return function() {
-            console.log('updateOriginalInput')
             var ret = original.apply(this, arguments);
-            var val, inputName, i, n, optionsHTMLByInput = {};
+            var option, inputName, i, n, optionsHTMLByInput = {};
             for (i = 0, n = self.items.length; i < n; i++) {
-                val = self.items[i];
-                inputName = self.options[val].input;
-                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = []
-                optionsHTMLByInput[inputName].push('<option value="' + val + '" selected="selected"></option>');
+                option = self.options[self.items[i]];
+                inputName = option.input;
+                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = [];
+                optionsHTMLByInput[inputName].push('<option value="' + option.value + '" selected="selected"></option>');
             }
             for (inputName in optionsHTMLByInput) {
                 settings.inputMap[inputName].html(optionsHTMLByInput[inputName].join(''));
