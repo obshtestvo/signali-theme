@@ -1,5 +1,5 @@
 from taxonomy.models import Category, Keyword
-from contact.forms import UserCriteria
+from contact.apps import setting
 from django import template
 from itertools import chain
 from operator import attrgetter
@@ -16,7 +16,8 @@ def categories_menu(context):
 @register.inclusion_tag('taxonomy/_mixed_picker_options.html')
 def taxonomy_mixed_options(request, form=None):
     if form is None:
-        form = UserCriteria(data=request.params.copy())
+        UserCriteriaForm = setting('CONTACT_USER_CRITERIA_FORM')
+        form = UserCriteriaForm()
 
     choices = sorted(
         chain(Category.objects.children(), Keyword.objects.all()),
