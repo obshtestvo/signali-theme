@@ -1,8 +1,10 @@
-from taxonomy.models import Category, Keyword
-from contact.apps import setting
-from django import template
 from itertools import chain
 from operator import attrgetter
+
+from django import template
+
+from contact.apps import setting
+from signali_taxonomy.models import Category, Keyword
 
 register = template.Library()
 
@@ -27,4 +29,12 @@ def taxonomy_mixed_options(request, form=None):
         "request": request,
         "form": form
     }
+
+@register.inclusion_tag('_popular_categories.html')
+def popular_categories(request):
+    return {
+        "categories": Category.objects.popular()[:13],
+        "request": request
+    }
+
 

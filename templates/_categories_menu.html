@@ -6,7 +6,7 @@
         <h2>{{ category.title }}</h2>
         <ul>
             {% for sub_category in category.children.all %}
-            <li><a href="{% url 'contact-point-list' %}{% query category=sub_category.pk %}">{{sub_category.title}}</a></li>
+            <li><a href="{% url 'contact-point-list' %}{% query categories=sub_category.pk %}">{{sub_category.title}}</a></li>
             {% endfor %}
         </ul>
     </menu-column>

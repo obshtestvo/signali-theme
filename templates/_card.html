@@ -1,17 +1,17 @@
 {% load restful %}
 {% load thumbnail %}
 <card action="{% url 'contact-point' slug=point.slug %}">
-    {% if point.visibility.preview %}
-        {% thumbnail point.visibility.preview "280x123" crop="center" as img %}
+    {% if point.preview %}
+        {% thumbnail point.preview "280x123" crop="center" as img %}
             <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
         {% endthumbnail %}
     {% else %}
         <p class="img nopreview"></p>
     {% endif %}
     <strong>{{ point.title }}</strong>
-    <a href="{% url 'contact-point-list' %}{% query category=point.category.pk %}"
+    <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
        class="category">{{ point.category.title }}</a>
-    <a href="{% url 'contact-point-list' %}{% query area=point.operational_area.pk %}"
+    <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
        class="location">{{ point.operational_area.title }}</a>
     <tags>
         {% for tag in point.keywords.all %}

@@ -2,6 +2,6 @@
 <popular>
     <headline size="small" density="airy">Популярни теми</headline>
     {% for category in categories %}
-    <a href="#drop" target="select-dropdown" value="{{ category.site_wide_pk }}" color="{{category.visibility.style}}">{{ category.title }}</a>
+    <a href="#drop" target="select-dropdown" value="{{ category.site_wide_pk }}" color="{{category.style}}">{{ category.title }}</a>
     {% endfor %}
 </popular>
