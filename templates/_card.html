@@ -1,7 +1,13 @@
-{% load static %}
 {% load restful %}
+{% load thumbnail %}
 <card action="{% url 'contact-point' slug=point.slug %}">
-    <img src="{% get_media_prefix %}test/logo1.jpg" alt="Снимка от сайта на {{ point.title }}"/>
+    {% if point.visibility.preview %}
+        {% thumbnail point.visibility.preview "280x123" crop="center" as img %}
+            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
+        {% endthumbnail %}
+    {% else %}
+        <p class="img nopreview"></p>
+    {% endif %}
     <strong>{{ point.title }}</strong>
     <a href="{% url 'contact-point-list' %}{% query category=point.category.pk %}"
        class="category">{{ point.category.title }}</a>

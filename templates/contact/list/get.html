@@ -1,4 +1,8 @@
 {% extends 'layout.html' %}
+{% load static %}
+{% load restful %}
+
+{% block content %}
 <loader target="page"></loader>
 <page color="light">
 <cover density="comfortable" src="test/smoking.jpg">
@@ -74,83 +78,9 @@
             </select-dropdown>
         </filtering>
         <cards>
-            <card action="gogo">
-                <img src="test/logo1.jpg" alt=""/>
-                <strong>Държавно Горско Стопанство гр. Враца</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card>
-            <card action="go">
-                <img src="test/logo2.png" alt=""/>
-                <strong>Гранична полиция</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card>
-            <card action="go">
-                <img src="test/logo3.jpg" alt=""/>
-                <strong>Омбудсман Република България</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card>
-            <card>
-                <img src="test/logo4.jpg" alt=""/>
-                <strong>Гореща линия за безопасен Интернет</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card>
+            {% for point in points %}
+                {% include "_card.html" with point=point request=request %}
+            {% endfor %}
         </cards>
     </cards-area>
     <cards-area>
@@ -282,3 +212,4 @@
     </sponsors>
 </footer-wrapper>
 </page>
+{% endblock %}

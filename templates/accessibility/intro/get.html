@@ -10,8 +10,8 @@
         {% include '_topnav.html' with request=request %}
         {% contactpoint_stats %}
         <intro>
-            <form action="">
-                <select-dropdown id="drop2" name="dropdown2" location mainsearch>
+            <form action="{% url 'contact-point-list' %}">
+                <select-dropdown id="drop2" name="areas" location mainsearch>
                     <label>къде?</label>
                 </select-dropdown>
                 <select-dropdown id="drop" multiple mainsearch>
