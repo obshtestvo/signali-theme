@@ -6,7 +6,7 @@
 {% block content %}
     <loader target="page"></loader>
     <page color="light">
-        <cover density="comfortable" src="{{ point.cover }}">
+        <cover density="comfortable" src="{{ point.cover.url }}">
             {% include '_topnav.html' with request=request %}
             <intro density="comfortable">
                 <call-to-action align="left" density="compact">
