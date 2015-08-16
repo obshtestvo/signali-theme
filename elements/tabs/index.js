@@ -25,7 +25,7 @@ module.exports = function (componentService) {
                     toggleFixedHeight($container, true);
                     $container.animateContentSwitch($container.children('[tab]:visible').eq(0), $target, {
                         width: false,
-                        speed: 100,
+                        speed: 200,
                         final: function () {
                             toggleFixedHeight($container, false)
                         }
