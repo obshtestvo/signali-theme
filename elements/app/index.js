@@ -115,6 +115,9 @@ nameTagEl(componentService);
 var filteringEl = require('filtering');
 filteringEl(componentService);
 
+var storyEl = require('story');
+storyEl(componentService);
+
 var notificationEl = require('notification');
 notificationEl(componentService);
 

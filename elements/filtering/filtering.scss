@@ -3,7 +3,7 @@
 filtering {
   display: block;
   position: relative;
-  margin: 20px 0;
+  padding: 20px 0;
     &[primary]{
     background: $grey-color-60;
     border-bottom: 1px solid $grey-color-80;
@@ -28,7 +28,8 @@ filtering {
     }
       &[exception]{
         display: block;
-        margin:25px 0 9px 0;
+        padding:10px 0;
+        margin: 15px 0 0;
         &:before{
           content: '';
           display: block;
