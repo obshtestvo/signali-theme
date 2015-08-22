@@ -1,6 +1,6 @@
 @import '../styleguide';
 
-survey{
+survey-question {
   display: block;
   background: $grey-color-60;
   @extend %small-radius;

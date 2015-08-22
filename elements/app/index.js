@@ -145,8 +145,8 @@ listElement(componentService);
 var listItemElement = require('list-item');
 listItemElement(componentService);
 
-var surveyElement = require('survey');
-surveyElement(componentService);
+var surveyQestionElement = require('survey-question');
+surveyQestionElement(componentService);
 
 var commentsElement = require('comments');
 commentsElement(componentService);
