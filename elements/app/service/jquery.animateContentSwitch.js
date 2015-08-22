@@ -3,6 +3,33 @@ var $ = require('jquery');
 var deepmerge= require('deepmerge');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 
+var overrideTransitions = function(el, properties, animationTime) {
+    var variations = [
+        'WebkitTransition',
+        'msTransition',
+        'MozTransition',
+        'OTransition',
+        'transition'
+    ];
+    var initialValues = {};
+    var value = '', i;
+    for (i = 0; i < properties.length; i++) {
+        value += properties[i]+ ' '+ animationTime+'ms';
+    }
+    for (i = 0; i < variations.length; i++) {
+        initialValues[variations[i]] = el.style[variations[i]];
+        el.style[variations[i]] = value;
+    }
+    return initialValues;
+}
+
+var resetTransitions = function(el, initialValues) {
+    for (var transitionVariation in initialValues) {
+        if (!initialValues.hasOwnProperty(transitionVariation)) continue;
+        el.style[transitionVariation] = initialValues[transitionVariation];
+    }
+}
+
 $.fn.animateContentSwitch = function (toHide, $toShow, o) {
     return this.each(function () {
         var $this = $(this),
@@ -75,30 +102,43 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
         };
         $this.data('animateContentSwitch.animating', data);
         var hide = function () {
-            $toHide.animate({opacity: 0}, {
-                duration: options.speed,
-                complete: function () {
-                    $toHide.hide();
-                    if (options.parallel) {
-                        return;
-                    }
-                    if ($.isFunction(options.beforeShow)) {
-                        options.beforeShow(show);
-                    } else {
-                        show();
-                    }
+            var originalTransitions = overrideTransitions($toHide[0], ['opacity'], options.speed);
+            $toHide.css('opacity', 0);
+            setTimeout(function() {
+                $toHide.hide();
+                resetTransitions($toHide[0], originalTransitions);
+                if (options.parallel) {
+                    return;
                 }
-            });
+                if ($.isFunction(options.beforeShow)) {
+                    options.beforeShow(show);
+                } else {
+                    show();
+                }
+            }, options.speed);
         };
 
         var show = function () {
-
             // Using Deferred objects for a `group` callback
-
             var toShowDfd = $.Deferred();
+
+            var targetAnimation = {
+                height: targetHeight,
+                width: targetWidth
+            };
+            if (!options.width) delete targetAnimation.width;
+            if (!options.height) delete targetAnimation.height;
+
             $toShow.css('opacity', 0);
             $toShow.show();
-            $toShow.animate({opacity: 1}, options.speed, toShowDfd.resolve);
+            var originalTransitions = overrideTransitions($toShow[0], ['opacity'], options.speed);
+            setTimeout(function(){
+                $toShow.css('opacity', 1);
+            }, Math.floor(options.speed*0.3))
+            setTimeout(function() {
+                resetTransitions($toShow[0], originalTransitions);
+                toShowDfd.resolve()
+            }, options.speed);
 
             var heightDfd = $.Deferred();
             var animationOptions = {
@@ -108,14 +148,13 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
             if ($.isFunction(options.step)) {
                 animationOptions.step = options.step;
             }
-            var targetAnimation = {
-                height: targetHeight,
-                width: targetWidth
-            };
-            if (!options.width) delete targetAnimation.width;
-            if (!options.height) delete targetAnimation.height;
 
-            $this.animate(targetAnimation, animationOptions);
+            originalTransitions = overrideTransitions($this[0], Object.keys(targetAnimation), options.speed)
+            $this.css(targetAnimation);
+            setTimeout(function() {
+                resetTransitions($this[0], originalTransitions);
+                heightDfd.resolve()
+            }, options.speed);
 
             $.when(toShowDfd, heightDfd).then(function () // animate to final dimensions
             {
