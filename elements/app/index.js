@@ -151,8 +151,8 @@ surveyQestionElement(componentService);
 var commentsElement = require('comments');
 commentsElement(componentService);
 
-var commentsAuthElement = require('comments-auth');
-commentsAuthElement(componentService);
+var surveyElement = require('survey');
+surveyElement(componentService);
 
 var commentElement = require('comment');
 commentElement(componentService);
