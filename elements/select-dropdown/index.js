@@ -81,16 +81,18 @@ module.exports = function (componentService) {
     componentService.register('target', {
         extends: 'a',
         type: 'attribute',
-        // Called when an attribute is created, updated or removed.
-        attribute: function (name, oldValue, newValue) {
-            if (name != 'target' || newValue != 'select-dropdown') return;
-            var $trigger = $(this);
-            var $target = $($trigger.attr('href'));
-            $trigger.click(function(e) {
-                e.preventDefault();
-                console.log($trigger.attr('value'));
-                $target[0].select($trigger.attr('value'))
-            });
+        properties: {
+            target: {
+                set: function (newValue) {
+                    if (newValue != 'select-dropdown') return;
+                    var $trigger = $(this);
+                    var $target = $($trigger.attr('href'));
+                    $trigger.click(function(e) {
+                        e.preventDefault();
+                        $target[0].select($trigger.attr('value'))
+                    });
+                }
+            }
         }
     });
 };

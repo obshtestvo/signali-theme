@@ -43,3 +43,7 @@ def feedback_list(request, contactpoint):
         "request": request
     }
 
+@register.inclusion_tag('_addnew_form.html')
+def addnew_form(request):
+    return {}
+

@@ -1,17 +1,30 @@
 @import '../styleguide';
 
-input-field{
+text-field{
   display: block;
   position: relative;
   padding: 0 0 17px;
+  &[type="textarea"] {
+    padding: 0 0 20px;
+  }
   &[size="full"]{
     width: 100%;
+    max-width: 100%;
+    textarea {
+      min-height: 194px;
+    }
   }
   &[size="half"]{
-    width: 50%;
+    max-width: 50%;
+    textarea{
+     min-height: 100px;
+    }
   }
   &[size="standart"]{
     max-width: 380px;
+    textarea{
+       min-height: 75px;
+    }
   }
   &[state="error"] {
   }
@@ -22,6 +35,18 @@ input-field{
     @extend %label-font;
     color: $grey-color-100;
     padding: 0 0 5px;
+  }
+  textarea{
+    display: block;
+    width: 100%;
+    position: relative;
+    @extend %small-radius, %bodytext-font;
+    padding: 9px 10px;
+    border: 1px solid $grey-color-80;
+    outline: none;
+    &:focus{
+      border-color: $grey-color-100;
+    }
   }
   input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"]{
     display: block;
@@ -37,5 +62,4 @@ input-field{
       border-color: $grey-color-100;
     }
   }
-
 }

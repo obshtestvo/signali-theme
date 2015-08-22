@@ -106,11 +106,8 @@ sponsorsEl(componentService);
 var modalEl = require('modal');
 modalEl(componentService);
 
-var textareaFieldEl = require('textarea-field');
-textareaFieldEl(componentService);
-
-var inputFieldEl = require('input-field');
-inputFieldEl(componentService);
+var textFieldEl = require('text-field');
+textFieldEl(componentService);
 
 var nameTagEl = require('name-tag');
 nameTagEl(componentService);

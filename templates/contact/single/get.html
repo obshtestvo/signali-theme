@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% load date %}
+{% load contactpoint %}
 {% load static %}
 {% load restful %}
 {% load thumbnail %}
@@ -66,9 +66,7 @@
             <survey logged>
                 <headline size="small" density="compact">Тоята оценка</headline>
                 <p>Споделяте опит като Димитър Райков (me@dreamture.net)</p>
-                <textarea-field id="comment-area" size="full">
-
-                </textarea-field>
+                <text-field id="comment-area" size="full" type="textarea"></text-field>
                 <survey-question yesandno>
                     <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
                     <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
@@ -98,6 +96,7 @@
                                target="modal">
                     Добави
                 </action-button>
+                {% addnew_form request %}
             </donation>
         </featured>
         <footer-wrapper>

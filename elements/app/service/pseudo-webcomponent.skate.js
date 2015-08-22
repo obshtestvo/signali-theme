@@ -4,7 +4,7 @@ var $ = require('jquery');
 
 function ComponentService() {
     this.registered = [];
-    this.callbacksPerAttribute = {};
+    this.attributeElementsSetCallbacks = {};
 }
 ComponentService.prototype.register = function (name, options) {
     var service = this;
@@ -17,19 +17,20 @@ ComponentService.prototype.register = function (name, options) {
         options = service._transformOptionsForSkate(options);
         // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
         // custom attributes with the same name
-        if (elementType == 'attribute') {
-            if (!service.callbacksPerAttribute.hasOwnProperty(name)) {
-                service.callbacksPerAttribute[name] = [];
-                service.addAttributeCallback(name, options.attribute);
+        if (elementType == 'attribute' && options.properties[name].set) {
+            if (!service.attributeElementsSetCallbacks.hasOwnProperty(name)) {
+                service.attributeElementsSetCallbacks[name] = [];
+                service.addAttributeElementSetCallback(name, options.properties[name].set);
                 var attrName = name;
-                options.attribute = function(name, oldValue, newValue) {
+                options.properties[name].set = function(newValue, oldValue) {
                     var el = this;
-                    service.callbacksPerAttribute[attrName].forEach(function(callback) {
-                        callback.call(el, name, oldValue, newValue)
+                    service.attributeElementsSetCallbacks[attrName].forEach(function(callback) {
+                        callback.call(el, newValue, oldValue)
                     })
                 }
+                options.properties[name].attr = true;
             } else {
-                service.addAttributeCallback(name, options.attribute);
+                service.addAttributeElementSetCallback(name, options.properties[name].set);
                 return
             }
         }
@@ -38,8 +39,8 @@ ComponentService.prototype.register = function (name, options) {
     service.registered.push(name);
     skate(name, definition);
 };
-ComponentService.prototype.addAttributeCallback = function (name, callback) {
-    this.callbacksPerAttribute[name].push(callback)
+ComponentService.prototype.addAttributeElementSetCallback = function (name, callback) {
+    this.attributeElementsSetCallbacks[name].push(callback)
 };
 ComponentService.prototype.has = function (name) {
     return this.registered.indexOf(name) > -1;
@@ -77,6 +78,12 @@ function makeTemplate(options) {
         for (var a = 0; a < element.attributes.length; a++) {
             var attr = element.attributes[a];
             data[attr.name] = attr.value == '' ? true : attr.value;
+        }
+        if (options.properties) {
+            for (prop in options.properties) {
+                if (!options.properties.hasOwnProperty(prop)) continue;
+                data[prop] = element[prop]
+            }
         }
         var $template = $(options.template(data));
         var node, i, j, k, placeholder, toAppend, parentNode, nodes = [], isDirect;

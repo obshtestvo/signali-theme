@@ -19,7 +19,7 @@ def humandate(date):
         except AttributeError:
             return ''
 
-register.filter(humandate, expects_localtime=True, is_safe=False)
+register.filter('humandate', humandate, expects_localtime=True, is_safe=False)
 
 def humantime(time):
     formatting = 'H:i'
@@ -32,4 +32,4 @@ def humantime(time):
             formatted = ''
     return _("{date} at {time}").format(date=humandate(time), time=formatted)
 
-register.filter(humantime, expects_localtime=True, is_safe=False)
+register.filter('humantime', humantime, expects_localtime=True, is_safe=False)

@@ -23,7 +23,7 @@
     "raw-loader": "^0.5.1",
     "ruby-sass-loader": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
     "script-loader": "^0.6.1",
-    "skatejs": "skatejs/skatejs#2e0b4895add2229c635461cb7e80e109ae6c09be",
+    "skatejs": "skatejs/skatejs#f9466c9816585b2998543997c4fc04e65397aa25",
     "skatejs-type-attribute": "skatejs/type-attribute#master",
     "style-loader": "0.12.3",
     "svgo": "^0.5.1",

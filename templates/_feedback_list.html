@@ -1,3 +1,5 @@
+{% load date %}
+{% load thumbnail %}
 <comments>
     <headline size="small" density="compact">{{ feedback_entries.count }} коментара</headline>
     {% for feedback in feedback_entries %}
