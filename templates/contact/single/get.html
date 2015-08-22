@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load date %}
 {% load static %}
 {% load restful %}
 {% load thumbnail %}
@@ -14,7 +15,7 @@
                 </call-to-action>
                 <breadcrumb>
                     <crumb action="{% url 'home' %}">Начална страница</crumb>
-                    <crumb action="{% url 'contact-point-list' %}{% query categories=category.pk %}">{{ point.category.title }}</crumb>
+                    <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">{{ point.category.title }}</crumb>
                     <crumb>{{ point.title }}</crumb>
                 </breadcrumb>
             </intro>
@@ -51,61 +52,9 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                 </card>
             </resume>
-            <comments>
-                <headline size="small" density="compact">13 коментара</headline>
-                <comment various>
-                    <article>
-                        <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина
-                            трудно се справи.
-                            Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите
-                            били спрени.
-                            Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                            Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
-                    </article>
-                    <span>Публикуван на 23 Май в 21:09 oт</span>
-                    <a class="name" href="#">Димитър Райков</a>
-                    <img src="test/profile-pic.jpg" alt=""/>
-                    <a class="answer" href="#">Отговори</a>
-                </comment>
-                <comment various>
-                    <article>
-                        <p>Стойнев, ти с тоя комсомолски плам, доста ще си лъган. Няма ли да е късно за изводите, че
-                            даде енергетиката на едно осъждано лице като Георги Христозов. Както и да е, тия хора ще те
-                            използват докато могат, а за тебе срама и унижението.</p>
-                    </article>
-                    <span>Публикуван на 23 Май в 21:09 oт</span>
-                    <a class="name" href="#">Димитър Райков</a>
-                    <a class="answer" href="#">Отговори</a>
-                </comment>
-                <comment mine>
-                    <article>
-                        <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина
-                            трудно се справи.
-                            Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите
-                            били спрени.
-                            Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                            Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
-                    </article>
-                    <span>Публикуван на 23 Май в 21:09 oт</span>
-                    <a class="name" href="#">Димитър Райков</a>
-                </comment>
-                <comment mine>
-                    <article>
-                        <p>
-                            <name-tag>@aнтон тодоров</name-tag>
-                            Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина
-                            трудно се справи.
-                            Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите
-                            били спрени.
-                            Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                            Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.
-                        </p>
-                    </article>
-                    <span>Публикуван на 23 Май в 21:09 oт</span>
-                    <a class="name" href="#">Димитър Райков</a>
-                </comment>
-            </comments>
-            <comments-auth notlogged>
+            {% feedback_list request point %}
+
+            <survey notlogged>
                 <headline size="small" density="compact">Моля влезте за да коментирате</headline>
                 <action-button link type="primary" fill="solid" color="red" size="medium" align="left"
                                action="{{ action }}">Вход
@@ -113,14 +62,14 @@
                 <action-button helper density="comfortable" align="left inline" action="google.com">
                     <span>или се</span>регистрирай
                 </action-button>
-            </comments-auth>
-            <comments-auth logged>
-                <headline size="small" density="compact">Коментирай</headline>
-                <p>Пишете като Димитър Райков (me@dreamture.net)</p>
+            </survey>
+            <survey logged>
+                <headline size="small" density="compact">Тоята оценка</headline>
+                <p>Споделяте опит като Димитър Райков (me@dreamture.net)</p>
                 <textarea-field id="comment-area" size="full">
 
                 </textarea-field>
-                <survey yesandno>
+                <survey-question yesandno>
                     <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
                     <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
                                    action="{{ action }}">Да
@@ -128,8 +77,8 @@
                     <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
                                    action="{{ action }}">Не
                     </action-button>
-                </survey>
-                <survey raitin>
+                </survey-question>
+                <survey-question rating>
                     <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
                     <rating survey align="left">
                         <star type="full"></star>
@@ -138,11 +87,11 @@
                         <star type="empty"></star>
                         <star type="empty"></star>
                     </rating>
-                </survey>
+                </survey-question>
                 <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">
                     публикувай
                 </action-button>
-            </comments-auth>
+            </survey>
             <donation>
                 <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
                 <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew"

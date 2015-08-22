@@ -34,3 +34,12 @@ def featured_category(request):
         "request": request
     }
 
+
+
+@register.inclusion_tag('_feedback_list.html')
+def feedback_list(request, contactpoint):
+    return {
+        "feedback_entries": contactpoint.feedback.published(),
+        "request": request
+    }
+
