@@ -6,47 +6,45 @@ star {
   width: $size + ($size/5);
   height: $size;
   padding: 0 $size/5 0 0;
-  &:last-of-type{
-    padding: 0;
-  }
   svg {
     width: 100%;
     height: 100%;
   }
-    &[type="full"] {
-      .full {
-        fill: $rating-color
-      }
-      .half, .outline {
-        fill: transparent;
-      }
+
+  &[type="full"] {
+    .full {
+      fill: $rating-color
     }
-    &[type="half"] {
-      .half, .outline {
-        fill: $rating-color;
-      }
-      .full {
-        fill: transparent;
-      }
+    .half, .outline {
+      fill: transparent;
     }
-    &[type="empty"] {
-      .half, .full {
-        fill: transparent;
-      }
-      .outline {
-        fill: $rating-color;
-      }
+  }
+  &[type="half"] {
+    .half, .outline {
+      fill: $rating-color;
     }
-    &.hover {
-      .full {
-        fill: pink
-      }
-      .half, .outline {
-        fill: transparent;
-      }
+    .full {
+      fill: transparent;
     }
+  }
+  &[type="empty"] {
+    .half, .full {
+      fill: transparent;
+    }
+    .outline {
+      fill: $rating-color;
+    }
+  }
+  &.hover {
+    .full {
+      fill: pink
+    }
+    .half, .outline {
+      fill: transparent;
+    }
+  }
   [size="medium"] & {
-   $size: 18px;
+    $size: 18px;
     width: $size + 5px;
     height: $size;
     padding: 0 5px 0 0;

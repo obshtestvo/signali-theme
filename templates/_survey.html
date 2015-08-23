@@ -1,17 +1,3 @@
-<survey notlogged>
-    <headline size="small" density="compact">Моля влезте за да коментирате</headline>
-    <notification information size="small">
-        <p>
-            За да запишем опитът ви, ще е нужно да влезете или да се регистирарате в Signali.bg.
-        </p>
-    </notification>
-    <action-button link type="primary" fill="solid" color="red" size="medium" align="left"
-                   action="{{ action }}">Вход
-    </action-button>
-    <action-button helper density="comfortable" align="left inline" action="google.com">
-        <span>или се</span>регистрирай
-    </action-button>
-</survey>
 <survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post">
     <headline size="small" density="compact">Тоята оценка</headline>
     <p>Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</p>
@@ -19,13 +5,7 @@
     {{ form.user }}
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
-        <rating survey align="left">
-            <star type="full"></star>
-            <star type="full"></star>
-            <star type="full"></star>
-            <star type="empty"></star>
-            <star type="empty"></star>
-        </rating>
+        <rating survey align="left" value="2.4"></rating>
     </survey-question>
     <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
         <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
