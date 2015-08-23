@@ -1,14 +1,15 @@
 @import '../styleguide';
-star{
+
+star {
   display: inline-block;
   width: 15px;
   height: 15px;
   margin: 0 3px 0 0;
-    svg{
-      width: 100%;
-      height: 100%;
-    }
-    li {
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  li {
     &.type-full {
       .full {
         fill: $rating-color
@@ -17,11 +18,11 @@ star{
         fill: transparent;
       }
     }
-    &.type-half{
+    &.type-half {
       .half, .outline {
-      fill: $rating-color;
+        fill: $rating-color;
       }
-      .full{
+      .full {
         fill: transparent;
       }
     }
@@ -33,11 +34,19 @@ star{
         fill: $rating-color;
       }
     }
+    &.hover {
+      .full {
+        fill: pink
+      }
+      .half, .outline {
+        fill: transparent;
+      }
+    }
   }
-  [survey] &  {
-    width:19px;
+  [survey] & {
+    width: 19px;
     height: 18px;
-    li{
+    li {
       &.type-empty {
         .outline {
           fill: $grey-color-100;

@@ -33,22 +33,27 @@
                     <list-item check>Верификация на сигнал</list-item>
                     <list-item check>Потвърждаване на сигнал</list-item>
                 </list>
-                <card resume action="">
+                <card resume>
                     {% if point.preview %}
-                        {% thumbnail point.preview "280x123" crop="center" as img %}
+                        {% thumbnail point.preview "280x112" crop="center" as img %}
                             <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
                         {% endthumbnail %}
                     {% else %}
                         <p class="img nopreview"></p>
                     {% endif %}
-                    <rating align="left">
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="full"></star>
-                        <star type="half"></star>
-                        <star type="empty"></star>
-                        <a class="comments" href="#">(14 коментара)</a>
-                    </rating>
+                    <card-item type="rating">
+                        <rating align="left">
+                            <star type="full"></star>
+                            <star type="full"></star>
+                            <star type="full"></star>
+                            <star type="half"></star>
+                            <star type="empty"></star>
+                            <a class="comments" href="#">(14 коментара)</a>
+                        </rating>
+                    </card-item>
+                    <action-button link type="primary" fill="solid" color="red" size="extralarge" align="center" action="{{action}}">
+                        Подай сигнал!
+                    </action-button>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                 </card>
             </resume>

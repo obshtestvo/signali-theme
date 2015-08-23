@@ -9,21 +9,34 @@
         <p class="img nopreview"></p>
     {% endif %}
     <strong>{{ point.title }}</strong>
-    <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
-       class="category">{{ point.category.title }}</a>
-    <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
-       class="location">{{ point.operational_area.title }}</a>
-    <tags>
+    <card-item type="category">
+        <strong>категория</strong>
+        <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
+           class="category">{{ point.category.title }}</a>
+    </card-item>
+    <card-item type="location">
+        <strong>местонахождение</strong>
+        <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
+           class="location">{{ point.operational_area.title }}</a>
+    </card-item>
+    <card-item type="tags">
+        <strong>теми</strong>
         {% for tag in point.keywords.all %}
-            <tag action="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</tag>
+            <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
-    </tags>
-    <rating>
-        <star type="full"></star>
-        <star type="full"></star>
-        <star type="full"></star>
-        <star type="half"></star>
-        <star type="empty"></star>
-        <a class="comments" href="#">14 коментара</a>
-    </rating>
+    </card-item>
+    <card-item type="rating">
+        <strong>Оценка</strong>
+        <rating>
+            <star type="full"></star>
+            <star type="full"></star>
+            <star type="full"></star>
+            <star type="half"></star>
+            <star type="empty"></star>
+            <a class="comments" href="{% url 'contact-point' slug=point.slug %}">(14 коментара)</a>
+        </rating>
+    </card-item>
+    <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{% url 'contact-point' slug=point.slug %}">
+        Подаване на сгинал
+    </action-button>
 </card>
