@@ -1,7 +1,6 @@
 @import '../styleguide';
 
 list-item {
-  &[check] {
     display: inline-block;
     position: relative;
     width: 33%;
@@ -25,5 +24,6 @@ list-item {
       color: $body-text-color;
       padding: 0 0 0 25px;
     }
-  }
+  &[type="check"] {}
+  &[type="none"] {}
 }

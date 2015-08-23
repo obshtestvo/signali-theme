@@ -1,8 +1,10 @@
 
 <li>
-        {{#check}}
-        <span class="icon">{{{checkCircle}}}</span>
-        <a href="{{action}}"><content></content></a>
-        {{/check}}
-        <content></content>
+    {{#check}}
+    <span class="icon">{{{checkCircle}}}</span>
+    {{/check}}
+    {{#none}}
+    <span class="icon">{{{closeCircle}}}</span>
+    {{/none}}
+    <a href="{{action}}"><content></content></a>
 </li>
