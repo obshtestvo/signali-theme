@@ -439,18 +439,23 @@
             <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
         </sponsors>
     </footer-wrapper>
-    <div style="display:none; ">
+    <div style="display:block; ">
         <!--Modal Window Login-->
     <modal id="auth">
         <headline size="large" density="airy" align="center" for="login">Вход</headline>
         <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
         <auth>
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-                <text-field for="registration" size="full" id="name" name="name" type="text" hidden>
+                <text-field state="error" for="registration" size="full" id="name" name="name" type="text" hidden>
                     Име
                 </text-field>
-                <text-field size="full" id="email" name="email" type="email">
+                <text-field error size="full" id="email" name="email" type="email">
                     имейл адрес
+                    <notification error size="text-field">
+                        <p>
+                            Easy one click sign in. We won't post anything without your permission.
+                        </p>
+                    </notification>
                 </text-field>
                 <notification information size="small">
                     <p>
