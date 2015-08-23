@@ -1,6 +1,10 @@
+{% load thumbnail %}
 {% if user.is_authenticated %}
 <login-box action="#settings">
-    <img src="{{ user.get_avatar }}">
+    {% thumbnail user.get_avatar "30x30" crop="center" as img %}
+        <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
+             alt="Твоята снимка"/>
+    {% endthumbnail %}
     <strong>{{ user.get_full_name }}</strong>
     <ul>
         <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>

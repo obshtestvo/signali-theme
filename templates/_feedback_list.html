@@ -3,33 +3,18 @@
 <comments>
     <headline size="small" density="compact">{{ feedback_entries.count }} коментара</headline>
     {% for feedback in feedback_entries %}
-        <comment {% if user == feedback.user %}mine{% else %}various{% endif %}>
+        <comment>
             <article>
                 {{ feedback.comment|linebreaks }}
             </article>
-            <span>Публикуван на {{ feedback.added_at|humantime }} </span>
+            <span>Публикуван на {{ feedback.added_at|humantime }} от</span>rrrr
             <a class="name">{{ feedback.user }}</a>
-            {% thumbnail feedback.user "30x30" crop="center" as img %}
+            {% thumbnail feedback.user.get_avatar "30x30" crop="center" as img %}
                 <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
                      alt="Снимка на {{ feedback.user }}"/>
             {% endthumbnail %}
-            <img src="test/profile-pic.jpg" alt=""/>
             <a class="answer">Сподели своя опит</a>
         </comment>
     {% endfor %}
-    <comment mine>
-        <article>
-            <p>
-                <name-tag>@aнтон тодоров</name-tag>
-                Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина
-                трудно се справи.
-                Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите
-                били спрени.
-                Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.
-            </p>
-        </article>
-        <span>Публикуван на 23 Май в 21:09 oт</span>
-        <a class="name" href="#">Димитър Райков</a>
-    </comment>
+{#  <name-tag>@userhandle</name-tag>#}
 </comments>

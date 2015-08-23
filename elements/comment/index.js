@@ -4,8 +4,8 @@ module.exports = function (componentService) {
     componentService.register('comment', {
         template: require('./comment.html'),
         include: {
-            circle: require('./circle.svg'),
-            reply: require('./reply.svg')
+            "circle": require('./circle.svg'),
+            "reply-icon": require('./reply.svg')
         },
         created: function () {
             $(".reply-icon").appendTo($(".answer"));

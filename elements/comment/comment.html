@@ -1,20 +1,19 @@
 <content select="article"></content>
 <footer class="clearfix">
     <content select="span"></content>
-    <div class="prfile">
-        {{#various}}
+    <div class="profile">
+        {{^reply}}
             <span class="avatar">
                 {{{circle}}}
                 <content select="img"></content>
             </span>
-        {{/various}}
+        {{/reply}}
         <content select=".name"></content>
     </div>
-    {{#various}}
-        <div class="repley">
-            {{{reply}}}
-            <content select=".answer"></content>
-        </div>
-
-    {{/various}}
+    {{^reply}}
+    <div class="reply">
+        {{{reply-icon}}}
+        <content select=".answer"></content>
+    </div>
+    {{/reply}}
 </footer>

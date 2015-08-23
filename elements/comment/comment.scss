@@ -4,6 +4,7 @@ comment{
   display: block;
   @extend %small-radius;
   margin: 0 0 10px 0;
+  background: $grey-color-20;
   &:first-of-type{
     margin: 20px 0 10px;
   }
@@ -17,11 +18,13 @@ comment{
     display: block;
     line-height: 18px;
     font-size: 12px;
+    padding: 10px 10px;
+    border-top: 1px solid $grey-color-60;
     & > span {
       float: left;
       color: $grey-color-100;
     }
-    .prfile{
+    .profile{
       margin: 0 0 0 5px;
       float: left;
       .avatar{
@@ -40,6 +43,8 @@ comment{
         }
         img{
           max-width: 100%;
+          width: 18px;
+          height: 18px;
           z-index: 2;
           position: relative;
         }
@@ -69,14 +74,7 @@ comment{
       }
     }
   }
-  &[various]{
-    background: $grey-color-20;
-    footer{
-      padding: 10px 10px;
-      border-top: 1px solid $grey-color-60;
-    }
-  }
-  &[mine]{
+  &[reply]{
     background: none;
     article {
       padding: 6px 20px 7px;
@@ -86,6 +84,7 @@ comment{
     }
     footer {
       padding: 0 0 5px;
+      border-top: 0;
       border-bottom: 1px solid $grey-color-60;
       margin: 0 20px;
     }

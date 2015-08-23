@@ -1,0 +1,43 @@
+{{ form.is_effective.html_name }}
+<form action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post">
+{% csrf_token %}
+{{ form }}
+    <button type="submit">asdasd</button>
+
+</form>
+<survey notlogged>
+    <headline size="small" density="compact">Моля влезте за да коментирате</headline>
+    <action-button link type="primary" fill="solid" color="red" size="medium" align="left"
+                   action="{{ action }}">Вход
+    </action-button>
+    <action-button helper density="comfortable" align="left inline" action="google.com">
+        <span>или се</span>регистрирай
+    </action-button>
+</survey>
+<survey logged>
+    <headline size="small" density="compact">Тоята оценка</headline>
+    <p>Споделяте опит като Димитър Райков (me@dreamture.net)</p>
+    <text-field id="comment-area" size="full" type="textarea"></text-field>
+    <survey-question yesandno>
+        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
+                       action="{{ action }}">Да
+        </action-button>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
+                       action="{{ action }}">Не
+        </action-button>
+    </survey-question>
+    <survey-question rating>
+        <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+        <rating survey align="left">
+            <star type="full"></star>
+            <star type="full"></star>
+            <star type="full"></star>
+            <star type="empty"></star>
+            <star type="empty"></star>
+        </rating>
+    </survey-question>
+    <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">
+        публикувай
+    </action-button>
+</survey>

@@ -5,6 +5,7 @@ from contact.apps import setting
 from signali_contact.models import Organisation, ContactPoint
 from signali_taxonomy.models import Category
 from signali_location.models import Area
+from contact_feedback.forms import get_feedbackfrom
 
 register = template.Library()
 
@@ -35,7 +36,6 @@ def featured_category(request):
     }
 
 
-
 @register.inclusion_tag('_feedback_list.html')
 def feedback_list(request, contactpoint):
     return {
@@ -43,7 +43,19 @@ def feedback_list(request, contactpoint):
         "request": request
     }
 
+
 @register.inclusion_tag('_addnew_form.html')
 def addnew_form(request):
     return {}
+
+
+@register.inclusion_tag('_survey.html')
+def survey(request, contactpoint, form=None):
+    if form is None:
+        form = get_feedbackfrom(contactpoint)
+    return {
+        "form": form,
+        "contactpoint": contactpoint,
+        "request": request
+    }
 
