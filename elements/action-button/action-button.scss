@@ -118,7 +118,7 @@ action-button {
     div {
       font-size: 14px;
       span {
-        color :$grey-color-100;
+        color: $grey-color-100;
         font-style: italic;
         padding: 0 0 0 10px;
       }
@@ -142,29 +142,29 @@ action-button {
       &.inline {
         display: inline-block;
       }
-      &.align-right{
+      &.align-right {
         text-align: right;
       }
-      &.align-center{
+      &.align-center {
         text-align: center;
       }
-      &.align-left{
+      &.align-left {
         text-align: left;
       }
     }
-    &[density="airy"]{
+    &[density="airy"] {
       line-height: 50px
     }
-    &[density="comfortable"]{
+    &[density="comfortable"] {
       line-height: 40px
     }
   }
-  &[icon="false"]{
-    svg{
+  &[icon="false"] {
+    svg {
       display: none;
     }
   }
-  &[password]{
+  &[password] {
     float: right;
   }
 }

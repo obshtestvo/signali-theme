@@ -2,7 +2,9 @@
 {{#textarea}}
 <textarea {{#id}}id="{{id}}Input"{{/id}} name="{{name}}" placeholder="{{placeholder}}">{{#value}}{{value}}{{/value}}</textarea>
 {{/textarea}}
+
 {{^textarea}}
 <input {{#id}}id="{{id}}Input"{{/id}} type="{{type}}" name="{{name}}" value="{{value}}" placeholder="{{placeholder}}"/>
+<content select="notification"></content>
 {{/textarea}}
 

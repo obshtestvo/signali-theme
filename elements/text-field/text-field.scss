@@ -1,55 +1,32 @@
 @import '../styleguide';
 
-text-field{
+text-field {
   display: block;
   position: relative;
   padding: 0 0 17px;
-  &[type="textarea"] {
-    padding: 0 0 20px;
-  }
-  &[size="full"]{
-    width: 100%;
-    max-width: 100%;
-    textarea {
-      min-height: 194px;
-    }
-  }
-  &[size="half"]{
-    max-width: 50%;
-    textarea{
-     min-height: 100px;
-    }
-  }
-  &[size="standart"]{
-    max-width: 380px;
-    textarea{
-       min-height: 75px;
-    }
-  }
-  &[state="error"] {
-  }
-  &[state="disabled"] {
-  }
   label {
     display: block;
     @extend %label-font;
     color: $grey-color-100;
     padding: 0 0 5px;
   }
-  textarea{
-    display: block;
-    width: 100%;
-    max-width:100%;
-    position: relative;
-    @extend %small-radius, %bodytext-font;
-    padding: 9px 10px;
-    border: 1px solid $grey-color-80;
-    outline: none;
-    &:focus{
-      border-color: $grey-color-100;
+  &[type="textarea"] {
+    padding: 0 0 20px;
+    textarea {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      @extend %small-radius, %bodytext-font;
+      padding: 9px 10px;
+      border: 1px solid $grey-color-80;
+      outline: none;
+      &:focus {
+        border-color: $grey-color-100;
+      }
     }
   }
-  input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"]{
+  input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"] {
     display: block;
     width: 100%;
     position: relative;
@@ -59,8 +36,60 @@ text-field{
     outline: none;
     height: 40px;
     line-height: 40px;
-    &:focus{
+    z-index: 2;
+    &:focus {
       border-color: $grey-color-100;
+    }
+  }
+  &[size="full"] {
+    width: 100%;
+    max-width: 100%;
+    textarea {
+      min-height: 194px;
+    }
+  }
+  &[size="half"] {
+    max-width: 50%;
+    textarea {
+      min-height: 100px;
+    }
+  }
+  &[size="standart"] {
+    max-width: 380px;
+    textarea {
+      min-height: 75px;
+    }
+  }
+  &[state="error"] {
+    input, textarea {
+      border-color: $secondary-color-100;
+      background: $secondary-color-10;
+      &:focus {
+        border-color: $secondary-color-100;
+        background: $secondary-color-10;
+      }
+    }
+  }
+  &[state="success"] {
+    input, textarea {
+      border-color: $success-color;
+      background: lighten($success-color, 45%);
+      &:focus {
+        border-color: $success-color;
+        background: lighten($success-color, 45%);
+      }
+    }
+  }
+  &[state="information"] {
+  }
+  &[state="disabled"] {
+    input, textarea {
+      border-color: $grey-color-80;
+      background: $grey-color-60;
+      &:focus {
+        border-color: $grey-color-80;
+        background: $grey-color-60;
+      }
     }
   }
 }

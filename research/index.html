@@ -446,8 +446,13 @@
         <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
         <auth>
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-                <text-field for="registration" size="full" id="name" name="name" type="text" hidden>
+                <text-field state="information" for="registration" size="full" id="name" name="name" type="text" hidden>
                     Име
+                    <notification success size="text-field">
+                        <p>
+                            Easy one click sign in. We won't post anything without your permission.
+                        </p>
+                    </notification>
                 </text-field>
                 <text-field state="error" size="full" id="email" name="email" type="email">
                     имейл адрес
@@ -480,7 +485,7 @@
             </site-auth>
             <social-auth type="login" size="compact" class="half">
                 <headline size="small" density="comfortable">Или чрез Facebook</headline>
-                <notification information size="small">
+                <notification information no-icon size="small">
                     <p>Easy one click sign in. We won't post anything without your permission.</p>
                 </notification>
                 <social-button facebook action="google3.com"></social-button>

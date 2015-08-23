@@ -1,8 +1,9 @@
 @import '../styleguide';
 
-notification{
+notification {
   position: relative;
   display: block;
+  z-index: 1;
   &[information] {
     background: $white;
     color: $body-text-color;
@@ -13,34 +14,35 @@ notification{
   &[error] {
     background: $secondary-color-100;
     color: $white;
-    svg{
+    svg {
       fill: $white;
     }
   }
   &[success] {
     background: $success-color;
     color: $white;
-    svg{
+    svg {
       fill: $white;
     }
   }
-  &[size="big"]{
+  &[size="big"] {
     @extend %bodytext-large-font, %small-radius;
     padding: 30px 40px 30px 100px;
     min-height: 100px;
-    .icon{
+    .icon {
       width: 100px;
       height: 48px;
       padding: 0 21px;
       @extend %center-y;
       left: 0;
-      svg{
+      svg {
         width: 100%;
         height: 100%;
       }
     }
   }
-  &[size="small"]{
+
+  &[size="small"] {
     min-height: 24px;
     padding: 0 10px 0 37px;
     margin: 0 0 13px;
@@ -63,11 +65,10 @@ notification{
       }
     }
   }
-  &[size="text-field"]{
+  &[size="text-field"] {
     min-height: 50px;
     padding: 11px 10px 6px 43px;
-    top:-4px;
-    z-index: 1;
+    top: -4px;
     @extend %popup-font;
     border-radius: 0 0 $nano-radius $nano-radius;
     .icon {
@@ -95,13 +96,13 @@ notification{
         height: 100%;
       }
     }
-    strong{
+    strong {
       font-weight: 400;
       @extend %bodytext-large-font;
       margin: 15px 0 0;
       display: block;
     }
-    p{
+    p {
       margin: 3px 0 0;
     }
     &[success] {
@@ -109,7 +110,7 @@ notification{
         color: $success-color;
       }
       svg {
-      fill: $success-color;
+        fill: $success-color;
       }
     }
     &[error] {
@@ -117,8 +118,23 @@ notification{
         color: $secondary-color-100;
       }
       svg {
-      fill: $secondary-color-100;
+        fill: $secondary-color-100;
       }
+    }
+  }
+  &[no-icon] {
+    svg {
+      display: none;
+    }
+    &[size="big"] {
+      padding: 30px 40px;
+    }
+    &[size="small"] {
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+    &[size="text-field"] {
+      padding: 11px 10px 6px;
     }
   }
 }
