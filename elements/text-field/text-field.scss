@@ -21,6 +21,7 @@ text-field {
       padding: 9px 10px;
       border: 1px solid $grey-color-80;
       outline: none;
+      z-index: 2;
       &:focus {
         border-color: $grey-color-100;
       }

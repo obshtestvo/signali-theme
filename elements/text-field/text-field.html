@@ -1,6 +1,7 @@
 <label {{#id}}for="{{id}}Input"{{/id}}><content></content></label>
 {{#textarea}}
 <textarea {{#id}}id="{{id}}Input"{{/id}} name="{{name}}" placeholder="{{placeholder}}">{{#value}}{{value}}{{/value}}</textarea>
+<content select="notification"></content>
 {{/textarea}}
 
 {{^textarea}}
