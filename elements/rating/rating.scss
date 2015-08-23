@@ -1,4 +1,11 @@
 @import '../styleguide';
+
+@mixin size($size) {
+  width: $size + 5px;
+  height: $size;
+  padding: 0 $size/5 0 0;
+}
+
 rating {
   padding: 7px 0;
   display: block;
@@ -11,7 +18,70 @@ rating {
       color: $secondary-color-100;
     }
   }
-  &[size="medium"] {
-      padding: 0;
+  &[size="medium"], &[size="large"] {
+    star[type="empty"] .outline {
+      fill: $grey-color-100;
+    }
   }
+  &[size="medium"] {
+    padding: 0;
+    star {
+      @include size(18px);
+      &[type="empty"] .outline {
+        fill: $grey-color-100;
+      }
+    }
+  }
+  &[size="large"] star {
+    @include size(22px);
+  }
+
+  star {
+    display: inline-block;
+    @include size(15px);
+    cursor: pointer;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &[type="full"] {
+      .full {
+        fill: $rating-color
+      }
+      .half, .outline {
+        fill: transparent;
+      }
+    }
+    &[type="half"] {
+      .half, .outline {
+        fill: $rating-color;
+      }
+      .full {
+        fill: transparent;
+      }
+    }
+    &[type="empty"] {
+      .half, .full {
+        fill: transparent;
+      }
+      .outline {
+        fill: $rating-color;
+      }
+    }
+  }
+
+  star[size].hover,
+  star.hover {
+    .half {
+      fill: transparent;
+    }
+    .full {
+      fill: $secondary-color-100
+    }
+    .outline {
+      fill: transparent;
+    }
+  }
+
 }

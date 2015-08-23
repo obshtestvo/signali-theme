@@ -5,7 +5,7 @@
     {{ form.user }}
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
-        <rating survey align="left" value="2.4"></rating>
+        <rating size="large" align="left" value="2.4"></rating>
     </survey-question>
     <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
         <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>

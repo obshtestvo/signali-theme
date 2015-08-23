@@ -82,9 +82,6 @@ cardItemEl(componentService);
 var ratingEl = require('rating');
 ratingEl(componentService);
 
-var starEl = require('star');
-starEl(componentService);
-
 var donationEl = require('donation');
 donationEl(componentService);
 
