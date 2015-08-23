@@ -83,6 +83,15 @@ action-button {
         @extend %small-radius;
       }
     }
+    &[size="gigalarge"] {
+      a, button {
+        width: 100%;
+        padding: 15px 30px;
+        @extend %bodytext-large-font;
+        line-height: 20px;
+        border-radius: $large-radius + 6px;
+      }
+    }
     &[size="extralarge"] {
       a, button {
         width: 100%;
