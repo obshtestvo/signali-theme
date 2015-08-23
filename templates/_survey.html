@@ -1,12 +1,13 @@
-{{ form.is_effective.html_name }}
-<form action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post">
-{% csrf_token %}
-{{ form }}
-    <button type="submit">asdasd</button>
+
 
 </form>
 <survey notlogged>
     <headline size="small" density="compact">Моля влезте за да коментирате</headline>
+    <notification information size="small">
+        <p>
+            За да запишем опитът ви, ще е нужно да влезете или да се регистирарате в Signali.bg.
+        </p>
+    </notification>
     <action-button link type="primary" fill="solid" color="red" size="medium" align="left"
                    action="{{ action }}">Вход
     </action-button>
@@ -14,21 +15,23 @@
         <span>или се</span>регистрирай
     </action-button>
 </survey>
-<survey logged>
+<survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post">
     <headline size="small" density="compact">Тоята оценка</headline>
     <p>Споделяте опит като Димитър Райков (me@dreamture.net)</p>
-    <text-field id="comment-area" size="full" type="textarea"></text-field>
-    <survey-question yesandno>
-        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
-        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
-                       action="{{ action }}">Да
-        </action-button>
-        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"
-                       action="{{ action }}">Не
-        </action-button>
+    {% csrf_token %}
+    {{ form.user }}
+    <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value %}checked{% endif %}>
+        <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
+        <action-button button type="primary" fill="{% if form.is_easy.value %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" value="1">Да</action-button>
+        <action-button button type="primary" fill="{% if not form.is_easy.value %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" value="0">Не</action-button>
+    </survey-question>
+    <survey-question name="{{ form.is_effective.html_name }}" checkbox {% if form.is_effective.value %}checked{% endif %}>
+        <headline density="cozy" size="small">Имаше ли ефект от подадения сигнал?</headline>
+        <action-button button type="primary" fill="{% if form.is_effective.value %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" value="1">Да</action-button>
+        <action-button button type="primary" fill="{% if not form.is_effective.value %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" value="0">Не</action-button>
     </survey-question>
     <survey-question rating>
-        <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+        <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
         <rating survey align="left">
             <star type="full"></star>
             <star type="full"></star>
@@ -37,7 +40,8 @@
             <star type="empty"></star>
         </rating>
     </survey-question>
-    <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">
+    <text-field size="full" type="textarea" name="{{ form.comment.html_name }}" value="{{ form.comment.value }}"></text-field>
+    <action-button submit type="secondary" fill="solid" color="purple" size="medium" align="left">
         публикувай
     </action-button>
 </survey>

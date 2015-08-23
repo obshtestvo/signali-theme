@@ -1,3 +1,5 @@
+from restful.shortcuts import errors
+
 from django import template
 from django.db.models import Prefetch
 
@@ -51,10 +53,13 @@ def addnew_form(request):
 
 @register.inclusion_tag('_survey.html')
 def survey(request, contactpoint, form=None):
+    prefix = 'survey'
     if form is None:
-        form = get_feedbackfrom(contactpoint)
+        form = get_feedbackfrom(contactpoint, initial={"user": request.user}, prefix=prefix)
     return {
+        "prefix": prefix,
         "form": form,
+        "errors": errors(request).get("form"+prefix, None),
         "contactpoint": contactpoint,
         "request": request
     }

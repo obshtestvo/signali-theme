@@ -39,6 +39,7 @@ text-field{
   textarea{
     display: block;
     width: 100%;
+    max-width:100%;
     position: relative;
     @extend %small-radius, %bodytext-font;
     padding: 9px 10px;

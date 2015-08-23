@@ -6,14 +6,10 @@ survey-question {
   @extend %small-radius;
   margin: 0 0 20px 0;
   padding: 15px 20px 20px ;
-  h5{
-    @extend %bodytext-large-font;
-    padding: 0 0 11px 0;
-    strong{
-      font-weight: 400;
+  &[checkbox]{
+    input {
+      display: none;
     }
-  }
-  &[yesandno]{
     action-button {
       margin: 0 5px 0 0;
     }

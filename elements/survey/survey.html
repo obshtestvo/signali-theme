@@ -1,20 +1,18 @@
 <content select="headline"></content>
 {{#notlogged}}
 <section class="not-logged">
-    <div class="clearfix">
-    <content select="action-button"></content>
-    </div>
     <content></content>
+    <div class="clearfix">
+        <content select="action-button"></content>
+    </div>
 </section>
 {{/notlogged}}
 
 {{#logged}}
 <section class="logged">
     <content select="p"></content>
-    <form action="">
-        <content select="text-field"></content>
-        <content select="survey-question"></content>
-        <content select="action-button"></content>
+    <form action="{{action}}" method="{{method}}">
+        <content></content>
     </form>
 </section>
 {{/logged}}

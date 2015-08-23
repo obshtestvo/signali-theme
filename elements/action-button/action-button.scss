@@ -5,8 +5,8 @@
 //if helper attributes [type],[fill],[size] and [color] are not required
 
 action-button {
-  &[link], &[button] {
-    a, input[type="submit"] {
+  &[link], &[button], &[submit] {
+    a, button {
       @extend %large-radius, %button-font, %anime;
       padding: 10px 20px;
       display: inline-block;
@@ -15,7 +15,7 @@ action-button {
       outline: none;
     }
     &[color="red"] {
-      a, input[type="submit"] {
+      a, button {
         background: $secondary-color-100;
         &:hover {
           background: $secondary-color-60;
@@ -23,7 +23,7 @@ action-button {
       }
     }
     &[color="purple"] {
-      a, input[type="submit"] {
+      a, button {
         background: $main-color-100;
         &:hover {
           background: $main-color-60;
@@ -31,7 +31,7 @@ action-button {
       }
     }
     &[color="white"] {
-      a, input[type="submit"] {
+      a, button {
         color: $main-color-100;
         background: $white;
         &:hover {
@@ -42,7 +42,7 @@ action-button {
     }
     &[fill="outlined"] {
       &[color="red"] {
-        a, input[type="submit"] {
+        a, button {
           background: transparent;
           @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
           color: $secondary-color-100;
@@ -54,7 +54,7 @@ action-button {
         }
       }
       &[color="purple"] {
-        a, input[type="submit"] {
+        a, button {
           background: transparent;
           @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
           color: $main-color-100;
@@ -66,7 +66,7 @@ action-button {
         }
       }
       &[color="white"] {
-        a, input[type="submit"] {
+        a, button {
           background: transparent;
           @include box-shadow(0, 0, 0, 3px $white, inset);
           color: $white;
@@ -79,27 +79,27 @@ action-button {
       }
     }
     &[type="secondary"] {
-      a, input[type="submit"] {
+      a, button {
         @extend %small-radius;
       }
     }
     &[size="extralarge"] {
-      a, input[type="submit"] {
+      a, button {
         width: 100%;
       }
     }
     &[size="large"] {
-      a, input[type="submit"] {
+      a, button {
         padding: 10px 40px;
       }
     }
     &[size="medium"] {
-      a, input[type="submit"] {
+      a, button {
         padding: 10px 30px;
       }
     }
     &[mainsearch] {
-      a, input[type="submit"] {
+      a, button {
         @extend %center-y;
         right: 0;
       }
