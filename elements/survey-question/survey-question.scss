@@ -2,16 +2,35 @@
 
 survey-question {
   display: block;
-  background: $grey-color-60;
-  @extend %small-radius;
   margin: 0 0 20px 0;
-  padding: 15px 20px 20px ;
-  &[checkbox]{
-    input {
-      display: none;
+  & > section {
+    background: $grey-color-60;
+    @extend %small-radius;
+    padding: 15px 20px 20px;
+    position: relative;
+    &[checkbox] {
+      input {
+        display: none;
+      }
+      action-button {
+        margin: 0 5px 0 0;
+      }
     }
-    action-button {
-      margin: 0 5px 0 0;
+  }
+  &[state="error"] {
+    & > section {
+      z-index: 2;
+      box-shadow: inset 1px 0px 0px 0px $secondary-color-100,
+                  inset -1px 0px 0px 0px $secondary-color-100,
+                  inset 1px 1px 0px 0px $secondary-color-100;
+    }
+  }
+  &[state="success"] {
+    & > section {
+      z-index: 2;
+      box-shadow: inset 1px 0px 0px 0px $success-color,
+                  inset -1px 0px 0px 0px $success-color,
+                  inset 1px 1px 0px 0px $success-color;
     }
   }
 }

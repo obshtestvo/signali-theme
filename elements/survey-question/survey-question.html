@@ -1,11 +1,14 @@
-<content select="headline"></content>
-{{#name}}
-    {{#checkbox}}
-    <input type="checkbox" name="{{name}}" {{#checked}}checked="checked"{{/checked}}>
-    {{/checkbox}}
-{{/name}}
-<div class="clearfix">
-    <content></content>
-</div>
+<section>
+    <content select="headline"></content>
+    {{#name}}
+        {{#checkbox}}
+        <input type="checkbox" name="{{name}}" {{#checked}}checked="checked"{{/checked}}>
+        {{/checkbox}}
+    {{/name}}
+    <div class="clearfix">
+        <content></content>
+    </div>
+</section>
+    <content select="notification"></content>
 
 

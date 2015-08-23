@@ -105,12 +105,7 @@ Unlucky
         <card resume>
             <img src="test/logo1.jpg" alt=""/>
             <card-item type="rating">
-                <rating align="left">
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
+                <rating align="left" value="2.5">
                     <a class="comments" href="#">(14 коментара)</a>
                 </rating>
             </card-item>
@@ -175,20 +170,25 @@ Unlucky
         <p>Пишете като Димитър Райков (me@dreamture.net)</p>
         <text-field id="comment-area" size="full" type="textarea">
         </text-field>
-        <survey-question >
+        <survey-question state="error">
             <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
             <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">Да</action-button>
             <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">Не</action-button>
+            <notification error size="text-field">
+                <p>
+                    Easy one click sign in. We won't post anything without your permission.
+                </p>
+            </notification>
         </survey-question>
-        <survey-question raiting>
+        <survey-question raiting state="success">
             <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
-            <rating size="medium" align="left">
-                <star type="full"></star>
-                <star type="full"></star>
-                <star type="full"></star>
-                <star type="empty"></star>
-                <star type="empty"></star>
+            <rating size="medium" align="left" value="4">
             </rating>
+            <notification success size="text-field">
+                <p>
+                    Easy one click sign in. We won't post anything without your permission.
+                </p>
+            </notification>
         </survey-question>
         <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">публикувай</action-button>
     </survey>
