@@ -1,4 +1,4 @@
-require('./rating.scss')
+require('./rating.scss');
 
 module.exports = function (componentService) {
     var name = 'rating';
@@ -11,7 +11,7 @@ module.exports = function (componentService) {
         created: function () {
             var $el = $(this);
             var $stars = $el.find('star');
-            var $input = $el.find('input')
+            var $input = $el.find('input');
             $stars.each(function () {
                 var $s = $(this);
                 var $hoverStars = $s.prevAll().add($s)
@@ -25,7 +25,8 @@ module.exports = function (componentService) {
                     $stars.attr('type', 'empty');
                     $nextStars.removeClass('user');
                     $hoverStars.addClass('user');
-                    $input.val($s.index()+1)
+                    $input.val($s.index()+1);
+                    $el.trigger('change');
                 })
             })
         },

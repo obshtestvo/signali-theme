@@ -46,6 +46,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
             targetHeight = null,
             targetWidth = null;
 
+        toHide = toHide ? toHide : $()
         var $toHide = $.type(toHide) == 'string' ? $this.find(toHide) : toHide;
         if ($toHide.length > 1) {
             throw "jQuery.animateContentSwitch accepts only single elements";
@@ -54,7 +55,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
         $this.dequeue().stop();
         originalHeight = $this.outerHeight();
         originalWidth = $this.outerWidth();
-        $toHide.dequeue().stop();
+        if ($toHide.length) $toHide.dequeue().stop();
         $toShow.dequeue().stop();
 
         // check if there was a previous animation by animateContent
@@ -85,8 +86,8 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
                 originalWidth = visibleStep.width;
             }
         }
-        targetHeight = originalHeight - ($toHide.outerHeight(true) - $toShow.outerHeight(true));
-        targetWidth = originalWidth - ($toHide.outerWidth(true) - $toShow.outerWidth(true));
+        targetHeight = originalHeight - (($toHide.length ? $toHide.outerHeight(true) : 0) - $toShow.outerHeight(true));
+        targetWidth = originalWidth - (($toHide.length ? $toHide.outerWidth(true) : 0) - $toShow.outerWidth(true));
         //save current animation data
         var data = {
             start: {
@@ -164,7 +165,13 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
                 }
             });
         };
-        hide();
-        if (options.parallel) show();
+        if ($toHide.length) hide();
+        if (options.parallel || !$toHide.length ) {
+            if ($.isFunction(options.beforeShow)) {
+                options.beforeShow(show);
+            } else {
+                show();
+            }
+        };
     });
 };

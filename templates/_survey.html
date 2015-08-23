@@ -7,16 +7,20 @@
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
         <rating size="large" align="left" value="2.4" name="{{form.rating.html_name}}"></rating>
     </survey-question>
-    <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
-        <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
-        <action-button button type="primary" fill="{% if form.is_easy.value and form.is_bound%}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
-        <action-button button type="primary" fill="{% if not form.is_easy.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
-    </survey-question>
-    <survey-question name="{{ form.is_effective.html_name }}" checkbox {% if form.is_effective.value and form.is_bound %}checked{% endif %}>
-        <headline density="cozy" size="small">Имаше ли ефект от подадения сигнал?</headline>
-        <action-button button type="primary" fill="{% if form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
-        <action-button button type="primary" fill="{% if not form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
-    </survey-question>
+    <div class="reveal">
+        <div class="quick" hidden>
+            <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
+                <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
+                <action-button button type="primary" fill="{% if form.is_easy.value and form.is_bound%}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
+                <action-button button type="primary" fill="{% if not form.is_easy.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
+            </survey-question>
+            <survey-question name="{{ form.is_effective.html_name }}" checkbox {% if form.is_effective.value and form.is_bound %}checked{% endif %}>
+                <headline density="cozy" size="small">Имаше ли ефект от подадения сигнал?</headline>
+                <action-button button type="primary" fill="{% if form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
+                <action-button button type="primary" fill="{% if not form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
+            </survey-question>
+        </div>
+    </div>
     <text-field size="full" type="textarea" name="{{ form.comment.html_name }}" {% if form.comment.value %}value="{{ form.comment.value }}"{% endif %}>
         Разкажете как мина?
     </text-field>
