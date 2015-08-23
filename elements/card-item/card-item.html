@@ -1,0 +1,16 @@
+<content select="strong"></content>
+
+{{^tags}}
+    <content select="a"></content>
+{{/tags}}
+
+{{#tags}}
+    <div class="tags">
+        <content select="a"></content>
+    </div>
+{{/tags}}
+
+{{#rating}}
+    <content select="rating"></content>
+{{/rating}}
+

@@ -1,6 +1,0 @@
-@import '../styleguide';
-tags {
-  & > ul{
-    @extend %stripped;
-  }
-}

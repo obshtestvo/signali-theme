@@ -4,26 +4,12 @@
         <a href="{{action}}"><content select="img"></content></a>
     </div>
     <h4><a href="{{action}}"><content select="strong"></content></a></h4>
-    <div class="item">
-        <strong>категория</strong>
-        <content select=".category"></content>
-    </div>
-    <div class="item">
-        <strong>местонахождение</strong>
-        <content select=".location"></content>
-    </div>
-    <div class="item">
-        <strong>етикети</strong>
-        <content select="tags"></content>
-    </div>
-    <div class="item">
-        <strong>Рейтинг</strong>
-        <content select="rating"></content>
-    </div>
-    <div class="item">
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сгинал
-        </action-button>
+    <content select="[type='category']"></content>
+    <content select="[type='location']"></content>
+    <content select="[type='tags']"></content>
+    <content select="[type='rating']"></content>
+    <div>
+        <content select="action-button"></content>
     </div>
 </section>
 {{/resume}}
@@ -33,12 +19,8 @@
     <div class="logo-wrap">
         <a href="{{action}}"><content select="img"></content></a>
     </div>
-    <div class="item">
-        <content select="rating"></content>
-    </div>
+    <content select="[type='rating']"></content>
 </section>
-<action-button link type="secondary" fill="solid" color="red" size="extralarge" align="center" action="{{action}}">
-    Подай сигнал!
-</action-button>
+    <content select="action-button"></content>
     <content select="p"></content>
 {{/resume}}

@@ -76,6 +76,9 @@ cardsEl(componentService);
 var cardEl = require('card');
 cardEl(componentService);
 
+var cardItemEl = require('card-item');
+cardItemEl(componentService);
+
 var tagsEl = require('tags');
 tagsEl(componentService);
 
