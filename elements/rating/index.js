@@ -11,18 +11,26 @@ module.exports = function (componentService) {
         created: function () {
             var $el = $(this);
             var $stars = $el.find('star');
+            var $input = $el.find('input')
             $stars.each(function () {
-                var $s = $(this)
+                var $s = $(this);
                 var $hoverStars = $s.prevAll().add($s)
+                var $nextStars = $s.nextAll()
                 $s.hover(function () {
                     $hoverStars.addClass('hover')
                 }, function () {
                     $hoverStars.removeClass('hover')
+                });
+                $s.click(function () {
+                    $stars.attr('type', 'empty');
+                    $nextStars.removeClass('user');
+                    $hoverStars.addClass('user');
+                    $input.val($s.index()+1)
                 })
             })
         },
         properties: {
-            "value": {
+            "star-types": {
                 get: function () {
                     var starTypes = [];
                     var rating = parseFloat(this.getAttribute('value'))
