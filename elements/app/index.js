@@ -79,12 +79,6 @@ cardEl(componentService);
 var cardItemEl = require('card-item');
 cardItemEl(componentService);
 
-var tagsEl = require('tags');
-tagsEl(componentService);
-
-var tagEl = require('tag');
-tagEl(componentService);
-
 var ratingEl = require('rating');
 ratingEl(componentService);
 
