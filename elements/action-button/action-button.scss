@@ -158,6 +158,9 @@ action-button {
     &[density="comfortable"] {
       line-height: 40px
     }
+    &[density="cozy"] {
+      line-height: 32px
+    }
   }
   &[icon="false"] {
     svg {

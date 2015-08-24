@@ -2,7 +2,7 @@
 
 menu-column {
   display: block;
-  width: 50%;
+  width: 33%;
   float: left;
   padding: 25px 30px 3px 30px;
   h2 {
@@ -17,7 +17,9 @@ menu-column {
       @extend %bodytext-font;
       line-height: 24px;
       a {
+        line-height: 20px;
         color: $secondary-color-100;
+        display: inline-block;
         &:hover {
           text-decoration: underline;
         }
