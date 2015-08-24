@@ -3,7 +3,7 @@
 survey {
   @extend %wrapper;
   display: block;
-  padding: 0 0 30px;
+  padding-bottom: 30px;
   & > section {
     width: 75%;
   }

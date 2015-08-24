@@ -1,11 +1,12 @@
-require('./list-item.scss')
+require('./features-item.scss')
 
 module.exports = function (componentService) {
-    componentService.register('list-item', {
-        template: require('./list-item.html'),
+    componentService.register('features-item', {
+        template: require('./features-item.html'),
         include: {
             checkCircle: require('./check-circle.svg'),
-            closeCircle: require('./close.svg')
+            closeCircle: require('./close.svg'),
+            questionCircle: require('./question.svg')
         },
         properties: {
             "check": {
@@ -16,6 +17,11 @@ module.exports = function (componentService) {
             "none": {
                 get: function () {
                     return this.getAttribute('type')=='none'
+                }
+            },
+            "question": {
+                get: function () {
+                    return this.getAttribute('type')=='question'
                 }
             }
         }

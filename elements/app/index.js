@@ -133,11 +133,11 @@ authElement(componentService);
 var resumeElement = require('resume');
 resumeElement(componentService);
 
-var listElement = require('list');
-listElement(componentService);
+var featuresElement = require('features');
+featuresElement(componentService);
 
-var listItemElement = require('list-item');
-listItemElement(componentService);
+var featuresItemElement = require('features-item');
+featuresItemElement(componentService);
 
 var surveyQestionElement = require('survey-question');
 surveyQestionElement(componentService);
