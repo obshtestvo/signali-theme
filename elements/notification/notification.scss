@@ -7,6 +7,7 @@ notification {
   width:100%;
   .cell {
     display: table-cell;
+    vertical-align: middle;
   }
   ul {
     @extend %stripped;
@@ -18,6 +19,12 @@ notification {
     svg {
       fill: $body-text-color
     }
+  }
+  &[color="white"]{
+    background: $white;
+  }
+  &[color="gray"]{
+    background: $grey-color-60;
   }
   &[error] {
     background: $secondary-color-100;
@@ -157,7 +164,7 @@ notification {
       padding: 20px;
     }  
     &[size="small"] {
-      padding: 0;
+      padding: 0 10px;
       margin: 0 0 10px 0;
     }
     &[size="text-field"] {
