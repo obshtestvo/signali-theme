@@ -12,7 +12,10 @@ notification {
   ul {
     @extend %stripped;
   }
-
+  p{
+    padding: 0 !important;
+    margin:0 !important;
+  }
   &[information] {
     background: $white;
     color: $body-text-color;
