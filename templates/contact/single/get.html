@@ -25,14 +25,14 @@
                 <article>
                     {{ point.description }}
                 </article>
-                <list>
-                    <list-item check>Мултиезичност</list-item>
-                    <list-item check>Изисква регистрация</list-item>
-                    <list-item check>Анонимност</list-item>
-                    <list-item check>Гаранция за отговор</list-item>
-                    <list-item check>Верификация на сигнал</list-item>
-                    <list-item check>Потвърждаване на сигнал</list-item>
-                </list>
+                <features>
+                    <features-item check>Мултиезичност</features-item>
+                    <features-item check>Изисква регистрация</features-item>
+                    <features-item check>Анонимност</features-item>
+                    <features-item check>Гаранция за отговор</features-item>
+                    <features-item check>Верификация на сигнал</features-item>
+                    <features-item check>Потвърждаване на сигнал</features-item>
+                </features>
                 <card resume>
                     {% if point.preview %}
                         {% thumbnail point.preview "280x112" crop="center" as img %}
