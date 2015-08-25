@@ -2,8 +2,16 @@
 
 notification {
   position: relative;
-  display: block;
   z-index: 1;
+  display: table;
+  width:100%;
+  .cell {
+    display: table-cell;
+  }
+  ul {
+    @extend %stripped;
+  }
+
   &[information] {
     background: $white;
     color: $body-text-color;
