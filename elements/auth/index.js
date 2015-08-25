@@ -1,3 +1,4 @@
+require('ajax');
 require('./auth.scss');
 
 module.exports = function (componentService) {

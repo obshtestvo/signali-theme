@@ -1,4 +1,4 @@
-require('./survey-question.scss')
+require('./survey-question.scss');
 
 module.exports = function (componentService) {
     componentService.register('survey-question', {
@@ -10,16 +10,35 @@ module.exports = function (componentService) {
                 var $true = $el.find('[true]');
                 var $false = $el.find('[false]');
                 $false.click(function() {
-                    $true.attr('fill', 'outlined')
-                    $false.attr('fill', 'solid')
-                    $input.val(false);
+                    $true.attr('fill', 'outlined');
+                    $false.attr('fill', 'solid');
+                    $input.prop( "checked", false ).change()
                 });
                 $true.click(function() {
-                    $false.attr('fill', 'outlined')
-                    $true.attr('fill', 'solid')
-                    $input.val(true);
+                    $false.attr('fill', 'outlined');
+                    $true.attr('fill', 'solid');
+                    $input.prop( "checked", true).change()
                 });
+            }
+        },
+        properties: {
+            "value": {
+                get: function() {
+                    var el = this;
+                    if (el.hasAttribute('checkbox')) {
+                        if (el.querySelector('[fill=solid]')) {
+                            return el.querySelector('input').checked;
+                        } else {
+                            return undefined;
+                        }
+                    }
+                }
+            },
+            "validate-trigger": {
+                get: function() {
+                    return 'change'
+                }
             }
         }
     })
-}
+};

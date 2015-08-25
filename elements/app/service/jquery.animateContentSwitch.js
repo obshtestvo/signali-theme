@@ -42,7 +42,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
                 width: true,
                 parallel: false,
                 height: true
-            }, o),
+            }, o || {}),
             targetHeight = null,
             targetWidth = null;
 

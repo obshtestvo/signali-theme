@@ -1,15 +1,16 @@
-<survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post">
-    <headline size="small" density="compact">Тоята оценка</headline>
+<survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
+    <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
     <p>Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</p>
     {% csrf_token %}
+    <input type="hidden" name="prefix" value="survey"/>
     {{ form.user }}
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
-        <rating size="large" align="left" value="2.4" name="{{form.rating.html_name}}"></rating>
+        <rating size="large" align="left" value="{{ contactpoint.rating }}" name="rrrr{{form.rating.html_name}}"></rating>
     </survey-question>
     <div class="reveal">
         <div class="quick" hidden>
-            <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
+            <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %} required>
                 <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
                 <action-button button type="primary" fill="{% if form.is_easy.value and form.is_bound%}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
                 <action-button button type="primary" fill="{% if not form.is_easy.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
@@ -21,7 +22,7 @@
             </survey-question>
         </div>
     </div>
-    <text-field size="full" type="textarea" name="{{ form.comment.html_name }}" {% if form.comment.value %}value="{{ form.comment.value }}"{% endif %}>
+    <text-field required size="full" type="textarea" name="{{ form.comment.html_name }}" {% if form.comment.value %}value="{{ form.comment.value }}"{% endif %}>
         Разкажете как мина?
     </text-field>
     <action-button submit type="secondary" fill="solid" color="purple" size="medium" align="left">

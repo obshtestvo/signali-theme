@@ -1,11 +1,16 @@
 require('skatejs/dist/skatejs');
 var attrTypeDef = require('skatejs-type-attribute/lib');
 var $ = require('jquery');
+var EventEmitter = require('eventemitter3');
 
 function ComponentService() {
-    this.registered = [];
+    EventEmitter.call(this);
+    this.registered = {};
     this.attributeElementsSetCallbacks = {};
 }
+ComponentService.prototype = Object.create(EventEmitter.prototype);
+ComponentService.prototype.constructor = ComponentService;
+
 ComponentService.prototype.register = function (name, options) {
     var service = this;
     if (service.has(name) && (!options.type || (options.type && options.type == 'element'))) {
@@ -17,7 +22,7 @@ ComponentService.prototype.register = function (name, options) {
         options = service._transformOptionsForSkate(options);
         // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
         // custom attributes with the same name
-        if (elementType == 'attribute' && options.properties[name].set) {
+        if (elementType == 'attribute' && options.properties && options.properties[name].set) {
             if (!service.attributeElementsSetCallbacks.hasOwnProperty(name)) {
                 service.attributeElementsSetCallbacks[name] = [];
                 service.addAttributeElementSetCallback(name, options.properties[name].set);
@@ -36,14 +41,18 @@ ComponentService.prototype.register = function (name, options) {
         }
         definition = $.extend({}, ComponentService.componentDefaults, options)
     }
-    service.registered.push(name);
+    service.registered[name] = {};
+    if (options && options.properties) {
+        service.registered[name].customPropertyNames = Object.keys(options.properties);
+    }
+    service.emit('register', name, service.registered[name])
     skate(name, definition);
 };
 ComponentService.prototype.addAttributeElementSetCallback = function (name, callback) {
     this.attributeElementsSetCallbacks[name].push(callback)
 };
 ComponentService.prototype.has = function (name) {
-    return this.registered.indexOf(name) > -1;
+    return name in this.registered;
 };
 ComponentService.prototype._transformOptionsForSkate = function (o) {
     if (o.template) {

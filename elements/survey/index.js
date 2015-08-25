@@ -1,16 +1,18 @@
 require('./survey.scss');
 require('service/jquery.animateContentSwitch.js');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
+var ValidationForm = require('validation/form');
+var AjaxForm = require('ajax/form');
 
 module.exports = function (componentService) {
     componentService.register('survey', {
         template: require('./survey.html'),
         created: function() {
             var $el = $(this);
+            var $form = $el.find('form');
             var $rating = $el.find('rating');
             var fullSurveyShown = false;
             var $hiddenSurveyArea = $('.reveal');
-            console.log($rating)
             $rating.on('change', function() {
                 if (fullSurveyShown) return;
                 fullSurveyShown = true;
@@ -22,7 +24,11 @@ module.exports = function (componentService) {
                         toggleFixedHeight($hiddenSurveyArea, false)
                     }
                 });
-            })
+            });
+
+            var validation = new ValidationForm($form);
+            var ajaxForm = new AjaxForm($form);
+            validation.on('form:submit', ajaxForm.getSubmitHandler());
         }
     })
 }

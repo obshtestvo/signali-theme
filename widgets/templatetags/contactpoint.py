@@ -1,4 +1,4 @@
-from restful.shortcuts import errors
+from restful.shortcuts import errors, last_input
 
 from django import template
 from django.db.models import Prefetch
@@ -55,7 +55,7 @@ def addnew_form(request):
 def survey(request, contactpoint, form=None):
     prefix = 'survey'
     if form is None:
-        form = get_feedbackfrom(contactpoint, initial={"user": request.user}, prefix=prefix)
+        form = get_feedbackfrom(contactpoint, initial={"user": request.user}, data=last_input(request), prefix=prefix)
     return {
         "prefix": prefix,
         "form": form,

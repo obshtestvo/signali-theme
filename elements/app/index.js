@@ -19,6 +19,12 @@ introElement(componentService);
 var topNavElement = require('top-nav');
 topNavElement(componentService);
 
+var validationElement = require('validation');
+validationElement(componentService);
+
+var ajaxElement = require('ajax');
+ajaxElement(componentService);
+
 var loginBoxElement = require('login-box');
 loginBoxElement(componentService);
 

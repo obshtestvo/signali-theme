@@ -13,7 +13,7 @@
 {{#logged}}
 <section class="logged">
     <content select="p"></content>
-    <form action="{{action}}" method="{{method}}">
+    <form action="{{action}}" method="{{method}}" {{#ajax}}ajax{{/ajax}}>
         <content></content>
     </form>
 </section>
