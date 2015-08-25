@@ -94,21 +94,17 @@ function makeTemplate(options) {
                 data[prop] = element[prop]
             }
         }
-        var $template = $(options.template(data));
-        var node, i, j, k, placeholder, toAppend, parentNode, nodes = [], isDirect;
-        for (i = 0; i < $template.length; i++) {
-            node = $template[i];
-            isDirect = false;
+        var templateFragment = $(options.template(data))[0].parentNode;
+        var node, i, j, k, placeholder, toAppend, parentNode;
+        for (i = 0; i < templateFragment.childNodes.length; i++) {
+            node = templateFragment.childNodes[i];
             if (node.nodeType != Node.ELEMENT_NODE) {
-                nodes.push(node);
                 continue;
             }
             if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
                 queriedPlaceholders = [node];
-                isDirect = true;
             } else {
                 var queriedPlaceholders = [].slice.call(node.querySelectorAll('content[select]'));
-                nodes.push(node)
             }
             for (j = 0; j < queriedPlaceholders.length; j++) {
                 placeholder = queriedPlaceholders[j];
@@ -118,21 +114,16 @@ function makeTemplate(options) {
                 parentNode = placeholder.parentNode;
                 for (k = 0; k < toAppend.length; k++) {
                     parentNode.insertBefore(toAppend[k], placeholder);
-                    if (isDirect) {
-                        nodes.push(toAppend[k])
-                    }
                 }
                 parentNode.removeChild(placeholder)
             }
         }
         if (element.childNodes.length > 0) {
-            for (i = 0; i < nodes.length; i++) {
-                node = $template[i];
-                isDirect = false;
+            for (i = 0; i < templateFragment.childNodes.length; i++) {
+                node = templateFragment.childNodes[i];
                 if (node.nodeType != Node.ELEMENT_NODE) continue;
                 if (node.tagName == 'CONTENT' && !node.hasAttribute('select')) {
                     contentPlaceholders = [node];
-                    isDirect = true;
                 } else {
                     var contentPlaceholders = [].slice.call(node.querySelectorAll('content:not([select])'));
                 }
@@ -142,9 +133,6 @@ function makeTemplate(options) {
                 toAppend = [].slice.call(element.childNodes);
                 for (j = 0; j < toAppend.length; j++) {
                     parentNode.insertBefore(toAppend[j], placeholder);
-                    if (isDirect) {
-                        nodes.push(toAppend[j])
-                    }
                 }
                 parentNode.removeChild(placeholder);
                 break;
@@ -155,6 +143,10 @@ function makeTemplate(options) {
             var remaining = $(element.childNodes);
             remaining.detach();
             element.$detachedContent = remaining;
+        }
+        var nodes = [];
+        for (i = 0; i < templateFragment.childNodes.length; i++) {
+            nodes.push(templateFragment.childNodes[i])
         }
         for (i = 0; i < nodes.length; i++) {
             element.appendChild(nodes[i])
