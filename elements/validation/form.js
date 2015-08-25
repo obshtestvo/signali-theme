@@ -1,5 +1,5 @@
 var Parsley = require('parsleyjs');
-var deepmerge= require('deepmerge');
+var deepmerge = require('deepmerge');
 
 
 function ValidationForm($form, options) {
@@ -8,8 +8,11 @@ function ValidationForm($form, options) {
         classHandler: function (field, b) {
             //    ....
         },
-        errorsContainer: function (field, b) {
-            //    ....
+        errorClass: 'error',
+        successClass: 'success',
+        errorsContainer: function (field) {
+            var $errorContainer = field.$element.find('[error]');
+            if ($errorContainer.length) return $errorContainer;
         }
     }, options || {}));
 
@@ -17,6 +20,14 @@ function ValidationForm($form, options) {
         this._upgradeFieldForCustomElements(formValidation.fields[i])
     }
 
+    formValidation.on('field:error', function(field) {
+        var $errorContainer = field.$element.find('[error]');
+        $errorContainer.prop('hidden', false)
+    });
+    formValidation.on('field:success', function(field) {
+        var $errorContainer = field.$element.find('[error]');
+        $errorContainer.prop('hidden', true)
+    });
     this.validation = formValidation;
 }
 
@@ -24,7 +35,7 @@ function ValidationForm($form, options) {
 /*
  * Pass on event to validation adapter
  */
-ValidationForm.prototype.on = function(eventName, handler) {
+ValidationForm.prototype.on = function (eventName, handler) {
     this.validation.on(eventName, handler)
 };
 
@@ -32,7 +43,7 @@ ValidationForm.prototype.on = function(eventName, handler) {
 /*
  * Checks for custom elements that have implemented a `value` and `validate-trigger` properties
  */
-ValidationForm.prototype._upgradeFieldForCustomElements = function(field) {
+ValidationForm.prototype._upgradeFieldForCustomElements = function (field) {
     var el = field.$element[0];
     if (el.hasOwnProperty('value')) {
         field.options.value = function (self) {

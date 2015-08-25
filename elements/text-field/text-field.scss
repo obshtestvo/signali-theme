@@ -61,7 +61,7 @@ text-field {
       min-height: 75px;
     }
   }
-  &[state="error"] {
+  &[state="error"], &.error {
     input, textarea {
       border-color: $secondary-color-100;
       background: $secondary-color-10;
@@ -71,7 +71,7 @@ text-field {
       }
     }
   }
-  &[state="success"] {
+  &[state="success"], &.success {
     input, textarea {
       border-color: $success-color;
       background: lighten($success-color, 45%);

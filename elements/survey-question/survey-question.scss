@@ -3,21 +3,21 @@
 survey-question {
   display: block;
   margin: 0 0 20px 0;
+  &[checkbox] {
+    input {
+      display: none;
+    }
+    action-button {
+      margin: 0 5px 0 0;
+    }
+  }
   & > section {
     background: $grey-color-60;
     @extend %small-radius;
     padding: 15px 20px 20px;
     position: relative;
-    &[checkbox] {
-      input {
-        display: none;
-      }
-      action-button {
-        margin: 0 5px 0 0;
-      }
-    }
   }
-  &[state="error"] {
+  &[state="error"], &.error {
     & > section {
       z-index: 2;
       box-shadow: inset 1px 0px 0px 0px $secondary-color-100,
@@ -25,7 +25,7 @@ survey-question {
                   inset 1px 1px 0px 0px $secondary-color-100;
     }
   }
-  &[state="success"] {
+  &[state="success"], &.success {
     & > section {
       z-index: 2;
       box-shadow: inset 1px 0px 0px 0px $success-color,

@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var makeSpinner = ('loader/spinner');
+var makeSpinner = require('loader/spinner');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 var deepmerge = require('deepmerge');
 require('service/jquery.animateContentSwitch.js');
@@ -15,7 +15,7 @@ var AjaxForm = function ($container, options) {
         showResult: true,
         determineSuccess: function () {
             return true
-        },
+        }
     };
     options = options || {};
     this.$container = $container;
@@ -66,8 +66,7 @@ AjaxForm.prototype = {
         var self = this;
         var $form = self.$container;
 
-        var handler = function (e) {
-            e.preventDefault();
+        var handler = function () {
             self.block();
 
             var requestOptions = {
@@ -99,6 +98,7 @@ AjaxForm.prototype = {
             };
             if (self.options.pjax) requestOptions.headers = {"x-pjax": 1}
             $.ajax(requestOptions);
+            return false;
         };
         return handler;
     },
