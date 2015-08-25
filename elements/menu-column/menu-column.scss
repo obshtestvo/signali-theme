@@ -2,9 +2,9 @@
 
 menu-column {
   display: block;
-  width: 33%;
+  width: 33.33%;
   float: left;
-  padding: 25px 30px 3px 30px;
+  padding: 5px 30px;
   h2 {
     @extend %bodytext-large-font ;
     font-weight: 600;
@@ -12,6 +12,7 @@ menu-column {
     padding: 0 0 7px;
   }
   ul{
+    min-height: 206px !important;
     @extend %stripped;
     li{
       @extend %bodytext-font;

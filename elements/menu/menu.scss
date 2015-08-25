@@ -26,12 +26,12 @@ menu {
     opacity: 0;
     visibility: hidden;
     background: $white;
-    width: 54.2%;
+    width: 59%;
     @extend %small-radius, %anime;
     @include box-shadow( 0, 0, 5px, rgba($main-color-40, 1));
     position: absolute;
     margin: 8px 0 0 0;
-    padding: 0 0 31px;
+    padding: 20px 0;
     &:before{
       content: '';
       display: block;
@@ -47,6 +47,28 @@ menu {
     &.active{
       opacity: 1;
       visibility: visible;
+    }
+    .seeall {
+      clear: both;
+      padding: 0 30px;
+      a{
+        display: block;
+        width: 100%;
+        text-align: center;
+        @extend %small-radius, %bodytext-font;
+        text-transform: uppercase;
+        color: $main-color-100;
+        line-height: 53px;
+        background: $grey-color-60;
+        &:hover{
+          background: $grey-color-80;
+          text-decoration: underline;
+        }
+        &:active{
+          background: darken($grey-color-60, 15%);
+          color: $secondary-color-80;
+        }
+      }
     }
   }
 }
