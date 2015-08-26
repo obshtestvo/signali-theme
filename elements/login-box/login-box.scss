@@ -23,10 +23,11 @@ login-box {
       span {
         background: $grey-color-80;
         @extend %nano-radius;
-        height: 20px;
-        width: 20px;
+        $size: 20px;
+        height: $size;
+        width: $size;
         float: left;
-        margin: 0 19px 0 0;
+        margin: 0 $size - 1 0 0;
         position: relative;
         &:after{
           content: '';
@@ -41,8 +42,11 @@ login-box {
           right: -13px;
         }
         img {
-          max-width: 100%;
           @extend %nano-radius;
+          max-width: 100%;
+          width: $size;
+          height: $size;
+          float: left;
         }
       }
       strong{

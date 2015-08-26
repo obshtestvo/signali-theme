@@ -25,7 +25,8 @@ survey-question {
                   inset 1px 1px 0px 0px $secondary-color-100;
     }
   }
-  &[state="success"], &.success {
+  &[state="success"], &.success
+  {
     & > section {
       z-index: 2;
       box-shadow: inset 1px 0px 0px 0px $success-color,
