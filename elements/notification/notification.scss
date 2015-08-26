@@ -100,12 +100,13 @@ notification {
     }
   }
   &[size="text-field"] {
-    min-height: 50px;
-    padding: 11px 10px 6px 43px;
+    min-height: 45px;
+    padding: 13px 10px 11px 43px;
     top: -4px;
     @extend %popup-font;
     border-radius: 0 0 $nano-radius $nano-radius;
     .icon {
+      margin: 1px 0 0;
       width: 40px;
       height: 26px;
       padding: 0 7px;
