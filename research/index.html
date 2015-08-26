@@ -157,63 +157,6 @@ Unlucky
     </intro>
 </cover>
 <featured>
-<div style="background: darkslateblue"></div>
-<modal id="auth">
-    <headline size="large" density="airy" align="center" for="login">Вход</headline>
-    <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
-    <auth>
-        <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-            <text-field state="information" for="registration" size="full" id="name" name="name" type="text" hidden>
-                Име
-                <notification success size="text-field">
-                    <p>
-                        Easy one click sign in. We won't post anything without your permission.
-                    </p>
-                </notification>
-            </text-field>
-            <text-field state="error" size="full" id="email" name="email" type="email">
-                имейл адрес
-                <notification error size="text-field">
-                    <p>
-                        Easy one click sign in. We won't post anything without your permission.
-                    </p>
-                </notification>
-            </text-field>
-            <notification information size="small">
-                <p>
-                    Easy one click sign in. We won't post anything without your permission.
-                </p>
-            </notification>
-            <text-field size="full" id="password" type="password">
-                Парола
-            </text-field>
-            <text-field for="registration" size="full" id="password2" type="password" hidden>
-                Парола (пак)
-            </text-field>
-            <action-button button for="login" type="primary" fill="solid" align="left" color="red">
-                вход
-            </action-button>
-            <action-button button for="registration" type="primary" fill="solid" align="left" color="red" hidden>
-                регистрация
-            </action-button>
-            <action-button helper password icon="false" align="right" density="comfortable" for="login"
-                           action="google.com">
-                Забравена парола?
-            </action-button>
-        </site-auth>
-        <social-auth type="login" size="compact" class="half">
-            <headline size="small" density="comfortable">Или чрез Facebook</headline>
-            <notification information no-icon size="small">
-                <p>Easy one click sign in. We won't post anything without your permission.</p>
-            </notification>
-            <social-button facebook action="google3.com"></social-button>
-            <social-button google action="fb.com"></social-button>
-        </social-auth>
-    </auth>
-    <footer for="login">
-        <a href="#" registration-trigger>Направи си регистрация</a>
-    </footer>
-</modal>
 <div class="notifications">
     <notification success size="popup">
         <strong>Успешна регистрация</strong>
@@ -231,7 +174,7 @@ Unlucky
         <p>Easy one click sign in. We won't post anything without your permission.</p>
     </notification>
 
-    <notification success size="large" no-icon>
+    <notification success size="large" no-icon density="cozy">
         <p>Easy one click sign in. We won't post anything without your permission.</p>
     </notification>
     <notification error size="large">
@@ -247,7 +190,7 @@ Unlucky
     <notification success size="medium">
         <p>Easy one click sign in. We won't post anything without your permission.</p>
     </notification>
-    <notification error size="medium">
+    <notification error size="medium" density="comfortable">
         <p>Easy one click sign in. We won't post anything without your permission.</p>
     </notification>
     <notification information color="white" size="medium" no-icon>
@@ -798,6 +741,38 @@ Unlucky
 
             <p>Easy one click sign in. We won't post anything without your permission.</p>
         </notification>
+    </modal>
+    <!--Modal for subscribtion and registration-->
+    <modal id="auth-prompt" stye="display:none;">
+        <headline size="large" density="airy" align="center">Преди да напуснете...</headline>
+        <auth>
+            <subscribe-auth type="subscribe" density="compact" class="half">
+                <headline size="small" density="comfortable">Оставете ни вашият имейл</headline>
+                <notification information color="white" no-icon size="small">
+                    <p>
+                        Easy one click sign in. We won't post anything without your permission.
+                    </p>
+                </notification>
+                <text-field for="email" size="full" id="subscribe-email" name="email" type="text" placeholder="office@otbshtestvo.bg">
+                    имейл адрес
+                </text-field>
+                <action-button button for="login" type="primary" fill="solid" align="left" color="purple">
+                    запази
+                </action-button>
+            </subscribe-auth>
+            <register-auth type="login" size="compact" class="half">
+                <headline size="small" density="comfortable">Или си направете регистрация</headline>
+                <notification information no-icon size="small">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. minim veniam, quis nostrud exercitation.</p>
+                </notification>
+                <action-button button  type="primary" fill="outlined" align="left" color="purple" density="compact">
+                    Регистрация
+                </action-button>
+            </register-auth>
+        </auth>
+        <action-button button type="secondary" fill="solid" align="center" size="gigalarge" color="red">
+            Напред към сайта
+        </action-button>
     </modal>
 </div>
 </page>

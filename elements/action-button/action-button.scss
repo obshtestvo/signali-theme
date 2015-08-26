@@ -6,6 +6,19 @@
 
 action-button {
   &[link], &[button], &[submit] {
+    display: block;
+    &[density="airy"]{
+      padding: 40px 0
+    }
+    &[density="comfortable"]{
+      padding: 30px 0
+    }
+    &[density="cozy"]{
+      padding: 20px 0
+    }
+    &[density="compact"]{
+      padding: 10px 0;
+    }
     a, button {
       @extend %large-radius, %button-font, %anime;
       padding: 10px 20px;
@@ -89,7 +102,11 @@ action-button {
         padding: 15px 30px;
         @extend %bodytext-large-font;
         line-height: 20px;
-        border-radius: $large-radius + 6px;
+        &[type="primary"]{
+          a, button {
+            border-radius: $large-radius + 6px;
+          }
+        }
       }
     }
     &[size="extralarge"] {
@@ -168,5 +185,6 @@ action-button {
       display: none;
     }
   }
+
 }
 
