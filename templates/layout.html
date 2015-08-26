@@ -13,11 +13,11 @@
         <script src="{% static 'head.js' %}"></script>
     </head>
     <body>
-        <!--[if lt IE 8]>
+        <!--[if lt IE 9]>
             Unlucky
         <![endif]-->
         {% block content %}{% endblock %}
         <google-analytics account="{% setting 'google_analytics' %}"></google-analytics>
-        <script src="{% static 'bundle.js' %}"></script>
+        <script src="{% static 'app.js' %}"></script>
     </body>
 </html>

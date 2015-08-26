@@ -1,9 +1,12 @@
-require('app/fonts.scss');
+require('./fonts.scss');
 require('normalize.css/normalize.css');
 require('reset.scss');
 
-// jquery plugins are not yet all used to CommonJS
+// jquery plugins are not all used to CommonJS
 window.$ = window.jQuery = require('jquery');
+
+require('webcomponents.js/MutationObserver');
+
 var ComponentService = require('service/pseudo-webcomponent.skate');
 var componentService = new ComponentService();
 

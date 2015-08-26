@@ -10,7 +10,7 @@ var config = {};
 
 /**************** INPUT ***************/
 config.entry = {
-    app: 'app',
+    app: 'signali',
     head: [
         'modernizr/modernizr',
     ]
@@ -19,7 +19,7 @@ config.entry = {
 /**************** OUTPUT ***************/
 config.output = {
     path: path.normalize(pwd + '/build'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/static/',
     devtoolModuleFilenameTemplate: devtoolModuleFilenameTemplate
 };
@@ -40,7 +40,7 @@ if (process.env.PRODUCTION) {
 /**************** RESOLVING NAMES ***************/
 config.resolve = {
     root: [
-        path.normalize(pwd + '/elements/app'),
+        path.normalize(pwd + '/elements/signali'),
         path.normalize(pwd + '/elements'),
     ],
     alias: {
@@ -58,14 +58,16 @@ if (!process.env.PRODUCTION) {
 
 /**************** MODULE LOADING ***************/
 var svgExtraLoaders = '';
+var skipProcessingLoader = "script";
 if (process.env.PRODUCTION) {
-    svgExtraLoaders = '!svgo'
+    svgExtraLoaders = '!svgo';
+    skipProcessingLoader = "imports?this=>window&module=>false&exports=>false&define=>false";
 }
 config.module = {
     loaders: [
         {
-            test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr|skatejs\/dist|jquery\.magnific|block-ui/,
-            loader: "script"
+            test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr|skatejs\/dist|jquery\.magnific|block-ui|MutationObserver/,
+            loader: skipProcessingLoader
         },
         {
             test: /\.scss$/,
