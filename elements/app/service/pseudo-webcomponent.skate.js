@@ -149,7 +149,7 @@ function makeTemplate(options) {
             nodes.push(templateFragment.childNodes[i])
         }
         for (i = 0; i < nodes.length; i++) {
-            element.appendChild(nodes[i])
+            Node.prototype.appendChild.call(element, nodes[i])
         }
     }
 }

@@ -10,7 +10,7 @@
     </survey-question>
     <div class="reveal">
         <div class="quick" hidden>
-            <survey-question state="error" name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %} required>
+            <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %} required>
                 <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
                 <action-button button type="primary" fill="{% if form.is_easy.value and form.is_bound%}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
                 <action-button button type="primary" fill="{% if not form.is_easy.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
