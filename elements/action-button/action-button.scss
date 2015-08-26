@@ -6,7 +6,7 @@
 
 action-button {
   &[link], &[button], &[submit] {
-    display: block;
+    display: inline-block;
     &[density="airy"]{
       padding: 40px 0
     }
@@ -185,6 +185,8 @@ action-button {
       display: none;
     }
   }
-
+  &[password] {
+    float: right;
+  }
 }
 
