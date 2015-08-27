@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="build/app.css">
     <script src="build/head.js"></script>
 </head>
-<body>
+<body style="padding: 20px 100px;">
 <loader target="page"></loader>
 <page color="semilight">
-<div class="notifications">
+<div class="notifications" st>
     <notification success size="popup">
         <strong>Успешна регистрация</strong>
 
@@ -136,8 +136,22 @@
             </p>
         </notification>
     </text-field>
+
+    <select-dropdown state="error" id="drop23" name="dropdown" multiple size="standart">
+        <label>Местонахождение</label>
+        <notification error size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+        <value id="2" selected>corruption</value>
+        <value id="3">ecology</value>
+        <value id="5">Красота майна</value>
+        <value id="4">Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд</value>
+        <value id="6">асдасда сд РАСФДАСФасдасд</value>
+    </select-dropdown>
 </div>
-<div style="display:block; background: #112346; ">
+<div style="padding: 20px 0;; background: #112346; ">
     <!--Modal Window Login-->
     <modal id="auth">
         <headline size="large" density="airy" align="center" for="login">Вход</headline>
@@ -315,7 +329,7 @@
     </modal>
 </div>
 
-<div style="padding: 100px; background: lightgray">
+<div style="background: lightgray">
     <style>
         action-button{
             margin: 10px 20px;
