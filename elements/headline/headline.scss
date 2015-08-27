@@ -6,68 +6,76 @@
 
 headline {
   display: block;
-  &[size='large']{
-    &[density="airy"]{
+  &[size='large'] {
+    &[density="airy"] {
       padding: 18px 0 32px 0
     }
-    &[density="comfortable"]{
+    &[density="comfortable"] {
       padding: 25px 0 17px 0;
     }
-    &[density="cozy"]{
+    &[density="cozy"] {
 
     }
-    &[density="compact"]{
+    &[density="compact"] {
 
     }
-    h3{
+    h3 {
       @extend %headilme-font;
+    }
+    p {
+      @extend %bodytext-font;
+      line-height: 24px;
+      padding: 0;
+      margin: -1px 0 4px;
+      color: lighten($body-text-color, 20%);
     }
   }
   &[size='medium'] {
-    &[density="airy"]{
+    &[density="airy"] {
 
     }
-    &[density="comfortable"]{
+    &[density="comfortable"] {
 
     }
-    &[density="cozy"]{
+    &[density="cozy"] {
 
     }
-    &[density="compact"]{
+    &[density="compact"] {
 
     }
-    h3{}
+    h3 {
+    }
   }
   &[size='small'] {
-    &[density="airy"]{
+    &[density="airy"] {
       padding: 4px 0 13px;
     }
-    &[density="comfortable"]{
+    &[density="comfortable"] {
       padding: 10px 0 7px;
     }
-    &[density="cozy"]{
-    padding: 0 0 11px 0;
+    &[density="cozy"] {
+      padding: 0 0 11px 0;
     }
-    &[density="compact"]{
+    &[density="compact"] {
       padding: 5px 0 8px 0;
       display: block;
       border-bottom: 1px solid $grey-color-60;
       margin: 10px 0;
-      h3{
+      h3 {
         font-weight: 600;
       }
     }
-    h3{
+    h3 {
       @extend %bodytext-large-font;
     }
   }
-  &[align="left"]{
+  &[align="left"] {
     text-align: left;
   }
-  &[align="right"]{
+  &[align="right"] {
     text-align: right;
   }
-  &[align="center"]{
+  &[align="center"] {
     text-align: center;
   }
 }
