@@ -8,6 +8,9 @@ require('service/jquery.animateContentSwitch.js');
 var AjaxForm = function ($el, options) {
     options = options || {};
     this.options = deepmerge(AjaxForm.defaultOptions, options);
+    if (!options.hasOwnProperty('dataType') && this.options.pjax) {
+        this.options.dataType = 'html'
+    }
 
     if ($el.is('form')) {
         this.$form = $el;
@@ -121,7 +124,7 @@ AjaxForm.prototype = {
         var container;
         if ($.isFunction(getter)) container = getter(this.$form);
         if (typeof getter == 'string') container = this.$container.find(getter);
-        if (!getter.length) container = getter;
+        if (getter instanceof $ && getter.length) container = getter;
         if (!container) {
             container = document.createElement('div');
             this.$container.append(container)
@@ -183,15 +186,12 @@ AjaxForm.prototype = {
         }
         if ($.isFunction(this.options.applyResult)) {
             var result = this.options.applyResult(this, isSuccess, content);
-            console.log('result === false')
             if (result === false) {
                 this.options.preventShow = true;
                 return
             }
-            console.log(result, result instanceof jQuery, !(result instanceof jQuery))
-            if (!(result instanceof jQuery)) return;
+            if (!(result instanceof $)) return;
             if (result.length) {
-                console.log('this._resultContainer = result')
                 this._resultContainer = result;
                 return
             }

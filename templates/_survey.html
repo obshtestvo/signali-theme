@@ -1,8 +1,4 @@
 <survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
-    <notification success size="popup" for="form" hidden>
-        <strong>Благодарим ти!</strong>
-        <p>Твоята оценка помага на останалите граждани и прави Signali.bg по-добър.</p>
-    </notification>
     <notification error size="popup" for="form" hidden>
         <strong>Изникна проблем</strong>
     </notification>
@@ -11,6 +7,7 @@
     <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% csrf_token %}
     <input type="hidden" name="prefix" value="{{prefix}}"/>
+    <input type="hidden" name="submission" value="new_feedback"/>
     {{ form.user }}
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>

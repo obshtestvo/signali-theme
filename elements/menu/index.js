@@ -14,7 +14,6 @@ module.exports = function (componentService) {
             var $lists = $el.find('.categories ul');
 
             var heights = $lists.map(function() {
-                console.log($(this).height())
                 return $(this).height()
             }).get();
 

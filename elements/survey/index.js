@@ -30,7 +30,7 @@ module.exports = function (componentService) {
                 markSuccess: false
             });
             var ajaxForm = new AjaxForm($el, {
-                resultContainer: $el.children('notification')
+                pjax: true
             });
             validation.on('form:submit', ajaxForm.getSubmitHandler());
         }
