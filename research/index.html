@@ -513,7 +513,7 @@ Unlucky
                 <action-button button for="registration" type="primary" fill="solid" align="left" color="red" hidden>
                     регистрация
                 </action-button>
-                <action-button helper password icon="false" align="right" density="comfortable" for="login" action="google.com">
+                <action-button helper icon="false" align="right" density="comfortable" for="login" action="google.com">
                     Забравена парола?
                 </action-button>
             </site-auth>
@@ -616,7 +616,7 @@ Unlucky
         </notification>
     </modal>
     <!--Modal for subscribtion and registration-->
-    <modal id="auth-prompt" stye="display:none;">
+    <modal id="auth-prompt" style="display: none;">
         <headline size="large" density="airy" align="center">Преди да напуснете...</headline>
         <auth>
             <subscribe-auth type="subscribe" density="compact" class="half">
@@ -643,9 +643,11 @@ Unlucky
                 </action-button>
             </register-auth>
         </auth>
-        <action-button button type="secondary" fill="solid" align="center" size="gigalarge" color="red">
-            Напред към сайта
-        </action-button>
+        <footer>
+            <action-button button type="secondary" fill="solid" align="center" size="gigalarge" color="red">
+                Напред към сайта
+            </action-button>
+        </footer>
     </modal>
 </div>
 </page>

@@ -2,7 +2,7 @@
 <content select="headline"></content>
 </section>
 {{#notlogged}}
-<section class="not-logged">
+<section class="not-logged clearfix">
     <content></content>
     <div class="clearfix">
         <content select="action-button"></content>
@@ -11,7 +11,7 @@
 {{/notlogged}}
 
 {{#logged}}
-<section class="logged">
+<section class="logged clearfix">
     <content select="p"></content>
     <content select="notification"></content>
     <form action="{{action}}" method="{{method}}" {{#ajax}}ajax{{/ajax}}>

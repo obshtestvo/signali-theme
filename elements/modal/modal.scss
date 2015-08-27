@@ -1,4 +1,5 @@
 @import '../styleguide';
+
 $footer-background: #404166;
 
 modal {
@@ -6,14 +7,14 @@ modal {
   position: relative;
   display: block;
   margin: 20px auto;
-  .modal-box{
+  .modal-box {
     background: $white;
     @extend %small-radius;
     position: relative;
     .padder {
       padding: 0 40px 40px;
     }
-    .close-modal{
+    .close-modal {
       width: 34px;
       height: 34px;
       display: block;
@@ -21,37 +22,38 @@ modal {
       position: absolute;
       right: -44px;
       top: 0;
-      svg{
+      svg {
         width: 100%;
         height: 100%;
         fill: $white;
       }
-      &:hover svg{
+      &:hover svg {
         fill: rgba($white, .8);
       }
     }
   }
   .footwrap {
-    margin-top: -$small-radius;
     position: relative;
-    top: $small-radius;
   }
   footer {
-    background: $footer-background;
-    border-radius: 0 0  5px 5px;
-    line-height: 60px;
-    font-size: 14px;
-    text-align: center;
-    a{
-      color: $white;
-      &:hover{
-        text-decoration: underline;
-        color: rgba($white, .8);
-      }
-    }
-  }
-  .action-wrap{
     margin: 0 40px 20px;
     position: relative;
+    padding: 0 0 20px;
+    &[for="login"] {
+      margin: 0;
+      padding: 0;
+      background: $footer-background;
+      border-radius: 0 0 4px 4px;
+      line-height: 60px;
+      font-size: 14px;
+      text-align: center;
+      a {
+        color: $white;
+        &:hover {
+          text-decoration: underline;
+          color: rgba($white, .8);
+        }
+      }
+    }
   }
 }
