@@ -113,10 +113,10 @@ action-button {
         padding: 15px 30px;
         @extend %bodytext-large-font;
         line-height: 20px;
-        &[type="primary"]{
-          a, button {
-            border-radius: $large-radius + 6px;
-          }
+      }
+      &[type="primary"]{
+        a, button {
+          border-radius: $large-radius + 6px !important;
         }
       }
     }
