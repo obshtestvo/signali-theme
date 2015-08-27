@@ -1,14 +1,10 @@
-require('./comment.scss')
+require('./comment.scss');
 
 module.exports = function (componentService) {
     componentService.register('comment', {
         template: require('./comment.html'),
         include: {
-            "circle": require('./circle.svg'),
-            "reply-icon": require('./reply.svg')
-        },
-        created: function () {
-            $(".reply-icon").appendTo($(".answer"));
+            "circle": require('./circle.svg')
         }
-    })
-}
+    });
+};

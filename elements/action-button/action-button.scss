@@ -188,5 +188,29 @@ action-button {
   &[password] {
     float: right;
   }
+
+  &[reply] {
+    a {
+      color: $secondary-color-100;
+      float: right;
+      position: relative;
+      padding: 0 0 0 16px;
+      &:hover{
+        text-decoration: underline;
+      }
+      svg{
+        display: none;
+        width: 12px;
+        height: 11px;
+        fill: $secondary-color-100;
+        position: absolute;
+        left: 0;
+        top: 3px;
+        &:first-of-type{
+          display: block;
+        }
+      }
+    }
+  }
 }
 

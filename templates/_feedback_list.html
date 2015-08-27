@@ -13,7 +13,7 @@
                 <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
                      alt="Снимка на {{ feedback.user.get_full_name }}"/>
             {% endthumbnail %}
-            <a class="answer">Сподели своя опит</a>
+            <action-button action="#reply" reply>Сподели своя опит</action-button>
         </comment>
     {% endfor %}
 {#  <name-tag>@userhandle</name-tag>#}

@@ -56,23 +56,6 @@ comment{
         text-decoration: underline;
       }
     }
-    .answer{
-      float: right;
-      position: relative;
-      padding: 0 0 0 16px;
-      svg{
-        display: none;
-        width: 12px;
-        height: 11px;
-        fill: $secondary-color-100;
-        position: absolute;
-        left: 0;
-        top: 3px;
-        &:first-of-type{
-          display: block;
-        }
-      }
-    }
   }
   &[reply]{
     background: none;

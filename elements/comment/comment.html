@@ -11,9 +11,6 @@
         <content select=".name"></content>
     </div>
     {{^reply}}
-    <div class="reply">
-        {{{reply-icon}}}
-        <content select=".answer"></content>
-    </div>
+    <content select="[reply]"></content>
     {{/reply}}
 </footer>
