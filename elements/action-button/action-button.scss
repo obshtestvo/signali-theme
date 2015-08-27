@@ -31,7 +31,7 @@ action-button {
       float: left;
     }
     a, button {
-      @extend %large-radius, %button-font, %anime;
+      @extend %large-radius, %button-font, %anime;;
       padding: 10px 20px;
       display: inline-block;
       color: $white;
@@ -42,6 +42,9 @@ action-button {
       a, button {
         background: $secondary-color-100;
         &:hover {
+          background: $secondary-color-120;
+        }
+        &:active {
           background: $secondary-color-60;
         }
       }
@@ -50,6 +53,9 @@ action-button {
       a, button {
         background: $main-color-100;
         &:hover {
+          background: $main-color-120;
+        }
+        &:active {
           background: $main-color-60;
         }
       }
@@ -59,8 +65,12 @@ action-button {
         color: $main-color-100;
         background: $white;
         &:hover {
+          color: $main-color-120;
+          background: $white-hover;
+        }
+        &:active {
           color: $main-color-80;
-          background: rgba($white, .8);
+          background: $white;
         }
       }
     }
@@ -71,9 +81,14 @@ action-button {
           @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
           color: $secondary-color-100;
           &:hover {
-            background: transparent;
+            background: $secondary-color-120;
+            @include box-shadow(0, 0, 0, 3px $secondary-color-120, inset);
+            color: $white;
+          }
+          &:active {
+            background: $secondary-color-60;
             @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset);
-            color: $secondary-color-60;
+            color: $white;
           }
         }
       }
@@ -83,9 +98,14 @@ action-button {
           @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
           color: $main-color-100;
           &:hover {
-            background: transparent;
+            background: $main-color-120;
+            @include box-shadow(0, 0, 0, 3px $main-color-120, inset);
+            color: $white;
+          }
+          &:active {
+            background: $main-color-60;
             @include box-shadow(0, 0, 0, 3px $main-color-60, inset);
-            color: $main-color-60;
+            color: $white;
           }
         }
       }
@@ -95,9 +115,14 @@ action-button {
           @include box-shadow(0, 0, 0, 3px $white, inset);
           color: $white;
           &:hover {
-            background: transparent;
-            @include box-shadow(0, 0, 0, 3px rgba($white, .8), inset);
-            color: rgba($white, .8);
+            background: $white-hover;
+            @include box-shadow(0, 0, 0, 3px $white-hover, inset);
+            color: $main-color-120;
+          }
+          &:active {
+            background: $white;
+            @include box-shadow(0, 0, 0, 3px $white, inset);
+            color: $main-color-120;
           }
         }
       }
@@ -161,9 +186,16 @@ action-button {
         }
         &:hover {
           text-decoration: underline;
-          color: $secondary-color-hover;
+          color: $secondary-color-120;
           svg {
-            fill: $secondary-color-hover;
+            fill: $secondary-color-120;
+          }
+        }
+        &:active {
+          text-decoration: underline;
+          color: $secondary-color-60;
+          svg {
+            fill: $secondary-color-60;
           }
         }
       }
@@ -191,7 +223,7 @@ action-button {
       line-height: 32px
     }
   }
-  &[icon="false"] {
+  &[icon="false"], &[no-icon] {
     svg {
       display: none;
     }
