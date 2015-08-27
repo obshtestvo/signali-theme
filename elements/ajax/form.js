@@ -164,7 +164,13 @@ AjaxForm.prototype = {
                 },
 
                 error: function (xhr, status, err) {
-                    var error = xhr.responseJSON ? xhr.responseJSON : err;
+                    var error = err;
+                    if (self.options.dataType =='json' && xhr.responseJSON) {
+                        error = xhr.responseJSON;
+                    }
+                    if (xhr.responseText) {
+                        error = xhr.responseText;
+                    }
                     handleError(error)
                 },
 

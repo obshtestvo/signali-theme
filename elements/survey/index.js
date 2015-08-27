@@ -29,8 +29,9 @@ module.exports = function (componentService) {
             var validation = new ValidationForm($form, {
                 markSuccess: false
             });
-            var ajaxForm = new AjaxForm($el, {
-                pjax: true
+            var ajaxForm = new AjaxForm($form, {
+                pjax: true,
+                containerAscendantSelector: '[content]'
             });
             validation.on('form:submit', ajaxForm.getSubmitHandler());
         }

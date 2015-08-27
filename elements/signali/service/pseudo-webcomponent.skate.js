@@ -51,6 +51,9 @@ ComponentService.prototype.register = function (name, options) {
 ComponentService.prototype.addAttributeElementSetCallback = function (name, callback) {
     this.attributeElementsSetCallbacks[name].push(callback)
 };
+ComponentService.prototype.upgrade = function (el) {
+    skate.init(el)
+};
 ComponentService.prototype.has = function (name) {
     return name in this.registered;
 };
@@ -72,9 +75,7 @@ ComponentService.prototype._transformOptionsForSkate = function (o) {
     }
     return o
 };
-ComponentService.componentDefaults = {
-    publish: []
-};
+ComponentService.componentDefaults = {};
 
 function matchesSelector(el, selector) {
     var matchesSelector = el.matches || el.matchesSelector || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector || el.oMatchesSelector;

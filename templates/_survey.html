@@ -1,8 +1,4 @@
 <survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
-    <notification error size="popup" for="form" hidden>
-        <strong>Изникна проблем</strong>
-    </notification>
-    <div class="controls">
     <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
     <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% csrf_token %}
@@ -36,5 +32,4 @@
     <action-button submit type="secondary" fill="solid" color="purple" size="medium" align="left">
         Изпрати
     </action-button>
-    </div>
 </survey>
