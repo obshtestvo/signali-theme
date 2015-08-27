@@ -59,7 +59,7 @@ def survey(request, contactpoint, form=None):
     return {
         "prefix": prefix,
         "form": form,
-        "errors": errors(request).get("form"+prefix, None),
+        "errors": errors(request).get(prefix+"form", None),
         "contactpoint": contactpoint,
         "request": request
     }

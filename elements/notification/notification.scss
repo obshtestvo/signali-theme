@@ -167,7 +167,7 @@ notification {
         height: 100%;
       }
     }
-    strong {
+    [content] > strong {
       font-weight: 400;
       @extend %bodytext-large-font;
       margin: 15px 0 0;
@@ -177,7 +177,7 @@ notification {
       margin: 3px 0 0;
     }
     &[success] {
-      strong {
+      [content] > strong {
         color: $success-color;
       }
       svg {
@@ -185,7 +185,7 @@ notification {
       }
     }
     &[error] {
-      strong {
+      [content] > strong {
         color: $secondary-color-100;
       }
       svg {

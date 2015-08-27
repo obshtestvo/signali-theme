@@ -1,20 +1,27 @@
 var Parsley = require('parsleyjs');
 var deepmerge = require('deepmerge');
 
+var originalParleySuccessHandler = window.ParsleyUI._successClass;
+window.ParsleyUI._successClass = function (fieldInstance) {
+    if (fieldInstance.$element[0].hasAttribute('hide-success')) {
+        fieldInstance._ui.validationInformationVisible = true;
+        fieldInstance._ui.$errorClassHandler.removeClass(fieldInstance.options.errorClass);
+    } else {
+        originalParleySuccessHandler.apply(window.ParsleyUI, arguments)
+    }
+};
 
 function ValidationForm($form, options) {
-
-    var formValidation = $form.parsley(deepmerge({
-        classHandler: function (field, b) {
-            //    ....
-        },
+    options = deepmerge({
         errorClass: 'error',
         successClass: 'success',
         errorsContainer: function (field) {
             var $errorContainer = field.$element.find('[error]');
             if ($errorContainer.length) return $errorContainer;
         }
-    }, options || {}));
+    }, options || {});
+
+    var formValidation = $form.parsley(options);
 
     for (var i = 0; i < formValidation.fields.length; i++) {
         this._upgradeFieldForCustomElements(formValidation.fields[i])

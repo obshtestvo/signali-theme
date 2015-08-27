@@ -1,1 +1,1 @@
-{% include 'error/get.json' %}
+{% include 'error/get.json' with errors=errors %}

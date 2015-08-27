@@ -1,4 +1,4 @@
-require('./comments.scss')
+require('./comments.scss');
 
 module.exports = function (componentService) {
     componentService.register('comments', {

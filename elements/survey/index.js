@@ -26,8 +26,12 @@ module.exports = function (componentService) {
                 });
             });
 
-            var validation = new ValidationForm($form);
-            var ajaxForm = new AjaxForm($form);
+            var validation = new ValidationForm($form, {
+                markSuccess: false
+            });
+            var ajaxForm = new AjaxForm($el, {
+                resultContainer: $el.children('notification')
+            });
             validation.on('form:submit', ajaxForm.getSubmitHandler());
         }
     })

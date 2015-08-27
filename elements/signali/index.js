@@ -28,6 +28,7 @@ validationElement(componentService);
 
 var ajaxElement = require('ajax');
 ajaxElement(componentService);
+require('./override/ajax');
 
 var loginBoxElement = require('login-box');
 loginBoxElement(componentService);

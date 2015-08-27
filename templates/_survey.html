@@ -1,25 +1,34 @@
 <survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
+    <notification success size="popup" for="form" hidden>
+        <strong>Благодарим ти!</strong>
+        <p>Твоята оценка помага на останалите граждани и прави Signali.bg по-добър.</p>
+    </notification>
+    <notification error size="popup" for="form" hidden>
+        <strong>Изникна проблем</strong>
+    </notification>
+    <div class="controls">
     <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
-    <p>Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</p>
+    <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% csrf_token %}
-    <input type="hidden" name="prefix" value="survey"/>
+    <input type="hidden" name="prefix" value="{{prefix}}"/>
     {{ form.user }}
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
-        <rating size="large" align="left" value="{{ contactpoint.rating }}" name="rrrr{{form.rating.html_name}}"></rating>
+        <rating size="large" align="left" value="{{ contactpoint.rating }}" name="{{form.rating.html_name}}"></rating>
     </survey-question>
     <div class="reveal">
         <div class="quick" hidden>
-            <survey-question name="{{ form.is_easy.html_name }}" checkbox {% if form.is_easy.value and form.is_bound %}checked{% endif %} required>
+            <survey-question name="{{ form.is_easy.html_name }}" checkbox required hide-success {% if form.is_easy.value and form.is_bound %}checked{% endif %}>
                 <headline density="cozy" size="small">Лесно ли беше подаването на сигнал?</headline>
                 <action-button button type="primary" fill="{% if form.is_easy.value and form.is_bound%}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
                 <action-button button type="primary" fill="{% if not form.is_easy.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
                 <notification error size="text-field" hidden></notification>
             </survey-question>
-            <survey-question name="{{ form.is_effective.html_name }}" checkbox {% if form.is_effective.value and form.is_bound %}checked{% endif %}>
+            <survey-question name="{{ form.is_effective.html_name }}" checkbox required hide-success {% if form.is_effective.value and form.is_bound %}checked{% endif %}>
                 <headline density="cozy" size="small">Имаше ли ефект от подадения сигнал?</headline>
                 <action-button button type="primary" fill="{% if form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" true>Да</action-button>
                 <action-button button type="primary" fill="{% if not form.is_effective.value and form.is_bound %}solid{% else %}outlined{% endif %}" color="purple" size="large" align="left" false>Не</action-button>
+                <notification error size="text-field" hidden></notification>
             </survey-question>
         </div>
     </div>
@@ -30,4 +39,5 @@
     <action-button submit type="secondary" fill="solid" color="purple" size="medium" align="left">
         Изпрати
     </action-button>
+    </div>
 </survey>
