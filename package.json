@@ -27,6 +27,7 @@
     "ruby-sass-loader": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
     "script-loader": "^0.6.1",
     "skatejs": "skatejs/skatejs#f9466c9816585b2998543997c4fc04e65397aa25",
+    "skatejs-polyfill-mutation-observer": "skatejs/polyfill-mutation-observer",
     "skatejs-type-attribute": "skatejs/type-attribute#master",
     "spin.js": "2.3.2",
     "style-loader": "0.12.3",
@@ -34,7 +35,6 @@
     "svgo-loader": "^1.1.0",
     "throttle-debounce": "^0.1.1",
     "url-loader": "^0.5.6",
-    "webcomponents.js": "^0.7.2",
     "webpack": "1.9.12"
   },
   "repository": {

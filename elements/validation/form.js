@@ -22,11 +22,11 @@ function ValidationForm($form, options) {
 
     formValidation.on('field:error', function(field) {
         var $errorContainer = field.$element.find('[error]');
-        $errorContainer.prop('hidden', false)
+        $errorContainer.show()
     });
     formValidation.on('field:success', function(field) {
         var $errorContainer = field.$element.find('[error]');
-        $errorContainer.prop('hidden', true)
+        $errorContainer.hide()
     });
     this.validation = formValidation;
 }

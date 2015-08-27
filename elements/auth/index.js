@@ -9,22 +9,22 @@ module.exports = function (componentService) {
             var $email = $el.find('input[name="email"]');
             var $name = $el.find('input[name="name"]');
             var $registrationElements = $('[for="registration"]');
-            var $loginElements = $('[for="login"]') ;
+            var $loginElements = $('[for="login"]');
             var $showTrigger = $('[auth-trigger]');
 
             $('[registration-trigger]').click(function(e) {
                 e.preventDefault();
-                $registrationElements.prop('hidden', false)
-                $loginElements.prop('hidden', true)
+                $registrationElements.show()
+                $loginElements.hide()
                 $name.focus();
             });
             $showTrigger.click(function() {
                 if ($(this).attr('type')=='registration') {
-                    $registrationElements.prop('hidden', false)
-                    $loginElements.prop('hidden', true)
+                    $registrationElements.show()
+                    $loginElements.hide()
                 } else {
-                    $registrationElements.prop('hidden', true)
-                    $loginElements.prop('hidden', false)
+                    $registrationElements.hide()
+                    $loginElements.show()
                 }
             });
             $showTrigger.on('done', function() {

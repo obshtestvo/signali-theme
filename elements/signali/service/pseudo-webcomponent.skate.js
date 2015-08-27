@@ -76,31 +76,49 @@ ComponentService.componentDefaults = {
     publish: []
 };
 
+function matchesSelector(el, selector) {
+    var matchesSelector = el.matches || el.matchesSelector || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector || el.oMatchesSelector;
+    return matchesSelector.call(el, selector);
+}
+
+function findMatchingChildren(el, selector) {
+    var matching = [];
+    for (var i = 0; i < el.childNodes.length; i++) {
+        var node = el.childNodes[i];
+        if (node.nodeType != Node.ELEMENT_NODE)  continue;
+        if (matchesSelector(node, selector)) matching.push(node);
+    }
+    return matching;
+}
+
+function getElementTemplateData(el, options) {
+    var data = $.extend({}, options.include);
+    for (var i = 0; i < el.attributes.length; i++) {
+        var attr = el.attributes[i];
+        data[attr.name] = attr.value == '' ? true : attr.value;
+    }
+    if (options.properties) {
+        for (prop in options.properties) {
+            if (!options.properties.hasOwnProperty(prop)) continue;
+            data[prop] = el[prop]
+        }
+    }
+    return data;
+}
+
 function makeTemplate(options) {
     return function () {
         var element = this;
-        var parent = element.parentNode;
-        var shadeid = 'shade-' + Math.floor(Math.random() * 1000) + '-' + Date.now();
-        var qyueryPrefix = '[shadeid="'+shadeid+'"] > ';
-        element.setAttribute('shadeid', shadeid);
-        var data = $.extend({}, options.include);
-        for (var a = 0; a < element.attributes.length; a++) {
-            var attr = element.attributes[a];
-            data[attr.name] = attr.value == '' ? true : attr.value;
-        }
-        if (options.properties) {
-            for (prop in options.properties) {
-                if (!options.properties.hasOwnProperty(prop)) continue;
-                data[prop] = element[prop]
-            }
-        }
-        var templateFragment = $(options.template(data))[0].parentNode;
+
+        /* PARSE custom template with data */
+        var templateData = getElementTemplateData(element, options);
+        var templateFragment = $(options.template(templateData))[0].parentNode;
+
         var node, i, j, k, placeholder, toAppend, parentNode;
+        /* PARSE <content select=".."> tags */
         for (i = 0; i < templateFragment.childNodes.length; i++) {
             node = templateFragment.childNodes[i];
-            if (node.nodeType != Node.ELEMENT_NODE) {
-                continue;
-            }
+            if (node.nodeType != Node.ELEMENT_NODE)  continue;
             if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
                 queriedPlaceholders = [node];
             } else {
@@ -109,8 +127,7 @@ function makeTemplate(options) {
             for (j = 0; j < queriedPlaceholders.length; j++) {
                 placeholder = queriedPlaceholders[j];
                 var selector = placeholder.getAttribute("select");
-                var matching = parent.querySelectorAll(qyueryPrefix + selector);
-                toAppend = [].slice.call(matching);
+                toAppend = findMatchingChildren(element, selector);
                 parentNode = placeholder.parentNode;
                 for (k = 0; k < toAppend.length; k++) {
                     parentNode.insertBefore(toAppend[k], placeholder);
@@ -118,6 +135,8 @@ function makeTemplate(options) {
                 parentNode.removeChild(placeholder)
             }
         }
+
+        /* PARSE <content> tags if element has any content remaining */
         if (element.childNodes.length > 0) {
             for (i = 0; i < templateFragment.childNodes.length; i++) {
                 node = templateFragment.childNodes[i];
@@ -138,12 +157,15 @@ function makeTemplate(options) {
                 break;
             }
         }
-        // if there is remaining custom-element content detach it
+
+        /* Detach any remaining content from the custom element */
         if (element.childNodes.length > 0) {
             var remaining = $(element.childNodes);
             remaining.detach();
             element.$detachedContent = remaining;
         }
+
+        /* APPEND the template to the element */
         var nodes = [];
         for (i = 0; i < templateFragment.childNodes.length; i++) {
             nodes.push(templateFragment.childNodes[i])
