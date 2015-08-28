@@ -88,6 +88,9 @@ cardsEl(componentService);
 var cardEl = require('card');
 cardEl(componentService);
 
+var paginationEl = require('pagination');
+paginationEl(componentService);
+
 var cardItemEl = require('card-item');
 cardItemEl(componentService);
 

@@ -136,17 +136,19 @@ Unlucky
             <span>или </span>изчисти филтрите
         </action-button>
     </filtering>
-    <cards-area>
-        <filtering secondary sorting>
-            <strong>24 резултата</strong>
-            <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
-                <value id="2" selected>Подреди по</value>
-                <value id="3" >Нови</value>
-                <value id="5" >Дата</value>
-                <value id="4" >Час</value>
-                <value id="6" >Звездички</value>
-            </select-dropdown>
-        </filtering>
+    <cards-area header="filtering">
+        <header>
+            <filtering secondary sorting>
+                <strong>24 резултата</strong>
+                <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
+                    <value id="2" selected>Подреди по</value>
+                    <value id="3" >Нови</value>
+                    <value id="5" >Дата</value>
+                    <value id="4" >Час</value>
+                    <value id="6" >Звездички</value>
+                </select-dropdown>
+            </filtering>
+        </header>
         <cards>
             <card action="gogo">
                 <img src="test/logo1.jpg" alt=""/>
@@ -276,12 +278,14 @@ Unlucky
             </card>
         </cards>
     </cards-area>
-    <cards-area>
-        <filtering secondary exception>
-            <strong>резултати изключващи: </strong>
-            <checkbox checked-disabled>Регистрация</checkbox>
-            <checkbox checked-disabled>Снимка</checkbox>
-        </filtering>
+    <cards-area header="filtering-exception" footer="pagination">
+        <header>
+            <filtering secondary exception>
+                <strong>резултати изключващи: </strong>
+                <checkbox checked-disabled>Регистрация</checkbox>
+                <checkbox checked-disabled>Снимка</checkbox>
+            </filtering>
+        </header>
         <cards>
             <card action="gogo">
                 <img src="test/logo1.jpg" alt=""/>
@@ -410,6 +414,18 @@ Unlucky
                 </action-button>
             </card>
         </cards>
+        <footer>
+            <pagination>
+                <a class="previous" href="#">Предишна</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a clas="next" href="#">Следваща</a>
+            </pagination>
+        </footer>
     </cards-area>
 
     <donation>

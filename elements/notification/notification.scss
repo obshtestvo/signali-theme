@@ -144,7 +144,7 @@ notification {
         margin: 0;
         top: -4px;
         @extend %popup-font;
-        border-radius: 0 0 $nano-radius $nano-radius;
+        border-radius: 0 0 $small-radius $small-radius;
         &[density="airy"] {
             margin: 20px 0
         }
