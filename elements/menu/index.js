@@ -4,12 +4,14 @@ require('./menu.scss');
 module.exports = function (componentService) {
     componentService.register('menu', {
         template: require('./menu.html'),
-        created: function () {
-            var $el = $(this)
+        attached: function () {
+            if (this.hasBeenAttached) return;
+            this.hasBeenAttached = true;
+            var $el = $(this);
             $el.find('.trigger').click(function(){
-                $(this).toggleClass('active')
+                $(this).toggleClass('active');
                 $(".categories").toggleClass('active')
-            })
+            });
 
             var $lists = $el.find('.categories ul');
 

@@ -1,4 +1,4 @@
-<survey logged action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
+<survey {% if user.is_authenticated %}logged{% endif %} action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}" method="post" id="feedback" ajax>
     <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
     <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% csrf_token %}

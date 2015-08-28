@@ -1,16 +1,6 @@
 <section>
 <content select="headline"></content>
 </section>
-{{#notlogged}}
-<section class="not-logged clearfix">
-    <content></content>
-    <div class="clearfix">
-        <content select="action-button"></content>
-    </div>
-</section>
-{{/notlogged}}
-
-{{#logged}}
 <section class="logged clearfix" content>
     <content select="p"></content>
     <content select="notification"></content>
@@ -18,4 +8,3 @@
         <content></content>
     </form>
 </section>
-{{/logged}}
