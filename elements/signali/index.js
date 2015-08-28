@@ -109,9 +109,6 @@ footerColumnEl(componentService);
 var sponsorsEl = require('sponsors');
 sponsorsEl(componentService);
 
-var modalEl = require('modal');
-modalEl(componentService);
-
 var textFieldEl = require('text-field');
 textFieldEl(componentService);
 
@@ -138,6 +135,9 @@ filtersEl(componentService);
 
 var pageElement = require('page');
 pageElement(componentService);
+
+var modalEl = require('modal');
+modalEl(componentService);
 
 var authElement = require('auth');
 authElement(componentService);

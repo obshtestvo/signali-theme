@@ -148,6 +148,11 @@ AjaxForm.prototype = {
         var handler = function () {
             self.block();
 
+            console.log('handler')
+            var event = $.Event("ajax-submit");
+            self.$form.trigger(event);
+            if (event.isDefaultPrevented()) return;
+
             var requestOptions = {
                 type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
                 url: $form.attr('action'),
@@ -180,7 +185,6 @@ AjaxForm.prototype = {
             };
             if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
             $.ajax(requestOptions);
-            return false;
         };
         return handler;
     },

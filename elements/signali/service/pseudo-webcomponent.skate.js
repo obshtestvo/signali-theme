@@ -19,10 +19,28 @@ ComponentService.prototype.register = function (name, options) {
     var definition = {};
     if (options) {
         var elementType = options.type;
+        if (options.prototype && elementType == 'attribute') {
+            var originalCreated = options.created;
+            var attachPrototype = function() {
+                for (var method in options.prototype) {
+                    if (!options.prototype.hasOwnProperty(method)) continue;
+                    this[method] = options.prototype[method]
+                }
+            };
+            if (originalCreated) {
+                options.created = function() {
+                    attachPrototype.call(this)
+                    originalCreated.call(this)
+                }
+            } else {
+                options.created = attachPrototype
+            }
+        }
         options = service._transformOptionsForSkate(options);
         // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
         // custom attributes with the same name
-        if (elementType == 'attribute' && options.properties && options.properties[name].set) {
+        props = options.properties;
+        if (elementType == 'attribute' && props && props[name] && props[name].set) {
             if (!service.attributeElementsSetCallbacks.hasOwnProperty(name)) {
                 service.attributeElementsSetCallbacks[name] = [];
                 service.addAttributeElementSetCallback(name, options.properties[name].set);

@@ -45,16 +45,21 @@
     </modal>
 </div>
 {% else %}
-<login-box anonymous action="#auth">
+<login-box anonymous action="#generic-auth">
     Вход
 </login-box>
 <div hidden>
-    <modal id="auth">
-        <headline size="large" density="airy" align="center" for="login">Вход</headline>
-        <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
-        <auth>
+    <modal id="generic-auth" auth-modal>
+        <headline size="large" density="airy" align="center" for="modal"></headline>
+        <auth-modal-patch for="registration">
+            <auth-title>Регистрация</auth-title>
+        </auth-modal-patch>
+        <auth-modal-patch for="login">
+            <auth-title>Вход</auth-title>
+        </auth-modal-patch>
+        <auth type="login">
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-                <text-field for="registration" size="full" id="name" name="name" type="text" hidden>
+                <text-field for="registration" size="full" id="name" name="name" type="text">
                     Име
                 </text-field>
                 <text-field size="full" id="email" name="email" type="email">
@@ -68,13 +73,13 @@
                 <text-field size="full" id="password" type="password">
                     Парола
                 </text-field>
-                <text-field for="registration" size="full" id="password2" type="password" hidden>
+                <text-field for="registration" size="full" id="password2" type="password">
                     Парола (пак)
                 </text-field>
                 <action-button button for="login" type="primary" fill="solid" align="left" color="red">
                     вход
                 </action-button>
-                <action-button button for="registration" type="primary" fill="solid" align="left" color="red" hidden>
+                <action-button button for="registration" type="primary" fill="solid" align="left" color="red">
                     регистрация
                 </action-button>
                 <action-button helper align="right" for="login" action="google.com" density="comfortable">
@@ -91,7 +96,7 @@
             </social-auth>
         </auth>
         <footer for="login">
-            <a href="#" registration-trigger>Направи си регистрация</a>
+            <a href="#generic-auth" auth-trigger type="registration">Направи си регистрация</a>
         </footer>
     </modal>
     {# Modal message for alert, success, error #}

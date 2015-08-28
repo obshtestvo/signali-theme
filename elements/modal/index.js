@@ -20,6 +20,23 @@ module.exports = function (componentService) {
         prototype: {
             close: function() {
                 $.magnificPopup.close();
+            },
+            show: function() {
+                var delay = 300;
+                var self = this;
+                $.magnificPopup.open({
+                    items: {
+                        src: $(self),
+                        type: 'inline',
+                    },
+                    showCloseBtn: false,
+                    // Delay in milliseconds before popup is removed
+                    removalDelay: delay,
+                    // Class that is added to popup wrapper and background
+                    // make it unique to apply your CSS animations just to this exact popup
+                    mainClass: 'mfp-zoom-in',
+                    midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+                });
             }
         }
     });

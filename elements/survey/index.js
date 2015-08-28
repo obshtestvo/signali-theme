@@ -8,7 +8,8 @@ module.exports = function (componentService) {
     componentService.register('survey', {
         template: require('./survey.html'),
         created: function() {
-            var $el = $(this);
+            var el = this;
+            var $el = $(el);
             var $form = $el.find('form');
             var $rating = $el.find('rating');
             var fullSurveyShown = false;
@@ -33,7 +34,10 @@ module.exports = function (componentService) {
                 pjax: true,
                 containerAscendantSelector: '[content]'
             });
-            validation.on('form:submit', ajaxForm.getSubmitHandler());
+            validation.on('form:submit', function() {
+                ajaxForm.getSubmitHandler()
+                return false;
+            });
         }
     })
-}
+};
