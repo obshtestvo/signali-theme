@@ -91,13 +91,7 @@ AjaxForm.prototype = {
     options: null,
 
     block: function () {
-        this.$container.block({
-            message: null,
-            overlayCSS: {
-                backgroundColor: 'rgba(245, 245, 245, 0.6)',
-                opacity: 1
-            }
-        });
+        this.$container.block();
         var $veil = this.$container.find('.blockOverlay');
         makeSpinner().spin($veil.get(0))
     },
