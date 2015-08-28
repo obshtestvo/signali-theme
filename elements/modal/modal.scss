@@ -32,6 +32,9 @@ modal {
       }
     }
   }
+  a {
+    cursor: pointer;
+  }
   .footwrap {
     position: relative;
   }
@@ -56,4 +59,7 @@ modal {
       }
     }
   }
+}
+[modal-hider] {
+  display: none;
 }

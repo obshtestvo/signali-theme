@@ -11,7 +11,7 @@
         <li><a href="{% url 'security:logout' %}">Изход</a></li>
     </ul>
 </login-box>
-<div hidden>
+<div modal-hider>
     <modal id="settings">
         <headline size="large" density="airy" align="center">Настройки</headline>
         <settings action="{% url 'user:profile' pk=user.id %}">
@@ -48,7 +48,7 @@
 <login-box anonymous action="#generic-auth">
     Вход
 </login-box>
-<div hidden>
+<div modal-hider>
     <modal id="generic-auth" auth-modal>
         <headline size="large" density="airy" align="center" for="modal"></headline>
         <auth-modal-patch for="registration">
@@ -62,14 +62,14 @@
                 <text-field for="registration" size="full" id="name" name="name" type="text">
                     Име
                 </text-field>
-                <text-field size="full" id="email" name="email" type="email">
+                <text-field size="full" id="email" name="email" type="email" state="information">
                     имейл адрес
+                    <notification information size="text-field">
+                        <p>
+                            Easy one click sign in. We won't post anything without your permission.
+                        </p>
+                    </notification>
                 </text-field>
-                <notification information size="small">
-                    <p>
-                        Easy one click sign in. We won't post anything without your permission.
-                    </p>
-                </notification>
                 <text-field size="full" id="password" type="password">
                     Парола
                 </text-field>
@@ -85,6 +85,9 @@
                 <action-button helper align="right" for="login" action="google.com" density="comfortable">
                     Забравена парола?
                 </action-button>
+                <action-button helper auth-trigger align="right" for="registration" type="login" density="comfortable">
+                    <span>или</span> вход
+                </action-button>
             </site-auth>
             <social-auth type="login" size="compact" class="half">
                 <headline size="small" density="comfortable">Или чрез Facebook</headline>
@@ -96,7 +99,7 @@
             </social-auth>
         </auth>
         <footer for="login">
-            <a href="#generic-auth" auth-trigger type="registration">Направи си регистрация</a>
+            <a auth-trigger type="registration">Направи си регистрация</a>
         </footer>
     </modal>
     {# Modal message for alert, success, error #}
