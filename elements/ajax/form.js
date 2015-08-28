@@ -23,6 +23,10 @@ var AjaxForm = function ($el, options) {
         this.$form = $el.find(this.options.formSubSelector || 'form').eq(0);
         this.$container = $el;
     }
+    var self = this;
+    this.$form.on('cancel', function() {
+        self.unblock()
+    })
 };
 
 /*

@@ -28,7 +28,7 @@ module.exports = function (componentService) {
                 var $el = $(this);
                 var $input = $el.find('input[name="'+name+'"]');
                 if (!$input.length) {
-                    $el.find('form').append('<input type="hidden" name="'+name+'">');
+                    $input = $('<input type="hidden" name="'+name+'">').appendTo($el.find('form'));
                 }
                 $input.val(value);
             }
@@ -80,7 +80,8 @@ module.exports = function (componentService) {
         type: 'attribute',
         created: function () {
             var $trigger = $(this);
-            var $authModal = $($trigger.attr('href'));
+            var target = $trigger.attr('href');
+            var $authModal = !target ? $trigger.closest('[auth-modal]') : $($trigger.attr('href'));
             var authModal = $authModal[0];
             var isRegistration = $trigger.attr('type') == 'registration';
             var registrationPatch = authModal.querySelector('auth-modal-patch[for="registration"]');
@@ -117,16 +118,17 @@ module.exports = function (componentService) {
             $form.on('ajax-submit submit', function (e) {
                 e.preventDefault();
                 if (!el.authmodal) {
-                    var modal = document.getElementById('generic-auth').cloneNode(true);
+                    var modal = document.getElementById('generic-auth').copyModal();
                     var $modal = $(modal);
                     $modal.find('auth-modal-patch').remove();
                     modal.id = 'commentAuth';
                     componentService.upgrade(modal);
+                    modal.attach();
                     modalPatch.applyTo(modal);
                     el.authmodal = modal;
-                    //$modal.on('close', function() {
-                    //    $form.trigger('ajax-resume');
-                    //})
+                    $modal.on('close:modal', function() {
+                        $form.trigger('cancel');
+                    })
                 }
                 el.authmodal.show();
             });

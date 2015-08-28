@@ -18,6 +18,17 @@ module.exports = function (componentService) {
             });
         },
         prototype: {
+            attach: function() {
+                var hiddenContainer = document.querySelector('[modal-hider]')
+                if (!hiddenContainer) {
+                    $('<div modal-hider>').appendTo($('body'))
+                }
+                hiddenContainer.appendChild(this)
+            },
+            copyModal: function() {
+                var clone = this.cloneNode(true);
+                return $(clone).removeClass('mfp-hide')[0]
+            },
             close: function() {
                 $.magnificPopup.close();
             },
@@ -37,7 +48,7 @@ module.exports = function (componentService) {
                         },
                         close: function() {
                             setTimeout(function(){
-                                $el.trigger('close')
+                                $el.trigger('close:modal')
                             }, delay)
                         }
                     },
