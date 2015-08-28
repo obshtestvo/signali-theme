@@ -131,7 +131,11 @@ function makeTemplate(options) {
 
         /* PARSE custom template with data */
         var templateData = getElementTemplateData(element, options);
-        var templateFragment = $(options.template(templateData))[0].parentNode;
+        var $template = $(options.template(templateData))
+        if (!$template.length) {
+            return;
+        }
+        var templateFragment = $template[0].parentNode;
 
         var node, i, j, k, placeholder, toAppend, parentNode;
         /* PARSE <content select=".."> tags */
