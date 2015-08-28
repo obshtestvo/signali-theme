@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var Parsley = require('parsleyjs');
 var deepmerge = require('deepmerge');
 
@@ -23,7 +24,9 @@ function ValidationForm($form, options) {
 
     var formValidation = $form.parsley(options);
 
+    this.fields = []
     for (var i = 0; i < formValidation.fields.length; i++) {
+        this.fields.push(formValidation.fields[i])
         this._upgradeFieldForCustomElements(formValidation.fields[i])
     }
 
@@ -63,4 +66,26 @@ ValidationForm.prototype._upgradeFieldForCustomElements = function (field) {
 };
 
 
-module.exports = ValidationForm
+/*
+ * Checks for custom elements that have implemented a `value` and `validate-trigger` properties
+ */
+ValidationForm.prototype.disableGroupsExcept = function (group) {
+    for (var i = 0; i < this.fields.length; i++) {
+        var field = this.fields[i];
+        if (!field.options.group) continue;
+        if (field.options.excluded) delete field.options.excluded;
+        if ($.isArray(field.options.group)) {
+            if (field.options.group.indexOf(group)<0) {
+                field.options.excluded = true;
+            }
+            continue;
+        }
+        if (field.options.group!=group) {
+            field.options.excluded = true;
+        }
+    }
+    this.validation.whenValid()
+};
+
+
+module.exports = ValidationForm;

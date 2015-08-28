@@ -2,15 +2,32 @@ $ = require('jquery');
 require('ajax');
 require('./auth.scss');
 
+var ValidationForm = require('validation/form');
+var AjaxForm = require('ajax/form');
+
 module.exports = function (componentService) {
 
     componentService.register('auth', {
         template: require('./auth.html'),
+        created: function () {
+            var $el = $(this);
+            var $form = $el.find('form')
+
+            this.validation = new ValidationForm($form);
+            var ajaxForm = new AjaxForm($form, {
+                pjax: true,
+                containerAscendantSelector: 'auth'
+            });
+            this.validation.disableGroupsExcept(this.type)
+        },
         properties: {
             type: {
                 attr: true,
                 set: function(value) {
                     var $el = $(this);
+                    if (this.validation) {
+                        this.validation.disableGroupsExcept(value)
+                    };
                     if (value == 'registration') {
                         $el.find('[for="registration"]').show();
                         $el.find('[for="login"]').hide();
@@ -20,6 +37,7 @@ module.exports = function (componentService) {
                         $el.find('[for="registration"]').hide();
                         $el.find('input[name="email"]').focus();
                     }
+                    return value;
                 }
             }
         },

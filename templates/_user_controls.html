@@ -59,27 +59,31 @@
         </auth-modal-patch>
         <auth type="login">
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-                <text-field for="registration" size="full" id="name" name="name" type="text">
+                <text-field for="registration" validate-group="registration" size="full" id="name" name="name" type="text" required>
                     Име
+                    <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field size="full" id="email" name="email" type="email" state="information">
+                <text-field size="full" id="email" validate-group='["registration", "login"]' name="email" type="email" state="information" required>
                     имейл адрес
                     <notification information size="text-field">
                         <p>
                             Easy one click sign in. We won't post anything without your permission.
                         </p>
                     </notification>
+                    <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field size="full" id="password" type="password">
+                <text-field size="full" name="password" validate-group='["registration", "login"]' type="password" required>
                     Парола
+                    <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field for="registration" size="full" id="password2" type="password">
+                <text-field for="registration" name="password2" validate-group="registration" size="full" type="password" required>
                     Парола (пак)
+                    <notification error size="text-field" hidden></notification>
                 </text-field>
-                <action-button button for="login" type="primary" fill="solid" align="left" color="red">
+                <action-button submit for="login" type="primary" fill="solid" align="left" color="red">
                     вход
                 </action-button>
-                <action-button button for="registration" type="primary" fill="solid" align="left" color="red">
+                <action-button submit for="registration" type="primary" fill="solid" align="left" color="red">
                     регистрация
                 </action-button>
                 <action-button helper align="right" for="login" action="google.com" density="comfortable">
