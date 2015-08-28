@@ -96,7 +96,7 @@ select-dropdown {
     }
 
     .selectize-control.multi {
-        z-index: 2;
+
         .selectize-input {
             &.has-items {
                 $padding-top: $padding-vertical - $tag-padding-vertical - $tag-border-width;
@@ -120,7 +120,7 @@ select-dropdown {
         }
     }
     .selectize-control.single {
-        z-index: 2;
+
         .selectize-input {
             background: linear-gradient(to bottom, $white 0%, $grey-color-60 100%);
             &:after {
