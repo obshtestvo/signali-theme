@@ -9,7 +9,7 @@ module.exports = function(overrideOptions) {
         width: 5, // The line thickness
         radius: 7, // The radius of the inner circle
         corners: 1, // Corner roundness (0..1)
-        color: '#F26426', // #rgb or #rrggbb
+        color: 'invalid', // Set to invalid in order to be able to set it in the CSS. Usually #rgb or #rrggbb
         speed: 1, // Rounds per second
         trail: 50, // Afterglow percentage
         shadow: false, // Whether to render a shadow

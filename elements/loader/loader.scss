@@ -22,6 +22,9 @@ loader:after {
   width: 6em;
   height: 6em;
 }
+.spinner div div {
+  background: $secondary-color;
+}
 
 @-webkit-keyframes load8 {
   0% {
