@@ -136,7 +136,14 @@
             </p>
         </notification>
     </text-field>
-
+    <text-field state="information" for="registration" size="full" id="name1" type="textarea">
+        Име
+        <notification information size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </text-field>
     <select-dropdown state="error" id="drop23" name="dropdown" multiple size="standart">
         <label>Местонахождение</label>
         <notification error size="text-field">
@@ -166,19 +173,14 @@
                         </p>
                     </notification>
                 </text-field>
-                <text-field state="error" size="full" id="email" name="email" type="email">
+                <text-field state="information" size="full" id="email" name="email" type="email">
                     имейл адрес
-                    <notification error size="text-field">
+                    <notification information size="text-field">
                         <p>
                             Easy one click sign in. We won't post anything without your permission.
                         </p>
                     </notification>
                 </text-field>
-                <notification information size="small">
-                    <p>
-                        Easy one click sign in. We won't post anything without your permission.
-                    </p>
-                </notification>
                 <text-field size="full" id="password" type="password">
                     Парола
                 </text-field>
@@ -329,9 +331,9 @@
     </modal>
 </div>
 
-<div style="background: lightgray">
+<div id="button" style="background: lightgray">
     <style>
-        action-button{
+        #button action-button{
             margin: 10px 20px;
         }
     </style>

@@ -1,214 +1,230 @@
 @import '../styleguide';
 
 notification {
-  position: relative;
-  z-index: 1;
-  display: table;
-  width:100%;
-  .cell {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  ul {
-    @extend %stripped;
-  }
-  p{
-    padding: 0 !important;
-    margin:0 !important;
-  }
-  &[information] {
-    background: $white;
-    color: $body-text-color;
-    svg {
-      fill: $body-text-color
+    position: relative;
+    z-index: 1;
+    display: table;
+    width: 100%;
+    .cell {
+        display: table-cell;
+        vertical-align: middle;
     }
-  }
-  &[color="white"]{
-    background: $white;
-  }
-  &[color="gray"]{
-    background: $grey-color-60;
-  }
-  &[error] {
-    background: $secondary-color-100;
-    color: $white;
-    svg {
-      fill: $white;
-    }
-  }
-  &[success] {
-    background: $success-color;
-    color: $white;
-    svg {
-      fill: $white;
-    }
-  }
-  &[size="large"] {
-    @extend %bodytext-large-font, %small-radius;
-    padding: 30px 40px 30px 100px;
-    min-height: 100px;
-    .icon {
-      width: 100px;
-      height: 48px;
-      padding: 0 21px;
-      @extend %center-y;
-      left: 0;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    &[density="airy"]{
-      margin: 40px 0
-    }
-    &[density="comfortable"]{
-      margin: 30px 0
-    }
-    &[density="cozy"]{
-      margin: 20px 0
-    }
-    &[density="compact"]{
-      margin: 10px 0;
-    }
-  }
-  &[size="medium"] {
-    @extend %bodytext-large-font, %small-radius;
-    padding: 16px 20px 16px 50px;
-    min-height: 60px;
-    .icon {
-      width: 50px;
-      height: 26px;
-      padding: 0 8px 0 18px;
-      @extend %center-y;
-      left: 0;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    &[density="airy"]{
-      margin: 20px 0
-    }
-    &[density="comfortable"]{
-      margin: 15px 0
-    }
-    &[density="cozy"]{
-      margin: 10px 0
-    }
-    &[density="compact"]{
-      margin: 5px 0;
-    }
-  }
-
-  &[size="small"] {
-    min-height: 24px;
-    padding: 0 10px 0 37px;
-    margin: 0 0 13px;
-    @extend %popup-font, %nano-radius;
-    .icon {
-      width: 38px;
-      height: 24px;
-      padding: 0 7px;
-      @extend %center-y;
-      left: 0;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    &[information] {
-      color: $grey-color-100;
-      svg {
-        fill: $grey-color-100;
-      }
-    }
-  }
-  &[size="text-field"] {
-    min-height: 45px;
-    padding: 13px 10px 11px 43px;
-    top: -4px;
-    @extend %popup-font;
-    border-radius: 0 0 $nano-radius $nano-radius;
-    &[density="airy"]{
-      margin: 20px 0
-    }
-    &[density="comfortable"]{
-      margin: 15px 0
-    }
-    &[density="cozy"]{
-      margin: 10px 0
-    }
-    &[density="compact"]{
-      margin: 5px 0;
-    }
-    .icon {
-      margin: 1px 0 0;
-      width: 40px;
-      height: 26px;
-      padding: 0 7px;
-      @extend %center-y;
-      left: 0;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  &[size="popup"] {
-    background: $white;
-    color: $body-text-color;
-    text-align: center;
-    .icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    [content] > strong {
-      font-weight: 400;
-      @extend %bodytext-large-font;
-      margin: 15px 0 0;
-      display: block;
+    ul {
+        @extend %stripped;
     }
     p {
-      margin: 3px 0 0;
+        padding: 0 !important;
+        margin: 0 !important;
     }
-    &[success] {
-      [content] > strong {
-        color: $success-color;
-      }
-      svg {
-        fill: $success-color;
-      }
+    &[information] {
+        background: $white;
+        color: $body-text-color;
+        svg {
+            fill: $body-text-color
+        }
+    }
+    &[color="white"] {
+        background: $white;
+    }
+    &[color="gray"] {
+        background: $grey-color-60;
     }
     &[error] {
-      [content] > strong {
-        color: $secondary-color-100;
-      }
-      svg {
-        fill: $secondary-color-100;
-      }
+        background: $secondary-color-100;
+        color: $white;
+        svg {
+            fill: $white;
+        }
     }
-  }
-  &[no-icon] {
-    svg {
-      display: none;
+    &[success] {
+        background: $success-color;
+        color: $white;
+        svg {
+            fill: $white;
+        }
     }
     &[size="large"] {
-      padding: 30px 40px;
+        @extend %bodytext-large-font, %small-radius;
+        padding: 30px 40px 30px 100px;
+        min-height: 100px;
+        .icon {
+            width: 100px;
+            height: 48px;
+            padding: 0 21px;
+            @extend %center-y;
+            left: 0;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &[density="airy"] {
+            margin: 40px 0
+        }
+        &[density="comfortable"] {
+            margin: 30px 0
+        }
+        &[density="cozy"] {
+            margin: 20px 0
+        }
+        &[density="compact"] {
+            margin: 10px 0;
+        }
     }
     &[size="medium"] {
-      padding: 20px;
-    }  
+        @extend %bodytext-large-font, %small-radius;
+        padding: 16px 20px 16px 50px;
+        min-height: 60px;
+        .icon {
+            width: 50px;
+            height: 26px;
+            padding: 0 8px 0 18px;
+            @extend %center-y;
+            left: 0;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &[density="airy"] {
+            margin: 20px 0
+        }
+        &[density="comfortable"] {
+            margin: 15px 0
+        }
+        &[density="cozy"] {
+            margin: 10px 0
+        }
+        &[density="compact"] {
+            margin: 5px 0;
+        }
+    }
+
     &[size="small"] {
-      padding: 0;
-      margin: 0 0 10px 0;
+        min-height: 24px;
+        padding: 0 10px 0 37px;
+        margin: 0 0 13px;
+        @extend %popup-font, %nano-radius;
+        .icon {
+            width: 38px;
+            height: 24px;
+            padding: 0 7px;
+            @extend %center-y;
+            left: 0;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &[information] {
+            color: $grey-color-100;
+            svg {
+                fill: $grey-color-100;
+            }
+        }
     }
     &[size="text-field"] {
-      padding: 11px 10px 6px;
+        &[information] {
+            padding: 9px 10px 7px 33px;
+             margin-bottom: -11px;
+            .icon {
+                width: 24px;
+                padding: 0;
+            }
+        }
+        &[color="white"], &[color="gray"] {
+            padding: 13px 10px 11px 43px;
+            .icon {
+                padding: 0 7px;
+                width: 38px;
+            }
+        }
+        min-height: 45px;
+        padding: 13px 10px 11px 43px;
+        margin: 0;
+        top: -4px;
+        @extend %popup-font;
+        border-radius: 0 0 $nano-radius $nano-radius;
+        &[density="airy"] {
+            margin: 20px 0
+        }
+        &[density="comfortable"] {
+            margin: 15px 0
+        }
+        &[density="cozy"] {
+            margin: 10px 0
+        }
+        &[density="compact"] {
+            margin: 5px 0;
+        }
+        .icon {
+            margin: 1px 0 0;
+            width: 42px;
+            height: 26px;
+            padding: 0 8px;
+            @extend %center-y;
+            left: 0;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
-  }
+    &[size="popup"] {
+        background: $white;
+        color: $body-text-color;
+        text-align: center;
+        .icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        [content] > strong {
+            font-weight: 400;
+            @extend %bodytext-large-font;
+            margin: 15px 0 0;
+            display: block;
+        }
+        p {
+            margin: 3px 0 0;
+        }
+        &[success] {
+            [content] > strong {
+                color: $success-color;
+            }
+            svg {
+                fill: $success-color;
+            }
+        }
+        &[error] {
+            [content] > strong {
+                color: $secondary-color-100;
+            }
+            svg {
+                fill: $secondary-color-100;
+            }
+        }
+    }
+    &[no-icon] {
+        svg {
+            display: none;
+        }
+        &[size="large"] {
+            padding: 30px 40px;
+        }
+        &[size="medium"] {
+            padding: 20px;
+        }
+        &[size="small"] {
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+        &[size="text-field"] {
+            padding: 11px 10px 6px;
+        }
+    }
 }

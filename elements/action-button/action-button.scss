@@ -255,5 +255,8 @@ action-button {
       }
     }
   }
+  &[inline] {
+    display: inline-block;
+  }
 }
 
