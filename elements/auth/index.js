@@ -38,6 +38,15 @@ module.exports = function (componentService) {
 
     componentService.register('auth-modal', {
         type: 'attribute',
+        created: function() {
+            var $el = $(this);
+            var $email = $el.find('input[name="email"]');
+            var $name = $el.find('input[name="name"]');
+            $el.on('open', function () {
+                if ($email.is(":visible")) $email.focus()
+                if ($name.is(":visible")) $name.focus()
+            });
+        },
         prototype: {
             setTitle: function (title) {
                 this.querySelector('headline[for="modal"]').setTitle(title);
@@ -73,31 +82,20 @@ module.exports = function (componentService) {
             var $trigger = $(this);
             var $authModal = $($trigger.attr('href'));
             var authModal = $authModal[0];
-            var $email = $authModal.find('input[name="email"]');
-            var $name = $authModal.find('input[name="name"]');
             var isRegistration = $trigger.attr('type') == 'registration';
             var registrationPatch = authModal.querySelector('auth-modal-patch[for="registration"]');
             var loginPatch = authModal.querySelector('auth-modal-patch[for="login"]');
 
-            $trigger.click(function () {
+            $trigger.click(function (e) {
+                e.preventDefault();
                 if (isRegistration) {
-                    registrationPatch.applyTo(authModal);
+                    if (registrationPatch) registrationPatch.applyTo(authModal);
                     authModal.type = 'registration';
                 } else {
-                    loginPatch.applyTo(authModal);
+                    if (loginPatch) loginPatch.applyTo(authModal);
                     authModal.type = 'login';
                 }
             });
-
-            if ($trigger.attr('target')=='modal') {
-                $trigger.on('done', function () {
-                    if (isRegistration) {
-                        $name.focus();
-                    } else {
-                        $email.focus();
-                    }
-                });
-            }
         }
     });
 
@@ -105,27 +103,32 @@ module.exports = function (componentService) {
     componentService.register('auth-required', {
         type: 'attribute',
         created: function () {
-            var $el, $form, $modalPatch;
-            $el = $(this);
-            $modalPatch = $el.find('auth-modal-patch');
+            var el, $form, modalPatch;
+
+            el = this;
+            modalPatch = el.querySelector('auth-modal-patch');
 
             if (this.tagName == 'FORM') {
-                $form = $el
+                $form = el
             } else {
-                $form = $el.find('form').eq(0)
+                $form = $(el.querySelector('form'))
             }
 
-            $form.on('ajax-submit', function (e) {
+            $form.on('ajax-submit submit', function (e) {
                 e.preventDefault();
-            });
-
-            $form.on('submit', function (e) {
-                e.preventDefault();
-                var modal = $('#generic-auth')[0].cloneNode(true);
-                modal.id = 'commentAuth';
-                componentService.upgrade(modal);
-                $modalPatch[0].applyTo(modal);
-                modal.show();
+                if (!el.authmodal) {
+                    var modal = document.getElementById('generic-auth').cloneNode(true);
+                    var $modal = $(modal);
+                    $modal.find('auth-modal-patch').remove();
+                    modal.id = 'commentAuth';
+                    componentService.upgrade(modal);
+                    modalPatch.applyTo(modal);
+                    el.authmodal = modal;
+                    //$modal.on('close', function() {
+                    //    $form.trigger('ajax-resume');
+                    //})
+                }
+                el.authmodal.show();
             });
         }
     });

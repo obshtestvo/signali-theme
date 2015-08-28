@@ -35,7 +35,7 @@ module.exports = function (componentService) {
                 containerAscendantSelector: '[content]'
             });
             validation.on('form:submit', function() {
-                ajaxForm.getSubmitHandler()
+                ajaxForm.submit()
                 return false;
             });
         }

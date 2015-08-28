@@ -23,11 +23,23 @@ module.exports = function (componentService) {
             },
             show: function() {
                 var delay = 300;
-                var self = this;
+                var $el = $(this);
                 $.magnificPopup.open({
                     items: {
-                        src: $(self),
+                        src: $el,
                         type: 'inline',
+                    },
+                    callbacks: {
+                        open: function() {
+                            setTimeout(function(){
+                                $el.trigger('open')
+                            }, delay)
+                        },
+                        close: function() {
+                            setTimeout(function(){
+                                $el.trigger('close')
+                            }, delay)
+                        }
                     },
                     showCloseBtn: false,
                     // Delay in milliseconds before popup is removed
@@ -49,24 +61,13 @@ module.exports = function (componentService) {
                 attr: true,
                 "set": function (newValue) {
                     if (newValue != 'modal') return;
-                    var $trigger = $(this);
-                    var delay = 300;
-                    $trigger.magnificPopup({
-                        type: 'inline',
-                        showCloseBtn: false,
-                        // Delay in milliseconds before popup is removed
-                        removalDelay: delay,
-                        // Class that is added to popup wrapper and background
-                        // make it unique to apply your CSS animations just to this exact popup
-                        mainClass: 'mfp-zoom-in',
-                        callbacks: {
-                            open: function() {
-                                setTimeout(function(){
-                                    $trigger.trigger('done')
-                                }, delay)
-                            }
-                        },
-                        midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+                    if (this.hasPopupTrigger) return;
+                    this.hasPopupTrigger = true;
+                    var $el = $(this);
+                    $el.click(function(e){
+                        e.preventDefault();
+                        var $modal = $($(this).attr('href'));
+                        $modal[0].show();
                     });
                 }
             }

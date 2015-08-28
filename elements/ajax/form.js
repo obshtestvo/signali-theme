@@ -133,9 +133,14 @@ AjaxForm.prototype = {
         return container;
     },
 
-    getSubmitHandler: function () {
+    submit: function () {
         var self = this;
         var $form = self.$form;
+        self.block();
+
+        var event = $.Event("ajax-submit");
+        self.$form.trigger(event);
+        if (event.isDefaultPrevented()) return;
 
         var handleError = function(error) {
             if ($.isFunction(self.options.error)) {
@@ -143,50 +148,40 @@ AjaxForm.prototype = {
                 if (callbackReturn) error = callbackReturn;
             }
             self.applyError(error)
-        };
+        };;
 
-        var handler = function () {
-            self.block();
+        var requestOptions = {
+            type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+            dataType: self.options.dataType,
 
-            console.log('handler')
-            var event = $.Event("ajax-submit");
-            self.$form.trigger(event);
-            if (event.isDefaultPrevented()) return;
-
-            var requestOptions = {
-                type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
-                url: $form.attr('action'),
-                data: $form.serialize(),
-                dataType: self.options.dataType,
-
-                success: function (data) {
-                    if (self.options.determineSuccess(data)) {
-                        if ($.isFunction(self.options.success)) data = self.options.success(data);
-                        self.applySuccess(data);
-                    } else {
-                        handleError(data)
-                    }
-                },
-
-                error: function (xhr, status, err) {
-                    var error = err;
-                    if (self.options.dataType =='json' && xhr.responseJSON) {
-                        error = xhr.responseJSON;
-                    }
-                    if (xhr.responseText) {
-                        error = xhr.responseText;
-                    }
-                    handleError(error)
-                },
-
-                complete: function () {
-                    self.showResult();
+            success: function (data) {
+                if (self.options.determineSuccess(data)) {
+                    if ($.isFunction(self.options.success)) data = self.options.success(data);
+                    self.applySuccess(data);
+                } else {
+                    handleError(data)
                 }
-            };
-            if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
-            $.ajax(requestOptions);
+            },
+
+            error: function (xhr, status, err) {
+                var error = err;
+                if (self.options.dataType =='json' && xhr.responseJSON) {
+                    error = xhr.responseJSON;
+                }
+                if (xhr.responseText) {
+                    error = xhr.responseText;
+                }
+                handleError(error)
+            },
+
+            complete: function () {
+                self.showResult();
+            }
         };
-        return handler;
+        if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
+        $.ajax(requestOptions);
     },
 
     applyResult: function (isSuccess, content, klass) {
