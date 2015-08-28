@@ -138,7 +138,7 @@ notification {
                 width: 38px;
             }
         }
-        padding: 7px 10px 5px 43px;
+        padding: 0 10px 0 43px;
         margin: 0;
         top: -4px;
         @extend %popup-font;
@@ -168,7 +168,7 @@ notification {
             }
         }
         p{
-            padding: 3px 0;
+            padding: 10px 0 6px;
         }
     }
     &[size="popup"] {
@@ -225,7 +225,7 @@ notification {
             margin: 0 0 10px 0;
         }
         &[size="text-field"] {
-            padding: 11px 10px 6px;
+            padding: 0 10px 0;
         }
     }
 }
