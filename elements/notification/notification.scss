@@ -167,8 +167,14 @@ notification {
                 height: 100%;
             }
         }
-        p{
-            padding: 10px 0 6px;
+        p, ul {
+            padding: 10px 0 9px;
+        }
+        &[information] {
+            color: $grey-color-100;
+            svg {
+                fill: $grey-color-100;
+            }
         }
     }
     &[size="popup"] {
