@@ -4,6 +4,16 @@ cards-area {
   @extend %wrapper;
   display: block;
   & > section {
-
+    header{
+    }
+    & > section {
+      display: block;
+      max-width: 1200px;
+      margin: 0 -10px;
+      position: relative;
+      padding: 10px 0;
+    }
+    footer{
+    }
   }
 }

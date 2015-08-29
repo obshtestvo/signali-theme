@@ -1,28 +1,49 @@
 @import '../styleguide';
-cover {
-  display: block;
-  background-color: $main-color-100;
-  & > section {
-    background-size: cover;
-    position: relative;
-    height: 100%;
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba($main-color-100, 0.9);
+
+pagination {
+    display: block;
+    text-align: center;
+    font-size: 0;
+    &[density="airy"]{
+        padding: 40px 0
     }
-  }
-  header {
-    @extend %wrapper;
-    height: 100%;
-  }
-  &[density="airy"]{
-    height: 630px;
-  }
-  &[density="comfortable"]{
-    height: 390px;
-  }
+    &[density="comfortable"]{
+        padding: 30px 0
+    }
+    &[density="cozy"]{
+        padding: 20px 0
+    }
+    &[density="compact"]{
+        padding: 10px 0;
+    }
+    a {
+        color: $secondary-color-100;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 30px;
+        @extend %small-radius;
+        padding: 0 10px;
+        min-width: 27px;
+        margin: 0 8px;
+        background: $grey-color-60;
+        &:hover, &:focus {
+            text-decoration: underline;
+            background: $grey-color-80;
+        }
+        &:active {
+            background: $grey-color-20;
+            color: $secondary-color-60;
+        }
+        &.active{
+            color: $grey-color-100;
+            pointer-events: none;
+            cursor: default;
+        }
+        &.disable{
+            color: $grey-color-80;
+            background: $grey-color-20;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
 }

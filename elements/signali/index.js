@@ -82,9 +82,6 @@ headlineEl(componentService);
 var cardsAreaEl = require('cards-area');
 cardsAreaEl(componentService);
 
-var cardsEl = require('cards');
-cardsEl(componentService);
-
 var cardEl = require('card');
 cardEl(componentService);
 
