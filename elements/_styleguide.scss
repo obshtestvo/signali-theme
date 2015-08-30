@@ -136,7 +136,7 @@ $nano-radius:2px;
   font-weight: 600;
 }
 
-%popup-font {
+%small-font {
   @extend %main-font;
   font-weight: 400;
   font-size: 12px;
@@ -144,7 +144,7 @@ $nano-radius:2px;
 }
 
 %label-font {
-  @extend %popup-font;
+  @extend %small-font;
   text-transform: uppercase;
 }
 

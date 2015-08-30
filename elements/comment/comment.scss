@@ -62,7 +62,7 @@ comment{
     article {
       padding: 6px 20px 7px;
       p {
-        @extend %popup-font;
+        @extend %small-font;
       }
     }
     footer {

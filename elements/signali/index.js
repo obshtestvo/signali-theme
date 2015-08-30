@@ -85,6 +85,9 @@ cardsAreaEl(componentService);
 var cardEl = require('card');
 cardEl(componentService);
 
+var bubbleEL = require('bubble');
+bubbleEL(componentService);
+
 var paginationEl = require('pagination');
 paginationEl(componentService);
 
