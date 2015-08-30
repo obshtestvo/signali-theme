@@ -117,8 +117,10 @@ function getElementTemplateData(el, options) {
         data[attr.name] = attr.value == '' ? true : attr.value;
     }
     if (options.properties) {
-        for (prop in options.properties) {
+        for (var prop in options.properties) {
             if (!options.properties.hasOwnProperty(prop)) continue;
+            if (!options.properties[prop].get) continue;
+            if (data.hasOwnProperty(prop)) continue;
             data[prop] = el[prop]
         }
     }
