@@ -4,9 +4,14 @@ Parsley.options.namespace = 'validate-';
 
 Parsley.addValidator('equaltoFormSibling', {
     validateString: function (value, selector, field) {
-        console.log(selector, field.$element.closest('form').find(selector))
         var otherField = field.$element.closest('form').find(selector).parsley()
         return value == otherField.getValue()
+    }
+});
+
+Parsley.addValidator('server', {
+    validateString: function (value, selector, field) {
+        return !Boolean(field.serverError)
     }
 });
 

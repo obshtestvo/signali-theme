@@ -4,8 +4,12 @@ var getAjaxErors = function($form, response) {
     if ($prefix.length) {
         errorKey = $prefix.val() + errorKey
     }
-    errors = response.errors[errorKey];
-    if (response.errors.hasOwnProperty('generic')) errors.generic = response.generic;
+    if (response.errors.hasOwnProperty(errorKey)) {
+        errors = response.errors[errorKey];
+        if (response.errors.hasOwnProperty('generic')) errors.generic = response.generic;
+    } else {
+        errors = response.errors;
+    }
     return errors
 };
 
@@ -16,16 +20,27 @@ module.exports = function(instance, isSuccess, content) {
         var $container = $notifications.filter('[error]');
         var $item;
         var message;
-        var errors = getAjaxErors(instance.$form, content);
+        var validationField;
+        var $form = instance.$form;
+        var errors = getAjaxErors($form, content);
         for (var fieldName in errors) {
             if (!errors.hasOwnProperty(fieldName)) continue;
+            var $el = $form.find('[validate-id][name="'+fieldName+'"], [validate-id][validate-name="'+fieldName+'"]');
+            message = $.isArray(errors[fieldName]) ? errors[fieldName].join(', ') : errors[fieldName];
+            if ($el.length) {
+                validationField = $el.parsley();
+                validationField.serverError = true;
+                validationField.options.serverMessage = message;
+                validationField.validate();
+                continue;
+            }
             $item = $('<p>');
             $item.append($('<strong>').append(fieldName+': '));
-            message = $.isArray(errors[fieldName]) ? errors[fieldName].join(', ') : errors[fieldName];
             $item.append(message);
             $container.append($item);
         }
-        return $container;
+        instance.unblock()
+        return false;
     }
     return $notifications.filter('[success]');
 };

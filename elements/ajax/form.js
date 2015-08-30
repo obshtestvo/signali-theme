@@ -126,6 +126,7 @@ AjaxForm.prototype = {
         if (!container) {
             container = document.createElement('div');
             this.$container.append(container)
+            container = $(container)
         }
         this._resultContainer = container;
         return container;
@@ -165,11 +166,11 @@ AjaxForm.prototype = {
 
             error: function (xhr, status, err) {
                 var error = err;
-                if (self.options.dataType =='json' && xhr.responseJSON) {
-                    error = xhr.responseJSON;
-                }
                 if (xhr.responseText) {
                     error = xhr.responseText;
+                }
+                if (self.options.dataType =='json' && xhr.responseJSON) {
+                    error = xhr.responseJSON;
                 }
                 handleError(error)
             },
@@ -212,7 +213,7 @@ AjaxForm.prototype = {
     },
 
     showResult: function () {
-        if (this.options.applyResult === false) return;
+        if (this.options.preventShow) return;
         this.unblock();
         this._switchContent(
             this.$form,

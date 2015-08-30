@@ -9,6 +9,9 @@ module.exports = function (componentService) {
             iconInfo: require('./info-circle.svg')
         },
         prototype: {
+            clear: function () {
+                $(this).find('ul,p').remove();
+            },
             appendChild: function (node) {
                 var innerElement = this.querySelector('.cell');
                 if (innerElement) {

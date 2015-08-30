@@ -54,12 +54,17 @@ ValidationForm.prototype.on = function (eventName, handler) {
  * Checks for custom elements that have implemented a `value` and `validate-trigger` properties
  */
 ValidationForm.prototype._upgradeFieldForCustomElements = function (field) {
+    var self = this;
     var el = field.$element[0];
     if (el.hasOwnProperty('value')) {
         field.options.value = function (self) {
             return self.$element[0].value
         }
     }
+    field.addConstraint('server');
+    field.$element.on('change keyup', function() {
+        self.clearServerErrors()
+    })
     if (el.hasOwnProperty('validate-trigger') && !el.hasAttribute('validate-trigger')) {
         field.options.trigger = el['validate-trigger'];
     }
@@ -85,6 +90,28 @@ ValidationForm.prototype.disableGroupsExcept = function (group) {
         }
     }
     this.validation.whenValid()
+};
+
+
+/*
+ * Reset server errors
+ */
+ValidationForm.prototype.clearServerErrors = function () {
+    var field;
+    for (var i = 0; i < this.validation.fields.length; i++) {
+        field = this.validation.fields[i];
+        if (field.serverError) {
+            field.serverError = false;
+            field.validate()
+        }
+    }
+};
+
+/*
+ * Refresh error UI
+ */
+ValidationForm.prototype.refresh = function () {
+    this.validation.validate()
 };
 
 
