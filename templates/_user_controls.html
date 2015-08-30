@@ -57,26 +57,27 @@
         <auth-modal-patch for="login">
             <auth-title>Вход</auth-title>
         </auth-modal-patch>
-        <auth type="login">
+        <auth type="login" action="{% url 'security:complete' 'email' %}">
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
+                <input type="hidden" name="auth_type" value="login"/>
                 <text-field for="registration" validate-group="registration" size="full" id="name" name="name" type="text" required>
                     Име
                     <notification error size="text-field" hidden></notification>
                 </text-field>
                 <text-field size="full" id="email" validate-group='["registration", "login"]' name="email" type="email" state="information" required>
                     имейл адрес
+                    <notification error size="text-field" hidden></notification>
                     <notification information size="text-field">
                         <p>
-                            Easy one click sign in. We won't post anything without your permission.
+                            Няма да пращаме нежелани съоб&shy;ще&shy;ния
                         </p>
                     </notification>
-                    <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field size="full" name="password" validate-group='["registration", "login"]' type="password" required>
+                <text-field size="full" name="new_password1" validate-group='["registration", "login"]' type="password" required>
                     Парола
                     <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field for="registration" name="password2" validate-group="registration" size="full" type="password" required>
+                <text-field for="registration" name="new_password2" validate-group="registration" size="full" type="password" required>
                     Парола (пак)
                     <notification error size="text-field" hidden></notification>
                 </text-field>
@@ -95,7 +96,7 @@
             </site-auth>
             <social-auth type="login" size="compact" class="half">
                 <headline size="small" density="comfortable">Или чрез Facebook</headline>
-                <notification information size="small">
+                <notification information size="small" no-icon>
                     <p>Easy one click sign in. We won't post anything without your permission.</p>
                 </notification>
                 <social-button facebook action="{% url 'security:begin' 'facebook' %}"></social-button>
