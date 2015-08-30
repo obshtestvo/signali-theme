@@ -1,231 +1,119 @@
 @import '../styleguide';
 
-notification {
+bubble {
     position: relative;
     z-index: 0;
     display: table;
     width: 100%;
-    .cell {
+    min-height: 70px;
+    background: $white;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0, 0.5);
+    color: $body-text-color;
+    @extend %small-radius;
+    .close{
+        width: 13px;
+        height: 13px;
+        display: block;
+        @extend %circle;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+            svg{
+                fill: $body-text-color;
+                width: 100%;
+                height: 100%;
+            }
+        &:hover svg{
+            fill: lighten($body-text-color, 30%);
+        }
+    }
+    section {
         display: table-cell;
         vertical-align: middle;
+        @extend %bodytext-font;
+        line-height: 20px;
+        padding: 12px 20px 12px 70px;
     }
-    ul {
-        @extend %stripped;
-    }
-    p {
-        margin: 0 !important;
-    }
-    &[information] {
-        background: $white;
-        color: $body-text-color;
-        svg {
-            fill: $body-text-color
-        }
-    }
-    &[color="white"] {
-        background: $white;
-    }
-    &[color="gray"] {
-        background: $grey-color-60;
-    }
-    &[error] {
-        background: $secondary-color-100;
-        color: $white;
-        svg {
-            fill: $white;
+    .icon{
+        width: 35px;
+        height: 35px;
+        @extend %center-y;
+        left: 20px;
+        svg{
+            fill: $body-text-color;
+            width: 100%;
+            height: 100%;
         }
     }
-    &[success] {
-        background: $success-color;
-        color: $white;
-        svg {
-            fill: $white;
+    &[no-icon]{
+        section{
+            padding: 15px 20px;
         }
-    }
-    &[size="large"] {
-        @extend %bodytext-large-font, %small-radius;
-        padding: 30px 40px 30px 100px;
-        min-height: 100px;
-        .icon {
-            width: 100px;
-            height: 48px;
-            padding: 0 21px;
-            @extend %center-y;
-            left: 0;
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        &[density="airy"] {
-            margin: 40px 0
-        }
-        &[density="comfortable"] {
-            margin: 30px 0
-        }
-        &[density="cozy"] {
-            margin: 20px 0
-        }
-        &[density="compact"] {
-            margin: 10px 0;
-        }
-    }
-    &[size="medium"] {
-        @extend %bodytext-large-font, %small-radius;
-        padding: 16px 20px 16px 50px;
-        min-height: 60px;
-        .icon {
-            width: 50px;
-            height: 26px;
-            padding: 0 8px 0 18px;
-            @extend %center-y;
-            left: 0;
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        &[density="airy"] {
-            margin: 20px 0
-        }
-        &[density="comfortable"] {
-            margin: 15px 0
-        }
-        &[density="cozy"] {
-            margin: 10px 0
-        }
-        &[density="compact"] {
-            margin: 5px 0;
-        }
-    }
-
-    &[size="small"] {
-        min-height: 24px;
-        padding: 0 10px 0 37px;
-        margin: 0 0 13px;
-        @extend %small-font, %nano-radius;
-        .icon {
-            width: 38px;
-            height: 24px;
-            padding: 0 7px;
-            @extend %center-y;
-            left: 0;
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        &[information] {
-            color: $grey-color-100;
-            svg {
-                fill: $grey-color-100;
-            }
-        }
-    }
-    &[size="text-field"] {
-        &[information] {
-            padding-left: 33px;
-             margin-bottom: -11px;
-            .icon {
-                width: 24px;
-                padding: 0;
-            }
-        }
-        &[color="white"], &[color="gray"] {
-            padding-left: 43px;
-            .icon {
-                padding: 0 7px;
-                width: 38px;
-            }
-        }
-        padding: 0 10px 0 43px;
-        margin: 0;
-        top: -4px;
-        @extend %small-font;
-        border-radius: 0 0 $small-radius $small-radius;
-        &[density="airy"] {
-            margin: 20px 0
-        }
-        &[density="comfortable"] {
-            margin: 15px 0
-        }
-        &[density="cozy"] {
-            margin: 10px 0
-        }
-        &[density="compact"] {
-            margin: 5px 0;
-        }
-        .icon {
-            margin: 1px 0 0;
-            width: 42px;
-            height: 26px;
-            padding: 0 8px;
-            @extend %center-y;
-            left: 0;
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        p{
-            padding: 10px 0 6px;
-        }
-    }
-    &[size="popup"] {
-        background: $white;
-        color: $body-text-color;
-        text-align: center;
-        .icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto;
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        [content] > strong {
-            font-weight: 400;
-            @extend %bodytext-large-font;
-            margin: 15px 0 0;
-            display: block;
-        }
-        p {
-            margin: 3px 0 0;
-        }
-        &[success] {
-            [content] > strong {
-                color: $success-color;
-            }
-            svg {
-                fill: $success-color;
-            }
-        }
-        &[error] {
-            [content] > strong {
-                color: $secondary-color-100;
-            }
-            svg {
-                fill: $secondary-color-100;
-            }
-        }
-    }
-    &[no-icon] {
-        svg {
+        .icon{
             display: none;
         }
-        &[size="large"] {
-            padding: 30px 40px;
-        }
-        &[size="medium"] {
-            padding: 20px;
-        }
-        &[size="small"] {
-            padding: 0;
-            margin: 0 0 10px 0;
-        }
-        &[size="text-field"] {
-            padding: 0 10px 0;
+    }
+    &[no-shadow]{
+        box-shadow: none;
+    }
+     //properties for type of bubble (type of icon)
+    &[type="information"]{
+        .icon svg{
+            fill: $body-text-color;
         }
     }
+    &[type="success"]{
+        .icon svg{
+            fill: $success-color;
+        }
+    }
+    &[type="error"]{
+        .icon svg{
+            fill: $error-color;
+        };
+    }
+    //properties for background and icon-fill color change
+    &[color="white"]{
+        background: $white;
+        color: $body-text-color;
+    }
+    &[color="red"]{
+        background: $error-color;
+        color: $white;
+        .icon svg, svg {
+            fill: $white;
+        }
+    }
+    &[color="green"]{
+        background: $success-color;
+        color: $white;
+        .icon svg, svg{
+            fill: $white;
+        }
+    }
+    //properties for size(width)
+    &[size="standart"]{
+        width: 300px;
+    }
+    &[size="half"]{
+        width: 50%;
+    }
+    &[size="full"]{
+        width: 100%;
+    }
+    //properties for box-model top, bottom
+    &[density="airy"]{
+        margin: 40px 0
+    }
+    &[density="comfortable"]{
+        margin: 30px 0
+    }
+    &[density="cozy"]{
+        margin: 20px 0
+    }
+    &[density="compact"]{
+        margin: 10px 0;
+    }
 }
+
+//<bubble size="standart" color="white" type="information" density="compact" >

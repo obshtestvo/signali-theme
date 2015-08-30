@@ -6,7 +6,25 @@ module.exports = function (componentService) {
         include: {
             iconCheck: require('./check-circle.svg'),
             iconExclamation: require('./exclamation-circle.svg'),
-            iconInfo: require('./info-circle.svg')
+            iconInfo: require('./info-circle.svg'),
+            iconClose: require('./close.svg')
+        },
+        properties: {
+            "information": {
+                get: function () {
+                    return this.getAttribute('type')=='information'
+                }
+            },
+            "success": {
+                get: function () {
+                    return this.getAttribute('type')=='success'
+                }
+            },
+            "error": {
+                get: function () {
+                    return this.getAttribute('type')=='error'
+                }
+            }
         }
     })
 }
