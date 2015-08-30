@@ -142,7 +142,7 @@ notification {
                 width: 38px;
             }
         }
-        padding: 0 10px 0 43px;
+        padding: 0 0 0 43px;
         margin: 0;
         top: -4px;
         @extend %small-font;
@@ -171,8 +171,14 @@ notification {
                 height: 100%;
             }
         }
-        p{
-            padding: 10px 0 6px;
+        p, ul {
+            padding: 10px 0 9px;
+        }
+        &[information] {
+            color: $grey-color-100;
+            svg {
+                fill: $grey-color-100;
+            }
         }
     }
     &[size="popup"] {

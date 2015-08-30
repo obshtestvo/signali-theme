@@ -24,9 +24,9 @@ function ValidationForm($form, options) {
 
     var formValidation = $form.parsley(options);
 
-    this.fields = []
+    this.fields = [];
     for (var i = 0; i < formValidation.fields.length; i++) {
-        this.fields.push(formValidation.fields[i])
+        this.fields.push(formValidation.fields[i]);
         this._upgradeFieldForCustomElements(formValidation.fields[i])
     }
 
@@ -67,7 +67,7 @@ ValidationForm.prototype._upgradeFieldForCustomElements = function (field) {
 
 
 /*
- * Checks for custom elements that have implemented a `value` and `validate-trigger` properties
+ * Disable validation for all fields that have a group(s) that doesn't match the provided ones
  */
 ValidationForm.prototype.disableGroupsExcept = function (group) {
     for (var i = 0; i < this.fields.length; i++) {
