@@ -73,11 +73,11 @@
                         </p>
                     </notification>
                 </text-field>
-                <text-field size="full" name="new_password1" validate-group='["registration", "login"]' type="password" required>
+                <text-field size="full" id="new_password1" name="new_password1" validate-group='["registration", "login"]' type="password" required>
                     Парола
                     <notification error size="text-field" hidden></notification>
                 </text-field>
-                <text-field for="registration" name="new_password2" validate-group="registration" size="full" type="password" required>
+                <text-field for="registration" id="new_password2"  name="new_password2" validate-group="registration" size="full" type="password" required validate-equalto-form-sibling="#new_password1">
                     Парола (пак)
                     <notification error size="text-field" hidden></notification>
                 </text-field>
@@ -97,7 +97,7 @@
             <social-auth type="login" size="compact" class="half">
                 <headline size="small" density="comfortable">Или чрез Facebook</headline>
                 <notification information size="small" no-icon>
-                    <p>Easy one click sign in. We won't post anything without your permission.</p>
+                    <p>Няма да пускаме съобщения от ваше име.</p>
                 </notification>
                 <social-button facebook action="{% url 'security:begin' 'facebook' %}"></social-button>
                 <social-button google action="{% url 'security:begin' 'google' %}"></social-button>

@@ -11,14 +11,18 @@ module.exports = function (componentService) {
         template: require('./auth.html'),
         created: function () {
             var $el = $(this);
-            var $form = $el.find('form')
+            var $form = $el.find('form');
 
             this.validation = new ValidationForm($form);
             var ajaxForm = new AjaxForm($form, {
                 pjax: true,
                 containerAscendantSelector: 'auth'
             });
-            this.validation.disableGroupsExcept(this.type)
+            this.validation.disableGroupsExcept(this.type);
+            this.validation.on('form:submit', function() {
+                ajaxForm.submit();
+                return false;
+            });
         },
         properties: {
             type: {
@@ -27,15 +31,17 @@ module.exports = function (componentService) {
                     var $el = $(this);
                     if (this.validation) {
                         this.validation.disableGroupsExcept(value)
-                    };
+                    }
                     if (value == 'registration') {
                         $el.find('[for="registration"]').show();
                         $el.find('[for="login"]').hide();
                         $el.find('input[name="name"]').focus();
+                        $el.find('input[name="auth_type"]').val('registration');
                     } else {
                         $el.find('[for="login"]').show();
                         $el.find('[for="registration"]').hide();
                         $el.find('input[name="email"]').focus();
+                        $el.find('input[name="auth_type"]').val('login');
                     }
                     return value;
                 }
@@ -61,7 +67,7 @@ module.exports = function (componentService) {
             var $email = $el.find('input[name="email"]');
             var $name = $el.find('input[name="name"]');
             $el.on('open', function () {
-                if ($email.is(":visible")) $email.focus()
+                if ($email.is(":visible")) $email.focus();
                 if ($name.is(":visible")) $name.focus()
             });
         },
