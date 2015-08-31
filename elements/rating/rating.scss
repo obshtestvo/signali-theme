@@ -24,6 +24,12 @@ rating {
       fill: $grey-color-100;
     }
   }
+  &[size="small"] star {
+    @include size(15px);
+    &[type="empty"] .outline {
+      fill: $grey-color-100;
+    }
+  }
   &[size="medium"] star {
     @include size(18px);
     &[type="empty"] .outline {
