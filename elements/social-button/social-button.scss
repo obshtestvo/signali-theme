@@ -1,5 +1,15 @@
 @import '../styleguide';
 
+$facebook-color: #3b5998;
+$facebook-hover-color: #203768;
+$facebook-active-color: #6d83b3;
+
+
+$google-color: #dd4b39;
+$google-hover-color: #b12211;
+$google-active-color: #e87769;
+
+
 social-button{
   display: block;
   width: 100%;
@@ -33,19 +43,29 @@ social-button{
     }
   &[facebook] {
     a{
-      background: #3b5998;
+      background: $facebook-color;
       .icon{
         padding: 10px;
+      }
+      &:hover{
+        background: $facebook-hover-color
+      }
+      &:active{
+        background: $facebook-active-color
       }
     }
   }
   &[google] {
     a{
-      background: #dd4b39;
+      background: $google-color;
       .icon{
         padding: 10px 10px 5px;
-//        hack for double svgs
-//        svg:last-child{ display: none;}
+      }
+      &:hover{
+        background: $google-hover-color;
+      }
+      &:active{
+        background: $google-active-color;
       }
     }
   }

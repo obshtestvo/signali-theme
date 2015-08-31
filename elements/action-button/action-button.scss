@@ -45,7 +45,7 @@ action-button {
           background: $secondary-color-120;
         }
         &:active {
-          background: $secondary-color-60;
+          background: $secondary-color-active;
         }
       }
     }
@@ -56,7 +56,7 @@ action-button {
           background: $main-color-120;
         }
         &:active {
-          background: $main-color-60;
+          background: $main-color-active;
         }
       }
     }
@@ -86,8 +86,8 @@ action-button {
             color: $white;
           }
           &:active {
-            background: $secondary-color-60;
-            @include box-shadow(0, 0, 0, 3px $secondary-color-60, inset);
+            background: $main-color-active;
+            @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
             color: $white;
           }
         }
@@ -103,8 +103,8 @@ action-button {
             color: $white;
           }
           &:active {
-            background: $main-color-60;
-            @include box-shadow(0, 0, 0, 3px $main-color-60, inset);
+            background: $main-color-active;
+            @include box-shadow(0, 0, 0, 3px $secondary-color-active, inset);
             color: $white;
           }
         }

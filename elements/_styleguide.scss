@@ -2,7 +2,7 @@
 /*Colors*/
 $white: #fff;
 
-$main-color-120: #0a0b26;
+$main-color-120: #2e3080;
 $main-color-100: #101340;
 $main-color-80: #414167;
 $main-color-60: #6f708c;
@@ -10,8 +10,11 @@ $main-color-40: #9e9fb3;
 $main-color-20: #d0d0da;
 
 $main-color: $main-color-100;
+$main-color-hover: $main-color-120;
+$main-color-active: #5f608f;
 
-$secondary-color-120: #d92949;
+
+$secondary-color-120: #d01437;
 $secondary-color-100: #f22e52;
 $secondary-color-80: #f65775;
 $secondary-color-60: #f78295;
@@ -19,9 +22,9 @@ $secondary-color-40: #f9abb9;
 $secondary-color-20: #fcd4dc;
 $secondary-color-10: #fdeff2;
 
-
 $secondary-color: $secondary-color-100;
-$secondary-color-hover: $secondary-color-80;
+$secondary-color-hover: $secondary-color-120;
+$secondary-color-active: #f06882;
 
 $body-text-color: #1c1526;
 $grey-color-100: #a4a6a5;

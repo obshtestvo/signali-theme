@@ -210,6 +210,72 @@
         <value id="6">асдасда сд РАСФДАСФасдасд</value>
     </select-dropdown>
 </div>
+<div style="padding: 0 20px;">
+    <survey-question state="error">
+        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Да
+        </action-button>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Не
+        </action-button>
+        <notification error size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </survey-question>
+    <survey-question state="information">
+        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Да
+        </action-button>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Не
+        </action-button>
+        <notification information color="gray" size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+        </survey-question>
+        <survey-question state="information">
+            <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"action="{{action}}">
+                Да
+            </action-button>
+            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+                Не
+            </action-button>
+            <notification information size="text-field">
+                <p>
+                    Easy one click sign in. We won't post anything without your permission.
+                </p>
+            </notification>
+        </survey-question>
+        <survey-question raiting state="success">
+            <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+            <rating size="medium" align="left" value="4">
+            </rating>
+            <notification success size="text-field">
+                <p>
+                    Easy one click sign in. We won't post anything without your permission.
+                </p>
+            </notification>
+        </survey-question>
+        <survey-question raiting state="error">
+            <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+            <rating size="medium" align="left" value="4">
+            </rating>
+            <notification error size="text-field">
+                <p>
+                    Easy one click sign in. We won't post anything without your permission.
+                </p>
+            </notification>
+        </survey-question>
+
+</div>
+
 <div style="padding: 20px 0;; background: #112346; ">
     <!--Modal Window Login-->
     <modal id="auth">
@@ -358,7 +424,8 @@
                         Easy one click sign in. We won't post anything without your permission.
                     </p>
                 </notification>
-                <text-field for="email" size="full" id="subscribe-email" name="email" type="text" placeholder="office@otbshtestvo.bg">
+                <text-field for="email" size="full" id="subscribe-email" name="email" type="text"
+                            placeholder="office@otbshtestvo.bg">
                     имейл адрес
                 </text-field>
                 <action-button button for="login" type="primary" fill="solid" align="left" color="purple">
@@ -368,9 +435,10 @@
             <register-auth type="login" size="compact" class="half">
                 <headline size="small" density="comfortable">Или си направете регистрация</headline>
                 <notification information no-icon size="small">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. minim veniam, quis nostrud exercitation.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. minim veniam, quis nostrud exercitation.</p>
                 </notification>
-                <action-button button  type="primary" fill="outlined" align="left" color="purple" density="compact">
+                <action-button button type="primary" fill="outlined" align="left" color="purple" density="compact">
                     Регистрация
                 </action-button>
             </register-auth>
@@ -385,7 +453,7 @@
 
 <div id="button" style="background: lightgray">
     <style>
-        #button action-button{
+        #button action-button {
             margin: 10px 20px;
         }
     </style>
@@ -445,32 +513,32 @@
         </action-button>
     </div>
     <div style="padding: 20px 0;; background: #112346; ">
-        <bubble size="standart" color="white" type="information" density="compact" >
+        <bubble size="standart" color="white" type="information" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
 
-        <bubble size="standart" color="white" type="error" density="compact" >
+        <bubble size="standart" color="white" type="error" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
 
-        <bubble size="standart" color="white" type="success" density="compact" >
+        <bubble size="standart" color="white" type="success" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
-        <bubble no-icon size="standart" color="white" type="success" density="compact" >
+        <bubble no-icon size="standart" color="white" type="success" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
-        <bubble size="hlaf" color="greem" type="information" density="compact" >
-            This is just a simple notice. Everything is in order and this is a simple link.
-        </bubble>
-
-        <bubble size="hlaf" color="red" type="error" density="compact" >
+        <bubble size="hlaf" color="greem" type="information" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
 
-        <bubble size="hlaf" color="green" type="success" density="compact" >
+        <bubble size="hlaf" color="red" type="error" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
-        <bubble no-icon size="hlaf" color="red" type="success" density="compact" >
+
+        <bubble size="hlaf" color="green" type="success" density="compact">
+            This is just a simple notice. Everything is in order and this is a simple link.
+        </bubble>
+        <bubble no-icon size="hlaf" color="red" type="success" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
     </div>
