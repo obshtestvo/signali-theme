@@ -238,48 +238,53 @@
                 Easy one click sign in. We won't post anything without your permission.
             </p>
         </notification>
-        </survey-question>
-        <survey-question state="information">
-            <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
-            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left"action="{{action}}">
-                Да
-            </action-button>
-            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
-                Не
-            </action-button>
-            <notification information size="text-field">
-                <p>
-                    Easy one click sign in. We won't post anything without your permission.
-                </p>
-            </notification>
-        </survey-question>
-        <survey-question raiting state="success">
-            <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
-            <rating size="medium" align="left" value="4">
-            </rating>
-            <notification success size="text-field">
-                <p>
-                    Easy one click sign in. We won't post anything without your permission.
-                </p>
-            </notification>
-        </survey-question>
-        <survey-question raiting state="error">
-            <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
-            <rating size="medium" align="left" value="4">
-            </rating>
-            <notification error size="text-field">
-                <p>
-                    Easy one click sign in. We won't post anything without your permission.
-                </p>
-            </notification>
-        </survey-question>
+    </survey-question>
+    <survey-question state="information">
+        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Да
+        </action-button>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Не
+        </action-button>
+        <notification information size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </survey-question>
+    <survey-question raiting state="success">
+        <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+        <rating size="medium" align="left" value="4">
+        </rating>
+        <notification success size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </survey-question>
+    <survey-question raiting state="error">
+        <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+        <rating size="medium" align="left" value="4">
+        </rating>
+        <notification error size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </survey-question>
 
 </div>
 
 <div style="padding: 20px 0;; background: #112346; ">
     <!--Modal Window Login-->
     <modal id="auth">
-        <headline size="large" density="airy" align="center" for="login">Вход</headline>
+        <headline size="large" density="airy" align="center" for="login">
+            <action-button helper back action="google.com">
+                Назад
+            </action-button>
+            Вход
+        </headline>
         <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
         <auth>
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">

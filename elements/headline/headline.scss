@@ -6,6 +6,7 @@
 
 headline {
   display: block;
+  position: relative;
   &[size='large'] {
     &[density="airy"] {
       padding: 18px 0 32px 0

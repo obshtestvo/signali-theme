@@ -5,6 +5,7 @@ module.exports = function (componentService) {
         template: require('./action-button.html'),
         include: {
             "arrow": require('./chevron-circle-right.svg'),
+            "arrow-back": require('./chevron-circle-left.svg'),
             "reply-icon": require('./reply.svg')
         }
     })

@@ -5,258 +5,268 @@
 //if helper attributes [type],[fill],[size] and [color] are not required
 
 action-button {
-  &[link], &[button], &[submit] {
-    display: block;
-    &[density="airy"]{
-      padding: 40px 0
-    }
-    &[density="comfortable"]{
-      padding: 30px 0
-    }
-    &[density="cozy"]{
-      padding: 20px 0
-    }
-    &[density="compact"]{
-      padding: 10px 0;
-    }
-    &[align="right"] {
-      text-align: right;
-      float: right;
-    }
-    &[align="center"] {
-      text-align: center;
-    }
-    &[align="left"] {
-      text-align: left;
-      float: left;
-    }
-    a, button {
-      @extend %large-radius, %button-font, %anime;;
-      padding: 10px 20px;
-      display: inline-block;
-      color: $white;
-      border: none;
-      outline: none;
-    }
-    &[color="red"] {
-      a, button {
-        background: $secondary-color-100;
-        &:hover {
-          background: $secondary-color-120;
+    &[link], &[button], &[submit] {
+        display: block;
+        &[density="airy"] {
+            padding: 40px 0
         }
-        &:active {
-          background: $secondary-color-active;
+        &[density="comfortable"] {
+            padding: 30px 0
         }
-      }
-    }
-    &[color="purple"] {
-      a, button {
-        background: $main-color-100;
-        &:hover {
-          background: $main-color-120;
+        &[density="cozy"] {
+            padding: 20px 0
         }
-        &:active {
-          background: $main-color-active;
+        &[density="compact"] {
+            padding: 10px 0;
         }
-      }
-    }
-    &[color="white"] {
-      a, button {
-        color: $main-color-100;
-        background: $white;
-        &:hover {
-          color: $main-color-120;
-          background: $white-hover;
+        &[align="right"] {
+            text-align: right;
+            float: right;
         }
-        &:active {
-          color: $main-color-80;
-          background: $white;
+        &[align="center"] {
+            text-align: center;
         }
-      }
-    }
-    &[fill="outlined"] {
-      &[color="red"] {
+        &[align="left"] {
+            text-align: left;
+            float: left;
+        }
         a, button {
-          background: transparent;
-          @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
-          color: $secondary-color-100;
-          &:hover {
-            background: $secondary-color-120;
-            @include box-shadow(0, 0, 0, 3px $secondary-color-120, inset);
+            @extend %large-radius, %button-font, %anime;;
+            padding: 10px 20px;
+            display: inline-block;
             color: $white;
-          }
-          &:active {
-            background: $main-color-active;
-            @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
-            color: $white;
-          }
+            border: none;
+            outline: none;
         }
-      }
-      &[color="purple"] {
-        a, button {
-          background: transparent;
-          @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
-          color: $main-color-100;
-          &:hover {
-            background: $main-color-120;
-            @include box-shadow(0, 0, 0, 3px $main-color-120, inset);
-            color: $white;
-          }
-          &:active {
-            background: $main-color-active;
-            @include box-shadow(0, 0, 0, 3px $secondary-color-active, inset);
-            color: $white;
-          }
+        &[color="red"] {
+            a, button {
+                background: $secondary-color-100;
+                &:hover {
+                    background: $secondary-color-120;
+                }
+                &:active {
+                    background: $secondary-color-active;
+                }
+            }
         }
-      }
-      &[color="white"] {
-        a, button {
-          background: transparent;
-          @include box-shadow(0, 0, 0, 3px $white, inset);
-          color: $white;
-          &:hover {
-            background: $white-hover;
-            @include box-shadow(0, 0, 0, 3px $white-hover, inset);
-            color: $main-color-120;
-          }
-          &:active {
-            background: $white;
-            @include box-shadow(0, 0, 0, 3px $white, inset);
-            color: $main-color-120;
-          }
+        &[color="purple"] {
+            a, button {
+                background: $main-color-100;
+                &:hover {
+                    background: $main-color-120;
+                }
+                &:active {
+                    background: $main-color-active;
+                }
+            }
         }
-      }
-    }
-    &[type="secondary"] {
-      a, button {
-        @extend %small-radius;
-      }
-    }
-    &[size="gigalarge"] {
-      a, button {
-        width: 100%;
-        padding: 15px 30px;
-        @extend %bodytext-large-font;
-        line-height: 20px;
-      }
-      &[type="primary"]{
-        a, button {
-          border-radius: $large-radius + 6px !important;
+        &[color="white"] {
+            a, button {
+                color: $main-color-100;
+                background: $white;
+                &:hover {
+                    color: $main-color-120;
+                    background: $white-hover;
+                }
+                &:active {
+                    color: $main-color-80;
+                    background: $white;
+                }
+            }
         }
-      }
+        &[fill="outlined"] {
+            &[color="red"] {
+                a, button {
+                    background: transparent;
+                    @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
+                    color: $secondary-color-100;
+                    &:hover {
+                        background: $secondary-color-120;
+                        @include box-shadow(0, 0, 0, 3px $secondary-color-120, inset);
+                        color: $white;
+                    }
+                    &:active {
+                        background: $main-color-active;
+                        @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
+                        color: $white;
+                    }
+                }
+            }
+            &[color="purple"] {
+                a, button {
+                    background: transparent;
+                    @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
+                    color: $main-color-100;
+                    &:hover {
+                        background: $main-color-120;
+                        @include box-shadow(0, 0, 0, 3px $main-color-120, inset);
+                        color: $white;
+                    }
+                    &:active {
+                        background: $main-color-active;
+                        @include box-shadow(0, 0, 0, 3px $secondary-color-active, inset);
+                        color: $white;
+                    }
+                }
+            }
+            &[color="white"] {
+                a, button {
+                    background: transparent;
+                    @include box-shadow(0, 0, 0, 3px $white, inset);
+                    color: $white;
+                    &:hover {
+                        background: $white-hover;
+                        @include box-shadow(0, 0, 0, 3px $white-hover, inset);
+                        color: $main-color-120;
+                    }
+                    &:active {
+                        background: $white;
+                        @include box-shadow(0, 0, 0, 3px $white, inset);
+                        color: $main-color-120;
+                    }
+                }
+            }
+        }
+        &[type="secondary"] {
+            a, button {
+                @extend %small-radius;
+            }
+        }
+        &[size="gigalarge"] {
+            a, button {
+                width: 100%;
+                padding: 15px 30px;
+                @extend %bodytext-large-font;
+                line-height: 20px;
+            }
+            &[type="primary"] {
+                a, button {
+                    border-radius: $large-radius + 6px !important;
+                }
+            }
+        }
+        &[size="extralarge"] {
+            a, button {
+                width: 100%;
+            }
+        }
+        &[size="large"] {
+            a, button {
+                padding: 10px 40px;
+            }
+        }
+        &[size="medium"] {
+            a, button {
+                padding: 10px 30px;
+            }
+        }
+        &[mainsearch] {
+            a, button {
+                @extend %center-y;
+                right: 0;
+            }
+        }
     }
-    &[size="extralarge"] {
-      a, button {
-        width: 100%;
-      }
+    &[helper] {
+        div {
+            font-size: 14px;
+            span {
+                color: $grey-color-100;
+                font-style: italic;
+                padding: 0 0 0 10px;
+            }
+            a {
+                color: $secondary-color-100;
+                svg {
+                    width: 11px;
+                    height: 11px;
+                    fill: $secondary-color-100;
+                    position: relative;
+                    bottom: -1px;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    color: $secondary-color-120;
+                    svg {
+                        fill: $secondary-color-120;
+                    }
+                }
+                &:active {
+                    text-decoration: underline;
+                    color: $secondary-color-60;
+                    svg {
+                        fill: $secondary-color-60;
+                    }
+                }
+            }
+            &.inline {
+                display: inline-block;
+            }
+            &.align-right {
+                text-align: right;
+                float: right;
+            }
+            &.align-center {
+                text-align: center;
+            }
+            &.align-left {
+                text-align: left;
+            }
+        }
+        &[density="airy"] {
+            line-height: 50px
+        }
+        &[density="comfortable"] {
+            line-height: 40px
+        }
+        &[density="cozy"] {
+            line-height: 32px
+        }
     }
-    &[size="large"] {
-      a, button {
-        padding: 10px 40px;
-      }
-    }
-    &[size="medium"] {
-      a, button {
-        padding: 10px 30px;
-      }
-    }
-    &[mainsearch] {
-      a, button {
-        @extend %center-y;
-        right: 0;
-      }
-    }
-  }
-  &[helper] {
-    div {
-      font-size: 14px;
-      span {
-        color: $grey-color-100;
-        font-style: italic;
-        padding: 0 0 0 10px;
-      }
-      a {
-        color: $secondary-color-100;
+    &[icon="false"], &[no-icon] {
         svg {
-          width: 11px;
-          height: 11px;
-          fill: $secondary-color-100;
-          position: relative;
-          bottom: -1px;
+            display: none;
         }
-        &:hover {
-          text-decoration: underline;
-          color: $secondary-color-120;
-          svg {
-            fill: $secondary-color-120;
-          }
-        }
-        &:active {
-          text-decoration: underline;
-          color: $secondary-color-60;
-          svg {
-            fill: $secondary-color-60;
-          }
-        }
-      }
-      &.inline {
-        display: inline-block;
-      }
-      &.align-right {
-        text-align: right;
+    }
+    &[password] {
         float: right;
-      }
-      &.align-center {
-        text-align: center;
-      }
-      &.align-left {
-        text-align: left;
-      }
     }
-    &[density="airy"] {
-      line-height: 50px
-    }
-    &[density="comfortable"] {
-      line-height: 40px
-    }
-    &[density="cozy"] {
-      line-height: 32px
-    }
-  }
-  &[icon="false"], &[no-icon] {
-    svg {
-      display: none;
-    }
-  }
-  &[password] {
-    float: right;
-  }
 
-  &[reply] {
-    a {
-      color: $secondary-color-100;
-      float: right;
-      position: relative;
-      padding: 0 0 0 16px;
-      &:hover{
-        text-decoration: underline;
-      }
-      svg{
-        display: none;
-        width: 12px;
-        height: 11px;
-        fill: $secondary-color-100;
-        position: absolute;
-        left: 0;
-        top: 3px;
-        &:first-of-type{
-          display: block;
+    &[reply] {
+        a {
+            color: $secondary-color-100;
+            float: right;
+            position: relative;
+            padding: 0 0 0 16px;
+            &:hover {
+                text-decoration: underline;
+            }
+            svg {
+                display: none;
+                width: 12px;
+                height: 11px;
+                fill: $secondary-color-100;
+                position: absolute;
+                left: 0;
+                top: 3px;
+                &:first-of-type {
+                    display: block;
+                }
+            }
         }
-      }
     }
-  }
-  &[inline] {
-    display: inline-block;
-  }
+    &[inline] {
+        display: inline-block;
+    }
+    &[back]{
+        @extend %center-y;
+        left:0;
+        svg{
+            &:last-of-type{
+                display: none;
+            }
+        }
+    }
+
 }
 
