@@ -1,4 +1,5 @@
 var AjaxForm = require('ajax/form');
+var jsonHandler = require('./ajaxJsonResult.js');
 
 module.exports = function (componentService) {
     AjaxForm.defaultOptions.applyResult = function(instance, isSuccess, content) {
@@ -8,6 +9,8 @@ module.exports = function (componentService) {
             componentService.upgrade($result[0]);
             instance.$container.append($result);
             return $result;
+        } else if (instance.options.dataType == 'json') {
+            return jsonHandler(instance, isSuccess, content);
         }
     };
 }

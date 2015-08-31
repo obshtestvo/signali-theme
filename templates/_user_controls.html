@@ -60,6 +60,7 @@
         <auth type="login" action="{% url 'security:complete' 'email' %}">
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
                 <input type="hidden" name="auth_type" value="login"/>
+                <notification error size="medium" density="comfortable" class="secondary" for="form" hidden>Прегледайте грешките по-долу</notification>
                 <text-field for="registration" validate-group="registration" size="full" id="name" name="name" type="text" required>
                     Име
                     <notification error size="text-field" hidden></notification>
@@ -73,7 +74,7 @@
                         </p>
                     </notification>
                 </text-field>
-                <text-field size="full" id="new_password1" name="new_password1" validate-group='["registration", "login"]' type="password" required>
+                <text-field size="full" id="new_password1" name="new_password1" validate-name="password" validate-group='["registration", "login"]' type="password" required minlength="6">
                     Парола
                     <notification error size="text-field" hidden></notification>
                 </text-field>

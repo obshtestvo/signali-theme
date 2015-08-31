@@ -15,8 +15,7 @@ module.exports = function (componentService) {
 
             this.validation = new ValidationForm($form);
             var ajaxForm = new AjaxForm($form, {
-                pjax: true,
-                containerAscendantSelector: 'auth'
+                containerAscendantSelector: 'modal'
             });
             this.validation.disableGroupsExcept(this.type);
             this.validation.on('form:submit', function() {
@@ -30,6 +29,7 @@ module.exports = function (componentService) {
                 set: function(value) {
                     var $el = $(this);
                     if (this.validation) {
+                        this.validation.clearServerErrors()
                         this.validation.disableGroupsExcept(value)
                     }
                     if (value == 'registration') {
@@ -80,6 +80,12 @@ module.exports = function (componentService) {
             },
             setInput: function (name, value) {
                 this.querySelector('auth').setInput(name, value);
+            },
+            reset: function () {
+                var $this = $(this);
+                $this.find('auth-modal-patch').remove();
+                $this.find('notification[error], notification[success]').hide().find('ul, p').remove();
+                $this.find('.error').removeClass('error')
             }
         },
         properties: {
@@ -143,13 +149,13 @@ module.exports = function (componentService) {
                 e.preventDefault();
                 if (!el.authmodal) {
                     var modal = document.getElementById('generic-auth').copyModal();
-                    var $modal = $(modal);
-                    $modal.find('auth-modal-patch').remove();
                     modal.id = 'commentAuth';
                     componentService.upgrade(modal);
+                    modal.reset();
                     modal.attach();
                     modalPatch.applyTo(modal);
                     el.authmodal = modal;
+                    var $modal = $(modal);
                     $modal.on('close:modal', function() {
                         $form.trigger('cancel');
                     })
