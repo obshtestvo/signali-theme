@@ -50,6 +50,9 @@ module.exports = function (componentService) {
                 return false;
             });
         },
+        attached: function() {
+            this.ajaxForm.setInteractionContainer($(this).closest('[auth-container]'))
+        },
         properties: {
             type: {
                 attr: true,

@@ -44,7 +44,7 @@ var hideAuthContainer = function(el, callback) {
     if (el.tagName == 'MODAL') {
         var $animationContainer = $(el).find('[modal-animation-container]');
         toggleFixedHeight($animationContainer, true);
-        $animationContainer.find('[modal-animation-container]').animateContentSwitch($(el.authContainer), $(el.primary), {
+        $animationContainer.animateContentSwitch($(el.authContainer), $(el.primary), {
             speed: 300,
             width: false,
             final: function () {
@@ -81,12 +81,13 @@ var showAuthContainer = function(el) {
 };
 
 var attachAuthContainer = function(el) {
-    var authModal = document.querySelector('[auth-modal="main"]').cloneAuthModal(el.getAttribute('auth-id'));
-    var modalPatch = el.querySelector('auth-modal-patch');
+    var authModal = document.querySelector('modal[auth-container="main"]').cloneAuthModal(el.getAttribute('auth-id'));
+    var modalPatch = el.querySelector('auth-container-patch');
     if (el.tagName == 'MODAL') {
         if (modalPatch) modalPatch.applyTo(authModal);
         var authContainer = authModal.primary,
             $authContainer = $(authContainer);
+        authContainer.setAttribute('auth-container', 'secondary');
         $authContainer.hide();
         el.addSecondary(authContainer);
         return authContainer;

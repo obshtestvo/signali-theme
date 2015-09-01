@@ -4,6 +4,7 @@
     >
         <headline size="large" density="airy" align="center">Добави сигнал</headline>
         <proposal action="/">
+            {% csrf_token %}
             <select-dropdown id="drop" name="dropdown" multiple size="standart" >
                 <label>Местонахождение</label>
                 <value id="2" selected>corruption</value>
@@ -49,12 +50,12 @@
             </action-button>
 
             {% if not user.is_authenticated %}
-            <auth-modal-patch>
+            <auth-container-patch>
                 <auth-title>Преди да публикуваме</auth-title>
                 <auth-subtitle>
                     Регистрирай се, за да можем да се свържем с теб, ако си имал проблем.
                 </auth-subtitle>
-            </auth-modal-patch>
+            </auth-container-patch>
             {% endif %}
         </proposal>
     </modal>

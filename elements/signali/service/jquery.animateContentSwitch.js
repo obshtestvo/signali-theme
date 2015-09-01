@@ -1,7 +1,6 @@
 // Animates the dimensional changes resulting from altering element contents
 var $ = require('jquery');
 var deepmerge= require('deepmerge');
-var toggleFixedHeight = require('service/toggleFixedHeight.js');
 
 var overrideTransitions = function(el, properties, animationTime) {
     var variations = [
@@ -145,10 +144,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
             if (!options.width) delete targetAnimation.width;
             if (!options.height) delete targetAnimation.height;
 
-            console.log(targetAnimation)
-
             var originalTransitions = overrideTransitions($this[0], Object.keys(targetAnimation), options.speed);
-            console.log(originalTransitions)
             $this.css(targetAnimation);
 
             setTimeout(function() {

@@ -5,20 +5,19 @@ module.exports = function (componentService) {
         created: function () {
             var $trigger = $(this);
             var target = $trigger.attr('href');
-            var $authModal = !target ? $trigger.closest('[auth-modal]') : $($trigger.attr('href'));
-            var authModal = $authModal[0];
             var isRegistration = $trigger.attr('type') == 'registration';
-            var registrationPatch = authModal.querySelector('auth-modal-patch[for="registration"]');
-            var loginPatch = authModal.querySelector('auth-modal-patch[for="login"]');
-
             $trigger.click(function (e) {
+                var $authContainer = !target ? $trigger.closest('[auth-container]') : $($trigger.attr('href'));
+                var authContainer = $authContainer[0];
+                var registrationPatch = authContainer.querySelector('auth-container-patch[for="registration"]');
+                var loginPatch = authContainer.querySelector('auth-container-patch[for="login"]');
                 e.preventDefault();
                 if (isRegistration) {
-                    if (registrationPatch) registrationPatch.applyTo(authModal);
-                    authModal.type = 'registration';
+                    if (registrationPatch) registrationPatch.applyTo(authContainer);
+                    authContainer.type = 'registration';
                 } else {
-                    if (loginPatch) loginPatch.applyTo(authModal);
-                    authModal.type = 'login';
+                    if (loginPatch) loginPatch.applyTo(authContainer);
+                    authContainer.type = 'login';
                 }
             });
         }

@@ -179,6 +179,11 @@ AjaxForm.prototype = {
         this.$replaceable = $el;
     },
 
+
+    setInteractionContainer: function ($el) {
+        this.$container = $el;
+    },
+
     /*
      * Show server response applied by applyResult
      */

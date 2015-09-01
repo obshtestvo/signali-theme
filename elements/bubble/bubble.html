@@ -1,9 +1,11 @@
-<section>
-    <div class="icon">
-    {{#information}}{{{iconInfo}}}{{/information}}
-    {{#error}}{{{iconExclamation}}}{{/error}}
-    {{#success}}{{{iconCheck}}}{{/success}}
-    </div>
-    <content></content>
+<section wrapper>
+    <section content>
+        <div class="icon">
+        {{#information}}{{{iconInfo}}}{{/information}}
+        {{#error}}{{{iconExclamation}}}{{/error}}
+        {{#success}}{{{iconCheck}}}{{/success}}
+        </div>
+        <content></content>
+    </section>
+    <a class="close" href="#">{{{iconClose}}}</a>
 </section>
-<a class="close" href="#">{{{iconClose}}}</a>

@@ -1,12 +1,12 @@
 module.exports = function (componentService) {
 
-    componentService.register('auth-modal', {
-        extends: 'modal',
+    componentService.register('auth-container', {
         type: 'attribute',
 
         attached: function () {
             if (this.hasBeenAttached) return;
             this.hasBeenAttached = true;
+            if (this.tagName != 'MODAL') return;
 
             var el = this,
                 $el = $(el),
@@ -24,7 +24,7 @@ module.exports = function (componentService) {
                 $el.off('modal:close', cancelAuth);
                 ajaxForm.setReplaceableElement(el.primary);
             });
-            $auth.on('auth:login:success', function (e, data, ajaxForm) {
+            $auth.on('auth:login:success', function () {
                 el.close()
             });
         },
@@ -41,11 +41,12 @@ module.exports = function (componentService) {
             },
             reset: function () {
                 var $this = $(this);
-                $this.find('auth-modal-patch').remove();
+                $this.find('auth-container-patch').remove();
                 $this.find('notification[error], notification[success]').hide().find('ul, p').remove();
                 $this.find('.error').removeClass('error')
             },
             cloneAuthModal: function(id) {
+                if (this.tagName != 'MODAL') throw Error("This auth-container is not a modal");
                 var modal = this.cloneModal();
                 if (!id) id = "";
                 modal.id = id;
@@ -78,7 +79,7 @@ module.exports = function (componentService) {
     });
 
 
-    componentService.register('auth-modal-patch', {
+    componentService.register('auth-container-patch', {
         prototype: {
             applyTo: function (modal) {
                 var $el,
