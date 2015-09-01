@@ -24,6 +24,7 @@ var AjaxForm = function ($el, options) {
         this.$container = $el;
     }
     var self = this;
+    //@todo define `resume` event and unblock when it happens, not at cancel
     this.$form.on('cancel', function() {
         self.unblock()
     })
@@ -75,10 +76,6 @@ AjaxForm.defaultOptions = {
      * Whether to notify server backend that client expects partial (pjax) response
      */
     pjax: false,
-    /*
-     * Don't show ajax result in no circumstances
-     */
-    preventShow: false,
 
     errorClass: 'error',
     successClass: 'success',
@@ -90,64 +87,19 @@ AjaxForm.prototype = {
     $form: null,
     options: null,
 
-    block: function () {
-        this.$container.block();
-        var $veil = this.$container.find('.blockOverlay');
-        makeSpinner().spin($veil.get(0))
-    },
 
-    unblock: function () {
-        this.$container.unblock();
-    },
-
-    _switchContent: function ($hide, $show, speed, final) {
-        var self = this;
-
-        toggleFixedHeight(self.$container, true);
-        self.$container.animateContentSwitch($hide, $show, {
-            speed: speed,
-            width: false,
-            final: function () {
-                toggleFixedHeight(self.$container, false);
-                if ($.isFunction(final)) {
-                    final()
-                }
-            }
-        });
-    },
-
-    _getResultContainer: function () {
-        if (this._resultContainer) return this._resultContainer;
-        var getter = this.options.resultContainer;
-        var container;
-        if ($.isFunction(getter)) container = getter(this.$form);
-        if (typeof getter == 'string') container = this.$container.find(getter);
-        if (getter instanceof $ && getter.length) container = getter;
-        if (!container) {
-            container = document.createElement('div');
-            this.$container.append(container)
-            container = $(container)
-        }
-        this._resultContainer = container;
-        return container;
-    },
-
+    /*
+     * Submit form
+     */
     submit: function () {
         var self = this;
         var $form = self.$form;
-        self.block();
 
         var event = $.Event("ajax-submit");
         self.$form.trigger(event);
         if (event.isDefaultPrevented()) return;
 
-        var handleError = function(error) {
-            if ($.isFunction(self.options.error)) {
-                var callbackReturn = self.options.error(error);
-                if (callbackReturn) error = callbackReturn;
-            }
-            self.applyError(error)
-        };;
+        self.block();
 
         var requestOptions = {
             type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
@@ -157,69 +109,105 @@ AjaxForm.prototype = {
 
             success: function (data) {
                 if (self.options.determineSuccess(data)) {
-                    if ($.isFunction(self.options.success)) data = self.options.success(data);
-                    self.applySuccess(data);
+                    self.applyResult(true, data)
                 } else {
-                    handleError(data)
+                    self.applyResult(false, data)
                 }
             },
 
             error: function (xhr, status, err) {
                 var error = err;
-                if (xhr.responseText) {
-                    error = xhr.responseText;
-                }
+                if (xhr.responseText) error = xhr.responseText;
                 if (self.options.dataType =='json' && xhr.responseJSON) {
                     error = xhr.responseJSON;
                 }
-                handleError(error)
-            },
-
-            complete: function () {
-                self.showResult();
+                self.applyResult(false, error)
             }
         };
         if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
         $.ajax(requestOptions);
     },
 
-    applyResult: function (isSuccess, content, klass) {
-        if (this.options.applyResult === false) {
-            this.options.preventShow = true;
-            return
+    /*
+     * Act on server response
+     */
+    applyResult: function(isSuccess, response) {
+        var showResult = true,
+            callback = isSuccess ? this.options.success : this.options.error,
+            klass = isSuccess ? this.options.successClass : this.options.errorClass;
+
+        if ($.isFunction(callback)) {
+            var callbackReturn = callback(response);
+            showResult = callbackReturn !== false;
+            if (callbackReturn) response = callbackReturn;
         }
+
+        if (this.options.applyResult === false) showResult = false;
+
         if ($.isFunction(this.options.applyResult)) {
-            var result = this.options.applyResult(this, isSuccess, content);
-            if (result === false) {
-                this.options.preventShow = true;
-                return
-            }
-            if (!(result instanceof $)) return;
-            if (result.length) {
+            var result = this.options.applyResult(this, isSuccess, response);
+            if (result === false) showResult = false;
+            if (result instanceof $ && result.length) {
                 this._resultContainer = result;
-                return
             }
+        } else {
+            this._getResultContainer().html(response);
+            this.$container.addClass(klass)
         }
-        this._getResultContainer().html(content);
-        this.$container.addClass(klass)
+        if (showResult) this.showResult();
     },
 
-    applySuccess: function (content) {
-        this.applyResult(true, content, this.options.successClass)
+
+    /*
+     * Get or create element to hold server response
+     */
+    _getResultContainer: function () {
+        if (this._resultContainer) return this._resultContainer;
+        var getter = this.options.resultContainer,
+            $resultContainer;
+
+        if ($.isFunction(getter)) $resultContainer = getter(this.$form);
+        if (typeof getter == 'string') $resultContainer = this.$container.find(getter);
+        if (getter instanceof $ && getter.length) $resultContainer = getter;
+        if (!$resultContainer) {
+            $resultContainer = $('<div>');
+            this.$container.append($resultContainer)
+        }
+
+        this._resultContainer = $resultContainer;
+        return $resultContainer;
     },
 
-    applyError: function (error) {
-        this.applyResult(false, error, this.options.errorClass)
-    },
-
+    /*
+     * Show server response applied by applyResult
+     */
     showResult: function () {
-        if (this.options.preventShow) return;
         this.unblock();
-        this._switchContent(
-            this.$form,
-            this._getResultContainer(),
-            this.options.resultShowSpeed
-        )
+        toggleFixedHeight(this.$container, true);
+        this.$container.animateContentSwitch(this.$form, this._getResultContainer(), {
+            speed: this.options.resultShowSpeed,
+            width: false,
+            final: function () {
+                toggleFixedHeight(self.$container, false);
+            }
+        });
+    },
+
+    /*
+     * Block interaction on the container
+     */
+    block: function () {
+        this.$container.block();
+        var $veil = this.$container.find('.blockOverlay');
+        makeSpinner().spin($veil.get(0))
+    },
+
+
+    /*
+     * Resume interaction on the container
+     */
+    unblock: function () {
+        this.$container.unblock();
     }
 };
 
