@@ -25,6 +25,12 @@ module.exports = function (componentService) {
                     return this.getAttribute('type')=='error'
                 }
             }
+        },
+        prototype: {
+            show: function () {
+                document.querySelector('body').appendChild(this);
+                $(this).show()
+            }
         }
     })
 }

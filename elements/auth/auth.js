@@ -1,27 +1,52 @@
 var ValidationForm = require('validation/form');
 var AjaxForm = require('ajax/form');
+var request = require('ajax/request');
 
 module.exports = function (componentService) {
     componentService.register('auth', {
         template: require('./auth.html'),
         created: function () {
-            var $el = $(this);
-            var $form = $el.find('form');
+            var el = this,
+                $el = $(el),
+                $userControls = $(el.getAttribute('auth-replace')),
+                $form = $el.find('form');
 
-            this.validation = new ValidationForm($form);
-            var ajaxForm = new AjaxForm($form, {
-                containerAscendantSelector: '[auth-container]',
-                preventShow: true,
+            el.validation = new ValidationForm($form);
+            el.ajaxForm = new AjaxForm($form, {
+                interactionContainer: $form.closest('[auth-container]'),
                 success: function(data) {
-                    $el.trigger('auth:success', [data]);
-                    //@todo query (pjax) data.user.URI
-                    //@todo replace login-box with query response
+                    $('auth-current-user input').val(data.user.pk)
+                    request.pjax(data.user.URI, function(newUserControls) {
+                        $userControls.replaceWith(newUserControls)
+                    });
+
+                    var event = $.Event('auth:success');
+                    $el.trigger(event, [data, el.ajaxForm]);
+                    if (event.isDefaultPrevented()) return false;
+
+                    if (data.backend == 'email' && data.is_new) {
+                        event = $.Event('auth:registration:success');
+                        $el.trigger(event, [data, el.ajaxForm]);
+                        if (event.isDefaultPrevented()) return false;
+
+                        request.pjax(data.redirect, function(message) {
+                            var $result = el.ajaxForm.options.applyResult(ajaxForm, true, message);
+                            el.ajaxForm.showResult($result);
+                        });
+                    } else {
+                        event = $.Event('auth:login:success');
+                        $el.trigger(event, [data, el.ajaxForm]);
+                        if (event.isDefaultPrevented()) return false;
+
+                        el.ajaxForm.unblock();
+                        el.bubble()
+                    }
                     return false;
                 }
             });
-            this.validation.disableGroupsExcept(this.type);
-            this.validation.on('form:submit', function () {
-                ajaxForm.submit();
+            el.validation.disableGroupsExcept(el.type);
+            el.validation.on('form:submit', function () {
+                el.ajaxForm.submit();
                 return false;
             });
         },
@@ -66,7 +91,12 @@ module.exports = function (componentService) {
                 if ($name.is(":visible")) $name.focus();
             },
             cancel: function () {
+                this.ajaxForm.unblock();
                 $(this).trigger('auth:cancel')
+            },
+            bubble: function (bubbleEl) {
+                if (!bubbleEl) bubbleEl = this.querySelector('bubble[success]')
+                bubbleEl.show()
             }
         }
     });

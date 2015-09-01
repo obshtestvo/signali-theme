@@ -3,6 +3,7 @@ module.exports = function (componentService) {
     componentService.register('auth-modal', {
         extends: 'modal',
         type: 'attribute',
+
         attached: function () {
             if (this.hasBeenAttached) return;
             this.hasBeenAttached = true;
@@ -19,22 +20,15 @@ module.exports = function (componentService) {
             });
             $el.on('modal:close', cancelAuth);
 
-            $auth.on('auth:success', function (e, data) {
+            $auth.on('auth:success', function (e, data, ajaxForm) {
                 $el.off('modal:close', cancelAuth);
-                var event = $.Event("auth-modal:success");
-                $el.trigger(event, [data]);
-                if (!event.isDefaultPrevented()) {
-                    if (data.backend == 'email' && data.is_new) {
-                        //@todo query data.redirect with pjax, addSecondary(response), and contentSwitch
-                    } else {
-                        $el.on('modal:close', function () {
-                            //@todo show bubble
-                        });
-                    }
-                }
+                ajaxForm.setReplaceableElement(el.primary);
+            });
+            $auth.on('auth:login:success', function (e, data, ajaxForm) {
                 el.close()
             });
         },
+
         prototype: {
             setTitle: function (title) {
                 this.querySelector('headline[for="modal"]').setTitle(title);
@@ -57,8 +51,10 @@ module.exports = function (componentService) {
                 modal.id = id;
                 componentService.upgrade(modal);
                 modal.reset();
+                return modal;
             }
         },
+
         properties: {
             type: {
                 set: function (value) {
@@ -80,7 +76,6 @@ module.exports = function (componentService) {
             }
         }
     });
-
 
 
     componentService.register('auth-modal-patch', {

@@ -9,26 +9,23 @@ require('service/jquery.animateContentSwitch.js');
 var AjaxForm = function ($el, options) {
     options = options || {};
     this.options = deepmerge(AjaxForm.defaultOptions, options);
-    if (!options.hasOwnProperty('dataType') && this.options.pjax) {
-        this.options.dataType = 'html'
-    }
 
     if ($el.is('form')) {
         this.$form = $el;
-        if (this.options.containerAscendantSelector) {
+        if (!this.options.interactionContainer) {
             this.$container = $el.parent()
         } else {
-            this.$container = $el.closest(this.options.containerAscendantSelector)
+            this.$container = this.options.interactionContainer;
         }
     } else {
-        this.$form = $el.find(this.options.formSubSelector || 'form').eq(0);
+        this.$form = $el.find('form').eq(0);
         this.$container = $el;
     }
-    var self = this;
-    //@todo define `resume` event and unblock when it happens, not at cancel
-    this.$form.on('cancel', function() {
-        self.unblock()
-    })
+    if (!this.options.replaceableElement) {
+        this.$replaceable = this.$form;
+    } else {
+        this.$replaceable = this.options.replaceableElement;
+    }
 };
 
 /*
@@ -36,25 +33,26 @@ var AjaxForm = function ($el, options) {
  */
 AjaxForm.defaultOptions = {
     /*
-     * If $el is not a form, AjaxForm will search the descendants with this selector
-     */
-    formSubSelector: null,
-    /*
+     * Element that will blocked and will have its contents swapped from `replaceableElement` to `resultElement`
      * If $el is a form, AjaxForm will search the ascendants with this selector
      */
-    containerAscendantSelector: null,
+    interactionContainer: null,
+    /*
+     * Element that will be replaced with ajax response. Defaults to the form element
+     */
+    replaceableElement: null,
+    /*
+     * Selector, jQuery object or a function that returns jQuery object.
+     * Indicates where the response will be placed.
+     * Can be overridden by the return value of `applyResult`
+     */
+    resultElement: null,
     /*
      * Boolean or callback.
      * If callback, it's used apply the ajax response to the container.
      * If false (or callback that returns false), nothing will be applied to the container.
      */
     applyResult: null,
-    /*
-     * Selector, jQuery object or a function that returns jQuery object.
-     * Indicates where the response will be placed if `showResult` option is true.
-     * Can be overridden by the return value of `applyResult`
-     */
-    resultContainer: null,
     /*
      * Callback on success. If there's a return value it's treated as cleaned success response.
      */
@@ -74,7 +72,8 @@ AjaxForm.defaultOptions = {
      */
     resultShowSpeed: 400,
     /*
-     * Whether to notify server backend that client expects partial (pjax) response
+     * Whether to notify server backend that client expects partial (pjax) response.
+     * If true, this will ignore `dataType` and always request html
      */
     pjax: false,
 
@@ -85,7 +84,10 @@ AjaxForm.defaultOptions = {
 
 
 AjaxForm.prototype = {
+    _isBlocked: false,
+    $container: null,
     $form: null,
+    $replaceable: null,
     options: null,
 
 
@@ -142,47 +144,56 @@ AjaxForm.prototype = {
             var result = this.options.applyResult(this, isSuccess, response);
             if (result === false) showResult = false;
             if (result instanceof $ && result.length) {
-                this._resultContainer = result;
+                this.$resultElement = result;
             }
         } else {
-            this._getResultContainer().html(response);
+            this._getResultElement().html(response);
             this.$container.addClass(klass)
         }
-        if (showResult) this.showResult();
+        if (showResult) this.showResult(this._getResultElement());
     },
 
 
     /*
-     * Get or create element to hold server response
+     * Get or create element that shows server response
      */
-    _getResultContainer: function () {
-        if (this._resultContainer) return this._resultContainer;
-        var getter = this.options.resultContainer,
-            $resultContainer;
+    _getResultElement: function () {
+        if (this.$resultElement) return this.$resultElement;
+        var getter = this.options.resultElement,
+            $resultElement;
 
-        if ($.isFunction(getter)) $resultContainer = getter(this.$form);
-        if (typeof getter == 'string') $resultContainer = this.$container.find(getter);
-        if (getter instanceof $ && getter.length) $resultContainer = getter;
-        if (!$resultContainer) {
-            $resultContainer = $('<div>');
-            this.$container.append($resultContainer)
+        if ($.isFunction(getter)) $resultElement = getter(this.$form);
+        if (typeof getter == 'string') $resultElement = this.$container.find(getter);
+        if (getter instanceof $ && getter.length) $resultElement = getter;
+        if (!$resultElement) {
+            $resultElement = $('<div>');
+            this.$container.append($resultElement)
         }
 
-        this._resultContainer = $resultContainer;
-        return $resultContainer;
+        this.$resultElement = $resultElement;
+        return $resultElement;
+    },
+
+
+    setReplaceableElement: function ($el) {
+        this.$replaceable = $el;
     },
 
     /*
      * Show server response applied by applyResult
      */
-    showResult: function () {
+    showResult: function ($result) {
         this.unblock();
-        toggleFixedHeight(this.$container, true);
-        this.$container.animateContentSwitch(this.$form, this._getResultContainer(), {
+        var $container = this.$container;
+        toggleFixedHeight($container, true);
+        console.log($container)
+        console.log(this.$replaceable)
+        console.log($result)
+        $container.animateContentSwitch(this.$replaceable, $result, {
             speed: this.options.resultShowSpeed,
             width: false,
             final: function () {
-                toggleFixedHeight(self.$container, false);
+                toggleFixedHeight($container, false);
             }
         });
     },
@@ -191,7 +202,9 @@ AjaxForm.prototype = {
      * Block interaction on the container
      */
     block: function () {
+        if (this._isBlocked) return;
         this.$container.block();
+        this._isBlocked = true;
         var $veil = this.$container.find('.blockOverlay');
         makeSpinner().spin($veil.get(0))
     },
@@ -201,7 +214,9 @@ AjaxForm.prototype = {
      * Resume interaction on the container
      */
     unblock: function () {
+        if (!this._isBlocked) return;
         this.$container.unblock();
+        this._isBlocked = false;
     }
 };
 

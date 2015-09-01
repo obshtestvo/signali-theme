@@ -8,31 +8,64 @@ module.exports = function (componentService) {
             var el = this,
                 $form = el.tagName == 'FORM' ? $(el) : $(el.querySelector('form'));
 
-
-            var intercept = function (e) {
+            $form.on('ajax-submit.auth-required submit.auth-required', function (e) {
                 e.preventDefault();
                 if (!el.authContainer) {
                     el.authContainer = attachAuthContainer(el);
-                    $(el.authContainer).find('auth').on('auth:success', function () {
-                        //@todo on auth:success -> fetch all elements with auth-required, loop, removeRequirement() - remove attribute
-                        //@todo slide back (contentSwitch) to previous form, after animation, start spinning the wheel,
-                        //@todo remove event listener
-                        //@todo append input to the form, depending whether it's a registration or login
-                        //@todo the new input should be called "ui_include_auth"="login|registration"
+                    var $auth = $(el.authContainer).find('auth');
+                    $auth.on('auth:success', function (e, data) {
+                        document.querySelector('[auth-required]').clearAuthRequirement();
+                        var authScenario = data.is_new ? 'registration' : 'login';
+                        $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
+                        hideAuthContainer(el, function() {
+                            //@todo slide back (contentSwitch) to previous form, after animation, start spinning the wheel,
+                            $form.submit();
+                        })
+                    });
+                    $auth.on('auth:registration:success', function (e, data, ajaxForm) {
+                        e.preventDefault();
                     })
                 }
                 showAuthContainer(el)
-            };
+            });
+        },
 
-            $form.on('ajax-submit submit', intercept);
+        prototype: {
+            clearAuthRequirement: function() {
+                var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));
+                $form.off('.auth-required');
+                this.removeAttribute('auth-required')
+            }
         }
     });
+};
+
+var hideAuthContainer = function(el, callback) {
+    if (el.tagName == 'MODAL') {
+        var $el = $(el);
+        toggleFixedHeight($el, true);
+        $el.animateContentSwitch($(el.authContainer), $(el.primary), {
+            speed: 300,
+            width: false,
+            final: function () {
+                toggleFixedHeight(self.$container, false);
+                callback()
+            }
+        });
+    } else {
+        var $authContainer = $(el.authContainer);
+        $authContainer.on('modal:close.auth-required.autoclose', function() {
+            $authContainer.off('.auth-required.autoclose');
+            callback()
+        });
+        el.authContainer.close();
+    }
 };
 
 var showAuthContainer = function(el) {
     if (el.tagName == 'MODAL') {
         var $el = $(el),
-            auth = $el.find('auth')[0];
+            auth = $(el.authContainer).find('auth')[0];
         toggleFixedHeight($el, true);
         $el.animateContentSwitch($(el.primary), $(el.authContainer), {
             speed: 300,

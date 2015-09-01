@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var csrf = require('./csrf');
 
 var makeRequest = function(url, method, data, dataType, isPjax, options) {
     if (!method) method = 'get';
@@ -10,6 +11,16 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
         url: url,
         type: method,
         dataType: dataType,
+
+        beforeSend: function (xhr, settings) {
+            if (!csrf.isCsrfExcempt(settings.type) && csrf.isSameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrf.getCookie('csrftoken'));
+            }
+            if ($.isFunction(options.beforeSend)) options.beforeSend.call(this, xhr, settings);
+        },
 
         success: function (data) {
             if (options.determineSuccess(data)) {
@@ -26,6 +37,10 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
                 error = xhr.responseJSON;
             }
             options.error(error)
+        },
+        complete: function (xhr, status) {
+            $('[name="csrfmiddlewaretoken"]').val(csrf.getCookie('csrftoken'));
+            if ($.isFunction(options.complete)) options.complete.call(this, xhr, status);
         }
     };
     if (data) requestOptions.data = data;

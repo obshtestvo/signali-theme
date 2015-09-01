@@ -7,6 +7,9 @@ module.exports = function (componentService) {
             var $result = $(content);
             $result.hide();
             componentService.upgrade($result[0]);
+            $result.each(function() {
+                componentService.upgrade(this);
+            });
             instance.$container.append($result);
             return $result;
         } else if (instance.options.dataType == 'json') {

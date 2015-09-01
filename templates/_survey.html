@@ -5,11 +5,13 @@
         id="feedback"
 >
     <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
+    {% if not request.user.is_authenticated %}
     <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
+    {% endif %}
     {% csrf_token %}
     <input type="hidden" name="prefix" value="{{prefix}}"/>
     <input type="hidden" name="submission" value="new_feedback"/>
-    {{ form.user }}
+    <auth-current-user>{{ form.user }}</auth-current-user>
     <survey-question rating>
         <headline density="cozy" size="small">Колко сте доволни от подаването на сигнала?</headline>
         <rating size="large" align="left" value="{{ contactpoint.rating }}" name="{{form.rating.html_name}}"></rating>
