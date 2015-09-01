@@ -49,7 +49,7 @@
     Вход
 </login-box>
 <div modal-hider>
-    <modal id="generic-auth" auth-modal>
+    <modal id="generic-auth" auth-modal="main" auth-container>
         <headline size="large" density="airy" align="center" for="modal"></headline>
         <auth-modal-patch for="registration">
             <auth-title>Регистрация</auth-title>
@@ -57,10 +57,10 @@
         <auth-modal-patch for="login">
             <auth-title>Вход</auth-title>
         </auth-modal-patch>
-        <auth type="login" action="{% url 'security:complete' 'email' %}">
+        <auth type="login" action="{% url 'security:complete' 'email' %}" auth-replace="login-box">
             <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
                 <input type="hidden" name="auth_type" value="login"/>
-                <notification error size="medium" density="comfortable" class="secondary" for="form" hidden>Прегледайте грешките по-долу</notification>
+                <notification error size="medium" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
                 <text-field for="registration" validate-group="registration" size="full" id="name" name="name" type="text" required>
                     Име
                     <notification error size="text-field" hidden></notification>
