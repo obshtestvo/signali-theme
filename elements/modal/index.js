@@ -17,6 +17,13 @@ module.exports = function (componentService) {
                 el.close();
             });
         },
+        properties: {
+            primary: {
+                get: function() {
+                    return $(this).children('[wrapper]').children('[priority="primary"]')[0]
+                }
+            }
+        },
         prototype: {
             attach: function() {
                 var hiddenContainer = document.querySelector('[modal-hider]')
@@ -25,13 +32,16 @@ module.exports = function (componentService) {
                 }
                 hiddenContainer.appendChild(this)
             },
-            copyModal: function() {
+
+            cloneModal: function() {
                 var clone = this.cloneNode(true);
                 return $(clone).removeClass('mfp-hide')[0]
             },
+
             close: function() {
                 $.magnificPopup.close();
             },
+
             show: function() {
                 var delay = 300;
                 var $el = $(this);
@@ -43,12 +53,12 @@ module.exports = function (componentService) {
                     callbacks: {
                         open: function() {
                             setTimeout(function(){
-                                $el.trigger('open')
+                                $el.trigger('modal:open')
                             }, delay)
                         },
                         close: function() {
                             setTimeout(function(){
-                                $el.trigger('close:modal')
+                                $el.trigger('modal:close')
                             }, delay)
                         }
                     },
@@ -60,6 +70,10 @@ module.exports = function (componentService) {
                     mainClass: 'mfp-zoom-in',
                     midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
                 });
+            },
+
+            addSecondary: function(content) {
+                $(this).children('[wrapper]').children('[priority="secondary"]').append(content)
             }
         }
     });
@@ -70,7 +84,7 @@ module.exports = function (componentService) {
         properties: {
             target: {
                 attr: true,
-                "set": function (newValue) {
+                set: function (newValue) {
                     if (newValue != 'modal') return;
                     if (this.hasPopupTrigger) return;
                     this.hasPopupTrigger = true;
