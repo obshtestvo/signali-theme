@@ -1,6 +1,7 @@
 @import '../styleguide';
 
 sponsors{
+  display: block;
   section{
       h5 {
         @extend %bodytext-large-font;

@@ -7,10 +7,11 @@ survey-question {
     input {
       display: none;
     }
-    action-button {
-      margin: 0 5px 0 0;
-    }
   }
+    action-button {
+      margin: 0 10px 0 0;
+    }
+
   & > section {
     background: $grey-color-60;
     @extend %small-radius;

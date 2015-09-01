@@ -8,6 +8,7 @@ menu {
   margin: 0;
   padding: 0;
   float: left;
+  display: block;
   .burger-icon {
     @include burger(17px, 3px, 2px, $main-text-color, 1px);
     margin-right: 2px;

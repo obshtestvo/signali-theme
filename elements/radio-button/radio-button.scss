@@ -2,6 +2,7 @@
 
 radio-button {
   background: $grey-color-60;
+  display: inline-block;
 }
 
 radio-button > input[type=radio]:not(old) {

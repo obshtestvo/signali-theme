@@ -1,6 +1,7 @@
 @import '../styleguide';
 
 settings {
+  display: block;
   form {
     display: block;
     @extend %small-radius;
