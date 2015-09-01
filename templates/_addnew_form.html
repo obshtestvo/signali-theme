@@ -1,7 +1,8 @@
-<div style="display:none; ">
-    <!--Modal Window Login-->
+<div style="display:none;">
     <!--Modal Add Signal-->
-    <modal id="addnew">
+    <modal id="addnew"
+           {% if not request.user.is_authenticated %}auth-required auth-id="addNewAuth"{% endif %}
+    >
         <headline size="large" density="airy" align="center">Добави сигнал</headline>
         <select-dropdown id="drop" name="dropdown" multiple size="standart" >
             <label>Местонахождение</label>
