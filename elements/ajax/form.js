@@ -2,6 +2,7 @@ var $ = require('jquery');
 var makeSpinner = require('loader/spinner');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 var deepmerge = require('deepmerge');
+var request = require('./request');
 require('block-ui');
 require('service/jquery.animateContentSwitch.js');
 
@@ -101,31 +102,24 @@ AjaxForm.prototype = {
 
         self.block();
 
-        var requestOptions = {
-            type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
-            url: $form.attr('action'),
-            data: $form.serialize(),
-            dataType: self.options.dataType,
-
-            success: function (data) {
-                if (self.options.determineSuccess(data)) {
+        var requestArgs = [
+            /* URL: */ $form.attr('action'),
+            /* Method: */ $form.find('input[name="X-Method"]').val() || $form.attr('method'),
+            /* Data: */ $form.serialize(),
+            /* Options: */ {
+                determineSuccess: self.options.determineSuccess,
+                success: function(data) {
                     self.applyResult(true, data)
-                } else {
+                },
+                error: function(data) {
                     self.applyResult(false, data)
                 }
-            },
-
-            error: function (xhr, status, err) {
-                var error = err;
-                if (xhr.responseText) error = xhr.responseText;
-                if (self.options.dataType =='json' && xhr.responseJSON) {
-                    error = xhr.responseJSON;
-                }
-                self.applyResult(false, error)
             }
-        };
-        if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
-        $.ajax(requestOptions);
+        ];
+        if (self.options.pjax) {
+            return request.pjax.apply(this, requestArgs)
+        }
+        return request[self.options.dataType].apply(this, requestArgs)
     },
 
     /*
