@@ -2,31 +2,30 @@ var $ = require('jquery');
 var makeSpinner = require('loader/spinner');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 var deepmerge = require('deepmerge');
+var request = require('./request');
 require('block-ui');
 require('service/jquery.animateContentSwitch.js');
 
 var AjaxForm = function ($el, options) {
     options = options || {};
     this.options = deepmerge(AjaxForm.defaultOptions, options);
-    if (!options.hasOwnProperty('dataType') && this.options.pjax) {
-        this.options.dataType = 'html'
-    }
 
     if ($el.is('form')) {
         this.$form = $el;
-        if (this.options.containerAscendantSelector) {
+        if (!this.options.interactionContainer) {
             this.$container = $el.parent()
         } else {
-            this.$container = $el.closest(this.options.containerAscendantSelector)
+            this.$container = this.options.interactionContainer;
         }
     } else {
-        this.$form = $el.find(this.options.formSubSelector || 'form').eq(0);
+        this.$form = $el.find('form').eq(0);
         this.$container = $el;
     }
-    var self = this;
-    this.$form.on('cancel', function() {
-        self.unblock()
-    })
+    if (!this.options.replaceableElement) {
+        this.$replaceable = this.$form;
+    } else {
+        this.$replaceable = this.options.replaceableElement;
+    }
 };
 
 /*
@@ -34,25 +33,26 @@ var AjaxForm = function ($el, options) {
  */
 AjaxForm.defaultOptions = {
     /*
-     * If $el is not a form, AjaxForm will search the descendants with this selector
-     */
-    formSubSelector: null,
-    /*
+     * Element that will blocked and will have its contents swapped from `replaceableElement` to `resultElement`
      * If $el is a form, AjaxForm will search the ascendants with this selector
      */
-    containerAscendantSelector: null,
+    interactionContainer: null,
+    /*
+     * Element that will be replaced with ajax response. Defaults to the form element
+     */
+    replaceableElement: null,
+    /*
+     * Selector, jQuery object or a function that returns jQuery object.
+     * Indicates where the response will be placed.
+     * Can be overridden by the return value of `applyResult`
+     */
+    resultElement: null,
     /*
      * Boolean or callback.
      * If callback, it's used apply the ajax response to the container.
      * If false (or callback that returns false), nothing will be applied to the container.
      */
     applyResult: null,
-    /*
-     * Selector, jQuery object or a function that returns jQuery object.
-     * Indicates where the response will be placed if `showResult` option is true.
-     * Can be overridden by the return value of `applyResult`
-     */
-    resultContainer: null,
     /*
      * Callback on success. If there's a return value it's treated as cleaned success response.
      */
@@ -72,13 +72,10 @@ AjaxForm.defaultOptions = {
      */
     resultShowSpeed: 400,
     /*
-     * Whether to notify server backend that client expects partial (pjax) response
+     * Whether to notify server backend that client expects partial (pjax) response.
+     * If true, this will ignore `dataType` and always request html
      */
     pjax: false,
-    /*
-     * Don't show ajax result in no circumstances
-     */
-    preventShow: false,
 
     errorClass: 'error',
     successClass: 'success',
@@ -87,139 +84,139 @@ AjaxForm.defaultOptions = {
 
 
 AjaxForm.prototype = {
+    _isBlocked: false,
+    $container: null,
     $form: null,
+    $replaceable: null,
     options: null,
 
-    block: function () {
-        this.$container.block();
-        var $veil = this.$container.find('.blockOverlay');
-        makeSpinner().spin($veil.get(0))
-    },
 
-    unblock: function () {
-        this.$container.unblock();
-    },
-
-    _switchContent: function ($hide, $show, speed, final) {
-        var self = this;
-
-        toggleFixedHeight(self.$container, true);
-        self.$container.animateContentSwitch($hide, $show, {
-            speed: speed,
-            width: false,
-            final: function () {
-                toggleFixedHeight(self.$container, false);
-                if ($.isFunction(final)) {
-                    final()
-                }
-            }
-        });
-    },
-
-    _getResultContainer: function () {
-        if (this._resultContainer) return this._resultContainer;
-        var getter = this.options.resultContainer;
-        var container;
-        if ($.isFunction(getter)) container = getter(this.$form);
-        if (typeof getter == 'string') container = this.$container.find(getter);
-        if (getter instanceof $ && getter.length) container = getter;
-        if (!container) {
-            container = document.createElement('div');
-            this.$container.append(container)
-            container = $(container)
-        }
-        this._resultContainer = container;
-        return container;
-    },
-
+    /*
+     * Submit form
+     */
     submit: function () {
         var self = this;
         var $form = self.$form;
-        self.block();
 
         var event = $.Event("ajax-submit");
         self.$form.trigger(event);
         if (event.isDefaultPrevented()) return;
 
-        var handleError = function(error) {
-            if ($.isFunction(self.options.error)) {
-                var callbackReturn = self.options.error(error);
-                if (callbackReturn) error = callbackReturn;
+        self.block();
+
+        var requestArgs = [
+            /* URL: */ $form.attr('action'),
+            /* Method: */ $form.find('input[name="X-Method"]').val() || $form.attr('method'),
+            /* Data: */ $form.serialize(),
+            /* Options: */ {
+                determineSuccess: self.options.determineSuccess,
+                success: function(data) {
+                    self.applyResult(true, data)
+                },
+                error: function(data) {
+                    self.applyResult(false, data)
+                }
             }
-            self.applyError(error)
-        };;
-
-        var requestOptions = {
-            type: $form.find('input[name="X-Method"]').val() || $form.attr('method'),
-            url: $form.attr('action'),
-            data: $form.serialize(),
-            dataType: self.options.dataType,
-
-            success: function (data) {
-                if (self.options.determineSuccess(data)) {
-                    if ($.isFunction(self.options.success)) data = self.options.success(data);
-                    self.applySuccess(data);
-                } else {
-                    handleError(data)
-                }
-            },
-
-            error: function (xhr, status, err) {
-                var error = err;
-                if (xhr.responseText) {
-                    error = xhr.responseText;
-                }
-                if (self.options.dataType =='json' && xhr.responseJSON) {
-                    error = xhr.responseJSON;
-                }
-                handleError(error)
-            },
-
-            complete: function () {
-                self.showResult();
-            }
-        };
-        if (self.options.pjax) requestOptions.headers = {"x-pjax": 1};
-        $.ajax(requestOptions);
+        ];
+        if (self.options.pjax) {
+            return request.pjax.apply(this, requestArgs)
+        }
+        return request[self.options.dataType].apply(this, requestArgs)
     },
 
-    applyResult: function (isSuccess, content, klass) {
-        if (this.options.applyResult === false) {
-            this.options.preventShow = true;
-            return
+    /*
+     * Act on server response
+     */
+    applyResult: function(isSuccess, response) {
+        var showResult = true,
+            callback = isSuccess ? this.options.success : this.options.error,
+            klass = isSuccess ? this.options.successClass : this.options.errorClass;
+
+        if ($.isFunction(callback)) {
+            var callbackReturn = callback(response);
+            showResult = callbackReturn !== false;
+            if (callbackReturn) response = callbackReturn;
         }
+
+        if (this.options.applyResult === false) showResult = false;
+
         if ($.isFunction(this.options.applyResult)) {
-            var result = this.options.applyResult(this, isSuccess, content);
-            if (result === false) {
-                this.options.preventShow = true;
-                return
+            var result = this.options.applyResult(this, isSuccess, response);
+            if (result === false) showResult = false;
+            if (result instanceof $ && result.length) {
+                this.$resultElement = result;
             }
-            if (!(result instanceof $)) return;
-            if (result.length) {
-                this._resultContainer = result;
-                return
-            }
+        } else {
+            this._getResultElement().html(response);
+            this.$container.addClass(klass)
         }
-        this._getResultContainer().html(content);
-        this.$container.addClass(klass)
+        if (showResult) this.showResult(this._getResultElement());
     },
 
-    applySuccess: function (content) {
-        this.applyResult(true, content, this.options.successClass)
+
+    /*
+     * Get or create element that shows server response
+     */
+    _getResultElement: function () {
+        if (this.$resultElement) return this.$resultElement;
+        var getter = this.options.resultElement,
+            $resultElement;
+
+        if ($.isFunction(getter)) $resultElement = getter(this.$form);
+        if (typeof getter == 'string') $resultElement = this.$container.find(getter);
+        if (getter instanceof $ && getter.length) $resultElement = getter;
+        if (!$resultElement) {
+            $resultElement = $('<div>');
+            this.$container.append($resultElement)
+        }
+
+        this.$resultElement = $resultElement;
+        return $resultElement;
     },
 
-    applyError: function (error) {
-        this.applyResult(false, error, this.options.errorClass)
+
+    setReplaceableElement: function ($el) {
+        this.$replaceable = $el;
     },
 
-    showResult: function () {
-        if (this.options.preventShow) return;
+    /*
+     * Show server response applied by applyResult
+     */
+    showResult: function ($result) {
         this.unblock();
-        this._switchContent(
-            this.$form,
-            this._getResultContainer(),
-            this.options.resultShowSpeed
-        )
+        var $container = this.$container;
+        toggleFixedHeight($container, true);
+        console.log($container)
+        console.log(this.$replaceable)
+        console.log($result)
+        $container.animateContentSwitch(this.$replaceable, $result, {
+            speed: this.options.resultShowSpeed,
+            width: false,
+            final: function () {
+                toggleFixedHeight($container, false);
+            }
+        });
+    },
+
+    /*
+     * Block interaction on the container
+     */
+    block: function () {
+        if (this._isBlocked) return;
+        this.$container.block();
+        this._isBlocked = true;
+        var $veil = this.$container.find('.blockOverlay');
+        makeSpinner().spin($veil.get(0))
+    },
+
+
+    /*
+     * Resume interaction on the container
+     */
+    unblock: function () {
+        if (!this._isBlocked) return;
+        this.$container.unblock();
+        this._isBlocked = false;
     }
 };
 

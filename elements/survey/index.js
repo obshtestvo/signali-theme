@@ -30,7 +30,7 @@ module.exports = function (componentService) {
             var validation = new ValidationForm($form);
             var ajaxForm = new AjaxForm($form, {
                 pjax: true,
-                containerAscendantSelector: '[content]'
+                interactionContainer: $form.closest('[content]')
             });
             validation.on('form:submit', function() {
                 ajaxForm.submit()

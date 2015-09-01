@@ -48,7 +48,9 @@ def feedback_list(request, contactpoint):
 
 @register.inclusion_tag('_addnew_form.html')
 def addnew_form(request):
-    return {}
+    return {
+        "request": request
+    }
 
 
 @register.inclusion_tag('_survey.html')
