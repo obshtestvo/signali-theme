@@ -194,6 +194,18 @@ notification {
                 height: 100%;
             }
         }
+        &[density="airy"] {
+            margin: 40px 0
+        }
+        &[density="comfortable"] {
+            margin: 30px 0
+        }
+        &[density="cozy"] {
+            margin: 20px 0
+        }
+        &[density="compact"] {
+            margin: 10px 0;
+        }
         [content] > strong {
             font-weight: 400;
             @extend %bodytext-large-font;

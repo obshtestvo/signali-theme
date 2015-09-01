@@ -5,8 +5,8 @@
 //if helper attributes [type],[fill],[size] and [color] are not required
 
 action-button {
+    display: block;
     &[link], &[button], &[submit] {
-        display: block;
         &[density="airy"] {
             padding: 40px 0
         }
@@ -260,7 +260,7 @@ action-button {
     }
     &[back]{
         @extend %center-y;
-        left:0;
+
         svg{
             &:last-of-type{
                 display: none;
