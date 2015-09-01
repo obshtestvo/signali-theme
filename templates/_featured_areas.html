@@ -7,7 +7,7 @@
                    href="#categoryTab{{ area.pk }}">{{ area.title }}</a></li>
         {% endfor %}
     </tabs>
-    <cards>
+    <section>
         {% for area in locations %}
             <section id="categoryTab{{ area.pk }}" class="clearfix" tab {% if not forloop.first %}hidden{% endif %}>
             {% for point in area.contact_points.all|slice:":5" %}
@@ -15,7 +15,7 @@
             {% endfor %}
             </section>
         {% endfor %}
-    </cards>
+    </section>
     <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}">
         <span>или</span>виж всички
     </action-button>

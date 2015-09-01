@@ -20,7 +20,7 @@ module.exports = function (componentService) {
         properties: {
             primary: {
                 get: function() {
-                    return $(this).children('[wrapper]').children('[priority="primary"]')[0]
+                    return this.querySelector('[priority="primary"]')
                 }
             }
         },
@@ -73,7 +73,7 @@ module.exports = function (componentService) {
             },
 
             addSecondary: function(content) {
-                $(this).children('[wrapper]').children('[priority="secondary"]').append(content)
+                return $(this.querySelector('[priority="secondary"]')).append(content);
             }
         }
     });

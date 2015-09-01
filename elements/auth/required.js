@@ -42,13 +42,13 @@ module.exports = function (componentService) {
 
 var hideAuthContainer = function(el, callback) {
     if (el.tagName == 'MODAL') {
-        var $el = $(el);
-        toggleFixedHeight($el, true);
-        $el.animateContentSwitch($(el.authContainer), $(el.primary), {
+        var $animationContainer = $(el).find('[modal-animation-container]');
+        toggleFixedHeight($animationContainer, true);
+        $animationContainer.find('[modal-animation-container]').animateContentSwitch($(el.authContainer), $(el.primary), {
             speed: 300,
             width: false,
             final: function () {
-                toggleFixedHeight(self.$container, false);
+                toggleFixedHeight($animationContainer, false);
                 callback()
             }
         });
@@ -64,14 +64,14 @@ var hideAuthContainer = function(el, callback) {
 
 var showAuthContainer = function(el) {
     if (el.tagName == 'MODAL') {
-        var $el = $(el),
+        var $animationContainer = $(el).find('[modal-animation-container]'),
             auth = $(el.authContainer).find('auth')[0];
-        toggleFixedHeight($el, true);
-        $el.animateContentSwitch($(el.primary), $(el.authContainer), {
+        toggleFixedHeight($animationContainer, true);
+        $animationContainer.animateContentSwitch($(el.primary), $(el.authContainer), {
             speed: 300,
             width: false,
             final: function () {
-                toggleFixedHeight(self.$container, false);
+                toggleFixedHeight($animationContainer, false);
                 auth.focus()
             }
         });

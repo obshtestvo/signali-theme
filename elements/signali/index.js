@@ -5,7 +5,6 @@ require('reset.scss');
 // jquery plugins are not all used to CommonJS
 window.$ = window.jQuery = require('jquery');
 
-//require('webcomponents.js/MutationObserver');
 require('skatejs-polyfill-mutation-observer/dist/skatejs-polyfill-mutation-observer.js');
 
 var ComponentService = require('service/pseudo-webcomponent.skate');
@@ -171,3 +170,6 @@ popularElement(componentService);
 
 var hiddenAttribute = require('hidden');
 hiddenAttribute(componentService);
+
+var proposalElement = require('proposal');
+proposalElement(componentService);

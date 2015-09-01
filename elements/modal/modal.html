@@ -1,14 +1,16 @@
 <section class="modal-box mfp-with-anim" wrapper>
-    <div priority="primary" content>
-        <div class="padder clearfix">
-            <content></content>
-            <a class="close-modal" href="#">{{{close}}}</a>
+    <section modal-animation-container>
+        <div priority="primary" content>
+            <div class="padder clearfix">
+                <content></content>
+                <a class="close-modal" href="#">{{{close}}}</a>
+            </div>
+            <div class="footwrap">
+                <content select="footer"></content>
+            </div>
         </div>
-        <div class="footwrap">
-            <content select="footer"></content>
+        <div priority="secondary" content>
+            <content select="secondary"></content>
         </div>
-    </div>
-    <div priority="secondary" content>
-        <content select="secondary"></content>
-    </div>
+    </section>
 </section>
