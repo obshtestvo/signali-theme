@@ -21,7 +21,7 @@ module.exports = function (componentService) {
         created: function() {
             this.showClass = 'fadeInUp';
             this.hideClass = 'fadeOut';
-            this.animationDuration = 750;
+            this.animationDuration = 700;
             this.showDuration = 2400;
             var $this = $(this);
 

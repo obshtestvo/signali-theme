@@ -5,7 +5,7 @@
 {% load thumbnail %}
 
 {% block content %}
-    <loader target="page"></loader>
+    {% include "_loader.html" %}
     <page color="light">
         <cover density="comfortable" src="{{ point.cover.url }}">
             {% include '_topnav.html' with request=request %}

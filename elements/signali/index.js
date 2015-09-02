@@ -10,6 +10,9 @@ require('skatejs-polyfill-mutation-observer/dist/skatejs-polyfill-mutation-obser
 var ComponentService = require('service/pseudo-webcomponent.skate');
 var componentService = new ComponentService();
 
+var pageElement = require('page');
+pageElement(componentService);
+
 var loaderElement = require('loader');
 loaderElement(componentService);
 
@@ -134,9 +137,6 @@ settingsEl(componentService);
 
 var filtersEl = require('filters');
 filtersEl(componentService);
-
-var pageElement = require('page');
-pageElement(componentService);
 
 var modalEl = require('modal');
 modalEl(componentService);

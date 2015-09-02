@@ -3,7 +3,7 @@
 {% load restful %}
 
 {% block content %}
-<loader target="page"></loader>
+{% include "_loader.html" %}
 <page color="light">
 <cover density="comfortable" src="test/smoking.jpg">
     {% include '_topnav.html' with request=request %}

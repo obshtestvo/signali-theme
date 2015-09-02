@@ -6,7 +6,7 @@ module.exports = function (componentService) {
             var loader = document.querySelector('loader[target="page"]');
             setTimeout(function(){
                 loader.parentNode.removeChild(loader)
-            }, 100);
+            }, 350);
         }
     })
 }
