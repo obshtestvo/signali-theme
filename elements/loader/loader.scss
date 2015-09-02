@@ -18,7 +18,22 @@ loader {
     left:50%;
     z-index: 1;
   }
+  &:after {
+    @extend %circle;
+    content:"";
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -5px;
+    margin-top: -6px;
+    z-index: 3;
+    width:11px;
+    height:11px;
+    background: $secondary-color;
+  }
   svg {
+    @extend %anime;
+    display: block;
     width: 160px;
     height: 20px;
     margin-top:-10px;
