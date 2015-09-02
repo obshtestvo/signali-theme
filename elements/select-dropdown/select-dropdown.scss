@@ -230,6 +230,10 @@ select-dropdown {
             .selectize-input {
                 border-radius: 5px 0 0 5px;
                 z-index: 10;
+                &.dropdown-active.focus {
+                    border-radius: 5px 0 0 0;
+                    z-index: 12;
+                }
             }
         }
         &:nth-of-type(2) {
