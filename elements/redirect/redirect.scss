@@ -1,0 +1,82 @@
+@import '../styleguide';
+
+redirect {
+  display: block;
+  text-align: center;
+  a {
+    color: $secondary-color-100;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .countdown {
+    display: inline-block;
+    margin-top: 20px;
+    width: 140px;
+    height: 140px;
+    position: relative;
+    & > svg {
+      width: 100%;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    path[stroke="PROGRESSPATH"] {
+      stroke: $secondary-color;
+    }
+    path[stroke="TRAILPATH"] {
+      stroke: $grey-color-80;
+    }
+    .progressbar-text {
+      font-size: 3em;
+      font-weight: 300;
+      color: $secondary-color;
+    }
+    &:hover {
+      & > .pause {
+        z-index: 5;
+        opacity: 1;
+      }
+    }
+    &[paused] {
+      & > .pause {
+        z-index: 4;
+        opacity: 1;
+      }
+    }
+    &[paused]:hover {
+      & > .play {
+        opacity: 1;
+        z-index: 5;
+      }
+    }
+    & > .pause, & > .play {
+      @extend %center-xy;
+      @extend %anime;
+      z-index: 4;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      background: $white;
+      text-align: center;
+      opacity: 0;
+    }
+
+    & > .play {
+      font-size: 50px;
+      text-indent: 0.2em;
+      margin-top: -0.05em;
+      &:before {
+        content: "▶";
+      }
+    }
+    & > .pause {
+      font-size: 26px;
+      text-indent: 0.26em;
+      &:before {
+        content: "▌▌";
+      }
+    }
+  }
+}

@@ -177,5 +177,8 @@ proposalElement(componentService);
 var dividedAttribute = require('divided');
 dividedAttribute(componentService);
 
+var redirectElement = require('redirect');
+redirectElement(componentService);
+
 var signupPromptElement = require('signup-prompt');
 signupPromptElement(componentService);

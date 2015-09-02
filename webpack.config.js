@@ -66,7 +66,7 @@ if (process.env.PRODUCTION) {
 config.module = {
     loaders: [
         {
-            test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr|skatejs\/dist|jquery\.magnific|block-ui|MutationObserver|skatejs\-polyfill\-mutation\-observer/,
+            test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr|skatejs\/dist|magnific\-popup\/src\/js|magnific-popup\/dist\/jquery\.magnific|block-ui|MutationObserver|skatejs\-polyfill\-mutation\-observer/,
             loader: skipProcessingLoader
         },
         {

@@ -1,4 +1,6 @@
 require('magnific-popup/dist/jquery.magnific-popup');
+//require('magnific-popup/src/js/core.js'); //@todo investigate: can cause `no mfp found`
+//require('magnific-popup/src/js/inline.js'); //@todo investigate: can cause `no mfp found`
 require('magnific-popup/dist/magnific-popup.css');
 require('./magnific-popup-override.scss');
 require('./modal.scss');

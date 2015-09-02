@@ -3,13 +3,9 @@
         <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" divided>
             {% csrf_token %}
             <input type="hidden" name="prefix" value="{{prefix}}"/>
-            <redirect-prompt class="half">
-                <headline size="small" density="comfortable">Пренасочваме те...</headline>
-                <notification information color="white" no-icon size="small">
-                    <a href="{{point.url}}">{{contactpoint.url}}</a>
-                </notification>
-                <div class="countdown"></div>
-            </redirect-prompt>
+            <redirect class="half" location="{{contactpoint.url}}">
+                Пренасочваме те...
+            </redirect>
             <email-signup class="half">
                 <headline size="small" density="comfortable">
                     Искаш ли да ти припомним?
