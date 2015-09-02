@@ -232,7 +232,7 @@ select-dropdown {
                 z-index: 10;
             }
         }
-        &:last-of-type {
+        &:nth-of-type(2) {
             width: 65.7%;
             margin: 0 0 0 -1px;
             .selectize-input {
