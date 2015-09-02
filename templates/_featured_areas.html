@@ -1,12 +1,14 @@
 {% load restful %}
-<cards-area>
-    <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
-    <tabs align="center">
-        {% for area in locations %}
+<cards-area  density="negative-compact">
+    <header>
+        <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
+        <tabs align="center">
+            {% for area in locations %}
             <li><a {% if forloop.first %}class="active"{% endif %}
                    href="#categoryTab{{ area.pk }}">{{ area.title }}</a></li>
-        {% endfor %}
-    </tabs>
+            {% endfor %}
+        </tabs>
+    </header>
     <section>
         {% for area in locations %}
             <section id="categoryTab{{ area.pk }}" class="clearfix" tab {% if not forloop.first %}hidden{% endif %}>
@@ -16,7 +18,9 @@
             </section>
         {% endfor %}
     </section>
-    <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}">
-        <span>или</span>виж всички
-    </action-button>
+    <footer>
+        <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}">
+            <span>или</span>виж всички
+        </action-button>
+    </footer>
 </cards-area>
