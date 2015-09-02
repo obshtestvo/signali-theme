@@ -46,7 +46,6 @@ module.exports = function (componentService) {
             play: function() {
                 var el = this;
                 var timeRemaining = Math.round((1-el.progress.value()) * el.time);
-                console.log(el.progress.value(), (1-el.progress.value()) * el.time, Math.round((1-el.progress.value()) * el.time))
                 this.querySelector('.countdown').removeAttribute('paused')
                 el.progress.animate(1, {
                     duration: timeRemaining,
@@ -58,12 +57,13 @@ module.exports = function (componentService) {
             },
             pause: function() {
                 clearTimeout(this.timeout);
-                this.progress.stop(this.progress);
+                this.progress.stop();
                 this.querySelector('.countdown').setAttribute('paused','')
             },
             reset: function() {
+                this.progress.stop();
                 this.progress.set(0);
-                clearTimeout(this.progress);
+                clearTimeout(this.timeout);
                 this.querySelector('.countdown').removeAttribute('paused')
             }
         }

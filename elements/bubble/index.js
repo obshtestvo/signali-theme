@@ -34,10 +34,10 @@ module.exports = function (componentService) {
                 console.log('clearTimeout')
             }, function() {
                 this.autoclose()
-            })
+            });
             $(document).on("mfpOpen", function() {
                 $container.css('right', $('html').css('margin-right'))
-            })
+            });
             $(document).on("mfpClose", function() {
                 $container.css('right', 0)
             })

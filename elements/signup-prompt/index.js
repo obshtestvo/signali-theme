@@ -1,5 +1,4 @@
 var $ = require('jquery');
-var Circle = require('progressbar.js/src/circle');
 
 module.exports = function (componentService) {
     componentService.register('signup-prompt', {
