@@ -1,6 +1,9 @@
 <div hidden>
     <modal id="leavePrompt">
-        <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" divided>
+        <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" success-location="{{contactpoint.url}}" divided>
+            <bubble size="standart" color="white" type="success" success density="compact" class="animated fadeInUp" hidden>
+                Записахме ви. Ще ви припомним. Успех.
+            </bubble>
             {% csrf_token %}
             <input type="hidden" name="prefix" value="{{prefix}}"/>
             <redirect class="half" location="{{contactpoint.url}}">
@@ -14,8 +17,8 @@
                     Ако ни оставиш имейл адрес ще ти припомним да провериш,
                     какво е станало със сигнала, за да не остава проблемът нерешен.
                 </notification>
-                <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="text"
-                            placeholder="твоята@епоща.бг">
+                <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="email"
+                            placeholder="твоята@епоща.бг" required>
                     имейл адрес
                     <notification error size="text-field" hidden></notification>
                     <!--<notification information color="white" no-icon size="small">-->

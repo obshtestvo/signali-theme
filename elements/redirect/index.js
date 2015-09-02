@@ -36,16 +36,18 @@ module.exports = function (componentService) {
 
             $pauseTrigger.on('click', function() {
                 el.pause()
-            })
+            });
 
             $playTrigger.on('click', function() {
                 el.play()
             })
         },
         prototype: {
-            play: function() {
+            play: function(timeRemaining) {
                 var el = this;
-                var timeRemaining = Math.round((1-el.progress.value()) * el.time);
+                if (!timeRemaining) {
+                    timeRemaining = Math.round((1-el.progress.value()) * el.time);
+                }
                 this.querySelector('.countdown').removeAttribute('paused')
                 el.progress.animate(1, {
                     duration: timeRemaining,
@@ -65,6 +67,9 @@ module.exports = function (componentService) {
                 this.progress.set(0);
                 clearTimeout(this.timeout);
                 this.querySelector('.countdown').removeAttribute('paused')
+            },
+            completeIn: function(time) {
+                this.play(time)
             }
         }
     })

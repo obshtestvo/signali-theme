@@ -62,7 +62,6 @@ module.exports = function (componentService) {
         prototype: {
             autoclose: function() {
                 var self = this;
-                console.log('clearTimeout')
                 clearTimeout(this.timeout);
                 this.timeout = setTimeout(function() {
                     self.hide();
@@ -77,7 +76,6 @@ module.exports = function (componentService) {
                 var $this = $(this)
                 $this.removeClass(this.showClass);
                 $this.addClass(this.hideClass);
-                console.log('clearTimeout')
                 clearTimeout(this.timeout);
                 this.timeout = setTimeout(function() {
                     $this.remove()
