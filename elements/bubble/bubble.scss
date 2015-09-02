@@ -2,6 +2,7 @@
 
 bubble {
   display: block;
+  &.animated {animation-duration: 0.7s;}
   section[wrapper] {
     @extend %anime;
     @extend %small-radius;

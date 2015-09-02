@@ -1,4 +1,7 @@
 @import '../styleguide';
+$primary-color: $secondary-color-40;
+$margin: 0;
+@import '../../node_modules/loaders.css/src/animations/ball-scale-multiple';
 
 loader {
   display: block;
@@ -6,47 +9,31 @@ loader {
   font-size: 10px;
   position: fixed;
   top:0;
-  background: $secondary-color;
   left:0;
   right:0;
   bottom:0;
-  border: 1.1em solid $secondary-color;
-  transform: translateZ(0);
-  animation: load8 0.9s infinite linear;
-}
-loader,
-loader:after {
-  border-radius: 50%;
-  top:50%;
-  margin:-3em auto 0 auto;
-  width: 6em;
-  height: 6em;
-}
-.spinner div div {
-  background: $secondary-color;
-}
-
-@-webkit-keyframes load8 {
-  0% {
-    opacity: 1;
-    -webkit-transform: rotate(0deg);
-    transform: scale(0.0);
+  .loader {
+    position: absolute;
+    top:50%;
+    left:50%;
+    z-index: 1;
   }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: scale(1.0);
-    opacity: 0;
-  }
-}
-@keyframes load8 {
-  0% {
-    opacity: 1;
-    -webkit-transform: rotate(0deg);
-    transform: scale(0.0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: scale(1.0);
-    opacity: 0;
+  svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: 160px;
+    height: 20px;
+    margin-top:-10px;
+    margin-left: -115px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    .circle {
+      fill: $secondary-color;
+    }
+    .path {
+      fill: $main-color;
+    }
   }
 }
