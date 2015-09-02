@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load notification %}
 {% load contactpoint %}
 {% load static %}
 {% load restful %}
@@ -46,9 +47,14 @@
                             <a class="comments" href="#">(14 коментара)</a>
                         </rating>
                     </card-item>
-
-                    <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center" action="{{action}}" target="modal">
-                        Подай сигнал!
+                    {% subscribeform request point %}
+                    <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center"
+                                   {% if request.user.is_authenticated %}
+                                        action="{{point.url}}" target="_blank"
+                                   {% else %}
+                                        action="#leavePrompt" target="modal"
+                                   {% endif %}>
+                        Към мястото
                     </action-button>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                 </card>

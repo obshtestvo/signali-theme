@@ -1,0 +1,39 @@
+<div hidden>
+    <modal id="leavePrompt">
+        <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" divided>
+            {% csrf_token %}
+            <input type="hidden" name="prefix" value="{{prefix}}"/>
+            <redirect-prompt class="half">
+                <headline size="small" density="comfortable">Пренасочваме те...</headline>
+                <notification information color="white" no-icon size="small">
+                    <a href="{{point.url}}">{{contactpoint.url}}</a>
+                </notification>
+                <div class="countdown"></div>
+            </redirect-prompt>
+            <email-signup class="half">
+                <headline size="small" density="comfortable">
+                    Искаш ли да ти припомним?
+                </headline>
+                <notification information color="white" no-icon size="small">
+                    Ако ни оставиш имейл адрес ще ти припомним да провериш,
+                    какво е станало със сигнала, за да не остава проблемът нерешен.
+                </notification>
+                <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="text"
+                            placeholder="твоята@епоща.бг">
+                    имейл адрес
+                    <notification error size="text-field" hidden></notification>
+                    <!--<notification information color="white" no-icon size="small">-->
+                    <!--Ще можеш и да споделиш как минало и така да помогнеш на останалите,-->
+                    <!--които ще ползват {{contactpoint.title}}.-->
+                    <!--</notification>-->
+                </text-field>
+                <action-button submit type="primary" fill="solid" align="left" color="purple">
+                    Припомни ми
+                </action-button>
+            </email-signup>
+            <!--<action-button submit type="secondary" fill="solid" align="center" size="gigalarge" color="red" action="{{contactpoint.url}}">-->
+            <!--Напред към сайта-->
+            <!--</action-button>-->
+        </signup-prompt>
+    </modal>
+</div>

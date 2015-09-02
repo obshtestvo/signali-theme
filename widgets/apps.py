@@ -5,4 +5,4 @@ class ThemeConfig(AppConfig):
     verbose_name = "Default theme"
 
     def ready(self):
-        from . import ajax
+        from . import ajax_results

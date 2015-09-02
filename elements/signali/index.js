@@ -173,3 +173,9 @@ hiddenAttribute(componentService);
 
 var proposalElement = require('proposal');
 proposalElement(componentService);
+
+var dividedAttribute = require('divided');
+dividedAttribute(componentService);
+
+var signupPromptElement = require('signup-prompt');
+signupPromptElement(componentService);

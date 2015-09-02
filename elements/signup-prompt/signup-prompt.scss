@@ -1,0 +1,35 @@
+@import '../styleguide';
+
+signup-prompt {
+  redirect-prompt {
+    display: block;
+    text-align: center;
+  }
+  a {
+    color: $secondary-color-100;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .countdown {
+    display: inline-block;
+    margin-top: 20px;
+    width: 140px;
+    height: 140px;
+    & > svg {
+      width: 100%;
+      display: block;
+    }
+    path[stroke="PROGRESSPATH"] {
+      stroke: $secondary-color;
+    }
+    path[stroke="TRAILPATH"] {
+      stroke: $grey-color-80;
+    }
+    .progressbar-text {
+      font-size: 3em;
+      font-weight: 300;
+      color: $secondary-color;
+    }
+  }
+}
