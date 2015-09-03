@@ -31,9 +31,6 @@ module.exports = function (componentService) {
                 ajaxForm.submit()
                 return false;
             });
-        },
-        detached: function() {
-            console.log('detache')
         }
     })
 };
