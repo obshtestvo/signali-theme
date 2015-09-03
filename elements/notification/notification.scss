@@ -125,10 +125,6 @@ notification {
                 fill: $grey-color-100;
             }
         }
-        &[density="inverted"] {
-            margin-bottom: 0;
-            margin-top: 10px;
-        }
     }
     &[size="text-field"] {
         &[information] {
@@ -249,6 +245,9 @@ notification {
         &[size="small"] {
             padding: 0;
             margin: 0 0 10px 0;
+            &[density="inverted"] {
+                margin: 10px 0 0 0;
+            }
         }
         &[size="text-field"] {
             padding: 0 10px 0;
