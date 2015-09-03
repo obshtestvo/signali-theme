@@ -74,10 +74,17 @@ module.exports = function (componentService) {
                 });
             },
 
-            addSecondary: function(content) {
-                return $(this.querySelector('[priority="secondary"]')).append(content);
+            appendSecondary: function(content, skipPadding) {
+                var screen = '<modal-screen></modal-screen>';
+                if (skipPadding) screen = '<modal-screen no-padding></modal-screen>';
+                var $screen = $(screen).append(content).addClass('secondary')
+                return this.appendChild($screen[0]);
             }
         }
+    });
+
+    componentService.register('modal-screen', {
+        template: require('./modal-screen.html')
     });
 
     componentService.register('target', {
