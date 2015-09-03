@@ -106,7 +106,7 @@ notification {
     &[size="small"] {
         min-height: 24px;
         padding: 0 10px 0 37px;
-        margin: 0 0 13px;
+        margin: 0 0 13px 0;
         @extend %small-font, %nano-radius;
         .icon {
             width: 38px;
@@ -124,6 +124,10 @@ notification {
             svg {
                 fill: $grey-color-100;
             }
+        }
+        &[density="inverted"] {
+            margin-bottom: 0;
+            margin-top: 10px;
         }
     }
     &[size="text-field"] {

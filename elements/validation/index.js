@@ -19,7 +19,7 @@ window.ParsleyConfig.i18n.bg = $.extend(window.ParsleyConfig.i18n.bg || {}, {
     defaultMessage: "Невалидна стойност.",
     type: {
         email:        "Въведете точен имейл адрес.",
-        url:          "Въведете URL адрес.",
+        url:          "Въведете точен интернет адрес (URL)",
         number:       "Въведете число.",
         integer:      "Въведете число без десетична запетая.",
         digits:       "Въведете цифри.",
