@@ -51,7 +51,9 @@ module.exports = function (componentService) {
             });
         },
         attached: function() {
-            this.ajaxForm.setInteractionContainer($(this).closest('[auth-container]'))
+            if (this.ajaxForm) {
+                this.ajaxForm.setInteractionContainer($(this).closest('[auth-container]'))
+            }
         },
         properties: {
             type: {

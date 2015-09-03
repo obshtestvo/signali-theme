@@ -42,7 +42,7 @@ module.exports = function (componentService) {
 
 var hideAuthContainer = function(el, callback) {
     if (el.tagName == 'MODAL') {
-        var $animationContainer = $(el).find('[modal-animation-container]');
+        var $animationContainer = $(el.querySelector('[animation-container]'));
         toggleFixedHeight($animationContainer, true);
         $animationContainer.animateContentSwitch($(el.authContainer), $(el.primary), {
             speed: 300,
@@ -64,7 +64,7 @@ var hideAuthContainer = function(el, callback) {
 
 var showAuthContainer = function(el) {
     if (el.tagName == 'MODAL') {
-        var $animationContainer = $(el).find('[modal-animation-container]'),
+        var $animationContainer = $(el.querySelector('[animation-container]')),
             auth = $(el.authContainer).find('auth')[0];
         toggleFixedHeight($animationContainer, true);
         $animationContainer.animateContentSwitch($(el.primary), $(el.authContainer), {
@@ -89,7 +89,7 @@ var attachAuthContainer = function(el) {
             $authContainer = $(authContainer);
         authContainer.setAttribute('auth-container', 'secondary');
         $authContainer.hide();
-        el.addSecondary(authContainer);
+        el.appendSecondary(authContainer, true);
         return authContainer;
     } else {
         authModal.attach();

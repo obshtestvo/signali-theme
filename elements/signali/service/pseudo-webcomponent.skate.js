@@ -39,7 +39,7 @@ ComponentService.prototype.register = function (name, options) {
         options = service._transformOptionsForSkate(options);
         // the following block is needed because Skate.js doesn't allow registering 2 different behaviours for
         // custom attributes with the same name
-        props = options.properties;
+        var props = options.properties;
         if (elementType == 'attribute' && props && props[name] && props[name].set) {
             if (!service.attributeElementsSetCallbacks.hasOwnProperty(name)) {
                 service.attributeElementsSetCallbacks[name] = [];
@@ -56,6 +56,11 @@ ComponentService.prototype.register = function (name, options) {
                 service.addAttributeElementSetCallback(name, options.properties[name].set);
                 return
             }
+        }
+        // the following block is making appendChild magic
+        if (elementType != 'attribute') {
+            if (!options.prototype) options.prototype = {};
+            options.prototype.appendChild = appendToShadowTemplateElement
         }
         definition = $.extend({}, ComponentService.componentDefaults, options)
     }
@@ -100,12 +105,18 @@ function matchesSelector(el, selector) {
     return matchesSelector.call(el, selector);
 }
 
-function findMatchingChildren(el, selector) {
+function filterElements(elements, selector, exclude) {
     var matching = [];
-    for (var i = 0; i < el.childNodes.length; i++) {
-        var node = el.childNodes[i];
+    for (var i = 0; i <elements.length; i++) {
+        var node = elements[i];
         if (node.nodeType != Node.ELEMENT_NODE)  continue;
-        if (matchesSelector(node, selector)) matching.push(node);
+        if (matchesSelector(node, selector)) {
+            if (!exclude) {
+                matching.push(node);
+            }
+        } else if (exclude) {
+            matching.push(node);
+        }
     }
     return matching;
 }
@@ -127,59 +138,67 @@ function getElementTemplateData(el, options) {
     return data;
 }
 
+function appendToShadowTemplateElement(waitingToBeAppended) {
+    var i, placeholder, selector, shadeid, contentTags;
+    shadeid = this.getAttribute('shadeid');
+    contentTags = [].slice.call(this.querySelectorAll('content[shadeid="'+shadeid+'"]'));
+    /* PARSE <content select=".."> tags */
+    var specificContentTags = filterElements(contentTags, '[select]');
+    for (i = 0; i < specificContentTags.length; i++) {
+        placeholder = specificContentTags[i];
+        selector = placeholder.getAttribute("select");
+        if (matchesSelector(waitingToBeAppended, selector)) {
+            placeholder.parentNode.insertBefore(waitingToBeAppended, placeholder);
+            return;
+        }
+    }
+
+    /* PARSE <content> tags if element has any content remaining */
+    var broadContentTags = filterElements(contentTags, '[select]', true);
+    if (!broadContentTags.length)  return
+    broadContentTags[0].parentNode.insertBefore(waitingToBeAppended, broadContentTags[0]);
+}
+
 function makeTemplate(options) {
     return function () {
         var element = this;
+        var shadeid = 'shade-' + Math.floor(Math.random() * 1000) + '-' + Date.now();
+        element.setAttribute('shadeid', shadeid);
 
         /* PARSE custom template with data */
         var templateData = getElementTemplateData(element, options);
-        var $template = $(options.template(templateData))
-        if (!$template.length) {
-            return;
-        }
-        var templateFragment = $template[0].parentNode;
+        var $template = $(options.template(templateData));
+        if (!$template.length)  return;
 
-        var node, i, j, k, placeholder, toAppend, parentNode;
+        var i, j, placeholder, toAppend, parentNode, selector, templateFragment, contentTags;
+
+        templateFragment = $template[0].parentNode;
+        contentTags = [].slice.call(templateFragment.querySelectorAll('content'));
+
+        for (i = 0; i < contentTags.length; i++) {
+            contentTags[i].setAttribute('shadeid', shadeid)
+        }
+
         /* PARSE <content select=".."> tags */
-        for (i = 0; i < templateFragment.childNodes.length; i++) {
-            node = templateFragment.childNodes[i];
-            if (node.nodeType != Node.ELEMENT_NODE)  continue;
-            if (node.tagName == 'CONTENT' && node.hasAttribute('select')) {
-                queriedPlaceholders = [node];
-            } else {
-                var queriedPlaceholders = [].slice.call(node.querySelectorAll('content[select]'));
-            }
-            for (j = 0; j < queriedPlaceholders.length; j++) {
-                placeholder = queriedPlaceholders[j];
-                var selector = placeholder.getAttribute("select");
-                toAppend = findMatchingChildren(element, selector);
-                parentNode = placeholder.parentNode;
-                for (k = 0; k < toAppend.length; k++) {
-                    parentNode.insertBefore(toAppend[k], placeholder);
-                }
-                parentNode.removeChild(placeholder)
+        var specificContentTags = filterElements(contentTags, '[select]');
+        for (i = 0; i < specificContentTags.length; i++) {
+            placeholder = specificContentTags[i];
+            selector = placeholder.getAttribute("select");
+            toAppend = filterElements(element.childNodes, selector);
+            parentNode = placeholder.parentNode;
+            for (j = 0; j < toAppend.length; j++) {
+                parentNode.insertBefore(toAppend[j], placeholder);
             }
         }
 
         /* PARSE <content> tags if element has any content remaining */
-        if (element.childNodes.length > 0) {
-            for (i = 0; i < templateFragment.childNodes.length; i++) {
-                node = templateFragment.childNodes[i];
-                if (node.nodeType != Node.ELEMENT_NODE) continue;
-                if (node.tagName == 'CONTENT' && !node.hasAttribute('select')) {
-                    contentPlaceholders = [node];
-                } else {
-                    var contentPlaceholders = [].slice.call(node.querySelectorAll('content:not([select])'));
-                }
-                if (!contentPlaceholders.length) continue;
-                placeholder = contentPlaceholders[0];
-                parentNode = placeholder.parentNode;
-                toAppend = [].slice.call(element.childNodes);
-                for (j = 0; j < toAppend.length; j++) {
-                    parentNode.insertBefore(toAppend[j], placeholder);
-                }
-                parentNode.removeChild(placeholder);
-                break;
+        var broadContentTags = filterElements(contentTags, '[select]', true);
+        if (element.childNodes.length > 0 && broadContentTags.length > 0) {
+            placeholder = broadContentTags[0];
+            parentNode = placeholder.parentNode;
+            toAppend = [].slice.call(element.childNodes);
+            for (j = 0; j < toAppend.length; j++) {
+                parentNode.insertBefore(toAppend[j], placeholder);
             }
         }
 

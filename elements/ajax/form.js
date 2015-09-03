@@ -194,9 +194,6 @@ AjaxForm.prototype = {
         this.unblock();
         var $container = this.$container;
         toggleFixedHeight($container, true);
-        console.log($container)
-        console.log(this.$replaceable)
-        console.log($result)
         $container.animateContentSwitch(this.$replaceable, $result, {
             speed: this.options.resultShowSpeed,
             width: false,

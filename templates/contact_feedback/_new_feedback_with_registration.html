@@ -1,0 +1,9 @@
+<notification information size="popup" density="airy" for="form">
+    <strong>Почти готово</strong>
+    <p>Запазихме оценката, която даде. Преди да q публикуваме трябва да активираш регистрацията си.</p>
+    <p>Изпратихме линк ти линк на {{request.user.email}}.</p>
+    <p>Кликни на него.</p>
+    <action-button link type="primary" fill="solid" align="left" color="red" action="{{ request.user.email|email_provider_url }}">
+        към {{ request.user.email|email_provider }}
+    </action-button>
+</notification>

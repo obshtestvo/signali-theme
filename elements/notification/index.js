@@ -11,14 +11,6 @@ module.exports = function (componentService) {
         prototype: {
             clear: function () {
                 $(this).find('ul,p').remove();
-            },
-            appendChild: function (node) {
-                var innerElement = this.querySelector('.cell');
-                if (innerElement) {
-                    innerElement.appendChild(node);
-                } else {
-                    Node.prototype.appendChild.call(this, node)
-                }
             }
         }
     })
