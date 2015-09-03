@@ -13,7 +13,7 @@ notification {
         @extend %stripped;
     }
     p {
-        margin: 0 !important;
+        margin: 0;
     }
     &[information] {
         background: $white;
@@ -85,7 +85,7 @@ notification {
                 height: 100%;
             }
         }
-        p{
+        p {
             @extend %small-font;
             padding: 10px 0;
         }
@@ -129,7 +129,7 @@ notification {
     &[size="text-field"] {
         &[information] {
             padding-left: 33px;
-             margin-bottom: -11px;
+            margin-bottom: -11px;
             .icon {
                 width: 24px;
                 padding: 0;
@@ -171,8 +171,17 @@ notification {
                 height: 100%;
             }
         }
-        .cell{
+        .cell {
             padding: 11px 0 10px;
+            p {
+                margin: 14px 0 0 0;
+                &:first-of-type {
+                    margin: 0;
+                }
+                & + ul {
+                    margin: 14px 0 0 0;
+                }
+            }
         }
         &[information] {
             color: $grey-color-100;
