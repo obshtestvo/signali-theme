@@ -1,49 +1,66 @@
 <div style="display:none;">
     <modal id="addnew"
            {% if not request.user.is_authenticated %}auth-required auth-id="addNewAuth"{% endif %}
+           proposal-container
     >
-        <headline size="large" density="airy" align="center">Добави сигнал</headline>
-        <proposal action="/">
+        <headline size="large" density="airy" align="center">
+            Добави място
+            <p>Ако знаеш за място в интернет, от където може да се подаде сигнал, кажи ни:</p>
+        </headline>
+        <proposal action="{% url 'contact-point-list' %}">
             {% csrf_token %}
-            <select-dropdown id="drop" name="dropdown" multiple size="standart" >
-                <label>Местонахождение</label>
-                <value id="2" selected>corruption</value>
-                <value id="3" >ecology</value>
-                <value id="5" >Красота майна</value>
-                <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                <value id="6" >асдасда сд РАСФДАСФасдасд </value>
+            <auth-current-user>{{ form.proposed_by }}</auth-current-user>
+            <select-dropdown id="drop2" name="{{form.category.html_name}}" size="full">
+                <label>Каква категория сигнали се приемат?</label>
+                {% for id, label in form.category.field.choices %}
+                <value id="{{id}}}">{{label}}</value>
+                {% endfor %}
             </select-dropdown>
-            <select-dropdown id="drop2" name="dropdown2" size="standart">
-                <label>Категория</label>
-                <value id="2" selected>corruption</value>
-                <value id="3" >ecology</value>
-                <value id="5" >Красота майна</value>
-                <value id="4" >Чичковите чвеасд асд асд ас дасд сas das dasdsdasdasdссд асд </value>
-                <value id="6" >асдасда сд РАСФДАСФасдасд </value>
+            <text-field required size="full" type="text" name="{{ form.title.html_name }}" required>
+                Как да се нарича мястото?
+                <notification error size="text-field" hidden></notification>
+            </text-field>
+            <text-field required size="full" type="text" name="{{ form.title.html_name }}" validate-type="url" placeholder="https://www.example.com/form" required>
+                Интернет адрес (линк) към формата за попълване
+                <notification error size="text-field" hidden></notification>
+            </text-field>
+            <select-dropdown id="drop" name="{{form.operational_area.html_name}}" size="full">
+                <label>За проблеми от кой регион се приемат сигнали?</label>
+                {% for id, label in form.operational_area.field.choices %}
+                <value id="{{id}}}">{{label}}</value>
+                {% endfor %}
+                <notification error size="text-field" hidden></notification>
             </select-dropdown>
 
             <filters color="white">
-                <strong>изисквания</strong>
-                <checkbox id="register" name="register">Регистрация</checkbox>
-                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-                <checkbox id="name" name="name">Име</checkbox>
-                <checkbox id="email" name="email">Е-mail</checkbox>
-                <checkbox id="egn" name="egn">EГН</checkbox>
-                <checkbox id="address" name="address">Адрес на подателя</checkbox>
-                <checkbox id="location" name="location">Локация на сигнала</checkbox>
+                <strong>Какво от изреденото по-долу се изисква?</strong>
+                <checkbox id="{{prefix}}_is_registration_required" name="{{form.is_registration_required.html_name}}">Регистрация</checkbox>
+                <checkbox id="{{prefix}}_is_photo_required" name="{{form.is_photo_required.html_name}}">Снимка</checkbox>
+                <checkbox id="{{prefix}}_is_esign_required" name="{{form.is_esign_required.html_name}}">Ел. Подпис</checkbox>
+                <checkbox id="{{prefix}}_is_name_required" name="{{form.is_name_required.html_name}}">Име</checkbox>
+                <checkbox id="{{prefix}}_is_email_required" name="{{form.is_email_required.html_name}}">Е-mail</checkbox>
+                <checkbox id="{{prefix}}_is_pic_required" name="{{form.is_pic_required.html_name}}">EГН</checkbox>
+                <checkbox id="{{prefix}}_is_address_required" name="{{form.is_address_required.html_name}}">Адрес на подателя</checkbox>
+                <checkbox id="{{prefix}}_is_location_required" name="{{form.is_location_required.html_name}}">Локация на сигнала</checkbox>
             </filters>
 
             <filters color="white">
-                <strong>Други опции</strong>
-                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-                <checkbox id="verification" name="verification">Верификация на сигнала? </checkbox>
-                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
+                <strong>Какво предлага мястото?</strong>
+                <checkbox id="{{prefix}}_is_response_guaranteed" name="{{form.is_response_guaranteed.html_name}}">Гаранция за отговор</checkbox>
+                <checkbox id="{{prefix}}_is_anonymous_allowed" name="{{form.is_anonymous_allowed.html_name}}">Анонимни сигнали</checkbox>
+                <checkbox id="{{prefix}}_is_mobile_friendly" name="{{form.is_mobile_friendly.html_name}}">Мобилна версия</checkbox>
+                <checkbox id="{{prefix}}_is_final_destination" name="{{form.is_final_destination.html_name}}">Крайна точка за сигнала</checkbox>
+                <checkbox id="{{prefix}}_is_verifiable" name="{{form.is_verifiable.html_name}}">Верификация на сигнала</checkbox>
+                <checkbox id="{{prefix}}_is_confirmation_issued" name="{{form.is_confirmation_issued.html_name}}">Потвърждаване на сигнала</checkbox>
+                <checkbox id="{{prefix}}_is_multilingual" name="{{form.is_multilingual.html_name}}">Многоезичност</checkbox>
             </filters>
+            <text-field required size="full" type="textarea" name="{{ form.notes.html_name }}">
+                Как става подаването на сигнал?
+                <notification error size="text-field" hidden></notification>
+                <notification information size="text-field">
+                    Разкажи за ограничения в видовете приемани сигнали, специфики или инструкции при подаването.
+                </notification>
+            </text-field>
 
             <action-button submit align="left" type="primary" fill="solid" color="red">
                 Добави

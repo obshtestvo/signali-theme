@@ -8,6 +8,7 @@ from signali_contact.models import Organisation, ContactPoint
 from signali_taxonomy.models import Category
 from signali_location.models import Area
 from contact_feedback.forms import get_feedbackfrom
+from contact.forms import get_contactpoint_from
 
 register = template.Library()
 
@@ -47,8 +48,14 @@ def feedback_list(request, contactpoint):
 
 
 @register.inclusion_tag('_addnew_form.html')
-def addnew_form(request):
+def addnew_form(request, form=None):
+    prefix = 'proposal'
+    if form is None:
+        form = get_contactpoint_from(initial={"user": request.user}, data=last_input(request), prefix=prefix)
     return {
+        "prefix": prefix,
+        "form": form,
+        "errors": errors(request).get(prefix+"form", None),
         "request": request
     }
 
