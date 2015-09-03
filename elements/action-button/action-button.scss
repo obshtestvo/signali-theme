@@ -104,7 +104,7 @@ action-button {
                     }
                     &:active {
                         background: $main-color-active;
-                        @include box-shadow(0, 0, 0, 3px $secondary-color-active, inset);
+                        @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
                         color: $white;
                     }
                 }
