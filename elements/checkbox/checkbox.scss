@@ -48,7 +48,7 @@ checkbox {
       border-color: $secondary-color-60;
     }
   }
-  &[checked-disabled]{
+  &[readonly]{
     position: relative;
     padding: 0 5px 0 14px;
     font-size: 12px;

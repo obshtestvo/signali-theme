@@ -1,9 +1,9 @@
-{{^checked-disabled}}
-<input type="checkbox" {{#name}}name="{{name}}"{{/name}} id="{{id}}Input" {{#checked}}checked="checked"{{/checked}}/><label class="check" for="{{id}}Input">{{{tick}}}</label><label for="{{id}}Input">
+{{^readonly}}
+<input type="checkbox" {{#name}}name="{{name}}"{{/name}} id="{{id}}Input" {{#checked}}checked="checked"{{/checked}} {{#value}}value="{{value}}"{{/value}}{{^value}}value="1"{{/value}}/><label class="check" for="{{id}}Input">{{{tick}}}</label><label for="{{id}}Input">
 <content></content>
 </label>
-{{/checked-disabled}}
+{{/readonly}}
 
-{{#checked-disabled}}
+{{#readonly}}
     {{{tick}}}<content></content>
-{{/checked-disabled}}
+{{/readonly}}
