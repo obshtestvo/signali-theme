@@ -1,38 +1,40 @@
 <div hidden>
     <modal id="leavePrompt">
-        <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" success-location="{{contactpoint.url}}" divided>
-            <bubble size="standart" color="white" type="success" success density="compact" class="animated fadeInUp" hidden>
-                Записахме ви. Ще ви припомним. Успех.
-            </bubble>
-            {% csrf_token %}
-            <input type="hidden" name="prefix" value="{{prefix}}"/>
-            <redirect class="half" location="{{contactpoint.url}}">
-                Пренасочваме те...
-            </redirect>
-            <email-signup class="half">
-                <headline size="small" density="comfortable">
-                    Искаш ли да ти припомним?
-                </headline>
-                <notification information color="white" no-icon size="small">
-                    Ако ни оставиш имейл адрес ще ти припомним да провериш,
-                    какво е станало със сигнала, за да не остава проблемът нерешен.
-                </notification>
-                <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="email"
-                            placeholder="твоята@епоща.бг" required>
-                    имейл адрес
-                    <notification error size="text-field" hidden></notification>
-                    <!--<notification information color="white" no-icon size="small">-->
-                    <!--Ще можеш и да споделиш как минало и така да помогнеш на останалите,-->
-                    <!--които ще ползват {{contactpoint.title}}.-->
-                    <!--</notification>-->
-                </text-field>
-                <action-button submit type="primary" fill="solid" align="left" color="purple">
-                    Припомни ми
-                </action-button>
-            </email-signup>
-            <!--<action-button submit type="secondary" fill="solid" align="center" size="gigalarge" color="red" action="{{contactpoint.url}}">-->
-            <!--Напред към сайта-->
-            <!--</action-button>-->
-        </signup-prompt>
+        <modal-screen>
+            <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" success-location="{{contactpoint.url}}" divided>
+                <bubble size="standart" color="white" type="success" success density="compact" class="animated fadeInUp" hidden>
+                    Записахме ви. Ще ви припомним. Успех.
+                </bubble>
+                {% csrf_token %}
+                <input type="hidden" name="prefix" value="{{prefix}}"/>
+                <redirect class="half" location="{{contactpoint.url}}">
+                    Пренасочваме те...
+                </redirect>
+                <email-signup class="half">
+                    <headline size="small" density="comfortable">
+                        Искаш ли да ти припомним?
+                    </headline>
+                    <notification information color="white" no-icon size="small">
+                        Ако ни оставиш имейл адрес ще ти припомним да провериш,
+                        какво е станало със сигнала, за да не остава проблемът нерешен.
+                    </notification>
+                    <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="email"
+                                placeholder="твоята@епоща.бг" required>
+                        имейл адрес
+                        <notification error size="text-field" hidden></notification>
+                        <!--<notification information color="white" no-icon size="small">-->
+                        <!--Ще можеш и да споделиш как минало и така да помогнеш на останалите,-->
+                        <!--които ще ползват {{contactpoint.title}}.-->
+                        <!--</notification>-->
+                    </text-field>
+                    <action-button submit type="primary" fill="solid" align="left" color="purple">
+                        Припомни ми
+                    </action-button>
+                </email-signup>
+                <!--<action-button submit type="secondary" fill="solid" align="center" size="gigalarge" color="red" action="{{contactpoint.url}}">-->
+                <!--Напред към сайта-->
+                <!--</action-button>-->
+            </signup-prompt>
+        </modal-screen>
     </modal>
 </div>
