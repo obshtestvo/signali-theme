@@ -12,7 +12,7 @@ module.exports = function (componentService) {
             var $input =  $el.find('> select');
             var $filters =  $el.find('.filters');
             if (el.hasAttribute('location')) {
-                var picker = new AddressPicker($input, $('<h1>').get(0));
+                this.API = new AddressPicker($input, $('<h1>').get(0));
                 return;
             }
 
@@ -70,10 +70,26 @@ module.exports = function (componentService) {
                 };
             }
             this.API = $input.selectize(options)[0].selectize;
+            this.API.on('change', function() {
+                $el.trigger('change')
+            })
         },
         prototype: {
             select: function(id) {
                 this.API.addItem(id)
+            }
+        },
+        properties: {
+            value: {
+                get: function() {
+                    if (!this.API) return;
+                    return this.API.getValue()
+                }
+            },
+            "validate-trigger": {
+                get: function() {
+                    return 'change'
+                }
             }
         }
     });

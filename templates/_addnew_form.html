@@ -10,7 +10,7 @@
         <proposal action="{% url 'contact-point-list' %}">
             {% csrf_token %}
             <auth-current-user>{{ form.proposed_by }}</auth-current-user>
-            <select-dropdown id="drop2" name="{{form.category.html_name}}" size="full">
+            <select-dropdown id="{{prefix}}_category" name="{{form.category.html_name}}" size="full" required>
                 <label>Каква категория сигнали се приемат?</label>
                 {% for id, label in form.category.field.choices %}
                 <value id="{{id}}}">{{label}}</value>
@@ -24,7 +24,7 @@
                 Интернет адрес (линк) към формата за попълване
                 <notification error size="text-field" hidden></notification>
             </text-field>
-            <select-dropdown id="drop" name="{{form.operational_area.html_name}}" size="full">
+            <select-dropdown id="{{prefix}}_area" name="{{form.operational_area.html_name}}" size="full" required>
                 <label>За проблеми от кой регион се приемат сигнали?</label>
                 {% for id, label in form.operational_area.field.choices %}
                 <value id="{{id}}}">{{label}}</value>

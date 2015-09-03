@@ -286,6 +286,7 @@ select-dropdown {
     .selectize-input {
         display: block !important;
     }
+    &.error .selectize-input,
     &[state="error"] .selectize-input {
         border-color: $secondary-color-100;
         background: $secondary-color-10;
@@ -294,6 +295,7 @@ select-dropdown {
             background: $white;
         }
     }
+    &.success .selectize-input,
     &[state="success"] .selectize-input {
         border-color: $success-color;
         background: lighten($success-color, 45%);
