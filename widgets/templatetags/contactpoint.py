@@ -34,7 +34,10 @@ def featured_areas(request):
 @register.inclusion_tag('_featured_category.html')
 def featured_category(request):
     return {
-        "category": Category.objects.featured()[0],
+        "category": Category.objects.featured().prefetch_related(
+            Prefetch('contact_points',
+                     queryset=ContactPoint.objects.public_base())
+        )[0],
         "request": request
     }
 
@@ -51,10 +54,11 @@ def feedback_list(request, contactpoint):
 def addnew_form(request, form=None):
     prefix = 'proposal'
     if form is None:
-        form = get_contactpoint_from(initial={"user": request.user}, data=last_input(request), prefix=prefix)
+        form = get_contactpoint_from(initial={"proposed_by": request.user}, data=last_input(request), prefix=prefix)
     return {
         "prefix": prefix,
         "form": form,
+        "checkbox_value": ContactPoint.YES,
         "errors": errors(request).get(prefix+"form", None),
         "request": request
     }
