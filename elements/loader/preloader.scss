@@ -1,0 +1,28 @@
+@import '../styleguide';
+
+$primary-color: $secondary-color-40;
+$margin: 0;
+@import '../../node_modules/loaders.css/src/animations/ball-scale-multiple';
+
+preloader {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width:0;
+  height:0;
+  z-index: 1;
+  &:after {
+    @extend %circle;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: -5px;
+    margin-top: -6px;
+    z-index: 3;
+    width: 11px;
+    height: 11px;
+    background: $secondary-color;
+  }
+}

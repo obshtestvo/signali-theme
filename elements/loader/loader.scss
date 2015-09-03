@@ -1,42 +1,24 @@
 @import '../styleguide';
-$primary-color: $secondary-color-40;
-$margin: 0;
-@import '../../node_modules/loaders.css/src/animations/ball-scale-multiple';
+@import './preloader';
 
 loader {
   display: block;
   z-index: 1;
   font-size: 10px;
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   .loader {
-    position: absolute;
-    top:50%;
-    left:50%;
-    z-index: 1;
-  }
-  &:after {
-    @extend %circle;
-    content:"";
-    position: absolute;
-    top:50%;
-    left:50%;
-    margin-left: -5px;
-    margin-top: -6px;
-    z-index: 3;
-    width:11px;
-    height:11px;
-    background: $secondary-color;
+    @extend preloader;
   }
   svg {
     @extend %anime;
     display: block;
     width: 160px;
     height: 20px;
-    margin-top:-10px;
+    margin-top: -10px;
     margin-left: -115px;
     position: absolute;
     top: 50%;
@@ -49,7 +31,4 @@ loader {
       fill: $main-color;
     }
   }
-}
-.spinner div div {
-  background: $secondary-color;
 }

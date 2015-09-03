@@ -23,10 +23,7 @@ module.exports = function (componentService) {
                 success: function() {
                     $formControls.off('.signupprompt');
                     el.querySelector('bubble[success]').show()
-                    setTimeout(function() {
-                        ajaxForm.unblock()
-                    }, 1500);
-                    redirect.completeIn(2000)
+                    redirect.completeIn(2500)
                     return false;
                 }
             });
@@ -34,6 +31,9 @@ module.exports = function (componentService) {
                 ajaxForm.submit()
                 return false;
             });
+        },
+        detached: function() {
+            console.log('detache')
         }
     })
 };

@@ -1,5 +1,4 @@
 var $ = require('jquery');
-var makeSpinner = require('loader/spinner');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 var deepmerge = require('deepmerge');
 var request = require('./request');
@@ -76,6 +75,10 @@ AjaxForm.defaultOptions = {
      * If true, this will ignore `dataType` and always request html
      */
     pjax: false,
+    /*
+     * Function that decorate the blocked interaction container
+     */
+    decorateBlocked: null,
 
     errorClass: 'error',
     successClass: 'success',
@@ -211,7 +214,7 @@ AjaxForm.prototype = {
         this.$container.block();
         this._isBlocked = true;
         var $veil = this.$container.find('.blockOverlay');
-        makeSpinner().spin($veil.get(0))
+        if ($.isFunction(this.options.decorateBlocked)) this.options.decorateBlocked($veil[0]);
     },
 
 

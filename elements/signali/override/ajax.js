@@ -1,5 +1,6 @@
 var AjaxForm = require('ajax/form');
 var jsonHandler = require('./ajaxJsonResult.js');
+var preloader = require('loader/preloader');
 
 module.exports = function (componentService) {
     AjaxForm.defaultOptions.applyResult = function(instance, isSuccess, content) {
@@ -15,5 +16,8 @@ module.exports = function (componentService) {
         } else if (instance.options.dataType == 'json') {
             return jsonHandler(instance, isSuccess, content);
         }
+    };
+    AjaxForm.defaultOptions.decorateBlocked = function(container) {
+        preloader.generate(container)
     };
 }

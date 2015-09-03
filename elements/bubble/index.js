@@ -31,7 +31,6 @@ module.exports = function (componentService) {
             $this.hover(function() {
                 $this.removeClass(this.hideClass);
                 clearTimeout(this.timeout);
-                console.log('clearTimeout')
             }, function() {
                 this.autoclose()
             });

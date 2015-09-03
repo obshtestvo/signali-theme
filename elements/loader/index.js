@@ -1,5 +1,5 @@
 require('./loader.scss');
 
 module.exports = function (componentService) {
-    componentService.register('loader')
+    require('./preloader').init(componentService)
 }
