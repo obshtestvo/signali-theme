@@ -56,6 +56,10 @@ comment{
         text-decoration: underline;
       }
     }
+    strong{
+      font-weight: 600;
+      color: $main-color-100;
+    }
   }
   &[reply]{
     background: none;
