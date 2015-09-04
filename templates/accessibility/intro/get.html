@@ -34,8 +34,7 @@
     <featured>
         {% featured_areas request %}
         {% featured_category request %}
-        {% addnew_form request %}
-        {% include "_addnew_prompt.html" %}
+        {% include "_addnew_prompt.html" with request=request %}
     </featured>
     <footer-wrapper>
         <logo action="home" color="dark" size="medium" align="right"></logo>

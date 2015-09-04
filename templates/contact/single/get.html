@@ -50,11 +50,19 @@
                         </rating>
                     </card-item>
                     {% subscribeform request point %}
-                    <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center"
+                    <action-button link
+                                   type="primary"
+                                   fill="solid"
+                                   color="red"
+                                   size="gigalarge"
+                                   align="center"
                                    {% if request.user.is_authenticated %}
                                         action="{{point.url}}" target="_blank"
                                    {% else %}
                                         action="#leavePrompt" target="modal"
+                                        auth-removes-modal
+                                        auth-change-attrs='["action", "target"]'
+                                        auth-action="{{point.url}}" auth-target="_blank"
                                    {% endif %}>
                         Към мястото
                     </action-button>

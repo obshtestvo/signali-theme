@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% load restful %}
-
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
@@ -170,7 +169,7 @@
         </cards>
     </cards-area>
 
-    {% include "_addnew_prompt.html" %}
+    {% include "_addnew_prompt.html"  with request=request %}
 </featured>
 <footer-wrapper>
     <logo action="home" color="dark" size="medium" align="right"></logo>

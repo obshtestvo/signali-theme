@@ -8,9 +8,39 @@ var registration = function (componentService) {
     componentService.register('auth-removes-modal', {
         type: 'attribute',
         created: function() {
+            var el = this,
+                $el = $(el),
+                handler;
+
+            var modalTriggerHandler = function() {
+                var $affected = $el.add($el.find('[target=modal]'))
+                $affected.off('.modal-target');
+            };
+
+            if ($el.is('[target=modal]')) {
+                handler = modalTriggerHandler;
+            }
+            if (handler) {
+                $(document).on('auth:success', handler)
+            }
+        }
+    });
+
+    componentService.register('auth-change-attrs', {
+        type: 'attribute',
+        created: function() {
             var el = this;
+
+            var attrs = JSON.parse(el.getAttribute('auth-change-attrs'));
+            if (!attrs || (attrs && !attrs.length)) return;
+
             $(document).on('auth:success', function() {
-                //@todo unbind modal
+                for (var i=0; i < attrs.length; i++) {
+                    var attrName = attrs[i];
+                    console.log('auth-'+attrName);
+                    console.log(el.getAttribute('auth-'+attrName));
+                    el.setAttribute(attrName, el.getAttribute('auth-'+attrName))
+                }
             })
         }
     });

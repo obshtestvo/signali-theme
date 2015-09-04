@@ -98,7 +98,7 @@ module.exports = function (componentService) {
                     if (this.hasPopupTrigger) return;
                     this.hasPopupTrigger = true;
                     var $el = $(this);
-                    $el.click(function(e){
+                    $el.on('click.modal-target', function(e) {
                         e.preventDefault();
                         var $modal = $($(this).attr('href'));
                         $modal[0].show();
