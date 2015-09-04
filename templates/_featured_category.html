@@ -2,7 +2,7 @@
 {% load restful %}
 <cards-area density="compact">
     <header>
-    <headline size="large" align="center" density="compact">Актуални<!--{{ category.title }}--></headline>
+    <headline size="large" align="center" density="compact">Актуално<!--{{ category.title }}--></headline>
     </header>
 
     {% for point in category.contact_points.all|slice:":5" %}

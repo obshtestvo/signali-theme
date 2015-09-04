@@ -1,6 +1,10 @@
 var $ = require('jquery');
 var csrf = require('./csrf');
 
+var refreshCsrfHolders = function() {
+    $('[name="csrfmiddlewaretoken"]').val(csrf.getCookie('csrftoken'));
+}
+
 var makeRequest = function(url, method, data, dataType, isPjax, options) {
     if (!method) method = 'get';
     if (!options) options = {};
@@ -23,6 +27,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
         },
 
         success: function (data) {
+            refreshCsrfHolders();
             if (options.determineSuccess(data)) {
                 options.success(data)
             } else {
@@ -31,6 +36,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
         },
 
         error: function (xhr, status, err) {
+            refreshCsrfHolders();
             var error = err;
             if (xhr.responseText) error = xhr.responseText;
             if (dataType =='json' && xhr.responseJSON) {
@@ -39,7 +45,6 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             options.error(error)
         },
         complete: function (xhr, status) {
-            $('[name="csrfmiddlewaretoken"]').val(csrf.getCookie('csrftoken'));
             if ($.isFunction(options.complete)) options.complete.call(this, xhr, status);
         }
     };

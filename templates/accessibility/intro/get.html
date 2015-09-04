@@ -7,7 +7,7 @@
 <page color="semilight">
     <cover density="airy" src="test/base-header-background.jpg">
         {% include '_topnav.html' with request=request %}
-        <intro>
+        <intro density="airy">
             {% contactpoint_stats %}
             <form action="{% url 'contact-point-list' %}">
                 <select-dropdown id="drop2" name="areas" location mainsearch>

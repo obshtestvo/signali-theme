@@ -7,6 +7,9 @@ modal {
   position: relative;
   display: block;
   margin: 20px auto;
+  &[size="medium"] {
+    max-width: 520px;
+  }
   .modal-box {
     background: $white;
     @extend %small-radius;
@@ -62,4 +65,7 @@ modal {
 }
 [modal-hider] {
   display: none;
+}
+modal-screen {
+  display: block;
 }

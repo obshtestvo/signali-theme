@@ -141,8 +141,11 @@ filtersEl(componentService);
 var modalEl = require('modal');
 modalEl(componentService);
 
+var authModalAdapter = require('auth/element-adaptors/modal');
+authModalAdapter.register(componentService);
+
 var authElement = require('auth');
-authElement(componentService);
+authElement(componentService, [authModalAdapter.actions]);
 
 var resumeElement = require('resume');
 resumeElement(componentService);

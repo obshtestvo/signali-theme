@@ -1,32 +1,35 @@
-var toggleFixedHeight = require('service/toggleFixedHeight.js');
-require('service/jquery.animateContentSwitch.js');
+$ = require('jquery');
 
-module.exports = function (componentService) {
+var adaptor;
+
+module.exports = function (componentService, adaptors) {
+    adaptor = adaptors[0];
+
     componentService.register('auth-required', {
         type: 'attribute',
         created: function () {
             var el = this,
                 $form = el.tagName == 'FORM' ? $(el) : $(el.querySelector('form'));
 
-            $form.on('ajax-submit.auth-required submit.auth-required', function (e) {
+            $form.on('ajax-submit.auth-required submit.auth-required', function (e, originalAjaxForm) {
                 e.preventDefault();
                 if (!el.authContainer) {
-                    el.authContainer = attachAuthContainer(el);
+                    el.authContainer = adaptor.attach(el);
                     var $auth = $(el.authContainer).find('auth');
-                    $auth.on('auth:success', function (e, data) {
+                    $auth.on('auth:success', function (e, data, ajaxForm) {
                         document.querySelector('[auth-required]').clearAuthRequirement();
                         var authScenario = data.is_new ? 'registration' : 'login';
                         $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
-                        hideAuthContainer(el, function() {
+                        adaptor.dismiss(el, function() {
                             //@todo slide back (contentSwitch) to previous form, after animation, start spinning the wheel,
                             $form.submit();
-                        })
+                        }, originalAjaxForm)
                     });
                     $auth.on('auth:registration:success', function (e, data, ajaxForm) {
                         e.preventDefault();
                     })
                 }
-                showAuthContainer(el)
+                adaptor.show(el)
             });
         },
 
@@ -38,62 +41,4 @@ module.exports = function (componentService) {
             }
         }
     });
-};
-
-var hideAuthContainer = function(el, callback) {
-    if (el.tagName == 'MODAL') {
-        var $animationContainer = $(el.querySelector('[animation-container]'));
-        toggleFixedHeight($animationContainer, true);
-        $animationContainer.animateContentSwitch($(el.authContainer), $(el.primary), {
-            speed: 300,
-            width: false,
-            final: function () {
-                toggleFixedHeight($animationContainer, false);
-                callback()
-            }
-        });
-    } else {
-        var $authContainer = $(el.authContainer);
-        $authContainer.on('modal:close.auth-required.autoclose', function() {
-            $authContainer.off('.auth-required.autoclose');
-            callback()
-        });
-        el.authContainer.close();
-    }
-};
-
-var showAuthContainer = function(el) {
-    if (el.tagName == 'MODAL') {
-        var $animationContainer = $(el.querySelector('[animation-container]')),
-            auth = $(el.authContainer).find('auth')[0];
-        toggleFixedHeight($animationContainer, true);
-        $animationContainer.animateContentSwitch($(el.primary), $(el.authContainer), {
-            speed: 300,
-            width: false,
-            final: function () {
-                toggleFixedHeight($animationContainer, false);
-                auth.focus()
-            }
-        });
-    } else {
-        el.authContainer.show();
-    }
-};
-
-var attachAuthContainer = function(el) {
-    var authModal = document.querySelector('modal[auth-container="main"]').cloneAuthModal(el.getAttribute('auth-id'));
-    var modalPatch = el.querySelector('auth-container-patch');
-    if (el.tagName == 'MODAL') {
-        if (modalPatch) modalPatch.applyTo(authModal);
-        var authContainer = authModal.primary,
-            $authContainer = $(authContainer);
-        authContainer.setAttribute('auth-container', 'secondary');
-        $authContainer.hide();
-        el.appendSecondary(authContainer, true);
-        return authContainer;
-    } else {
-        authModal.attach();
-        if (modalPatch) modalPatch.applyTo(authModal);
-        return authModal;
-    }
 };

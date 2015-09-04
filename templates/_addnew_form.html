@@ -1,5 +1,6 @@
 <div style="display:none;">
     <modal id="addnew"
+           size="medium"
            {% if not request.user.is_authenticated %}auth-required auth-id="addNewAuth"{% endif %}
            proposal-container
     >
