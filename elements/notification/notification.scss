@@ -31,14 +31,14 @@ notification {
     &[error] {
         background: $secondary-color-100;
         color: $white;
-        svg {
+        .icon svg {
             fill: $white;
         }
     }
     &[success] {
         background: $success-color;
         color: $white;
-        svg {
+        .icon svg {
             fill: $white;
         }
     }
@@ -121,7 +121,7 @@ notification {
         }
         &[information] {
             color: $grey-color-100;
-            svg {
+            .icon svg {
                 fill: $grey-color-100;
             }
         }
@@ -185,7 +185,7 @@ notification {
         }
         &[information] {
             color: $grey-color-100;
-            svg {
+            .icon svg {
                 fill: $grey-color-100;
             }
         }
@@ -228,7 +228,7 @@ notification {
             [content] > strong {
                 color: $success-color;
             }
-            svg {
+            .icon svg {
                 fill: $success-color;
             }
         }
@@ -236,7 +236,7 @@ notification {
             [content] > strong {
                 color: $secondary-color-100;
             }
-            svg {
+            .icon svg {
                 fill: $secondary-color-100;
             }
         }
