@@ -7,16 +7,14 @@
 {% endblock %}
 
 {% block extrastyle %}
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'admin.css' %}" media="all">
 {% endblock %}
+
 
 {# Additional CSS includes #}
 {% block extrajs %}
     {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'elements/admin/admin.css' %}" media="all">
-    <script src="{% static 'node_modules/select2/select2.min.js' %}"></script>
-    <script src="{% static 'node_modules/select2/select2_locale_bg.js' %}"></script>
-    <script src="{% static 'elements/admin/admin.js' %}"></script>
+    <script src="{% static 'admin.js' %}"></script>
 {% endblock %}zv
 Z
 {# Footer links (left side) #}
