@@ -95,8 +95,13 @@ module.exports = {
             }
         },
 
-        dismiss: function(el, callback) {
+        dismiss: function(el, callback, originalAjaxForm, forceShowForm) {
             if (el.tagName == 'MODAL') {
+                if (!forceShowForm) {
+                    ajaxForm.setReplaceableElement($(el.authContainer))
+                    callback()
+                    return;
+                }
                 var $animationContainer = $(el.querySelector('[animation-container]'));
                 toggleFixedHeight($animationContainer, true);
                 $animationContainer.animateContentSwitch($(el.authContainer), $(el.primary), {

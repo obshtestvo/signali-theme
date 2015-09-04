@@ -102,7 +102,7 @@ AjaxForm.prototype = {
         var $form = self.$form;
 
         var event = $.Event("ajax-submit");
-        self.$form.trigger(event);
+        self.$form.trigger(event, [self]);
         if (event.isDefaultPrevented()) return;
 
         self.block();
