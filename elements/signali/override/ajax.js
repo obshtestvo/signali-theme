@@ -4,7 +4,7 @@ var preloader = require('loader/preloader');
 
 module.exports = function (componentService) {
     AjaxForm.defaultOptions.applyResult = function(instance, isSuccess, content) {
-        if (instance.options.pjax) {
+        if (typeof content === 'string') {
             var $result = $(content);
             componentService.upgrade($result[0]);
             $result.each(function() {

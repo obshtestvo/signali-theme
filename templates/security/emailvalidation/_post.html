@@ -1,0 +1,7 @@
+{% load ux %}
+<notification success size="popup" for="form" class="secondary" hidden>
+    <strong>Изпратихме ти линк</strong>
+    <p>Провери <em>{{request.user.email}}</em> за линк, с който да активираш регистрацията си.</p>
+    <p>Кликни на него.</p>
+</notification>
+{% include 'security/_check_email_prompt.html' with request=request %}

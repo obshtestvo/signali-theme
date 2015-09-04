@@ -221,6 +221,7 @@ AjaxForm.prototype = {
     unblock: function () {
         if (!this._isBlocked) return;
         this.$container.unblock();
+        this.$container.find('.blockUI').parent().unblock(); // custom elements might have appended it elsewhere
         this._isBlocked = false;
     }
 };

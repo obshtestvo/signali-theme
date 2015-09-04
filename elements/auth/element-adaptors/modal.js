@@ -36,7 +36,16 @@ var registration = function (componentService) {
 
             $auth.on('auth:success', function (e, data, ajaxForm) {
                 $el.off('modal:close', cancelAuth);
-                ajaxForm.setReplaceableElement(el.primary);
+                var originalApply = ajaxForm.options.applyResult;
+                ajaxForm.options.applyResult = function(instance, isSuccess, content) {
+                    var $result = originalApply.apply(this, arguments);
+                    $result.wrap( "<modal-screen></modal-screen>");
+                    var $screen = $result.parent();
+                    $screen.hide();
+                    $result.show();
+                    return $screen
+                }
+                ajaxForm.setReplaceableElement($(el.primary));
             });
             $auth.on('auth:login:success', function () {
                 el.close()

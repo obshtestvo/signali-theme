@@ -1,4 +1,10 @@
 {% load i18n %}
-{% trans 'Validate your account' %}
+Активирай регистрацията си в Signali.bg
 
-{% blocktrans %}Validate your account {{url}}{% endblocktrans %}
+Регистрацията ти в Signali.bg не е активирана.
+
+За да я активираш, кликни този линк:
+{{url}}
+
+Поздрави,
+Екипът на Signali.bg

@@ -15,7 +15,7 @@ module.exports = function (componentService) {
             el.ajaxForm = new AjaxForm($form, {
                 interactionContainer: $form.closest('[auth-container]'),
                 success: function(data) {
-                    $('auth-current-user input').val(data.user.pk)
+                    $('auth-current-user input').val(data.user.pk);
                     request.pjax(data.user.URI, function(newUserControls) {
                         $userControls.replaceWith(newUserControls)
                     });
@@ -30,7 +30,7 @@ module.exports = function (componentService) {
                         if (event.isDefaultPrevented()) return false;
 
                         request.pjax(data.redirect, function(message) {
-                            var $result = el.ajaxForm.options.applyResult(ajaxForm, true, message);
+                            var $result = el.ajaxForm.options.applyResult(el.ajaxForm, true, message);
                             el.ajaxForm.showResult($result);
                         });
                     } else {
@@ -42,6 +42,9 @@ module.exports = function (componentService) {
                         el.bubble()
                     }
                     return false;
+                },
+                error: function() {
+                    el.ajaxForm.unblock();
                 }
             });
             el.validation.disableGroupsExcept(el.type);

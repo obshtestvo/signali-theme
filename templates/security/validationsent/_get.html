@@ -1,9 +1,0 @@
-{% load ux %}
-<notification success size="popup" for="form" class="secondary" hidden>
-    <strong>Успешна регистрация</strong>
-    <p>Готово. Имаш регистрация в сайта, но <strong>тя все още не е активна</strong>. Изпратихме линк, с който да я активираш на {{request.user.email}}.</p>
-    <p>Кликни на него.</p>
-    <action-button link type="primary" fill="solid" align="left" color="red" action="{{ request.user.email|email_provider_url }}">
-        към {{ request.user.email|email_provider }}
-    </action-button>
-</notification>

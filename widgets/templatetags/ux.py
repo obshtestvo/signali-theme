@@ -22,7 +22,7 @@ def email_provider(email):
     try:
         provider = known_email_providers[provider]
     except:
-        provider = provider.capitalize()
+        provider = provider
 
     return provider
 
@@ -34,4 +34,4 @@ def email_provider_url(email):
     except:
         pass
 
-    return "https://"+provider
+    return "http://"+provider
