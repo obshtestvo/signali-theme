@@ -21,7 +21,7 @@
                     <li><a href="#passwordSettings">Смяна на парола</a></li>
                 </tabs>
                 <section id="generalSettings" tab>
-                    <text-field size="full" id="name" type="text" name="name" value="{{ user.get_full_name }}" >
+                    <text-field size="full" id="fullname" type="text" name="fullname" value="{{ user.get_full_name }}" >
                         Име
                     </text-field>
                     <text-field size="full" id="email" type="email" value="{{ user.email }}" placeholder="твоята@епоща.бг">
@@ -29,7 +29,7 @@
                     </text-field>
                 </section>
                 <section id="passwordSettings" tab hidden>
-                    <text-field size="full" id="password" type="password" name="name" >
+                    <text-field size="full" id="password" type="password" name="password" >
                         Текуща парола
                     </text-field>
                     <text-field size="full" id="new_password1" type="password" >
@@ -67,7 +67,7 @@
                     <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
                         Успешно влязохте в акаунта си.
                     </bubble>
-                    <text-field for="registration" validate-group="registration" size="full" id="name" name="name" type="text" required>
+                    <text-field for="registration" validate-group="registration" size="full" id="fullname" name="fullname" type="text" required>
                         Име
                         <notification error size="text-field" hidden></notification>
                     </text-field>

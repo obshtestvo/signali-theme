@@ -50,11 +50,19 @@
                         </rating>
                     </card-item>
                     {% subscribeform request point %}
-                    <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center"
+                    <action-button link
+                                   type="primary"
+                                   fill="solid"
+                                   color="red"
+                                   size="gigalarge"
+                                   align="center"
                                    {% if request.user.is_authenticated %}
                                         action="{{point.url}}" target="_blank"
                                    {% else %}
                                         action="#leavePrompt" target="modal"
+                                        auth-removes-modal
+                                        auth-change-attrs='["action", "target"]'
+                                        auth-action="{{point.url}}" auth-target="_blank"
                                    {% endif %}>
                         Към мястото
                     </action-button>
@@ -63,14 +71,7 @@
             </resume>
             {% feedback_list request point %}
             {% survey request point %}
-            <donation>
-                <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
-                <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew"
-                               target="modal">
-                    Добави
-                </action-button>
-                {% addnew_form request %}
-            </donation>
+            {% include "_addnew_prompt.html" %}
         </featured>
         <footer-wrapper>
             <logo action="home" color="dark" size="medium" align="right"></logo>

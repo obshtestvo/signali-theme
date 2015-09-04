@@ -15,7 +15,7 @@ module.exports = function (componentService) {
             el.ajaxForm = new AjaxForm($form, {
                 interactionContainer: $form.closest('[auth-container]'),
                 success: function(data) {
-                    $('auth-current-user input').val(data.user.pk)
+                    $('auth-current-user input').val(data.user.pk);
                     request.pjax(data.user.URI, function(newUserControls) {
                         $userControls.replaceWith(newUserControls)
                     });
@@ -30,7 +30,7 @@ module.exports = function (componentService) {
                         if (event.isDefaultPrevented()) return false;
 
                         request.pjax(data.redirect, function(message) {
-                            var $result = el.ajaxForm.options.applyResult(ajaxForm, true, message);
+                            var $result = el.ajaxForm.options.applyResult(el.ajaxForm, true, message);
                             el.ajaxForm.showResult($result);
                         });
                     } else {
@@ -42,6 +42,9 @@ module.exports = function (componentService) {
                         el.bubble()
                     }
                     return false;
+                },
+                error: function() {
+                    el.ajaxForm.unblock();
                 }
             });
             el.validation.disableGroupsExcept(el.type);
@@ -67,7 +70,7 @@ module.exports = function (componentService) {
                     if (value == 'registration') {
                         $el.find('[for="registration"]').show();
                         $el.find('[for="login"]').hide();
-                        $el.find('input[name="name"]').focus();
+                        $el.find('input[name="fullname"]').focus();
                         $el.find('input[name="auth_type"]').val('registration');
                     } else {
                         $el.find('[for="login"]').show();
@@ -91,7 +94,7 @@ module.exports = function (componentService) {
             focus: function () {
                 var $el = $(this);
                 var $email = $el.find('input[name="email"]');
-                var $name = $el.find('input[name="name"]');
+                var $name = $el.find('input[name="fullname"]');
                 if ($email.is(":visible")) $email.focus();
                 if ($name.is(":visible")) $name.focus();
             },

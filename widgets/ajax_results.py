@@ -6,7 +6,7 @@ from django.dispatch import receiver
 @receiver(pre_success_rendering, sender=ListView)
 def new_feedback_success_with_registration(request, url_name, **kwargs):
     matches_uri = url_name == 'contact-point-feedback-list'
-    inactive_user = request.user.is_active
+    inactive_user = request.user.is_valid
     triggered_registration = request.params.get('ui_include_auth') == 'registration'
     if request.is_pjax() and matches_uri and (triggered_registration or inactive_user):
         return 'contact_feedback/new_feedback_with_registration'

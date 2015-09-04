@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% load restful %}
-
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
@@ -170,12 +169,7 @@
         </cards>
     </cards-area>
 
-    <donation>
-        <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
-        <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
-            Добави
-        </action-button>
-    </donation>
+    {% include "_addnew_prompt.html"  with request=request %}
 </featured>
 <footer-wrapper>
     <logo action="home" color="dark" size="medium" align="right"></logo>
