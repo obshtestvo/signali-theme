@@ -34,13 +34,8 @@
     <featured>
         {% featured_areas request %}
         {% featured_category request %}
-        <donation>
-            <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
-            <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
-                Добави
-            </action-button>
-        </donation>
         {% addnew_form request %}
+        {% include "_addnew_prompt.html" %}
     </featured>
     <footer-wrapper>
         <logo action="home" color="dark" size="medium" align="right"></logo>
