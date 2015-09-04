@@ -4,69 +4,67 @@ $facebook-color: #3b5998;
 $facebook-hover-color: #203768;
 $facebook-active-color: #6d83b3;
 
-
 $google-color: #dd4b39;
 $google-hover-color: #b12211;
 $google-active-color: #e87769;
 
-
-social-button{
-  display: block;
-  width: 100%;
-  position: relative;
-  padding: 10px 0 0;
-    a{
-      display: block;
-      height: 40px;
-      @extend %small-radius;
-      position: relative;
-      .icon{
+social-button {
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 10px 0 0;
+    a {
         display: block;
-        height: 100%;
-        svg{
-          fill: $white;
-          height: auto;
+        height: 40px;
+        @extend %small-radius;
+        position: relative;
+        .icon {
+            display: block;
+            height: 100%;
+            svg {
+                fill: $white;
+                height: auto;
+            }
         }
-      }
-      .arrow{
-        @extend %center-y;
-        right: 10px;
-        width: 14px;
-        height: 6px;
-        svg{
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          fill: $white;
+        .arrow {
+            @extend %center-y;
+            right: 10px;
+            width: 14px;
+            height: 6px;
+            svg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                fill: $white;
+            }
         }
-      }
     }
-  &[facebook] {
-    a{
-      background: $facebook-color;
-      .icon{
-        padding: 10px;
-      }
-      &:hover{
-        background: $facebook-hover-color
-      }
-      &:active{
-        background: $facebook-active-color
-      }
+    &[facebook] {
+        a {
+            background: $facebook-color;
+            .icon {
+                padding: 10px;
+            }
+            &:hover {
+                background: $facebook-hover-color
+            }
+            &:active {
+                background: $facebook-active-color
+            }
+        }
     }
-  }
-  &[google] {
-    a{
-      background: $google-color;
-      .icon{
-        padding: 10px 10px 5px;
-      }
-      &:hover{
-        background: $google-hover-color;
-      }
-      &:active{
-        background: $google-active-color;
-      }
+    &[google] {
+        a {
+            background: $google-color;
+            .icon {
+                padding: 10px 10px 5px;
+            }
+            &:hover {
+                background: $google-hover-color;
+            }
+            &:active {
+                background: $google-active-color;
+            }
+        }
     }
-  }
 }

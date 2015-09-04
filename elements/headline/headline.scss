@@ -5,73 +5,73 @@
 //For each size ther is diferent density
 
 headline {
-  display: block;
-  position: relative;
-  &[size='large'] {
-    &[density="airy"] {
-      padding: 18px 0 32px 0
+    display: block;
+    position: relative;
+    &[size='large'] {
+        &[density="airy"] {
+            padding: 22px 0 36px 0
+        }
+        &[density="comfortable"] {
+            padding: 18px 0 20px 0;
+        }
+        &[density="compact"] {
+            padding: 4px 0 30px 0;
+        }
+        h3 {
+            @extend %headilme-font;
+        }
+        p {
+            @extend %bodytext-font;
+            line-height: 24px;
+            padding: 0;
+            margin: 0 0 4px 0;
+            color: $grey-color-120;
+        }
     }
-    &[density="comfortable"] {
-      padding: 14px 0 16px 0;
+    &[size='medium'] {
+        padding: 29px 0 18px 0;
+        h3 {
+            @extend %headilme-font;
+            font-size: 24px;
+            line-height: 1.1em;
+        }
     }
-    &[density="compact"] {
-      padding: 0 0 26px 0;
+    &[size='small'] {
+        &[density="airy"] {
+            padding: 4px 0 13px;
+        }
+        &[density="comfortable"] {
+            padding: 10px 0 7px;
+        }
+        &[density="cozy"] {
+            padding: 0 0 11px 0;
+        }
+        &[density="compact"] {
+            padding: 5px 0 8px 0;
+            display: block;
+            border-bottom: 1px solid $grey-color-60;
+            margin: 10px 0;
+            h3 {
+                font-weight: 600;
+            }
+        }
+        &[density="tight"] {
+            padding: 0 0 7px;
+            h3 {
+                font-weight: 600;
+            }
+        }
+        h3 {
+            @extend %bodytext-large-font;
+        }
     }
-    h3 {
-      @extend %headilme-font;
+    &[align="left"] {
+        text-align: left;
     }
-    p {
-      @extend %bodytext-font;
-      line-height: 24px;
-      padding: 0;
-      margin: 0 0 4px 0;
-      color: $grey-color-120;
+    &[align="right"] {
+        text-align: right;
     }
-  }
-  &[size='medium'] {
-    padding: 25px 0 14px 0;
-    h3 {
-      @extend %headilme-font;
-      font-size: 24px;
-      line-height: 1.1em;
+    &[align="center"] {
+        text-align: center;
     }
-  }
-  &[size='small'] {
-    &[density="airy"] {
-      padding: 4px 0 13px;
-    }
-    &[density="comfortable"] {
-      padding: 10px 0 7px;
-    }
-    &[density="cozy"] {
-      padding: 0 0 11px 0;
-    }
-    &[density="compact"] {
-      padding: 5px 0 8px 0;
-      display: block;
-      border-bottom: 1px solid $grey-color-60;
-      margin: 10px 0;
-      h3 {
-        font-weight: 600;
-      }
-    }
-    &[density="tight"] {
-      padding: 0 0 7px;
-      h3 {
-        font-weight: 600;
-      }
-    }
-    h3 {
-      @extend %bodytext-large-font;
-    }
-  }
-  &[align="left"] {
-    text-align: left;
-  }
-  &[align="right"] {
-    text-align: right;
-  }
-  &[align="center"] {
-    text-align: center;
-  }
 }

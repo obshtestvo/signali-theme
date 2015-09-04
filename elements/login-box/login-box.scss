@@ -1,99 +1,100 @@
 @import '../styleguide';
+
 $secondary-hover-color: #efb7c1;
 login-box {
-  float: left;
-  padding: 0 0 0 15px;
-  display: block;
-  &[anonymous]{
-    padding: 0 0 0 25px;
-    #anonymous {
-      a {
-        @extend %bodytext-large-font;
-        color: $white;
-        font-weight: 600;
-        line-height: 30px;
-        &:hover{
-          color: $secondary-hover-color;
+    float: left;
+    padding: 0 0 0 15px;
+    display: block;
+    &[anonymous] {
+        padding: 0 0 0 25px;
+        #anonymous {
+            a {
+                @extend %bodytext-large-font;
+                color: $white;
+                font-weight: 600;
+                line-height: 30px;
+                &:hover {
+                    color: $secondary-hover-color;
+                }
+            }
         }
-      }
     }
-  }
-  #loggedin {
-    @extend %nano-radius;
-    .profile a {
-      padding: 5px 10px;
-      color: $body-text-color;
-      display: block;
-      span {
-        background: $grey-color-80;
+    #loggedin {
         @extend %nano-radius;
-        $size: 20px;
-        height: $size;
-        width: $size;
-        float: left;
-        margin: 0 $size - 1 0 0;
-        position: relative;
-        &:after{
-          content: '';
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          border-top: 5px solid $white;
-          display: block;
-          width: 0;
-          height: 0;
-          position: absolute;
-          top: 8px;
-          right: -13px;
+        .profile a {
+            padding: 5px 10px;
+            color: $body-text-color;
+            display: block;
+            span {
+                background: $grey-color-80;
+                @extend %nano-radius;
+                $size: 20px;
+                height: $size;
+                width: $size;
+                float: left;
+                margin: 0 $size - 1 0 0;
+                position: relative;
+                &:after {
+                    content: '';
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-top: 5px solid $white;
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: 8px;
+                    right: -13px;
+                }
+                img {
+                    @extend %nano-radius;
+                    max-width: 100%;
+                    width: $size;
+                    height: $size;
+                    float: left;
+                }
+            }
+            strong {
+                @extend %main-font;
+                line-height: 21px;
+                font-size: 12px;
+                font-weight: 400;
+                float: right;
+                color: $white;
+            }
         }
-        img {
-          @extend %nano-radius;
-          max-width: 100%;
-          width: $size;
-          height: $size;
-          float: left;
+        ul {
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+            @extend %bodytext-font, %stripped;
+            line-height: 24px;
+            padding: 3px 10px 6px 10px;
+            position: relative;
+            border-top: 1px solid $grey-color-60;
+            li a {
+                color: $secondary-color-100;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
-      }
-      strong{
-        @extend %main-font;
-        line-height: 21px;
-        font-size: 12px;
-        font-weight: 400;
-        float: right;
-        color: $white;
-      }
+        &:hover {
+            background: $white;
+            position: absolute;
+            a {
+                span:after {
+                    border-top-color: $body-text-color;
+                }
+                strong {
+                    color: $body-text-color;
+                }
+            }
+            ul {
+                opacity: 1;
+                visibility: visible;
+                display: block;
+            }
+        }
     }
-    ul{
-      opacity: 0;
-      visibility: hidden;
-      display: none;
-      @extend %bodytext-font, %stripped;
-      line-height: 24px;
-      padding: 3px 10px 6px 10px;
-      position: relative;
-      border-top: 1px solid $grey-color-60 ;
-      li a{
-        color: $secondary-color-100;
-        &:hover{
-          text-decoration: underline;
-        }
-      }
-    }
-    &:hover {
-      background: $white;
-      position: absolute;
-      a{
-        span:after{
-          border-top-color: $body-text-color;
-        }
-        strong{
-          color: $body-text-color;
-        }
-      }
-      ul {
-        opacity: 1;
-        visibility: visible;
-        display: block;
-      }
-    }
-  }
 }

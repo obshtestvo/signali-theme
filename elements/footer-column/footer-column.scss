@@ -1,32 +1,32 @@
 @import '../styleguide';
 
-footer-column{
-  float:left;
-  width: 33.33%;
-  padding: 0 65px 0 0;
-  display: block;
-  section{
-    & > div {
-      min-height: 23px;
-      h5{
-        @extend %bodytext-large-font;
-        font-weight: 600;
-      }
-    }
-    ul{
-      padding: 11px 0 36px;
-      @extend %stripped;
-      li{
-        @extend %bodytext-font;
-        line-height: 24px;
-        @extend %text-hidden;
-        a {
-          color: $body-text-color;
-          &:hover{
-            text-decoration: underline;
-          }
+footer-column {
+    float: left;
+    width: 33.33%;
+    padding: 0 65px 0 0;
+    display: block;
+    section {
+        & > div {
+            min-height: 23px;
+            h5 {
+                @extend %bodytext-large-font;
+                font-weight: 600;
+            }
         }
-      }
+        ul {
+            padding: 11px 0 36px;
+            @extend %stripped;
+            li {
+                @extend %bodytext-font;
+                line-height: 24px;
+                @extend %text-hidden;
+                a {
+                    color: $body-text-color;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
     }
-  }
 }

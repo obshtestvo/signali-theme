@@ -1,19 +1,21 @@
 @import '../styleguide';
-underline{
-  display: inline;
-  strong {
-    position: relative;
-      svg {
-        position: absolute;
-        max-width: 120%;
-        max-height: 8px;
-        bottom: -7px;
-        left: -10%;
-          & > * {
-            fill: $secondary-color-100;
-          }
-      }
-  }
-  &:nth-child(2) svg {
-    @include rotate(180);}
+
+underline {
+    display: inline;
+    strong {
+        position: relative;
+        svg {
+            position: absolute;
+            max-width: 120%;
+            max-height: 8px;
+            bottom: -7px;
+            left: -10%;
+            & > * {
+                fill: $secondary-color-100;
+            }
+        }
+    }
+    &:nth-child(2) svg {
+        @include rotate(180);
+    }
 }

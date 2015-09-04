@@ -1,10 +1,10 @@
 @import '../styleguide';
 
 survey {
-  @extend %wrapper;
-  display: block;
-  padding-bottom: 30px;
-  & > section {
-    width: 75%;
-  }
+    @extend %wrapper;
+    display: block;
+    padding-bottom: 30px;
+    & > section {
+        width: 75%;
+    }
 }

@@ -1,139 +1,141 @@
 @import '../styleguide';
 
 bubble {
-  display: block;
-  &.animated {animation-duration: 0.7s;}
-  section[wrapper] {
-    @extend %anime;
-    @extend %small-radius;
-    position: relative;
-    z-index: 0;
-    display: table;
-    width: 100%;
-    min-height: 70px;
-    background: $white;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
-    color: $body-text-color;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-  .close {
-    width: 13px;
-    height: 13px;
     display: block;
-    @extend %circle;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    svg {
-      fill: $body-text-color;
-      width: 100%;
-      height: 100%;
+    &.animated {
+        animation-duration: 0.7s;
     }
-    &:hover svg {
-      fill: lighten($body-text-color, 34%);
+    section[wrapper] {
+        @extend %anime;
+        @extend %small-radius;
+        position: relative;
+        z-index: 0;
+        display: table;
+        width: 100%;
+        min-height: 70px;
+        background: $white;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+        color: $body-text-color;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
     }
-  }
-  section[content] {
-    display: table-cell;
-    vertical-align: middle;
-    @extend %bodytext-font;
-    line-height: 20px;
-    padding: 12px 20px 12px 70px;
-  }
-  .icon {
-    width: 35px;
-    height: 35px;
-    @extend %center-y;
-    left: 20px;
-    svg {
-      fill: $body-text-color;
-      width: 100%;
-      height: 100%;
+    .close {
+        width: 13px;
+        height: 13px;
+        display: block;
+        @extend %circle;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        svg {
+            fill: $body-text-color;
+            width: 100%;
+            height: 100%;
+        }
+        &:hover svg {
+            fill: lighten($body-text-color, 34%);
+        }
     }
-  }
-  &[no-icon] section[wrapper] {
     section[content] {
-      padding: 15px 20px;
+        display: table-cell;
+        vertical-align: middle;
+        @extend %bodytext-font;
+        line-height: 20px;
+        padding: 12px 20px 12px 70px;
     }
     .icon {
-      display: none;
+        width: 35px;
+        height: 35px;
+        @extend %center-y;
+        left: 20px;
+        svg {
+            fill: $body-text-color;
+            width: 100%;
+            height: 100%;
+        }
     }
-  }
-  &[no-shadow] section[wrapper] {
-    box-shadow: none;
-  }
-  //properties for type of bubble (type of icon)
-  &[type="information"] {
-    .icon svg {
-      fill: $body-text-color;
+    &[no-icon] section[wrapper] {
+        section[content] {
+            padding: 15px 20px;
+        }
+        .icon {
+            display: none;
+        }
     }
-  }
-  &[type="success"] {
-    .icon svg {
-      fill: $success-color;
+    &[no-shadow] section[wrapper] {
+        box-shadow: none;
     }
-  }
-  &[type="error"] {
-    .icon svg {
-      fill: $error-color;
+    //properties for type of bubble (type of icon)
+    &[type="information"] {
+        .icon svg {
+            fill: $body-text-color;
+        }
     }
-  ;
-  }
-  //properties for background and icon-fill color change
-  &[color="white"] section[wrapper] {
-    background: $white;
-    color: $body-text-color;
-  }
-  &[color="red"] section[wrapper] {
-    background: $error-color;
-    color: $white;
-    .icon svg, svg {
-      fill: $white;
+    &[type="success"] {
+        .icon svg {
+            fill: $success-color;
+        }
     }
-  }
-  &[color="green"] section[wrapper] {
-    background: $success-color;
-    color: $white;
-    .icon svg, svg {
-      fill: $white;
+    &[type="error"] {
+        .icon svg {
+            fill: $error-color;
+        }
+    ;
     }
-  }
-  //properties for size(width)
-  &[size="standart"] section[wrapper] {
-    width: 300px;
-  }
-  &[size="half"] section[wrapper] {
-    width: 50%;
-  }
-  &[size="full"] section[wrapper] {
-    width: 100%;
-  }
-  //properties for density top, bottom
-  &[density="airy"] section[wrapper] {
-    margin: 40px 0
-  }
-  &[density="comfortable"] section[wrapper] {
-    margin: 30px 0
-  }
-  &[density="cozy"] section[wrapper] {
-    margin: 20px 0
-  }
-  &[density="compact"] section[wrapper] {
-    margin: 10px 0;
-  }
+    //properties for background and icon-fill color change
+    &[color="white"] section[wrapper] {
+        background: $white;
+        color: $body-text-color;
+    }
+    &[color="red"] section[wrapper] {
+        background: $error-color;
+        color: $white;
+        .icon svg, svg {
+            fill: $white;
+        }
+    }
+    &[color="green"] section[wrapper] {
+        background: $success-color;
+        color: $white;
+        .icon svg, svg {
+            fill: $white;
+        }
+    }
+    //properties for size(width)
+    &[size="standart"] section[wrapper] {
+        width: 300px;
+    }
+    &[size="half"] section[wrapper] {
+        width: 50%;
+    }
+    &[size="full"] section[wrapper] {
+        width: 100%;
+    }
+    //properties for density top, bottom
+    &[density="airy"] section[wrapper] {
+        margin: 40px 0
+    }
+    &[density="comfortable"] section[wrapper] {
+        margin: 30px 0
+    }
+    &[density="cozy"] section[wrapper] {
+        margin: 20px 0
+    }
+    &[density="compact"] section[wrapper] {
+        margin: 10px 0;
+    }
 }
 
 [bubble-container] {
-  position: fixed;
-  top: 0;
-  right: 0;
-  min-height: 30px;
-  min-width: 30px;
-  z-index: 9999;
-  padding-right: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-height: 30px;
+    min-width: 30px;
+    z-index: 9999;
+    padding-right: 20px;
 }
 
 //<bubble size="standart" color="white" type="information" density="compact" >

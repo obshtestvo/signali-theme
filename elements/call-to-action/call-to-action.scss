@@ -1,39 +1,40 @@
 @import '../styleguide';
+
 call-to-action {
-  color: $white;
-  display: block;
-  & > div {
-    &.align-center {
-      text-align: center;
+    color: $white;
+    display: block;
+    & > div {
+        &.align-center {
+            text-align: center;
+        }
+        &.align-left {
+            text-align: left;
+        }
+        &.align-right {
+            text-align: right;
+        }
+        h1 {
+            @extend %headilme-font;
+            padding: 4px 0 15px;
+        }
+        p {
+            @extend %bodytext-large-font;
+        }
     }
-    &.align-left {
-      text-align: left;
+    &[density="airy"] {
+        position: relative;
+        padding: 40px 0 57px;
     }
-    &.align-right {
-      text-align: right;
+    &[density="comfortable"] {
+        position: relative;
+        padding: 40px 0 77px;
     }
-    h1 {
-      @extend %headilme-font;
-      padding: 0 0 11px;
+    &[density="cozy"] {
+        position: relative;
+        padding: 40px 0 77px;
     }
-    p {
-      @extend %bodytext-large-font;
+    &[density="compact"] {
+        position: relative;
+        padding: 0;
     }
-  }
-  &[density="airy"]{
-    position: relative;
-    padding: 40px 0 57px;
-  }
-  &[density="comfortable"]{
-    position: relative;
-    padding: 40px 0 77px;
-  }
-  &[density="cozy"]{
-    position: relative;
-    padding: 40px 0 77px;
-  }
-  &[density="compact"]{
-    position: relative;
-    padding: 0;
-  }
 }

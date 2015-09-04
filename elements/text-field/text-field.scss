@@ -1,109 +1,129 @@
 @import '../styleguide';
 
 @mixin placeholder {
-  font-style: italic;
-  color: $grey-color-80;
+    font-style: italic;
+    color: $grey-color-80;
 }
 
 text-field {
-  display: block;
-  position: relative;
-  padding: 0 0 17px;
-  label {
     display: block;
-    @extend %label-font;
-    color: $grey-color-120;
-    padding: 0 0 5px;
-  }
-  &[type="textarea"] {
-    padding: 0 0 20px;
-    textarea {
-      &::-webkit-input-placeholder { @include placeholder}
-      &::-moz-placeholder { @include placeholder } /* firefox 19+ */
-      &:-ms-input-placeholder { @include placeholder } /* ie */
-      &:-moz-placeholder { @include placeholder }
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      position: relative;
-      @extend %small-radius, %bodytext-font;
-      padding: 9px 10px;
-      border: 1px solid $grey-color-80;
-      outline: none;
-      z-index: 2;
-      &:focus {
-        border-color: $grey-color-100;
-      }
-    }
-  }
-  input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"] {
-    &::-webkit-input-placeholder { @include placeholder}
-    &::-moz-placeholder { @include placeholder } /* firefox 19+ */
-    &:-ms-input-placeholder { @include placeholder } /* ie */
-    &:-moz-placeholder { @include placeholder }
-    display: block;
-    width: 100%;
     position: relative;
-    @extend %small-radius;
-    padding: 0 10px;
-    border: 1px solid $grey-color-80;
-    outline: none;
-    height: 40px;
-    line-height: 40px;
-    z-index: 2;
-    &:focus {
-      border-color: $grey-color-100;
+    padding: 0 0 17px;
+    label {
+        display: block;
+        @extend %label-font;
+        color: $grey-color-120;
+        padding: 0 0 5px;
     }
-  }
-  &[size="full"] {
-    width: 100%;
-    max-width: 100%;
-    textarea {
-      min-height: 194px;
+    &[type="textarea"] {
+        padding: 0 0 20px;
+        textarea {
+            &::-webkit-input-placeholder {
+                @include placeholder
+            }
+            &::-moz-placeholder {
+                @include placeholder
+            }
+            /* firefox 19+ */
+            &:-ms-input-placeholder {
+                @include placeholder
+            }
+            /* ie */
+            &:-moz-placeholder {
+                @include placeholder
+            }
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            @extend %small-radius, %bodytext-font;
+            padding: 9px 10px;
+            border: 1px solid $grey-color-80;
+            outline: none;
+            z-index: 2;
+            &:focus {
+                border-color: $grey-color-100;
+            }
+        }
     }
-  }
-  &[size="half"] {
-    max-width: 50%;
-    textarea {
-      min-height: 100px;
+    input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"] {
+        &::-webkit-input-placeholder {
+            @include placeholder
+        }
+        &::-moz-placeholder {
+            @include placeholder
+        }
+        /* firefox 19+ */
+        &:-ms-input-placeholder {
+            @include placeholder
+        }
+        /* ie */
+        &:-moz-placeholder {
+            @include placeholder
+        }
+        display: block;
+        width: 100%;
+        position: relative;
+        @extend %small-radius;
+        padding: 0 10px;
+        border: 1px solid $grey-color-80;
+        outline: none;
+        height: 40px;
+        line-height: 40px;
+        z-index: 2;
+        &:focus {
+            border-color: $grey-color-100;
+        }
     }
-  }
-  &[size="standart"] {
-    max-width: 380px;
-    textarea {
-      min-height: 75px;
+    &[size="full"] {
+        width: 100%;
+        max-width: 100%;
+        textarea {
+            min-height: 194px;
+        }
     }
-  }
-  &[state="error"], &.error {
-    input, textarea {
-      border-color: $secondary-color-100;
-      background: $secondary-color-10;
-      &:focus {
-        border-color: $secondary-color-100;
-        background: $secondary-color-10;
-      }
+    &[size="half"] {
+        max-width: 50%;
+        textarea {
+            min-height: 100px;
+        }
     }
-  }
-  &[state="success"], &.success {
-    input, textarea {
-      border-color: $success-color;
-      background: lighten($success-color, 45%);
-      &:focus {
-        border-color: $success-color;
-        background: lighten($success-color, 45%);
-      }
+    &[size="standart"] {
+        max-width: 380px;
+        textarea {
+            min-height: 75px;
+        }
     }
-  }
-  &[state="information"] {
-  }
-  &[state="disabled"] {
-    input, textarea {
-      border-color: $grey-color-80;
-      background: $grey-color-60;
-      &:focus {
-        border-color: $grey-color-80;
-        background: $grey-color-60;
-      }
+    &[state="error"], &.error {
+        input, textarea {
+            border-color: $secondary-color-100;
+            background: $secondary-color-10;
+            &:focus {
+                border-color: $secondary-color-100;
+                background: $secondary-color-10;
+            }
+        }
     }
-  }
+    &[state="success"], &.success {
+        input, textarea {
+            border-color: $success-color;
+            background: lighten($success-color, 45%);
+            &:focus {
+                border-color: $success-color;
+                background: lighten($success-color, 45%);
+            }
+        }
+    }
+    &[state="information"] {
+    }
+    &[state="disabled"] {
+        input, textarea {
+            border-color: $grey-color-80;
+            background: $grey-color-60;
+            &:focus {
+                border-color: $grey-color-80;
+                background: $grey-color-60;
+            }
+        }
+    }
 }

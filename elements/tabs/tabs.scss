@@ -1,48 +1,49 @@
 @import '../styleguide';
+
 tabs {
-  display: block;
-  padding: 0 0 20px;
-  & > ul{
-    font-size: 0;
     display: block;
-    list-style-type: none;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    &.align-left {
-      text-align: left;
-    }
-    &.align-center {
-      text-align: center;
-    }
-    &.align-right {
-      text-align: right;
-    }
-    li {
-      display: inline-block;
-      a {
+    padding: 0 0 20px;
+    & > ul {
+        font-size: 0;
         display: block;
-        padding: 0 15px;
-        @extend %large-radius, %bodytext-font ;
-        line-height: 30px;
-        font-weight: 600;
-        color: $body-text-color;
-        background: $white;
-        &:hover,
-        &:focus {
-          background: $grey-color-60;
+        list-style-type: none;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        &.align-left {
+            text-align: left;
         }
-        &.active {
-          background: $main-color-100;
-          color: $white;
-          pointer-events: none;
-          cursor: default;
+        &.align-center {
+            text-align: center;
         }
-        &:active {
-          background: $main-color-60;
-          color: $white;
+        &.align-right {
+            text-align: right;
         }
-      }
+        li {
+            display: inline-block;
+            a {
+                display: block;
+                padding: 0 15px;
+                @extend %large-radius, %bodytext-font;
+                line-height: 30px;
+                font-weight: 600;
+                color: $body-text-color;
+                background: $white;
+                &:hover,
+                &:focus {
+                    background: $grey-color-60;
+                }
+                &.active {
+                    background: $main-color-100;
+                    color: $white;
+                    pointer-events: none;
+                    cursor: default;
+                }
+                &:active {
+                    background: $main-color-60;
+                    color: $white;
+                }
+            }
+        }
     }
-  }
 }

@@ -1,29 +1,30 @@
 @import '../styleguide';
-resume{
-  display: block;
-  position: relative;
-  background: $grey-color-60;
-  padding: 25px 0;
-  border-bottom: 1px solid $grey-color-80;
-  & > section{
-    @extend %wrapper;
-    & > div {
-      float: left;
-      width: 75%;
-      padding: 0 5px 0 0;
-      article{
-        padding: 10px 0 0;
-        p{
-          @extend %bodytext-large-font;
-          color: $body-text-color;
-          margin: 0 0 23px;
+
+resume {
+    display: block;
+    position: relative;
+    background: $grey-color-60;
+    padding: 25px 0;
+    border-bottom: 1px solid $grey-color-80;
+    & > section {
+        @extend %wrapper;
+        & > div {
+            float: left;
+            width: 75%;
+            padding: 0 5px 0 0;
+            article {
+                padding: 10px 0 0;
+                p {
+                    @extend %bodytext-large-font;
+                    color: $body-text-color;
+                    margin: 0 0 23px;
+                }
+            }
+            h4 {
+                @extend %bodytext-large-font;
+                font-weight: 600;
+                margin: 0 0 8px;
+            }
         }
-      }
-      h4{
-        @extend %bodytext-large-font;
-        font-weight: 600;
-        margin: 0 0 8px;
-      }
     }
-  }
 }

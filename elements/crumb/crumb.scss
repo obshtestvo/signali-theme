@@ -1,41 +1,41 @@
 @import '../styleguide';
 
 crumb {
-  display: inline-block;
-  position: relative;
-  padding: 0 0 0 17px;
-  .icon {
-    width: 5px;
-    height: 8px;
-    display: block;
-    position: absolute;
-    left: 5px;
-    bottom: 12px;
-    svg{
-      width: 100%;
-      height: 100%;
-      fill: $white;
-    }
-  }
-  a {
-    @extend %small-font;
-    color: $white;
-
-  }
-  &:first-child{
-    padding: 0;
-      .icon {
-        display: none;
-      }
-  }
-  &:last-child {
-    .icon svg{
-      fill: $main-color-40;
+    display: inline-block;
+    position: relative;
+    padding: 0 0 0 17px;
+    .icon {
+        width: 5px;
+        height: 8px;
+        display: block;
+        position: absolute;
+        left: 5px;
+        bottom: 12px;
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: $white;
+        }
     }
     a {
-      color: $main-color-40;
-      pointer-events: none;
-      cursor: default;
+        @extend %small-font;
+        color: $white;
+
     }
-  }
+    &:first-child {
+        padding: 0;
+        .icon {
+            display: none;
+        }
+    }
+    &:last-child {
+        .icon svg {
+            fill: $main-color-40;
+        }
+        a {
+            color: $main-color-40;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
 }

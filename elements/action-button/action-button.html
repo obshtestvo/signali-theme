@@ -1,23 +1,34 @@
 {{#link}}
-    <a href="{{action}}" target="{{target}}"><content></content></a>
+<a href="{{action}}" target="{{target}}">
+    <content></content>
+</a>
 {{/link}}
 
 {{#button}}
-    <button type="button"><content></content></button>
+<button type="button">
+    <content></content>
+</button>
 {{/button}}
 
 {{#submit}}
-    <button type="submit"><content></content></button>
+<button type="submit">
+    <content></content>
+</button>
 {{/submit}}
 
 {{#helper}}
-    <div class="
+<div class="
         {{#align}}align-{{align}}{{/align}}
         {{#inline}}inline{{/inline}}">
-         <content select="span"></content> <a href="{{action}}">{{#back}}{{{arrow-back}}}{{/back}}<content></content>{{{arrow}}}</a>
-    </div>
+    <content select="span"></content>
+    <a href="{{action}}">{{#back}}{{{arrow-back}}}{{/back}}
+        <content></content>
+        {{{arrow}}}</a>
+</div>
 {{/helper}}
 
 {{#reply}}
-     <a href="{{action}}">{{{reply-icon}}}<content></content></a>
+<a href="{{action}}">{{{reply-icon}}}
+    <content></content>
+</a>
 {{/reply}}

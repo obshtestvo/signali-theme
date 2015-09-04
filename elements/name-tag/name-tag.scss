@@ -1,9 +1,9 @@
 @import '../styleguide';
 
-name-tag{
-  display: inline-block;
-  color: $secondary-color-100;
-  background: $secondary-color-20;
-  padding: 1px 4px 2px;
-  @extend %nano-radius;
+name-tag {
+    display: inline-block;
+    color: $secondary-color-100;
+    background: $secondary-color-20;
+    padding: 1px 4px 2px;
+    @extend %nano-radius;
 }

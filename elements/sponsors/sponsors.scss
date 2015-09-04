@@ -1,29 +1,29 @@
 @import '../styleguide';
 
-sponsors{
-  display: block;
-  section{
-      h5 {
-        @extend %bodytext-large-font;
-        font-weight: 600;
-        padding: 34px 0 18px 0;
-      }
-    ul{
-      @extend %stripped;
-      li{
-        float: left;
-        position: relative;
-        height: 60px;
-        margin: 0 40px 0 0;
-        a {
-          display: block;
-          height: 100%;
-          line-height: 80px;
-          img{
-            max-height: 100%;
-          }
+sponsors {
+    display: block;
+    section {
+        h5 {
+            @extend %bodytext-large-font;
+            font-weight: 600;
+            padding: 34px 0 18px 0;
         }
-      }
+        ul {
+            @extend %stripped;
+            li {
+                float: left;
+                position: relative;
+                height: 60px;
+                margin: 0 40px 0 0;
+                a {
+                    display: block;
+                    height: 100%;
+                    line-height: 80px;
+                    img {
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
     }
-  }
 }

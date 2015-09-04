@@ -1,38 +1,37 @@
 @import '../styleguide';
 
 survey-question {
-  display: block;
-  margin: 0 0 20px 0;
-  &[checkbox] {
-    input {
-      display: none;
+    display: block;
+    margin: 0 0 20px 0;
+    &[checkbox] {
+        input {
+            display: none;
+        }
     }
-  }
     action-button {
-      margin: 0 10px 0 0;
+        margin: 0 10px 0 0;
     }
 
-  & > section {
-    background: $grey-color-60;
-    @extend %small-radius;
-    padding: 15px 20px 20px;
-    position: relative;
-  }
-  &[state="error"], &.error {
     & > section {
-      z-index: 2;
-      box-shadow: inset 1px 0px 0px 0px $secondary-color-100,
-                  inset -1px 0px 0px 0px $secondary-color-100,
-                  inset 1px 1px 0px 0px $secondary-color-100;
+        background: $grey-color-60;
+        @extend %small-radius;
+        padding: 15px 20px 20px;
+        position: relative;
     }
-  }
-  &[state="success"], &.success
-  {
-    & > section {
-      z-index: 2;
-      box-shadow: inset 1px 0px 0px 0px $success-color,
-                  inset -1px 0px 0px 0px $success-color,
-                  inset 1px 1px 0px 0px $success-color;
+    &[state="error"], &.error {
+        & > section {
+            z-index: 2;
+            box-shadow: inset 1px 0px 0px 0px $secondary-color-100,
+            inset -1px 0px 0px 0px $secondary-color-100,
+            inset 1px 1px 0px 0px $secondary-color-100;
+        }
     }
-  }
+    &[state="success"], &.success {
+        & > section {
+            z-index: 2;
+            box-shadow: inset 1px 0px 0px 0px $success-color,
+            inset -1px 0px 0px 0px $success-color,
+            inset 1px 1px 0px 0px $success-color;
+        }
+    }
 }

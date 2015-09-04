@@ -1,11 +1,11 @@
 @import '../styleguide';
 
 settings {
-  display: block;
-  form {
     display: block;
-    @extend %small-radius;
-    padding: 30px;
-    background: $grey-color-60;
-  }
+    form {
+        display: block;
+        @extend %small-radius;
+        padding: 30px;
+        background: $grey-color-60;
+    }
 }

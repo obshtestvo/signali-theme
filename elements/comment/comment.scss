@@ -1,79 +1,79 @@
 @import '../styleguide';
 
-comment{
-  display: block;
-  @extend %small-radius;
-  margin: 0 0 10px 0;
-  background: $grey-color-20;
-  &:first-of-type{
-    margin: 20px 0 10px;
-  }
-  article{
-    padding: 15px 20px 17px;
-    p{
-      @extend %bodytext-font;
-    }
-  }
-  footer{
+comment {
     display: block;
-    line-height: 18px;
-    font-size: 12px;
-    padding: 10px 10px;
-    border-top: 1px solid $grey-color-60;
-    & > span {
-      float: left;
-      color: $grey-color-100;
+    @extend %small-radius;
+    margin: 0 0 10px 0;
+    background: $grey-color-20;
+    &:first-of-type {
+        margin: 20px 0 10px;
     }
-    .profile{
-      margin: 0 0 0 5px;
-      float: left;
-      .avatar{
-        width: 18px;
-        height: 18px;
-        position: relative;
-        background: $grey-color-80;
-        float: left;
-        margin: 0 5px 0 0;
-        svg{
-          width: 6px;
-          height: 6px;
-          @extend %center-xy;
-          fill: $grey-color-100;
-          z-index: 1;
-        }
-        img{
-          max-width: 100%;
-          width: 18px;
-          height: 18px;
-          z-index: 2;
-          position: relative;
-        }
-      }
-    }
-    a {
-      color: $secondary-color-100;
-      &:hover{
-        text-decoration: underline;
-      }
-    }
-    strong{
-      font-weight: 600;
-      color: $main-color-100;
-    }
-  }
-  &[reply]{
-    background: none;
     article {
-      padding: 6px 20px 7px;
-      p {
-        @extend %small-font;
-      }
+        padding: 15px 20px 17px;
+        p {
+            @extend %bodytext-font;
+        }
     }
     footer {
-      padding: 0 0 5px;
-      border-top: 0;
-      border-bottom: 1px solid $grey-color-60;
-      margin: 0 20px;
+        display: block;
+        line-height: 18px;
+        font-size: 12px;
+        padding: 10px 10px;
+        border-top: 1px solid $grey-color-60;
+        & > span {
+            float: left;
+            color: $grey-color-100;
+        }
+        .profile {
+            margin: 0 0 0 5px;
+            float: left;
+            .avatar {
+                width: 18px;
+                height: 18px;
+                position: relative;
+                background: $grey-color-80;
+                float: left;
+                margin: 0 5px 0 0;
+                svg {
+                    width: 6px;
+                    height: 6px;
+                    @extend %center-xy;
+                    fill: $grey-color-100;
+                    z-index: 1;
+                }
+                img {
+                    max-width: 100%;
+                    width: 18px;
+                    height: 18px;
+                    z-index: 2;
+                    position: relative;
+                }
+            }
+        }
+        a {
+            color: $secondary-color-100;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        strong {
+            font-weight: 600;
+            color: $main-color-100;
+        }
     }
-  }
+    &[reply] {
+        background: none;
+        article {
+            padding: 6px 20px 7px;
+            p {
+                @extend %small-font;
+            }
+        }
+        footer {
+            padding: 0 0 5px;
+            border-top: 0;
+            border-bottom: 1px solid $grey-color-60;
+            margin: 0 20px;
+        }
+    }
 }

@@ -1,9 +1,13 @@
 {{^resume}}
 <section>
     <div class="logo-wrap">
-        <a href="{{action}}"><content select="img"></content></a>
+        <a href="{{action}}">
+            <content select="img"></content>
+        </a>
     </div>
-    <h4><a href="{{action}}"><content select="strong"></content></a></h4>
+    <h4><a href="{{action}}">
+        <content select="strong"></content>
+    </a></h4>
     <content select="[type='category']"></content>
     <content select="[type='location']"></content>
     <content select="[type='tags']"></content>
@@ -18,9 +22,11 @@
 {{#resume}}
 <section>
     <div class="logo-wrap">
-        <a href="{{action}}"><content select="img"></content></a>
+        <a href="{{action}}">
+            <content select="img"></content>
+        </a>
     </div>
     <content select="[type='rating']"></content>
 </section>
-    <content></content>
+<content></content>
 {{/resume}}

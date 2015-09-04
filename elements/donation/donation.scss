@@ -1,17 +1,17 @@
 @import '../styleguide';
 
 donation {
-  background: $main-color-100 url('./background.png') no-repeat center center;
-  display: block;
-  div {
-    @extend %wrapper;
-    text-align: center;
-    padding: 62px 0;
-    p{
-      @extend %bodytext-large-font;
-      line-height: 16px;
-      color: $white;
-      margin: 0 0 20px 0;
+    background: $main-color-100 url('./background.png') no-repeat center center;
+    display: block;
+    div {
+        @extend %wrapper;
+        text-align: center;
+        padding: 62px 0;
+        p {
+            @extend %bodytext-large-font;
+            line-height: 16px;
+            color: $white;
+            margin: 0 0 20px 0;
+        }
     }
-  }
 }

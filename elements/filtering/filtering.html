@@ -1,28 +1,29 @@
 {{#primary}}
 <section class="clearfix">
-   <div class="clearfix">
-       <content select="select-dropdown"></content>
-   </div>
+    <div class="clearfix">
+        <content select="select-dropdown"></content>
+    </div>
     <content></content>
-   <div class="actions">
-       <content select="action-button"></content>
-   </div>
+    <div class="actions">
+        <content select="action-button"></content>
+    </div>
 </section>
 {{/primary}}
 
 {{#secondary}}
-    {{#sorting}}
-    <div class="clearfix">
-        <content select="strong"></content>
-        <section>
-            <content select="select-dropdown"></content>
-        </section>
-    </div>
-    {{/sorting}}
+{{#sorting}}
+<div class="clearfix">
+    <content select="strong"></content>
+    <section>
+        <content select="select-dropdown"></content>
+    </section>
+</div>
+{{/sorting}}
 
-    {{#exception}}
-        <section>
-        <content select="strong"></content><content></content>
-        </section>
-    {{/exception}}
+{{#exception}}
+<section>
+    <content select="strong"></content>
+    <content></content>
+</section>
+{{/exception}}
 {{/secondary}}

@@ -1,12 +1,13 @@
 @import '../styleguide';
+
 breadcrumb {
-  display: block;
-  ul{
-    font-size: 0;
     display: block;
-    list-style-type: none;
-    position: relative;
-    margin: 0;
-    padding: 0;
-  }
+    ul {
+        font-size: 0;
+        display: block;
+        list-style-type: none;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
 }

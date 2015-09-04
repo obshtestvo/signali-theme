@@ -1,46 +1,47 @@
 @import '../styleguide';
-card-item{
-  line-height: 17px;
-  padding: 0 20px;
-  position: relative;
-  display: block;
-  strong{
-    display: block;
-    font-size: 12px;
-    line-height: 14px;
-    margin: 14px 0 0;
-    text-transform: uppercase;
-    color: $grey-color-100;
-    font-weight: 400;
+
+card-item {
+    line-height: 17px;
+    padding: 0 20px;
     position: relative;
-    &:before{
-      position: absolute;
-      content: '';
-      height: 11px;
-      margin: 1px 0 0 ;
-      width: 5px;
-      background: $grey-color-60;
-      left: -20px;
+    display: block;
+    strong {
+        display: block;
+        font-size: 12px;
+        line-height: 14px;
+        margin: 14px 0 0;
+        text-transform: uppercase;
+        color: $grey-color-100;
+        font-weight: 400;
+        position: relative;
+        &:before {
+            position: absolute;
+            content: '';
+            height: 11px;
+            margin: 1px 0 0;
+            width: 5px;
+            background: $grey-color-60;
+            left: -20px;
+        }
     }
-  }
-  .tags {
+    .tags {
+        a {
+            display: inline-block;
+            margin: 0 5px 0 0;
+            position: relative;
+            &:after {
+                content: ',';
+            }
+            &:last-of-type:after {
+                display: none;
+            }
+        }
+    }
     a {
-      display: inline-block;
-      margin: 0 5px 0 0;
-      position: relative;
-      &:after{
-        content: ',';
-      }
-      &:last-of-type:after{
-        display: none;
-      }
+        font-size: 12px;
+        color: $secondary-color-100;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
-  a {
-    font-size: 12px;
-    color: $secondary-color-100;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
 }

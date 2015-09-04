@@ -1,29 +1,29 @@
 @import '../styleguide';
 
 menu-column {
-  display: block;
-  width: 33.33%;
-  float: left;
-  padding: 5px 30px;
-  h2 {
-    @extend %bodytext-large-font ;
-    font-weight: 600;
-    color: $body-text-color;
-    padding: 0 0 7px;
-  }
-  ul{
-    @extend %stripped;
-    li{
-      @extend %bodytext-font;
-      line-height: 24px;
-      a {
-        line-height: 20px;
-        color: $secondary-color-100;
-        display: inline-block;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+    display: block;
+    width: 33.33%;
+    float: left;
+    padding: 5px 30px;
+    h2 {
+        @extend %bodytext-large-font;
+        font-weight: 600;
+        color: $body-text-color;
+        padding: 0 0 7px;
     }
-  }
+    ul {
+        @extend %stripped;
+        li {
+            @extend %bodytext-font;
+            line-height: 24px;
+            a {
+                line-height: 20px;
+                color: $secondary-color-100;
+                display: inline-block;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }

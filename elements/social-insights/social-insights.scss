@@ -18,7 +18,7 @@ social-insights {
         & > div {
             float: left;
         }
-        &[static]{
+        &[static] {
             left: 0;
         }
     }
@@ -37,25 +37,25 @@ social-insights {
         & > div {
             float: right;
         }
-        &[static]{
+        &[static] {
             right: 40px;
         }
     }
 
-    &[static]{
+    &[static] {
         position: absolute;
         bottom: 0;
     }
-    &[density="airy"]{
+    &[density="airy"] {
         padding: 50px 0
     }
-    &[density="comfortable"]{
+    &[density="comfortable"] {
         padding: 30px 0
     }
-    &[density="cozy"]{
+    &[density="cozy"] {
         padding: 20px 0
     }
-    &[density="compact"]{
+    &[density="compact"] {
         padding: 10px 0;
     }
 }

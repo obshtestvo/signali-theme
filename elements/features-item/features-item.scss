@@ -9,36 +9,36 @@ features-item {
     padding: 0 20px 0 0;
     margin: 10px 0;
     .icon {
-      width: 18px;
-      height: 18px;
-      display: block;
-      position: absolute;
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
         @extend %center-y;
-      svg{
-        width: 100%;
-        height: 100%;
-        fill: $body-text-color;
-      }
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: $body-text-color;
+        }
     }
     a {
-      font-size: 16px;
-      color: $body-text-color;
-      padding: 0 0 0 25px;
+        font-size: 16px;
+        color: $body-text-color;
+        padding: 0 0 0 25px;
         display: block;
     }
-  &[type="check"] {
-    svg {
-      fill:$secondary-color-80;
+    &[type="check"] {
+        svg {
+            fill: $secondary-color-80;
+        }
     }
-  }
-  &[type="none"] {
-    svg {
-      fill: $grey-color-100;
+    &[type="none"] {
+        svg {
+            fill: $grey-color-100;
+        }
     }
-  }
-  &[type="question"] {
-    svg {
-      fill:$main-color-80 ;
+    &[type="question"] {
+        svg {
+            fill: $main-color-80;
+        }
     }
-  }
 }

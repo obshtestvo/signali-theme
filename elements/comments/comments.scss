@@ -1,12 +1,12 @@
 @import '../styleguide';
 
-comments{
-  background: $white;
-  display: block;
-  @extend %wrapper;
-  padding-bottom: 10px;
-  & > section {
-    width: 75%;
-    padding: 10px 5px 0 0;
-  }
+comments {
+    background: $white;
+    display: block;
+    @extend %wrapper;
+    padding-bottom: 10px;
+    & > section {
+        width: 75%;
+        padding: 10px 5px 0 0;
+    }
 }

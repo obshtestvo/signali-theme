@@ -1,135 +1,135 @@
 @import '../styleguide';
 
 @mixin size($size) {
-  width: $size + 5px;
-  height: $size;
-  padding: 0 $size/5 0 0;
+    width: $size + 5px;
+    height: $size;
+    padding: 0 $size/5 0 0;
 }
 
 rating {
-  padding: 7px 0;
-  display: block;
-  a {
-    line-height: 14px;
-    position: relative;
-    top: -3px;
-    color: $grey-color-100 !important;
-    &:hover {
-      color: $secondary-color-100;
-    }
-  }
-  &[size="medium"], &[size="large"] {
-    padding: 0;
-    star[type="empty"] .outline {
-      fill: $grey-color-100;
-    }
-  }
-  &[size="small"] star {
-    @include size(15px);
-    &[type="empty"] .outline {
-      fill: $grey-color-100;
-    }
-  }
-  &[size="medium"] star {
-    @include size(18px);
-    &[type="empty"] .outline {
-      fill: $grey-color-100;
-    }
-  }
-  &[size="large"] star {
-    @include size(22px);
-  }
-
-  star {
-    display: inline-block;
-    @include size(15px);
-    cursor: pointer;
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    &[type="full"] {
-      .full {
-        fill: $rating-color
-      }
-      .half, .outline {
-        fill: transparent;
-      }
-    }
-    &[type="half"] {
-      .half, .outline {
-        fill: $rating-color;
-      }
-      .full {
-        fill: transparent;
-      }
-    }
-    &[type="empty"] {
-      .half, .full {
-        fill: transparent;
-      }
-      .outline {
-        fill: $rating-color;
-      }
-    }
-  }
-
-  .stars star[size].user,
-  .stars star.user {
-    .half {
-      fill: transparent;
-    }
-    .full {
-      //fill: $rating-color
-      fill: $secondary-color
-    }
-    .outline {
-      //fill: adjust_hue($rating-color, -5)
-      fill: transparent
-    }
-  }
-
-  .stars {
-    display: inline-block;
-    &:hover star {
-      &[type="empty"] {
-        .outline {
-          fill: $grey-color-90;
+    padding: 7px 0;
+    display: block;
+    a {
+        line-height: 14px;
+        position: relative;
+        top: -3px;
+        color: $grey-color-100 !important;
+        &:hover {
+            color: $secondary-color-100;
         }
-      }
-      &[type="full"],
-      &[size].user,
-      &.user  {
+    }
+    &[size="medium"], &[size="large"] {
+        padding: 0;
+        star[type="empty"] .outline {
+            fill: $grey-color-100;
+        }
+    }
+    &[size="small"] star {
+        @include size(15px);
+        &[type="empty"] .outline {
+            fill: $grey-color-100;
+        }
+    }
+    &[size="medium"] star {
+        @include size(18px);
+        &[type="empty"] .outline {
+            fill: $grey-color-100;
+        }
+    }
+    &[size="large"] star {
+        @include size(22px);
+    }
+
+    star {
+        display: inline-block;
+        @include size(15px);
+        cursor: pointer;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        &[type="full"] {
+            .full {
+                fill: $rating-color
+            }
+            .half, .outline {
+                fill: transparent;
+            }
+        }
+        &[type="half"] {
+            .half, .outline {
+                fill: $rating-color;
+            }
+            .full {
+                fill: transparent;
+            }
+        }
+        &[type="empty"] {
+            .half, .full {
+                fill: transparent;
+            }
+            .outline {
+                fill: $rating-color;
+            }
+        }
+    }
+
+    .stars star[size].user,
+    .stars star.user {
+        .half {
+            fill: transparent;
+        }
         .full {
-          fill: $grey-color-90;
+            //fill: $rating-color
+            fill: $secondary-color
         }
         .outline {
-          fill: transparent;
+            //fill: adjust_hue($rating-color, -5)
+            fill: transparent
         }
-      }
-      &[type="half"] {
-        .half, .outline {
-          fill: $grey-color-90;
-        }
-      }
     }
-  }
 
-  .stars star[size].hover,
-  .stars star.hover,
-  .stars star[size].user.hover,
-  .stars star.user.hover {
-    .half {
-      fill: transparent;
+    .stars {
+        display: inline-block;
+        &:hover star {
+            &[type="empty"] {
+                .outline {
+                    fill: $grey-color-90;
+                }
+            }
+            &[type="full"],
+            &[size].user,
+            &.user {
+                .full {
+                    fill: $grey-color-90;
+                }
+                .outline {
+                    fill: transparent;
+                }
+            }
+            &[type="half"] {
+                .half, .outline {
+                    fill: $grey-color-90;
+                }
+            }
+        }
     }
-    .full {
-      //fill: $rating-color
-      fill: $secondary-color
+
+    .stars star[size].hover,
+    .stars star.hover,
+    .stars star[size].user.hover,
+    .stars star.user.hover {
+        .half {
+            fill: transparent;
+        }
+        .full {
+            //fill: $rating-color
+            fill: $secondary-color
+        }
+        .outline {
+            //fill: adjust_hue($rating-color, -5)
+            fill: transparent
+        }
     }
-    .outline {
-      //fill: adjust_hue($rating-color, -5)
-      fill: transparent
-    }
-  }
 }
