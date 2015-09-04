@@ -4,18 +4,6 @@ pagination {
     display: block;
     text-align: center;
     font-size: 0;
-    &[density="airy"]{
-        padding: 40px 0
-    }
-    &[density="comfortable"]{
-        padding: 30px 0
-    }
-    &[density="cozy"]{
-        padding: 20px 0
-    }
-    &[density="compact"]{
-        padding: 10px 0;
-    }
     a {
         color: $secondary-color-100;
         display: inline-block;
@@ -45,5 +33,17 @@ pagination {
             pointer-events: none;
             cursor: default;
         }
+    }
+    &[density="airy"]{
+        padding: 40px 0
+    }
+    &[density="comfortable"]{
+        padding: 30px 0
+    }
+    &[density="cozy"]{
+        padding: 20px 0
+    }
+    &[density="compact"]{
+        padding: 10px 0;
     }
 }

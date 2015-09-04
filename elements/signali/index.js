@@ -72,6 +72,9 @@ selectEl(componentService);
 var valueEl = require('value');
 valueEl(componentService);
 
+var socialInsightsEl = require('social-insights');
+socialInsightsEl(componentService);
+
 var menuEl = require('menu');
 menuEl(componentService);
 

@@ -1,0 +1,61 @@
+@import '../styleguide';
+
+social-insights {
+    display: block;
+    & > div {
+        & > section {
+            float: left;
+            margin: 0 8px;
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    &[align="left"] {
+        & > div {
+            float: left;
+        }
+        &[static]{
+            left: 0;
+        }
+    }
+    &[align="center"] {
+        & > div {
+            float: none;
+            text-align: center;
+            & > section {
+                float: none;
+                display: inline-block;
+                margin: 0 6px;
+            }
+        }
+    }
+    &[align="right"] {
+        & > div {
+            float: right;
+        }
+        &[static]{
+            right: 40px;
+        }
+    }
+
+    &[static]{
+        position: absolute;
+        bottom: 0;
+    }
+    &[density="airy"]{
+        padding: 50px 0
+    }
+    &[density="comfortable"]{
+        padding: 30px 0
+    }
+    &[density="cozy"]{
+        padding: 20px 0
+    }
+    &[density="compact"]{
+        padding: 10px 0;
+    }
+}

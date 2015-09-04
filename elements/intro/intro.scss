@@ -3,16 +3,28 @@
 intro {
   display: block;
   padding: 40px 0;
-  & > .clearfix {
+  position: relative;
+  & > .div {
     position: relative;
   }
   &[density="airy"]{
     padding: 40px 0 88px 0;
-    position: relative;
   }
   &[density="comfortable"]{
-    position: absolute;
-    bottom: 0px;
+    padding: 20px 0 40px 0;
   }
+  &[density="cozy"]{
+    padding: 10px 0 20px 0;
+  }
+  &[density="compact"]{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-right: 40px;
+  }
+  &[social-insights]{
+    padding-right: 200px;
+  }
+
 }
 
