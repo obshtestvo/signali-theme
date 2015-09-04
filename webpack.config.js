@@ -11,6 +11,7 @@ var config = {};
 /**************** INPUT ***************/
 config.entry = {
     app: 'signali',
+    admin: 'admin',
     head: [
         'modernizr/modernizr',
     ]
@@ -27,7 +28,6 @@ config.output = {
 /**************** PLUGINS ***************/
 config.plugins = [
     new ExtractTextPlugin("[name].css"),
-    new webpack.optimize.CommonsChunkPlugin('head', 'head.js')
 ];
 if (process.env.PRODUCTION) {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -66,7 +66,7 @@ if (process.env.PRODUCTION) {
 config.module = {
     loaders: [
         {
-            test: /packery|draggabilly|drop\/drop|debounce|holderjs\/holder|blueimp|modernizr|skatejs\/dist|magnific\-popup\/src\/js|magnific-popup\/dist\/jquery\.magnific|block-ui|MutationObserver|skatejs\-polyfill\-mutation\-observer/,
+            test: /packery|draggabilly|drop\/drop|debounce|([Ss]elect2[\/a-zA-Z\._0-9]+js)|holderjs\/holder|blueimp|modernizr|skatejs\/dist|magnific\-popup\/src\/js|magnific-popup\/dist\/jquery\.magnific|block-ui|MutationObserver|skatejs\-polyfill\-mutation\-observer/,
             loader: skipProcessingLoader
         },
         {
@@ -74,6 +74,7 @@ config.module = {
             loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!ruby-sass")
         },
         {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
+        {test: /\.gif$/, loader: "url?limit=100000&mimetype=image/gif"},
         {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
         {test: /\.jpg$/, loader: "file"},
         {test: /\.html$/, loader: "mustache"},

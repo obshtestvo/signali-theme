@@ -29,6 +29,7 @@
     "raw-loader": "^0.5.1",
     "ruby-sass-loader": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
     "script-loader": "^0.6.1",
+    "select2": "select2/select2#3.5.4",
     "skatejs": "skatejs/skatejs#f9466c9816585b2998543997c4fc04e65397aa25",
     "skatejs-polyfill-mutation-observer": "skatejs/polyfill-mutation-observer",
     "skatejs-type-attribute": "skatejs/type-attribute#master",

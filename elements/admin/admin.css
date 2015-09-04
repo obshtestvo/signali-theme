@@ -1,5 +1,10 @@
+
+.left-nav a[href="/admin/"] {
+    display: none;
+}
+
 #footer {
-    height: 30px;
+    display: none;
 }
 .footer .content  {
     border: 0;
