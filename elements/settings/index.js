@@ -5,7 +5,7 @@ module.exports = function (componentService) {
         template: require('./settings.html'),
         created: function() {
             var $el = $(this);
-            var $name = $el.find('input[name="name"]');
+            var $name = $el.find('input[name="fullname"]');
             $('[settings-trigger]').on('done', function() {
                 $name.focus();
             });

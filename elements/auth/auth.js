@@ -70,7 +70,7 @@ module.exports = function (componentService) {
                     if (value == 'registration') {
                         $el.find('[for="registration"]').show();
                         $el.find('[for="login"]').hide();
-                        $el.find('input[name="name"]').focus();
+                        $el.find('input[name="fullname"]').focus();
                         $el.find('input[name="auth_type"]').val('registration');
                     } else {
                         $el.find('[for="login"]').show();
@@ -94,7 +94,7 @@ module.exports = function (componentService) {
             focus: function () {
                 var $el = $(this);
                 var $email = $el.find('input[name="email"]');
-                var $name = $el.find('input[name="name"]');
+                var $name = $el.find('input[name="fullname"]');
                 if ($email.is(":visible")) $email.focus();
                 if ($name.is(":visible")) $name.focus();
             },

@@ -1,3 +1,4 @@
+{% load ux %}
 <action-button helper align="center" action="{{ request.user.email|email_provider_url }}" density="comfortable">
     <span>провери за мейл в</span> {{ request.user.email|email_provider }}
 </action-button>
