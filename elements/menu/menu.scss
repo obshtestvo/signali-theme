@@ -3,81 +3,95 @@
 
 $main-text-color: $white;
 $main-text-color-focus: $main-color-20;
+$secondary-hover-color: #efb7c1;
 
 menu {
-  margin: 0;
-  padding: 0;
-  float: left;
-  display: block;
-  .burger-icon {
-    @include burger(17px, 3px, 2px, $main-text-color, 1px);
-    margin-right: 2px;
-  }
-  .burger-icon, .burger-icon::before, .burger-icon::after {
-    display: inline-block;
-  }
-  .trigger.active .burger-icon {
-    @include burger-to-cross;
-  }
-  .trigger:focus .burger-icon,
-  .trigger:hover .burger-icon {
-    color:$main-text-color-focus;
-  }
-  .categories{
-    opacity: 0;
-    visibility: hidden;
-    background: $white;
-    width: 59%;
-    @extend %small-radius, %anime;
-    @include box-shadow( 0, 0, 5px, rgba($main-color-40, 1));
-    position: absolute;
-    margin: 8px 0 0 0;
-    padding: 20px 0;
-    &:before{
-      content: '';
-      display: block;
-      position: absolute;
-      top:-6px;
-      left: 8%;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-bottom: 6px solid $white;
-      width: 2px;
-      height: 0;
+    margin: 0;
+    padding: 0;
+    float: left;
+    display: block;
+    .burger-icon {
+        @include burger(17px, 3px, 2px, $main-text-color, 1px);
+        margin-right: 2px;
     }
-    &.active{
-      opacity: 1;
-      visibility: visible;
+    .burger-icon, .burger-icon::before, .burger-icon::after {
+        display: inline-block;
     }
-    .seeall {
-      clear: both;
-      padding: 0 30px;
-      a{
-        display: block;
-        width: 100%;
-        text-align: center;
-        @extend %small-radius, %bodytext-font;
-        text-transform: uppercase;
-        color: $main-color-100;
-        line-height: 53px;
-        background: $grey-color-60;
-        &:hover{
-          background: $grey-color-80;
-          text-decoration: underline;
+    .trigger {
+        &:hover {
+            color: $secondary-hover-color;
+            .burger-icon {
+                background: $secondary-hover-color;
+                &:after, &:before {
+                    background: $secondary-hover-color
+                }
+            }
         }
-        &:active{
-          background: darken($grey-color-60, 15%);
-          color: $secondary-color-80;
+        &.active .burger-icon {
+            @include burger-to-cross;
+            color: $secondary-hover-color;
+            background: transparent;
+            &:after, &:before {
+                background: $secondary-hover-color
+            }
         }
-      }
     }
-  }
+    .categories {
+        opacity: 0;
+        visibility: hidden;
+        background: $white;
+        width: 59%;
+        @extend %small-radius, %anime;
+        @include box-shadow(0, 0, 5px, rgba($main-color-40, 1));
+        position: absolute;
+        margin: 8px 0 0 0;
+        padding: 20px 0;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -6px;
+            left: 8%;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid $white;
+            width: 2px;
+            height: 0;
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .seeall {
+            clear: both;
+            padding: 0 30px;
+            a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                @extend %small-radius, %bodytext-font;
+                text-transform: uppercase;
+                color: $main-color-100;
+                line-height: 53px;
+                background: $grey-color-60;
+                &:hover {
+                    background: $grey-color-80;
+                    text-decoration: underline;
+                }
+                &:active {
+                    background: darken($grey-color-60, 15%);
+                    color: $secondary-color-80;
+                }
+            }
+        }
+    }
 }
+
 menu .trigger {
-  @extend %bodytext-large-font;
-  color: $main-text-color;
-  font-weight: 600;
-  cursor: pointer;
-  line-height: 30px;
+    @extend %bodytext-large-font;
+    color: $main-text-color;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 30px;
 
 }

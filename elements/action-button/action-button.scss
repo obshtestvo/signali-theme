@@ -3,6 +3,8 @@
 /*How To Use*/
 //<action-button link/button/helper type="primary/secondary" fill="solid/outlined" color="red/purple/white" size="small/medium/large" align="left,center,right" action="{{action}}">
 //if helper attributes [type],[fill],[size] and [color] are not required
+$secondary-hover-color: #efb7c1;
+
 
 action-button {
     display: block;
@@ -71,6 +73,15 @@ action-button {
                 &:active {
                     color: $main-color-80;
                     background: $white;
+                }
+            }
+        }
+        &[color="transparent"] {
+            a, button {
+                color: $white;
+                background: transparent;
+                &:hover {
+                    color: $secondary-hover-color;
                 }
             }
         }
@@ -158,6 +169,14 @@ action-button {
         &[size="medium"] {
             a, button {
                 padding: 10px 30px;
+            }
+        }
+        &[size="small"] {
+            a, button {
+                padding: 0;
+            }
+            &[density="compact"]{
+                padding: 10px 20px;
             }
         }
         &[mainsearch] {
