@@ -1,5 +1,15 @@
 <div>
     <content select="strong"></content>
+    {{#expandable}}
+    <div class="switch-icons">
+        <div class="plus">
+            {{{plusIcon}}}
+        </div>
+        <div class="minus">
+            {{{minusIcon}}}
+        </div>
+    </div>
+    {{/expandable}}
 </div>
 <section>
     <content select="checkbox"></content>

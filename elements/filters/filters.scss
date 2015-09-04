@@ -1,20 +1,23 @@
 @import '../styleguide';
 
+$size: 12px;
+$standart-padding: 5px;
+
 filters {
     display: block;
     position: relative;
     padding: 0 0 25px;
     & > div {
         display: block;
-        height: 12px;
-        line-height: 12px;
-        font-size: 12px;
+        height: $size;
+        line-height: $size;
+        font-size: $size;
         color: $grey-color-120;
         position: relative;
         font-weight: 400;
         text-transform: uppercase;
         overflow: hidden;
-        margin: 0 0 5px 0;
+        margin: 0 0 $standart-padding 0;
         &:before {
             content: '';
             display: block;
@@ -24,17 +27,58 @@ filters {
             position: absolute;
             top: 48%;
         }
+        & > strong {
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            padding: 0 $standart-padding 0 0;
+        }
+        .switch-icons {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0 0 0 $standart-padding;
+            width: $size + $standart-padding;
+            height: $size;
+            & > div {
+                opacity: 0;
+                visibility: hidden;
+                @extend %small-radius;
+                cursor: pointer;
+                position: absolute;
+                height: $size;
+                width: $size;
+                top: 0;
+                right: 0;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                    fill: $grey-color-100;
+                }
+                &:hover{
+                    svg {
+                        fill: $secondary-color-100;
+                    }
+                }
+            }
+        }
     }
-    strong {
-        font-weight: 400;
-        position: relative;
-        z-index: 1;
-        padding: 0 5px 0 0;
+    &.expanded .minus{
+        opacity: 1;
+        visibility: visible;
     }
-    &[color="white"] strong {
-        background: $white;
+    &.close .plus{
+        opacity: 1;
+        visibility: visible;
     }
-    &[color="light-gray"] strong {
-        background: $grey-color-60;
+    &[color="white"] > div {
+        & > strong, .switch-icons {
+            background: $white;
+        }
+    }
+    &[color="light-gray"] div {
+        & > strong, .switch-icons {
+            background: $grey-color-60;
+        }
     }
 }
