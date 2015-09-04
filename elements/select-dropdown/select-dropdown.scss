@@ -172,6 +172,7 @@ select-dropdown {
         @extend %label-font;
         color: $grey-color-120;
         padding: 0 0 5px;
+        text-transform: uppercase;
     }
 
     &[size="full"] {

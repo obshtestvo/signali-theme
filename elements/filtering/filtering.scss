@@ -12,6 +12,8 @@ filtering {
         }
         .actions {
             text-align: center;
+            margin: -10px 0 0 0;
+
         }
     }
     &[secondary] {
@@ -50,7 +52,7 @@ filtering {
                     color: $grey-color-100;
                     font-weight: 400;
                     text-transform: uppercase;
-                    padding: 0 6px 0 0;
+                    padding: 0 5px 0 0;
                 }
             }
         }

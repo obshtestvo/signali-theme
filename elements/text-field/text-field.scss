@@ -14,6 +14,7 @@ text-field {
         @extend %label-font;
         color: $grey-color-120;
         padding: 0 0 5px;
+        text-transform: uppercase;
     }
     &[type="textarea"] {
         padding: 0 0 20px;
