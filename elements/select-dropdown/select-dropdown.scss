@@ -215,16 +215,18 @@ select-dropdown {
                     border: none;
                 }
                 svg {
+                    @extend %anime;
+                    position: absolute;
+                    top:50%;
+                    margin-top: -8px;
                     width: 16px;
-                    height: 100%;
-                    @extend %center-y;
+                    height: 16px;
                     right: 8px;
                     fill: $grey-color-80;
                 }
-                &.dropdown-active:after {
-                    margin-top: $arrow-height * -0.8;
-                    border-width: 0 $arrow-width/2 $arrow-height $arrow-width/2;
-                    border-color: transparent transparent $arrow-color;
+                &.dropdown-active svg {
+                    fill: $secondary-color;
+                    transform: rotate(180deg) ;
                 }
             }
         }
