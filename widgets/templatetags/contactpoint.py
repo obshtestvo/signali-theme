@@ -82,13 +82,11 @@ def survey(request, contactpoint, form=None):
 
 @register.inclusion_tag('_searchbar.html')
 def searchbar(request, form=None):
-    prefix = 'search'
     if form is None:
-        form = UserCriteriaForm(data=request.params, prefix=prefix)
+        form = UserCriteriaForm(data=request.params)
     return {
-        "prefix": prefix,
         "form": form,
-        "errors": errors(request).get(prefix+"form", None),
+        "errors": errors(request).get("form", None),
         "request": request
     }
 

@@ -3,7 +3,6 @@ from operator import attrgetter
 
 from django import template
 
-from signali_contact.forms import UserCriteriaForm
 from signali_taxonomy.models import Category, Keyword
 
 register = template.Library()
