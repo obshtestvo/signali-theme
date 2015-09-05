@@ -37,7 +37,9 @@ select-dropdown {
     select {
         display: none;
     }
-
+    .selectize-dropdown-content{
+        position: relative;
+    }
     .selectize-control.plugin-remove_button {
         [data-value] {
             position: relative;
@@ -147,6 +149,7 @@ select-dropdown {
         background: $white;
         border-color: $grey-color;
         max-width: 100%;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         [data-selectable] {
             border-bottom: 1px solid $grey-color-60;
             .highlight {
@@ -260,6 +263,7 @@ select-dropdown {
             }
         }
         .selectize-dropdown {
+            border: none;
             &.multi {
                 [data-selectable]:last-child {
                     border-radius: 0;
