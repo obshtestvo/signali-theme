@@ -33,6 +33,8 @@ module.exports = function (componentService) {
                 options.plugins.remove_button =  {
                     label: require('icons/times-circle.svg')
                 };
+            } else {
+                options.maxItems = 1
             }
             if (el.hasAttribute('freetext')) {
                 options.create = true
@@ -44,11 +46,11 @@ module.exports = function (componentService) {
             }
             if (!el.hasAttribute('name')) {
                 var inputMap = {}, inputName, selectEl, i;
-                for (i = 0; i < data.inputNames; i++) {
+                for (i = 0; i < data.inputNames.length; i++) {
                     inputName = data.inputNames[i];
                     selectEl = document.createElement("select");
                     selectEl.setAttribute('name', inputName);
-                    if (isMultiple) selectEl.setAttribute('multiple', true);
+                    if (isMultiple) selectEl.setAttribute('multiple', '');
                     el.appendChild(selectEl);
                     inputMap[inputName] = $(selectEl)
                 }
@@ -56,7 +58,6 @@ module.exports = function (componentService) {
                     inputMap: inputMap
                 };
             }
-
             if (el.getAttribute('location')=='simple') {
                 this.API = new addressSearch.Simple($input, options);
                 return;

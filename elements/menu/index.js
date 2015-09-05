@@ -15,7 +15,6 @@ module.exports = function (componentService) {
             });
 
             $(document).click(function(event) {
-                console.log($(event.target).closest($el).length)
                 if(!$(event.target).closest($el).length && $el.hasClass("active")) {
                     el.toggle()
                 }
