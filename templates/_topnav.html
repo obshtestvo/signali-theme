@@ -3,5 +3,11 @@
 <top-nav>
     {% categories_menu %}
     {% user_controls %}
-    <logo align="center-xy" action="{% url 'home' %}" color="light" size="large"></logo>
+    <logo align="center-x" action="{% url 'home' %}" color="light" size="large"></logo>
+    <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall" action="google.com">
+        Сподели опит
+    </action-button>
+    <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="google.com">
+        добави място
+    </action-button>
 </top-nav>
