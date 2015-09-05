@@ -10,6 +10,26 @@ modal {
     &[size="medium"] {
         max-width: 520px;
     }
+    &[density="airy"] {
+        .modal-box .padder {
+            padding: 80px;
+        }
+    }
+    &[density="comfortable"] {
+        .modal-box .padder {
+            padding: 60px;
+        }
+    }
+    &[density="cozy"] {
+        .modal-box .padder {
+            padding: 40px;
+        }
+    }
+    &[density="compact"] {
+        .modal-box .padder {
+        padding: 20px;
+        }
+    }
     .modal-box {
         background: $white;
         @extend %small-radius;
