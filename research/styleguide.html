@@ -565,8 +565,47 @@
         <bubble no-icon size="hlaf" color="red" type="success" density="compact">
             This is just a simple notice. Everything is in order and this is a simple link.
         </bubble>
+        <modal id="leavePrompt" density="cozy">
+            <modal-screen>
+                <signup-prompt action="/contact-points/natsionalen_ombudsman/subscribers/" success-location="" divided>
+                    <bubble size="standart" color="white" type="success" success density="compact" class="animated fadeInUp" hidden>
+                        Записахме ви. Ще ви припомним. Успех.
+                    </bubble>
+                    <input type='hidden' name='csrfmiddlewaretoken' value='Vg35imDUPUR38qMleBCIZecz5zj2iN3p' />
+                    <input type="hidden" name="prefix" value="subscriber"/>
+                    <redirect class="half" location="">
+                        Пренасочваме те...
+                    </redirect>
+                    <email-signup class="half">
+                        <headline size="small" density="comfortable">
+                            Искаш ли да ти припомним?
+                        </headline>
+                        <notification information color="white" no-icon size="small">
+                            Ако ни оставиш имейл адрес ще ти припомним да провериш,
+                            какво е станало със сигнала, за да не остава проблемът нерешен.
+                        </notification>
+                        <text-field for="email" size="full" id="subscribe-email" name="subscriber-email" type="email"
+                                    placeholder="твоята@епоща.бг" required>
+                            имейл адрес
+                            <notification error size="text-field" hidden></notification>
+                            <!--<notification information color="white" no-icon size="small">-->
+                            <!--Ще можеш и да споделиш как минало и така да помогнеш на останалите,-->
+                            <!--които ще ползват Национален Омбудсман.-->
+                            <!--</notification>-->
+                        </text-field>
+                        <action-button submit type="primary" fill="solid" align="left" color="purple">
+                            Припомни ми
+                        </action-button>
+                    </email-signup>
+                    <!--<action-button submit type="secondary" fill="solid" align="center" size="gigalarge" color="red" action="">-->
+                    <!--Напред към сайта-->
+                    <!--</action-button>-->
+                </signup-prompt>
+            </modal-screen>
+        </modal>
     </div>
 </div>
+
 </page>
 <script src="build/app.js"></script>
 </body>
