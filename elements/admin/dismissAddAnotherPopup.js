@@ -1,8 +1,7 @@
 // extracted from /admin/js/admin/RelatedObjectLookups.js
 // TO BE REMOVED IN 1.8
 window.dismissAddAnotherPopup = function dismissAddAnotherPopup(win, newId, newRepr) {
-    console.log('dismiss');
-    // newId and newRepr are expected to have previously been escaped by
+        // newId and newRepr are expected to have previously been escaped by
     // django.utils.html.escape.
     newId = html_unescape(newId);
     newRepr = html_unescape(newRepr);

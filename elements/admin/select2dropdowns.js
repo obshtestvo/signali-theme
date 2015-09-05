@@ -16,7 +16,8 @@ $(function() {
         }
         $select.select2($.extend({
             dropdownAutoWidth: true,
-            allowClear: true
+            allowClear: true,
+            closeOnSelect: false,
         },options))
     });
 
