@@ -1,10 +1,20 @@
 @import '../styleguide';
 
-$secondary-hover-color: #efb7c1;
+$secondary-hover-color: #E46A81;
 login-box {
     float: left;
     padding: 0 0 0 15px;
     display: block;
+    .menu-trigger {
+        width: 30px;
+        height: 30px;
+        padding: 3px 6px;
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: $white;
+        }
+    }
     &[anonymous] {
         padding: 0 0 0 25px;
         #anonymous {
@@ -15,8 +25,14 @@ login-box {
                 line-height: 30px;
                 &:hover {
                     color: $secondary-hover-color;
+                    svg{
+                        fill: $secondary-hover-color;
+                    }
                 }
             }
+        }
+        .menu-trigger {
+            display: none;
         }
     }
     #loggedin {
@@ -81,7 +97,6 @@ login-box {
         }
         &:hover {
             background: $white;
-            position: absolute;
             a {
                 span:after {
                     border-top-color: $body-text-color;
@@ -94,6 +109,37 @@ login-box {
                 opacity: 1;
                 visibility: visible;
                 display: block;
+            }
+        }
+        .menu-trigger {
+            position: relative;
+            right: 0px;
+            top:5px;
+            float: right;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 940px), screen and (max-device-width: 940px) {
+    login-box {
+        float: right;
+    }
+}
+@media screen and (max-width: 940px), screen and (max-device-width: 940px) {
+    login-box {
+        &[anonymous] {
+            a{
+                .menu-trigger {
+                    display: block;
+                }
+                & > span {
+                    display: none;
+                }
             }
         }
     }

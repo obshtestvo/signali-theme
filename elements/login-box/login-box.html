@@ -1,13 +1,14 @@
 {{#anonymous}}
 <div id="anonymous">
     <a href="{{action}}" target="modal" auth-trigger type="login">
-        <content></content>
+        <strong class="menu-trigger">{{{iconUser}}}</strong><span><content></content></span>
     </a>
 </div>
 {{/anonymous}}
 
 {{^anonymous}}
 <div id="loggedin">
+    <!--<strong class="menu-trigger">{{{iconUser}}}</strong>-->
     <div class="profile">
         <a class="clearfix" href="{{action}}" target="modal" settings-trigger>
             <span><content select="img"></content></span>

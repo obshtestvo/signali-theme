@@ -3,7 +3,7 @@
 
 $main-text-color: $white;
 $main-text-color-focus: $main-color-20;
-$secondary-hover-color: #efb7c1;
+$secondary-hover-color: #E46A81;
 
 menu {
     margin: 0;
@@ -94,4 +94,28 @@ menu .trigger {
     cursor: pointer;
     line-height: 30px;
 
+}
+
+@media screen and (max-width: 940px), screen and (max-device-width: 940px) {
+    menu {
+        .categories {
+            width: 85%;
+        }
+    }
+}
+
+@media screen and (max-width: 640px), screen and (max-device-width: 640px) {
+    menu {
+        .trigger > span {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+    menu {
+        .categories {
+            width: 100%;
+        }
+    }
 }

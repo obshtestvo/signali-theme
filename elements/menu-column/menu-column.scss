@@ -27,3 +27,15 @@ menu-column {
         }
     }
 }
+
+@media screen and (max-width: 764px), screen and (max-device-width: 764px) {
+    menu-column {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 640px), screen and (max-device-width: 640px) {
+    menu-column {
+        width: 100%;
+    }
+}
