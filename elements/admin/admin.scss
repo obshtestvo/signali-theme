@@ -1,0 +1,17 @@
+@import "styleguide";
+@import "suit";
+@import "menu";
+@import "filters";
+@import "form";
+@import "tabs";
+
+.trans-ref.help-block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .toggle {
+    text-decoration: none;
+    i {
+      margin-top: -1px;
+    }
+  }
+}

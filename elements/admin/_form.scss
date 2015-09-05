@@ -1,0 +1,20 @@
+.form-horizontal .control-group .help-block.trans-ref {
+  margin-top: 0;
+}
+.form-horizontal fieldset .legend {
+  text-transform: capitalize;
+}
+#content .inline-group-compact h3 {
+  margin-top: 0;
+  background: $color_athens_gray_approx;
+}
+.redactor-box {
+  width: 100%;
+  max-width: none;
+}
+
+textarea.full-width {
+  width: 100%;
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: border-box;
+}

@@ -4,7 +4,7 @@
 //require('select2/dist/js/i18n/bg.js');
 
 require('Select2/select2.css');
-require('./admin.css');
+require('./admin.scss');
 
 require('Select2/select2.js');
 require('Select2/select2_locale_bg');

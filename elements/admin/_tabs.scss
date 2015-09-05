@@ -1,0 +1,14 @@
+.nav-tabs > .active > a {
+  &:focus {
+    background-color: $color_athens_gray_approx;
+    border-bottom-color: $color_athens_gray_approx;
+  }
+  .nav-tabs > .active > a:hover {
+    background-color: $color_athens_gray_approx;
+    border-bottom-color: $color_athens_gray_approx;
+  }
+}
+
+.nav-tabs-suit li {
+  text-transform: capitalize;
+}

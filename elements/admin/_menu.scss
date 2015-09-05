@@ -1,0 +1,8 @@
+.left-nav {
+  a[href="/admin/"] {
+    display: none;
+  }
+  & > ul > li ul li a:first-letter {
+    text-transform: uppercase;
+  }
+}
