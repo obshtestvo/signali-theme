@@ -5,11 +5,22 @@ var navarrow = require('icons/location-arrow.svg');
 /**
  * Places autocomplete
  * @param $el
+ * @param selectizeOptions
+ * @constructor
+ */
+var Simple = function($el, selectizeOptions) {
+    selectizeOptions.plugins.navarrow = {}
+    $el.selectize(selectizeOptions)
+}
+
+/**
+ * Places autocomplete
+ * @param $el
  * @param creditsEl
  * @param queryTransformation
  * @constructor
  */
-var AddressSearch = function($el, creditsEl, queryTransformation) {
+var Google = function($el, creditsEl, queryTransformation) {
     var _self = this;
     _self._initUI($el)
     googlemap.load(function(gMap) {
@@ -17,7 +28,7 @@ var AddressSearch = function($el, creditsEl, queryTransformation) {
     })
 }
 
-AddressSearch.prototype = {
+Google.prototype = {
     $el: null,
     pickerAPI: null,
     map: null,
@@ -150,4 +161,7 @@ selectize.define('navarrow', function() {
     })();
 });
 
-module.exports =  AddressSearch;
+module.exports =  {
+    Google: Google,
+    Simple: Simple,
+};

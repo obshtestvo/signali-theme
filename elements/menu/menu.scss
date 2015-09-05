@@ -27,13 +27,13 @@ menu {
                 }
             }
         }
-        &.active .burger-icon {
-            @include burger-to-cross;
-            color: $secondary-hover-color;
-            background: transparent;
-            &:after, &:before {
-                background: $secondary-hover-color
-            }
+    }
+    &.active .trigger .burger-icon {
+        @include burger-to-cross;
+        color: $secondary-hover-color;
+        background: transparent;
+        &:after, &:before {
+            background: $secondary-hover-color
         }
     }
     .categories {
@@ -58,10 +58,6 @@ menu {
             width: 2px;
             height: 0;
         }
-        &.active {
-            opacity: 1;
-            visibility: visible;
-        }
         .seeall {
             clear: both;
             padding: 0 30px;
@@ -84,6 +80,10 @@ menu {
                 }
             }
         }
+    }
+    &.active .categories {
+        opacity: 1;
+        visibility: visible;
     }
 }
 

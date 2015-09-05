@@ -9,25 +9,7 @@
         {% include '_topnav.html' with request=request %}
         <intro density="airy">
             {% contactpoint_stats %}
-            <form action="{% url 'contact-point-list' %}">
-                <select-dropdown id="drop2" name="areas" location mainsearch>
-                    <label>къде?</label>
-                </select-dropdown>
-                <select-dropdown id="drop" multiple mainsearch>
-                    <label>проблем</label>
-                    {% taxonomy_mixed_options request %}
-                    <div class="filters">
-                        <p>Доп. опции</p>
-                        <section>
-                            <checkbox id="register" name="register">Регистрация</checkbox>
-                            <checkbox id="asdasd" name="asdasdasd" checked>asdasdasd</checkbox>
-                        </section>
-                    </div>
-                </select-dropdown>
-                <action-button button type="primary" fill="solid" color="red" size="medium" action="google.com" mainsearch>
-                    търси
-                </action-button>
-            </form>
+            {% searchbar request %}
             {% popular_categories request %}
         </intro>
     </cover>

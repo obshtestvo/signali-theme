@@ -3,7 +3,7 @@ from operator import attrgetter
 
 from django import template
 
-from contact.apps import setting
+from signali_contact.forms import UserCriteriaForm
 from signali_taxonomy.models import Category, Keyword
 
 register = template.Library()
@@ -16,11 +16,7 @@ def categories_menu(context):
     }
 
 @register.inclusion_tag('taxonomy/_mixed_picker_options.html')
-def taxonomy_mixed_options(request, form=None):
-    if form is None:
-        UserCriteriaForm = setting('CONTACT_USER_CRITERIA_FORM')
-        form = UserCriteriaForm()
-
+def taxonomy_mixed_options(request, form):
     choices = sorted(
         chain(Category.objects.children(), Keyword.objects.all()),
         key=attrgetter('title'))

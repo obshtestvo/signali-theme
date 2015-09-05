@@ -9,6 +9,7 @@ from signali_taxonomy.models import Category
 from signali_location.models import Area
 from contact_feedback.forms import get_feedbackfrom
 from contact.forms import get_contactpoint_from
+from signali_contact.forms import UserCriteriaForm
 
 register = template.Library()
 
@@ -74,6 +75,20 @@ def survey(request, contactpoint, form=None):
         "form": form,
         "errors": errors(request).get(prefix+"form", None),
         "contactpoint": contactpoint,
+        "request": request
+    }
+
+
+
+@register.inclusion_tag('_searchbar.html')
+def searchbar(request, form=None):
+    prefix = 'search'
+    if form is None:
+        form = UserCriteriaForm(data=request.params, prefix=prefix)
+    return {
+        "prefix": prefix,
+        "form": form,
+        "errors": errors(request).get(prefix+"form", None),
         "request": request
     }
 
