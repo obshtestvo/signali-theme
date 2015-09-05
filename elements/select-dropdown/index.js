@@ -1,73 +1,65 @@
-var selectize = require('selectize/dist/js/standalone/selectize.js');
 var $ = require('jquery');
-var AddressPicker = require('./addressPicker');
+var addressSearch = require('./addressPicker');
+require('selectize/dist/js/standalone/selectize.js');
+require('./selectize.filtering.js');
+require('./selectize.multiple_inputs.js');
 require('./select-dropdown.scss');
 
 module.exports = function (componentService) {
     componentService.register('select-dropdown', {
         template: require('./select-dropdown.html'),
         created: function () {
-            var el = this;
-            var $el = $(el);
-            var $input =  $el.find('> select');
-            var $filters =  $el.find('.filters');
-            if (el.hasAttribute('location')) {
-                this.API = new AddressPicker($input, $('<h1>').get(0));
+            var el = this,
+                $el = $(el),
+                $input = $el.find('> select'),
+                $filters = $el.find('.filters'),
+                isMultiple = el.hasAttribute('multiple');
+
+            if (el.getAttribute('location')=='google') {
+                this.API = new addressSearch.Google($input, $('<h1>').get(0));
                 return;
             }
 
-            var isMultiple = el.hasAttribute('multiple');
-            var values = this.$detachedContent.filter('value');
-            var selected = values.filter('[selected]').map(function() {
-                return this.id
-            }).get();
-            var inputMap = {};
-            var choices = values.map(function() {
-                var $this = $(this);
-                var item = {id: this.id, value: this.id, title: $this.text()};
-                if (this.hasAttribute('input')) {
-                    var inputName = this.attributes.input.value;
-                    inputMap[inputName] = null;
-                    item.input = inputName;
-                    item.id = $this.attr('site-wide-id')
-                }
-                return item
-            }).get();
-
-            for (var inputName in inputMap) {
-                var selectEl = document.createElement("select");
-                selectEl.setAttribute('name', inputName);
-                if (isMultiple) selectEl.setAttribute('multiple', true);
-                el.appendChild(selectEl);
-                inputMap[inputName] = $(selectEl)
-            }
-
+            var data = extractData(this.$detachedContent.filter('value'));
             var options = {
-                //openOnFocus: false,
                 valueField: 'id',
                 labelField: 'title',
                 searchField: 'title',
-                options: choices,
-                items: selected,
+                options: data.choices,
+                items: data.selected,
                 plugins: {}
             };
             if (isMultiple) {
-                options.plugins['remove_button']= {
+                options.plugins.remove_button =  {
                     label: require('icons/times-circle.svg')
                 };
             }
             if (el.hasAttribute('freetext')) {
                 options.create = true
             }
+            if ($filters.length) {
+                options.plugins.filtering= {
+                    filters: $filters
+                };
+            }
             if (!el.hasAttribute('name')) {
-                options.plugins['multiple_inputs']= {
+                var inputMap = {}, inputName, selectEl, i;
+                for (i = 0; i < data.inputNames; i++) {
+                    inputName = data.inputNames[i];
+                    selectEl = document.createElement("select");
+                    selectEl.setAttribute('name', inputName);
+                    if (isMultiple) selectEl.setAttribute('multiple', true);
+                    el.appendChild(selectEl);
+                    inputMap[inputName] = $(selectEl)
+                }
+                options.plugins.multiple_inputs = {
                     inputMap: inputMap
                 };
             }
-            if ($filters.length) {
-                options.plugins['filtering']= {
-                    filters: $filters
-                };
+
+            if (el.getAttribute('location')=='simple') {
+                this.API = new addressSearch.Simple($input, options);
+                return;
             }
             this.API = $input.selectize(options)[0].selectize;
             this.API.on('change', function() {
@@ -114,61 +106,26 @@ module.exports = function (componentService) {
 };
 
 
-selectize.define('filtering', function(options) {
-    var self = this;
-    this.setup = (function() {
-        var original = self.setup;
-        return function() {
-            var ret = original.apply(this, arguments);
-            var isFilters = false;
-            self.$dropdown_filters = options.filters;
-            self.$dropdown_filters.on('mousedown', function() {
-                isFilters = true;
-            });
-            self.$dropdown_filters.on('mouseup', function() {
-                isFilters = false;
-            });
-            self.$dropdown_filters.find('input,a').on('blur', function() {
-                setTimeout(function() {
-                    if (isFilters) return;
-                    self.onBlur(null, document.activeElement)
-                }, 1)
-            });
-            self.$dropdown.append(self.$dropdown_filters);
-            return ret;
-        };
-    })();
-
-    this.onBlur = (function() {
-        var original = self.onBlur;
-        return function(e, dest) {
-            var onBlurArgs = arguments;
-            setTimeout(function(){
-                if (!dest) return;
-                if ($.contains(self.$dropdown_filters[0], dest)) return;
-                original.apply(self, onBlurArgs);
-            }, 1);
-        };
-    })();
-});
-
-selectize.define('multiple_inputs', function(settings) {
-    var self = this;
-    this.updateOriginalInput = (function() {
-        var original = self.updateOriginalInput;
-        return function() {
-            var ret = original.apply(this, arguments);
-            var option, inputName, i, n, optionsHTMLByInput = {};
-            for (i = 0, n = self.items.length; i < n; i++) {
-                option = self.options[self.items[i]];
-                inputName = option.input;
-                if (!optionsHTMLByInput[inputName]) optionsHTMLByInput[inputName] = [];
-                optionsHTMLByInput[inputName].push('<option value="' + option.value + '" selected="selected"></option>');
+var extractData = function($values) {
+    var inputNames = [];
+    var choices = $values.map(function() {
+        var item = {id: this.id, value: this.id, title: $(this).text()};
+        if (this.hasAttribute('input')) {
+            var inputName = this.getAttribute('input');
+            if (inputNames.indexOf(inputName) === -1) {
+                inputNames.push(inputName)
             }
-            for (inputName in optionsHTMLByInput) {
-                settings.inputMap[inputName].html(optionsHTMLByInput[inputName].join(''));
-            }
-            return ret;
-        };
-    })();
-});
+            item.input = inputName;
+            item.id = this.getAttribute('site-wide-id')
+        }
+        return item
+    }).get();
+    var selected = $values.filter('[selected]').map(function() {
+        return this.id
+    }).get();
+    return {
+        choices: choices,
+        selected: selected,
+        inputNames: inputNames
+    }
+};

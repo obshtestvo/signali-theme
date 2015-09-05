@@ -1,0 +1,23 @@
+{% load taxonomy %}
+<form action="{% url 'contact-point-list' %}" method="get">
+    <select-dropdown id="searchArea" name="{{form.areas.html_name}}" location="simple" mainsearch>
+        <label>Mестност, в която се е случило:</label>
+        {% for id, label in form.areas.field.choices %}
+        <value id="{{id}}">{{label}}</value>
+        {% endfor %}
+    </select-dropdown>
+    <select-dropdown id="drop" multiple mainsearch>
+        <label>За какво се отнася:</label>
+        {% taxonomy_mixed_options request form %}
+        <div class="filters">
+            <p>Доп. опции</p>
+            <section>
+                <checkbox id="register" name="register">Регистрация</checkbox>
+                <checkbox id="asdasd" name="asdasdasd" checked>asdasdasd</checkbox>
+            </section>
+        </div>
+    </select-dropdown>
+    <action-button submit type="primary" fill="solid" color="red" size="medium" mainsearch>
+        търси
+    </action-button>
+</form>

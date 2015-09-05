@@ -12,7 +12,6 @@ module.exports = function (componentService) {
             action: {
                 attr: true,
                 set: function(value) {
-                    console.log(value)
                     $(this).find('a').attr('href', value);
                 }
             },

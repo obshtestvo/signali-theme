@@ -7,20 +7,31 @@ module.exports = function (componentService) {
         attached: function () {
             if (this.hasBeenAttached) return;
             this.hasBeenAttached = true;
-            var $el = $(this);
-            $el.find('.trigger').click(function(){
-                $(this).toggleClass('active');
-                $(".categories").toggleClass('active')
+            var el = this,
+                $el = $(el);
+
+            $(this.querySelector('.trigger')).click(function(){
+                el.toggle()
+            });
+
+            $(document).click(function(event) {
+                console.log($(event.target).closest($el).length)
+                if(!$(event.target).closest($el).length && $el.hasClass("active")) {
+                    el.toggle()
+                }
             });
 
             var $lists = $el.find('.categories ul');
-
             var heights = $lists.map(function() {
                 return $(this).height()
             }).get();
-
             var maxHeight = Math.max.apply(null, heights);
             $lists.height(maxHeight);
+        },
+        prototype: {
+            toggle: function() {
+                $(this).toggleClass('active');
+            }
         }
     })
 }
