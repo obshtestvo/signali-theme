@@ -4,7 +4,7 @@ intro {
     display: block;
     padding: 40px 0;
     position: relative;
-    & > .div {
+    & > div {
         position: relative;
     }
     &[density="airy"] {

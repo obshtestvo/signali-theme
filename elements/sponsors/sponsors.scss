@@ -14,11 +14,17 @@ sponsors {
                 float: left;
                 position: relative;
                 height: 60px;
-                margin: 0 40px 0 0;
+                margin: 0 20px 0 20px;
+                display: table;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
                 a {
-                    display: block;
-                    height: 100%;
-                    line-height: 80px;
+                    display: table-cell;
+                    vertical-align: middle;
                     img {
                         max-height: 100%;
                     }

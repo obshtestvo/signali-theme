@@ -6,7 +6,7 @@
 <page color="light">
 <cover density="comfortable" src="test/smoking.jpg">
     {% include '_topnav.html' with request=request %}
-    <intro density="comfortable">
+    <intro density="compact">
         <call-to-action align="left" density="compact">
             <h1>Граждански: Тютюнопушене на обществени места</h1>
         </call-to-action>
@@ -66,6 +66,7 @@
         </action-button>
     </filtering>
     <cards-area>
+        <header>
         <filtering secondary sorting>
             <strong>24 резултата</strong>
             <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
@@ -76,97 +77,140 @@
                 <value id="6" >Звездички</value>
             </select-dropdown>
         </filtering>
+        </header>
         <cards>
             {% for point in points %}
                 {% include "_card.html" with point=point request=request %}
             {% endfor %}
         </cards>
     </cards-area>
-    <cards-area>
-        <filtering secondary exception>
-            <strong>резултати изключващи: </strong>
-            <checkbox disck >Регистрация</checkbox>
-            <checkbox disck >Снимка</checkbox>
-        </filtering>
-        <cards>
-            <card action="gogo">
-                <img src="test/logo1.jpg" alt=""/>
-                <strong>Държавно Горско Стопанство гр. Враца</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
+    <cards-area density="compact">
+        <header>
+            <filtering secondary exception>
+                <strong>резултати изключващи: </strong>
+                <checkbox readonly>Регистрация</checkbox>
+                <checkbox readonly>Снимка</checkbox>
+            </filtering>
+        </header>
+        <cards><card action="gogo">
+            <img src="test/logo1.jpg" alt=""/>
+            <strong>Държавно Горско Стопанство гр. Враца</strong>
+            <card-item type="category">
+                <strong>категория</strong>
+                <a href="#">Тютюнопушене на обществени места</a>
+            </card-item>
+            <card-item type="location">
+                <strong>местонахождение</strong>
+                <a href="#">София - град</a>
+            </card-item>
+            <card-item type="tags">
+                <strong>етикети</strong>
+                <a href="google.com">конфликт на интереси</a>
+                <a href="google.com">полиция</a>
+                <a href="google.com">граница</a>
+                <a href="google.com">връзка</a>
+            </card-item>
+            <card-item type="rating">
+                <strong>Рейтинг</strong>
+                <rating value="4" size="small" align="left">
                     <a class="comments" href="#">(14 коментара)</a>
                 </rating>
-            </card>
+            </card-item>
+            <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                Подаване на сигнал
+            </action-button>
+        </card>
             <card action="go">
                 <img src="test/logo2.png" alt=""/>
                 <strong>Гранична полиция</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
             </card>
             <card action="go">
                 <img src="test/logo3.jpg" alt=""/>
                 <strong>Омбудсман Република България</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
             </card>
             <card>
                 <img src="test/logo4.jpg" alt=""/>
                 <strong>Гореща линия за безопасен Интернет</strong>
-                <a href="#" class="category">Тютюнопушене на обществени места</a>
-                <a href="#" class="location">София - град</a>
-                <tags>
-                    <tag action="google.com">конфликт на интереси</tag>
-                    <tag action="google.com">полиция</tag>
-                    <tag action="google.com">граница</tag>
-                    <tag action="google.com">връзка</tag>
-                </tags>
-                <rating>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="full"></star>
-                    <star type="half"></star>
-                    <star type="empty"></star>
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
             </card>
         </cards>
+        <footer>
+            <pagination density="cozy">
+                <a href="#">Предишна</a>
+                <a class="active" href="#">1</a>
+                <a href="#" class="disable">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">Следваща</a>
+            </pagination>
+        </footer>
     </cards-area>
 
     {% include "_addnew_prompt.html"  with request=request %}
