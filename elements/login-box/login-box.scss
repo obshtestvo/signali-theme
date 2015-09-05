@@ -95,6 +95,7 @@ login-box {
         }
         &:hover {
             background: $white;
+            position: absolute;
             a {
                 span:after {
                     border-top-color: $body-text-color;

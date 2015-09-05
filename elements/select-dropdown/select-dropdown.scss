@@ -37,7 +37,7 @@ select-dropdown {
     select {
         display: none;
     }
-    .selectize-dropdown-content{
+    .selectize-dropdown-content {
         position: relative;
     }
     .selectize-control.plugin-remove_button {
@@ -217,7 +217,7 @@ select-dropdown {
                 svg {
                     @extend %anime;
                     position: absolute;
-                    top:50%;
+                    top: 50%;
                     margin-top: -8px;
                     width: 16px;
                     height: 16px;
@@ -226,7 +226,7 @@ select-dropdown {
                 }
                 &.dropdown-active svg {
                     fill: $secondary-color;
-                    transform: rotate(180deg) ;
+                    transform: rotate(180deg);
                 }
             }
         }
@@ -241,7 +241,7 @@ select-dropdown {
             .selectize-input {
                 border-radius: 5px 0 0 5px;
                 z-index: 10;
-                &.input-active{
+                &.input-active {
                     background: $focus-background;
                 }
                 &.dropdown-active.focus {
@@ -322,3 +322,41 @@ select-dropdown {
     }
 }
 
+@media screen and (max-width: 1120px), screen and (max-device-width: 1120px) {
+    select-dropdown {
+        &[mainsearch] {
+            &:first-of-type {
+                width: 30%;
+            }
+            &:nth-of-type(2) {
+                width: 58%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 960px), screen and (max-device-width: 960px) {
+    select-dropdown {
+        &[mainsearch] {
+            &:first-of-type {
+                width: 35%;
+            }
+            &:nth-of-type(2) {
+                width: 51%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
+    select-dropdown {
+        &[mainsearch] {
+            &:first-of-type {
+                width: 100%;
+                float: none;
+            }
+            &:nth-of-type(2) {
+                width: 100%;
+                float: none;
+            }
+        }
+    }
+}

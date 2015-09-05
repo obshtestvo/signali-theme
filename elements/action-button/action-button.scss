@@ -295,3 +295,18 @@ action-button {
 
 }
 
+@media screen and (max-width: 960px), screen and (max-device-width: 960px) {
+    action-button {
+        &[link], &[button], &[submit] {
+            &[mainsearch] {
+                text-align: center;
+                a, button {
+                    transform: translate(0, 0);
+                    margin: 20px 0;
+                    position: relative;
+                    top: auto;
+                }
+            }
+        }
+    }
+}
