@@ -276,7 +276,8 @@ select-dropdown {
             }
         }
         &:nth-of-type(2) {
-            width: 66%;
+            width: 68%;
+            padding: 0 2% 0 0;
             margin: 0 0 0 -1px;
             .selectize-input {
                 border-radius: 0 5px 5px 0;
@@ -346,11 +347,20 @@ select-dropdown {
     }
 }
 
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+    select-dropdown {
+        &[mainsearch] {
+            &:nth-of-type(2) {
+                width: 67%;
+            }
+        }
+    }
+}
 @media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
     select-dropdown {
         &[mainsearch] {
             &:first-of-type {
-                width: 30%;
+                width: 32%;
             }
             &:nth-of-type(2) {
                 width: 57%;
@@ -363,7 +373,7 @@ select-dropdown {
     select-dropdown {
         &[mainsearch] {
             &:first-of-type {
-                width: 35%;
+                width: 36%;
             }
             &:nth-of-type(2) {
                 width: 50%;
@@ -387,6 +397,7 @@ select-dropdown {
             }
             &:nth-of-type(2) {
                 margin: 0;
+                padding: 0;
                 width: 100%;
                 float: none;
                 .selectize-input {

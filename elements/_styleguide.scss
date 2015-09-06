@@ -59,30 +59,37 @@ $standard-border: 1px solid $grey-color-80;
 $large-radius: 19px;
 $small-radius: 5px;
 $nano-radius: 2px;
-%circle {
+
+@mixin circle{
     border-radius: 50%;
 }
 
-%large-radius {
+%circle {
+    @include circle;
+}
+
+@mixin large-radius {
     border-radius: $large-radius;
 }
-
-%small-radius {
-    border-radius: $small-radius;
+%large-radius {
+    @include large-radius;
 }
 
-%nano-radius {
+@mixin small-radius {
+    border-radius: $small-radius;
+}
+%small-radius {
+    @include small-radius
+}
+
+@mixin nano-radius {
     border-radius: $nano-radius;
 }
 
-/*shadows*/
-@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
-    @if $inset {
-        box-shadow: inset $top $left $blur $spread $color;
-    } @else {
-        box-shadow: $top $left $blur $spread $color;
-    }
+%nano-radius {
+    @include nano-radius;
 }
+
 
 // rotate
 @mixin rotate($deg) {
@@ -112,34 +119,46 @@ $nano-radius: 2px;
 }
 
 //Align
-
-%center-xy {
+@mixin center-xy  {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
+%center-xy{
+    @include center-xy;
+}
 
-%center-reset {
+@mixin center-reset {
     position: relative;
     left: auto;
     top: auto;
     transform: translate(0, 0);
 }
+%center-reset{
+    @include center-reset
+}
 
 
-
-%center-x {
+@mixin center-x {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
-%center-y {
+%center-x {
+    @include center-x;
+}
+
+@mixin center-y {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
 }
+%center-y {
+    @include center-y;
+}
+
 
 %headilme-font {
     @extend %main-font;
@@ -220,6 +239,7 @@ $nano-radius: 2px;
     -o-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
     transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); /* easeInOutSine */
 }
+
 //Mobile Breaking Points
 $desktop-width: 1220px;
 $small-desktop-width: 1120px;

@@ -5,7 +5,6 @@
 //if helper attributes [type],[fill],[size] and [color] are not required
 $secondary-hover-color: #DC3957;
 
-
 action-button {
     &[align="right"] {
         text-align: right;
@@ -89,16 +88,16 @@ action-button {
             &[color="red"] {
                 a, button {
                     background: transparent;
-                    @include box-shadow(0, 0, 0, 3px $secondary-color-100, inset);
+                    box-shadow: inset 0 0 0 3px $secondary-color-100;
                     color: $secondary-color-100;
                     &:hover {
                         background: $secondary-color-120;
-                        @include box-shadow(0, 0, 0, 3px $secondary-color-120, inset);
+                        box-shadow: inset 0 0 0 3px $secondary-color-120;
                         color: $white;
                     }
                     &:active {
                         background: $main-color-active;
-                        @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
+                        box-shadow: inset 0 0 0 3px $main-color-active;
                         color: $white;
                     }
                 }
@@ -106,16 +105,16 @@ action-button {
             &[color="purple"] {
                 a, button {
                     background: transparent;
-                    @include box-shadow(0, 0, 0, 3px $main-color-100, inset);
+                    box-shadow: inset 0 0 0 3px $main-color-100;
                     color: $main-color-100;
                     &:hover {
                         background: $main-color-120;
-                        @include box-shadow(0, 0, 0, 3px $main-color-120, inset);
+                        box-shadow: inset 0 0 0 3px $main-color-120;
                         color: $white;
                     }
                     &:active {
                         background: $main-color-active;
-                        @include box-shadow(0, 0, 0, 3px $main-color-active, inset);
+                        box-shadow: inset 0 0 0 3px $main-color-active;
                         color: $white;
                     }
                 }
@@ -123,16 +122,16 @@ action-button {
             &[color="white"] {
                 a, button {
                     background: transparent;
-                    @include box-shadow(0, 0, 0, 3px $white, inset);
+                    box-shadow: inset 0 0 0 3px $white;
                     color: $white;
                     &:hover {
                         background: $white-hover;
-                        @include box-shadow(0, 0, 0, 3px $white-hover, inset);
+                        box-shadow: inset 0 0 0 3px $white-hover;
                         color: $main-color-120;
                     }
                     &:active {
                         background: $white;
-                        @include box-shadow(0, 0, 0, 3px $white, inset);
+                        box-shadow: inset 0 0 0 3px $white;
                         color: $main-color-120;
                     }
                 }
@@ -180,7 +179,7 @@ action-button {
             a, button {
                 padding: 0;
             }
-            &[density="compact"]{
+            &[density="compact"] {
                 padding: 10px 20px;
             }
         }
@@ -188,7 +187,7 @@ action-button {
             a, button {
                 @extend %center-y;
                 right: 0;
-                margin:3px 0 0 0;
+                margin: 3px 0 0 0;
             }
         }
     }
@@ -283,11 +282,11 @@ action-button {
     &[inline] {
         display: inline-block;
     }
-    &[back]{
+    &[back] {
         @extend %center-y;
 
-        svg{
-            &:last-of-type{
+        svg {
+            &:last-of-type {
                 display: none;
             }
         }
@@ -300,10 +299,12 @@ action-button {
             &[mainsearch] {
                 text-align: center;
                 a, button {
-                    transform: translate(0, 0);
+                    @include center-reset;
+                    border-radius: $large-radius + 11px !important;
                     margin: 20px 0;
-                    position: relative;
-                    top: auto;
+                    padding: 20px 50px;
+                    font-size: 18px;
+
                 }
             }
         }

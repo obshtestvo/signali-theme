@@ -37,5 +37,9 @@ menu-column {
 @media screen and (max-width: 640px), screen and (max-device-width: 640px) {
     menu-column {
         width: 100%;
+        ul li a{
+            margin: 1px 0;
+            padding: 5px 0;
+        }
     }
 }
