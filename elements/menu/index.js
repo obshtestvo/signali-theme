@@ -14,13 +14,13 @@ module.exports = function (componentService) {
                 el.toggle()
             });
 
-            $(document).click(function(event) {
+            $(document).on('click touchend', function(event) {
                 if(!$(event.target).closest($el).length && $el.hasClass("active")) {
                     el.toggle()
                 }
             });
 
-            var $lists = $el.find('.categories ul');
+            var $lists = $el.find('menu-column ul');
             var heights = $lists.map(function() {
                 return $(this).height()
             }).get();
