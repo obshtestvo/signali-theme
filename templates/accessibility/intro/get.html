@@ -3,9 +3,10 @@
 {% load contactpoint %}
 {% load taxonomy %}
 {% block content %}
+{% load settings %}
 {% include "_loader.html" %}
 <page color="semilight">
-    <cover density="airy" src="test/base-header-background.jpg">
+    <cover density="airy" src="{% setting 'cover' %}">
         {% include '_topnav.html' with request=request %}
         <intro density="airy">
             {% contactpoint_stats %}

@@ -93,13 +93,15 @@ select-dropdown {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             border-bottom-color: $grey-color-60;
+            &:before {
+                display: none;
+            }
         }
     }
     .selectize-dropdown, .selectize-input, .selectize-input input {
         @extend %bodytext-font;
         color: $text-color;
     }
-
     .selectize-control.multi {
 
         .selectize-input {
@@ -141,7 +143,6 @@ select-dropdown {
             }
         }
     }
-
     .selectize-dropdown {
         @extend %small-radius;
         border-top-left-radius: 0;

@@ -25,6 +25,7 @@ module.exports = function (componentService) {
                 valueField: 'id',
                 labelField: 'title',
                 searchField: 'title',
+                optgroupField: 'group',
                 options: data.choices,
                 items: data.selected,
                 plugins: {}
@@ -38,6 +39,9 @@ module.exports = function (componentService) {
             }
             if (el.hasAttribute('freetext')) {
                 options.create = true
+            }
+            if (data.groups.length) {
+                options.optgroups = data.groups
             }
             if ($filters.length) {
                 options.plugins.filtering= {
@@ -109,8 +113,14 @@ module.exports = function (componentService) {
 
 var extractData = function($values) {
     var inputNames = [];
+    var groups = [];
     var choices = $values.map(function() {
         var item = {id: this.id, value: this.id, title: $(this).text()};
+        if (this.hasAttribute('group')) {
+            var group = this.getAttribute('group');
+            item.group = group;
+            groups.push({value: group, label: group})
+        }
         if (this.hasAttribute('input')) {
             var inputName = this.getAttribute('input');
             if (inputNames.indexOf(inputName) === -1) {
@@ -125,6 +135,7 @@ var extractData = function($values) {
         return this.id
     }).get();
     return {
+        groups: groups,
         choices: choices,
         selected: selected,
         inputNames: inputNames

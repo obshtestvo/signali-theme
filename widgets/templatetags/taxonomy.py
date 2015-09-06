@@ -16,11 +16,9 @@ def categories_menu(context):
 
 @register.inclusion_tag('taxonomy/_mixed_picker_options.html')
 def taxonomy_mixed_options(request, form):
-    choices = sorted(
-        chain(Category.objects.children(), Keyword.objects.all()),
-        key=attrgetter('title'))
     return {
-        "choices": choices,
+        "categories": Category.objects.children().select_related('parent'),
+        "keywords": Keyword.objects.all(),
         "request": request,
         "form": form
     }
