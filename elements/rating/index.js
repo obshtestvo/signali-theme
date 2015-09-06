@@ -9,9 +9,10 @@ module.exports = function (componentService) {
             star: require('./star.svg')
         },
         created: function () {
-            var $el = $(this);
-            var $stars = $el.find('star');
-            var $input = $el.find('input');
+            var el = this,
+                $el = $(this),
+                $stars = $el.find('star'),
+                $input = $el.find('input');
             $stars.each(function () {
                 var $s = $(this);
                 var $hoverStars = $s.prevAll().add($s)
@@ -22,10 +23,14 @@ module.exports = function (componentService) {
                     $hoverStars.removeClass('hover')
                 });
                 $s.click(function () {
+                    if (el.hasAttribute('href')) {
+                        window.location.href = el.getAttribute('href');
+                        return;
+                    }
                     $stars.attr('type', 'empty');
                     $nextStars.removeClass('user');
                     $hoverStars.addClass('user');
-                    $input.val($s.index()+1);
+                    $input.val($s.index() + 1);
                     $el.trigger('change');
                 })
             })

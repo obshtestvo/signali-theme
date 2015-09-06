@@ -1,7 +1,7 @@
 {% load date %}
 {% load thumbnail %}
-<comments>
-    <headline size="small" density="compact">{{ feedback_entries.count }} коментара</headline>
+<comments id="feedbacklist">
+    <headline size="small" density="compact">{{ feedback_entries.count }} оценки</headline>
     {% for feedback in feedback_entries %}
         <comment>
             <article>

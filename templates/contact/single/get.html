@@ -70,9 +70,9 @@
                     {% else %}
                         <p class="img nopreview"></p>
                     {% endif %}
-                    <card-item type="rating" href="#feedback">
-                        <rating align="left" value="{{ point.rating }}">
-                            <a class="comments" href="#feedback">(14 коментара)</a>
+                    <card-item type="rating">
+                        <rating align="left" value="{{ point.rating }}" href="#feedback">
+                            <a class="comments" href="#feedbacklist">({{point.feedback.count}} оценки)</a>
                         </rating>
                     </card-item>
                     {% subscribeform request point %}
