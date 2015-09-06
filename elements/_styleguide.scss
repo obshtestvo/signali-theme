@@ -220,3 +220,11 @@ $nano-radius: 2px;
     -o-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
     transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); /* easeInOutSine */
 }
+//Mobile Breaking Points
+$desktop-width: 1220px;
+$small-desktop-width: 1120px;
+$tablet-landscape-width: 960px;
+$tablet-portrait-width: 768px;
+$phone-width: 640px;
+$small-phone-width: 480px;
+
