@@ -12,6 +12,9 @@ Parsley.addValidator('equaltoFormSibling', {
 Parsley.addValidator('server', {
     validateString: function (value, selector, field) {
         return !Boolean(field.serverError)
+    },
+    validateMultiple: function (value, selector, field) {
+        return !Boolean(field.serverError)
     }
 });
 

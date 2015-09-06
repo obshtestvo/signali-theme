@@ -86,7 +86,8 @@ module.exports = function (componentService) {
                         block: function() {
                             blocking.block()
                         }
-                    }
+                    },
+                    //no_results: {}
                 }
             };
             if (isMultiple) {
