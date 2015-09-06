@@ -4,10 +4,20 @@
     {% categories_menu %}
     {% user_controls %}
     <logo align="center-x" action="{% url 'home' %}" color="light" size="large"></logo>
-    <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall" action="google.com">
+    <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall" action="#wip" target="modal">
         Сподели опит
     </action-button>
-    <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="google.com">
+    <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="#addnew" target="modal">
         добави място
     </action-button>
+    <div style="display: none;">
+        <modal id="wip">
+            <modal-screen>
+                <headline size="large" density="airy" align="center">
+                    Тук липсва съдържание
+                </headline>
+                <p>Какво се показва тук?</p>
+            </modal-screen>
+        </modal>
+    </div>
 </top-nav>
