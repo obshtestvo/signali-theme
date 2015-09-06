@@ -1,7 +1,8 @@
 @import '../styleguide';
 
 features-item {
-    display: inline-block;
+    display: block;
+    float:left;
     position: relative;
     width: 33.33%;
     min-height: 20px;

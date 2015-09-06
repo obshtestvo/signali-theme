@@ -10,27 +10,27 @@ headline {
     position: relative;
     &[size='large'] {
         &[density="airy"] {
-            padding: 22px 0 36px 0
+            padding: em(22) 0 em(36) 0;
         }
         &[density="comfortable"] {
-            padding: 18px 0 20px 0;
+            padding: em(18) 0 em(20) 0;
         }
         &[density="compact"] {
-            padding: 4px 0 30px 0;
+            padding: em(4) 0 em(30) 0;
         }
         h3 {
             @extend %headilme-font;
         }
         p {
             @extend %bodytext-font;
-            line-height: 24px;
+            line-height: em(24, 14);
             padding: 0;
-            margin: 0 0 4px 0;
+            margin: 0 0 em(4) 0;
             color: $grey-color-120;
         }
     }
     &[size='medium'] {
-        padding: 29px 0 18px 0;
+        padding: em(29) 0 em(18) 0;
         h3 {
             @extend %headilme-font;
             font-size: 24px;
@@ -39,25 +39,25 @@ headline {
     }
     &[size='small'] {
         &[density="airy"] {
-            padding: 4px 0 13px;
+            padding: em(4) 0 em(13);
         }
         &[density="comfortable"] {
-            padding: 10px 0 7px;
+            padding: em(10) 0 em(7);
         }
         &[density="cozy"] {
-            padding: 0 0 11px 0;
+            padding: 0 0 em(11) 0;
         }
         &[density="compact"] {
-            padding: 5px 0 8px 0;
+            padding: em(5) 0 em(8) 0;
             display: block;
             border-bottom: 1px solid $grey-color-60;
-            margin: 10px 0;
+            margin: em(10) 0;
             h3 {
                 font-weight: 600;
             }
         }
         &[density="tight"] {
-            padding: 0 0 7px;
+            padding: 0 0 em(7);
             h3 {
                 font-weight: 600;
             }
@@ -74,5 +74,17 @@ headline {
     }
     &[align="center"] {
         text-align: center;
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    headline {
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    headline {
+        font-size: 8px;
     }
 }
