@@ -3,10 +3,21 @@
 /*How To Use*/
 //<action-button link/button/helper type="primary/secondary" fill="solid/outlined" color="red/purple/white" size="small/medium/large" align="left,center,right" action="{{action}}">
 //if helper attributes [type],[fill],[size] and [color] are not required
-$secondary-hover-color: #E46A81;
+$secondary-hover-color: #DC3957;
 
 
 action-button {
+    &[align="right"] {
+        text-align: right;
+        float: right;
+    }
+    &[align="center"] {
+        text-align: center;
+    }
+    &[align="left"] {
+        text-align: left;
+        float: left;
+    }
     display: block;
     &[link], &[button], &[submit] {
         &[density="airy"] {
@@ -20,17 +31,6 @@ action-button {
         }
         &[density="compact"] {
             padding: 10px 0;
-        }
-        &[align="right"] {
-            text-align: right;
-            float: right;
-        }
-        &[align="center"] {
-            text-align: center;
-        }
-        &[align="left"] {
-            text-align: left;
-            float: left;
         }
         a, button {
             @extend %large-radius, %button-font, %anime;;
