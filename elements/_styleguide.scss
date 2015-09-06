@@ -253,3 +253,35 @@ $small-phone-width: 480px;
     font-style: italic;
     color: $grey-color-80;
 }
+
+@function em($target, $context: 10) {
+    @return ($target / $context) * 1em;
+}
+.blalv{
+    width: em(30, 20);
+    span {
+        width: em(10, 30);
+    }
+}
+
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+
+}
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+
+}
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+
+}

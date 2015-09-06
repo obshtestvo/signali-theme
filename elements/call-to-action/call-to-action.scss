@@ -3,6 +3,7 @@
 call-to-action {
     color: $white;
     display: block;
+    font-size: 10px;
     & > div {
         &.align-center {
             text-align: center;
@@ -15,7 +16,7 @@ call-to-action {
         }
         h1 {
             @extend %headilme-font;
-            padding: 4px 0 15px;
+            padding: em(4, 38) 0 em(15, 38) 0
         }
         p {
             @extend %bodytext-large-font;
@@ -23,18 +24,52 @@ call-to-action {
     }
     &[density="airy"] {
         position: relative;
-        padding: 40px 0 57px;
+        padding: em(40) 0 em(57) 0;
     }
     &[density="comfortable"] {
         position: relative;
-        padding: 40px 0 77px;
+        padding: em(40) 0 em(77) 0;
     }
     &[density="cozy"] {
         position: relative;
-        padding: 40px 0 77px;
+        padding: em(40) 0 em(77) 0;
     }
     &[density="compact"] {
         position: relative;
         padding: 0;
+    }
+}
+
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+    call-to-action {
+        font-size: 9.5px;
+    }
+}
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    call-to-action  {
+        font-size: 9px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    call-to-action  {
+        font-size: 8px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    call-to-action  {
+        font-size: 7px;
+
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    call-to-action  {
+        font-size: 6px;
+
     }
 }

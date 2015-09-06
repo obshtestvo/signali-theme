@@ -7,6 +7,7 @@ $purple: #8484a6;
 $red: #d76d6d;
 
 popular {
+    font-size: 10px;
     display: block;
     position: relative;
     color: $white;
@@ -15,11 +16,11 @@ popular {
         position: relative;
         left: -3px;
         a {
+            @extend %large-radius, %bodytext-font;
             display: inline-block;
             line-height: 23px;
             padding: 1px 10px;
             margin: 0 10px 10px 0;
-            @extend %large-radius;
             color: $white;
             &[color="yellow"] {
                 background: $yellow;

@@ -1,30 +1,64 @@
 @import '../styleguide';
 
 intro {
+    font-size: 10px;
     display: block;
-    padding: 40px 0;
+    padding: em(40) 0;
     position: relative;
     & > div {
         position: relative;
     }
     &[density="airy"] {
-        padding: 40px 0 88px 0;
+        padding: em(40) 0 em(88) 0;
     }
     &[density="comfortable"] {
-        padding: 20px 0 40px 0;
+        padding: em(20) 0 em(40) 0;
     }
     &[density="cozy"] {
-        padding: 10px 0 20px 0;
+        padding: em(10) 0 em(20) 0;
     }
     &[density="compact"] {
         position: absolute;
         bottom: 0;
         width: 100%;
-        padding-right: 40px;
+        padding-right: em(40);
     }
     &[social-insights] {
-        padding-right: 200px;
+        padding-right: em(200);
     }
 
 }
 
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+    intro {
+        font-size: 9.5px;
+    }
+}
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    intro {
+        font-size: 9px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    intro {
+        font-size: 8px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    intro {
+        font-size: 7px;
+
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    intro {
+        font-size: 6px;
+
+    }
+}
