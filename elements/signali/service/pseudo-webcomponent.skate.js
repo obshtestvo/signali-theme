@@ -153,10 +153,13 @@ function appendToShadowTemplateElement(waitingToBeAppended) {
         }
     }
 
-    /* PARSE <content> tags if element has any content remaining */
+    /* PARSE <content> tags if we haven't appended the content yet */
     var broadContentTags = filterElements(contentTags, '[select]', true);
-    if (!broadContentTags.length)  return
-    broadContentTags[0].parentNode.insertBefore(waitingToBeAppended, broadContentTags[0]);
+    if (broadContentTags.length) {
+        broadContentTags[0].parentNode.insertBefore(waitingToBeAppended, broadContentTags[0]);
+        return;
+    }
+    this.insertBefore(waitingToBeAppended, this.lastChild);
 }
 
 function makeTemplate(options) {

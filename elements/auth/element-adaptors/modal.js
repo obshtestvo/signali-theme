@@ -37,8 +37,6 @@ var registration = function (componentService) {
             $(document).on('auth:success', function() {
                 for (var i=0; i < attrs.length; i++) {
                     var attrName = attrs[i];
-                    console.log('auth-'+attrName);
-                    console.log(el.getAttribute('auth-'+attrName));
                     el.setAttribute(attrName, el.getAttribute('auth-'+attrName))
                 }
             })

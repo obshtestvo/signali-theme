@@ -3,14 +3,14 @@
 <value
         id="{{ category.pk }}"
         suffix="({{ category.parent.title }})"
-        group="Категории"
+        group="Категории:"
         site-wide-id="{{ category.site_wide_pk }}"
         input="{{form.categories.html_name}}">{{ category.title }}</value>
 {% endfor %}
 {% for keyword in keywords %}
 <value
         id="{{ keyword.pk }}"
-        group="Теми"
+        group="Теми:"
         site-wide-id="{{ keyword.site_wide_pk }}"
         input="{{form.keywords.html_name}}">{{ keyword.title }}</value>
 {% endfor %}

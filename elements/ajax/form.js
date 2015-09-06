@@ -2,12 +2,11 @@ var $ = require('jquery');
 var toggleFixedHeight = require('service/toggleFixedHeight.js');
 var deepmerge = require('deepmerge');
 var request = require('./request');
-require('block-ui');
+var Blocker = require('./block');
 require('service/jquery.animateContentSwitch.js');
 
 var AjaxForm = function ($el, options) {
-    options = options || {};
-    this.options = deepmerge(AjaxForm.defaultOptions, options);
+    this.options = deepmerge(AjaxForm.defaultOptions, options || {});
 
     if ($el.is('form')) {
         this.$form = $el;
@@ -25,6 +24,7 @@ var AjaxForm = function ($el, options) {
     } else {
         this.$replaceable = this.options.replaceableElement;
     }
+    this.blocker = new Blocker(this.$container, this.blockerOptions)
 };
 
 /*
@@ -76,9 +76,9 @@ AjaxForm.defaultOptions = {
      */
     pjax: false,
     /*
-     * Function that decorate the blocked interaction container
+     * Options to pass to Blocker
      */
-    decorateBlocked: null,
+    blockerOptions: {},
 
     errorClass: 'error',
     successClass: 'success',
@@ -87,8 +87,8 @@ AjaxForm.defaultOptions = {
 
 
 AjaxForm.prototype = {
-    _isBlocked: false,
     $container: null,
+    blocker: null,
     $form: null,
     $replaceable: null,
     options: null,
@@ -185,6 +185,7 @@ AjaxForm.prototype = {
 
     setInteractionContainer: function ($el) {
         this.$container = $el;
+        this.blocker.setElement($el)
     },
 
     /*
@@ -207,11 +208,7 @@ AjaxForm.prototype = {
      * Block interaction on the container
      */
     block: function () {
-        if (this._isBlocked) return;
-        this.$container.block();
-        this._isBlocked = true;
-        var $veil = this.$container.find('.blockOverlay');
-        if ($.isFunction(this.options.decorateBlocked)) this.options.decorateBlocked($veil[0]);
+        this.blocker.block()
     },
 
 
@@ -219,10 +216,7 @@ AjaxForm.prototype = {
      * Resume interaction on the container
      */
     unblock: function () {
-        if (!this._isBlocked) return;
-        this.$container.unblock();
-        this.$container.find('.blockUI').parent().unblock(); // custom elements might have appended it elsewhere
-        this._isBlocked = false;
+        this.blocker.unblock()
     }
 };
 

@@ -9,11 +9,23 @@ var navarrow = require('icons/location-arrow.svg');
  * @constructor
  */
 var Simple = function($el, selectizeOptions) {
-    selectizeOptions.plugins.navarrow = {}
-    $el.selectize(selectizeOptions)
-}
+    selectizeOptions.plugins.navarrow = {};
+    this.$el = $el;
+    this.pickerAPI = $el.selectize(selectizeOptions)[0].selectize
+};
 
-/**
+Simple.prototype = {
+    $el: null,
+    pickerAPI: null,
+
+    close: function() {
+        this.pickerAPI.close()
+    },
+    blur: function() {
+        this.pickerAPI.blur()
+    }
+};
+    /**
  * Places autocomplete
  * @param $el
  * @param creditsEl
@@ -22,11 +34,11 @@ var Simple = function($el, selectizeOptions) {
  */
 var Google = function($el, creditsEl, queryTransformation) {
     var _self = this;
-    _self._initUI($el)
+    _self._initUI($el);
     googlemap.load(function(gMap) {
         _self._initGeo(gMap, $el, creditsEl, queryTransformation)
     })
-}
+};
 
 Google.prototype = {
     $el: null,
@@ -49,7 +61,7 @@ Google.prototype = {
             types: ['geocode'],
             componentRestrictions: {country: 'BG'}
         };
-        var lastResults = {}
+        var lastResults = {};
         $el.selectize({
             create: false,
             options: [],
@@ -90,7 +102,7 @@ Google.prototype = {
                             callback(results)
                         })
                     } else {
-                        var results = []
+                        var results = [];
                         $.each(list, function (i, loc) {
                             var value = loc.place_id;
                             var text = loc.description;
@@ -108,7 +120,7 @@ Google.prototype = {
 
         _self.pickerAPI.on('change', function(val) {
             if (!val.length) return;
-            var text = _self.pickerAPI.getItem(val).text()
+            var text = _self.pickerAPI.getItem(val).text();
             var loc = null;
             var finish = function(place) {
                 if (typeof place != 'object') return;
@@ -119,7 +131,7 @@ Google.prototype = {
                     loc = place.geometry.location;
                 }
                 $el.trigger('found', [text, loc, place.address_components])
-            }
+            };
             if (val.indexOf(',')<0) {
                 _self.placesService.getDetails({
                     placeId: val
@@ -138,7 +150,7 @@ Google.prototype = {
 
     update: function(id, text) {
         var pickerAPI = this.pickerAPI;
-        pickerAPI.addOption({"value": id , "text": text })
+        pickerAPI.addOption({"value": id , "text": text });
         pickerAPI.setValue(id)
     },
 
@@ -147,7 +159,7 @@ Google.prototype = {
         _self.autocomplete.unbind("bounds");
         _self.gMap = null;
     }
-}
+};
 
 selectize.define('navarrow', function() {
     var self = this;
@@ -155,7 +167,7 @@ selectize.define('navarrow', function() {
         var original = self.setup;
         return function() {
             var ret = original.apply(this, arguments);
-            self.$control.append(navarrow)
+            self.$control.append(navarrow);
             return ret;
         };
     })();

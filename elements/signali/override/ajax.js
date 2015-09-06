@@ -1,4 +1,5 @@
 var AjaxForm = require('ajax/form');
+var Blocker = require('ajax/block');
 var jsonHandler = require('./ajaxJsonResult.js');
 var preloader = require('loader/preloader');
 
@@ -21,7 +22,7 @@ module.exports = function (componentService) {
             return jsonHandler(instance, isSuccess, content);
         }
     };
-    AjaxForm.defaultOptions.decorateBlocked = function(container) {
+    Blocker.defaultOptions.decorate = function(container) {
         preloader.generate(container)
     };
 }

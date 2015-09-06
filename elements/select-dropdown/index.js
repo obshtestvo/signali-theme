@@ -1,8 +1,11 @@
 var $ = require('jquery');
 var addressSearch = require('./addressPicker');
+var request = require('ajax/request');
+var Blocker = require('ajax/block');
 require('selectize/dist/js/standalone/selectize.js');
 require('./selectize.filtering.js');
 require('./selectize.multiple_inputs.js');
+require('./selectize.directajax.js');
 require('./select-dropdown.scss');
 
 module.exports = function (componentService) {
@@ -13,20 +16,57 @@ module.exports = function (componentService) {
                 $el = $(el),
                 $input = $el.find('> select'),
                 $filters = $el.find('.filters'),
-                isMultiple = el.hasAttribute('multiple');
+                isMultiple = el.hasAttribute('multiple'),
+                blocking;
 
             if (el.getAttribute('location')=='google') {
-                this.API = new addressSearch.Google($input, $('<h1>').get(0));
+                el.API = new addressSearch.Google($input, $('<h1>').get(0));
                 return;
             }
 
-            var data = extractData(this.$detachedContent.filter('value'));
+            var data = extractData(el.$detachedContent.filter('value'));
             var options = {
                 valueField: 'id',
                 labelField: 'title',
+                score: function(search) {
+                    var textScore = this.getScoreFunction(search);
+                    return function(item) {
+                        var score =  textScore(item);
+                        if (item.score) {
+                            score = score * 1+item.score
+                        }
+                        return score;
+                    };
+                },
                 load: function(query, callback) {
-                    console.log('query, callback')
-                    console.log(query, callback)
+                    var self = this;
+                    blocking.block();
+                    request.json("/contact-points/search/", function(data) {
+                        var results = [];
+                        if (!data) {
+                            callback([]);
+                            blocking.unblock();
+                            return;
+                        }
+                        var group = "Директни съвпадения";
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            results.push({
+                                title: item.title,
+                                id: item.url,
+                                description: item.description,
+                                value: item.url,
+                                direct: true,
+                                group: group,
+                                score: item.score
+                            });
+                        }
+                        if (!(group in self.optgroups)) {
+                            self.registerOptionGroup({value: group, label: group});
+                        }
+                        callback(results);
+                        blocking.unblock();
+                    }, {query: query});
                 },
                 searchField: 'title',
                 optgroupField: 'group',
@@ -41,7 +81,13 @@ module.exports = function (componentService) {
                             '</div>';
                     }
                 },
-                plugins: {}
+                plugins: {
+                    directajax: {
+                        block: function() {
+                            blocking.block()
+                        }
+                    }
+                }
             };
             if (isMultiple) {
                 options.plugins.remove_button =  {
@@ -75,14 +121,21 @@ module.exports = function (componentService) {
                     inputMap: inputMap
                 };
             }
+            $(document).on('touchend click', function(event) {
+                if(!$(event.target).closest($el).length) {
+                    el.API.blur();
+                    el.API.close();
+                }
+            });
             if (el.getAttribute('location')=='simple') {
-                this.API = new addressSearch.Simple($input, options);
+                el.API = new addressSearch.Simple($input, options);
                 return;
             }
-            this.API = $input.selectize(options)[0].selectize;
-            this.API.on('change', function() {
+            el.API = $input.selectize(options)[0].selectize;
+            blocking = new Blocker(el.querySelector('.selectize-control'));
+            el.API.on('change', function() {
                 $el.trigger('change')
-            })
+            });
         },
         prototype: {
             select: function(id) {
