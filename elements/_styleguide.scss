@@ -228,8 +228,3 @@ $tablet-portrait-width: 768px;
 $phone-width: 640px;
 $small-phone-width: 480px;
 
-@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
-    %wrapper {
-        padding: 0 40px;
-    }
-}
