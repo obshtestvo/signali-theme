@@ -37,7 +37,7 @@ module.exports = function (componentService) {
                         return '<div>' +
                             (item.prefix ? '<span class="prefix">' + escape(item.prefix) + '</span>': '') +
                              '<span class="caption">' + escape(item.title) + '</span>' +
-                            (item.suffix ? '<span class="prefix">' + escape(item.suffix) + '</span>': '') +
+                            (item.suffix ? '<span class="suffix">' + escape(item.suffix) + '</span>': '') +
                             '</div>';
                     }
                 },
