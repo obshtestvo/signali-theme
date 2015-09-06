@@ -228,3 +228,8 @@ $tablet-portrait-width: 768px;
 $phone-width: 640px;
 $small-phone-width: 480px;
 
+
+@mixin placeholder {
+    font-style: italic;
+    color: $grey-color-80;
+}

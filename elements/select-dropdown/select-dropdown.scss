@@ -97,8 +97,17 @@ select-dropdown {
                 display: none;
             }
         }
+        input {
+            &::-webkit-input-placeholder { @include placeholder}
+            &::-moz-placeholder { @include placeholder }
+            /* firefox 19+ */
+            &:-ms-input-placeholder {@include placeholder}
+            /* ie */
+            &:-moz-placeholder {@include placeholder}
+        }
     }
-    .selectize-dropdown, .selectize-input, .selectize-input input {
+    .selectize-dropdown, .selectize-input,
+    .selectize-input input {
         @extend %bodytext-font;
         color: $text-color;
     }
