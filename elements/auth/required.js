@@ -17,7 +17,6 @@ module.exports = function (componentService, adaptors) {
                     el.authContainer = adaptor.attach(el);
                     var $auth = $(el.authContainer).find('auth');
                     $auth.on('auth:success', function (e, data, ajaxForm) {
-                        document.querySelector('[auth-required]').clearAuthRequirement();
                         var authScenario = data.is_new ? 'registration' : 'login';
                         $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
                         adaptor.dismiss(el, function() {
@@ -31,10 +30,14 @@ module.exports = function (componentService, adaptors) {
                 }
                 adaptor.show(el)
             });
+            $(document).on('auth:success', function() {
+                this.querySelector('[auth-required]').clearAuthRequirement();
+            })
         },
 
         prototype: {
             clearAuthRequirement: function() {
+                console.log('baaa')
                 var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));
                 $form.off('.auth-required');
                 this.removeAttribute('auth-required')
