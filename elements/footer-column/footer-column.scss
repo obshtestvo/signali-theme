@@ -14,7 +14,7 @@ footer-column {
             }
         }
         ul {
-            padding: 11px 0 36px;
+            padding: 11px 0 36px ;
             @extend %stripped;
             li {
                 @extend %bodytext-font;
@@ -29,4 +29,38 @@ footer-column {
             }
         }
     }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    footer-column {
+        display: none;
+        float: none;
+        width: 100%;
+        padding: 0;
+
+        section {
+            & > div {
+                display: none;
+            }
+            ul {
+                padding-bottom: 0;
+                text-align: center;
+                li {
+                    display: inline-block;
+                    padding: 0 5px;
+                }
+            }
+        }
+        &:first-child {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+
+}
+
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+
 }

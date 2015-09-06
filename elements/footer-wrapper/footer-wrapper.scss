@@ -1,8 +1,9 @@
 @import '../styleguide';
 
 footer-wrapper {
+    font-size: 10px;
     display: block;
-    padding: 70px 0 40px;
+    padding: em(70) 0 em(40) 0;
     background: $white;
     footer {
         @extend %wrapper;
@@ -15,4 +16,41 @@ footer-wrapper {
             float: right;
         }
     }
+    .notice {
+        @extend %small-font, %wrapper;;
+        color: $grey-color-90;
+        padding: em(20, 14) 0 0 25%;
+    }
 }
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    footer-wrapper {
+        font-size: 9px;
+        footer {
+            .left {
+                display: none;
+            }
+            .right {
+                width: 100%;
+            }
+        }
+        .notice {
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    footer-wrapper {
+        font-size: 8px;
+        padding: em(17, 8) 0 em(20, 8) 0;
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    footer-wrapper {
+        font-size: 7px;
+    }
+}
+

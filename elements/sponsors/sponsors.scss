@@ -2,6 +2,7 @@
 
 sponsors {
     display: block;
+    font-size: 10px;
     section {
         h5 {
             @extend %bodytext-large-font;
@@ -16,6 +17,7 @@ sponsors {
                 height: 60px;
                 margin: 0 20px 0 20px;
                 display: table;
+                overflow: hidden;
                 &:first-child {
                     margin-left: 0;
                 }
@@ -32,4 +34,31 @@ sponsors {
             }
         }
     }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    sponsors {
+        section {
+            h5 {
+                padding: 18px 0;
+                text-align: center;
+            }
+            ul{
+                text-align: center;
+                li{
+                    float: none;
+                    display: inline-table;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+
+}
+
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+
 }
