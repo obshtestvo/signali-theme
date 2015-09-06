@@ -51,16 +51,55 @@
             <resume>
                 <article>
                     <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
-                    {{ point.description }}
+                    {{ point.description | safe }}
                 </article>
                 <features>
                     <headline size="small" density="tight">Характеристики</headline>
-                    <features-item check>Мултиезичност</features-item>
-                    <features-item check>Изисква регистрация</features-item>
-                    <features-item check>Анонимност</features-item>
-                    <features-item check>Гаранция за отговор</features-item>
-                    <features-item check>Верификация на сигнал</features-item>
-                    <features-item check>Потвърждаване на сигнал</features-item>
+                    {% if point.is_anonymous_allowed == point.YES %}
+                    <features-item check>Анонимни сигнали</features-item>
+                    {% endif %}
+                    {% if not point.is_registration_required %}
+                    <features-item check>Не изисква регистрация</features-item>
+                    {% endif %}
+                    {% if not point.is_photo_required %}
+                    <features-item check>Не изисква снимка</features-item>
+                    {% endif %}
+                    {% if not point.is_esign_required %}
+                    <features-item check>Не изисква ел. подпис</features-item>
+                    {% endif %}
+                    {% if not point.is_name_required %}
+                    <features-item check>Не изисква името ви</features-item>
+                    {% endif %}
+                    {% if not point.is_email_required %}
+                    <features-item check>Не изисква имейл</features-item>
+                    {% endif %}
+                    {% if not point.is_address_required %}
+                    <features-item check>Не изисква адресът ти</features-item>
+                    {% endif %}
+                    {% if not point.is_address_required %}
+                    <features-item check>Не изисква локация на сигнала</features-item>
+                    {% endif %}
+                    {% if not point.is_registration_required %}
+                    <features-item check>Не изисква регистрация</features-item>
+                    {% endif %}
+                    {% if point.is_multilingual == point.YES %}
+                    <features-item check>Многоезичност</features-item>
+                    {% endif %}
+                    {% if point.is_response_guaranteed == point.YES %}
+                    <features-item check>Гараниран отговор</features-item>
+                    {% endif %}
+                    {% if point.is_mobile_friendly == point.YES %}
+                    <features-item check>Мобилна версия</features-item>
+                    {% endif %}
+                    {% if point.is_final_destination == point.YES %}
+                    <features-item check>Крайна точка за сигнала</features-item>
+                    {% endif %}
+                    {% if point.is_verifiable == point.YES %}
+                    <features-item check>Позволява следене на прогреса</features-item>
+                    {% endif %}
+                    {% if point.is_confirmation_issued == point.YES %}
+                    <features-item check>Потвърждение на сигнала</features-item>
+                    {% endif %}
                 </features>
                 <card resume>
                     {% if point.preview %}
