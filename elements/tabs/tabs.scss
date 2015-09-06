@@ -3,6 +3,7 @@
 tabs {
     display: block;
     padding: 0 0 20px;
+    font-size: 10px;
     & > ul {
         font-size: 0;
         display: block;
@@ -43,6 +44,17 @@ tabs {
                     background: $main-color-60;
                     color: $white;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    tabs {
+        & > ul li {
+            padding: 5px 0;
+            a {
+                line-height: 26px;
             }
         }
     }
