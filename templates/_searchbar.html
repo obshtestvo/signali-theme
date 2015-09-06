@@ -1,12 +1,12 @@
 {% load taxonomy %}
 <form action="{% url 'contact-point-list' %}" method="get">
-    <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light" placeholder="Изберете от падащото меню" location="simple" mainsearch>
+    <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light" placeholder="Изберете от падащото меню" location="simple" priority="low" >
         <label>Mестност, в която се е случило:</label>
         {% for id, label in form.areas.field.choices %}
         <value id="{{id}}">{{label}}</value>
         {% endfor %}
     </select-dropdown>
-    <select-dropdown id="mainsearch" theme="light" multiple mainsearch placeholder="Търсете по категории, теми или с нещо специфично на ум" >
+    <select-dropdown id="mainsearch" theme="light" multiple mainsearch priority="medium" placeholder="Изберете категория или напиете какво търсите " >
         <label>За какво се отнася:</label>
         {% taxonomy_mixed_options request form %}
         <div class="filters">

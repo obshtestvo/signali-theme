@@ -260,7 +260,7 @@ select-dropdown {
     }
     &[mainsearch] {
         float: left;
-        &:first-of-type {
+        &[priority="low"] {
             width: 24%;
             .selectize-input {
                 border-radius: 5px 0 0 5px;
@@ -275,10 +275,10 @@ select-dropdown {
                 }
             }
         }
-        &:nth-of-type(2) {
+        &[priority="medium"], &[priority="high"] {
             width: 68%;
             padding: 0 2% 0 0;
-            margin: 0 0 0 -1px;
+            margin: 0 0 17px -1px;
             .selectize-input {
                 border-radius: 0 5px 5px 0;
                 z-index: 9;
@@ -288,6 +288,10 @@ select-dropdown {
                     background: $focus-background;
                 }
             }
+        }
+        &[priority="high"] {
+            width:76%;
+            padding: 0;
         }
         .selectize-dropdown {
             border: none;
@@ -350,7 +354,7 @@ select-dropdown {
 @media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
     select-dropdown {
         &[mainsearch] {
-            &:nth-of-type(2) {
+            &[priority="medium"] {
                 width: 67%;
             }
         }
@@ -359,11 +363,14 @@ select-dropdown {
 @media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
     select-dropdown {
         &[mainsearch] {
-            &:first-of-type {
+            &[priority="low"] {
                 width: 32%;
             }
-            &:nth-of-type(2) {
+            &[priority="medium"] {
                 width: 57%;
+            }
+            &[priority="high"]{
+                width: 68%;
             }
         }
     }
@@ -372,11 +379,14 @@ select-dropdown {
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
     select-dropdown {
         &[mainsearch] {
-            &:first-of-type {
+            &[priority="low"] {
                 width: 36%;
             }
-            &:nth-of-type(2) {
+            &[priority="medium"] {
                 width: 50%;
+            }
+            &[priority="high"]{
+                width: 64%;
             }
         }
     }
@@ -385,7 +395,7 @@ select-dropdown {
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     select-dropdown {
         &[mainsearch] {
-            &:first-of-type {
+            &[priority="low"]{
                 width: 100%;
                 float: none;
                 .selectize-input {
@@ -395,8 +405,8 @@ select-dropdown {
                     }
                 }
             }
-            &:nth-of-type(2) {
-                margin: 0;
+            &[priority="medium"], &[priority="high"] {
+                margin-right: 0;
                 padding: 0;
                 width: 100%;
                 float: none;

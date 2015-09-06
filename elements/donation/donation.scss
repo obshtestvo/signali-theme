@@ -9,7 +9,6 @@ donation {
         padding: 62px 0;
         p {
             @extend %bodytext-large-font;
-            line-height: 16px;
             color: $white;
             margin: 0 0 20px 0;
         }
