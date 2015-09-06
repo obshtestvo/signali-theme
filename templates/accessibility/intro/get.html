@@ -6,7 +6,7 @@
 {% load settings %}
 {% include "_loader.html" %}
 <page color="semilight">
-    <cover density="airy" src="{% setting 'cover' %}">
+    <cover density="airy" src="{% setting 'cover_url' %}">
         {% include '_topnav.html' with request=request %}
         <intro density="airy">
             {% contactpoint_stats %}
