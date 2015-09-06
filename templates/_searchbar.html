@@ -10,12 +10,12 @@
         <label>За какво се отнася:</label>
         {% taxonomy_mixed_options request form %}
         <div class="filters">
-            <p>Доп. опции</p>
+            <p>Допълнителни опции:</p>
             <section>
-                <checkbox id="register" name="register">Регистрация</checkbox>
-                <checkbox id="asdasd" name="asdasdasd" checked>asdasdasd</checkbox>
+                <checkbox id="register" name="register">Не изисква регистрация</checkbox>
+                <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
                 <action-button helper density="cozy" align="right" action="{% url 'contact-point-list' %}">
-                    <span>или</span> подробно търсене
+                    <span>... още с</span> подробно търсене
                 </action-button>
             </section>
         </div>

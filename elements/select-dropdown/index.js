@@ -24,10 +24,23 @@ module.exports = function (componentService) {
             var options = {
                 valueField: 'id',
                 labelField: 'title',
+                load: function(query, callback) {
+                    console.log('query, callback')
+                    console.log(query, callback)
+                },
                 searchField: 'title',
                 optgroupField: 'group',
                 options: data.choices,
                 items: data.selected,
+                render: {
+                    option: function(item, escape) {
+                        return '<div>' +
+                            (item.prefix ? '<span class="prefix">' + escape(item.prefix) + '</span>': '') +
+                             '<span class="caption">' + escape(item.title) + '</span>' +
+                            (item.suffix ? '<span class="prefix">' + escape(item.suffix) + '</span>': '') +
+                            '</div>';
+                    }
+                },
                 plugins: {}
             };
             if (isMultiple) {
@@ -120,6 +133,12 @@ var extractData = function($values) {
             var group = this.getAttribute('group');
             item.group = group;
             groups.push({value: group, label: group})
+        }
+        if (this.hasAttribute('prefix')) {
+            item.prefix = this.getAttribute('prefix');
+        }
+        if (this.hasAttribute('suffix')) {
+            item.suffix = this.getAttribute('suffix');
         }
         if (this.hasAttribute('input')) {
             var inputName = this.getAttribute('input');

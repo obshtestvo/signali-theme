@@ -2,6 +2,7 @@
 {% for category in categories %}
 <value
         id="{{ category.pk }}"
+        suffix="({{ category.parent.title }})"
         group="Категории"
         site-wide-id="{{ category.site_wide_pk }}"
         input="{{form.categories.html_name}}">{{ category.title }}</value>
