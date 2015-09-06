@@ -164,8 +164,13 @@ select-dropdown {
                 border-bottom: none;
             }
         }
-        [data-selectable], .optgroup-header {
+        [data-selectable] {
             padding: $padding-vertical $padding-horizontal;
+        }
+        .optgroup-header {
+            padding: ($padding-vertical - $tag-padding-horizontal) $padding-horizontal;
+            color: $grey-color-120;
+            background: $grey-color-60;
         }
         .active {
             background-color: $dropdown-selected-option-background;
