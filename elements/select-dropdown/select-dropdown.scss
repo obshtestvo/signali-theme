@@ -175,7 +175,7 @@ select-dropdown {
         .optgroup-header {
             padding: ($padding-vertical - $tag-padding-horizontal) $padding-horizontal;
             color: $grey-color-120;
-            background: $grey-color-60;
+            background: lighten($grey-color-60, 2.5%);
             border-bottom: 1px solid lighten($grey-color-80, 4%);
         }
         .active {
@@ -344,7 +344,7 @@ select-dropdown {
                 width: 30%;
             }
             &:nth-of-type(2) {
-                width: 58%;
+                width: 57%;
             }
         }
     }
@@ -357,7 +357,7 @@ select-dropdown {
                 width: 35%;
             }
             &:nth-of-type(2) {
-                width: 51%;
+                width: 50%;
             }
         }
     }
@@ -377,6 +377,7 @@ select-dropdown {
                 }
             }
             &:nth-of-type(2) {
+                margin: 0;
                 width: 100%;
                 float: none;
                 .selectize-input {
