@@ -104,7 +104,7 @@ card {
 @media screen and (max-width: $small-desktop-width + 20), screen and (max-device-width: $small-desktop-width + 20) {
     card {
         width: 33.33%;
-        padding: 0 10%;
+        padding: 0 2%;
         &:nth-of-type(4) {
             display: none;
         }
@@ -113,28 +113,32 @@ card {
 
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
     card {
-        width: 25%;
-        padding: 0 10px;
+        width: 50%;
+        padding: 0 2%;
+        &:nth-of-type(3) {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     card {
-        width: 25%;
         padding: 0 10px;
     }
 }
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     card {
-        width: 25%;
-        padding: 0 10px;
+        width: 100%;
+        padding: 0 15%;
+        &:nth-of-type(2) {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
     card {
-        width: 25%;
-        padding: 0 10px;
+        padding: 0 2%;
     }
 }

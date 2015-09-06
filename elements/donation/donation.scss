@@ -3,14 +3,33 @@
 donation {
     background: $main-color-100 url('./background.png') no-repeat center center;
     display: block;
+    font-size: 10px;
+    padding: em(62) 0;
     div {
         @extend %wrapper;
         text-align: center;
-        padding: 62px 0;
         p {
             @extend %bodytext-large-font;
             color: $white;
-            margin: 0 0 20px 0;
+            margin: 0 0 em(20, 16) 0;
         }
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    donation {
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    donation {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    donation {
+        font-size: 7px;
     }
 }

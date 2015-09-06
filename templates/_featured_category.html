@@ -9,7 +9,7 @@
         {% include "_card.html" with point=point request=request %}
     {% endfor %}
     <footer>
-        <action-button helper density="airy" align="right" action="{% url 'contact-point-list' %}{% query categories=category.pk %}">
+        <action-button helper inline density="airy" align="right" action="{% url 'contact-point-list' %}{% query categories=category.pk %}">
             <span>или</span>виж всички
         </action-button>
     </footer>
