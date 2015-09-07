@@ -8,4 +8,9 @@ register = template.Library()
 def has_selected(field, value):
     if isinstance(value, Model):
         value = value.id
-    return force_text(value) in field.value()
+    fieldvalue = field.value()
+    return fieldvalue is not None and force_text(value) in field.value()
+
+@register.filter
+def has(form, field):
+    return field.html_name in form.data

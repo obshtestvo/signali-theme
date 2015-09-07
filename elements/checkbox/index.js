@@ -5,6 +5,13 @@ module.exports = function (componentService) {
         template: require('./checkbox.html'),
         include: {
             tick: require('./tick.svg')
+        },
+        properties: {
+            "empty-value": {
+                get: function() {
+                    return this.getAttribute('value') == ''
+                }
+            }
         }
     })
 }

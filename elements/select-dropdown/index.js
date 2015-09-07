@@ -4,7 +4,6 @@ var request = require('ajax/request');
 var Blocker = require('ajax/block');
 require('selectize/dist/js/standalone/selectize.js');
 require('./selectize.filtering.js');
-require('./selectize.multiple_inputs.js');
 require('./selectize.directajax.js');
 require('./select-dropdown.scss');
 
@@ -108,20 +107,6 @@ module.exports = function (componentService) {
                     filters: $filters
                 };
             }
-            if (!el.hasAttribute('name')) {
-                var inputMap = {}, inputName, selectEl, i;
-                for (i = 0; i < data.inputNames.length; i++) {
-                    inputName = data.inputNames[i];
-                    selectEl = document.createElement("select");
-                    selectEl.setAttribute('name', inputName);
-                    if (isMultiple) selectEl.setAttribute('multiple', '');
-                    el.appendChild(selectEl);
-                    inputMap[inputName] = $(selectEl)
-                }
-                options.plugins.multiple_inputs = {
-                    inputMap: inputMap
-                };
-            }
             $(document).on('touchend click', function(event) {
                 if(!$(event.target).closest($el).length) {
                     el.API.blur();
@@ -137,6 +122,24 @@ module.exports = function (componentService) {
             el.API.on('change', function() {
                 $el.trigger('change')
             });
+            if (!el.hasAttribute('name')) {
+                var add = function(item) {
+                    $el.closest('form').append('<input type="hidden" name="'+item.input+'" value="'+item.value+'" />');
+                };
+                var remove = function(item) {
+                    $el.closest('form').find('input[name="'+item.input+'"][value="'+item.value+'"]').remove();
+                };
+                $input.remove();
+                for (var i = 0; i < data.initial.length; i++) {
+                    add(data.initial[i])
+                }
+                el.API.on('item_add', function(value, $item) {
+                    add(this.options[value]);
+                });
+                el.API.on('item_remove', function(value, $item) {
+                    remove(this.options[value]);
+                });
+            }
         },
         prototype: {
             select: function(id) {
@@ -179,9 +182,9 @@ module.exports = function (componentService) {
 
 
 var extractData = function($values) {
-    var inputNames = [];
     var groups = [];
     var selected = [];
+    var initial = [];
     var choices = $values.map(function() {
         var item = {id: this.id, value: this.id, title: $(this).text()};
         if (this.hasAttribute('group')) {
@@ -196,15 +199,12 @@ var extractData = function($values) {
             item.suffix = this.getAttribute('suffix');
         }
         if (this.hasAttribute('input')) {
-            var inputName = this.getAttribute('input');
-            if (inputNames.indexOf(inputName) === -1) {
-                inputNames.push(inputName)
-            }
-            item.input = inputName;
+            item.input = this.getAttribute('input');
             item.id = this.getAttribute('site-wide-id')
         }
         if (this.hasAttribute('selected')) {
-            selected.push(item.id)
+            selected.push(item.id);
+            initial.push(item);
         }
         return item
     }).get();
@@ -212,7 +212,7 @@ var extractData = function($values) {
     return {
         groups: groups,
         choices: choices,
-        selected: selected,
-        inputNames: inputNames
+        initial: initial,
+        selected: selected
     }
 };

@@ -17,8 +17,8 @@ def categories_menu(context):
 @register.inclusion_tag('taxonomy/_mixed_picker_options.html')
 def taxonomy_mixed_options(request, form):
     return {
-        "categories": form["categories"].queryset,
-        "keywords": form["keywords"].queryset,
+        "categories": form.fields["categories"].queryset,
+        "keywords": form.fields["keywords"].queryset,
         "request": request,
         "form": form
     }

@@ -3,7 +3,7 @@
 {% for category in categories %}
 <value
         {% if form.categories|has_selected:category %} selected {% endif %}
-        id="{{ category.site_wide_pk }}"
+        id="{{ category.pk }}"
         suffix="({{ category.parent.title }})"
         group="Категории:"
         site-wide-id="{{ category.site_wide_pk }}"

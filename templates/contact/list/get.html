@@ -21,33 +21,6 @@
 
 <filtering primary>
     {% advanced_searchbar request form %}
-    <filters expandable class="expanded" color="light-gray">
-        <strong>Изисквания</strong>
-        <checkbox id="register" name="register">Не изисква регистрация</checkbox>
-        <checkbox id="photo" name="photo" checked>Не изисква снимка</checkbox>
-        <checkbox id="isign" name="isign">Не изисква ел. Подпис</checkbox>
-        <checkbox id="name" name="name">Не изисква името ти</checkbox>
-        <checkbox id="email" name="email">Не изисква имейл</checkbox>
-        <checkbox id="egn" name="egn">Не изисква ЕГН</checkbox>
-        <checkbox id="address" name="address">Не изисква адреса ти</checkbox>
-        <checkbox id="location" name="location">Не изисква локация на сигнала</checkbox>
-    </filters>
-    <filters expandable class="expanded" color="light-gray">
-        <strong>Допълнителни опции</strong>
-        <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-        <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-        <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
-        <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-        <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-        <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-    <checkbox id="belang" name="belang" checked>Многоезичност</checkbox>
-    </filters>
-    <action-button link inline type="primary" fill="solid" color="red" size="medium" align="center" action="{{action}}">
-        Филтрирай
-    </action-button>
-    <action-button helper inline icon="false" density="comfortable" align="center" action="google.com">
-        <span>или </span>изчисти филтрите
-    </action-button>
 </filtering>
 <cards-area>
     <header>

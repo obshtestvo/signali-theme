@@ -1,14 +1,118 @@
 {% load form %}
 {% load taxonomy %}
 <form action="{% url 'contact-point-list' %}" method="get">
-    <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light" placeholder="Изберете от падащото меню" location="simple" priority="low" mainsearch>
+    <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light"
+                     placeholder="Изберете от падащото меню" location="simple" priority="low" mainsearch>
         <label>Mестност, в която се е случило:</label>
         {% for id, label in form.areas.field.choices %}
-            <value id="{{id}}" {% if form.areas|has_selected:id %}selected{%endif%}>{{label}}</value>
+        <value id="{{id}}" {% if form.areas|has_selected:id %}selected{%endif%}>{{label}}</value>
         {% endfor %}
     </select-dropdown>
-    <select-dropdown id="mainsearch" theme="light" priority="high" placeholder="Търсете по категории, теми или с нещо специфично на ум" multiple mainsearch >
+    <select-dropdown id="mainsearch" theme="light" priority="high"
+                     placeholder="Търсете по категории, теми или с нещо специфично на ум" multiple mainsearch>
         <label>За какво се отнася:</label>
         {% taxonomy_mixed_options request form %}
     </select-dropdown>
+    <filters expandable class="expanded" color="light-gray">
+        <strong>Изисквания</strong>
+        <checkbox id="{{form.is_registration_required.html_name}}"
+                  name="{{form.is_registration_required.html_name}}"
+                  {% if form|has:form.is_registration_required and not form.is_registration_required.value %} checked {% endif %}
+                  value="">
+            Не изисква регистрация
+        </checkbox>
+        <checkbox id="{{form.is_photo_required.html_name}}"
+                  name="{{form.is_photo_required.html_name}}"
+                  {% if form|has:form.is_photo_required and not form.is_photo_required.value %} checked {% endif %}
+                  value="">
+            Не изисква снимка
+        </checkbox>
+        <checkbox id="{{form.is_esign_required.html_name}}"
+                  name="{{form.is_esign_required.html_name}}"
+                  {% if form|has:form.is_esign_required and not form.is_esign_required.value %} checked {% endif %}
+                  value="">
+            Не изисква ел. подпис
+        </checkbox>
+        <checkbox id="{{form.is_name_required.html_name}}"
+                  name="{{form.is_name_required.html_name}}"
+                  {% if form|has:form.is_name_required and not form.is_name_required.value %} checked {% endif %}
+                  value="">
+            Не изисква името ти
+        </checkbox>
+        <checkbox id="{{form.is_email_required.html_name}}"
+                  name="{{form.is_email_required.html_name}}"
+                  {% if form|has:form.is_email_required and not form.is_email_required.value %} checked {% endif %}
+                  value="">
+            Не изисква имейл
+        </checkbox>
+        <checkbox id="{{form.is_pic_required.html_name}}"
+                  name="{{form.is_pic_required.html_name}}"
+                  {% if form|has:form.is_pic_required and not form.is_pic_required.value %} checked {% endif %}
+                  value="">
+            Не изисква ЕГН
+        </checkbox>
+        <checkbox id="{{form.is_address_required.html_name}}"
+                  name="{{form.is_address_required.html_name}}"
+                  {% if form|has:form.is_address_required and not form.is_address_required.value %} checked {% endif %}
+                  value="">
+            Не изисква адреса ти
+        </checkbox>
+        <checkbox id="{{form.is_location_required.html_name}}"
+                  name="{{form.is_location_required.html_name}}"
+                  {% if form|has:form.is_location_required and not form.is_location_required.value %} checked {% endif %}
+                  value="">
+            Не изисква локация на сигнала
+        </checkbox>
+    </filters>
+    <filters expandable class="expanded" color="light-gray">
+        <strong>Допълнителни опции</strong>
+            <checkbox id="{{form.is_anonymous_allowed.html_name}}"
+                      name="{{form.is_anonymous_allowed.html_name}}"
+                      {% if form.is_anonymous_allowed.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Анонимност
+            </checkbox>
+            <checkbox id="{{form.is_confirmation_issued.html_name}}"
+                      name="{{form.is_confirmation_issued.html_name}}"
+                      {% if form.is_confirmation_issued.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Потвърждаване на сигнала?
+            </checkbox>
+            <checkbox id="{{form.is_verifiable.html_name}}"
+                      name="{{form.is_verifiable.html_name}}"
+                      {% if form.is_verifiable.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Верификация на сигнала?
+            </checkbox>
+            <checkbox id="{{form.is_final_destination.html_name}}"
+                      name="{{form.is_final_destination.html_name}}"
+                      {% if form.is_final_destination.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Краен приемник
+            </checkbox>
+            <checkbox id="{{form.is_response_guaranteed.html_name}}"
+                      name="{{form.is_response_guaranteed.html_name}}"
+                      {% if form.is_response_guaranteed.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Гаранция за отговор
+            </checkbox>
+            <checkbox id="{{form.is_mobile_friendly.html_name}}"
+                      name="{{form.is_mobile_friendly.html_name}}"
+                      {% if form.is_mobile_friendly.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Мобилна версия
+            </checkbox>
+            <checkbox id="{{form.is_multilingual.html_name}}"
+                      name="{{form.is_multilingual.html_name}}"
+                      {% if form.is_multilingual.value = form.YES %} checked {% endif %}
+                      value="{{form.YES}}">
+                    Многоезичност
+            </checkbox>
+    </filters>
+    <action-button submit inline type="primary" fill="solid" color="red" size="medium" align="center" action="{{action}}">
+        Филтрирай
+    </action-button>
+    <action-button helper inline icon="false" density="comfortable" align="center" action="{% url 'contact-point-list' %}">
+        <span>или </span>изчисти филтрите
+    </action-button>
 </form>
