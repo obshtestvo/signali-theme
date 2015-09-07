@@ -1,7 +1,9 @@
+{% load form %}
 {% load utils %}
 {% for category in categories %}
 <value
-        id="{{ category.pk }}"
+        {% if form.categories|has_selected:category %} selected {% endif %}
+        id="{{ category.site_wide_pk }}"
         suffix="({{ category.parent.title }})"
         group="Категории:"
         site-wide-id="{{ category.site_wide_pk }}"
@@ -9,6 +11,7 @@
 {% endfor %}
 {% for keyword in keywords %}
 <value
+        {% if form.keywords|has_selected:keyword %} selected {% endif %}
         id="{{ keyword.pk }}"
         group="Теми:"
         site-wide-id="{{ keyword.site_wide_pk }}"

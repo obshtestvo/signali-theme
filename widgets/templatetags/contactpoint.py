@@ -90,3 +90,14 @@ def searchbar(request, form=None):
         "request": request
     }
 
+
+@register.inclusion_tag('contact/_advanced_searchbar.html')
+def advanced_searchbar(request, form=None):
+    if form is None:
+        form = UserCriteriaForm(data=request.params)
+    return {
+        "form": form,
+        "errors": errors(request).get("form", None),
+        "request": request
+    }
+

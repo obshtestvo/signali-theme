@@ -181,6 +181,7 @@ module.exports = function (componentService) {
 var extractData = function($values) {
     var inputNames = [];
     var groups = [];
+    var selected = [];
     var choices = $values.map(function() {
         var item = {id: this.id, value: this.id, title: $(this).text()};
         if (this.hasAttribute('group')) {
@@ -202,11 +203,12 @@ var extractData = function($values) {
             item.input = inputName;
             item.id = this.getAttribute('site-wide-id')
         }
+        if (this.hasAttribute('selected')) {
+            selected.push(item.id)
+        }
         return item
     }).get();
-    var selected = $values.filter('[selected]').map(function() {
-        return this.id
-    }).get();
+
     return {
         groups: groups,
         choices: choices,
