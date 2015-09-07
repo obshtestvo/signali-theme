@@ -10,7 +10,6 @@ module.exports = function (componentService) {
                 loader.parentNode.removeChild(loader)
             }, 350);
             window.onbeforeunload = function() {
-                console.log('aaa')
                 originalLoaderParent.appendChild(loader);
                 el.removeAttribute('resolved')
             }

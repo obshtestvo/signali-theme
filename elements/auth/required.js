@@ -37,7 +37,6 @@ module.exports = function (componentService, adaptors) {
 
         prototype: {
             clearAuthRequirement: function() {
-                console.log('baaa')
                 var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));
                 $form.off('.auth-required');
                 this.removeAttribute('auth-required')
