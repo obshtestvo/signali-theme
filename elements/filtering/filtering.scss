@@ -7,7 +7,7 @@ filtering {
     &[primary] {
         background: $grey-color-60;
         border-bottom: 1px solid $grey-color-80;
-        & > section {
+        & > section, & > form > section  {
             @extend %wrapper;
         }
     }
