@@ -26,5 +26,43 @@ resume {
                 margin: 0 0 8px;
             }
         }
+        .tags {
+            margin: -10px 0 0 0;
+            position: relative;
+            padding: 0 0 22px 0;
+            .icon {
+                width: 15px;
+                height: 15px;
+                position: absolute;
+                top: 3px;
+                left: 0;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                    fill: $grey-color-100;
+                }
+            }
+            section {
+                position: relative;
+                padding: 0 0 0 20px;
+            }
+            a {
+                @extend %bodytext-font;
+                color: $secondary-color-100;
+                display: inline-block;
+                margin: 0 5px 0 0;
+                position: relative;
+                &:hover {
+                    text-decoration: underline;
+                    color: $secondary-color-hover;
+                }
+                &:after {
+                    content: ',';
+                }
+                &:last-of-type:after {
+                    display: none;
+                }
+            }
+        }
     }
 }

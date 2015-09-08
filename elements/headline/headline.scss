@@ -66,6 +66,25 @@ headline {
             @extend %bodytext-large-font;
         }
     }
+    &[size='extrasmall'] {
+        h3 {
+            @extend %bodytext-font;
+            font-weight: 600;
+        }
+        &[density="airy"] {
+            padding: 0;
+        }
+        &[density="comfortable"] {
+            padding: 0;
+        }
+        &[density="cozy"] {
+            padding: em(13) 0 em(7  ) 0;
+        }
+        &[density="compact"] {
+            padding: 0;
+        }
+    }
+
     &[align="left"] {
         text-align: left;
     }

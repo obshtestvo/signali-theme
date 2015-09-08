@@ -45,14 +45,13 @@ cards-area {
     }
 }
 
-
 @media screen and (max-width: $small-desktop-width + 20), screen and (max-device-width: $small-desktop-width + 20) {
     cards-area {
         card {
             width: 33.33%;
 
         }
-        &[essential]   card {
+        &[essential] card {
             padding: 0 2%;
             &:nth-of-type(4) {
                 display: none;
@@ -66,7 +65,7 @@ cards-area {
         card {
             width: 50%;
         }
-        &[essential]  card  {
+        &[essential] card {
             padding: 0 2%;
             &:nth-of-type(3) {
                 display: none;
