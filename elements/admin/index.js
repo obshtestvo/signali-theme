@@ -3,6 +3,9 @@
 //require('select2/dist/css/select2.css');
 //require('select2/dist/js/i18n/bg.js');
 
+window.jQuery = django.jQuery.noConflict(true);
+window.$ = window.jQuery
+
 require('Select2/select2.css');
 require('./admin.scss');
 
