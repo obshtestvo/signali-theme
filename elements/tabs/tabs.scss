@@ -22,6 +22,7 @@ tabs {
         }
         li {
             display: inline-block;
+            padding: 0 5px;
             a {
                 display: block;
                 padding: 0 15px;
@@ -52,7 +53,7 @@ tabs {
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     tabs {
         & > ul li {
-            padding: 5px 0;
+            padding: 5px;
             a {
                 line-height: 26px;
             }

@@ -83,10 +83,12 @@ select-dropdown {
         box-shadow: none;
         border: $standard-border;
         padding: $padding-vertical $padding-horizontal;
+        background: linear-gradient(to bottom, $white 0%, $grey-color-60 100%);
         &.focus {
             box-shadow: none;
             border-color: $grey-color-100;
             z-index: 11;
+
         }
         &.dropdown-active {
             @extend %small-radius;
@@ -97,13 +99,25 @@ select-dropdown {
                 display: none;
             }
         }
+
+        &.input-active {
+            background: linear-gradient(to bottom, lighten($grey-color-60, 2%) 0%, $white 100%);
+        }
         input {
-            &::-webkit-input-placeholder { @include placeholder}
-            &::-moz-placeholder { @include placeholder }
+            &::-webkit-input-placeholder {
+                @include placeholder
+            }
+            &::-moz-placeholder {
+                @include placeholder
+            }
             /* firefox 19+ */
-            &:-ms-input-placeholder {@include placeholder}
+            &:-ms-input-placeholder {
+                @include placeholder
+            }
             /* ie */
-            &:-moz-placeholder {@include placeholder}
+            &:-moz-placeholder {
+                @include placeholder
+            }
         }
     }
     .selectize-dropdown, .selectize-input,
@@ -112,7 +126,6 @@ select-dropdown {
         color: $text-color;
     }
     .selectize-control.multi {
-
         .selectize-input {
             &.has-items {
                 $padding-top: $padding-vertical - $tag-padding-vertical - $tag-border-width;
@@ -136,9 +149,16 @@ select-dropdown {
         }
     }
     .selectize-control.single {
-
         .selectize-input {
-            background: $white;
+            .item{
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 85%;
+                overflow: hidden;
+            }
+            & > * {
+                vertical-align: top;
+            }
             &:after {
                 margin-top: round(-1 * $arrow-height / 2);
                 height: 0;
@@ -149,6 +169,9 @@ select-dropdown {
                 margin-top: $arrow-height * -0.8;
                 border-width: 0 $arrow-width/2 $arrow-height $arrow-width/2;
                 border-color: transparent transparent $arrow-color
+            }
+            &.input-active {
+                background: linear-gradient(to bottom, lighten($grey-color-60, 2%) 0%, $white 100%)
             }
         }
     }
@@ -233,7 +256,6 @@ select-dropdown {
     &[location] {
         .selectize-control.single {
             .selectize-input {
-                background: $white;
                 &:after {
                     margin-top: round(-1 * $arrow-height / 2);
                     border: none;
@@ -263,6 +285,7 @@ select-dropdown {
         &[priority="low"] {
             width: 24%;
             .selectize-input {
+                background: $white;
                 border-radius: 5px 0 0 5px;
                 z-index: 10;
                 &.input-active {
@@ -280,6 +303,7 @@ select-dropdown {
             padding: 0 2% 0 0;
             margin: 0 0 17px -1px;
             .selectize-input {
+                background: $white;
                 border-radius: 0 5px 5px 0;
                 z-index: 9;
                 &.focus {
@@ -290,7 +314,7 @@ select-dropdown {
             }
         }
         &[priority="high"] {
-            width:76%;
+            width: 76%;
             padding: 0;
         }
         .selectize-dropdown {
@@ -309,7 +333,7 @@ select-dropdown {
         }
         .selectize-control.multi {
             .selectize-input.has-items {
-                padding: $arrow-width+4px ($padding-horizontal*2)-2px $arrow-height+5px;
+                padding: $arrow-width+4px ($padding-horizontal*2)-1px $arrow-height+6px;
             }
         }
     }
@@ -360,6 +384,7 @@ select-dropdown {
         }
     }
 }
+
 @media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
     select-dropdown {
         &[mainsearch] {
@@ -369,7 +394,7 @@ select-dropdown {
             &[priority="medium"] {
                 width: 57%;
             }
-            &[priority="high"]{
+            &[priority="high"] {
                 width: 68%;
             }
         }
@@ -385,7 +410,7 @@ select-dropdown {
             &[priority="medium"] {
                 width: 50%;
             }
-            &[priority="high"]{
+            &[priority="high"] {
                 width: 64%;
             }
         }
@@ -395,7 +420,7 @@ select-dropdown {
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     select-dropdown {
         &[mainsearch] {
-            &[priority="low"]{
+            &[priority="low"] {
                 width: 100%;
                 float: none;
                 .selectize-input {
