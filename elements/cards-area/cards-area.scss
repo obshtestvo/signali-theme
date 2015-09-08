@@ -44,3 +44,74 @@ cards-area {
         }
     }
 }
+
+
+@media screen and (max-width: $small-desktop-width + 20), screen and (max-device-width: $small-desktop-width + 20) {
+    cards-area {
+        card {
+            width: 33.33%;
+
+        }
+        &[essential] {
+            padding: 0 2%;
+            &:nth-of-type(4) {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    cards-area {
+        card {
+            width: 50%;
+        }
+        &[essential] {
+            padding: 0 2%;
+            &:nth-of-type(3) {
+                display: none;
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    cards-area {
+        &[essential] {
+            card {
+                padding: 0 10px;
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    cards-area {
+        card {
+            width: 100%;
+        }
+        &[essential] {
+            card {
+                padding: 0 15%;
+                &:nth-of-type(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+    cards-area {
+        &[essential] {
+            card {
+                padding: 0 15%;
+                &:nth-of-type(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -10,11 +10,6 @@ filtering {
         & > section {
             @extend %wrapper;
         }
-        .actions {
-            text-align: center;
-            margin: -10px 0 0 0;
-
-        }
     }
     &[secondary] {
         &[sorting] {

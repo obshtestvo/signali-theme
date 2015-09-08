@@ -63,6 +63,12 @@ filters {
             }
         }
     }
+    .actions{
+        text-align: center;
+        margin-bottom: -20px;
+        position: relative;
+        margin-top: 20px;
+    }
     &.expanded .minus{
         opacity: 1;
         visibility: visible;
