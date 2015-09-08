@@ -5,13 +5,15 @@ selectize.define('directajax', function (options) {
     this.addItem = (function () {
         var original = self.addItem;
         return function (value, silent) {
-            var item = this.options[value];
-            if (item.href) {
+            if (self.isSetup) {
+                var item = this.options[value];
+                if (item.href) {
                 self.close();
-                self.blur();
-                if (options.block) options.block()
-                window.location.href = item.href;
-                return;
+                    self.blur();
+                    if (options.block) options.block()
+                    window.location.href = item.href;
+                    return;
+                }
             }
             original.apply(self, arguments);
         };
