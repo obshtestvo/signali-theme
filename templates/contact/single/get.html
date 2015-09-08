@@ -51,8 +51,10 @@
         <featured>
             <resume>
                 <article>
+                    {% if point.description %}
                     <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
                     {{ point.description | safe }}
+                    {% endif %}
                 </article>
                 <features>
                     <headline size="small" density="tight">Характеристики</headline>

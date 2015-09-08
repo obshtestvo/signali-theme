@@ -8,27 +8,27 @@
     {% else %}
         <p class="img nopreview"></p>
     {% endif %}
-    <strong>{{ point.title }}</strong>
+    <strong>{{ point.title|truncatechars:50 }}</strong>
     <card-item type="category">
         <strong>категория</strong>
         <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
            class="category">{{ point.category.title }}</a>
     </card-item>
     <card-item type="location">
-        <strong>местонахождение</strong>
+        <strong>Приема сигнали от</strong>
         <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
            class="location">{{ point.operational_area.title }}</a>
     </card-item>
     <card-item type="tags">
         <strong>теми</strong>
-        {% for tag in point.keywords.all %}
+        {% for tag in point.keywords.all|slice:":5" %}
             <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
     </card-item>
     <card-item type="rating">
         <strong>Оценка</strong>
         <rating value="{{ point.rating }}" href="{% url 'contact-point' slug=point.slug %}#feedback">
-            <a class="comments" href="{% url 'contact-point' slug=point.slug %}#feedbacklist">({{point.feedback.count}} коментара)</a>
+            <a class="comments" href="{% url 'contact-point' slug=point.slug %}#feedbacklist">({{point.feedback.count}} оценки)</a>
         </rating>
     </card-item>
     <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{% url 'contact-point' slug=point.slug %}">
