@@ -19,21 +19,36 @@
     </intro>
 </cover>
 <featured>
-
-<filtering primary>
-    {% advanced_searchbar request form %}
-</filtering>
+{% advanced_searchbar request form %}
 <cards-area>
     <header>
         <filtering secondary sorting>
             <strong>{{ points.count }} резултата</strong>
-            <select-dropdown name="sortingfield" size="small" density="compact"  placeholder="Подреди местата по">
-                <value id="-score" selected href="{% url 'contact-point-list' %}{% query sorting=None%}">Съвпадение с търсенето</value>
-                <value id="-created_at" href="{% url 'contact-point-list' %}{% query sorting='-created_at'%}">Скоро добавени</value>
-                <value id="-rating" href="{% url 'contact-point-list' %}{% query sorting='-rating'%}">Висока оценка</value>
-                <value id="-effective" href="{% url 'contact-point-list' %}{% query sorting='-effective'%}">Най-ефективни</value>
-                <value id="-easy" href="{% url 'contact-point-list' %}{% query sorting='-easy'%}">Най-лесни за ползване</value>
-                <value id="-visits" href="{% url 'contact-point-list' %}{% query sorting='-visits'%}">Последно посетени</value>
+            <select-dropdown name="sortingfield" size="small" density="compact" placeholder="Подреди местата по" placeholder-type="vivid">
+                <value
+                       id="-score"
+                       href="{% url 'contact-point-list' %}{% query sorting=None%}"
+                       {% if sorting = "-score" %}current{% endif %}>Съвпадащи с търсенето</value>
+                <value
+                       id="-rating"
+                       href="{% url 'contact-point-list' %}{% query sorting='-rating'%}"
+                       {% if sorting = "-rating" %}current{% endif %}>Високо оценени</value>
+                <value
+                       id="-effective"
+                       href="{% url 'contact-point-list' %}{% query sorting='-effective'%}"
+                       {% if sorting = "-effective" %}current{% endif %}>Най-ефективни</value>
+                <value
+                       id="-easy"
+                       href="{% url 'contact-point-list' %}{% query sorting='-easy'%}"
+                       {% if sorting = "-easy" %}current{% endif %}>Най-лесни за ползване</value>
+                <value
+                       id="-visits"
+                       href="{% url 'contact-point-list' %}{% query sorting='-visits'%}"
+                       {% if sorting = "-visits" %}current{% endif %}>Последно посетени</value>
+                <value
+                       id="-created_at"
+                       href="{% url 'contact-point-list' %}{% query sorting='-created_at'%}"
+                       {% if sorting = "-created_at" %}current{% endif %}>Скоро добавени</value>
             </select-dropdown>
         </filtering>
     </header>
