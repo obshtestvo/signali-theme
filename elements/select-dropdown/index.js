@@ -52,10 +52,9 @@ module.exports = function (componentService) {
                             var item = data[i];
                             results.push({
                                 title: item.title,
+                                href: item.url,
                                 id: item.url,
                                 description: item.description,
-                                value: item.url,
-                                direct: true,
                                 group: group,
                                 score: item.score
                             });
@@ -81,11 +80,7 @@ module.exports = function (componentService) {
                     }
                 },
                 plugins: {
-                    directajax: {
-                        block: function() {
-                            blocking.block()
-                        }
-                    },
+                    directajax: {},
                     //no_results: {}
                 }
             };
@@ -194,6 +189,9 @@ var extractData = function($values) {
         }
         if (this.hasAttribute('prefix')) {
             item.prefix = this.getAttribute('prefix');
+        }
+        if (this.hasAttribute('href')) {
+            item.href = this.getAttribute('href');
         }
         if (this.hasAttribute('suffix')) {
             item.suffix = this.getAttribute('suffix');
