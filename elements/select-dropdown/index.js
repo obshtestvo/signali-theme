@@ -72,7 +72,7 @@ module.exports = function (componentService) {
                 items: data.selected,
                 render: {
                     option: function(item, escape) {
-                        return '<div>' +
+                        return '<div class="'+(item.class ? item.class : '')+'">' +
                             (item.prefix ? '<span class="prefix">' + escape(item.prefix) + '</span>': '') +
                              '<span class="caption">' + escape(item.title) + '</span>' +
                             (item.suffix ? '<span class="suffix">' + escape(item.suffix) + '</span>': '') +
@@ -181,6 +181,7 @@ var extractData = function($values) {
     var selected = [];
     var initial = [];
     var choices = $values.map(function() {
+        if (!this.id) this.id = 'select-dropdown-' + Math.floor(Math.random() * 1000) + '-' + Date.now()
         var item = {id: this.id, value: this.id, title: $(this).text()};
         if (this.hasAttribute('group')) {
             var group = this.getAttribute('group');
@@ -189,6 +190,12 @@ var extractData = function($values) {
         }
         if (this.hasAttribute('prefix')) {
             item.prefix = this.getAttribute('prefix');
+        }
+        if (this.hasAttribute('current')) {
+            item["class"] = 'current';
+        }
+        if (this.hasAttribute('class')) {
+            item["class"] = this.getAttribute('class');
         }
         if (this.hasAttribute('href')) {
             item.href = this.getAttribute('href');

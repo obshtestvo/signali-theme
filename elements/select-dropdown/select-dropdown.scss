@@ -104,20 +104,35 @@ select-dropdown {
             background: linear-gradient(to bottom, lighten($grey-color-60, 2%) 0%, $white 100%);
         }
         input {
-            &::-webkit-input-placeholder {
-                @include placeholder
-            }
-            &::-moz-placeholder {
-                @include placeholder
-            }
+            &::-webkit-input-placeholder {@include placeholder}
+            &::-moz-placeholder {@include placeholder}
             /* firefox 19+ */
-            &:-ms-input-placeholder {
-                @include placeholder
-            }
+            &:-ms-input-placeholder {@include placeholder}
             /* ie */
-            &:-moz-placeholder {
-                @include placeholder
-            }
+            &:-moz-placeholder {@include placeholder}
+        }
+
+    }
+    &[placeholder-type="vivid"] .selectize-input {
+        @mixin vivid-placeholder {
+            font-style: normal;
+            color: $body-text-color
+        }
+        input {
+            &::-webkit-input-placeholder {@include vivid-placeholder}
+            &::-moz-placeholder {@include vivid-placeholder}
+            /* firefox 19+ */
+            &:-ms-input-placeholder {@include vivid-placeholder}
+            /* ie */
+            &:-moz-placeholder {@include vivid-placeholder}
+        }
+        &.focus input {
+            &::-webkit-input-placeholder {@include placeholder}
+            &::-moz-placeholder {@include placeholder}
+            /* firefox 19+ */
+            &:-ms-input-placeholder {@include placeholder}
+            /* ie */
+            &:-moz-placeholder {@include placeholder}
         }
     }
     .selectize-dropdown, .selectize-input,
@@ -184,6 +199,7 @@ select-dropdown {
         max-width: 100%;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         [data-selectable] {
+            padding: $padding-vertical $padding-horizontal;
             border-bottom: 1px solid $grey-color-60;
             .highlight {
                 background: $search-match-highlight-background;
@@ -195,13 +211,14 @@ select-dropdown {
                 border-top-right-radius: 0;
                 border-bottom: none;
             }
-        }
-        [data-selectable] {
-            padding: $padding-vertical $padding-horizontal;
             & > .suffix {
                 padding: 0 0 0 10px;
                 color: $grey-color-80;
                 font-size: 12px;
+            }
+            &.current {
+                font-weight: bold;
+                cursor: default;
             }
         }
         .optgroup-header {
@@ -251,7 +268,7 @@ select-dropdown {
         max-width: 380px;
     }
     &[size="small"] {
-        width: 220px;
+        width: 240px;
     }
     &[location] {
         .selectize-control.single {

@@ -1,6 +1,6 @@
 {% load form %}
 {% load taxonomy %}
-<form action="{% url 'contact-point-list' %}" method="get">
+<filtering primary action="{% url 'contact-point-list' %}">
     <div class="clearfix">
         <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light"
                          placeholder="Изберете от падащото меню" location="simple" priority="low" mainsearch>
@@ -117,4 +117,4 @@
     <action-button helper inline icon="false" density="comfortable" align="center" action="{% url 'contact-point-list' %}">
         <span>или </span>изчисти филтрите
     </action-button>
-</form>
+</filtering>
