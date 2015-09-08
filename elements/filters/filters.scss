@@ -41,8 +41,7 @@ filters {
             width: $size + $standart-padding;
             height: $size;
             & > div {
-                opacity: 0;
-                visibility: hidden;
+                display: none;
                 @extend %small-radius;
                 cursor: pointer;
                 position: absolute;
@@ -50,17 +49,34 @@ filters {
                 width: $size;
                 top: 0;
                 right: 0;
+                &.minus {
+                    display: block;
+                }
                 svg {
                     width: 100%;
                     height: 100%;
                     fill: $grey-color-100;
                 }
-                &:hover{
-                    svg {
-                        fill: $secondary-color-100;
-                    }
-                }
             }
+        }
+    }
+    &[expandable] > div {
+        cursor:pointer;
+        &:hover{
+            svg {
+                fill: $secondary-color-100;
+            }
+        }
+    }
+    &[collapsed] {
+        [content] {
+            display: none;
+        }
+        .switch-icons > div.plus {
+            display: block;
+        }
+        .switch-icons > div.minus {
+            display: none;
         }
     }
     .actions{
@@ -68,14 +84,6 @@ filters {
         margin-bottom: -20px;
         position: relative;
         margin-top: 20px;
-    }
-    &.expanded .minus{
-        opacity: 1;
-        visibility: visible;
-    }
-    &.close .plus{
-        opacity: 1;
-        visibility: visible;
     }
     &[color="white"] > div {
         & > strong, .switch-icons {
