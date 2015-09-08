@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
+{% load settings %}
 {% load static %}
 {% load contactpoint %}
 {% load restful %}
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
-<cover density="comfortable" src="test/smoking.jpg">
+<cover density="comfortable" src="{% setting 'cover_url' %}">
     {% include '_topnav.html' with request=request %}
     <intro density="compact">
         <call-to-action align="left" density="compact">
