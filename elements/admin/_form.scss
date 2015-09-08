@@ -8,13 +8,18 @@
   margin-top: 0;
   background: $color_athens_gray_approx;
 }
+#content .select2-search-field {
+  min-width:250px;
+}
 .redactor-box {
   width: 100%;
   max-width: none;
 }
-
 textarea.full-width {
   width: 100%;
   //Instead of the line below you could use @include box-sizing($bs)
   box-sizing: border-box;
+}
+.related-widget-wrapper .help-inline {
+  display: none;
 }

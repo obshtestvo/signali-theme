@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load settings %}
 {% load notification %}
 {% load contactpoint %}
 {% load static %}
@@ -8,7 +9,7 @@
 {% block content %}
     {% include "_loader.html" %}
     <page color="light">
-        <cover density="comfortable" src="{{ point.cover.url }}">
+        <cover density="comfortable" src="{%if point.cover %}{{ point.cover.url }}{% else %}{% setting 'cover_url' %}{% endif %}">
             {% include '_topnav.html' with request=request %}
             <intro density="compact" social-insights>
                 <call-to-action align="left" density="compact">
@@ -133,7 +134,7 @@
                     </action-button>
                     <p>или ако имаш вече опит с „{{ point.title }}“ сподели го:</p>
                     <action-button link type="primary" fill="outlined" color="purple" size="large" align="center" action="#feedback">
-                        Кажи ни как мина
+                        Кажи как мина
                     </action-button>
                 </card>
             </resume>

@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
+{% load settings %}
 {% load static %}
 {% load contactpoint %}
 {% load restful %}
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
-<cover density="comfortable" src="test/smoking.jpg">
+<cover density="comfortable" src="{% setting 'cover_url' %}">
     {% include '_topnav.html' with request=request %}
     <intro density="compact">
         <call-to-action align="left" density="compact">
@@ -25,13 +26,14 @@
 <cards-area>
     <header>
         <filtering secondary sorting>
-            <strong>24 резултата</strong>
-            <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
-                <value id="2" selected>Подреди по</value>
-                <value id="3">Нови</value>
-                <value id="5">Дата</value>
-                <value id="4">Час</value>
-                <value id="6">Звездички</value>
+            <strong>{{ points.count }} резултата</strong>
+            <select-dropdown name="sortingfield" size="small" density="compact"  placeholder="Подреди местата по">
+                <value id="-score" selected href="{% url 'contact-point-list' %}{% query sorting=None%}">Съвпадение с търсенето</value>
+                <value id="-created_at" href="{% url 'contact-point-list' %}{% query sorting='-created_at'%}">Скоро добавени</value>
+                <value id="-rating" href="{% url 'contact-point-list' %}{% query sorting='-rating'%}">Висока оценка</value>
+                <value id="-effective" href="{% url 'contact-point-list' %}{% query sorting='-effective'%}">Най-ефективни</value>
+                <value id="-easy" href="{% url 'contact-point-list' %}{% query sorting='-easy'%}">Най-лесни за ползване</value>
+                <value id="-visited" href="{% url 'contact-point-list' %}{% query sorting='-visited'%}">Последно посетени</value>
             </select-dropdown>
         </filtering>
     </header>

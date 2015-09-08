@@ -2,6 +2,10 @@
 html {
   @extend %bodytext-font;
   color: $body-text-color;
+  overflow-y: scroll;
+}
+html, body {
+  background: #fff;
 }
 * {
   box-sizing:border-box;

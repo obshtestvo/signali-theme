@@ -54,7 +54,7 @@ module.exports = function (componentService) {
                 });
                 clearTimeout(this.timeout);
                 el.timeout = setTimeout(function() {
-                    window.location = el.location;
+                    window.location.href = el.location;
                 }, timeRemaining)
             },
             pause: function() {
