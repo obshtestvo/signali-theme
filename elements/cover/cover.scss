@@ -3,6 +3,7 @@
 cover {
     display: block;
     background-color: $main-color-100;
+    font-size: 10px;
     & > section {
         background-size: cover;
         position: relative;
@@ -25,5 +26,36 @@ cover {
     }
     &[density="comfortable"] {
         height: 390px;
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    cover {
+        &[density="comfortable"] {
+            height: 320px;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    cover {
+        &[density="comfortable"] {
+            height: 280px;
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    cover {
+        background: transparent !important;
+        & > section {
+            background: transparent !important;
+            &:before {
+                display: none;
+            }
+        }
+        &[density="comfortable"] {
+            height: auto;
+        }
     }
 }

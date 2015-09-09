@@ -11,3 +11,10 @@ breadcrumb {
         padding: 0;
     }
 }
+
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    breadcrumb{
+        display: none;
+    }
+}

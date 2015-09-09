@@ -83,28 +83,26 @@ resume {
     }
 }
 
-
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     resume {
         & > section > div {
             width: 50%;
+            background: $grey-color-60;
         }
     }
 }
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     resume {
-        & > section > div {
-            width: 100%;
+        background: transparent;
+        padding: 0;
+        & > section {
+            padding: 0;
+            & > div {
+                width: 100%;
+                padding: 20px 20px 25px 20px;
+            }
         }
     }
 }
 
-
-@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
-    resume {
-        & > section > div {
-            width: 67%;
-        }
-    }
-}

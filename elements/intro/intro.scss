@@ -21,7 +21,8 @@ intro {
         position: absolute;
         bottom: 0;
         width: 100%;
-        padding-right: em(40);
+        padding-left: 20px;
+        left:0;
 
     }
     &[social-insights] {
@@ -60,6 +61,10 @@ intro {
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     intro {
         font-size: 6px;
-
+        &[social-insights] {
+            padding-right: 0;
+            padding-left: 0;
+            position: relative;
+        }
     }
 }

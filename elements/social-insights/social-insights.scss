@@ -2,10 +2,11 @@
 
 social-insights {
     display: block;
+    font-size: 10px;
     & > div {
         & > section {
             float: left;
-            margin: 0 8px;
+            margin: 0 em(8);
             &:first-child {
                 margin-left: 0;
             }
@@ -29,7 +30,7 @@ social-insights {
             & > section {
                 float: none;
                 display: inline-block;
-                margin: 0 6px;
+                margin: 0 em(6);
             }
         }
     }
@@ -38,7 +39,7 @@ social-insights {
             float: right;
         }
         &[static] {
-            right: 40px;
+            right: 20px;
         }
     }
 
@@ -47,15 +48,50 @@ social-insights {
         bottom: 0;
     }
     &[density="airy"] {
-        padding: 50px 0
+        padding: em(50) 0
     }
     &[density="comfortable"] {
-        padding: 30px 0
+        padding: em(30) 0
     }
     &[density="cozy"] {
-        padding: 20px 0
+        padding: em(20) 0
     }
     &[density="compact"] {
-        padding: 10px 0;
+        padding: em(10) 0;
     }
 }
+
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+    social-insights {
+        font-size: 9.5px;
+    }
+}
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    social-insights {
+        font-size: 9px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    social-insights {
+        font-size: 8px;
+
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    social-insights {
+        font-size: 7px;
+
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    social-insights {
+        display: none;
+    }
+}
+
+

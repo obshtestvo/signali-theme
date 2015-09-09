@@ -119,7 +119,7 @@ action-button {
                     }
                 }
             }
-            &[color="white"] {
+            &[color="white"],  {
                 a, button {
                     background: transparent;
                     box-shadow: inset 0 0 0 3px $white;
@@ -247,7 +247,7 @@ action-button {
         &[density="cozy"] {
             line-height: 32px
         }
-        &[autoclear]{
+        &[autoclear] {
             margin: 0 10px 0 0;
         }
     }
@@ -321,6 +321,16 @@ action-button {
             display: block;
             float: none;
             text-align: center;
+        }
+        &[reply] {
+            float: none;
+            clear: both;
+            margin: 0 0 10px 0;
+            top:10px;
+            position: relative;
+            a {
+                float: none;
+            }
         }
     }
 }
