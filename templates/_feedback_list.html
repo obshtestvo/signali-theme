@@ -9,7 +9,7 @@
                 {{ feedback.comment|linebreaks }}
             </article>
             <span>Публикуван на {{ feedback.added_at|humantime }} от</span>
-            <a class="name">{{ feedback.user.get_full_name }}</a>
+            <strong class="name">{{ feedback.user.get_full_name }}</strong>
             {% thumbnail feedback.user.get_avatar "30x30" crop="center" as img %}
                 <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
                      alt="Снимка на {{ feedback.user.get_full_name }}"/>
