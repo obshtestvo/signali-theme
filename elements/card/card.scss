@@ -113,10 +113,8 @@ card {
 }
 
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
-    cards-area {
-        card {
-            width: 42%
-        }
+    card {
+        width: 42%
     }
 }
 
