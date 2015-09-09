@@ -23,32 +23,32 @@
 <cards-area>
     <header>
         <filtering secondary sorting>
-            <strong>{{ points.count }} резултата</strong>
+            <strong>{{ points.paginator.count }} резултата</strong>
             <select-dropdown name="sortingfield" size="small" density="compact" placeholder="Подреди местата по" placeholder-type="vivid">
                 <value
                        id="-score"
-                       href="{% url 'contact-point-list' %}{% query sorting=None%}"
-                       {% if sorting = "-score" %}current{% endif %}>Съвпадащи с търсенето</value>
+                       href="{% url 'contact-point-list' %}{% query sorting=None start=0%}"
+                       {% if sorting == "-score" %}current{% endif %}>Съвпадащи с търсенето</value>
                 <value
                        id="-rating"
-                       href="{% url 'contact-point-list' %}{% query sorting='-rating'%}"
-                       {% if sorting = "-rating" %}current{% endif %}>Високо оценени</value>
+                       href="{% url 'contact-point-list' %}{% query sorting='-rating' start=0%}"
+                       {% if sorting == "-rating" %}current{% endif %}>Високо оценени</value>
                 <value
                        id="-effective"
-                       href="{% url 'contact-point-list' %}{% query sorting='-effective'%}"
-                       {% if sorting = "-effective" %}current{% endif %}>Най-ефективни</value>
+                       href="{% url 'contact-point-list' %}{% query sorting='-effective' start=0%}"
+                       {% if sorting == "-effective" %}current{% endif %}>Най-ефективни</value>
                 <value
                        id="-easy"
-                       href="{% url 'contact-point-list' %}{% query sorting='-easy'%}"
-                       {% if sorting = "-easy" %}current{% endif %}>Най-лесни за ползване</value>
+                       href="{% url 'contact-point-list' %}{% query sorting='-easy' start=0%}"
+                       {% if sorting == "-easy" %}current{% endif %}>Най-лесни за ползване</value>
                 <value
                        id="-visits"
-                       href="{% url 'contact-point-list' %}{% query sorting='-visits'%}"
-                       {% if sorting = "-visits" %}current{% endif %}>Последно посетени</value>
+                       href="{% url 'contact-point-list' %}{% query sorting='-visits' start=0%}"
+                       {% if sorting == "-visits" %}current{% endif %}>Последно посетени</value>
                 <value
                        id="-created_at"
-                       href="{% url 'contact-point-list' %}{% query sorting='-created_at'%}"
-                       {% if sorting = "-created_at" %}current{% endif %}>Скоро добавени</value>
+                       href="{% url 'contact-point-list' %}{% query sorting='-created_at' start=0%}"
+                       {% if sorting == "-created_at" %}current{% endif %}>Скоро добавени</value>
             </select-dropdown>
         </filtering>
     </header>
@@ -95,97 +95,27 @@
                 Подаване на сигнал
             </action-button>
         </card>
-        <card action="go">
-            <img src="test/logo2.png" alt=""/>
-            <strong>Гранична полиция</strong>
-            <card-item type="category">
-                <strong>категория</strong>
-                <a href="#">Тютюнопушене на обществени места</a>
-            </card-item>
-            <card-item type="location">
-                <strong>местонахождение</strong>
-                <a href="#">София - град</a>
-            </card-item>
-            <card-item type="tags">
-                <strong>етикети</strong>
-                <a href="google.com">конфликт на интереси</a>
-            </card-item>
-            <card-item type="rating">
-                <strong>Рейтинг</strong>
-                <rating value="1" size="small" align="left">
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card-item>
-            <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-                Подаване на сигнал
-            </action-button>
-        </card>
-        <card action="go">
-            <img src="test/logo3.jpg" alt=""/>
-            <strong>Омбудсман Република България</strong>
-            <card-item type="category">
-                <strong>категория</strong>
-                <a href="#">Тютюнопушене на обществени места</a>
-            </card-item>
-            <card-item type="location">
-                <strong>местонахождение</strong>
-                <a href="#">София - град</a>
-            </card-item>
-            <card-item type="tags">
-                <strong>етикети</strong>
-                <a href="google.com">конфликт на интереси</a>
-            </card-item>
-            <card-item type="rating">
-                <strong>Рейтинг</strong>
-                <rating value="3" size="small" align="left">
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card-item>
-            <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-                Подаване на сигнал
-            </action-button>
-        </card>
-        <card>
-            <img src="test/logo4.jpg" alt=""/>
-            <strong>Гореща линия за безопасен Интернет</strong>
-            <card-item type="category">
-                <strong>категория</strong>
-                <a href="#">Тютюнопушене на обществени места</a>
-            </card-item>
-            <card-item type="location">
-                <strong>местонахождение</strong>
-                <a href="#">София - град</a>
-            </card-item>
-            <card-item type="tags">
-                <strong>етикети</strong>
-                <a href="google.com">конфликт на интереси</a>
-                <a href="google.com">полиция</a>
-                <a href="google.com">граница</a>
-                <a href="google.com">връзка</a>
-            </card-item>
-            <card-item type="rating">
-                <strong>Рейтинг</strong>
-                <rating value="4" size="small" align="left">
-                    <a class="comments" href="#">(14 коментара)</a>
-                </rating>
-            </card-item>
-            <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-                Подаване на сигнал
-            </action-button>
-        </card>
     </cards>
+    {% if pages %}
     <footer>
         <pagination density="cozy">
-            <a href="#">Предишна</a>
-            <a class="active" href="#">1</a>
-            <a href="#" class="disable">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">Следваща</a>
+            {% if pages.has_previous_page %}
+            <a href="{% url 'contact-point-list' %}{% query start=pages.previous_page.start limit=pages.previous_page.limit %}">Предишна</a>
+            {% endif %}
+            {% for page in pages %}
+                {% if page.is_current %}
+                <a class="active" href="#">{{page.number}}</a>
+                {% else %}
+                    <a href="{% url 'contact-point-list' %}{% query start=page.start limit=page.limit %}">{{page.number}}</a>
+                {% endif %}
+            {% endfor %}
+{#            <a href="#" class="disable">2</a>#}
+            {% if pages.has_next_page %}
+            <a href="{% url 'contact-point-list' %}{% query start=pages.next_page.start limit=pages.next_page.limit %}">Следваща</a>
+            {% endif %}
         </pagination>
     </footer>
+    {% endif %}
 </cards-area>
 
 {% include "_addnew_prompt.html" with request=request %}
