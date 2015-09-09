@@ -15,6 +15,13 @@ notification {
     p {
         margin: 0;
     }
+    a{
+        color: $secondary-color-100;
+        &:hover{
+            text-decoration: underline;
+            color: $secondary-color-hover;
+        }
+    }
     &[information] {
         background: $white;
         color: $body-text-color;

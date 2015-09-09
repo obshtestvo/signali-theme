@@ -107,31 +107,32 @@ card {
 //rest of css for card element is in cards-area element, because mobile issues
 
 @media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
-    card {
+    card[resume] {
         width: 33%;
     }
 }
 
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
-    card {
+    card[resume] {
         width: 42%
     }
 }
 
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
-    card {
+    card[resume] {
         width: 50%;
     }
 }
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
-    card {
-        width: 33%
+    card[resume] {
+        width: 100%;
+        padding: 0 10%;
     }
 }
 
 @media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
-    card {
-        width: 33%
+    card[resume] {
+        width: 100%
     }
 }

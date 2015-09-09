@@ -53,3 +53,9 @@ features-item {
         }
     }
 }
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    features-item {
+        width: 100%;
+    }
+}

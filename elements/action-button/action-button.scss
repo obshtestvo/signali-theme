@@ -317,7 +317,7 @@ action-button {
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     action-button {
-        &[inline] {
+        &[autoclear] {
             display: block;
             float: none;
             text-align: center;

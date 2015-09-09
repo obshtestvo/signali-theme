@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="bg" ng-app="signali" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta name="robots" content="all" />
+    <meta name="robots" content="all"/>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Profile</title>
@@ -17,142 +17,156 @@ Unlucky
 <![endif]-->
 <loader target="page"></loader>
 <page color="light">
-<cover density="comfortable" src="test/base-header-background.jpg">
-    <top-nav>
-        <menu>
-            Категории
-            <menu-column>
-                <h2>Граждански</h2>
+<leading-area src="test/base-header-background.jpg">
+    <cover density="comfortable" src="test/base-header-background.jpg">
+        <top-nav>
+            <menu>
+                Категории
+                <menu-column>
+                    <h2>Граждански</h2>
+                    <ul>
+                        <li><a href="#">Административни неуреди</a></li>
+                        <li><a href="#">Лекарски злоупотреби</a></li>
+                        <li><a href="#">Паркиране</a></li>
+                        <li><a href="#">Интелектуална собственост</a></li>
+                        <li><a href="#">Тютюнопушене на обществени места</a></li>
+                        <li>
+                            <action-button helper density="comfortable" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Престъпност</h2>
+                    <ul>
+                        <li><a href="#">Корупция</a></li>
+                        <li><a href="#">Измами</a></li>
+                        <li><a href="#">Кражби</a></li>
+                        <li><a href="#">Пътно-транспортни</a></li>
+                        <li><a href="#">Бракониерство</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Други</h2>
+                    <ul>
+                        <li><a href="#">Загубени вещи</a></li>
+                        <li><a href="#">Интернет измами</a></li>
+                        <li><a href="#">Бедствия</a></li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Градски</h2>
+                    <ul>
+                        <li><a href="#">Дупки по пътищата</a></li>
+                        <li><a href="#">Опасни елементи</a></li>
+                        <li><a href="#">Натоварено крастовище</a></li>
+                        <li><a href="#">Бездомни кучета</a></li>
+                        <li><a href="#">Велосипедни неуредици</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Потребителски</h2>
+                    <ul>
+                        <li><a href="#">ВиК</a></li>
+                        <li><a href="#">Електроснабдяване</a></li>
+                        <li><a href="#">Сметки</a></li>
+                        <li><a href="#">Отказана гаранция</a></li>
+                        <li><a href="#">Проблеми с договори</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
+            </menu>
+            <login-box anonymous action="#auth">
+                Вход
+            </login-box>
+            <login-box action="#settings">
+                <img src="">
+                <strong>Boyan Stoychev</strong>
                 <ul>
-                    <li><a href="#">Административни неуреди</a></li>
-                    <li><a href="#">Лекарски злоупотреби</a></li>
-                    <li><a href="#">Паркиране</a></li>
-                    <li><a href="#">Интелектуална собственост</a></li>
-                    <li><a href="#">Тютюнопушене на обществени места</a></li>
-                    <li>
-                        <action-button helper density="comfortable" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
+                    <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
+                    <li><a href="#">Изход</a></li>
                 </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Престъпност</h2>
-                <ul>
-                    <li><a href="#">Корупция</a></li>
-                    <li><a href="#">Измами</a></li>
-                    <li><a href="#">Кражби</a></li>
-                    <li><a href="#">Пътно-транспортни</a></li>
-                    <li><a href="#">Бракониерство</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Други</h2>
-                <ul>
-                    <li><a href="#">Загубени вещи</a></li>
-                    <li><a href="#">Интернет измами</a></li>
-                    <li><a href="#">Бедствия</a></li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Градски</h2>
-                <ul>
-                    <li><a href="#">Дупки по пътищата</a></li>
-                    <li><a href="#">Опасни елементи</a></li>
-                    <li><a href="#">Натоварено крастовище</a></li>
-                    <li><a href="#">Бездомни кучета</a></li>
-                    <li><a href="#">Велосипедни неуредици</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Потребителски</h2>
-                <ul>
-                    <li><a href="#">ВиК</a></li>
-                    <li><a href="#">Електроснабдяване</a></li>
-                    <li><a href="#">Сметки</a></li>
-                    <li><a href="#">Отказана гаранция</a></li>
-                    <li><a href="#">Проблеми с договори</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
-        </menu>
-        <login-box anonymous action="#auth">
-            Вход
-        </login-box>
-        <login-box action="#settings">
-            <img src="">
-            <strong>Boyan Stoychev</strong>
-            <ul>
-                <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
-                <li><a href="#">Изход</a></li>
-            </ul>
-        </login-box>
-        <logo align="center-x" action="home" color="light" size="large"></logo>
-        <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall" action="google.com">
-            Сподели опит
-        </action-button>
-        <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="google.com">
-            добави място
-        </action-button>
-    </top-nav>
-    <intro density="compact" social-insights>
-        <call-to-action align="left" density="compact">
-            <h1>Гореща линия за безопасен Интернет</h1>
-        </call-to-action>
-        <breadcrumb>
-            <crumb action="google.com">Home</crumb>
-            <crumb action="google.com">This is not so home</crumb>
-            <crumb action="google.com">Far away from home</crumb>
-        </breadcrumb>
-        <social-insights density="airy" align="right" static>
-            <section class="facebook">
-                <div id="fb-root"></div>
-                <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=593828257295428";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
-                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count"></div>
-            </section>
-            <section class="twitter">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="http://signali.bg"
-                   data-via="signali">Tweet</a>
-                <script>!function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                    if (!d.getElementById(id)) {
+            </login-box>
+            <logo align="center-x" action="home" color="light" size="large"></logo>
+            <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent"
+                           size="extrasmall" action="google.com">
+                Сподели опит
+            </action-button>
+            <action-button link type="primary" fill="outlined" align="left" color="white" size="small"
+                           action="google.com">
+                добави място
+            </action-button>
+        </top-nav>
+        <intro density="compact" social-insights>
+            <call-to-action align="left" density="compact">
+                <h1>Гореща линия за безопасен Интернет</h1>
+            </call-to-action>
+            <breadcrumb>
+                <crumb action="google.com">Home</crumb>
+                <crumb action="google.com">This is not so home</crumb>
+                <crumb action="google.com">Far away from home</crumb>
+            </breadcrumb>
+            <social-insights density="airy" align="right" static>
+                <section class="facebook">
+                    <div id="fb-root"></div>
+                    <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
                         js = d.createElement(s);
                         js.id = id;
-                        js.src = p + '://platform.twitter.com/widgets.js';
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=593828257295428";
                         fjs.parentNode.insertBefore(js, fjs);
-                    }
-                }(document, 'script', 'twitter-wjs');</script>
-            </section>
-        </social-insights>
-    </intro>
-</cover>
-<featured>
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+                         data-layout="box_count"></div>
+                </section>
+                <section class="twitter">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical"
+                       data-url="http://signali.bg"
+                       data-via="signali">Tweet</a>
+                    <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
+                </section>
+            </social-insights>
+        </intro>
+    </cover>
     <resume>
         <article>
             <h4>Headline cool headline </h4>
-            <p>Министерството на вътрешните работи (съкратено МВР) е министерство в България, което се грижи за защитата на националната сигурност, борбата с престъпността, опазването на обществения ред и други.[1] МВР е българска държавна институция, която се оглавява от политическо лице (министър), член на Министерския съвет на Република България.</p>
-            <p>От 29 май 2013 година министър на вътрешните работи е Цветлин Йовчев, който е и вицепремиер в подкрепяното от Българската социалистическа партия и Движението за права и свободи правителство на Пламен Орешарски.</p>
+
+            <p>Министерството на вътрешните работи (съкратено МВР) е министерство в България, което се грижи за защитата
+                на
+                националната сигурност, борбата с престъпността, опазването на обществения ред и други.[1] МВР е
+                българска
+                държавна институция, която се оглавява от политическо лице (министър), член на Министерския съвет на
+                Република България.</p>
+
+            <p>От 29 май 2013 година министър на вътрешните работи е Цветлин Йовчев, който е и вицепремиер в
+                подкрепяното от
+                Българската социалистическа партия и Движението за права и свободи правителство на Пламен Орешарски.</p>
         </article>
         <section>
             <a href="google.com">конфликт на интереси</a>
@@ -167,7 +181,8 @@ Unlucky
             <features-item type="check">Анонимност</features-item>
             <features-item type="check">Гаранция за отговор</features-item>
             <features-item type="none">Верификация на сигналВерификация на сигнал</features-item>
-            <features-item type="question">Потвърждаване на сигнал</features-item>           <features-item type="check">Мултиезичност</features-item>
+            <features-item type="question">Потвърждаване на сигнал</features-item>
+            <features-item type="check">Мултиезичност</features-item>
             <features-item type="question">Изисква регистрация</features-item>
             <features-item type="check">Анонимност</features-item>
             <features-item type="check">Гаранция за отговор</features-item>
@@ -194,101 +209,117 @@ Unlucky
                     <a class="comments" href="#">(14 коментара)</a>
                 </rating>
             </card-item>
-            <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center" action="{{action}}">
+            <action-button link type="primary" fill="solid" color="red" size="gigalarge" align="center"
+                           action="{{action}}">
                 Подай сигнал!
             </action-button>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            <action-button link type="primary" fill="outlined" color="purple" size="large" align="center" action="{{action}}">
+            <action-button link type="primary" fill="outlined" color="purple" size="large" align="center"
+                           action="{{action}}">
                 обратна връзка
             </action-button>
         </card>
     </resume>
-    <comments>
-       <headline size="small" density="compact">13 коментара</headline>
-        <comment various>
-            <article>
-                <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се справи.
-                    Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
-                    Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                    Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
-            </article>
-            <span>Публикуван на 23 Май в 21:09 oт</span>
-            <strong class="name">Димитър Райков</strong>
-            <img src="test/profile-pic.jpg" alt=""/>
-            <action-button action="#feedback" reply>Сподели своя опит</action-button>
-        </comment>
-        <comment various>
-            <article>
-                <p>Стойнев, ти с тоя комсомолски плам, доста ще си лъган. Няма ли да е късно за изводите, че даде енергетиката на едно осъждано лице като Георги Христозов. Както и да е, тия хора ще те използват докато могат, а за тебе срама и унижението.</p>
-            </article>
-                <span>Публикуван на 23 Май в 21:09 oт</span>
-                <strong class="name">Димитър Райков</strong>
-                <a class="answer" href="#">Отговори</a>
-            <action-button action="#feedback" reply>Сподели своя опит</action-button>
-        </comment>
-        <comment mine>
-            <article>
-                <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се справи.
-                    Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
-                    Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                    Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
-            </article>
-                <span>Публикуван на 23 Май в 21:09 oт</span>
-                <strong class="name">Димитър Райков</strong>
-        </comment>
-        <comment mine>
-            <article>
-                <p><name-tag>@aнтон тодоров</name-tag> Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се справи.
-                    Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
-                    Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
-                    Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
-            </article>
-                <span>Публикуван на 23 Май в 21:09 oт</span>
-                <strong class="name">Димитър Райков</strong>
-        </comment>
-    </comments>
-    <!--<survey notlogged>-->
-        <!--<headline size="small" density="compact">Моля влезте за да коментирате</headline>-->
-        <!--<action-button link type="primary" fill="solid" color="red" size="medium" align="left" action="{{action}}">Вход</action-button>-->
-        <!--<action-button helper density="comfortable" align="left inline" action="google.com">-->
-            <!--<span>или се</span>регистрирай-->
-        <!--</action-button>-->
-    <!--</survey>-->
-    <survey logged>
-        <headline size="small" density="compact">Коментирай</headline>
-        <p>Пишете като Димитър Райков (me@dreamture.net)</p>
-        <text-field id="comment-area" size="full" type="textarea">
-        </text-field>
-        <survey-question state="error">
-            <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
-            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">Да</action-button>
-            <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">Не</action-button>
-            <notification error size="text-field" >
-                <p>
-                    Easy one click sign in. We won't post anything without your permission.
-                </p>
-            </notification>
-        </survey-question>
-        <survey-question raiting>
-            <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
-            <rating size="medium" align="left" value="4">
-            </rating>
-            <notification information no-icon color="gray" size="small" density="inverted">
-
-
-                От 1 до 5 звездички, където 1 е малко, а 5 много.
-
-           </notification>
-        </survey-question>
-        <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">публикувай</action-button>
-    </survey>
-    <donation>
-        <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
-        <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
-            Добави
+</leading-area>
+<comments>
+    <headline size="small" density="compact">13 коментара</headline>
+    <comment various>
+        <article>
+            <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се
+                справи.
+                Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
+                Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
+                Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
+        </article>
+        <span>Публикуван на 23 Май в 21:09 oт</span>
+        <strong class="name">Димитър Райков</strong>
+        <img src="test/profile-pic.jpg" alt=""/>
+        <action-button action="#feedback" reply>Сподели своя опит</action-button>
+    </comment>
+    <comment various>
+        <article>
+            <p>Стойнев, ти с тоя комсомолски плам, доста ще си лъган. Няма ли да е късно за изводите, че даде
+                енергетиката на едно осъждано лице като Георги Христозов. Както и да е, тия хора ще те използват докато
+                могат, а за тебе срама и унижението.</p>
+        </article>
+        <span>Публикуван на 23 Май в 21:09 oт</span>
+        <strong class="name">Димитър Райков</strong>
+        <a class="answer" href="#">Отговори</a>
+        <action-button action="#feedback" reply>Сподели своя опит</action-button>
+    </comment>
+    <comment mine>
+        <article>
+            <p>Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се
+                справи.
+                Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
+                Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
+                Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.</p>
+        </article>
+        <span>Публикуван на 23 Май в 21:09 oт</span>
+        <strong class="name">Димитър Райков</strong>
+    </comment>
+    <comment mine>
+        <article>
+            <p>
+                <name-tag>@aнтон тодоров</name-tag>
+                Възрастната ми леля, живее в малък град и и купихме 2 декодера, с които в интерес на истина трудно се
+                справи.
+                Наскоро разбрах, че отново гледа програмите, които преди е ловяла с антена, защото другите били спрени.
+                Колко пари се дадоха за безплатни декодери на социално слаби и кой ги взе?
+                Това ми прилича ня акциите за касови апарати вкл. на Женския пазар на Муравей Радев.
+            </p>
+        </article>
+        <span>Публикуван на 23 Май в 21:09 oт</span>
+        <strong class="name">Димитър Райков</strong>
+    </comment>
+</comments>
+<!--<survey notlogged>-->
+<!--<headline size="small" density="compact">Моля влезте за да коментирате</headline>-->
+<!--<action-button link type="primary" fill="solid" color="red" size="medium" align="left" action="{{action}}">Вход</action-button>-->
+<!--<action-button helper density="comfortable" align="left inline" action="google.com">-->
+<!--<span>или се</span>регистрирай-->
+<!--</action-button>-->
+<!--</survey>-->
+<survey logged>
+    <headline size="small" density="compact">Коментирай</headline>
+    <p>Пишете като Димитър Райков (me@dreamture.net)</p>
+    <text-field id="comment-area" size="full" type="textarea">
+    </text-field>
+    <survey-question state="error">
+        <headline density="cozy" size="small">Удобно ли беше пазаруването?</headline>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Да
         </action-button>
-    </donation>
-</featured>
+        <action-button link type="primary" fill="outlined" color="purple" size="large" align="left" action="{{action}}">
+            Не
+        </action-button>
+        <notification error size="text-field">
+            <p>
+                Easy one click sign in. We won't post anything without your permission.
+            </p>
+        </notification>
+    </survey-question>
+    <survey-question raiting>
+        <headline density="cozy" size="small">Как оценявате новия дизайн?</headline>
+        <rating size="medium" align="left" value="4">
+        </rating>
+        <notification information no-icon color="gray" size="small" density="inverted">
+
+
+            От 1 до 5 звездички, където 1 е малко, а 5 много.
+
+        </notification>
+    </survey-question>
+    <action-button button type="secondary" fill="solid" color="purple" size="medium" align="left">публикувай
+    </action-button>
+</survey>
+<donation>
+    <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
+    <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
+        Добави
+    </action-button>
+</donation>
+
 <footer-wrapper>
     <logo action="home" color="dark" size="medium" align="right"></logo>
     <footer-navigation>
@@ -309,7 +340,7 @@ Unlucky
         </footer-column>
         <footer-column>
             <li><a href="#">Бракониерство</a></li>
-            <li><a href="#">Престъпления - кражба, насилие  кражба, насилие </a></li>
+            <li><a href="#">Престъпления - кражба, насилие кражба, насилие </a></li>
             <li><a href="#">Изгубени вещи</a></li>
             <li><a href="#">Пътно-транспортни</a></li>
             <li><a href="#">Градска среда</a></li>

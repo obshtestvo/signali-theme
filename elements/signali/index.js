@@ -188,3 +188,6 @@ redirectElement(componentService);
 
 var signupPromptElement = require('signup-prompt');
 signupPromptElement(componentService);
+
+var leadingAreaEl = require('leading-area');
+leadingAreaEl(componentService);
