@@ -247,6 +247,9 @@ action-button {
         &[density="cozy"] {
             line-height: 32px
         }
+        &[autoclear]{
+            margin: 0 10px 0 0;
+        }
     }
     &[icon="false"], &[no-icon] {
         svg {

@@ -6,8 +6,8 @@ card {
     padding: 0 10px;
     display: block;
     margin: 15px 0 0 0;
-    &[essential], &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4){
-        margin:0;
+    &[essential], &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4) {
+        margin: 0;
     }
     section {
         @extend %small-radius;
@@ -104,3 +104,36 @@ card {
     }
 }
 
+//rest of css for card element is in cards-area element, because mobile issues
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    card {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    cards-area {
+        card {
+            width: 42%
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    card {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    card {
+        width: 33%
+    }
+}
+
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+    card {
+        width: 33%
+    }
+}

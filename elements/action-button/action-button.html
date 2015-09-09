@@ -17,6 +17,7 @@
 {{/submit}}
 
 {{#helper}}
+{{^autoclear}}
 <div class="
         {{#align}}align-{{align}}{{/align}}
         {{#inline}}inline{{/inline}}">
@@ -25,6 +26,15 @@
         <content></content>
         {{{arrow}}}</a>
 </div>
+{{/autoclear}}
+{{#autoclear}}
+<div class="clearfix">
+    <content select="span"></content>
+    <a href="{{action}}">{{#back}}{{{arrow-back}}}{{/back}}
+        <content></content>
+        {{{arrow}}}</a>
+</div>
+{{/autoclear}}
 {{/helper}}
 
 {{#reply}}

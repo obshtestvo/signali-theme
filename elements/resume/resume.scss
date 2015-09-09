@@ -66,3 +66,45 @@ resume {
         }
     }
 }
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    resume {
+        & > section > div {
+            width: 67%;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
+    resume {
+        & > section > div {
+            width: 58%;
+        }
+    }
+}
+
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    resume {
+        & > section > div {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    resume {
+        & > section > div {
+            width: 100%;
+        }
+    }
+}
+
+
+@media screen and (max-width: $small-phone-width), screen and (max-device-width: $small-phone-width) {
+    resume {
+        & > section > div {
+            width: 67%;
+        }
+    }
+}
