@@ -5,8 +5,14 @@
 {% if separate %}
 <header nofloaters card-separator>
     <filtering secondary exception>
-        <strong>Места {% if area %} приемащи сигнали в „{{area}}“ и {% endif %} съвпадащи с </strong>
-        <checkbox readonly>{{point.score}} от критериите</checkbox>
+        <strong>
+            Места
+            {% if area %} приемащи сигнали в „{{area}}“
+                {% if score %} и {% endif %}
+            {% endif %}
+            {% if score %} съвпадащи с {% endif %}
+        </strong>
+        {% if score %}<checkbox readonly>{{score}} от критериите</checkbox>{% endif %}
     </filtering>
 </header>
 {% endif %}

@@ -1,0 +1,16 @@
+<cards-area density="compact">
+    <header>
+    <headline size="large" align="center" density="compact">
+        Актуално
+    </headline>
+    </header>
+
+    {% for point in contact_points %}
+        {% include "_card.html" with point=point request=request %}
+    {% endfor %}
+    <footer>
+        <action-button helper inline density="airy" align="right" action="{% url 'contact-point-list' %}">
+            <span>или</span>виж всички
+        </action-button>
+    </footer>
+</cards-area>

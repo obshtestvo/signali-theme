@@ -38,9 +38,9 @@
                        href="{% url 'contact-point-list' %}{% query sorting='-effective' start=0%}"
                        {% if sorting == "-effective" %}current{% endif %}>Най-ефективни</value>
                 <value
-                       id="-easy"
-                       href="{% url 'contact-point-list' %}{% query sorting='-easy' start=0%}"
-                       {% if sorting == "-easy" %}current{% endif %}>Най-лесни за ползване</value>
+                       id="-accessibility"
+                       href="{% url 'contact-point-list' %}{% query sorting='-accessibility' start=0%}"
+                       {% if sorting == "-accessibility" %}current{% endif %}>Най-лесни за ползване</value>
                 <value
                        id="-visits"
                        href="{% url 'contact-point-list' %}{% query sorting='-visits' start=0%}"
@@ -63,13 +63,13 @@
             <a href="{% url 'contact-point-list' %}{% query start=pages.previous_page.start limit=pages.previous_page.limit %}">Предишна</a>
             {% endif %}
             {% for page in pages %}
-            {% if page.is_current %}
-            <a class="active" href="#">{{page.number}}</a>
-            {% else %}
-            <a href="{% url 'contact-point-list' %}{% query start=page.start limit=page.limit %}">{{page.number}}</a>
-            {% endif %}
+                {% if page.is_current %}
+                <a class="active" href="#">{{page.number}}</a>
+                {% else %}
+                    <a href="{% url 'contact-point-list' %}{% query start=page.start limit=page.limit %}">{{page.number}}</a>
+                {% endif %}
             {% endfor %}
-            {#            <a href="#" class="disable">2</a>#}
+{#            <a href="#" class="disable">2</a>#}
             {% if pages.has_next_page %}
             <a href="{% url 'contact-point-list' %}{% query start=pages.next_page.start limit=pages.next_page.limit %}">Следваща</a>
             {% endif %}

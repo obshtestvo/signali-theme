@@ -21,26 +21,25 @@ def contactpoint_stats():
     }
 
 
-@register.inclusion_tag('_featured_areas.html')
-def featured_areas(request):
+@register.inclusion_tag('_overview.html')
+def overview(request):
     return {
-        "locations": Area.objects.featured().prefetch_related(
-            Prefetch('contact_points',
-                     queryset=ContactPoint.objects.featured())
-        ),
+        "visitedlast_points": ContactPoint.objects.visited_last()[0:4],
+        "effective_points": ContactPoint.objects.most_effective()[0:4],
+        "accessible_points": ContactPoint.objects.most_accessible()[0:4],
+        "addedlast_points": ContactPoint.objects.added_last()[0:4],
         "request": request
     }
 
 
-@register.inclusion_tag('_featured_category.html')
-def featured_category(request):
+
+@register.inclusion_tag('_featured_overview.html')
+def featured_overview(request):
     return {
-        "category": Category.objects.featured().prefetch_related(
-            Prefetch('contact_points',
-                     queryset=ContactPoint.objects.public_base())
-        )[0],
+        "contact_points": ContactPoint.objects.featured()[0:4],
         "request": request
     }
+
 
 
 @register.inclusion_tag('_feedback_list.html')
@@ -104,19 +103,26 @@ def advanced_searchbar(request, form=None):
 
 @register.inclusion_tag('contact/list/_entry.html')
 def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, form):
+    score = None
     separate = False
     is_first = index == 1
-    if is_first:
-        separate = True
-        contactpoint_list.current_score = contactpoint.score
-    if contactpoint_list.current_score != contactpoint.score:
-        separate = True
-        contactpoint_list.current_score = contactpoint.score
+    try:
+        score = contactpoint.score
+        if is_first:
+            separate = True
+            contactpoint_list.current_score = score
+        if contactpoint_list.current_score != score:
+            separate = True
+            contactpoint_list.current_score = score
+    except AttributeError:
+        if is_first:
+            separate = True
     try:
         area = form.cleaned_data["areas"][0].title
     except:
         area = None
     return {
+        "score": score,
         "separate": separate,
         "is_first": is_first,
         "area": area,
