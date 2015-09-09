@@ -21,9 +21,10 @@
     </card-item>
     <card-item type="tags">
         <strong>теми</strong>
-        {% for tag in point.keywords.all|slice:":5" %}
+        {% for tag in point.keywords.all|slice:":2" %}
             <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
+        <a href="{% url 'contact-point' slug=point.slug %}">&hellip;и още {{ point.keywords.count|add:"-2" }}</a>
     </card-item>
     <card-item type="rating">
         <strong>Оценка</strong>
