@@ -12,7 +12,10 @@ module.exports = function (componentService) {
             var $form = $this.find('form');
             var $formControls = $form.find('input, button');
 
-            $form.find('input, button').on('focus.signupprompt keyup.signupprompt click.signupprompt', function() {
+            $form.find('email-signup').on('click.signupprompt', function() {
+                redirect.pause()
+            });
+            $form.find('input, button').on('focus.signupprompt keyup.signupprompt', function() {
                 redirect.pause()
             });
 

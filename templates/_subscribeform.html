@@ -3,7 +3,7 @@
         <modal-screen>
             <signup-prompt action="{% url 'contact-point-subscriber-list' slug=contactpoint.slug %}" success-location="{{contactpoint.url}}" divided>
                 <bubble size="standart" color="white" type="success" success density="compact" class="animated fadeInUp" hidden>
-                    Записахме ви. Ще ви припомним. Успех.
+                    Записан си. Signali.bg ще ти припомни. Успех.
                 </bubble>
                 {% csrf_token %}
                 <input type="hidden" name="prefix" value="{{prefix}}"/>

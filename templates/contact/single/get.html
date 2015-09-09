@@ -104,7 +104,17 @@
                     <features-item check>Потвърждение на сигнала</features-item>
                     {% endif %}
                 </features>
-                <card resume>
+                <card resume
+                      {% if point.url %}
+                          {% if request.user.is_authenticated %}
+                              action="{{point.url}}" target="_blank"
+                          {% else %}
+                              action="#leavePrompt" target="modal"
+                              auth-removes-modal
+                              auth-change-attrs='["action", "target"]'
+                              auth-action="{{point.url}}" auth-target="_blank"
+                          {% endif %}
+                      {% endif %}>
                     {% if point.preview %}
                         {% thumbnail point.preview "280x112" crop="center" as img %}
                             <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
@@ -117,6 +127,7 @@
                             <a class="comments" href="#feedbacklist">({{point.feedback.count}} оценки)</a>
                         </rating>
                     </card-item>
+                    {% if point.url %}
                     {% subscribeform request point %}
                     <action-button link
                                    type="primary"
@@ -134,7 +145,8 @@
                                    {% endif %}>
                         Към мястото
                     </action-button>
-                    <p>или ако имаш вече опит с „{{ point.title }}“ сподели го:</p>
+                    {% endif %}
+                    <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title }}“ сподели го:</p>
                     <action-button link type="primary" fill="outlined" color="purple" size="large" align="center" action="#feedback">
                         Кажи как мина
                     </action-button>
