@@ -1,6 +1,6 @@
 {% load date %}
 {% load thumbnail %}
-{% if point.feedback.count == 0 %}
+{% if feedback_entries.count > 0 %}
 <comments id="feedbacklist">
     <headline size="small" density="compact">{{ feedback_entries.count }} оценки</headline>
     {% for feedback in feedback_entries %}
