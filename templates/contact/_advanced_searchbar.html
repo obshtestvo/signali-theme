@@ -10,7 +10,7 @@
             {% endfor %}
         </select-dropdown>
         <select-dropdown id="mainsearch" theme="light" priority="high"
-                         placeholder="Търсете по категории, теми или с нещо специфично на ум" multiple mainsearch>
+                         placeholder="Търси по категории, теми или с нещо специфично на ум" multiple mainsearch>
             <label>За какво се отнася:</label>
             {% taxonomy_mixed_options request form %}
         </select-dropdown>
@@ -112,9 +112,9 @@
             </checkbox>
     </filters>
     <action-button submit inline type="primary" fill="solid" color="red" size="medium" align="center" action="{{action}}">
-        Филтрирай
+        Търси
     </action-button>
     <action-button helper inline icon="false" density="comfortable" align="center" action="{% url 'contact-point-list' %}">
-        <span>или </span>изчисти филтрите
+        <span>или </span>изчисти критериите
     </action-button>
 </filtering>

@@ -1,0 +1,14 @@
+{% if separate and not is_first %}
+</cards-area>
+<cards-area density="compact">
+    {% endif %}
+{% if separate %}
+<header nofloaters card-separator>
+    <filtering secondary exception>
+        <strong>Места {% if area %} приемащи сигнали в „{{area}}“ и {% endif %} съвпадащи с </strong>
+        <checkbox readonly>{{point.score}} от критериите</checkbox>
+    </filtering>
+</header>
+{% endif %}
+
+{% include "_card.html" with point=point request=request %}

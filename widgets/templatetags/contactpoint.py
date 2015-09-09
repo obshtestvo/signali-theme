@@ -101,3 +101,26 @@ def advanced_searchbar(request, form=None):
         "request": request
     }
 
+
+@register.inclusion_tag('contact/list/_entry.html')
+def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, form):
+    separate = False
+    is_first = index == 1
+    if is_first:
+        separate = True
+        contactpoint_list.current_score = contactpoint.score
+    if contactpoint_list.current_score != contactpoint.score:
+        separate = True
+        contactpoint_list.current_score = contactpoint.score
+    try:
+        area = form.cleaned_data["areas"][0].title
+    except:
+        area = None
+    return {
+        "separate": separate,
+        "is_first": is_first,
+        "area": area,
+        "point": contactpoint,
+        "request": request
+    }
+

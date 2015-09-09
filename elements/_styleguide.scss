@@ -263,6 +263,10 @@ $small-phone-width: 480px;
     color: $grey-color-80;
 }
 
+[nofloaters] {
+    clear:both;
+}
+
 @media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
 
 }
