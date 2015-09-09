@@ -45,7 +45,7 @@ def featured_overview(request):
 @register.inclusion_tag('_feedback_list.html')
 def feedback_list(request, contactpoint):
     return {
-        "feedback_entries": contactpoint.feedback.published(),
+        "feedback_entries": contactpoint.feedback.published(request.user),
         "request": request
     }
 

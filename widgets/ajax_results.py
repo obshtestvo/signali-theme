@@ -4,12 +4,16 @@ from contact_feedback.views import ListView
 from django.dispatch import receiver
 
 @receiver(pre_success_rendering, sender=ListView)
-def new_feedback_success_with_registration(request, url_name, **kwargs):
+def new_feedback_success_user_activation(request, url_name, data, **kwargs):
     matches_uri = url_name == 'contact-point-feedback-list'
-    inactive_user = request.user.is_valid
+    inactive_user = not request.user.is_valid
+    is_first_feedback_for_contactpoint = data['feedback'].contactpoint.feedback.exclude(id=data['feedback'].id).count() == 0
     triggered_registration = request.params.get('ui_include_auth') == 'registration'
-    if request.is_pjax() and matches_uri and (triggered_registration or inactive_user):
-        return 'contact_feedback/new_feedback_with_registration'
+    if request.is_pjax() and matches_uri:
+        if is_first_feedback_for_contactpoint and (triggered_registration or inactive_user):
+            return 'contact_feedback/new_feedback_with_registration'
+        if not is_first_feedback_for_contactpoint:
+            return 'contact_feedback/new_feedback_after_first'
 
 
 @receiver(pre_error_rendering)
