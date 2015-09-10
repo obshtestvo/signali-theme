@@ -119,8 +119,6 @@ $nano-radius: 2px;
 
 //box-shadow
 @mixin box-shadow($top, $left, $blur, $color, $inset: "") {
-    -webkit-box-shadow: $top $left $blur $color #{$inset};
-    -moz-box-shadow: $top $left $blur $color #{$inset};
     box-shadow: $top $left $blur $color #{$inset};
 }
 
@@ -245,14 +243,7 @@ $nano-radius: 2px;
         $unfoldedTransitions: append($unfoldedTransitions,  $prop $time $easing, comma);
     }
 
-    -webkit-transition: $unfoldedTransitions;
-    -moz-transition: $unfoldedTransitions;
-    -o-transition: $unfoldedTransitions;
     transition: $unfoldedTransitions;
-
-    -webkit-transition-timing-function: $easing;
-    -moz-transition-timing-function: $easing;
-    -o-transition-timing-function: $easing;
     transition-timing-function: $easing;
 }
 

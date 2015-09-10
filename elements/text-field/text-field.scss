@@ -14,12 +14,7 @@ text-field {
     &[type="textarea"] {
         padding: 0 0 20px;
         textarea {
-            &::-webkit-input-placeholder { @include placeholder}
-            &::-moz-placeholder { @include placeholder }
-            /* firefox 19+ */
-            &:-ms-input-placeholder {@include placeholder}
-            /* ie */
-            &:-moz-placeholder {@include placeholder}
+            &::placeholder {@include placeholder}
             display: block;
             width: 100%;
             max-width: 100%;
@@ -35,12 +30,7 @@ text-field {
         }
     }
     input[type="text"], input[type="email"], input[type="number"], input[type="phone"], input[type="password"] {
-        &::-webkit-input-placeholder { @include placeholder}
-        &::-moz-placeholder { @include placeholder }
-        /* firefox 19+ */
-        &:-ms-input-placeholder {@include placeholder}
-        /* ie */
-        &:-moz-placeholder {@include placeholder}
+        &::placeholder {@include placeholder}
         display: block;
         width: 100%;
         position: relative;

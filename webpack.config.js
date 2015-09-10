@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var pwd = __dirname
@@ -83,8 +83,10 @@ config.module = {
     ]
 };
 
-/**************** POSTCSS module ***************/
-config.postcss = [autoprefixer];
+if (process.env.PRODUCTION) {
+    /**************** POSTCSS module ***************/
+    config.postcss = [autoprefixer];
+}
 
 /**************** File changes watching/monitoring options ***************/
 config.watchOptions = {

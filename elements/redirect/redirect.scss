@@ -1,6 +1,9 @@
 @import '../styleguide';
 
 redirect {
+  :fullscreen a {
+    display: flex
+  }
   display: block;
   text-align: center;
   a {
