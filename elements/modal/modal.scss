@@ -91,3 +91,31 @@ modal {
 modal-screen {
     display: block;
 }
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    modal {
+        .modal-box {
+            .padder {
+                padding: 0 30px 30px;
+            }
+            .close-modal {
+                right: 20px;
+                top: 30px;
+                z-index: 20;
+                svg{
+                    fill: $main-color-100;
+                }
+                &:hover{
+                    svg{
+                        fill: $main-color-hover;
+                    }
+                }
+                &:active{
+                    svg{
+                        fill: $main-color-active;
+                    }
+                }
+            }
+        }
+    }
+}

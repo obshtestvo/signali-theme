@@ -13,3 +13,20 @@
         }
     }
 }
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    [divided] {
+        clear: both;
+        .half {
+            float: none;
+            clear: both;
+            border:none;
+            display: block;
+            width: 100%;
+            padding: 7px 0 7px 0;
+            ~ .half {
+                padding: 7px 0 7px 0;
+            }
+        }
+    }
+}

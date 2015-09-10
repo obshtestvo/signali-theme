@@ -1,39 +1,74 @@
 @import '../styleguide';
+
 $page-padding: 50px;
 
 story {
     @extend %wrapper;
     display: block;
     padding-bottom: $page-padding;
-        & > section{
-            max-width: 100%;
-            line-height: 0;
-            img{
-                margin: $page-padding 0 0 0;
-                width: 100%;
-            }
+    & > section {
+        max-width: 100%;
+        line-height: 0;
+        img {
+            margin: $page-padding 0 0 0;
+            width: 100%;
         }
-    & > article{
-        max-width: 75%;
-        h1{
+    }
+    & > article {
+        max-width: 880px;
+        h1 {
             @extend %headilme-font;
             padding: 20px 0;
         }
-        h2{
+        h2 {
             @extend %headilme-font;
             font-size: 26px;
             line-height: 32px;
             padding: 15px 0;
         }
-        h3{
+        h3 {
             @extend %bodytext-large-font;
             padding: 8px 0;
             font-weight: 600;
         }
-        p, ul{
+        p, ul {
             @extend %bodytext-large-font;
             margin: 0 0 23px 0;
         }
 
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    story {
+        & > article {
+            h1 {
+                font-size: em(30);
+                line-height: em(36, 30);
+            }
+            h2 {
+                font-size: em(26);
+                line-height: em(30, 26);
+            }
+            p, ul {
+                margin: 0 0 18px 0;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    story {
+        & > article {
+            h1 {
+                font-size: em(22);
+                line-height: em(30, 22);
+            }
+            h2 {
+                font-size: em(18);
+                line-height: em(24, 18);
+            }
+        }
     }
 }

@@ -91,18 +91,18 @@ Unlucky
         </menu-column>
         <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
     </menu>
-    <!--<login-box anonymous action="#auth">-->
-        <!--Вход-->
-    <!--</login-box>-->
-    <login-box action="#settings">
-    <img src="">
-    <strong>Boyan Stoychev</strong>
-    <ul>
-    <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
-    <li><a href="#">Изход</a></li>
-
-    </ul>
+    <login-box anonymous action="#auth">
+        Вход
     </login-box>
+    <!--<login-box action="#settings">-->
+    <!--<img src="">-->
+    <!--<strong>Boyan Stoychev</strong>-->
+    <!--<ul>-->
+    <!--<li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>-->
+    <!--<li><a href="#">Изход</a></li>-->
+
+    <!--</ul>-->
+    <!--</login-box>-->
     <logo align="center-x" action="home" color="light" size="large"></logo>
     <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall"
                    action="google.com">
@@ -594,95 +594,119 @@ Unlucky
     </sponsors>
     <p>Easy one click sign in. We won't post anything without your permission.</p>
 </footer-wrapper>
-<div style="display:none; ">
+    <modal id="generic-auth" auth-container="main" auth-container-modal>
+        <modal-screen>
+            <headline size="large" density="airy" align="center" for="modal"></headline>
+            <auth-container-patch for="registration">
+                <auth-title>Регистрация</auth-title>
+            </auth-container-patch>
+            <auth-container-patch for="login">
+                <auth-title>Вход</auth-title>
+            </auth-container-patch>
+            <auth type="login" action="/security/complete/email/" auth-replace="login-box" divided>
+                <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
+                    <input type="hidden" name="auth_type" value="login"/>
+                    <notification error size="medium" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
+                    <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
+                        Успешно влязохте в акаунта си.
+                    </bubble>
+                    <text-field for="registration" validate-group="registration" size="full" id="fullname" name="fullname" type="text" required>
+                        Име
+                        <notification error size="text-field" hidden></notification>
+                    </text-field>
+                    <text-field size="full" id="email" validate-group='["registration", "login"]' name="email" type="email" state="information" required>
+                        имейл адрес
+                        <notification error size="text-field" hidden></notification>
+                        <notification information size="text-field">
+                            <p>
+                                Няма да пращаме нежелани съоб&shy;ще&shy;ния
+                            </p>
+                        </notification>
+                    </text-field>
+                    <text-field size="full" id="new_password1" name="new_password1" validate-name="password" validate-group='["registration", "login"]' type="password" required minlength="6">
+                        Парола
+                        <notification error size="text-field" hidden></notification>
+                    </text-field>
+                    <text-field for="registration" id="new_password2"  name="new_password2" validate-group="registration" size="full" type="password" required validate-equalto-form-sibling="#new_password1">
+                        Парола (пак)
+                        <notification error size="text-field" hidden></notification>
+                    </text-field>
+                    <action-button submit for="login" type="primary" fill="solid" align="left" color="red">
+                        вход
+                    </action-button>
+                    <action-button submit for="registration" type="primary" fill="solid" align="left" color="red">
+                        регистрация
+                    </action-button>
+
+                    <action-button helper auth-trigger align="right" for="registration" type="login" density="comfortable">
+                        <span>или</span> вход
+                    </action-button>
+                </site-auth>
+                <social-auth
+                    type="login"
+                    size="compact"
+                    class="half"
+                    facebook-app="1623717401196966"
+                    facebook-scope='["email"]'
+                    server-gateway="/security/token/facebook/"
+                    >
+                    <headline size="small" density="comfortable">Или чрез Facebook</headline>
+                    <notification information size="small" no-icon>
+                        <p>Няма да пускаме съобщения от ваше име.</p>
+                    </notification>
+                    <social-button facebook action="/security/login/facebook/"></social-button>
+
+                </social-auth>
+            </auth>
+            <footer for="login">
+                <a auth-trigger type="registration">Направи си регистрация</a>
+            </footer>
+        </modal-screen>
+    </modal>
+
     <!--Modal Window Login-->
-    <modal id="auth">
-        <headline size="large" density="airy" align="center" for="login">
-            <action-button helper back action="google.com">
-                Назад
-            </action-button>
-            Вход
-        </headline>
-        <headline size="large" density="airy" align="center" for="registration" hidden>Регистрация</headline>
-        <auth>
-            <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
-                <text-field state="information" for="registration" size="full" id="name" name="name" type="text" hidden>
-                    Име
-                    <notification success size="text-field">
-                        <p>
-                            Easy one click sign in. We won't post anything without your permission.
-                        </p>
-                    </notification>
-                </text-field>
-                <text-field state="information" size="full" id="email" name="email" type="email">
-                    имейл адрес
-                    <notification information size="text-field">
-                        <p>
-                            Easy one click sign in. We won't post anything without your permission.
-                        </p>
-                    </notification>
-                </text-field>
-                <text-field size="full" id="password" type="password">
-                    Парола
-                </text-field>
-                <text-field for="registration" size="full" id="password2" type="password" hidden>
-                    Парола (пак)
-                </text-field>
-                <action-button button for="login" type="primary" fill="solid" align="left" color="red">
-                    вход
-                </action-button>
-                <action-button button for="registration" type="primary" fill="solid" align="left" color="red" hidden>
-                    регистрация
-                </action-button>
-                <action-button helper icon="false" align="right" density="comfortable" for="login" action="google.com">
-                    Забравена парола?
-                </action-button>
-            </site-auth>
-            <social-auth type="login" size="compact" class="half">
-                <headline size="small" density="comfortable">Или чрез Facebook</headline>
-                <notification information no-icon size="small">
-                    <p>Easy one click sign in. We won't post anything without your permission.</p>
-                </notification>
-                <social-button facebook action="google3.com"></social-button>
-                <social-button google action="fb.com"></social-button>
-            </social-auth>
-        </auth>
-        <footer for="login">
-            <a href="#" registration-trigger>Направи си регистрация</a>
-        </footer>
-    </modal>
+
     <!--Modal Settings-->
-    <modal id="settings">
-        <headline size="large" density="airy" align="center">Настройки</headline>
-        <settings action="#">
-            <tabs align="center">
-                <li><a class="active" href="#generalSettings">Общо</a></li>
-                <li><a href="#passwordSettings">Смяна на парола</a></li>
-            </tabs>
-            <section id="generalSettings" tab>
-                <text-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </text-field>
-                <text-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </text-field>
-            </section>
-            <section id="passwordSettings" tab hidden>
-                <text-field size="full" id="name" type="text" name="name" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </text-field>
-                <text-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </text-field>
-                <text-field size="full" id="email" type="email" placeholder="office@obshtestvo.bg">
-                    имейл адрес
-                </text-field>
-            </section>
-            <action-button button align="left" type="primary" fill="solid" color="red">
-                запази
-            </action-button>
-        </settings>
-    </modal>
+    <div modal-hider>
+        <modal id="settings">
+            <modal-screen>
+                <headline size="large" density="airy" align="center">Настройки</headline>
+                <settings action="/user/profile/20/">
+                    <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
+                        Профилът ви е обновен.
+                    </bubble>
+                    <tabs align="center">
+                        <li><a class="active" href="#generalSettings">Общи</a></li>
+                        <li><a href="#passwordSettings">Смяна на парола</a></li>
+                    </tabs>
+                    <section id="generalSettings" tab>
+                        <text-field size="full" id="fullname" name="fullname" type="text" value="Boyan Todorov" required>
+                            Име
+                            <notification error size="text-field" hidden></notification>
+                        </text-field>
+                        <text-field size="full" id="email" name="email" type="email" value="todorov.boyan@gmail.com" placeholder="твоята@епоща.бг" required>
+                            имейл адрес
+                            <notification error size="text-field" hidden></notification>
+                        </text-field>
+                    </section>
+                    <section id="passwordSettings" tab hidden>
+
+                        <text-field size="full" id="new_password1" name="new_password1" type="password" minlength="6">
+                            Нова парола
+                            <notification error size="text-field" hidden></notification>
+                        </text-field>
+                        <text-field size="full" id="new_password2" name="new_password2" type="password" validate-equalto-form-sibling="#new_password1" validate-validate-if-empty="true">
+                            Нова парола (пак)
+                            <notification error size="text-field" hidden></notification>
+                        </text-field>
+                    </section>
+                    <action-button submit align="left" type="primary" fill="solid" color="red">
+                        запази
+                    </action-button>
+                </settings>
+            </modal-screen>
+        </modal>
+    </div>
     <!--Modal Add Signal-->
     <modal id="addnew">
         <headline size="large" density="airy" align="center">Добави сигнал</headline>
@@ -772,7 +796,7 @@ Unlucky
             </action-button>
         </footer>
     </modal>
-</div>
+
 </page>
 <google-analytics account="asd"></google-analytics>
 <script src="build/app.js"></script>

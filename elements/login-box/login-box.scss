@@ -110,7 +110,7 @@ login-box {
 
 }
 
-@media screen and (max-width: 940px), screen and (max-device-width: 940px) {
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     login-box {
         float: right;
         #loggedin {
@@ -139,12 +139,11 @@ login-box {
                 margin-top: 30px;
                 border-radius: $nano-radius 0 $nano-radius $nano-radius;
             }
-            &:hover, &:focus, &:active {
+            &:hover, &:hover, &:focus {
                 background: transparent;
 
-                a {
+                a[settings-trigger] {
                     background: $white;
-                    pointer-events: none;
                     cursor: default;
                 }
                 ul {
@@ -156,7 +155,7 @@ login-box {
         }
     }
 }
-@media screen and (max-width: 640px), screen and (max-device-width: 640px) {
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     login-box {
         &[anonymous] {
             a{
