@@ -8,15 +8,15 @@ survey-question {
             display: none;
         }
     }
-    action-button {
-        margin: 0 10px 0 0;
-    }
 
     & > section {
         background: $grey-color-60;
         @extend %small-radius;
         padding: 15px 20px 20px;
         position: relative;
+        action-button span[wrapper]{
+            margin: 0  10px 0 0;
+        }
     }
     &[state="error"], &.error {
         & > section {

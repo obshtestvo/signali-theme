@@ -127,7 +127,7 @@ card {
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     card[resume] {
         width: 100%;
-        padding: 0 10%;
+        padding: 0 10% 40px 10%;
     }
 }
 

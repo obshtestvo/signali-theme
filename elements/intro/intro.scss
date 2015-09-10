@@ -22,7 +22,7 @@ intro {
         bottom: 0;
         width: 100%;
         padding-left: 20px;
-        left:0;
+        left: 0;
 
     }
     &[social-insights] {
@@ -61,10 +61,13 @@ intro {
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     intro {
         font-size: 6px;
+        &[density="compact"] {
+            position: relative;
+            padding-top: 0;
+        }
         &[social-insights] {
             padding-right: 0;
             padding-left: 0;
-            position: relative;
         }
     }
 }

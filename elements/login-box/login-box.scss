@@ -117,8 +117,53 @@ login-box {
 @media screen and (max-width: 940px), screen and (max-device-width: 940px) {
     login-box {
         float: right;
-        .profile a{
+        #loggedin {
+            position: absolute;
+            right: 0;
+            .profile a {
+                padding: 10px 10px;
+                display: block;
+                span {
 
+                    float: none;
+                    position: relative;
+                }
+                strong {
+                    display: none;
+                }
+            }
+            ul {
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+                line-height: 24px;
+                padding: 3px 10px 6px 10px;
+                position: relative;
+                border-top: 1px solid $grey-color-60;
+                li a {
+                    color: $secondary-color-100;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            &:hover {
+                background: $white;
+                position: absolute;
+                a {
+                    span:after {
+                        border-top-color: $body-text-color;
+                    }
+                    strong {
+                        color: $body-text-color;
+                    }
+                }
+                ul {
+                    opacity: 1;
+                    visibility: visible;
+                    display: block;
+                }
+            }
         }
     }
 }

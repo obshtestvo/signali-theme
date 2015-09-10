@@ -1,7 +1,7 @@
 @import '../styleguide';
 
 page {
-    @extend %anime;
+    @include anime(opacity);
     transition-duration: 0.3s;
     display: block;
     position: relative;

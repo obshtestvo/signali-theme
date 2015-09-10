@@ -46,7 +46,8 @@ action-button {
             padding: 10px 0;
         }
         a, button {
-            @extend %large-radius, %button-font, %anime;;
+            @extend %large-radius, %button-font;
+            @include anime(background color box-shadow border-color);
             padding: 10px 20px;
             display: inline-block;
             color: $white;
@@ -345,6 +346,45 @@ action-button {
             position: relative;
             a {
                 float: none;
+            }
+        }
+        &[invert-mobile]{
+            &[fill="outlined"] {
+                &[color="red"] {
+                    a, button {
+                        background: transparent;
+                        box-shadow: inset 0 0 0 3px $white;
+                        color: $white;
+                        &:hover {
+                            background: $white-hover;
+                            box-shadow: inset 0 0 0 3px $white-hover;
+                            color: $main-color-120;
+                        }
+                        &:active {
+                            background: $white;
+                            box-shadow: inset 0 0 0 3px $white;
+                            color: $main-color-120;
+                        }
+                    }
+                }
+                &[color="purple"] {
+                    a, button {
+                        background: transparent;
+                        box-shadow: inset 0 0 0 3px $white;
+                        color: $white;
+                        &:hover {
+                            background: $white-hover;
+                            box-shadow: inset 0 0 0 3px $white-hover;
+                            color: $main-color-120;
+                        }
+                        &:active {
+                            background: $white;
+                            box-shadow: inset 0 0 0 3px $white;
+                            color: $main-color-120;
+                        }
+                    }
+                }
+
             }
         }
     }
