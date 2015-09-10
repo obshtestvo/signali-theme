@@ -139,7 +139,7 @@ login-box {
                 margin-top: 30px;
                 border-radius: $nano-radius 0 $nano-radius $nano-radius;
             }
-            &:hover, &:foucs, &:active {
+            &:hover, &:focus, &:active {
                 background: transparent;
 
                 a {
