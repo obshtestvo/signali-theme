@@ -1,3 +1,4 @@
+{% load settings %}
 {% load thumbnail %}
 {% if user.is_authenticated %}
 <login-box action="#settings">
@@ -103,14 +104,23 @@
                     <action-button submit for="registration" type="primary" fill="solid" align="left" color="red">
                         регистрация
                     </action-button>
+                    {% comment %}
                     <action-button helper align="right" for="login" action="google.com" density="comfortable">
                         Забравена парола?
                     </action-button>
+                    {% endcomment %}
                     <action-button helper auth-trigger align="right" for="registration" type="login" density="comfortable">
                         <span>или</span> вход
                     </action-button>
                 </site-auth>
-                <social-auth type="login" size="compact" class="half">
+                <social-auth
+                        type="login"
+                        size="compact"
+                        class="half"
+                        facebook-app="{% setting 'SOCIAL_AUTH_FACEBOOK_KEY' %}"
+                        facebook-scope='{% setting_json "SOCIAL_AUTH_FACEBOOK_SCOPE" %}'
+                        server-gateway="{% url 'security:token' backend='facebook' %}"
+                >
                     <headline size="small" density="comfortable">Или чрез Facebook</headline>
                     <notification information size="small" no-icon>
                         <p>Няма да пускаме съобщения от ваше име.</p>

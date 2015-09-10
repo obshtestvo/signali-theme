@@ -16,15 +16,14 @@ module.exports = function (componentService, adaptors) {
                 if (!el.authContainer) {
                     el.authContainer = adaptor.attach(el);
                     var $auth = $(el.authContainer).find('auth');
-                    $auth.on('auth:success', function (e, data, ajaxForm) {
+                    $auth.on('auth:success', function (e, data) {
                         var authScenario = data.is_new ? 'registration' : 'login';
                         $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
                         adaptor.dismiss(el, function() {
-                            //@todo slide back (contentSwitch) to previous form, after animation, start spinning the wheel,
                             $form.submit();
                         }, originalAjaxForm)
                     });
-                    $auth.on('auth:registration:success', function (e, data, ajaxForm) {
+                    $auth.on('auth:registration:success', function (e) {
                         e.preventDefault();
                     })
                 }
