@@ -9,7 +9,7 @@
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
-    <leading-area>
+    <leading-area src="{%if point.cover %}{{ point.cover.url }}{% else %}{% setting 'cover_url' %}{% endif %}" 10000dm>
         <cover leading density="comfortable"
                src="{%if point.cover %}{{ point.cover.url }}{% else %}{% setting 'cover_url' %}{% endif %}">
             {% include '_topnav.html' with request=request %}
