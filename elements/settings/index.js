@@ -28,6 +28,7 @@ module.exports = function (componentService) {
                 success: function() {
                     el.ajaxForm.unblock();
                     el.bubble()
+                    $('[settings-name]').text($nameInput.val())
                     return false;
                 }
             });

@@ -5,7 +5,7 @@
         <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
              alt="Твоята снимка"/>
     {% endthumbnail %}
-    <strong>{{ user.get_full_name }}</strong>
+    <strong settings-name>{{ user.get_full_name }}</strong>
     <ul>
         <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
         <li><a href="{% url 'security:logout' %}">Изход</a></li>
