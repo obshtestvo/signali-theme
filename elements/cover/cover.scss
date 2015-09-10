@@ -47,11 +47,13 @@ cover {
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     cover {
-        background: transparent !important;
-        & > section {
+        &[leading] {
             background: transparent !important;
-            &:before {
-                display: none;
+            & > section {
+                background: transparent !important;
+                &:before {
+                    display: none;
+                }
             }
         }
         &[density="comfortable"] {
