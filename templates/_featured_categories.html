@@ -1,0 +1,14 @@
+{% load restful %}
+{% if categories %}
+<footer-column emphasis>
+    <h5>Избрани категории</h5>
+    {% for c in categories|slice:":6" %}
+    <li><a href="{% url 'contact-point-list' %}{% query categories=c.pk %}">{{ c.title }}</a></li>
+    {% endfor %}
+</footer-column>
+<footer-column>
+    {% for c in categories|slice:"6:11" %}
+    <li><a href="{% url 'contact-point-list' %}{% query categories=c.pk %}">{{ c.title }}</a></li>
+    {% endfor %}
+</footer-column>
+{% endif %}

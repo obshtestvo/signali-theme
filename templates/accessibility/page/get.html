@@ -20,7 +20,7 @@
         <story>
             {% if page.preview %}
                 {% thumbnail page.preview "1180x369" crop="center" as img %}
-                <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Главна снимка за {{ page.title }}"/>
+                <img src="{{ img.url }}" width="{{ img.width }}" alt="Главна снимка за {{ page.title }}"/>
                 {% endthumbnail %}
             {% endif %}
             {{ page.contents | safe }}

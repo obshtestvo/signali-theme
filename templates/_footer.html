@@ -1,3 +1,4 @@
+{% load taxonomy %}
 <footer-wrapper>
     <logo action="home" color="dark" size="medium" align="right"></logo>
     <footer-navigation>
@@ -8,23 +9,7 @@
             <li><a href="#">За BlueLink</a></li>
             <li><a href="#">За Общество.бг</a></li>
         </footer-column>
-        <footer-column emphasis>
-            <h5>Избрани категории</h5>
-            <li><a href="#">Бракониерство</a></li>
-            <li><a href="#">Престъпления - кражба, насилие </a></li>
-            <li><a href="#">Изгубени вещи</a></li>
-            <li><a href="#">Пътно-транспортни</a></li>
-            <li><a href="#">Градска среда</a></li>
-            <li><a href="#">Корупция, измама</a></li>
-        </footer-column>
-        <footer-column>
-            <li><a href="#">Бракониерство</a></li>
-            <li><a href="#">Престъпления - кражба, насилие  кражба, насилие </a></li>
-            <li><a href="#">Изгубени вещи</a></li>
-            <li><a href="#">Пътно-транспортни</a></li>
-            <li><a href="#">Градска среда</a></li>
-            <li><a href="#">Корупция, измама</a></li>
-        </footer-column>
+        {% featured_categories request %}
     </footer-navigation>
     <sponsors>
         <h5>Спонсори</h5>

@@ -30,4 +30,12 @@ def popular_categories(request):
         "request": request
     }
 
+@register.inclusion_tag('_featured_categories.html')
+def featured_categories(request):
+    return {
+        # "categories": Category.objects.all()[:12],
+        "categories": Category.objects.featured()[:12],
+        "request": request
+    }
+
 
