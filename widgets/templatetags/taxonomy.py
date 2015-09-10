@@ -11,6 +11,7 @@ register = template.Library()
 def categories_menu(context):
     return {
         "categories": Category.objects.root_categories_plus_children(),
+        "categories_count": Category.objects.public_base().count(),
         "request": context.get('request')
     }
 
