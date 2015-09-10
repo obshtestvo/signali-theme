@@ -29,7 +29,7 @@ features-item {
     }
     &[type="check"] {
         svg {
-            fill: $secondary-color-80;
+            fill: $main-color-80;
         }
     }
     &[type="none"] {
@@ -39,7 +39,7 @@ features-item {
     }
     &[type="question"] {
         svg {
-            fill: $main-color-80;
+            fill: $secondary-color-80;
         }
     }
     &[size="small"]{
