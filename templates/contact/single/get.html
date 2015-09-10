@@ -110,6 +110,7 @@
                                    color="red"
                                    size="gigalarge"
                                    align="center"
+                                   stat-visit="{% url 'contact-point-visits' slug=point.slug %}"
                                    {% if request.user.is_authenticated %}
                                         action="{{point.url}}" target="_blank"
                                    {% else %}

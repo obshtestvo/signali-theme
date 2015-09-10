@@ -191,3 +191,6 @@ signupPromptElement(componentService);
 
 var leadingAreaEl = require('leading-area');
 leadingAreaEl(componentService);
+
+var statsAttrs = require('stats');
+statsAttrs(componentService);
