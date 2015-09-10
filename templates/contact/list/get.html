@@ -5,7 +5,7 @@
 {% load restful %}
 {% block content %}
 {% include "_loader.html" %}
-<page color="light">
+<page color="semilight">
 <cover density="comfortable" src="{% setting 'cover_url' %}">
     {% include '_topnav.html' with request=request %}
     <intro density="compact">
@@ -42,8 +42,8 @@
                        href="{% url 'contact-point-list' %}{% query sorting='-accessibility' start=0%}"
                        {% if sorting == "-accessibility" %}current{% endif %}>Най-лесни за ползване</value>
                 <value
-                       id="-visits"
-                       href="{% url 'contact-point-list' %}{% query sorting='-visits' start=0%}"
+                       id="-last_visited_at"
+                       href="{% url 'contact-point-list' %}{% query sorting='-last_visited_at' start=0%}"
                        {% if sorting == "-visits" %}current{% endif %}>Последно посетени</value>
                 <value
                        id="-created_at"

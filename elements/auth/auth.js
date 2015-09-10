@@ -9,12 +9,8 @@ module.exports = function (componentService) {
             var el = this,
                 $el = $(el),
                 $userControls = $(el.getAttribute('auth-replace')),
-                $form = $el.find('form');
-
-            el.validation = new ValidationForm($form);
-            el.ajaxForm = new AjaxForm($form, {
-                interactionContainer: $form.closest('[auth-container]'),
-                success: function(data) {
+                $form = $el.find('form'),
+                success = function(e, data, ignoreNew) {
                     $('auth-current-user input').val(data.user.pk);
                     request.pjax(data.user.URI, function(newUserControls) {
                         $userControls.replaceWith(newUserControls)
@@ -24,7 +20,7 @@ module.exports = function (componentService) {
                     $el.trigger(event, [data, el.ajaxForm]);
                     if (event.isDefaultPrevented()) return false;
 
-                    if (data.backend == 'email' && data.is_new) {
+                    if (data.backend == 'email' && data.is_new && !ignoreNew) {
                         event = $.Event('auth:registration:success');
                         $el.trigger(event, [data, el.ajaxForm]);
                         if (event.isDefaultPrevented()) return false;
@@ -42,6 +38,14 @@ module.exports = function (componentService) {
                         el.bubble()
                     }
                     return false;
+                };
+
+            $el.on('auth:complete', success);
+            el.validation = new ValidationForm($form);
+            el.ajaxForm = new AjaxForm($form, {
+                interactionContainer: $form.closest('[auth-container]'),
+                success: function(data) {
+                    $el.trigger('auth:complete', [data])
                 },
                 error: function() {
                     el.ajaxForm.unblock();
@@ -53,11 +57,13 @@ module.exports = function (componentService) {
                 return false;
             });
         },
+
         attached: function() {
             if (this.ajaxForm) {
                 this.ajaxForm.setInteractionContainer($(this).closest('[auth-container]'))
             }
         },
+
         properties: {
             type: {
                 attr: true,
@@ -82,6 +88,7 @@ module.exports = function (componentService) {
                 }
             }
         },
+
         prototype: {
             setInput: function (name, value) {
                 var $el = $(this);

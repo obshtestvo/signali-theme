@@ -6,4 +6,5 @@ module.exports = function (componentService, adaptors) {
     require('./container')(componentService);
     require('./required')(componentService, adaptors);
     require('./trigger')(componentService);
+    require('./social')(componentService);
 };

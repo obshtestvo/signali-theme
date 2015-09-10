@@ -19,8 +19,8 @@
                 </call-to-action>
                 <breadcrumb>
                     <crumb action="{% url 'home' %}">Начална страница</crumb>
-                    <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">{{
-                        point.category.title }}
+                    <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">
+                        {{ point.category.title }}
                     </crumb>
                     <crumb>{{ point.title }}</crumb>
                 </breadcrumb>

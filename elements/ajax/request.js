@@ -26,12 +26,12 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             if ($.isFunction(options.beforeSend)) options.beforeSend.call(this, xhr, settings);
         },
 
-        success: function (data) {
+        success: function (data, status, xhr) {
             refreshCsrfHolders();
             if (options.determineSuccess(data)) {
-                options.success(data)
+                options.success(data, status, xhr)
             } else {
-                options.error(data)
+                options.error(data, status, xhr)
             }
         },
 
@@ -42,7 +42,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             if (dataType =='json' && xhr.responseJSON) {
                 error = xhr.responseJSON;
             }
-            options.error(error)
+            options.error(error, status, xhr)
         },
         complete: function (xhr, status) {
             if ($.isFunction(options.complete)) options.complete.call(this, xhr, status);
