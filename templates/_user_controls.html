@@ -16,30 +16,39 @@
         <modal-screen>
             <headline size="large" density="airy" align="center">Настройки</headline>
             <settings action="{% url 'user:profile' pk=user.id %}">
+                <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
+                    Профилът ви е обновен.
+                </bubble>
                 <tabs align="center">
-                    <li><a class="active" href="#generalSettings">Общо</a></li>
+                    <li><a class="active" href="#generalSettings">Общи</a></li>
                     <li><a href="#passwordSettings">Смяна на парола</a></li>
                 </tabs>
                 <section id="generalSettings" tab>
-                    <text-field size="full" id="fullname" type="text" name="fullname" value="{{ user.get_full_name }}" >
+                    <text-field size="full" id="fullname" name="fullname" type="text" value="{{ user.get_full_name }}" required>
                         Име
+                        <notification error size="text-field" hidden></notification>
                     </text-field>
-                    <text-field size="full" id="email" type="email" value="{{ user.email }}" placeholder="твоята@епоща.бг">
+                    <text-field size="full" id="email" name="email" type="email" value="{{ user.email }}" placeholder="твоята@епоща.бг" required>
                         имейл адрес
+                        <notification error size="text-field" hidden></notification>
                     </text-field>
                 </section>
                 <section id="passwordSettings" tab hidden>
+                    {% comment %}
                     <text-field size="full" id="password" type="password" name="password" >
                         Текуща парола
                     </text-field>
-                    <text-field size="full" id="new_password1" type="password" >
+                    {% endcomment %}
+                    <text-field size="full" id="new_password1" name="new_password1" type="password" minlength="6">
                         Нова парола
+                        <notification error size="text-field" hidden></notification>
                     </text-field>
-                    <text-field size="full" id="new_password2" type="password" >
+                    <text-field size="full" id="new_password2" name="new_password2" type="password" validate-equalto-form-sibling="#new_password1" validate-validate-if-empty="true">
                         Нова парола (пак)
+                        <notification error size="text-field" hidden></notification>
                     </text-field>
                 </section>
-                <action-button button align="left" type="primary" fill="solid" color="red">
+                <action-button submit align="left" type="primary" fill="solid" color="red">
                     запази
                 </action-button>
             </settings>
