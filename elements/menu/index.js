@@ -5,10 +5,17 @@ module.exports = function (componentService) {
     componentService.register('menu', {
         template: require('./menu.html'),
         attached: function () {
-            if (this.hasBeenAttached) return;
-            this.hasBeenAttached = true;
             var el = this,
                 $el = $(el);
+            var $lists = $el.find('menu-column ul');
+            var heights = $lists.map(function() {
+                return $(this).height('').height()
+            }).get();
+            var maxHeight = Math.max.apply(null, heights);
+            $lists.height(maxHeight);
+
+            if (this.hasBeenAttached) return;
+            this.hasBeenAttached = true;
 
             $(this.querySelector('.trigger')).click(function(){
                 el.toggle()
@@ -19,13 +26,6 @@ module.exports = function (componentService) {
                     el.toggle()
                 }
             });
-
-            var $lists = $el.find('menu-column ul');
-            var heights = $lists.map(function() {
-                return $(this).height()
-            }).get();
-            var maxHeight = Math.max.apply(null, heights);
-            $lists.height(maxHeight);
         },
         prototype: {
             toggle: function() {
