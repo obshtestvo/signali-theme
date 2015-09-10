@@ -34,7 +34,8 @@ if (process.env.PRODUCTION) {
         minimize: false,
         sourceMap: false,
         output: {comments: false}
-    }))
+    }));
+    config.plugins.push(new webpack.optimize.DedupePlugin())
 }
 
 /**************** RESOLVING NAMES ***************/
