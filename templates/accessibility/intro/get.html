@@ -19,41 +19,6 @@
         {% featured_overview request %}
         {% include "_addnew_prompt.html" with request=request %}
     </featured>
-    <footer-wrapper>
-        <logo action="home" color="dark" size="medium" align="right"></logo>
-        <footer-navigation>
-            <footer-column>
-                <h5>За Signali.bg</h5>
-                <li><a href="#">Какво е Signali.bg</a></li>
-{#                <li><a href="#">Пиши на екипът</a></li>#}
-                <li><a href="#">За BlueLink</a></li>
-                <li><a href="#">За Общество.бг</a></li>
-            </footer-column>
-            <footer-column emphasis>
-                <h5>Избрани категории</h5>
-                <li><a href="#">Бракониерство</a></li>
-                <li><a href="#">Престъпления - кражба, насилие </a></li>
-                <li><a href="#">Изгубени вещи</a></li>
-                <li><a href="#">Пътно-транспортни</a></li>
-                <li><a href="#">Градска среда</a></li>
-                <li><a href="#">Корупция, измама</a></li>
-            </footer-column>
-            <footer-column>
-                <li><a href="#">Бракониерство</a></li>
-                <li><a href="#">Престъпления - кражба, насилие  кражба, насилие </a></li>
-                <li><a href="#">Изгубени вещи</a></li>
-                <li><a href="#">Пътно-транспортни</a></li>
-                <li><a href="#">Градска среда</a></li>
-                <li><a href="#">Корупция, измама</a></li>
-            </footer-column>
-        </footer-navigation>
-        <sponsors>
-            <h5>Спонсори</h5>
-            <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
-            <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
-            <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
-        </sponsors>
-        <p>Easy one click sign in. We won't post anything without your permission.</p>
-    </footer-wrapper>
+    {% include '_footer.html' with request=request %}
 </page>
 {% endblock %}

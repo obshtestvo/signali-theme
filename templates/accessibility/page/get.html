@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load thumbnail %}
+{% block content %}
+{% include "_loader.html" %}
+<page color="light">
+    <cover density="comfortable" src="{{ page.get_cover_img.url }}">
+        {% include '_topnav.html' with request=request %}
+        <intro density="compact" social-insights>
+            <call-to-action align="left" density="compact">
+                <h1>{{ page.title }}</h1>
+            </call-to-action>
+            <breadcrumb>
+                <crumb action="{% url 'home' %}">Начална сраница</crumb>
+                <crumb>{{ page.title }}</crumb>
+            </breadcrumb>
+            {% include '_share.html' with request=request %}
+        </intro>
+    </cover>
+    <featured>
+        <story>
+            {% if page.preview %}
+                {% thumbnail page.preview "1180x369" crop="center" as img %}
+                <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Главна снимка за {{ page.title }}"/>
+                {% endthumbnail %}
+            {% endif %}
+            {{ page.contents | safe }}
+        </story>
+        {% include "_addnew_prompt.html" with request=request %}
+    </featured>
+    {% include '_footer.html' with request=request %}
+</page>
+{% endblock %}

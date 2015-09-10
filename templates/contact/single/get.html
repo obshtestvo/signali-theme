@@ -20,32 +20,7 @@
                     <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">{{ point.category.title }}</crumb>
                     <crumb>{{ point.title }}</crumb>
                 </breadcrumb>
-                <social-insights density="airy" align="right" static>
-                    <section class="facebook">
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=593828257295428";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count"></div>
-                    </section>
-                    <section class="twitter">
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="http://signali.bg"
-                           data-via="signali">Tweet</a>
-                        <script>!function (d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                            if (!d.getElementById(id)) {
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src = p + '://platform.twitter.com/widgets.js';
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }
-                        }(document, 'script', 'twitter-wjs');</script>
-                    </section>
-                </social-insights>
+                {% include '_share.html' with request=request %}
             </intro>
         </cover>
         <featured>
@@ -156,40 +131,6 @@
             {% survey request point %}
             {% include "_addnew_prompt.html" %}
         </featured>
-        <footer-wrapper>
-            <logo action="home" color="dark" size="medium" align="right"></logo>
-            <footer-navigation>
-                <footer-column>
-                    <h5>За проекта</h5>
-                    <li><a href="#">За нас</a></li>
-                    <li><a href="#">За контакти</a></li>
-                    <li><a href="#">За Общество.БГ</a></li>
-                </footer-column>
-                <footer-column emphasis>
-                    <h5>Избрани категории</h5>
-                    <li><a href="#">Бракониерство</a></li>
-                    <li><a href="#">Престъпления - кражба, насилие </a></li>
-                    <li><a href="#">Изгубени вещи</a></li>
-                    <li><a href="#">Пътно-транспортни</a></li>
-                    <li><a href="#">Градска среда</a></li>
-                    <li><a href="#">Корупция, измама</a></li>
-                </footer-column>
-                <footer-column>
-                    <li><a href="#">Бракониерство</a></li>
-                    <li><a href="#">Престъпления - кражба, насилие кражба, насилие </a></li>
-                    <li><a href="#">Изгубени вещи</a></li>
-                    <li><a href="#">Пътно-транспортни</a></li>
-                    <li><a href="#">Градска среда</a></li>
-                    <li><a href="#">Корупция, измама</a></li>
-                </footer-column>
-            </footer-navigation>
-            <sponsors>
-                <h5>Спонсори</h5>
-                <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
-                <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
-                <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
-            </sponsors>
-            <p>Easy one click sign in. We won't post anything without your permission.</p>
-        </footer-wrapper>
+        {% include '_footer.html' with request=request %}
     </page>
 {% endblock %}
