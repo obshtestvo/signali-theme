@@ -7,9 +7,11 @@
 {% load thumbnail %}
 
 {% block content %}
-    {% include "_loader.html" %}
-    <page color="light">
-        <cover density="comfortable" src="{%if point.cover %}{{ point.cover.url }}{% else %}{% setting 'cover_url' %}{% endif %}">
+{% include "_loader.html" %}
+<page color="light">
+    <leading-area>
+        <cover leading density="comfortable"
+               src="{%if point.cover %}{{ point.cover.url }}{% else %}{% setting 'cover_url' %}{% endif %}">
             {% include '_topnav.html' with request=request %}
             <intro density="compact" social-insights>
                 <call-to-action align="left" density="compact">
@@ -17,121 +19,126 @@
                 </call-to-action>
                 <breadcrumb>
                     <crumb action="{% url 'home' %}">Начална страница</crumb>
-                    <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">{{ point.category.title }}</crumb>
+                    <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">{{
+                        point.category.title }}
+                    </crumb>
                     <crumb>{{ point.title }}</crumb>
                 </breadcrumb>
                 {% include '_share.html' with request=request %}
             </intro>
         </cover>
-        <featured>
-            <resume>
-                <article>
-                    {% if point.description %}
-                    <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
-                    {{ point.description | safe }}
-                    {% endif %}
-                </article>
-                <features>
-                    <headline size="small" density="tight">Характеристики</headline>
-                    {% if point.is_anonymous_allowed == point.YES %}
-                    <features-item check>Анонимни сигнали</features-item>
-                    {% endif %}
-                    {% if not point.is_registration_required %}
-                    <features-item check>Не изисква регистрация</features-item>
-                    {% endif %}
-                    {% if not point.is_photo_required %}
-                    <features-item check>Не изисква снимка</features-item>
-                    {% endif %}
-                    {% if not point.is_esign_required %}
-                    <features-item check>Не изисква ел. подпис</features-item>
-                    {% endif %}
-                    {% if not point.is_name_required %}
-                    <features-item check>Не изисква името ви</features-item>
-                    {% endif %}
-                    {% if not point.is_email_required %}
-                    <features-item check>Не изисква имейл</features-item>
-                    {% endif %}
-                    {% if not point.is_address_required %}
-                    <features-item check>Не изисква адресът ти</features-item>
-                    {% endif %}
-                    {% if not point.is_address_required %}
-                    <features-item check>Не изисква локация на сигнала</features-item>
-                    {% endif %}
-                    {% if not point.is_registration_required %}
-                    <features-item check>Не изисква регистрация</features-item>
-                    {% endif %}
-                    {% if point.is_multilingual == point.YES %}
-                    <features-item check>Многоезичност</features-item>
-                    {% endif %}
-                    {% if point.is_response_guaranteed == point.YES %}
-                    <features-item check>Гараниран отговор</features-item>
-                    {% endif %}
-                    {% if point.is_mobile_friendly == point.YES %}
-                    <features-item check>Мобилна версия</features-item>
-                    {% endif %}
-                    {% if point.is_final_destination == point.YES %}
-                    <features-item check>Крайна точка за сигнала</features-item>
-                    {% endif %}
-                    {% if point.is_verifiable == point.YES %}
-                    <features-item check>Позволява следене на прогреса</features-item>
-                    {% endif %}
-                    {% if point.is_confirmation_issued == point.YES %}
-                    <features-item check>Потвърждение на сигнала</features-item>
-                    {% endif %}
-                </features>
-                <card resume
-                      {% if point.url %}
-                          {% if request.user.is_authenticated %}
-                              action="{{point.url}}" target="_blank"
-                          {% else %}
-                              action="#leavePrompt" target="modal"
-                              auth-removes-modal
-                              auth-change-attrs='["action", "target"]'
-                              auth-action="{{point.url}}" auth-target="_blank"
-                          {% endif %}
-                      {% endif %}>
-                    {% if point.preview %}
-                        {% thumbnail point.preview "280x112" crop="center" as img %}
-                            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
-                        {% endthumbnail %}
-                    {% else %}
-                        <p class="img nopreview"></p>
-                    {% endif %}
-                    <card-item type="rating">
-                        <rating align="left" value="{{ point.rating }}" href="#feedback">
-                            <a class="comments" href="#feedbacklist">({{point.feedback.count}} оценки)</a>
-                        </rating>
-                    </card-item>
-                    {% if point.url %}
-                    {% subscribeform request point %}
-                    <action-button link
-                                   type="primary"
-                                   fill="solid"
-                                   color="red"
-                                   size="gigalarge"
-                                   align="center"
-                                   stat-visit="{% url 'contact-point-visits' slug=point.slug %}"
-                                   {% if request.user.is_authenticated %}
-                                        action="{{point.url}}" target="_blank"
-                                   {% else %}
-                                        action="#leavePrompt" target="modal"
-                                        auth-removes-modal
-                                        auth-change-attrs='["action", "target"]'
-                                        auth-action="{{point.url}}" auth-target="_blank"
-                                   {% endif %}>
-                        Към мястото
-                    </action-button>
-                    {% endif %}
-                    <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title }}“ сподели го:</p>
-                    <action-button link type="primary" fill="outlined" color="purple" size="large" align="center" action="#feedback">
-                        Кажи как мина
-                    </action-button>
-                </card>
-            </resume>
-            {% feedback_list request point %}
-            {% survey request point %}
-            {% include "_addnew_prompt.html" %}
-        </featured>
-        {% include '_footer.html' with request=request %}
-    </page>
+        <resume>
+            <article>
+                {% if point.description %}
+                <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
+                {{ point.description | safe }}
+                {% endif %}
+            </article>
+            <features>
+                <headline size="small" density="tight">Характеристики</headline>
+                {% if point.is_anonymous_allowed == point.YES %}
+                <features-item check>Анонимни сигнали</features-item>
+                {% endif %}
+                {% if not point.is_registration_required %}
+                <features-item check>Не изисква регистрация</features-item>
+                {% endif %}
+                {% if not point.is_photo_required %}
+                <features-item check>Не изисква снимка</features-item>
+                {% endif %}
+                {% if not point.is_esign_required %}
+                <features-item check>Не изисква ел. подпис</features-item>
+                {% endif %}
+                {% if not point.is_name_required %}
+                <features-item check>Не изисква името ви</features-item>
+                {% endif %}
+                {% if not point.is_email_required %}
+                <features-item check>Не изисква имейл</features-item>
+                {% endif %}
+                {% if not point.is_address_required %}
+                <features-item check>Не изисква адресът ти</features-item>
+                {% endif %}
+                {% if not point.is_address_required %}
+                <features-item check>Не изисква локация на сигнала</features-item>
+                {% endif %}
+                {% if not point.is_registration_required %}
+                <features-item check>Не изисква регистрация</features-item>
+                {% endif %}
+                {% if point.is_multilingual == point.YES %}
+                <features-item check>Многоезичност</features-item>
+                {% endif %}
+                {% if point.is_response_guaranteed == point.YES %}
+                <features-item check>Гараниран отговор</features-item>
+                {% endif %}
+                {% if point.is_mobile_friendly == point.YES %}
+                <features-item check>Мобилна версия</features-item>
+                {% endif %}
+                {% if point.is_final_destination == point.YES %}
+                <features-item check>Крайна точка за сигнала</features-item>
+                {% endif %}
+                {% if point.is_verifiable == point.YES %}
+                <features-item check>Позволява следене на прогреса</features-item>
+                {% endif %}
+                {% if point.is_confirmation_issued == point.YES %}
+                <features-item check>Потвърждение на сигнала</features-item>
+                {% endif %}
+            </features>
+            <card resume
+                  {% if point.url %}
+                  {% if request.user.is_authenticated %}
+                  action="{{point.url}}" target="_blank"
+                  {% else %}
+                  action="#leavePrompt" target="modal"
+                  auth-removes-modal
+                  auth-change-attrs='["action", "target"]'
+                  auth-action="{{point.url}}" auth-target="_blank"
+                  {% endif %}
+                  {% endif %}>
+                {% if point.preview %}
+                {% thumbnail point.preview "280x112" crop="center" as img %}
+                <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
+                     alt="Снимка от сайта на {{ point.title }}"/>
+                {% endthumbnail %}
+                {% else %}
+                <p class="img nopreview"></p>
+                {% endif %}
+                <card-item type="rating">
+                    <rating align="left" value="{{ point.rating }}" href="#feedback">
+                        <a class="comments" href="#feedbacklist">({{point.feedback.count}} оценки)</a>
+                    </rating>
+                </card-item>
+                {% if point.url %}
+                {% subscribeform request point %}
+                <action-button link
+                               type="primary"
+                               fill="solid"
+                               color="red"
+                               size="gigalarge"
+                               align="center"
+                               stat-visit="{% url 'contact-point-visits' slug=point.slug %}"
+                               {% if request.user.is_authenticated %}
+                               action="{{point.url}}" target="_blank"
+                               {% else %}
+                               action="#leavePrompt" target="modal"
+                               auth-removes-modal
+                               auth-change-attrs='["action", "target"]'
+                               auth-action="{{point.url}}" auth-target="_blank"
+                               {% endif %}>
+                    Към мястото
+                </action-button>
+                {% endif %}
+                <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title }}“ сподели
+                    го:</p>
+                <action-button link type="primary" fill="outlined" color="purple" size="large" align="center"
+                               action="#feedback">
+                    Кажи как мина
+                </action-button>
+            </card>
+        </resume>
+    </leading-area>
+    {% feedback_list request point %}
+    {% survey request point %}
+    {% include "_addnew_prompt.html" %}
+
+    {% include '_footer.html' with request=request %}
+</page>
 {% endblock %}
