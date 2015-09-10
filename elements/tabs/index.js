@@ -13,15 +13,21 @@ module.exports = function (componentService) {
             if (this.hasAttribute('links')) return;
             var $tabLinks = $(this).find('a');
             $tabLinks.each(function() {
-                var $link = $(this);
-                var $target = $($link.attr('href'));
+                var $link = $(this),
+                    $container,
+                    $toHide,
+                    $target;
                 $link.click(function(e) {
-                    var $container = $target.parent();
                     e.preventDefault();
-                    var $toHide = $container.children('[tab]:visible').eq(0);
+
+                    $target = $($link.attr('href'));
+                    $container = $target.parent();
+                    $toHide = $container.children('[tab]:visible').eq(0);
                     if ($toHide.is($target)) return;
+
                     $tabLinks.removeClass('active');
                     $link.addClass('active');
+
                     toggleFixedHeight($container, true);
                     $container.animateContentSwitch($container.children('[tab]:visible').eq(0), $target, {
                         width: false,
