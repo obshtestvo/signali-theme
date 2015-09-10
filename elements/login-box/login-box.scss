@@ -78,8 +78,6 @@ login-box {
             }
         }
         ul {
-            opacity: 0;
-            visibility: hidden;
             display: none;
             @extend %bodytext-font, %stripped;
             line-height: 24px;
@@ -105,8 +103,6 @@ login-box {
                 }
             }
             ul {
-                opacity: 1;
-                visibility: visible;
                 display: block;
             }
         }
@@ -119,53 +115,42 @@ login-box {
         float: right;
         #loggedin {
             position: absolute;
-            right: 0;
             .profile a {
-                padding: 10px 10px;
                 display: block;
                 position: absolute;
-                min-width: 70px;
-                top:-30px;
+                min-width: 55px;
+                padding: 5px 5px 5px 10px;
+                top:0;
                 right: 0;
+                border-radius: $nano-radius $nano-radius 0 0;
                 span {
-
                     float: none;
                     position: relative;
+                    &:after{
+                        right: -18px;
+                        top: 5px;
+                    }
                 }
                 strong {
                     display: none;
                 }
             }
             ul {
-                opacity: 0;
-                visibility: hidden;
-                display: none;
-                line-height: 24px;
-                padding: 3px 10px 6px 10px;
-                position: relative;
-                border-top: 1px solid $grey-color-60;
-                li a {
-                    color: $secondary-color-100;
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
+                margin-top: 30px;
+                border-radius: $nano-radius 0 $nano-radius $nano-radius;
             }
-            &:hover {
-                background: $white;
-                position: absolute;
+            &:hover, &:foucs, &:active {
+                background: transparent;
+
                 a {
-                    span:after {
-                        border-top-color: $body-text-color;
-                    }
-                    strong {
-                        color: $body-text-color;
-                    }
+                    background: $white;
+                    pointer-events: none;
+                    cursor: default;
                 }
                 ul {
-                    opacity: 1;
-                    visibility: visible;
-                    display: block;
+                    background: $white;
+                    position: absolute;
+                    right: 0;
                 }
             }
         }
