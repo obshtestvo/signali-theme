@@ -1,3 +1,4 @@
+{% load signali %}
 {% load taxonomy %}
 <footer-wrapper>
     <logo action="home" color="dark" size="medium" align="right"></logo>
@@ -11,11 +12,6 @@
         </footer-column>
         {% featured_categories request %}
     </footer-navigation>
-    <sponsors>
-        <h5>Спонсори</h5>
-        <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
-        <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
-        <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
-    </sponsors>
+    {% featured_partners %}
     <p>Signali.bg е създаден с финансовата подкрепа на <strong>EEA grants</strong></p>
 </footer-wrapper>
