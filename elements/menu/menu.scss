@@ -41,7 +41,8 @@ menu {
         visibility: hidden;
         background: $white;
         width: 59%;
-        @extend %small-radius, %anime;
+        @extend %small-radius;
+        @include anime(opacity);
         box-shadow: 0 0 5px rgba($main-color-40, 1);
         position: absolute;
         margin: 8px 0 0 0;

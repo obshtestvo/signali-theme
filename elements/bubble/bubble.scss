@@ -6,7 +6,7 @@ bubble {
         animation-duration: 0.7s;
     }
     section[wrapper] {
-        @extend %anime;
+        @include anime(all);
         @extend %small-radius;
         position: relative;
         z-index: 0;

@@ -47,7 +47,7 @@ action-button {
         }
         a, button {
             @extend %large-radius, %button-font;
-            @include anime(background color box-shadow border-color);
+            @include anime(background, color, box-shadow, border-color);
             padding: 10px 20px;
             display: inline-block;
             color: $white;

@@ -278,7 +278,7 @@ select-dropdown {
                     border: none;
                 }
                 svg {
-                    @extend %anime;
+                    @include anime(transform);
                     position: absolute;
                     top: 50%;
                     margin-top: -8px;

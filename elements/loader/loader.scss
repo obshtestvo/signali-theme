@@ -14,7 +14,6 @@ loader {
         @extend preloader;
     }
     svg {
-        @extend %anime;
         display: block;
         width: 160px;
         height: 20px;
