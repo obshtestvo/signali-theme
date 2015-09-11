@@ -18,7 +18,7 @@
             <headline size="large" density="airy" align="center">Настройки</headline>
             <settings action="{% url 'user:profile' pk=user.id %}">
                 <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
-                    Профилът ви е обновен.
+                    Профилът ти е обновен. Спокойно може да продължиш в сайта.
                 </bubble>
                 <tabs align="center">
                     <li><a class="active" href="#generalSettings">Общи</a></li>
@@ -75,7 +75,7 @@
                     <input type="hidden" name="auth_type" value="login"/>
                     <notification error size="medium" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
                     <bubble size="standart" color="white" type="success" success density="compact" hidden class="animated fadeInUp">
-                        Успешно влязохте в акаунта си.
+                        Успешно влезе в акаунта си.
                     </bubble>
                     <text-field for="registration" validate-group="registration" size="full" id="fullname" name="fullname" type="text" required>
                         Име

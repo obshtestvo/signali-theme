@@ -6,7 +6,7 @@
 >
     <headline size="small" density="compact">Тоята оценка за „{{contactpoint.title}}“</headline>
     {% if request.user.is_authenticated %}
-    <notification information size="small">Споделяте опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
+    <notification information size="small">Споделяш опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% endif %}
     {% csrf_token %}
     <input type="hidden" name="prefix" value="{{prefix}}"/>

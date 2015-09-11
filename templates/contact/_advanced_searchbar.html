@@ -3,7 +3,7 @@
 <filtering primary action="{% url 'contact-point-list' %}">
     <div class="clearfix">
         <select-dropdown id="searchArea" name="{{form.areas.html_name}}" theme="light"
-                         placeholder="Изберете от падащото меню" location="simple" priority="low" mainsearch>
+                         placeholder="Избери от падащото меню" location="simple" priority="low" mainsearch>
             <label>Mестност, в която се е случило:</label>
             {% for id, label in form.areas.field.choices %}
             <value id="{{id}}" {% if form.areas|has_selected:id %}selected{%endif%}>{{label}}</value>
