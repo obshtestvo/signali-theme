@@ -117,7 +117,7 @@ module.exports = function (componentService) {
                 $(this).trigger('auth:cancel')
             },
             bubble: function (bubbleEl) {
-                if (!bubbleEl) bubbleEl = this.querySelector('bubble[success]')
+                if (!bubbleEl) bubbleEl = this.querySelector('bubble[type="success"]')
                 bubbleEl.show()
             }
         }

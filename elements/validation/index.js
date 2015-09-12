@@ -51,6 +51,21 @@ module.exports = function (componentService) {
     for (var elName in registeredElements) {
         handleNewElement(elName, registeredElements[elName])
     }
+
+    componentService.register('validate-bubbles', {
+        type: 'attribute',
+        created: function() {
+            var $form = $(this);
+            if (!$form.is('form')) {
+                $form = $($form[0].querySelector('form'));
+                $form.parsley().on('form:error', function() {
+                    var bubble = $form[0].querySelector('bubble[type=error]').cloneNode(true);
+                    componentService.upgrade(bubble)
+                    bubble.show()
+                })
+            }
+        }
+    })
 };
 
 /*
