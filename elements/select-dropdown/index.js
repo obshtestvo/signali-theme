@@ -24,6 +24,7 @@ module.exports = function (componentService) {
             }
 
             var data = extractData(el.$detachedContent.filter('value'));
+            el.data = data;
             var options = {
                 valueField: 'id',
                 labelField: 'title',
@@ -112,29 +113,41 @@ module.exports = function (componentService) {
                 el.API = new addressSearch.Simple($input, options);
                 return;
             }
+            if (!el.hasAttribute('name')) {
+                options.plugins.multiinput= {};
+            }
             el.API = $input.selectize(options)[0].selectize;
             blocking = new Blocker(el.querySelector('.selectize-control'));
             el.API.on('change', function() {
                 $el.trigger('change')
             });
             if (!el.hasAttribute('name')) {
-                var add = function(item) {
-                    $el.closest('form').append('<input type="hidden" name="'+item.input+'" value="'+item.value+'" />');
-                };
-                var remove = function(item) {
-                    $el.closest('form').find('input[name="'+item.input+'"][value="'+item.value+'"]').remove();
-                };
                 $input.remove();
-                for (var i = 0; i < data.initial.length; i++) {
-                    add(data.initial[i])
-                }
-                el.API.on('item_add', function(value, $item) {
-                    add(this.options[value]);
-                });
-                el.API.on('item_remove', function(value, $item) {
-                    remove(this.options[value]);
-                });
             }
+        },
+        attached: function() {
+            var el = this,
+                data = el.data,
+                $el = $(el),
+                $form = $(el).closest('form');;
+            if (!$form.length) return;
+            if (!$form.length || el.hasAttribute('name') || this.hasMultiInputBeenAttached) return;
+            this.hasMultiInputBeenAttached = true;
+            var add = function(item) {
+                $el.closest('form').append('<input type="hidden" name="'+item.input+'" value="'+item.value+'" />');
+            };
+            var remove = function(item) {
+                $el.closest('form').find('input[name="'+item.input+'"][value="'+item.value+'"]').remove();
+            };
+            for (var i = 0; i < data.initial.length; i++) {
+                add(data.initial[i])
+            }
+            el.API.on('item_add', function(value, $item) {
+                add(this.options[value]);
+            });
+            el.API.on('item_remove', function(value, $item) {
+                remove(this.options[value]);
+            });
         },
         prototype: {
             select: function(id) {

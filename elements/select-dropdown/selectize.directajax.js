@@ -8,7 +8,7 @@ selectize.define('directajax', function (options) {
             if (self.isSetup) {
                 var item = this.options[value];
                 if (item.href) {
-                self.close();
+                    self.close();
                     self.blur();
                     if (options.block) options.block()
                     window.location.href = item.href;
