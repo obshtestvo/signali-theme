@@ -6,11 +6,14 @@ from django.dispatch import receiver
 @receiver(pre_success_rendering, sender=ListView)
 def new_feedback_success_user_activation(request, url_name, data, **kwargs):
     matches_uri = url_name == 'contact-point-feedback-list'
-    inactive_user = not request.user.is_valid
-    is_first_feedback_for_contactpoint = data['feedback'].contactpoint.feedback.exclude(id=data['feedback'].id).count() == 0
+    invalid_user = not request.user.is_valid
+    is_first_feedback_for_contactpoint = data['feedback'].contactpoint.feedback.exclude(
+        id=data['feedback'].id,
+        user=request.user
+    ).count() == 0
     triggered_registration = request.params.get('ui_include_auth') == 'registration'
     if request.is_pjax() and matches_uri:
-        if is_first_feedback_for_contactpoint and (triggered_registration or inactive_user):
+        if is_first_feedback_for_contactpoint and (triggered_registration or invalid_user):
             return 'contact_feedback/new_feedback_with_registration'
         if not is_first_feedback_for_contactpoint:
             return 'contact_feedback/new_feedback_after_first'
