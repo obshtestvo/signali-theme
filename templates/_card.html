@@ -24,7 +24,9 @@
         {% for tag in point.keywords.all|slice:":2" %}
             <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
+        {% if point.keywords.count >= 2 %}
         <a href="{% url 'contact-point' slug=point.slug %}">&hellip;и още {{ point.keywords.count|add:"-2" }}</a>
+        {% endif %}
     </card-item>
     <card-item type="rating">
         <strong>Оценка</strong>
