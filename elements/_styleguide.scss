@@ -30,6 +30,7 @@ $secondary-color-hover: $secondary-color-120;
 $secondary-color-active: #f06882;
 
 $body-text-color: #1c1526;
+$grey-color-130: #B9B5BF;
 $grey-color-120: #7d7d7d;
 $grey-color-100: #a4a6a5;
 $grey-color-90: lighten($grey-color-100, 5%);
@@ -264,7 +265,7 @@ $small-phone-width: 480px;
 
 @mixin placeholder {
     font-style: italic;
-    color: $grey-color-80;
+    color: $grey-color-130;
 }
 
 [nofloaters] {
