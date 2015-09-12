@@ -29,6 +29,9 @@
         </cover>
         <resume>
             <article>
+                {% if not point.url and point.email %}
+                <p>Пратете имейл на адрес: <strong>{{point.email}}</strong></p>
+                {% endif %}
                 {% if point.description %}
                 <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
                 {{ point.description | safe }}

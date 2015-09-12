@@ -1,5 +1,6 @@
 var FacebookAuth = require('./facebook.js');
 var Blocker = require('ajax/block');
+var hasOtherElements = false;
 
 module.exports = function (componentService) {
 
@@ -13,7 +14,10 @@ module.exports = function (componentService) {
                 serverGateway = el.getAttribute('server-gateway'),
                 $facebookButton = $(el.querySelector('social-button[facebook]'));
 
-            FacebookAuth.setup(facebookAppId);
+            if (!hasOtherElements) {
+                FacebookAuth.setup(facebookAppId);
+                hasOtherElements = true;
+            }
 
             el.blocker = new Blocker($authContainer);
             el.facebook = new FacebookAuth({

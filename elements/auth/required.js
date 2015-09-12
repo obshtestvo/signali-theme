@@ -14,9 +14,10 @@ module.exports = function (componentService, adaptors) {
             $form.on('ajax-submit.auth-required submit.auth-required', function (e, originalAjaxForm) {
                 e.preventDefault();
                 if (!el.authContainer) {
-                    el.authContainer = adaptor.attach(el);
+                    el.authContainer = adaptor.attach(el, componentService);
                     var $auth = $(el.authContainer).find('auth');
                     $auth.on('auth:success', function (e, data) {
+                        $form.off('.auth-required')
                         var authScenario = data.is_new ? 'registration' : 'login';
                         $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
                         adaptor.dismiss(el, function() {
@@ -30,7 +31,9 @@ module.exports = function (componentService, adaptors) {
                 adaptor.show(el)
             });
             $(document).on('auth:success', function() {
-                this.querySelector('[auth-required]').clearAuthRequirement();
+                var elements = this.querySelector('[auth-required]');
+                if (!elements) return;
+                elements.clearAuthRequirement();
             })
         },
 

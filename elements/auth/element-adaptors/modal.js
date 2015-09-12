@@ -3,6 +3,21 @@ var toggleFixedHeight = require('service/toggleFixedHeight.js');
 require('service/jquery.animateContentSwitch.js');
 
 
+
+var overrideAjaxResult = function(ajaxForm) {
+    //var originalApply = ajaxForm.options.applyResult;
+    //ajaxForm.options.applyResult = function(instance, isSuccess, content) {
+    //    debugger;
+    //    var $result = originalApply.apply(this, arguments);
+    //    $result.wrap("<modal-screen></modal-screen>");
+    //    var $screen = $result.parent();
+    //    $screen.hide();
+    //    $result.show();
+    //    return $screen
+    //}
+};
+
+
 var registration = function (componentService) {
 
     componentService.register('auth-removes-modal', {
@@ -43,8 +58,7 @@ var registration = function (componentService) {
         }
     });
 
-    componentService.register('auth-container-modal', {
-        extends: 'modal',
+    componentService.register('auth-modal-container', {
         type: 'attribute',
         attached: function () {
             if (this.hasBeenAttached) return;
@@ -57,27 +71,18 @@ var registration = function (componentService) {
                     el.auth.cancel()
                 };
 
-            $el.on('modal:open', function () {
-                el.auth.focus()
-            });
-            $el.on('modal:close', cancelAuth);
-
             $auth.on('auth:success', function (e, data, ajaxForm) {
                 $el.off('modal:close', cancelAuth);
-                var originalApply = ajaxForm.options.applyResult;
-                ajaxForm.options.applyResult = function(instance, isSuccess, content) {
-                    var $result = originalApply.apply(this, arguments);
-                    $result.wrap( "<modal-screen></modal-screen>");
-                    var $screen = $result.parent();
-                    $screen.hide();
-                    $result.show();
-                    return $screen
-                }
+                overrideAjaxResult(ajaxForm);
                 ajaxForm.setReplaceableElement($(el.primary));
             });
             $auth.on('auth:login:success', function () {
                 el.close()
             });
+            $el.on('modal:open', function () {
+                el.auth.focus()
+            });
+            $el.on('modal:close', cancelAuth);
         },
         prototype: {
             cloneAuthModal: function(id) {
@@ -95,7 +100,7 @@ var registration = function (componentService) {
 module.exports = {
     register: registration,
     actions: {
-        attach: function(el) {
+        attach: function(el, componentService) {
             var authModal = document.querySelector('modal[auth-container="main"]').cloneAuthModal(el.getAttribute('auth-id'));
             var modalPatch = el.querySelector('auth-container-patch');
             if (el.tagName == 'MODAL') {
@@ -103,6 +108,7 @@ module.exports = {
                 var authContainer = authModal.primary,
                     $authContainer = $(authContainer);
                 authContainer.setAttribute('auth-container', 'secondary');
+                componentService.upgrade(authContainer);
                 $authContainer.hide();
                 el.appendSecondary(authContainer, true);
                 return authContainer;
@@ -116,7 +122,6 @@ module.exports = {
         show: function(el) {
             if (el.tagName == 'MODAL') {
                 var $animationContainer = $(el.querySelector('[animation-container]')),
-                    auth = $(el.authContainer).find('auth')[0];
                     auth = el.authContainer.auth;
                 toggleFixedHeight($animationContainer, true);
                 $animationContainer.animateContentSwitch($(el.primary), $(el.authContainer), {
@@ -135,7 +140,8 @@ module.exports = {
         dismiss: function(el, callback, originalAjaxForm, forceShowForm) {
             if (el.tagName == 'MODAL') {
                 if (!forceShowForm) {
-                    ajaxForm.setReplaceableElement($(el.authContainer))
+                    overrideAjaxResult(originalAjaxForm)
+                    originalAjaxForm.setReplaceableElement($(el.authContainer))
                     callback()
                     return;
                 }

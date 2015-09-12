@@ -78,7 +78,8 @@ module.exports = function (componentService) {
                 var screen = '<modal-screen></modal-screen>';
                 if (skipPadding) screen = '<modal-screen no-padding></modal-screen>';
                 var $screen = $(screen).append(content).addClass('secondary')
-                return this.appendChild($screen[0]);
+                this.appendChild($screen[0])
+                return $screen[0];
             }
         }
     });

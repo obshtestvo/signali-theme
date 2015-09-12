@@ -33,19 +33,17 @@ module.exports = function (componentService) {
                         event = $.Event('auth:login:success');
                         $el.trigger(event, [data, el.ajaxForm]);
                         if (event.isDefaultPrevented()) return false;
-
                         el.ajaxForm.unblock();
                         el.bubble()
                     }
                     return false;
                 };
 
-            $el.on('auth:complete', success);
             el.validation = new ValidationForm($form);
             el.ajaxForm = new AjaxForm($form, {
-                interactionContainer: $form.closest('[auth-container]'),
                 success: function(data) {
-                    $el.trigger('auth:complete', [data])
+                    $el.trigger('auth:complete', [data]);
+                    return success(null, data)
                 },
                 error: function() {
                     el.ajaxForm.unblock();
@@ -60,7 +58,7 @@ module.exports = function (componentService) {
 
         attached: function() {
             if (this.ajaxForm) {
-                this.ajaxForm.setInteractionContainer($(this).closest('[auth-container]'))
+                this.ajaxForm.setInteractionContainer(this.getAnimationContainer())
             }
         },
 
@@ -90,6 +88,15 @@ module.exports = function (componentService) {
         },
 
         prototype: {
+            getAnimationContainer: function() {
+                var $animationContainer,
+                    $container  = $(this).closest('[auth-container]');
+                if (!$container.is('[animation-container]')) {
+                    $animationContainer = $($container[0].querySelector('[animation-container]'))
+                    if ($animationContainer.length) $container = $animationContainer;
+                }
+                return $container;
+            },
             setInput: function (name, value) {
                 var $el = $(this);
                 var $input = $el.find('input[name="' + name + '"]');
