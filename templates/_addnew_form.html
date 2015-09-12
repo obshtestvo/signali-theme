@@ -1,10 +1,9 @@
 <div style="display:none;">
     <modal id="addnew"
-           {# size="medium" #}
            {% if not request.user.is_authenticated %}auth-required auth-id="addNewAuth"{% endif %}
            proposal-container
     >
-        <modal-screen>
+        <modal-screen {# size="medium" #}>
             <headline size="large" density="airy" align="center">
                 Добави място
                 <p>Ако знаеш за място в интернет, от където може да се подаде сигнал, кажи за него:</p>

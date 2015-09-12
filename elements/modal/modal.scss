@@ -7,9 +7,6 @@ modal {
     position: relative;
     display: block;
     margin: 20px auto;
-    &[size="medium"] {
-        max-width: 520px;
-    }
     .modal-box {
         background: $white;
         @extend %small-radius;
@@ -90,6 +87,9 @@ modal {
 
 modal-screen {
     display: block;
+    &[size="medium"] {
+        max-width: 520px;
+    }
 }
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
