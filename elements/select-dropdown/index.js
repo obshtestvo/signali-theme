@@ -113,9 +113,6 @@ module.exports = function (componentService) {
                 el.API = new addressSearch.Simple($input, options);
                 return;
             }
-            if (!el.hasAttribute('name')) {
-                options.plugins.multiinput= {};
-            }
             el.API = $input.selectize(options)[0].selectize;
             blocking = new Blocker(el.querySelector('.selectize-control'));
             el.API.on('change', function() {
