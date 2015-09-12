@@ -6,7 +6,6 @@ module.exports = function (componentService) {
         created: function() {
             var el = this,
                 $el = $(el);
-            console.log('stat created')
 
             $el.on('click.stat-visit', function(e) {
                 request.json(el.getAttribute('stat-visit'), 'post');

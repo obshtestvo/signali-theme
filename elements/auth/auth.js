@@ -39,10 +39,10 @@ module.exports = function (componentService) {
                     return false;
                 };
 
+            $el.on('auth:complete', success);
             el.validation = new ValidationForm($form);
             el.ajaxForm = new AjaxForm($form, {
                 success: function(data) {
-                    $el.trigger('auth:complete', [data]);
                     return success(null, data)
                 },
                 error: function() {
