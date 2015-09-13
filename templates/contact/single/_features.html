@@ -17,7 +17,7 @@
 <features-item type="{{ type }}" size="{{ size }}">{% if negative %}Изисква имейл адрес{% else %}Не изисква имейл адрес{% endif %}</features-item>
 {% endif %}
 {% if require_compare == point.is_address_required %}
-<features-item type="{{ type }}" size="{{ size }}">{% if negative %}Изисква адресът ти {% else %}Не изисква адресът ти{% endif %}</features-item>
+<features-item type="{{ type }}" size="{{ size }}">{% if negative %}Изисква адресът ти {% else %}Не изисква адреса ти{% endif %}</features-item>
 {% endif %}
 {% if require_compare == point.is_address_required %}
 <features-item type="{{ type }}" size="{{ size }}">{% if negative %}Изисква локация на сигнала{% else %}Не изисква локация на сигнала{% endif %}</features-item>
@@ -29,7 +29,7 @@
 <features-item type="{{ type }}" size="{{ size }}">{% if negative %}Само на български{% else %}Многоезичност{% endif %}</features-item>
 {% endif %}
 {% if point.is_response_guaranteed == feature_compare %}
-<features-item type="{{ type }}" size="{{ size }}">{% if negative %}Не гарантира отговор{% else %}Гараниран отговор{% endif %}</features-item>
+<features-item type="{{ type }}" size="{{ size }}">{% if negative %}Не гарантира отговор{% else %}Гарантиран отговор{% endif %}</features-item>
 {% endif %}
 {% if point.is_mobile_friendly == feature_compare %}
 <features-item type="{{ type }}" size="{{ size }}">{% if negative %}Няма мобилна версия{% else %}Мобилна версия{% endif %}</features-item>
