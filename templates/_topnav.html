@@ -4,19 +4,43 @@
     {% categories_menu %}
     {% user_controls %}
     <logo align="center-x" action="{% url 'home' %}" color="light" size="large"></logo>
-    <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall" action="#wip" target="modal">
-        Сподели опит
+    <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent" size="extrasmall"
+                   action="#wip" target="modal">
+        Как работи Signali.bg
     </action-button>
-    <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="#addnew" target="modal">
+    <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="#addnew"
+                   target="modal">
         добави място
     </action-button>
     <div style="display: none;">
         <modal id="wip">
             <modal-screen>
                 <headline size="large" density="airy" align="center">
-                    Тук липсва съдържание
+                    Как работи Signali.bg
                 </headline>
-                <p>Какво се показва тук?</p>
+                <p>Съдържанието в сайта се допълва от хора като теб - потребителите му. Става лесно с формата достъпна
+                    от бутоните <em>"Добави място"</em></p>
+
+                <p>
+                    Администраторите на Signali.bg избират свързани теми и снимки за предложените места. Всеки може да
+                    стане администратор,
+                    като изпрати писмо до <a href="mailto:info@signali.bg">info@signali.bg</a>, в което да опише защо би
+                    бил добър в това.
+                </p>
+
+                <p>
+                    Оценката (рейтинга) на всяко място се сформира от споделения опит на хората. Дали са доволни, дали
+                    мястото е лесно за ползване и дали има ефект от сигнала подаден от там.
+                </p>
+
+                <p>
+                    За да се предпази от <a
+                        href="https://bg.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D1%82%D1%80%D0%BE%D0%BB"><em>интернет
+                    „тролове“</em></a>, Signali.bg ограничава честотата, с която могат да се дават оценки, както и
+                    изисква регистрация за всяка от тях.
+                </p>
+
+                <p>Сайтът помага на хората в България да прилагат граждански натиск без това да изисква губене на време или объркване.</p>
             </modal-screen>
         </modal>
     </div>
