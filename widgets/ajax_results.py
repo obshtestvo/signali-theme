@@ -8,9 +8,8 @@ def new_feedback_success_user_activation(request, url_name, data, **kwargs):
     matches_uri = url_name == 'contact-point-feedback-list'
     invalid_user = not request.user.is_valid
     is_first_feedback_for_contactpoint = data['feedback'].contactpoint.feedback.exclude(
-        id=data['feedback'].id,
-        user=request.user
-    ).count() == 0
+        id=data['feedback'].id
+    ).filter(user=request.user).count() == 0
     triggered_registration = request.params.get('ui_include_auth') == 'registration'
     if request.is_pjax() and matches_uri:
         if is_first_feedback_for_contactpoint and (triggered_registration or invalid_user):
