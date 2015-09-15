@@ -1,6 +1,3 @@
-from itertools import chain
-from operator import attrgetter
-
 from django import template
 
 from signali_taxonomy.models import Category, Keyword

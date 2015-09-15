@@ -1,0 +1,10 @@
+Нова оценка за „{{feedback.contactpoint.title|safe}}“
+
+Здравейте,
+
+В сайта има нова оценка за „{{feedback.contactpoint.title|safe}}“.
+
+Вижте я на: {{ feedback.get_absolute_url }}
+
+Ваш покорен,
+Сигнали.бг
