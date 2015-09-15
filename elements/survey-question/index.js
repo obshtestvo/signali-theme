@@ -32,6 +32,11 @@ module.exports = function (componentService) {
                             return undefined;
                         }
                     }
+                    if (el.hasAttribute('rating')) {
+                        var rating = $(el.querySelector('rating input')).val()
+                        if (rating == '0') return undefined;
+                        return rating;
+                    }
                 }
             },
             "validate-trigger": {
