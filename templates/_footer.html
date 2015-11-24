@@ -13,5 +13,10 @@
         {% featured_categories request %}
     </footer-navigation>
     {% featured_partners %}
-    <p>Signali.bg е създаден с финансовата подкрепа на <strong>EEA grants</strong></p>
+    <p>Signali.bg е създаден по проект „YouthLink: Уеб-инструменти и капацитет за гражданско наблюдение, застъпничество
+        и въздействие“, финансиран в рамките на Програмата за подкрепа на НПО в България по Финансовия механизъм (ФМ) на
+        Европейското икономическо пространство (ЕИП) 2009-2014 г.</p>
+    {% if request.resolver_match.url_name == 'home' %}
+    {% include '_eea_waiver.html' %}
+    {% endif %}
 </footer-wrapper>
