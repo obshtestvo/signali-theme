@@ -13,7 +13,7 @@
 <value
         {% if form.keywords|has_selected:keyword %} selected {% endif %}
         id="{{ keyword.pk }}"
-        group="Теми:"
+        group="Kлючови думи:"
         site-wide-id="{{ keyword.site_wide_pk }}"
         input="{{form.keywords.html_name}}">{{ keyword.title }}</value>
 {% endfor %}

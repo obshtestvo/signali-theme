@@ -3,7 +3,7 @@
     <h5>Signali.bg е създаден от:</h5>
     {% for partner in partners %}
     <li><a href="{{ partner.url }}" title="{{ partner.title }}">
-        {% thumbnail partner.logo "x60" crop="center" as img %}
+        {% thumbnail partner.logo "x80" crop="center" as img %}
         <img src="{{ img.url }}" width="{{ img.width }}" alt="{{ partner.title }}"/>
         {% endthumbnail %}
     </a></li>
