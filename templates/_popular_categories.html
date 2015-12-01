@@ -1,6 +1,6 @@
 {% load restful %}
 <popular>
-    <headline size="small" density="airy">Популярни теми</headline>
+    <headline size="small" density="airy">Популярни категории</headline>
     {% for category in categories %}
     {#<a href="#mainsearch" target="select-dropdown" value="{{ category.site_wide_pk }}" color="{{category.style}}">{{ category.title }}</a>#}
     <a href="{% url 'contact-point-list' %}{% query categories=category.pk %}" color="{{category.style}}">{{ category.title }}</a>
