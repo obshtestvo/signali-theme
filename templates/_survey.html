@@ -4,16 +4,13 @@
         method="post"
         id="feedback"
 >
-    <headline size="small" density="compact">Твоята оценка за „{{contactpoint.title}}“</headline>
-    {% if request.user.is_authenticated %}
-    <notification information size="small">Споделяш опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
-    {% endif %}
+    <headline size="small" density="compact">Ако вече си подал сигнал, дай своята оценка за „{{contactpoint.title}}“</headline>
     {% csrf_token %}
     <input type="hidden" name="prefix" value="{{prefix}}"/>
     <input type="hidden" name="submission" value="new_feedback"/>
     <auth-current-user>{{ form.user }}</auth-current-user>
     <survey-question rating required hide-success >
-        <headline density="cozy" size="small">Ако вече си подал сигнал, колко си доволен от процеса по подаване?</headline>
+        <headline density="cozy" size="small">Колко си доволен от процеса по подаване?</headline>
         <notification information no-icon color="gray" size="small" density="inverted">
             От 1 до 5 звездички, където 1 е малко, а 5 много.
         </notification>
@@ -37,12 +34,18 @@
         </div>
     </div>
     <text-field required size="full" type="textarea" name="{{ form.comment.html_name }}" {% if form.comment.value %}value="{{ form.comment.value }}"{% endif %}>
-        Кажи как мина:
+        Има ли нещо друго, за което искаш да разкажеш?
+        <notification information size="text-field">
+            Проблемът пробавен ли беше след подаването на сигнала? Имаше ли нещо сложно? Имаш ли предложение как да се улесни процеса?
+        </notification>
         <notification error size="text-field" hidden></notification>
     </text-field>
     <action-button submit type="secondary" fill="solid" color="purple" size="medium" align="left">
         Изпрати
     </action-button>
+    {% if request.user.is_authenticated %}
+    <notification information size="small" no-icon >Споделяш опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
+    {% endif %}
 
     {% if not user.is_authenticated %}
     <auth-container-patch>

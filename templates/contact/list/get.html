@@ -10,7 +10,7 @@
     {% include '_topnav.html' with request=request %}
     <intro density="compact">
         <call-to-action align="left" density="compact">
-            <h1>Места за подаване на сигнал</h1>
+            <h1>Сайтове за подаване на сигнал</h1>
         </call-to-action>
         <breadcrumb>
             <crumb action="{% url 'home' %}">Начало </crumb>
@@ -24,7 +24,7 @@
     <header>
         <filtering secondary sorting>
             <strong>{{ total }} резултата</strong>
-            <select-dropdown name="sortingfield" size="small" density="compact" placeholder="Подреди местата по" placeholder-type="vivid">
+            <select-dropdown name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
                        href="{% url 'contact-point-list' %}{% query sorting=None start=0%}"
