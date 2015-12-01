@@ -16,12 +16,12 @@
                 {% csrf_token %}
                 <input type="hidden" name="prefix" value="{{prefix}}"/>
                 <auth-current-user>{{ form.proposed_by }}</auth-current-user>
-                <text-field required size="full" type="text" name="{{ form.title.html_name }}" required>
-                    Как да се нарича мястото?
-                    <notification error size="text-field" hidden></notification>
-                </text-field>
                 <text-field required size="full" type="text" name="{{ form.url.html_name }}" validate-type="url" placeholder="https://www.example.com/form" required>
                     Интернет адрес (линк) към формата за попълване
+                    <notification error size="text-field" hidden></notification>
+                </text-field>
+                <text-field required size="full" type="text" name="{{ form.title.html_name }}" required>
+                    Име на организацията, която ще получи сигнала
                     <notification error size="text-field" hidden></notification>
                 </text-field>
                 <select-dropdown id="{{prefix}}_category" name="{{form.category.html_name}}" size="full" required>
@@ -36,6 +36,7 @@
                     {% for id, label in form.operational_area.field.choices %}
                     {% if id %}<value id="{{id}}">{{label}}</value>{% endif %}
                     {% endfor %}
+                    <notification information size="text-field">Т.е. къде в страната трябва да е проблема, за да реагира организацията на сигнала</notification>
                     <notification error size="text-field" hidden></notification>
                 </select-dropdown>
 
