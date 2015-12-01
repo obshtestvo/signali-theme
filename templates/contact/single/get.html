@@ -44,11 +44,11 @@
             </section>
             <features>
                 <headline size="small" density="tight">Хубавото е че:</headline>
-                {% include "contact/single/_features.html" with feature_compare=point.YES require_compare=False type="check" %}
+                {% include "contact/single/_features.html" with feature_compare=point.YES require_compare=False type="check" form=form %}
             </features>
             <features>
                 <headline size="extrasmall" density="cozy">Пречките са:</headline>
-                {% include "contact/single/_features.html" with feature_compare=point.NO require_compare=True size="small" type="none" negative=True%}
+                {% include "contact/single/_features.html" with feature_compare=point.NO require_compare=True size="small" type="none" negative=True form=form%}
             </features>
             <card resume
                   {% if point.url %}
