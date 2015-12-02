@@ -6,7 +6,13 @@
         <value id="{{id}}">{{label}}</value>
         {% endfor %}
     </select-dropdown>
-    <select-dropdown theme="light" priority="medium" placeholder="Избери от падащото меню" multiple mainsearch>
+    <select-dropdown
+            theme="light"
+            priority="medium"
+            placeholder="Избери от падащото меню"
+            remote-url="{% url 'contact-point-list-search' %}"
+            remote-group="Директни съвпадения"
+            multiple mainsearch>
         <label>Какви категории и ключови думи описват проблема?</label>
         {% taxonomy_mixed_options request form %}
         <div class="filters">

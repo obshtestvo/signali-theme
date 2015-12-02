@@ -25,47 +25,20 @@ module.exports = function (componentService) {
 
             var data = extractData(el.$detachedContent.filter('value'));
             el.data = data;
+
             var options = {
                 valueField: 'id',
                 labelField: 'title',
+                selectOnTab: true,
                 score: function(search) {
                     var textScore = this.getScoreFunction(search);
                     return function(item) {
                         var score =  textScore(item);
                         if (item.score) {
-                            score = score * 1+item.score
+                            score = score * (1+item.score)
                         }
                         return score;
                     };
-                },
-                load: function(query, callback) {
-                    var self = this;
-                    blocking.block();
-                    request.json("/contact-points/search/", function(data) {
-                        var results = [];
-                        if (!data) {
-                            callback([]);
-                            blocking.unblock();
-                            return;
-                        }
-                        var group = "Директни съвпадения";
-                        for (var i = 0; i < data.length; i++) {
-                            var item = data[i];
-                            results.push({
-                                title: item.title,
-                                href: item.url,
-                                id: item.url,
-                                description: item.description,
-                                group: group,
-                                score: item.score
-                            });
-                        }
-                        if (!(group in self.optgroups)) {
-                            self.registerOptionGroup({value: group, label: group});
-                        }
-                        callback(results);
-                        blocking.unblock();
-                    }, {query: query});
                 },
                 searchField: 'title',
                 optgroupField: 'group',
@@ -81,10 +54,10 @@ module.exports = function (componentService) {
                     }
                 },
                 plugins: {
-                    directajax: {},
                     //no_results: {}
                 }
             };
+
             if (isMultiple) {
                 options.plugins.remove_button =  {
                     label: require('icons/times-circle.svg')
@@ -94,6 +67,40 @@ module.exports = function (componentService) {
             }
             if (el.hasAttribute('freetext')) {
                 options.create = true
+            }
+            if (el.hasAttribute('remote-url')) {
+                options.plugins.directajax =  {};
+                var remoteUrl = el.getAttribute('remote-url')
+                var remoteGroup = el.hasAttribute('remote-group') ? el.getAttribute('remote-group') : false;
+                options.load = function(query, callback) {
+                    var self = this;
+                    blocking.block();
+                    request.json(remoteUrl, function(data) {
+                        var results = [];
+                        if (!data) {
+                            callback([]);
+                            blocking.unblock();
+                            return;
+                        }
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            item = {
+                                title: item.title,
+                                href: item.url,
+                                id: item.url,
+                                description: item.description,
+                                score: item.score
+                            }
+                            if (remoteGroup !== false) item.group = remoteGroup;
+                            results.push(item);
+                        }
+                        if (!(remoteGroup in self.optgroups)) {
+                            self.registerOptionGroup({value: remoteGroup, label: remoteGroup});
+                        }
+                        callback(results);
+                        blocking.unblock();
+                    }, {query: query});
+                }
             }
             if (data.groups.length) {
                 options.optgroups = data.groups
