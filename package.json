@@ -26,7 +26,7 @@
     "normalize.css": "3.0.3",
     "parsleyjs": "^2.2.0-rc1",
     "postcss": "^5.0.4",
-    "postcss-loader": "postcss/postcss-loader",
+    "postcss-loader": "^0.6.0",
     "progressbar.js": "^0.9.0",
     "raw-loader": "^0.5.1",
     "ruby-sass-loader": "git+https://github.com/obshtestvo/ruby-sass-loader.git#feature/noSourceMap",
