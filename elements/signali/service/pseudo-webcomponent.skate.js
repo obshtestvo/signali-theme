@@ -1,5 +1,5 @@
 require('skatejs/dist/skatejs');
-var attrTypeDef = require('skatejs-type-attribute/lib');
+var attrTypeDef = require('skatejs-types/lib/attribute');
 var $ = require('jquery');
 var EventEmitter = require('eventemitter3');
 

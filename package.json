@@ -34,7 +34,7 @@
     "select2": "select2/select2#3.5.4",
     "skatejs": "skatejs/skatejs#f9466c9816585b2998543997c4fc04e65397aa25",
     "skatejs-polyfill-mutation-observer": "skatejs/polyfill-mutation-observer",
-    "skatejs-type-attribute": "skatejs/type-attribute#master",
+    "skatejs-types": "skatejs/types#master",
     "spin.js": "2.3.2",
     "style-loader": "0.12.3",
     "svgo": "^0.5.1",
