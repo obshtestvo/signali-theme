@@ -9,7 +9,8 @@
             <li><a href="{% url 'contact-point-list' %}{% query categories=sub_category.pk %}">{{sub_category.title}}</a></li>
             {% endfor %}
             <li>
-                <action-button helper autoclear density="comfortable" align="left" action="{% url 'contact-point-list' %}">
+                <action-button helper autoclear density="comfortable" align="left"
+                               action="{% url 'contact-point-list' %}{% query categories=category.children.pk_list %}">
                     виж всички
                 </action-button>
             </li>
