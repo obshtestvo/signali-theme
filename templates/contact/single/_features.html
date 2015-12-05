@@ -1,46 +1,17 @@
-{% load restful %}
-{% if point.is_anonymous_allowed == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query is_anonymous_allowed='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Няма анонимни сигнали{% else %}Анонимни сигнали{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_registration_required %}
-<features-item action="{% url 'contact-point-list' %}{% query is_registration_required='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква регистрация{% else %}Не изисква регистрация{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_photo_required %}
-<features-item action="{% url 'contact-point-list' %}{% query is_photo_required='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква снимка на сигнала{% else %}Не изисква снимка{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_esign_required %}
-<features-item action="{% url 'contact-point-list' %}{% query is_esign_required='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква ел. подпис{% else %}Не изисква ел. подпис{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_name_required %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква името ти{% else %}Не изисква името ти{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_email_required %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква имейл адрес{% else %}Не изисква имейл адрес{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_address_required %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква адресът ти {% else %}Не изисква адреса ти{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_address_required %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква локация на сигнала{% else %}Не изисква локация на сигнала{% endif %}</features-item>
-{% endif %}
-{% if require_compare == point.is_registration_required %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Изисква регистрация{% else %}Не изисква регистрация{% endif %}</features-item>
-{% endif %}
-{% if point.is_multilingual == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Само на български{% else %}Многоезичност{% endif %}</features-item>
-{% endif %}
-{% if point.is_response_guaranteed == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Не гарантира отговор{% else %}Гарантиран отговор{% endif %}</features-item>
-{% endif %}
-{% if point.is_mobile_friendly == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Няма мобилна версия{% else %}Мобилна версия{% endif %}</features-item>
-{% endif %}
-{% if point.is_final_destination == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Само посредник за сигнала{% else %}Крайна точка за сигнала{% endif %}</features-item>
-{% endif %}
-{% if point.is_verifiable == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Няма как да се проследни прогреса{% else %}Позволява следене на прогреса{% endif %}</features-item>
-{% endif %}
-{% if point.is_confirmation_issued == feature_compare %}
-<features-item action="{% url 'contact-point-list' %}{% query asd='yes' %}" type="{{ type }}" size="{{ size }}">{% if negative %}Не потвърждава сигнала{% else %}Потвърждение на сигнала{% endif %}</features-item>
-{% endif %}
+{% load contactpoint %}
+
+{% feature_item request point 'is_anonymous_allowed' feature_compare negative type size "Анонимни сигнали" "Няма анонимни сигнали"%}
+{% feature_item request point 'is_registration_required' require_compare negative type size "Не изисква регистрация" "Изисква регистрация"%}
+{% feature_item request point 'is_photo_required' require_compare negative type size "Не изисква снимка" "Изисква снимка на сигнала"%}
+{% feature_item request point 'is_esign_required' require_compare negative type size "Не изисква ел. подпис" "Изисква ел. подпис"%}
+{% feature_item request point 'is_name_required' require_compare negative type size "Не изисква името ти" "Изисква името ти"%}
+{% feature_item request point 'is_email_required' require_compare negative type size "Не изисква имейл адрес" "Изисква имейл адрес"%}
+{% feature_item request point 'is_address_required' require_compare negative type size "Не изисква адреса ти" "Изисква адресът ти"%}
+{% feature_item request point 'is_location_required' require_compare negative type size "Не изисква локация на сигнала" "Изисква локация на сигнала"%}
+{% feature_item request point 'is_registration_required' require_compare negative type size "Не изисква регистрация" "Изисква регистрация"%}
+{% feature_item request point 'is_multilingual' feature_compare negative type size "Многоезичност" "Само на български"%}
+{% feature_item request point 'is_response_guaranteed' feature_compare negative type size "Гарантиран отговор" "Не гарантира отговор"%}
+{% feature_item request point 'is_mobile_friendly' feature_compare negative type size "Мобилна версия" "Няма мобилна версия"%}
+{% feature_item request point 'is_final_destination' feature_compare negative type size "Крайна точка за сигнала" "Само посредник за сигнала"%}
+{% feature_item request point 'is_verifiable' feature_compare negative type size "Позволява следене на прогреса" "Няма как да се проследни прогреса"%}
+{% feature_item request point 'is_confirmation_issued' feature_compare negative type size "Потвърждение на сигнала" "Не потвърждава сигнала"%}

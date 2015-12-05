@@ -4,7 +4,7 @@ from signali_taxonomy.models import Category, Keyword
 
 register = template.Library()
 
-@register.inclusion_tag('_categories_menu.html', takes_context=True)
+@register.inclusion_tag('taxonomy/_categories_menu.html', takes_context=True)
 def categories_menu(context):
     return {
         "categories": Category.objects.root_categories_plus_children(),
@@ -21,14 +21,14 @@ def taxonomy_mixed_options(request, form):
         "form": form
     }
 
-@register.inclusion_tag('_popular_categories.html')
+@register.inclusion_tag('taxonomy/_popular_categories.html')
 def popular_categories(request):
     return {
         "categories": Category.objects.popular()[:13],
         "request": request
     }
 
-@register.inclusion_tag('_featured_categories.html')
+@register.inclusion_tag('taxonomy/_featured_categories.html')
 def featured_categories(request):
     return {
         # "categories": Category.objects.all()[:12],

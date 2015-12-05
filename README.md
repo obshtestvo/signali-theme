@@ -2,8 +2,6 @@
 # Default theme for [Signali](https://github.com/obshtestvo/signali)
 Templates (*html and other formats*), styling, scripts.
 
-**IN ACTIVE DEVELOPMENT. DO NOT USE UNTIL STABLE**
-
 ## Setup
 ### OS
 

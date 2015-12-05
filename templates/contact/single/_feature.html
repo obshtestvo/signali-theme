@@ -1,0 +1,4 @@
+{% load restful %}
+{% if value == compare_to %}
+<features-item action="{% url 'contact-point-list' %}{% query feature_params %}" type="{{ type }}" size="{{ size }}">{{text}}</features-item>
+{% endif %}

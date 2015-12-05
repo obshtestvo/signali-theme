@@ -7,7 +7,7 @@
     </header>
 
     {% for point in contact_points %}
-        {% include "_card.html" with point=point request=request %}
+        {% include "contact/_card.html" with point=point request=request %}
     {% endfor %}
     <footer>
         <action-button helper inline density="airy" align="right" action="{% url 'contact-point-list' %}">

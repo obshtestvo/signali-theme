@@ -6,7 +6,7 @@ from signali_notification.forms import get_anon_subscriber_form
 register = template.Library()
 
 
-@register.inclusion_tag('_subscribeform.html')
+@register.inclusion_tag('notification/_subscribeform.html')
 def subscribeform(request, contactpoint, form=None):
     prefix = 'subscriber'
     if form is None:

@@ -12,22 +12,22 @@
     <section>
             <section id="overviewTabVisitedLast" class="clearfix" tab>
             {% for point in visitedlast_points|slice:":4" %}
-                {% include "_card.html" with point=point request=request %}
+                {% include "contact/_card.html" with point=point request=request %}
             {% endfor %}
             </section>
             <section id="overviewTabEffective" class="clearfix" tab hidden>
             {% for point in effective_points|slice:":4" %}
-                {% include "_card.html" with point=point request=request %}
+                {% include "contact/_card.html" with point=point request=request %}
             {% endfor %}
             </section>
             <section id="overviewTabAccessible" class="clearfix" tab hidden>
             {% for point in accessible_points|slice:":4" %}
-                {% include "_card.html" with point=point request=request %}
+                {% include "contact/_card.html" with point=point request=request %}
             {% endfor %}
             </section>
             <section id="overviewTabAddedLast" class="clearfix" tab hidden>
             {% for point in addedlast_points|slice:":4" %}
-                {% include "_card.html" with point=point request=request %}
+                {% include "contact/_card.html" with point=point request=request %}
             {% endfor %}
             </section>
     </section>

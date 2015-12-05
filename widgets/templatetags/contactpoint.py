@@ -13,7 +13,7 @@ from signali_contact.forms import UserCriteriaForm
 
 register = template.Library()
 
-@register.inclusion_tag('_stats.html')
+@register.inclusion_tag('contact/_stats.html')
 def contactpoint_stats():
     return {
         "organisations_count": Organisation.objects.all().count(),
@@ -21,7 +21,7 @@ def contactpoint_stats():
     }
 
 
-@register.inclusion_tag('_overview.html')
+@register.inclusion_tag('contact/list/_overview.html')
 def overview(request):
     return {
         "visitedlast_points": ContactPoint.objects.visited_last()[0:4],
@@ -32,8 +32,22 @@ def overview(request):
     }
 
 
+@register.inclusion_tag('contact/single/_feature.html')
+def feature_item(request, point, name, compare_to, is_negative, display_type, display_size, positive_text, negative_text):
+    return {
+        "request": request,
+        "point": point,
+        "value": getattr(point, name),
+        "compare_to": compare_to,
+        "feature_params": {name: "yes"},
+        "text": negative_text if is_negative else positive_text,
+        "type": display_type,
+        "size": display_size,
+    }
 
-@register.inclusion_tag('_featured_overview.html')
+
+
+@register.inclusion_tag('contact/list/_featured_overview.html')
 def featured_overview(request):
     return {
         "contact_points": ContactPoint.objects.featured()[0:4],
@@ -42,7 +56,7 @@ def featured_overview(request):
 
 
 
-@register.inclusion_tag('_feedback_list.html')
+@register.inclusion_tag('contact_feedback/list/_feedback_list.html')
 def feedback_list(request, contactpoint):
     return {
         "feedback_entries": contactpoint.feedback.published(request.user),
@@ -50,7 +64,7 @@ def feedback_list(request, contactpoint):
     }
 
 
-@register.inclusion_tag('_addnew_form.html')
+@register.inclusion_tag('contact/_addnew_form.html')
 def addnew_form(request, form=None):
     prefix = 'proposal'
     if form is None:
@@ -64,7 +78,7 @@ def addnew_form(request, form=None):
     }
 
 
-@register.inclusion_tag('_survey.html')
+@register.inclusion_tag('contact_feedback/_survey.html')
 def survey(request, contactpoint, form=None):
     prefix = 'survey'
     if form is None:
@@ -79,7 +93,7 @@ def survey(request, contactpoint, form=None):
 
 
 
-@register.inclusion_tag('_searchbar.html')
+@register.inclusion_tag('contact/list/_searchbar.html')
 def searchbar(request, form=None):
     if form is None:
         form = UserCriteriaForm(data=request.params)
@@ -90,7 +104,7 @@ def searchbar(request, form=None):
     }
 
 
-@register.inclusion_tag('contact/_advanced_searchbar.html')
+@register.inclusion_tag('contact/list/_advanced_searchbar.html')
 def advanced_searchbar(request, form=None):
     if form is None:
         form = UserCriteriaForm(data=request.params)
