@@ -4,7 +4,7 @@
 	    <meta name="robots" content="all" />
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{% setting 'title' %}</title>
+        <title>{% block title %}{% setting 'title' %}{% endblock %}</title>
         <meta name="description" content="{% setting 'description' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <link rel="apple-touch-icon" href="apple-touch-icon.png">

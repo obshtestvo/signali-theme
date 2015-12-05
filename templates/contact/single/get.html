@@ -6,6 +6,8 @@
 {% load restful %}
 {% load thumbnail %}
 
+{% block title %}{{ point.title }} — {{ point.category.title }} — {% setting 'title_short' %}{% endblock %}
+
 {% block content %}
 {% include "_loader.html" %}
 <page color="light">
