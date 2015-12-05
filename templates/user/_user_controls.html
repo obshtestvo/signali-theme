@@ -70,7 +70,10 @@
             <auth-container-patch for="login">
                 <auth-title>Вход</auth-title>
             </auth-container-patch>
-            <auth type="login" action="{% url 'security:complete' 'email' %}" auth-replace="login-box" divided>
+            <auth-container-patch for="reset">
+                <auth-title>Забравена парола</auth-title>
+            </auth-container-patch>
+            <auth type="login" complete-action="{% url 'security:complete' 'email' %}" reset-action="{% url 'user:password-reset'%}" auth-replace="login-box" divided>
                 <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
                     <input type="hidden" name="auth_type" value="login"/>
                     <notification error size="medium" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
@@ -81,36 +84,47 @@
                         Име
                         <notification error size="text-field" hidden></notification>
                     </text-field>
-                    <text-field size="full" id="email" validate-group='["registration", "login"]' name="email" type="email" state="information" required>
+                    <text-field size="full" id="email" validate-group='["registration", "login", "reset"]' name="email" type="email" state="information" required>
                         имейл адрес
                         <notification error size="text-field" hidden></notification>
-                        <notification information size="text-field">
+                        <notification information size="text-field" for="registration">
                             <p>
                                 Няма да пращаме нежелани съоб&shy;ще&shy;ния
                             </p>
                         </notification>
+                        <notification information size="text-field" for="reset">
+                            <p>
+                                Ще получиш писмо на този адрес с линк за промяна на паролата.
+                            </p>
+                        </notification>
                     </text-field>
-                    <text-field size="full" id="new_password1" name="new_password1" validate-name="password" validate-group='["registration", "login"]' type="password" required minlength="6">
+                    <text-field not-for="reset" size="full" id="new_password1" name="new_password1" validate-name="password" validate-group='["registration", "login"]' type="password" required minlength="6">
                         Парола
                         <notification error size="text-field" hidden></notification>
                     </text-field>
-                    <text-field for="registration" id="new_password2"  name="new_password2" validate-group="registration" size="full" type="password" required validate-equalto-form-sibling="#new_password1">
+                    <text-field for="registration" id="new_password2" name="new_password2" validate-group="registration" size="full" type="password" required validate-equalto-form-sibling="#new_password1">
                         Парола (пак)
                         <notification error size="text-field" hidden></notification>
                     </text-field>
                     <action-button submit for="login" type="primary" fill="solid" align="left" color="red">
                         вход
                     </action-button>
+                    <action-button submit for="reset" type="primary" fill="solid" align="left" color="red">
+                        изпрати
+                    </action-button>
                     <action-button submit for="registration" type="primary" fill="solid" align="left" color="red">
                         регистрация
                     </action-button>
                     {% comment %}
-                    <action-button helper align="right" for="login" action="google.com" density="comfortable">
-                        Забравена парола?
-                    </action-button>
                     {% endcomment %}
                     <action-button helper auth-trigger align="right" for="registration" type="login" density="comfortable">
                         <span>или</span> вход
+                    </action-button>
+                    <action-button helper auth-trigger align="right" for="reset" type="login" density="comfortable">
+                        <span>или</span> вход
+                    </action-button>
+                    <action-button helper auth-trigger align="right" for="login" type="reset" density="comfortable">
+                        забравена пароола
                     </action-button>
                 </site-auth>
                 <social-auth
@@ -121,7 +135,7 @@
                         facebook-scope='{% setting_json "SOCIAL_AUTH_FACEBOOK_SCOPE" %}'
                         server-gateway="{% url 'security:token' backend='facebook' %}"
                 >
-                    <headline size="small" density="comfortable">Или чрез Facebook</headline>
+                    <headline size="small" density="comfortable">Или влез чрез Facebook</headline>
                     <notification information size="small" no-icon>
                         <p>Няма да пускаме съобщения от ваше име.</p>
                     </notification>

@@ -66,21 +66,25 @@ module.exports = function (componentService) {
             type: {
                 attr: true,
                 set: function (value) {
+                    console.log('setting auth type')
                     var $el = $(this);
+                    var $form = $(this.querySelector('form'))
                     if (this.validation) {
                         this.validation.clearServerErrors();
                         this.validation.disableGroupsExcept(value)
                     }
                     if (value == 'registration') {
-                        $el.find('[for="registration"]').show();
-                        $el.find('[for="login"]').hide();
                         $el.find('input[name="fullname"]').focus();
                         $el.find('input[name="auth_type"]').val('registration');
-                    } else {
-                        $el.find('[for="login"]').show();
-                        $el.find('[for="registration"]').hide();
-                        $el.find('input[name="email"]').focus();
+                        $form.attr('action', $el.attr('complete-action'))
+                    } else if (value == 'login') {
                         $el.find('input[name="auth_type"]').val('login');
+                        $form.attr('action', $el.attr('complete-action'))
+                        $el.find('input[name="email"]').focus();
+                    } else {
+                        $el.find('input[name="auth_type"]').val('reset');
+                        $form.attr('action', $el.attr('reset-action'))
+                        $el.find('input[name="email"]').focus();
                     }
                     return value;
                 }

@@ -2,6 +2,9 @@ module.exports = function (componentService) {
 
     componentService.register('auth-container', {
         type: 'attribute',
+        created: function () {
+            this.type = this.auth.type
+        },
 
         prototype: {
             setTitle: function (title) {
@@ -25,14 +28,17 @@ module.exports = function (componentService) {
             type: {
                 set: function (value) {
                     var $el = $(this);
-                    this.auth.type = value;
                     if (value == 'registration') {
-                        $el.find('[for="registration"]:hidden').show();
-                        $el.find('[for="login"]:visible').hide();
+                        $el.find('[for="registration"], [not-for]').show();
+                        $el.find('[for="login"], [for="reset"], [not-for="registration"]').hide();
+                    } else if (value == 'login') {
+                        $el.find('[for="login"], [not-for]').show();
+                        $el.find('[for="registration"], [for="reset"], [not-for="registration"]').hide();
                     } else {
-                        $el.find('[for="login"]:hidden').show();
-                        $el.find('[for="registration"]:visible').hide();
+                        $el.find('[for="reset"], [not-for]').show();
+                        $el.find('[for="registration"], [for="login"], [not-for="reset"]').hide();
                     }
+                    this.auth.type = value;
                 }
             },
             auth: {
