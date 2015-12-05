@@ -197,3 +197,8 @@ statsAttrs(componentService);
 
 var textAttrs = require('text');
 textAttrs(componentService);
+
+var tipAttrs = require('tip');
+tipAttrs(componentService);
+
+

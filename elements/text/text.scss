@@ -1,7 +1,7 @@
 @import '../styleguide';
 
 $text-color: $body-text-color;
-essential {
+text {
     color: $text-color;
     h1 {
         @extend %headilme-font;
