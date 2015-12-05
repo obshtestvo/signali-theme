@@ -18,7 +18,7 @@ login-box {
     }
     &[anonymous] {
         padding: 0 0 0 25px;
-        #anonymous {
+        .anonymous {
             a {
                 @extend %bodytext-large-font;
                 color: $white;
@@ -33,7 +33,7 @@ login-box {
             }
         }
     }
-    #loggedin {
+    .loggedin {
         @extend %nano-radius;
         .profile a {
             padding: 5px 10px;
@@ -113,7 +113,7 @@ login-box {
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     login-box {
         float: right;
-        #loggedin {
+        .loggedin {
             position: absolute;
             .profile a {
                 display: block;

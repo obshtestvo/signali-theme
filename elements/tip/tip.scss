@@ -1,59 +1,29 @@
 @import '../styleguide';
 
+$tip-color: #101240;
 /*How To Use*/
 /*Colors: light, dark */
 /*Size: large - 180px , medium - 160px, small - 100 */
 /*Align: center, left, righr */
-
-logo {
-    display: block;
-    a {
-        display: block;
-        &.align-center-xy {
-            @extend %center-xy;
-        }
-        &.align-center-x {
-            @extend %center-x;
-        }
-        &.align-center-y {
-            @extend %center-y;
-        }
-        &.align-right {
-            position: relative;
-        }
-        &.large {
-            width: 180px;
-            height: 22px;
-            margin-top: 4px;
-        }
-        &.medium {
-            width: 160px;
-            height: 20px;
-        }
-        &.small {
-            width: 100px;
-            height: 12px;
-        }
-        &.light svg {
-            .circle {
-                fill: $secondary-color-100;
-            }
-            .path {
-                fill: $white;
-            }
-        }
-        &.dark {
-            .circle {
-                fill: $secondary-color-100;
-            }
-            .path {
-                fill: $main-color-100;
-            }
-        }
-        svg {
-            max-width: 100%;
-            max-height: 100%;
-        }
-    }
-
+[tip-container]{
+  position: relative;
+}
+tip {
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: $tip-color;
+    position: relative;
+    margin: 0 0 0 5px;
+  }
+  span{
+    position: absolute;
+  }
+  &[color="dark"]{
+    background: rgba($tip-color, 0.9);
+  }
+  &[position="top"]{
+    @extend %center-x;
+    top:0;
+  }
 }
