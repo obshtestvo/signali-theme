@@ -194,3 +194,6 @@ leadingAreaEl(componentService);
 
 var statsAttrs = require('stats');
 statsAttrs(componentService);
+
+var textAttrs = require('text');
+textAttrs(componentService);

@@ -1,0 +1,60 @@
+@import '../styleguide';
+
+$text-color: $body-text-color;
+essential {
+    color: $text-color;
+    h1 {
+        @extend %headilme-font;
+        padding: 20px 0;
+    }
+    h2 {
+        @extend %headilme-font;
+        font-size: 26px;
+        line-height: 32px;
+        padding: 15px 0;
+    }
+    h3 {
+        @extend %bodytext-large-font;
+        padding: 8px 0;
+        font-weight: 600;
+    }
+    p{
+        @extend %bodytext-font;
+        margin: 0 0 20px 0;
+    }
+    ul{
+        @extend %bodytext-font;
+        margin: 0 0 20px 0;
+        padding: 0;
+        list-style-type: none;
+        line-height: 26px;
+        li{
+            position: relative;
+            padding: 0 0 0 18px;
+            &:before{
+                display: block;
+                content: '';
+                position: absolute;
+                left: 7px;
+                top:11px;
+                width: 4px;
+                height: 4px;
+                @extend %nano-radius;
+                background: $text-color;
+            }
+        }
+    }
+    a{
+        color: $secondary-color-100;
+        &:hover{
+            color: $secondary-color-hover;
+            text-decoration: underline;
+        }
+    }
+    strong{
+        font-weight: 800;
+    }
+    em{
+        font-style: italic;
+    }
+}
