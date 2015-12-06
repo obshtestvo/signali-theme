@@ -76,7 +76,7 @@
             <auth type="login" complete-action="{% url 'security:complete' 'email' %}" reset-action="{% url 'user:password-reset'%}" auth-replace="login-box" divided>
                 <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
                     <input type="hidden" name="auth_type" value="login"/>
-                    <notification error size="medium" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
+                    <notification error size="nano" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
                     <bubble size="standart" color="white" type="success" density="compact" hidden class="animated fadeInUp">
                         Успешно влезе в акаунта си.
                     </bubble>
@@ -136,7 +136,7 @@
                         server-gateway="{% url 'security:token' backend='facebook' %}"
                 >
                     <headline size="small" density="comfortable">Или влез чрез Facebook</headline>
-                    <notification information size="small" no-icon>
+                    <notification information size="nano" no-icon>
                         <p>Няма да пускаме съобщения от ваше име.</p>
                     </notification>
                     <social-button facebook action="{% url 'security:begin' 'facebook' %}"></social-button>

@@ -1,5 +1,9 @@
 @import '../styleguide';
 
+//medium --> small
+//small --> nano
+//new notifications for emails are medium
+
 notification {
     position: relative;
     z-index: 0;
@@ -78,6 +82,43 @@ notification {
         }
     }
     &[size="medium"] {
+        @extend %bodytext-font, %small-radius;
+        padding: 0 10px 0 55px;
+        min-height: 60px;
+        .icon {
+            width: 55px;
+            height: 30px;
+            padding: 0 11px 0 12px;
+            @extend %center-y;
+            left: 0;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        p {
+            padding: 20px 0;
+        }
+        h1{
+
+        }
+        h2{
+
+        }
+        &[density="airy"] {
+            margin: 20px 0
+        }
+        &[density="comfortable"] {
+            margin: 15px 0
+        }
+        &[density="cozy"] {
+            margin: 10px 0
+        }
+        &[density="compact"] {
+            margin: 5px 0;
+        }
+    }
+    &[size="small"] {
         @extend %bodytext-large-font, %small-radius;
         padding: 0 10px 0 50px;
         min-height: 60px;
@@ -110,7 +151,7 @@ notification {
         }
     }
 
-    &[size="small"] {
+    &[size="nano"] {
         min-height: 24px;
         padding: 0 10px 0 37px;
         margin: 0 0 13px 0;
