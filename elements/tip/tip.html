@@ -1,2 +1,14 @@
-<span><content></content></span>{{^no-icon}}{{{tip}}}{{/no-icon}}
+{{^no-icon}}
+<span class="helper-wrap">
+    {{{questionIcon}}}
+    <span class="content">
+        <content></content>
+    </span>
+</span>
+{{/no-icon}}
 
+{{#no-icon}}
+<span class="content">
+    <content></content>
+</span>
+{{/no-icon}}

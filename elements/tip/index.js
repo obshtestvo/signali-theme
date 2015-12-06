@@ -4,7 +4,7 @@ module.exports = function (componentService) {
     componentService.register('tip', {
         template: require('./tip.html'),
         include: {
-            tip: require('./tip.svg')
+            questionIcon: require('./questionIcon.svg')
         }
     })
 }
