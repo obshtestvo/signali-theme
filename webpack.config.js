@@ -75,12 +75,12 @@ config.module = {
             loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!ruby-sass")
         },
         {test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css")},
-        {test: /\.gif$/, loader: "url?limit=100000&mimetype=image/gif"},
-        {test: /\.png$/, loader: "url?limit=100000&mimetype=image/png"},
-        {test: /\.jpg$/, loader: "file"},
+        {test: /autorequire\/.+$/, loader: "file?name=auto/[name].[ext]"},
+        {test: /^(?:(?!autorequire).)+\.gif$/, loader: "url?limit=100000&mimetype=image/gif"},
+        {test: /^(?:(?!autorequire).)+\.png$/, loader: "url?limit=100000&mimetype=image/png"},
+        {test: /^(?:(?!autorequire).)+\.jpg$/, loader: "file"},
         {test: /\.html$/, loader: "mustache"},
         {test: /\.svg/, loader: "raw"+svgExtraLoaders},
-        //{test: /\.jpg$/, loader: "file?name=[path][name].[ext]?[hash]"}
     ]
 };
 
