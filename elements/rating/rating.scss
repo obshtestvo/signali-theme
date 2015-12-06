@@ -39,7 +39,15 @@ rating {
     &[size="large"] star {
         @include size(22px);
     }
-
+    &[size="extralarge"] {
+        padding: 0;
+        star {
+            @include size(38px);
+            &[type="empty"] .outline {
+                fill: $grey-color-100;
+            }
+        }
+    }
     star {
         display: inline-block;
         @include size(15px);
