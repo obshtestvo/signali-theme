@@ -26,6 +26,9 @@ notification {
             color: $secondary-color-hover;
         }
     }
+    &[inline]{
+        width: auto;
+    }
     &[information] {
         background: $white;
         color: $body-text-color;
@@ -172,6 +175,18 @@ notification {
             .icon svg {
                 fill: $grey-color-100;
             }
+        }
+        &[density="airy"] {
+            margin: 20px 0
+        }
+        &[density="comfortable"] {
+            margin: 15px 0
+        }
+        &[density="cozy"] {
+            margin: 10px 0
+        }
+        &[density="compact"] {
+            margin: 7px 0;
         }
     }
     &[size="text-field"] {
