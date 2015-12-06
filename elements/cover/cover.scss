@@ -25,14 +25,14 @@ cover {
 
     }
     &[density="comfortable"] {
-        height: 390px;
+        height: 290px;
     }
 }
 
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
     cover {
         &[density="comfortable"] {
-            height: 320px;
+            height: 270px;
         }
     }
 }
@@ -40,7 +40,7 @@ cover {
 @media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     cover {
         &[density="comfortable"] {
-            height: 280px;
+            height: 240px;
         }
     }
 }
