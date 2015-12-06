@@ -8,7 +8,6 @@
 
 {% block title %}{% block facebook-title %}{{ point.title }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
 
-
 {% block facebook-image %}{% spaceless %}
     {% with point.rating|floatformat:"0" as rating %}
         {% static_filepath "auto/star-"|add:rating|add:".png" as watermark_path %}

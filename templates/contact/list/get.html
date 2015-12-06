@@ -5,6 +5,7 @@
 {% load restful %}
 
 {% block title %}{% block facebook-title %}Търсене на сайтове за подаване на сигнал{% endblock %} — {{ block.super }}{% endblock %}
+{% block url %}{% block facebook-url %}{{request.get_full_path}}{% endblock %}{% endblock %}
 
 {% block content %}
 {% include "_loader.html" %}
