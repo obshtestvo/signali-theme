@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load thumbnail %}
 
-{% block title %}{{ page.title }} — {{ block.super }}{% endblock %}
+{% block title %}{% block facebook-title %}{{ page.title }}{% endblock %} — {{ block.super }}{% endblock %}
 
 {% block content %}
 {% include "_loader.html" %}

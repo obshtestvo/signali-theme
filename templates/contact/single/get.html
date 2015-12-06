@@ -2,11 +2,27 @@
 {% load settings %}
 {% load notification %}
 {% load contactpoint %}
-{% load static %}
 {% load restful %}
 {% load thumbnail %}
+{% load staticfilepaths %}
 
-{% block title %}{{ point.title }} — {{ point.category.title }} — {% setting 'title_short' %}{% endblock %}
+{% block title %}{% block facebook-title %}{{ point.title }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
+
+
+{% block facebook-image %}{% spaceless %}
+    {% with point.rating|floatformat:"0" as rating %}
+        {% static_filepath "auto/star-"|add:rating|add:".png" as watermark_path %}
+        {% if point.cover %}
+            {% thumbnail point.cover "1000x525" crop="center" overlay="#0b0d2d" overlay_opacity=0.8 watermark=watermark_path as img %}
+                {{ img.url }}
+            {% endthumbnail %}
+        {% else %}
+            {% thumbnail point.cover "1000x525" crop="center" overlay="#0b0d2d" overlay_opacity=0.8 watermark=watermark_path as img %}
+                {{ img.url }}
+            {% endthumbnail %}
+        {% endif %}
+    {% endwith %}
+{% endspaceless %}{% endblock %}
 
 {% block content %}
 {% include "_loader.html" %}
