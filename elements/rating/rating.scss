@@ -40,9 +40,8 @@ rating {
         @include size(22px);
     }
     &[size="extralarge"] {
-        padding: 0;
         star {
-            @include size(38px);
+            @include size(40px);
             &[type="empty"] .outline {
                 fill: $grey-color-100;
             }

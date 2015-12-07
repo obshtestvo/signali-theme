@@ -315,6 +315,9 @@ notification {
             padding: 20px;
         }
         &[size="small"] {
+            padding: 20px;
+        }
+        &[size="nano"] {
             padding: 0;
             margin: 0 0 10px 0;
             &[density="inverted"] {

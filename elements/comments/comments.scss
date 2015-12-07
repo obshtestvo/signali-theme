@@ -4,9 +4,7 @@ comments {
     background: $white;
     display: block;
     @extend %wrapper;
-    padding-bottom: 10px;
     & > section {
         max-width: 880px;
-        padding: 10px 0 0 0;
     }
 }
