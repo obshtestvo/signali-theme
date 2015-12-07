@@ -12,7 +12,7 @@ resume {
             float: left;
             width: 75%;
             padding: 0 5px 0 0;
-            .notification-wrap{
+            .notification-wrap {
                 padding: 0 0 35px 0;
             }
             article {
@@ -46,8 +46,8 @@ resume {
                 }
             }
             section {
+                display: inline;
                 position: relative;
-                padding: 0 0 0 20px;
             }
             a {
                 @extend %bodytext-font;

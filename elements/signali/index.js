@@ -203,5 +203,3 @@ textAttrs(componentService);
 
 var tipAttrs = require('tip');
 tipAttrs(componentService);
-
-

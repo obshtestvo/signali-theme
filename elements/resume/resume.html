@@ -7,7 +7,15 @@
         </div>
         <content select="article"></content>
         <div class="tags">
-            <div class="icon">{{{tagsIcon}}}</div><content select="section"></content>
+            <section>
+                <div class="icon">{{{pinIcon}}}</div>
+                <content select=".locations"></content>
+            </section>
+
+            <section>
+                <div class="icon">{{{tagsIcon}}}</div>
+                <content select=".tags"></content>
+            </section>
         </div>
         <content select="features"></content>
     </div>

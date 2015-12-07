@@ -4,7 +4,8 @@ module.exports = function (componentService) {
     componentService.register('resume', {
         template: require('./resume.html'),
         include: {
-            tagsIcon: require('./icon-tags.svg')
+            tagsIcon: require('./icon-tags.svg'),
+            pinIcon: require('./icon-pin.svg')
         }
     })
 }
