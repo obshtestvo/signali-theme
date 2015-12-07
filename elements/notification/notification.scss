@@ -309,13 +309,13 @@ notification {
             display: none;
         }
         &[size="large"] {
-            padding: 30px 40px;
+            padding-left: 40px;
         }
         &[size="medium"] {
-            padding: 20px;
+            padding-left: 10px;
         }
         &[size="small"] {
-            padding: 20px;
+            padding-left: 10px;
         }
         &[size="nano"] {
             padding: 0;
@@ -325,7 +325,7 @@ notification {
             }
         }
         &[size="text-field"] {
-            padding: 0 10px 0;
+            padding: 0 10px 0 10px;
         }
     }
 }
