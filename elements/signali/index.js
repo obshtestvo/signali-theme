@@ -2,6 +2,9 @@ require('./fonts.scss');
 require('normalize.css/normalize.css');
 require('reset.scss');
 
+// require all files from `autorequire` subdirectories
+require.context("../", true, /\/autorequire\//)
+
 // jquery plugins are not all used to CommonJS
 window.$ = window.jQuery = require('jquery');
 
