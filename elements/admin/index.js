@@ -18,5 +18,5 @@ require('Select2/select2_locale_bg');
 //require('./admin_i18n.js');
 
 require('./select2dropdowns.js');
-require('./dismissAddAnotherPopup.js');
+//require('./dismissAddAnotherPopup.js');
 require('./inline.js');
