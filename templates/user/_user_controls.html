@@ -77,13 +77,28 @@
                 <site-auth registration-action="" login-action="" type="login" size="compact" class="half">
                     <input type="hidden" name="auth_type" value="login"/>
                     <notification error size="nano" density="comfortable" for="form" hidden>Прегледайте грешките по-долу</notification>
-                    <bubble size="standart" color="white" type="success" density="compact" hidden class="animated fadeInUp">
+                    <bubble size="standart" color="white" auth-type="login" type="success" density="compact" hidden class="animated fadeInUp">
                         Успешно влезе в акаунта си.
+                    </bubble>
+                    <bubble size="standart" color="white" auth-type="reset" type="success" density="compact" hidden class="animated fadeInUp">
+                        Получи нов имейл.
                     </bubble>
                     <text-field for="registration" validate-group="registration" size="full" id="fullname" name="fullname" type="text" required>
                         Име
                         <notification error size="text-field" hidden></notification>
                     </text-field>
+                    <div for="reset">
+                        <notification size="small" density="compact" success hidden init-hide>
+                            <p>Готово! Получи имейл.</p>
+                        </notification>
+                        <notification size="small" density="comfortable" information no-icon hidden init-hide>
+                            <p>Кликни на линка в имейла.
+                                Чрез него ще смениш паролата си.
+                                След това можеш да се върнеш тук и да натиснеш <a auth-trigger type="login">вход &raquo;</a>
+                            </p>
+                            <p>Ако има проблем прбовай отново:</p>
+                        </notification>
+                    </div>
                     <text-field size="full" id="email" validate-group='["registration", "login", "reset"]' name="email" type="email" state="information" required>
                         имейл адрес
                         <notification error size="text-field" hidden></notification>
@@ -94,7 +109,7 @@
                         </notification>
                         <notification information size="text-field" for="reset">
                             <p>
-                                Ще получиш писмо на този адрес с линк за промяна на паролата.
+                                Ще получиш имейл на този адрес с линк за промяна на паролата.
                             </p>
                         </notification>
                     </text-field>
@@ -136,7 +151,7 @@
                         server-gateway="{% url 'security:token' backend='facebook' %}"
                 >
                     <headline size="small" density="comfortable">Или влез чрез Facebook</headline>
-                    <notification information size="nano" no-icon>
+                    <notification information size="nano" density="compact" no-icon>
                         <p>Няма да пускаме съобщения от ваше име.</p>
                     </notification>
                     <social-button facebook action="{% url 'security:begin' 'facebook' %}"></social-button>

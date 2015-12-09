@@ -19,7 +19,8 @@ module.exports = function (componentService) {
             reset: function () {
                 var $this = $(this);
                 $this.find('auth-container-patch').remove();
-                $this.find('notification[error], notification[success]').hide().find('ul, p').remove();
+                $this.find('notification[error][size="text-field"], notification[success][size="text-field"]').hide().find('ul, p').remove();
+                $this.find('[init-hide]').hide();
                 $this.find('.error').removeClass('error')
             }
         },

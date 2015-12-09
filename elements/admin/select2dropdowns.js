@@ -6,9 +6,8 @@ $(function() {
         if ($select.find('option').length < 7) {
             options['minimumResultsForSearch'] = -1
         }
-
         if ($select.is('[multiple]')) {
-            $select.siblings('.help-inline').addClass('hide')
+            $select.closest('.controls').find('.help-inline').addClass('hide')
         } else if (placeholder) {
             options['formatSelection'] =  function (item) {
                 return item.text + ' <i class="info">('+placeholder+')</i>';
@@ -17,7 +16,7 @@ $(function() {
         $select.select2($.extend({
             dropdownAutoWidth: true,
             allowClear: true,
-            closeOnSelect: false,
+            //closeOnSelect: false, # bug with select 3.5.4
         },options))
     });
 

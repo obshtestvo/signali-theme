@@ -11,6 +11,16 @@ module.exports = function (componentService) {
                 $userControls = $(el.getAttribute('auth-replace')),
                 $form = $el.find('form'),
                 success = function(e, data, ignoreNew) {
+                    if (el.type == 'reset') {
+                        event = $.Event('auth:reset');
+                        $el.trigger(event, [data, el.ajaxForm]);
+                        if (event.isDefaultPrevented()) return false;
+                        el.ajaxForm.unblock();
+                        $el.find('[for="reset"] notification[success], [for="reset"] notification[information]').show()
+                        if (el.hasResetBefore) el.bubble();
+                        el.hasResetBefore = true;
+                        return false;
+                    }
                     $('auth-current-user input').val(data.user.pk);
                     request.pjax(data.user.URI, function(newUserControls) {
                         $userControls.replaceWith(newUserControls)
@@ -66,7 +76,6 @@ module.exports = function (componentService) {
             type: {
                 attr: true,
                 set: function (value) {
-                    console.log('setting auth type')
                     var $el = $(this);
                     var $form = $(this.querySelector('form'))
                     if (this.validation) {
@@ -121,7 +130,8 @@ module.exports = function (componentService) {
                 $(this).trigger('auth:cancel')
             },
             bubble: function (bubbleEl) {
-                if (!bubbleEl) bubbleEl = this.querySelector('bubble[type="success"]')
+                if (!bubbleEl) bubbleEl = this.querySelector('bubble[type="success"][auth-type="'+this.type+'"]').cloneNode(true)
+                componentService.upgrade(bubbleEl)
                 bubbleEl.show()
             }
         }
