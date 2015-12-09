@@ -48,6 +48,9 @@ resume {
             section {
                 display: inline;
                 position: relative;
+                section{
+                    padding: 0 10px 0 22px;
+                }
             }
             a {
                 @extend %bodytext-font;

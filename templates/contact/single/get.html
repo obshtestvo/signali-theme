@@ -54,10 +54,13 @@
                 {{ point.description | safe }}
                 {% endif %}
             </article>
-            <section>
+            <section class="tags">
                 {% for k in point.keywords.all %}
                 <a href="#">{{ k.title }}</a>
                 {% endfor %}
+            </section>
+            <section class="locations">
+
             </section>
             <features>
                 <headline size="small" density="tight">Хубавото е че:</headline>

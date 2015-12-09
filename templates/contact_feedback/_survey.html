@@ -11,7 +11,7 @@
     <auth-current-user>{{ form.user }}</auth-current-user>
     <survey-question rating required hide-success >
         <headline density="cozy" size="small">Колко си доволен от процеса по подаване на сигнал?</headline>
-        <notification information no-icon color="gray" size="small" density="inverted">
+        <notification information no-icon color="gray" size="nano" density="inverted">
             От 1 до 5 звездички, където 1 е малко, а 5 много.
         </notification>
         <rating size="extralarge" align="left" value="{{ form.rating.value }}" name="{{form.rating.html_name}}" id="surveyRating"></rating>
