@@ -37,17 +37,16 @@ modal {
     }
     .footwrap {
         position: relative;
+        background: $grey-color-60;
+        padding: 20px 40px;
+        border-radius: 0 0 4px 4px;
     }
     footer {
         margin: 0 40px 20px;
         position: relative;
-        padding: 0 0 20px;
+        clear: both;
         &[for="login"] {
             margin: 0;
-            padding: 0;
-            background: $footer-background;
-            border-radius: 0 0 4px 4px;
-            line-height: 60px;
             font-size: 14px;
             text-align: center;
             a {

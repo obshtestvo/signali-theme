@@ -16,826 +16,834 @@
 Unlucky
 <![endif]-->
 <loader target="page"></loader>
-<page color="light">
-<cover density="comfortable" src="test/smoking.jpg">
-    <top-nav>
-        <menu>
-            Категории
-            <menu-column>
-                <h2>Граждански</h2>
+<page color="semilight">
+    <cover density="comfortable" src="test/smoking.jpg">
+        <top-nav>
+            <menu>
+                Категории
+                <menu-column>
+                    <h2>Граждански</h2>
+                    <ul>
+                        <li><a href="#">Административни неуреди</a></li>
+                        <li><a href="#">Лекарски злоупотреби</a></li>
+                        <li><a href="#">Паркиране</a></li>
+                        <li><a href="#">Интелектуална собственост</a></li>
+                        <li><a href="#">Тютюнопушене на обществени места</a></li>
+                        <li>
+                            <action-button helper density="comfortable" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Престъпност</h2>
+                    <ul>
+                        <li><a href="#">Корупция</a></li>
+                        <li><a href="#">Измами</a></li>
+                        <li><a href="#">Кражби</a></li>
+                        <li><a href="#">Пътно-транспортни</a></li>
+                        <li><a href="#">Бракониерство</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Други</h2>
+                    <ul>
+                        <li><a href="#">Загубени вещи</a></li>
+                        <li><a href="#">Интернет измами</a></li>
+                        <li><a href="#">Бедствия</a></li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Градски</h2>
+                    <ul>
+                        <li><a href="#">Дупки по пътищата</a></li>
+                        <li><a href="#">Опасни елементи</a></li>
+                        <li><a href="#">Натоварено крастовище</a></li>
+                        <li><a href="#">Бездомни кучета</a></li>
+                        <li><a href="#">Велосипедни неуредици</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Потребителски</h2>
+                    <ul>
+                        <li><a href="#">ВиК</a></li>
+                        <li><a href="#">Електроснабдяване</a></li>
+                        <li><a href="#">Сметки</a></li>
+                        <li><a href="#">Отказана гаранция</a></li>
+                        <li><a href="#">Проблеми с договори</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
+            </menu>
+            <login-box anonymous action="#auth">
+                Вход
+            </login-box>
+            <login-box action="#settings">
+                <img src="">
+                <strong>Boyan Stoychev</strong>
                 <ul>
-                    <li><a href="#">Административни неуреди</a></li>
-                    <li><a href="#">Лекарски злоупотреби</a></li>
-                    <li><a href="#">Паркиране</a></li>
-                    <li><a href="#">Интелектуална собственост</a></li>
-                    <li><a href="#">Тютюнопушене на обществени места</a></li>
-                    <li>
-                        <action-button helper density="comfortable" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
+                    <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
+                    <li><a href="#">Изход</a></li>
                 </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Престъпност</h2>
-                <ul>
-                    <li><a href="#">Корупция</a></li>
-                    <li><a href="#">Измами</a></li>
-                    <li><a href="#">Кражби</a></li>
-                    <li><a href="#">Пътно-транспортни</a></li>
-                    <li><a href="#">Бракониерство</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Други</h2>
-                <ul>
-                    <li><a href="#">Загубени вещи</a></li>
-                    <li><a href="#">Интернет измами</a></li>
-                    <li><a href="#">Бедствия</a></li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Градски</h2>
-                <ul>
-                    <li><a href="#">Дупки по пътищата</a></li>
-                    <li><a href="#">Опасни елементи</a></li>
-                    <li><a href="#">Натоварено крастовище</a></li>
-                    <li><a href="#">Бездомни кучета</a></li>
-                    <li><a href="#">Велосипедни неуредици</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <menu-column>
-                <h2>Потребителски</h2>
-                <ul>
-                    <li><a href="#">ВиК</a></li>
-                    <li><a href="#">Електроснабдяване</a></li>
-                    <li><a href="#">Сметки</a></li>
-                    <li><a href="#">Отказана гаранция</a></li>
-                    <li><a href="#">Проблеми с договори</a></li>
-                    <li>
-                        <action-button helper density="cozy" align="left" action="google.com">
-                            виж всички
-                        </action-button>
-                    </li>
-                </ul>
-            </menu-column>
-            <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
-        </menu>
-        <login-box anonymous action="#auth">
-            Вход
-        </login-box>
-        <login-box action="#settings">
-            <img src="">
-            <strong>Boyan Stoychev</strong>
-            <ul>
-                <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
-                <li><a href="#">Изход</a></li>
-            </ul>
-        </login-box>
-        <logo align="center-x" action="home" color="light" size="large"></logo>
-        <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent"
-                       size="extrasmall" action="google.com">
-            Сподели опит
-        </action-button>
-        <action-button link type="primary" fill="outlined" align="left" color="white" size="small" action="google.com">
-            добави сайт
-        </action-button>
-    </top-nav>
-    <intro density="compact">
-        <call-to-action align="left" density="compact">
-            <h1>Граждански: Тютюнопушене на обществени места</h1>
-        </call-to-action>
-        <breadcrumb>
-            <crumb action="google.com">Начало</crumb>
-            <crumb action="google.com">Граждански: Тютюнопушене на обществени места</crumb>
-        </breadcrumb>
-    </intro>
-</cover>
-<featured>
-<filtering primary>
-
-<select-dropdown id="searchArea" name="areas" location="simple" mainsearch theme="light" priority="low">
-    <label>Mестност, в която се е случило:</label>
-
-    <value id="1">Област София (Градска община)</value>
-
-    <value id="2">Столична община (Област)</value>
-
-    <value id="3">Община средец (Квартална община)</value>
-
-    <value id="4">Цялата страна (Национална)</value>
-
-    <value id="7">гр. София (Град)</value>
-
-    <value id="8">Благоевград (Град)</value>
-
-    <value id="9">Бургас (Град)</value>
-
-    <value id="10">Пловдив (Град)</value>
-
-    <value id="11">Варна (Град)</value>
-
-    <value id="12">Русе (Град)</value>
-
-    <value id="13">Стара Загора (Град)</value>
-
-</select-dropdown>
-
-<select-dropdown id="mainsearch" multiple mainsearch theme="light" priority="high">
-    <label>За какво се отнася:</label>
-
-
-    <value
-        id="2"
-        suffix="(Престъпност)"
-        group="Категории"
-        site-wide-id="taxonomy-category-2"
-        input="categories">Корупция
-    </value>
-
-    <value
-        id="3"
-        suffix="(Престъпност)"
-        group="Категории"
-        site-wide-id="taxonomy-category-3"
-        input="categories">Измами
-    </value>
-
-    <value
-        id="4"
-        suffix="(Престъпност)"
-        group="Категории"
-        site-wide-id="taxonomy-category-4"
-        input="categories">Пътно-транспортни
-    </value>
-
-    <value
-        id="5"
-        suffix="(Престъпност)"
-        group="Категории"
-        site-wide-id="taxonomy-category-5"
-        input="categories">Изборни нарушения
-    </value>
-
-    <value
-        id="6"
-        suffix="(Престъпност)"
-        group="Категории"
-        site-wide-id="taxonomy-category-6"
-        input="categories">Бракониерство
-    </value>
-
-
-    <value
-        id="1"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-1"
-        input="keywords">Сеч
-    </value>
-
-    <value
-        id="2"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-2"
-        input="keywords">Гора
-    </value>
-
-    <value
-        id="3"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-3"
-        input="keywords">Пушене
-    </value>
-
-    <value
-        id="4"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-4"
-        input="keywords">Катастрофа
-    </value>
-
-    <value
-        id="5"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-5"
-        input="keywords">Надценка
-    </value>
-
-    <value
-        id="6"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-6"
-        input="keywords">Счупен продукт
-    </value>
-
-    <value
-        id="7"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-7"
-        input="keywords">Кражба
-    </value>
-
-    <value
-        id="8"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-8"
-        input="keywords">Заплаха
-    </value>
-
-    <value
-        id="9"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-9"
-        input="keywords">Проблеми с работодателя
-    </value>
-
-    <value
-        id="10"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-10"
-        input="keywords">Проблеми със служители
-    </value>
-
-    <value
-        id="11"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-11"
-        input="keywords">Расизъм
-    </value>
-
-    <value
-        id="12"
-        group="Теми"
-        site-wide-id="taxonomy-keyword-12"
-        input="keywords">Ксенофобия
-    </value>
-
-
-    <div class="filters">
-        <p>Допълнителни опции:</p>
-        <section>
-            <checkbox id="register" name="register">Не изисква регистрация</checkbox>
-            <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
-            <action-button helper density="cozy" align="right" action="/contact-points/">
-                <span>... още с</span> подробно търсене
+            </login-box>
+            <logo align="center-x" action="home" color="light" size="large"></logo>
+            <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent"
+                           size="extrasmall" action="google.com">
+                Сподели опит
             </action-button>
-        </section>
-    </div>
-</select-dropdown>
-<filters expandable class="expanded" color="light-gray">
-    <strong>ДРУГИ ОПЦИИ</strong>
-    <checkbox id="register" name="register">Регистрация</checkbox>
-    <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-    <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-    <checkbox id="name" name="name">Име</checkbox>
-    <checkbox id="email" name="email">Е-mail</checkbox>
-    <checkbox id="egn" name="egn">EГН</checkbox>
-    <checkbox id="address" name="address">Адрес на подателя</checkbox>
-    <checkbox id="location" name="location">Локация на сигнала</checkbox>
-    <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-    <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-    <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-    <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-    <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-    <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
-    <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-</filters>
-<filters expandable class="expanded" color="light-gray">
-    <strong>ДРУГИ ОПЦИИ</strong>
-    <checkbox id="register" name="register">Регистрация</checkbox>
-    <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-    <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-    <checkbox id="name" name="name">Име</checkbox>
-    <checkbox id="email" name="email">Е-mail</checkbox>
-    <checkbox id="egn" name="egn">EГН</checkbox>
-    <checkbox id="address" name="address">Адрес на подателя</checkbox>
-    <checkbox id="location" name="location">Локация на сигнала</checkbox>
-    <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-    <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-    <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-    <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-    <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-    <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
-    <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-</filters>
-    <action-button link inline type="primary" fill="solid" color="red" size="medium" align="center" action="{{action}}">
-        Филтрирай
-    </action-button>
-    <action-button helper inline icon="false" density="comfortable" align="center" action="google.com">
-        <span>или </span>изчисти филтрите
-    </action-button>
+            <action-button link type="primary" fill="outlined" align="left" color="white" size="small"
+                           action="google.com">
+                добави сайт
+            </action-button>
+        </top-nav>
+        <intro density="compact">
+            <call-to-action align="left" density="compact">
+                <h1>Граждански: Тютюнопушене на обществени места</h1>
+            </call-to-action>
+            <breadcrumb>
+                <crumb action="google.com">Начало</crumb>
+                <crumb action="google.com">Граждански: Тютюнопушене на обществени места</crumb>
+            </breadcrumb>
+        </intro>
+    </cover>
+    <featured>
+        <filtering primary>
+            <select-dropdown id="searchArea" name="areas" location="simple" mainsearch theme="light" priority="low">
+                <label>Mестност, в която се е случило:</label>
 
-</filtering>
-<cards-area>
-    <header>
-        <filtering secondary sorting>
-            <strong>24 резултата</strong>
-            <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
-                <value id="2" selected>Подреди по</value>
-                <value id="3">Нови</value>
-                <value id="5">Дата</value>
-                <value id="4">Час</value>
-                <value id="6">Звездички</value>
+                <value id="1">Област София (Градска община)</value>
+
+                <value id="2">Столична община (Област)</value>
+
+                <value id="3">Община средец (Квартална община)</value>
+
+                <value id="4">Цялата страна (Национална)</value>
+
+                <value id="7">гр. София (Град)</value>
+
+                <value id="8">Благоевград (Град)</value>
+
+                <value id="9">Бургас (Град)</value>
+
+                <value id="10">Пловдив (Град)</value>
+
+                <value id="11">Варна (Град)</value>
+
+                <value id="12">Русе (Град)</value>
+
+                <value id="13">Стара Загора (Град)</value>
+
             </select-dropdown>
-        </filtering>
-    </header>
-    <card action="gogo">
-        <img src="test/logo1.jpg" alt=""/>
-        <strong>Държавно Горско Стопанство гр. Враца</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo2.png" alt=""/>
-        <strong>Гранична полиция</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="1" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo3.jpg" alt=""/>
-        <strong>Омбудсман Република България</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="3" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card>
-        <img src="test/logo4.jpg" alt=""/>
-        <strong>Гореща линия за безопасен Интернет</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>  <card action="gogo">
-        <img src="test/logo1.jpg" alt=""/>
-        <strong>Държавно Горско Стопанство гр. Враца</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo2.png" alt=""/>
-        <strong>Гранична полиция</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="1" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo3.jpg" alt=""/>
-        <strong>Омбудсман Република България</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="3" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card>
-        <img src="test/logo4.jpg" alt=""/>
-        <strong>Гореща линия за безопасен Интернет</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>  <card action="gogo">
-        <img src="test/logo1.jpg" alt=""/>
-        <strong>Държавно Горско Стопанство гр. Враца</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo2.png" alt=""/>
-        <strong>Гранична полиция</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="1" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo3.jpg" alt=""/>
-        <strong>Омбудсман Република България</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="3" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card>
-        <img src="test/logo4.jpg" alt=""/>
-        <strong>Гореща линия за безопасен Интернет</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
 
-</cards-area>
-<cards-area density="compact">
-    <header>
-        <filtering secondary exception>
-            <strong>резултати изключващи: </strong>
-            <checkbox readonly>Регистрация</checkbox>
-            <checkbox readonly>Снимка</checkbox>
-        </filtering>
-    </header>
-    <card action="gogo">
-        <img src="test/logo1.jpg" alt=""/>
-        <strong>Държавно Горско Стопанство гр. Враца</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo2.png" alt=""/>
-        <strong>Гранична полиция</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="1" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card action="go">
-        <img src="test/logo3.jpg" alt=""/>
-        <strong>Омбудсман Република България</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="3" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <card>
-        <img src="test/logo4.jpg" alt=""/>
-        <strong>Гореща линия за безопасен Интернет</strong>
-        <card-item type="category">
-            <strong>категория</strong>
-            <a href="#">Тютюнопушене на обществени места</a>
-        </card-item>
-        <card-item type="location">
-            <strong>местонахождение</strong>
-            <a href="#">София - град</a>
-        </card-item>
-        <card-item type="tags">
-            <strong>етикети</strong>
-            <a href="google.com">конфликт на интереси</a>
-            <a href="google.com">полиция</a>
-            <a href="google.com">граница</a>
-            <a href="google.com">връзка</a>
-        </card-item>
-        <card-item type="rating">
-            <strong>Рейтинг</strong>
-            <rating value="4" size="small" align="left">
-                <a class="comments" href="#">(14 коментара)</a>
-            </rating>
-        </card-item>
-        <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
-            Подаване на сигнал
-        </action-button>
-    </card>
-    <footer>
-        <pagination density="cozy">
-            <a href="#">Предишна</a>
-            <a class="active" href="#">1</a>
-            <a href="#" class="disable">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">Следваща</a>
-        </pagination>
-    </footer>
-</cards-area>
+            <select-dropdown id="mainsearch" multiple mainsearch theme="light" priority="high">
+                <label>За какво се отнася:</label>
 
-<donation>
-    <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
-    <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew" target="modal">
-        Добави
-    </action-button>
-</donation>
-</featured>
-<footer-wrapper>
-    <logo action="home" color="dark" size="medium" align="right"></logo>
-    <footer-navigation>
-        <footer-column>
-            <h5>За проекта</h5>
-            <li><a href="#">За нас</a></li>
-            <li><a href="#">За контакти</a></li>
-            <li><a href="#">За Общество.БГ</a></li>
-        </footer-column>
-        <footer-column emphasis>
-            <h5>Избрани категории</h5>
-            <li><a href="#">Бракониерство</a></li>
-            <li><a href="#">Престъпления - кражба, насилие </a></li>
-            <li><a href="#">Изгубени вещи</a></li>
-            <li><a href="#">Пътно-транспортни</a></li>
-            <li><a href="#">Градска среда</a></li>
-            <li><a href="#">Корупция, измама</a></li>
-        </footer-column>
-        <footer-column>
-            <li><a href="#">Бракониерство</a></li>
-            <li><a href="#">Престъпления - кражба, насилие кражба, насилие </a></li>
-            <li><a href="#">Изгубени вещи</a></li>
-            <li><a href="#">Пътно-транспортни</a></li>
-            <li><a href="#">Градска среда</a></li>
-            <li><a href="#">Корупция, измама</a></li>
-        </footer-column>
-    </footer-navigation>
-    <sponsors>
-        <h5>Спонсори</h5>
-        <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
-        <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
-        <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
-    </sponsors>
-</footer-wrapper>
+
+                <value
+                        id="2"
+                        suffix="(Престъпност)"
+                        group="Категории"
+                        site-wide-id="taxonomy-category-2"
+                        input="categories">Корупция
+                </value>
+
+                <value
+                        id="3"
+                        suffix="(Престъпност)"
+                        group="Категории"
+                        site-wide-id="taxonomy-category-3"
+                        input="categories">Измами
+                </value>
+
+                <value
+                        id="4"
+                        suffix="(Престъпност)"
+                        group="Категории"
+                        site-wide-id="taxonomy-category-4"
+                        input="categories">Пътно-транспортни
+                </value>
+
+                <value
+                        id="5"
+                        suffix="(Престъпност)"
+                        group="Категории"
+                        site-wide-id="taxonomy-category-5"
+                        input="categories">Изборни нарушения
+                </value>
+
+                <value
+                        id="6"
+                        suffix="(Престъпност)"
+                        group="Категории"
+                        site-wide-id="taxonomy-category-6"
+                        input="categories">Бракониерство
+                </value>
+
+
+                <value
+                        id="1"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-1"
+                        input="keywords">Сеч
+                </value>
+
+                <value
+                        id="2"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-2"
+                        input="keywords">Гора
+                </value>
+
+                <value
+                        id="3"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-3"
+                        input="keywords">Пушене
+                </value>
+
+                <value
+                        id="4"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-4"
+                        input="keywords">Катастрофа
+                </value>
+
+                <value
+                        id="5"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-5"
+                        input="keywords">Надценка
+                </value>
+
+                <value
+                        id="6"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-6"
+                        input="keywords">Счупен продукт
+                </value>
+
+                <value
+                        id="7"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-7"
+                        input="keywords">Кражба
+                </value>
+
+                <value
+                        id="8"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-8"
+                        input="keywords">Заплаха
+                </value>
+
+                <value
+                        id="9"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-9"
+                        input="keywords">Проблеми с работодателя
+                </value>
+
+                <value
+                        id="10"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-10"
+                        input="keywords">Проблеми със служители
+                </value>
+
+                <value
+                        id="11"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-11"
+                        input="keywords">Расизъм
+                </value>
+
+                <value
+                        id="12"
+                        group="Теми"
+                        site-wide-id="taxonomy-keyword-12"
+                        input="keywords">Ксенофобия
+                </value>
+
+
+                <div class="filters">
+                    <p>Допълнителни опции:</p>
+                    <section>
+                        <checkbox id="register" name="register">Не изисква регистрация</checkbox>
+                        <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
+                        <action-button helper density="cozy" align="right" action="/contact-points/">
+                            <span>... още с</span> подробно търсене
+                        </action-button>
+                    </section>
+                </div>
+            </select-dropdown>
+            <filters expandable class="expanded" color="light-gray">
+                <strong>ДРУГИ ОПЦИИ</strong>
+                <checkbox id="register" name="register">Регистрация</checkbox>
+                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
+                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
+                <checkbox id="name" name="name">Име</checkbox>
+                <checkbox id="email" name="email">Е-mail</checkbox>
+                <checkbox id="egn" name="egn">EГН</checkbox>
+                <checkbox id="address" name="address">Адрес на подателя</checkbox>
+                <checkbox id="location" name="location">Локация на сигнала</checkbox>
+                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
+                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
+                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
+                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
+                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
+                <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
+                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
+            </filters>
+            <filters expandable class="expanded" color="light-gray">
+                <strong>ДРУГИ ОПЦИИ</strong>
+                <checkbox id="register" name="register">Регистрация</checkbox>
+                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
+                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
+                <checkbox id="name" name="name">Име</checkbox>
+                <checkbox id="email" name="email">Е-mail</checkbox>
+                <checkbox id="egn" name="egn">EГН</checkbox>
+                <checkbox id="address" name="address">Адрес на подателя</checkbox>
+                <checkbox id="location" name="location">Локация на сигнала</checkbox>
+                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
+                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
+                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
+                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
+                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
+                <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
+                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
+            </filters>
+            <action-button link inline type="primary" fill="solid" color="red" size="medium" align="center"
+                           action="{{action}}">
+                Филтрирай
+            </action-button>
+            <action-button helper inline icon="false" density="comfortable" align="center" action="google.com">
+                <span>или </span>изчисти филтрите
+            </action-button>
+
+        </filtering>
+
+        <cards-area>
+            <header>
+                <filtering secondary sorting>
+                    <strong>24 резултата</strong>
+                    <select-dropdown id="drop2" name="dropdown2" size="small" density="compact">
+                        <value id="2" selected>Подреди по</value>
+                        <value id="3">Нови</value>
+                        <value id="5">Дата</value>
+                        <value id="4">Час</value>
+                        <value id="6">Звездички</value>
+                    </select-dropdown>
+                </filtering>
+                <notification information color="white" size="medium">
+                    <p>Easy one click sign in. We won't post anything without your permission.</p>
+                </notification>
+            </header>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+
+        </cards-area>
+        <cards-area density="compact">
+            <header>
+                <filtering secondary exception>
+                    <strong>резултати изключващи: </strong>
+                    <checkbox readonly>Регистрация</checkbox>
+                    <checkbox readonly>Снимка</checkbox>
+                </filtering>
+            </header>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <footer>
+                <pagination density="cozy">
+                    <a href="#">Предишна</a>
+                    <a class="active" href="#">1</a>
+                    <a href="#" class="disable">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">Следваща</a>
+                </pagination>
+            </footer>
+        </cards-area>
+
+        <donation>
+            <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
+            <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew"
+                           target="modal">
+                Добави
+            </action-button>
+        </donation>
+    </featured>
+    <footer-wrapper>
+        <logo action="home" color="dark" size="medium" align="right"></logo>
+        <footer-navigation>
+            <footer-column>
+                <h5>За проекта</h5>
+                <li><a href="#">За нас</a></li>
+                <li><a href="#">За контакти</a></li>
+                <li><a href="#">За Общество.БГ</a></li>
+            </footer-column>
+            <footer-column emphasis>
+                <h5>Избрани категории</h5>
+                <li><a href="#">Бракониерство</a></li>
+                <li><a href="#">Престъпления - кражба, насилие </a></li>
+                <li><a href="#">Изгубени вещи</a></li>
+                <li><a href="#">Пътно-транспортни</a></li>
+                <li><a href="#">Градска среда</a></li>
+                <li><a href="#">Корупция, измама</a></li>
+            </footer-column>
+            <footer-column>
+                <li><a href="#">Бракониерство</a></li>
+                <li><a href="#">Престъпления - кражба, насилие кражба, насилие </a></li>
+                <li><a href="#">Изгубени вещи</a></li>
+                <li><a href="#">Пътно-транспортни</a></li>
+                <li><a href="#">Градска среда</a></li>
+                <li><a href="#">Корупция, измама</a></li>
+            </footer-column>
+        </footer-navigation>
+        <sponsors>
+            <h5>Спонсори</h5>
+            <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
+            <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
+            <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
+        </sponsors>
+    </footer-wrapper>
 </page>
 <google-analytics account="asd"></google-analytics>
 <script src="build/app.js"></script>

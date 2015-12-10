@@ -27,6 +27,12 @@ cover {
     &[density="comfortable"] {
         height: 290px;
     }
+    &[density="cozy"] {
+        height: 200px;
+    }
+    &[density="compact"] {
+        height: auto;
+    }
 }
 
 @media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {

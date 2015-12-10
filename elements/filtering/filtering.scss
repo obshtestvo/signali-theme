@@ -21,7 +21,10 @@ filtering {
             strong {
                 float: left;
                 @extend %bodytext-large-font;
-                line-height: 40px;
+                font-size: 25px;
+                line-height: 30px;
+                padding: 5px 0;
+
             }
             section {
                 float: right;

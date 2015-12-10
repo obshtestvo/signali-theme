@@ -56,6 +56,17 @@ notification {
             fill: $white;
         }
     }
+    &[align="right"] {
+        text-align: right;
+        float: right;
+    }
+    &[align="center"]   {
+        text-align: center;
+    }
+    &[align="left"]  {
+        text-align: left;
+        float: left;
+    }
     &[size="large"] {
         @extend %bodytext-large-font, %small-radius;
         padding: 0 40px 0 100px;
