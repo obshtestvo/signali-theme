@@ -4,6 +4,7 @@ require('magnific-popup/dist/jquery.magnific-popup');
 require('magnific-popup/dist/magnific-popup.css');
 require('./magnific-popup-override.scss');
 require('./modal.scss');
+require('./modal-inline.scss');
 
 module.exports = function (componentService) {
 
@@ -86,6 +87,9 @@ module.exports = function (componentService) {
 
     componentService.register('modal-screen', {
         template: require('./modal-screen.html')
+    });
+
+    componentService.register('modal-inline', {
     });
 
     componentService.register('target', {

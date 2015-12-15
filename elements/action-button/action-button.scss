@@ -200,9 +200,9 @@ action-button {
         }
         &[mainsearch] {
             a, button {
-                @extend %center-y;
                 right: 0;
-                margin: 3px 0 0 0;
+                margin: 33px 0 0 0;
+                position: absolute;
             }
         }
     }

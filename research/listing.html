@@ -17,7 +17,7 @@ Unlucky
 <![endif]-->
 <loader target="page"></loader>
 <page color="semilight">
-    <cover density="comfortable" src="test/smoking.jpg">
+    <cover density="airy" src="test/smoking.jpg">
         <top-nav>
             <menu>
                 Категории
@@ -112,231 +112,201 @@ Unlucky
                 добави сайт
             </action-button>
         </top-nav>
-        <intro density="compact">
-            <call-to-action align="left" density="compact">
-                <h1>Граждански: Тютюнопушене на обществени места</h1>
-            </call-to-action>
-            <breadcrumb>
-                <crumb action="google.com">Начало</crumb>
-                <crumb action="google.com">Граждански: Тютюнопушене на обществени места</crumb>
-            </breadcrumb>
+        <intro density="cozy">
+            <form action="">
+                <select-dropdown id="searchArea" name="areas" location="simple" mainsearch theme="light" priority="low" >
+                    <label>Mестност, в която се е случило:</label>
+
+                    <value id="1">Област София (Градска община)</value>
+
+                    <value id="2">Столична община (Област)</value>
+
+                    <value id="3">Община средец (Квартална община)</value>
+
+                    <value id="4">Цялата страна (Национална)</value>
+
+                    <value id="7">гр. София (Град)</value>
+
+                    <value id="8">Благоевград (Град)</value>
+
+                    <value id="9">Бургас (Град)</value>
+
+                    <value id="10">Пловдив (Град)</value>
+
+                    <value id="11">Варна (Град)</value>
+
+                    <value id="12">Русе (Град)</value>
+
+                    <value id="13">Стара Загора (Град)</value>
+
+                </select-dropdown>
+                </select-dropdown>
+                <select-dropdown id="mainsearch" multiple mainsearch theme="light" priority="medium" >
+                    <label>За какво се отнася:</label>
+
+
+                    <value
+                            id="2"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-2"
+                            input="categories">Корупция
+                    </value>
+
+                    <value
+                            id="3"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-3"
+                            input="categories">Измами
+                    </value>
+
+                    <value
+                            id="4"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-4"
+                            input="categories">Пътно-транспортни
+                    </value>
+
+                    <value
+                            id="5"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-5"
+                            input="categories">Изборни нарушения
+                    </value>
+
+                    <value
+                            id="6"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-6"
+                            input="categories">Бракониерство
+                    </value>
+
+
+                    <value
+                            id="1"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-1"
+                            input="keywords">Сеч
+                    </value>
+
+                    <value
+                            id="2"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-2"
+                            input="keywords">Гора
+                    </value>
+
+                    <value
+                            id="3"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-3"
+                            input="keywords">Пушене
+                    </value>
+
+                    <value
+                            id="4"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-4"
+                            input="keywords">Катастрофа
+                    </value>
+
+                    <value
+                            id="5"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-5"
+                            input="keywords">Надценка
+                    </value>
+
+                    <value
+                            id="6"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-6"
+                            input="keywords">Счупен продукт
+                    </value>
+
+                    <value
+                            id="7"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-7"
+                            input="keywords">Кражба
+                    </value>
+
+                    <value
+                            id="8"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-8"
+                            input="keywords">Заплаха
+                    </value>
+
+                    <value
+                            id="9"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-9"
+                            input="keywords">Проблеми с работодателя
+                    </value>
+
+                    <value
+                            id="10"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-10"
+                            input="keywords">Проблеми със служители
+                    </value>
+
+                    <value
+                            id="11"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-11"
+                            input="keywords">Расизъм
+                    </value>
+
+                    <value
+                            id="12"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-12"
+                            input="keywords">Ксенофобия
+                    </value>
+
+
+                    <div class="filters">
+                        <p>Допълнителни опции:</p>
+                        <section>
+                            <checkbox id="register" name="register">Не изисква регистрация</checkbox>
+                            <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
+                            <action-button helper density="cozy" align="right" action="/contact-points/">
+                                <span>... още с</span> подробно търсене
+                            </action-button>
+                        </section>
+                    </div>
+                </select-dropdown>
+                <action-button button type="primary" fill="solid" color="red" size="medium" action="google.com" mainsearch>
+                    търси
+                </action-button>
+                <filters expandable class="expanded" color="light-gray" theme="light">
+                    <strong>ДРУГИ ОПЦИИ</strong>
+                    <checkbox id="r33egister" name="r33egister">Регистрация</checkbox>
+                    <checkbox id="photo" name="photo" checked>Снимка</checkbox>
+                    <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
+                    <checkbox id="name" name="name">Име</checkbox>
+                    <checkbox id="email" name="email">Е-mail</checkbox>
+                    <checkbox id="egn" name="egn">EГН</checkbox>
+                    <checkbox id="address" name="address">Адрес на подателя</checkbox>
+                    <checkbox id="location" name="location">Локация на сигнала</checkbox>
+                    <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
+                    <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
+                    <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
+                    <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
+                    <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
+                    <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
+                    <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
+                </filters>
+            </form>
         </intro>
     </cover>
     <featured>
-        <filtering primary>
-            <select-dropdown id="searchArea" name="areas" location="simple" mainsearch theme="light" priority="low">
-                <label>Mестност, в която се е случило:</label>
-
-                <value id="1">Област София (Градска община)</value>
-
-                <value id="2">Столична община (Област)</value>
-
-                <value id="3">Община средец (Квартална община)</value>
-
-                <value id="4">Цялата страна (Национална)</value>
-
-                <value id="7">гр. София (Град)</value>
-
-                <value id="8">Благоевград (Град)</value>
-
-                <value id="9">Бургас (Град)</value>
-
-                <value id="10">Пловдив (Град)</value>
-
-                <value id="11">Варна (Град)</value>
-
-                <value id="12">Русе (Град)</value>
-
-                <value id="13">Стара Загора (Град)</value>
-
-            </select-dropdown>
-
-            <select-dropdown id="mainsearch" multiple mainsearch theme="light" priority="high">
-                <label>За какво се отнася:</label>
-
-
-                <value
-                        id="2"
-                        suffix="(Престъпност)"
-                        group="Категории"
-                        site-wide-id="taxonomy-category-2"
-                        input="categories">Корупция
-                </value>
-
-                <value
-                        id="3"
-                        suffix="(Престъпност)"
-                        group="Категории"
-                        site-wide-id="taxonomy-category-3"
-                        input="categories">Измами
-                </value>
-
-                <value
-                        id="4"
-                        suffix="(Престъпност)"
-                        group="Категории"
-                        site-wide-id="taxonomy-category-4"
-                        input="categories">Пътно-транспортни
-                </value>
-
-                <value
-                        id="5"
-                        suffix="(Престъпност)"
-                        group="Категории"
-                        site-wide-id="taxonomy-category-5"
-                        input="categories">Изборни нарушения
-                </value>
-
-                <value
-                        id="6"
-                        suffix="(Престъпност)"
-                        group="Категории"
-                        site-wide-id="taxonomy-category-6"
-                        input="categories">Бракониерство
-                </value>
-
-
-                <value
-                        id="1"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-1"
-                        input="keywords">Сеч
-                </value>
-
-                <value
-                        id="2"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-2"
-                        input="keywords">Гора
-                </value>
-
-                <value
-                        id="3"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-3"
-                        input="keywords">Пушене
-                </value>
-
-                <value
-                        id="4"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-4"
-                        input="keywords">Катастрофа
-                </value>
-
-                <value
-                        id="5"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-5"
-                        input="keywords">Надценка
-                </value>
-
-                <value
-                        id="6"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-6"
-                        input="keywords">Счупен продукт
-                </value>
-
-                <value
-                        id="7"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-7"
-                        input="keywords">Кражба
-                </value>
-
-                <value
-                        id="8"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-8"
-                        input="keywords">Заплаха
-                </value>
-
-                <value
-                        id="9"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-9"
-                        input="keywords">Проблеми с работодателя
-                </value>
-
-                <value
-                        id="10"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-10"
-                        input="keywords">Проблеми със служители
-                </value>
-
-                <value
-                        id="11"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-11"
-                        input="keywords">Расизъм
-                </value>
-
-                <value
-                        id="12"
-                        group="Теми"
-                        site-wide-id="taxonomy-keyword-12"
-                        input="keywords">Ксенофобия
-                </value>
-
-
-                <div class="filters">
-                    <p>Допълнителни опции:</p>
-                    <section>
-                        <checkbox id="register" name="register">Не изисква регистрация</checkbox>
-                        <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
-                        <action-button helper density="cozy" align="right" action="/contact-points/">
-                            <span>... още с</span> подробно търсене
-                        </action-button>
-                    </section>
-                </div>
-            </select-dropdown>
-            <filters expandable class="expanded" color="light-gray">
-                <strong>ДРУГИ ОПЦИИ</strong>
-                <checkbox id="register" name="register">Регистрация</checkbox>
-                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-                <checkbox id="name" name="name">Име</checkbox>
-                <checkbox id="email" name="email">Е-mail</checkbox>
-                <checkbox id="egn" name="egn">EГН</checkbox>
-                <checkbox id="address" name="address">Адрес на подателя</checkbox>
-                <checkbox id="location" name="location">Локация на сигнала</checkbox>
-                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-                <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
-                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-            </filters>
-            <filters expandable class="expanded" color="light-gray">
-                <strong>ДРУГИ ОПЦИИ</strong>
-                <checkbox id="register" name="register">Регистрация</checkbox>
-                <checkbox id="photo" name="photo" checked>Снимка</checkbox>
-                <checkbox id="isign" name="isign">Ел. Подпис</checkbox>
-                <checkbox id="name" name="name">Име</checkbox>
-                <checkbox id="email" name="email">Е-mail</checkbox>
-                <checkbox id="egn" name="egn">EГН</checkbox>
-                <checkbox id="address" name="address">Адрес на подателя</checkbox>
-                <checkbox id="location" name="location">Локация на сигнала</checkbox>
-                <checkbox id="belang" name="belang" checked>Мултиезичност</checkbox>
-                <checkbox id="warr" name="warr">Гаранция за отговор</checkbox>
-                <checkbox id="anonymous" name="anonymous">Анонимност</checkbox>
-                <checkbox id="mobile" name="mobile">Мобилна версия</checkbox>
-                <checkbox id="endrec" name="endrec">Краен приемник</checkbox>
-                <checkbox id="verification" name="verification">Верификация на сигнала?</checkbox>
-                <checkbox id="confirm" name="confirm">Потвърждаване на сигнала?</checkbox>
-            </filters>
-            <action-button link inline type="primary" fill="solid" color="red" size="medium" align="center"
-                           action="{{action}}">
-                Филтрирай
-            </action-button>
-            <action-button helper inline icon="false" density="comfortable" align="center" action="google.com">
-                <span>или </span>изчисти филтрите
-            </action-button>
-
-        </filtering>
 
         <cards-area>
             <header>
@@ -350,10 +320,10 @@ Unlucky
                         <value id="6">Звездички</value>
                     </select-dropdown>
                 </filtering>
-                <notification information color="white" size="medium">
-                    <p>Easy one click sign in. We won't post anything without your permission.</p>
-                </notification>
             </header>
+            <notification information color="white" size="medium">
+                <p>Easy one click sign in. We won't post anything without your permission.</p>
+            </notification>
             <card action="gogo">
                 <img src="test/logo1.jpg" alt=""/>
                 <strong>Държавно Горско Стопанство гр. Враца</strong>

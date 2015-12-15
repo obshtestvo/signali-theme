@@ -18,6 +18,7 @@ filtering {
     }
     &[secondary] {
         &[sorting] {
+            padding: 20px 0 20px 10px;
             strong {
                 float: left;
                 @extend %bodytext-large-font;
@@ -33,7 +34,7 @@ filtering {
         }
         &[exception] {
             display: block;
-            padding: 10px 0;
+            padding: 10px;
             &:before {
                 content: '';
                 display: block;

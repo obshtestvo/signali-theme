@@ -7,6 +7,7 @@ filters {
     display: block;
     position: relative;
     padding: 0 0 25px;
+    clear: both;
     & > div {
         display: block;
         height: $size;
@@ -88,5 +89,8 @@ filters {
         & > strong, .switch-icons {
             background: $grey-color-60;
         }
+    }
+    &[theme="light"]{
+        color: #fff;
     }
 }

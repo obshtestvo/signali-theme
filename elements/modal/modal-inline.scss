@@ -1,0 +1,22 @@
+@import '../styleguide';
+
+
+modal-inline {
+    max-width: 450px;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding: em(125) 20px em(180);
+    clear: both;
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-landscape-width) {
+    modal-inline{
+        padding: em(60) 20px;
+    }
+}
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    modal-inline{
+        padding: em(20) 20px;
+    }
+}

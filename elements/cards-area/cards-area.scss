@@ -5,8 +5,8 @@ cards-area {
     display: block;
     position: relative;
     & > section {
-        header {
-            margin-left: 10px;
+        .notification-wrap > notification{
+            margin: 0 0 20px 0;
         }
         & > section {
             display: block;
