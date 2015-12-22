@@ -1,11 +1,10 @@
 .search-container {
-  .select2-container {
-    vertical-align: top;
+  //width:auto!important;
+  .selectize-control {
     margin-top: 5px;
-  }
-  select {
-    vertical-align: top;
-    margin-top: 5px;
+    .selectize-input {
+      float: left;
+    }
   }
   input {
     vertical-align: top;

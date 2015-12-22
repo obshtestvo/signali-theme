@@ -1,0 +1,26 @@
+.selectize-control {
+  display: inline-block;
+  .selectize-dropdown {
+    font-size: 12px;
+  }
+  .selectize-input {
+    padding: 3px 10px;
+    //line-height:;
+    width: auto;
+    font-size: 12px;
+    input {
+      font-size: 12px;
+    }
+  }
+  &.single {
+    .selectize-input {
+      padding-right: 25px;
+      //> input {
+      //  padding-right: 15px!important;
+      //}
+      &:after {
+        right: 10px;
+      }
+    }
+  }
+}

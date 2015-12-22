@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 // extracted from /admin/js/admin/RelatedObjectLookups.js
 window.dismissAddRelatedObjectPopup = function (win, newId, newRepr) {
         // newId and newRepr are expected to have previously been escaped by
@@ -14,7 +16,7 @@ window.dismissAddRelatedObjectPopup = function (win, newId, newRepr) {
             elem.options[elem.options.length] = o;
             o.selected = true;
             /** START PATCH */
-            $(elem).trigger('change')
+            $(elem).trigger('change', [{item: {id: newId, text:newRepr}, selected:true, isNew: true}])
             /** END PATCH */
         } else if (elemName == 'INPUT') {
             if (elem.className.indexOf('vManyToManyRawIdAdminField') != -1 && elem.value) {
@@ -47,8 +49,24 @@ window.dismissChangeRelatedObjectPopup = function (win, objId, newRepr, newId) {
         }
     });
     /** START PATCH */
-    $(selectsSelector).trigger('change')
+    $(selectsSelector).trigger('change', [{item: {id: objId, text:newRepr}, selected:true, isNew: false}])
     django.jQuery(selectsSelector).trigger('change');
+    /** END PATCH */
+    win.close();
+};
+
+window.dismissDeleteRelatedObjectPopup = function (win, objId){
+    objId = html_unescape(objId);
+    var id = windowname_to_id(win.name).replace(/^delete_/, '');
+    var selectsSelector = interpolate('#%s, #%s_from, #%s_to', [id, id, id]);
+    var selects = django.jQuery(selectsSelector);
+    selects.find('option').each(function() {
+        if (this.value == objId) {
+            django.jQuery(this).remove();
+        }
+    }).trigger('change');
+    /** START PATCH */
+    $(selectsSelector).trigger('change', [{item: {id: objId}, deleted:true}]);
     /** END PATCH */
     win.close();
 };

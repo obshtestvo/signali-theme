@@ -8,7 +8,6 @@
     border-bottom-color: $color_athens_gray_approx;
   }
 }
-
-.nav-tabs-suit li {
+.nav-tabs-suit li a:first-letter {
   text-transform: capitalize;
 }

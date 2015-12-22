@@ -1,11 +1,7 @@
+var $ = require('jquery');
+
 $(function () {
-    Suit.after_inline.register('init_select2', function (inline_prefix, $row) {
-        var i = $row.attr('id').replace(inline_prefix + '-', '');
-        $row.find('[data-select2-id]').each(function() {
-            var $this = $(this)
-            var id = $this.attr('id');
-            var key = $this.attr('id').replace('-'+i+'-', '_')
-            window.django_select2[key](id, $this.data('select2Id'))
-        })
+    Suit.after_inline.register('init_django_selectize', function (inline_prefix, $row) {
+        $($row[0]).find('.django-select2').djangoSelect2()
     });
 });

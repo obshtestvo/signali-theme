@@ -3,10 +3,14 @@
 
 
 {% block extrahead %}
+    <script src="{% static 'admin-commons.js' %}"></script>
+    <script src="{% static 'admin_vendor.js' %}"></script>
     {% include "admin/_i18n.html" %}
+    {{ block.super }}
 {% endblock %}
 
 {% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin_vendor.css' %}" media="all">
 <link rel="stylesheet" type="text/css" href="{% static 'admin.css' %}" media="all">
 {% endblock %}
 
@@ -15,8 +19,9 @@
 {% block extrajs %}
     {{ block.super }}
     <script src="{% static 'admin.js' %}"></script>
-{% endblock %}zv
-Z
+{% endblock %}
+
+
 {# Footer links (left side) #}
 {% block footer_links %}
 {% endblock %}
