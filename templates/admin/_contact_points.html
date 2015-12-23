@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load url from suit_compat %}
+
+<table class="table table-bordered table-condensed table-striped">
+    <thead>
+    <tr>
+        <th colspan="1">{% blocktrans %}contact point{% endblocktrans %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for point in related_points %}
+    <tr class="form-row row1">
+        <td class="field-in_admin">
+            <p><a href="{% url 'admin:signali_contact_contactpointgrouped_change' point.id %}">{{point}}</a></p>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
