@@ -1,5 +1,5 @@
-    var $ = require('jquery');
-    var selectize = require('selectize/dist/js/standalone/selectize.js');
+var $ = require('jquery');
+var selectize = require('selectize/dist/js/standalone/selectize');
 var debounce = require('throttle-debounce').debounce;
 
 
