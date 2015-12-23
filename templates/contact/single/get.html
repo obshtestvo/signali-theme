@@ -93,7 +93,7 @@
                 {% endif %}
                 <card-item type="rating">
                     <rating align="left" value="{{ point.rating }}" href="#feedback">
-                        <a class="comments" href="#feedbacklist">({{point.feedback.count}} оценки)</a>
+                        <a class="comments" href="#feedbacklist">({{point.feedback_count}} оценки)</a>
                     </rating>
                 </card-item>
                 {% if point.url %}

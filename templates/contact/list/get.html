@@ -28,7 +28,7 @@
     <header>
         <filtering secondary sorting>
             <strong>{{ total }} резултата</strong>
-            <select-dropdown name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
+            <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
                        href="{% url 'contact-point-list' %}{% query sorting=None start=0%}"
@@ -38,9 +38,9 @@
                        href="{% url 'contact-point-list' %}{% query sorting='-rating' start=0%}"
                        {% if sorting == "-rating" %}current{% endif %}>Високо оценени</value>
                 <value
-                       id="-effective"
-                       href="{% url 'contact-point-list' %}{% query sorting='-effective' start=0%}"
-                       {% if sorting == "-effective" %}current{% endif %}>Най-ефективни</value>
+                       id="-effectiveness"
+                       href="{% url 'contact-point-list' %}{% query sorting='-effectiveness' start=0%}"
+                       {% if sorting == "-effectiveness" %}current{% endif %}>Най-ефективни</value>
                 <value
                        id="-accessibility"
                        href="{% url 'contact-point-list' %}{% query sorting='-accessibility' start=0%}"
@@ -48,7 +48,7 @@
                 <value
                        id="-last_visited_at"
                        href="{% url 'contact-point-list' %}{% query sorting='-last_visited_at' start=0%}"
-                       {% if sorting == "-visits" %}current{% endif %}>Последно посетени</value>
+                       {% if sorting == "-last_visited_at" %}current{% endif %}>Последно посетени</value>
                 <value
                        id="-created_at"
                        href="{% url 'contact-point-list' %}{% query sorting='-created_at' start=0%}"
