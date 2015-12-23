@@ -68,6 +68,9 @@ module.exports = function (componentService) {
             if (el.hasAttribute('freetext')) {
                 options.create = true
             }
+            if (el.hasAttribute('links')) {
+                options.plugins.directajax = {};
+            }
             if (el.hasAttribute('remote-url')) {
                 options.plugins.directajax =  {};
                 var remoteUrl = el.getAttribute('remote-url')
