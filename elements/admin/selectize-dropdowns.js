@@ -45,7 +45,11 @@ $(function () {
             }
         });
         API.on('change', function(e) {
+           if (API.getValue()) {
+               API.$input.find('option').attr('data-name', API.revertSettings.$children.filter('[value]').data('name'))
+           }
             django.jQuery($this[0]).trigger('change')
+            Suit.$($this[0]).trigger('change')
         });
     });
 });
