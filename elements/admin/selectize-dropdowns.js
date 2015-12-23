@@ -6,6 +6,8 @@ $(function () {
         var $this = $(this);
         if ($this.closest('.empty-form').length) return;
         var options = {
+            valueField: 'id',
+            labelField: 'text',
             plugins: ['autowidth'],
             render: {}
         };
@@ -34,12 +36,12 @@ $(function () {
         $this.change(function(e, data){
             if (!data) return;
             if (data.isNew) {
-                API.addOption({value: data.item.id, text: data.item.text});
+                API.addOption(data.item);
                 if (data.selected) API.addItem(data.item.id);
             } else if (data.deleted) {
-                API.updateOption(data.item.id);
+                API.removeOption(data.item.id);
             } else {
-                API.updateOption(data.item.id, {value: data.item.id, text: data.item.text});
+                API.updateOption(data.item.id, data.item);
             }
         });
         API.on('change', function(e) {
