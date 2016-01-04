@@ -70,7 +70,7 @@ notification {
     &[size="large"] {
         @extend %bodytext-large-font, %small-radius;
         padding: 0 40px 0 100px;
-        min-height: 100px;
+        height: 100px;
         .icon {
             width: 100px;
             height: 48px;
@@ -109,7 +109,7 @@ notification {
     &[size="medium"] {
         @extend %bodytext-font, %small-radius;
         padding: 0 10px 0 55px;
-        min-height: 60px;
+        height: 60px;
         .icon {
             width: 55px;
             height: 30px;
@@ -149,7 +149,7 @@ notification {
     &[size="small"] {
         @extend %bodytext-large-font, %small-radius;
         padding: 0 10px 0 50px;
-        min-height: 60px;
+        height: 60px;
         .icon {
             width: 50px;
             height: 26px;
@@ -188,7 +188,7 @@ notification {
     }
 
     &[size="nano"] {
-        min-height: 24px;
+        height: 24px;
         padding: 0 10px 0 37px;
         margin: 0 0 13px 0;
         @extend %small-font, %nano-radius;

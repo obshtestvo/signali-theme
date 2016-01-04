@@ -44,7 +44,7 @@
         Изпрати
     </action-button>
     {% if request.user.is_authenticated %}
-    <notification information size="small" no-icon >Споделяш опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
+    <notification information inline color="white" size="nano" density="compact">Споделяш опит като {{ request.user.get_full_name }} ({{request.user.email}})</notification>
     {% endif %}
 
     {% if not user.is_authenticated %}
