@@ -18,7 +18,7 @@ rating {
             color: $secondary-color-100;
         }
     }
-    &[size="medium"], &[size="large"] {
+    &[size="medium"], &[size="large"], &[size="extralarge"] {
         padding: 0;
         star[type="empty"] .outline {
             fill: $grey-color-100;
@@ -41,7 +41,7 @@ rating {
     }
     &[size="extralarge"] {
         star {
-            @include size(40px);
+            @include size(30px);
             &[type="empty"] .outline {
                 fill: $grey-color-100;
             }
