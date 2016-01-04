@@ -28,11 +28,15 @@ filters {
             position: absolute;
             top: 48%;
         }
-        & > strong {
+        & > strong, em {
             font-weight: 400;
             position: relative;
             z-index: 1;
             padding: 0 $standart-padding 0 0;
+            font-style: normal;
+        }
+        em {
+            display: none;
         }
         .switch-icons {
             position: absolute;
@@ -50,7 +54,7 @@ filters {
                 width: $size;
                 top: 0;
                 right: 0;
-                &.minus {
+                &.up {
                     display: block;
                 }
                 svg {
@@ -61,23 +65,49 @@ filters {
             }
         }
     }
-    &[expandable] > div {
-        cursor:pointer;
-        &:hover{
-            svg {
-                fill: $secondary-color-100;
+    &[expandable] {
+        [content] {
+            height: 30px;
+            overflow-y: hidden;
+            max-width: 1000px;
+        }
+        & > div {
+            cursor: pointer;
+            float: right;
+            padding: 0 $standart-padding*3 0 0;
+            width: 180px;
+            em, strong {
+                float: right;
+            }
+            &:before {
+                display: none;
+            }
+            .switch-icons {
+            }
+            &:hover {
+                svg {
+                    fill: $secondary-color-100;
+                }
             }
         }
     }
     &[collapsed] {
         [content] {
-            display: none;
+            height: auto;
         }
-        .switch-icons > div.plus {
+        .switch-icons > div.down {
             display: block;
         }
-        .switch-icons > div.minus {
+        .switch-icons > div.up {
             display: none;
+        }
+        & > div {
+            strong {
+                display: none;
+            }
+            em {
+                display: block;
+            }
         }
     }
     &[color="white"] > div {
@@ -90,7 +120,23 @@ filters {
             background: $grey-color-60;
         }
     }
-    &[theme="light"]{
+    &[theme="light"] {
         color: #fff;
+        div {
+            text-transform: none;
+            color: #fff;
+            & > strong, .switch-icons {
+                background: transparent;
+                svg {
+                    fill: #fff;
+                }
+            }
+            &:hover{
+                color: $secondary-color-hover;
+                svg{
+                    fill: $secondary-color-hover;
+                }
+            }
+        }
     }
 }
