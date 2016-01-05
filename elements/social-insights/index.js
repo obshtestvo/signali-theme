@@ -1,8 +1,7 @@
-var $ = require('jquery');
-require('./social-insights.scss');
+import './social-insights.scss'
+import template from './social-insights.html'
 
-module.exports = function (componentService) {
-    componentService.register('social-insights', {
-        template: require('./social-insights.html')
-    })
+export default class {
+    static displayName = 'social-insights';
+    static template = template;
 }

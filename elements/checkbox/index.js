@@ -1,17 +1,16 @@
-require('./checkbox.scss');
+import './checkbox.scss'
+import template from './checkbox.html'
+import tick from './tick.svg'
 
-module.exports = function (componentService) {
-    componentService.register('checkbox', {
-        template: require('./checkbox.html'),
-        include: {
-            tick: require('./tick.svg')
-        },
-        properties: {
-            "empty-value": {
-                get: function() {
-                    return this.getAttribute('value') == ''
-                }
+export default class {
+    static displayName = 'checkbox';
+    static template = template;
+    static include = { tick };
+    static properties =  {
+        "empty-value": {
+            get (el) {
+                return el.getAttribute('value') == ''
             }
         }
-    })
+    }
 }

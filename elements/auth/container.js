@@ -1,69 +1,58 @@
-module.exports = function (componentService) {
+export class AuthContainerAttribute {
+    static type = 'attribute';
+    static displayName = 'auth-container';
 
-    componentService.register('auth-container', {
-        type: 'attribute',
-        created: function () {
-            this.type = this.auth.type
-        },
-
-        prototype: {
-            setTitle: function (title) {
-                this.querySelector('headline').setTitle(title);
-            },
-            setSubtitle: function (html) {
-                this.querySelector('headline').setSubtitle(html);
-            },
-            setInput: function (name, value) {
-                this.auth.setInput(name, value);
-            },
-            reset: function () {
-                var $this = $(this);
-                $this.find('auth-container-patch').remove();
-                $this.find('notification[error][size="text-field"], notification[success][size="text-field"]').hide().find('ul, p').remove();
-                $this.find('[init-hide]').hide();
-                $this.find('.error').removeClass('error')
+    static properties = {
+        type: {
+            attribute: true,
+            set (el, data) {
+                var $el = $(el);
+                if (data.newValue == 'registration') {
+                    $el.find('[for="registration"], [for="login"], [not-for]').css("display", "");
+                    $el.find('[for="login"], [for="reset"], [not-for="registration"]').hide();
+                } else if (data.newValue == 'login') {
+                    $el.find('[for="registration"], [for="login"], [not-for]').css("display", "");
+                    $el.find('[for="registration"], [for="reset"], [not-for="registration"]').hide();
+                } else {
+                    $el.find('[for="registration"], [for="reset"], [not-for]').css("display", "");
+                    $el.find('[for="registration"], [for="login"], [not-for="reset"]').hide();
+                }
+                el.auth.type = data.newValue;
             }
         },
-
-        properties: {
-            type: {
-                set: function (value) {
-                    var $el = $(this);
-                    if (value == 'registration') {
-                        $el.find('[for="registration"], [not-for]').show();
-                        $el.find('[for="login"], [for="reset"], [not-for="registration"]').hide();
-                    } else if (value == 'login') {
-                        $el.find('[for="login"], [not-for]').show();
-                        $el.find('[for="registration"], [for="reset"], [not-for="registration"]').hide();
-                    } else {
-                        $el.find('[for="reset"], [not-for]').show();
-                        $el.find('[for="registration"], [for="login"], [not-for="reset"]').hide();
-                    }
-                    this.auth.type = value;
-                }
-            },
-            auth: {
-                get: function () {
-                    return this.querySelector('auth');
-                }
+        auth: {
+            get (el) {
+                return el.querySelector('auth');
             }
         }
-    });
+    };
+
+    setTitle (title) {
+        this.querySelector('headline').setTitle(title);
+    }
+
+    setSubtitle (html) {
+        this.querySelector('headline').setSubtitle(html);
+    }
+
+    setInput (name, value) {
+        this.auth.setInput(name, value);
+    }
+}
 
 
-    componentService.register('auth-container-patch', {
-        prototype: {
-            applyTo: function (container) {
-                var $el,
-                    $title,
-                    $subtitle;
+export class AuthContainerPatchElement {
+    static displayName = 'auth-container-patch';
 
-                $el = $(this);
-                $title = $el.children('auth-title');
-                $subtitle = $el.children('auth-subtitle');
-                if ($title.length) container.setTitle($title.text());
-                if ($subtitle.length) container.setSubtitle($subtitle.html());
-            }
-        }
-    });
-};
+    applyTo (container) {
+        var $el,
+            $title,
+            $subtitle;
+
+        $el = $(this);
+        $title = $el.children('auth-title');
+        $subtitle = $el.children('auth-subtitle');
+        if ($title.length) container.setTitle($title.text());
+        if ($subtitle.length) container.setSubtitle($subtitle.html());
+    }
+}

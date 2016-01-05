@@ -1,10 +1,9 @@
-require('./comment.scss');
+import './comment.scss'
+import template from './comment.html'
+import circle from './circle.svg'
 
-module.exports = function (componentService) {
-    componentService.register('comment', {
-        template: require('./comment.html'),
-        include: {
-            "circle": require('./circle.svg')
-        }
-    });
-};
+export default class {
+    static displayName = 'comment';
+    static template = template;
+    include = { circle }
+}

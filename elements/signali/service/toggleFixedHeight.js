@@ -1,4 +1,4 @@
-module.exports = function ($el, isFixed) {
+export default function ($el, isFixed) {
     if (isFixed) {
         $el.height($el.height() + 'px');
         $el.css('overflow', 'hidden');

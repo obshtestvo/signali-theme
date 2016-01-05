@@ -1,7 +1,7 @@
-require('./radio-button.scss');
+import './radio-button.scss'
+import template from './radio-button.html'
 
-module.exports = function (componentService) {
-    componentService.register('radio-button', {
-        template: require('./radio-button.html')
-    })
+export default class {
+    static displayName = 'radio-button';
+    static template = template;
 }

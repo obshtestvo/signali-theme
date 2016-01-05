@@ -1,6 +1,6 @@
-var selectize = require('selectize/dist/js/standalone/selectize.js');
-var googlemap = require('service/google.maps');
-var navarrow = require('icons/location-arrow.svg');
+import 'selectize/dist/js/standalone/selectize';
+import googlemap from 'service/google.maps';
+import './selectize.navarrow';
 
 /**
  * Places autocomplete
@@ -8,54 +8,56 @@ var navarrow = require('icons/location-arrow.svg');
  * @param selectizeOptions
  * @constructor
  */
-var Simple = function($el, selectizeOptions) {
-    selectizeOptions.plugins.navarrow = {};
-    this.$el = $el;
-    this.pickerAPI = $el.selectize(selectizeOptions)[0].selectize
-};
-
-Simple.prototype = {
-    $el: null,
-    pickerAPI: null,
-
-    close: function() {
+export class Simple {
+    $el = null;
+    pickerAPI = null;
+    
+    constructor ($el, selectizeOptions) {
+        selectizeOptions.plugins.navarrow = {};
+        this.$el = $el;
+        this.pickerAPI = $el.selectize(selectizeOptions)[0].selectize
+    }
+    
+    close () {
         this.pickerAPI.close()
-    },
-    blur: function() {
+    }
+    
+    blur () {
         this.pickerAPI.blur()
     }
-};
-    /**
+}
+
+/**
  * Places autocomplete
  * @param $el
  * @param creditsEl
  * @param queryTransformation
  * @constructor
  */
-var Google = function($el, creditsEl, queryTransformation) {
-    var _self = this;
-    _self._initUI($el);
-    googlemap.load(function(gMap) {
-        _self._initGeo(gMap, $el, creditsEl, queryTransformation)
-    })
-};
+export class Google {
+    $el = null;
+    pickerAPI = null;
+    map = null;
+    autocomplete = null;
 
-Google.prototype = {
-    $el: null,
-    pickerAPI: null,
-    map: null,
-    autocomplete: null,
+    constructor($el, creditsEl, queryTransformation) {
+        var _self = this;
+        _self._initUI($el);
+        googlemap.load(function(gMap) {
+            _self._initGeo(gMap, $el, creditsEl, queryTransformation)
+        })
+    }
 
-    _initGeo: function(gMap, $el, creditsEl, queryTransformation) {
+    _initGeo (gMap, $el, creditsEl, queryTransformation) {
         var _self = this;
         _self.events = {};
         _self.$el = $el;
         _self.autocompleteService = new gMap.places.AutocompleteService();
         _self.geocoder = new gMap.Geocoder();
         _self.placesService = new gMap.places.PlacesService(creditsEl);
-    },
+    }
 
-    _initUI: function($el) {
+    _initUI ($el) {
         var _self = this;
         var googleOptions = {
             types: ['geocode'],
@@ -66,7 +68,7 @@ Google.prototype = {
             create: false,
             options: [],
             plugins: ['restore_on_backspace', 'navarrow'],
-            score: function(search) {
+            score (search) {
                 var textScore = this.getScoreFunction(search);
                 return function(item) {
                     var score =  textScore(item);
@@ -77,7 +79,7 @@ Google.prototype = {
                     return score;
                 };
             },
-            load: function (query, callback) {
+            load (query, callback) {
                 if (!query.length) return callback();
                 if (_self.queryTransformation) query = _self.queryTransformation() + query;
                 _self.autocompleteService.getPlacePredictions($.extend({}, googleOptions, {
@@ -118,7 +120,7 @@ Google.prototype = {
         });
         _self.pickerAPI = $el[0].selectize;
 
-        _self.pickerAPI.on('change', function(val) {
+        _self.pickerAPI.on('change', function(val=[]) {
             if (!val.length) return;
             var text = _self.pickerAPI.getItem(val).text();
             var loc = null;
@@ -142,38 +144,21 @@ Google.prototype = {
                 finish(lastResults[text])
             }
         })
-    },
+    }
 
-    focus: function() {
-        this.$el[0].selectize.open()
-    },
+    focus () {
+        this.pickerAPI.open()
+    }
 
-    update: function(id, text) {
+    update (id, text) {
         var pickerAPI = this.pickerAPI;
         pickerAPI.addOption({"value": id , "text": text });
         pickerAPI.setValue(id)
-    },
+    }
 
-    destroy: function() {
+    destroy () {
         var _self = this;
         _self.autocomplete.unbind("bounds");
         _self.gMap = null;
     }
-};
-
-selectize.define('navarrow', function() {
-    var self = this;
-    this.setup = (function() {
-        var original = self.setup;
-        return function() {
-            var ret = original.apply(this, arguments);
-            self.$control.append(navarrow);
-            return ret;
-        };
-    })();
-});
-
-module.exports =  {
-    Google: Google,
-    Simple: Simple,
-};
+}

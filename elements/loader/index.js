@@ -1,5 +1,3 @@
-require('./loader.scss');
-
-module.exports = function (componentService) {
-    require('./preloader').init(componentService)
-}
+import './loader.scss';
+import PreloaderElement from './preloader';
+export {PreloaderElement};

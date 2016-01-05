@@ -1,5 +1,5 @@
-var $ = require('jquery');
-var csrf = require('./csrf');
+import $ from 'jquery';
+import * as csrf from './csrf';
 
 var refreshCsrfHolders = function() {
     $('[name="csrfmiddlewaretoken"]').val(csrf.getCookie('csrftoken'));
@@ -16,7 +16,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
         type: method,
         dataType: dataType,
 
-        beforeSend: function (xhr, settings) {
+        beforeSend (xhr, settings) {
             if (!csrf.isCsrfExcempt(settings.type) && csrf.isSameOrigin(settings.url)) {
                 // Send the token to same-origin, relative URLs only.
                 // Send the token only if the method warrants CSRF protection
@@ -26,7 +26,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             if ($.isFunction(options.beforeSend)) options.beforeSend.call(this, xhr, settings);
         },
 
-        success: function (data, status, xhr) {
+        success (data, status, xhr) {
             refreshCsrfHolders();
             if (options.determineSuccess(data)) {
                 options.success(data, status, xhr)
@@ -35,7 +35,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             }
         },
 
-        error: function (xhr, status, err) {
+        error (xhr, status, err) {
             refreshCsrfHolders();
             var error = err;
             if (xhr.responseText) error = xhr.responseText;
@@ -44,7 +44,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
             }
             options.error(error, status, xhr)
         },
-        complete: function (xhr, status) {
+        complete (xhr, status) {
             if ($.isFunction(options.complete)) options.complete.call(this, xhr, status);
         }
     };
@@ -53,23 +53,25 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
     return $.ajax(requestOptions);
 };
 
-module.exports = {
-    pjax: function(url, method, data, options) {
-        if ($.isFunction(method)) {
-            options = {};
-            options.success = method;
-            options.error = method;
-            method = 'get';
+var shortcuts = {
+
+    execute (url, callback, method, data, dataType, isPjax, options) {
+        if ($.isFunction(callback)) {
+            options = options || {};
+            options.success = callback;
+            options.error = callback;
+            if (!method) method = 'get';
         }
-        return makeRequest(url, method, data, 'html', true, options)
+        return makeRequest(url, method, data, dataType, isPjax, options)
     },
-    json: function(url, method, data, options) {
-        if ($.isFunction(method)) {
-            options = {};
-            options.success = method;
-            options.error = method;
-            method = 'get';
-        }
-        return makeRequest(url, method, data, 'json', false, options)
+
+    pjax ({url, callback, method, data, options}) {
+        return shortcuts.execute(url, callback, method, data, 'html', true, options)
+    },
+
+    json ({url, callback, method, data, options}) {
+        return shortcuts.execute(url, callback, method, data, 'json', false, options)
     }
 };
+
+export default shortcuts;

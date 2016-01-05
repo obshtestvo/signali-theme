@@ -1,7 +1,7 @@
-require('./donation.scss')
+import './donation.scss'
+import template from './donation.html'
 
-module.exports = function (componentService) {
-    componentService.register('donation', {
-        template: require('./donation.html')
-    })
+export default class {
+    static displayName = 'donation';
+    static template = template;
 }

@@ -1,51 +1,51 @@
-var FacebookAuth = require('./facebook.js');
-var Blocker = require('ajax/block');
+import FacebookAuth from './facebook';
+import Blocker from 'ajax/block';
+
 var hasOtherElements = false;
 
-module.exports = function (componentService) {
+export default class {
+    static displayName = 'social-auth';
 
-    componentService.register('social-auth', {
-        created: function () {
-            var el = this,
-                $auth = $(el).closest('auth'),
-                $authContainer = $(el).closest('[auth-container]'),
-                facebookAppId = el.getAttribute('facebook-app'),
-                facebookScope = JSON.parse(el.getAttribute('facebook-scope')),
-                serverGateway = el.getAttribute('server-gateway'),
-                $facebookButton = $(el.querySelector('social-button[facebook]'));
+    static ready (el) {
+        var $auth = $(el).closest('auth'),
+            $authContainer = $(el).closest('[auth-container]'),
+            facebookAppId = el.getAttribute('facebook-app'),
+            facebookScope = JSON.parse(el.getAttribute('facebook-scope')),
+            serverGateway = el.getAttribute('server-gateway'),
+            $facebookButton = $(el.querySelector('social-button[facebook]'));
 
-            if (!hasOtherElements) {
-                FacebookAuth.setup(facebookAppId);
-                hasOtherElements = true;
-            }
+        if (!hasOtherElements) {
+            FacebookAuth.setup(facebookAppId);
+            hasOtherElements = true;
+        }
 
-            el.blocker = new Blocker($authContainer);
-            el.facebook = new FacebookAuth({
-                scope: facebookScope,
-                serverGateway: serverGateway
-            });
-            el.facebook.on('facebook:success', function(data) {
-                $auth.trigger('auth:complete', [data, true])
-                el.blocker.unblock()
-            });
-            el.facebook.on('facebook:cancel', function() {
-                el.blocker.unblock()
-            });
-            el.facebook.on('facebook:fail', function() {
-                el.blocker.unblock()
-            });
+        el.blocker = new Blocker($authContainer);
+        el.facebook = new FacebookAuth({
+            scope: facebookScope,
+            serverGateway: serverGateway
+        });
+        el.facebook.on('facebook:success', function (data) {
+            $auth.trigger('auth:complete', [data, true])
+            el.blocker.unblock()
+        });
+        el.facebook.on('facebook:cancel', function () {
+            el.blocker.unblock()
+        });
+        el.facebook.on('facebook:fail', function () {
+            el.blocker.unblock()
+        });
 
-            $facebookButton.on('click', function(e) {
-                e.preventDefault();
-                el.blocker.block();
-                el.facebook.loginPrompt();
-            })
+        $facebookButton.on('click', function (e) {
+            e.preventDefault();
+            el.blocker.block();
+            el.facebook.loginPrompt();
+        })
 
-        },
-        attached: function() {
-            if (this.blocker) {
-                this.blocker.setElement($(this).closest('[auth-container]'))
-            }
-        },
-    });
-};
+    }
+
+    static attached (el) {
+        if (el.blocker) {
+            el.blocker.setElement($(el).closest('[auth-container]'))
+        }
+    }
+}

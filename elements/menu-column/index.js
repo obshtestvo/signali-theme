@@ -1,8 +1,7 @@
-require('./menu-column.scss')
+import './menu-column.scss'
+import template from './menu-column.html'
 
-module.exports = function (componentService) {
-    componentService.register('menu-column', {
-        template: require('./menu-column.html')
-    })
+export default class {
+    static displayName = 'menu-column';
+    static template = template;
 }
-

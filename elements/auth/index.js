@@ -1,10 +1,16 @@
-$ = require('jquery');
-require('./auth.scss');
+import './auth.scss';
+import Auth, {AuthElement} from './auth';
+import AuthTriggerElement from './trigger';
+import {AuthContainerAttribute, AuthContainerPatchElement} from './container';
+import AuthRequiredAttribute from './required';
+import SocailAuthElement from './social';
 
-module.exports = function (componentService, adaptors) {
-    require('./auth')(componentService);
-    require('./container')(componentService);
-    require('./required')(componentService, adaptors);
-    require('./trigger')(componentService);
-    require('./social')(componentService);
+export {
+    Auth,
+    AuthElement,
+    AuthTriggerElement,
+    AuthContainerAttribute,
+    AuthContainerPatchElement,
+    AuthRequiredAttribute,
+    SocailAuthElement,
 };

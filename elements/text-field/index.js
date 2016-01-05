@@ -1,26 +1,26 @@
-require('./text-field.scss')
+import './text-field.scss';
+import template from './text-field.html';
 
-module.exports = function (componentService) {
-    componentService.register('text-field', {
-        template: require('./text-field.html'),
-        properties: {
-            "textarea": {
-                get: function () {
-                    return this.getAttribute('type')=='textarea'
-                }
-            },
-            "value": {
-                get: function () {
-                    var $el = $(this);
-                    var $input = $el.find('input, textarea');
-                    return $input.val()
-                }
-            },
-            "validate-trigger": {
-                get: function() {
-                    return 'input keyup'
-                }
+export default class {
+    static displayName = 'text-field';
+    static template = template;
+    static properties = {
+        "textarea": {
+            get (el) {
+                return el.getAttribute('type')=='textarea'
+            }
+        },
+        "value": {
+            get (el) {
+                var $el = $(el);
+                var $input = $el.find('input, textarea');
+                return $input.val()
+            }
+        },
+        "validate-trigger": {
+            get () {
+                return 'input keyup'
             }
         }
-    })
-};
+    };
+}

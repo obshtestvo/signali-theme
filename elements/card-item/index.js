@@ -1,19 +1,19 @@
-require('./card-item.scss')
+import './card-item.scss';
+import template from './card-item.html';
 
-module.exports = function (componentService) {
-    componentService.register('card-item', {
-        template: require('./card-item.html'),
-        properties: {
-            "tags": {
-                get: function () {
-                    return this.getAttribute('type')=='tags'
-                }
-            },
-            "rating": {
-                get: function () {
-                    return this.getAttribute('type')=='rating'
-                }
+export default class {
+    static displayName = 'card-item';
+    static template = template;
+    static properties = {
+        "tags": {
+            get (el) {
+                return el.getAttribute('type') == 'tags'
+            }
+        },
+        "rating": {
+            get (el) {
+                return el.getAttribute('type') == 'rating'
             }
         }
-    })
+    }
 }

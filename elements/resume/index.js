@@ -1,11 +1,10 @@
-require('./resume.scss')
+import './resume.scss'
+import template from './resume.html'
+import tagsIcon from './icon-tags.svg'
+import pinIcon from './icon-pin.svg'
 
-module.exports = function (componentService) {
-    componentService.register('resume', {
-        template: require('./resume.html'),
-        include: {
-            tagsIcon: require('./icon-tags.svg'),
-            pinIcon: require('./icon-pin.svg')
-        }
-    })
+export default class {
+    static displayName = 'resume';
+    static template = template;
+    static include = { tagsIcon, pinIcon };
 }

@@ -1,5 +1,5 @@
 <survey
-        {% if not request.user.is_authenticated %}auth-required auth-id="commentAuth"{% endif %}
+        {% if not request.user.is_authenticated %}auth-required auth-id="commentAuth" type="login"{% endif %}
         action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}"
         method="post"
         id="feedback"

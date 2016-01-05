@@ -1,47 +1,47 @@
-require('./survey.scss');
-require('service/jquery.animateContentSwitch.js');
-var toggleFixedHeight = require('service/toggleFixedHeight.js');
-var ValidationForm = require('validation/form');
-var AjaxForm = require('ajax/form');
-var scrollTo = require('jquery.scrollto');
+import './survey.scss';
+import 'service/jquery.animateContentSwitch';
+import toggleFixedHeight from 'service/toggleFixedHeight';
+import ValidationForm from 'validation/form';
+import AjaxForm from 'ajax/form';
+import scrollTo from 'jquery.scrollto';
+import template from './survey.html';
 
-module.exports = function (componentService) {
-    componentService.register('survey', {
-        template: require('./survey.html'),
-        created: function() {
-            var el = this,
-                ratingQuestion = el.querySelector('survey-question[rating]'),
-                $el = $(el),
-                $form = $el.find('form'),
-                $rating = $el.find('rating'),
-                fullSurveyShown = false,
-                $hiddenSurveyArea = $('.reveal');
-            $rating.on('change', function() {
-                if (fullSurveyShown) return;
-                fullSurveyShown = true;
-                scrollTo(ratingQuestion, 300);
-                toggleFixedHeight($hiddenSurveyArea, true);
-                $hiddenSurveyArea.animateContentSwitch(null, $hiddenSurveyArea.find('.quick'), {
-                    width: false,
-                    speed: 300,
-                    final: function () {
-                        toggleFixedHeight($hiddenSurveyArea, false)
-                    }
-                });
-            });
-
-            var validation = new ValidationForm($form);
-            var ajaxForm = new AjaxForm($form, {
-                pjax: true,
-                interactionContainer: $form.closest('[content]'),
-                success: function() {
-                    scrollTo(el, 300)
+export default class {
+    static displayName = 'survey';
+    static template = template;
+    
+    static ready (el) {
+        var ratingQuestion = el.querySelector('survey-question[rating]'),
+            $el = $(el),
+            $form = $el.find('form'),
+            $rating = $el.find('rating'),
+            fullSurveyShown = false,
+            $hiddenSurveyArea = $('.reveal');
+        $rating.on('change', function() {
+            if (fullSurveyShown) return;
+            fullSurveyShown = true;
+            scrollTo(ratingQuestion, 300);
+            toggleFixedHeight($hiddenSurveyArea, true);
+            $hiddenSurveyArea.animateContentSwitch(null, $hiddenSurveyArea.find('.quick'), {
+                width: false,
+                speed: 300,
+                final () {
+                    toggleFixedHeight($hiddenSurveyArea, false)
                 }
             });
-            validation.on('form:submit', function() {
-                ajaxForm.submit()
-                return false;
-            });
-        }
-    })
-};
+        });
+
+        var validation = new ValidationForm($form);
+        var ajaxForm = new AjaxForm($form, {
+            pjax: true,
+            interactionContainer: $form.closest('[content]'),
+            success () {
+                scrollTo(el, 300)
+            }
+        });
+        validation.on('form:submit', function() {
+            ajaxForm.submit();
+            return false;
+        });
+    }
+}

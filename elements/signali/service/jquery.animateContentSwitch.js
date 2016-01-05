@@ -1,6 +1,10 @@
-// Animates the dimensional changes resulting from altering element contents
-var $ = require('jquery');
-var deepmerge= require('deepmerge');
+/**
+ *
+ * Animates the dimensional changes resulting from altering element contents
+ *
+ */
+import $ from 'jquery';
+import deepmerge from 'deepmerge';
 
 var overrideTransitions = function(el, properties, animationTime) {
     var variations = [
@@ -20,14 +24,14 @@ var overrideTransitions = function(el, properties, animationTime) {
         el.style[variations[i]] = value;
     }
     return initialValues;
-}
+};
 
 var resetTransitions = function(el, initialValues) {
     for (var transitionVariation in initialValues) {
         if (!initialValues.hasOwnProperty(transitionVariation)) continue;
         el.style[transitionVariation] = initialValues[transitionVariation];
     }
-}
+};
 
 $.fn.animateContentSwitch = function (toHide, $toShow, o) {
     return this.each(function () {
@@ -46,7 +50,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
             targetHeight = null,
             targetWidth = null;
 
-        toHide = toHide ? toHide : $()
+        toHide = toHide ? toHide : $();
         var $toHide = $.type(toHide) == 'string' ? $this.find(toHide) : toHide;
         if ($toHide.length > 1) {
             throw "jQuery.animateContentSwitch accepts only single elements";
@@ -126,7 +130,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
 
             setTimeout(function(){
                 $toShow.css('opacity', 1);
-            }, delay)
+            }, delay);
 
             setTimeout(function() {
                 resetTransitions($toShow[0], originalTransitions);

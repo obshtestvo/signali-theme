@@ -1,26 +1,36 @@
-require('./action-button.scss')
+import './action-button.scss';
+import template from './action-button.html';
+import arrow from './chevron-circle-right.svg';
+import arrowBlack from './chevron-circle-left.svg';
+import replyIcon from './reply.svg';
+const slice = [].slice;
 
-module.exports = function (componentService) {
-    componentService.register('action-button', {
-        template: require('./action-button.html'),
-        include: {
-            "arrow": require('./chevron-circle-right.svg'),
-            "arrow-back": require('./chevron-circle-left.svg'),
-            "reply-icon": require('./reply.svg')
+export default class {
+    static displayName = 'action-button';
+    static template = template;
+    static include = {
+        "arrow": arrow,
+        "arrow-back": arrowBlack,
+        "reply-icon": replyIcon
+    };
+    static properties = {
+        action: {
+            attribute: true,
+            set (el, data) {
+                if (!data.newValue && !data.oldValue) return;
+                slice.call(el.querySelectorAll('a')).map(a => {
+                    a.setAttribute('href', data.newValue)
+                })
+            }
         },
-        properties: {
-            action: {
-                attr: true,
-                set: function(value) {
-                    $(this).find('a').attr('href', value);
-                }
-            },
-            target: {
-                attr: true,
-                set: function(value) {
-                    $(this).find('a').attr('target', value);
-                }
+        target: {
+            attribute: true,
+            set (el, data) {
+                if (!data.newValue && !data.oldValue) return;
+                slice.call(el.querySelectorAll('a')).map(a => {
+                    a.setAttribute('target', data.newValue)
+                })
             }
         }
-    })
+    }
 }

@@ -1,4 +1,4 @@
-var selectize = require('selectize/dist/js/standalone/selectize.js');
+import selectize from 'selectize/dist/js/standalone/selectize';
 
 selectize.define('directajax', function (options) {
     var self = this;

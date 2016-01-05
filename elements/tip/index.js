@@ -1,10 +1,9 @@
-require('./tip.scss')
+import './tip.scss';
+import template from './tip.html';
+import questionIcon from './questionIcon.svg';
 
-module.exports = function (componentService) {
-    componentService.register('tip', {
-        template: require('./tip.html'),
-        include: {
-            questionIcon: require('./questionIcon.svg')
-        }
-    })
+export default class {
+    static displayName = 'tip';
+    static template = template;
+    static include = { questionIcon };
 }

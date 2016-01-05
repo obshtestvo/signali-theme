@@ -1,7 +1,7 @@
-require('./footer-navigation.scss')
+import './footer-navigation.scss'
+import template from './footer-navigation.html'
 
-module.exports = function (componentService) {
-    componentService.register('footer-navigation', {
-        template: require('./footer-navigation.html')
-    })
+export default class {
+    static displayName = 'footer-navigation';
+    static template = template;
 }

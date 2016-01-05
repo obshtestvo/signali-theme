@@ -1,9 +1,9 @@
-var AjaxForm = require('ajax/form');
-var Blocker = require('ajax/block');
-var jsonHandler = require('./ajaxJsonResult.js');
-var preloader = require('loader/preloader');
+import AjaxForm from 'ajax/form';
+import Blocker from 'ajax/block';
+import jsonHandler from './ajaxJsonResult';
+import {generate as preloader} from 'loader/preloader';
 
-module.exports = function (componentService) {
+export default function (componentService) {
     AjaxForm.defaultOptions.applyResult = function(instance, isSuccess, content) {
         if (typeof content === 'string') {
             var $result = $(content);
@@ -23,6 +23,6 @@ module.exports = function (componentService) {
         }
     };
     Blocker.defaultOptions.decorate = function(container) {
-        preloader.generate(container)
+        preloader(container)
     };
 }

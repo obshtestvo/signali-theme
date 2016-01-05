@@ -1,10 +1,9 @@
-require('./crumb.scss')
+import './crumb.scss'
+import template from './crumb.html'
+import arrow from './arrow.svg'
 
-module.exports = function (componentService) {
-    componentService.register('crumb', {
-        template: require('./crumb.html'),
-        include: {
-            arrow: require('./arrow.svg')
-        }
-    })
+export default class {
+    static displayName = 'crumb';
+    static template = template;
+    static include = { arrow }
 }

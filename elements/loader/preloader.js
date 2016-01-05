@@ -1,14 +1,13 @@
-require('./preloader.scss');
+import './preloader.scss'
+import template from './preloader.html'
 
-module.exports = {
-    init: function(componentService) {
-        componentService.register('preloader', {
-            template: require('./preloader.html')
-        })
-    },
-    generate: function (container) {
-        var preloader  = document.createElement('preloader');
-        if (container) container.appendChild(preloader);
-        return preloader;
-    }
-};
+export default class PreloaderElement {
+    static displayName = 'preloader';
+    static template = template;
+}
+
+export function generate(container) {
+    var preloader = document.createElement('preloader');
+    if (container) container.appendChild(preloader);
+    return preloader;
+}

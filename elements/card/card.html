@@ -1,11 +1,11 @@
 {{^resume}}
 <section>
     <div class="logo-wrap">
-        <a href="{{action}}" main>
+        <a href="{{action}}" {{#parent}}target="modal"{{/parent}} main>
             <content select="img, .img"></content>
         </a>
     </div>
-    <h4><a href="{{action}}">
+    <h4><a href="{{action}}" {{#parent}}target="modal"{{/parent}}>
         <content select="strong"></content>
     </a></h4>
     <content select="[type='category']"></content>

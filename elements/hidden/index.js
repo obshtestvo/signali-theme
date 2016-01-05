@@ -1,11 +1,11 @@
-module.exports = function (componentService) {
-    componentService.register('hidden', {
-        type: 'attribute',
-        created: function() {
-            var $el = $(this);
-            $el.prop('hidden', false);
-            $el.removeAttr('hidden');
-            $el.hide();
-        }
-    })
-};
+export default class {
+    static displayName = 'hidden';
+    static type = 'attribute';
+
+    static created (el) {
+        var $el = $(el);
+        $el.prop('hidden', false);
+        $el.removeAttr('hidden');
+        $el.hide();
+    }
+}

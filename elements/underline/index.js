@@ -1,10 +1,9 @@
-require('./underline.scss')
+import './underline.scss'
+import template from './underline.html'
+import underline from './underline.svg'
 
-module.exports = function (componentService) {
-    componentService.register('underline', {
-        template: require('./underline.html'),
-        include: {
-            underline: require('./underline.svg')
-        }
-    })
+export default class {
+    static displayName = 'underline';
+    static template = template;
+    static include = { underline };
 }

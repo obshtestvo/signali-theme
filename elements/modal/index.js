@@ -1,115 +1,118 @@
-require('magnific-popup/dist/jquery.magnific-popup');
+import $ from 'jquery';
+import 'magnific-popup/dist/jquery.magnific-popup';
 //require('magnific-popup/src/js/core.js'); //@todo investigate: can cause `no mfp found`
 //require('magnific-popup/src/js/inline.js'); //@todo investigate: can cause `no mfp found`
-require('magnific-popup/dist/magnific-popup.css');
-require('./magnific-popup-override.scss');
-require('./modal.scss');
-require('./modal-inline.scss');
+import 'magnific-popup/dist/magnific-popup.css';
+import './magnific-popup-override.scss';
+import './modal.scss';
+import './modal-inline.scss';
+import modalTemplate from './modal.html';
+import modalScreenTemplate from './modal-screen.html';
+import closeIcon from './close.svg';
 
-module.exports = function (componentService) {
 
-    componentService.register('modal', {
-        template: require('./modal.html'),
-        include: {
-            close: require('./close.svg')
-        },
-        created: function () {
-            var el = this;
-            $(el).on( 'click', '.close-modal', function(e) {
-                e.preventDefault();
-                el.close();
-            });
-        },
-        properties: {
-            primary: {
-                get: function() {
-                    return this.querySelector('[priority="primary"]')
-                }
+export class ModalElement {
+    static displayName = 'modal';
+    static template = modalTemplate;
+    static include = {
+        close: closeIcon
+    };
+
+    static created(el) {
+        $(el).on('click', '.close-modal', function (e) {
+            e.preventDefault();
+            el.close();
+        });
+    }
+
+    static properties = {
+        primary: {
+            get(el) {
+                return el.querySelector('[priority="primary"]')
             }
-        },
-        prototype: {
-            attach: function() {
-                var hiddenContainer = document.querySelector('[modal-hider]')
-                if (!hiddenContainer) {
-                    $('<div modal-hider>').appendTo($('body'))
+        }
+    };
+
+    attach () {
+        var hiddenContainer = document.querySelector('[modal-hider]');
+        if (!hiddenContainer) {
+            $('<div modal-hider>').appendTo($('body'))
+        }
+        hiddenContainer.appendChild(this)
+    }
+
+    cloneModal () {
+        var clone = this.clone();
+        return $(clone).removeClass('mfp-hide')[0]
+    }
+
+    close () {
+        $.magnificPopup.close();
+    }
+
+    show () {
+        var delay = 300;
+        var $el = $(this);
+        $.magnificPopup.open({
+            items: {
+                src: $el,
+                type: 'inline',
+            },
+            callbacks: {
+                open () {
+                    setTimeout(function(){
+                        $el.trigger('modal:open')
+                    }, delay)
+                },
+                close () {
+                    setTimeout(function(){
+                        $el.trigger('modal:close')
+                    }, delay)
                 }
-                hiddenContainer.appendChild(this)
             },
+            showCloseBtn: false,
+            // Delay in milliseconds before popup is removed
+            removalDelay: delay,
+            // Class that is added to popup wrapper and background
+            // make it unique to apply your CSS animations just to this exact popup
+            mainClass: 'mfp-zoom-in',
+            midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+        });
+    }
 
-            cloneModal: function() {
-                var clone = this.cloneNode(true);
-                return $(clone).removeClass('mfp-hide')[0]
-            },
+    appendSecondary (content, skipPadding) {
+        var screen = '<modal-screen></modal-screen>';
+        if (skipPadding) screen = '<modal-screen no-padding></modal-screen>';
+        var $screen = $(screen).append(content).addClass('secondary');
+        this.appendChild($screen[0]);
+        return $screen[0];
+    }
+}
 
-            close: function() {
-                $.magnificPopup.close();
-            },
+export class ModalScreenElement {
+    static displayName = 'modal-screen';
+    static template = modalScreenTemplate;
+}
 
-            show: function() {
-                var delay = 300;
-                var $el = $(this);
-                $.magnificPopup.open({
-                    items: {
-                        src: $el,
-                        type: 'inline',
-                    },
-                    callbacks: {
-                        open: function() {
-                            setTimeout(function(){
-                                $el.trigger('modal:open')
-                            }, delay)
-                        },
-                        close: function() {
-                            setTimeout(function(){
-                                $el.trigger('modal:close')
-                            }, delay)
-                        }
-                    },
-                    showCloseBtn: false,
-                    // Delay in milliseconds before popup is removed
-                    removalDelay: delay,
-                    // Class that is added to popup wrapper and background
-                    // make it unique to apply your CSS animations just to this exact popup
-                    mainClass: 'mfp-zoom-in',
-                    midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+export class TargetAttribute {
+    static displayName = 'target';
+    static extends = 'a';
+    static type = "attribute";
+
+    static properties = {
+        target: {
+            attribute: true,
+            set (element, data) {
+                if (data.newValue != 'modal') return;
+                if (element.hasPopupTrigger) return;
+                element.hasPopupTrigger = true;
+                var $el = $(element);
+                $el.on('click.modal-target', function(e) {
+                    e.preventDefault();
+                    var $modal = $($(this).attr('href'));
+                    $modal[0].show();
                 });
-            },
-
-            appendSecondary: function(content, skipPadding) {
-                var screen = '<modal-screen></modal-screen>';
-                if (skipPadding) screen = '<modal-screen no-padding></modal-screen>';
-                var $screen = $(screen).append(content).addClass('secondary')
-                this.appendChild($screen[0])
-                return $screen[0];
             }
         }
-    });
-
-    componentService.register('modal-screen', {
-        template: require('./modal-screen.html')
-    });
-
-    componentService.register('modal-inline', {
-    });
-
-    componentService.register('target', {
-        extends: "a",
-        type: "attribute",
-        properties: {
-            target: {
-                attr: true,
-                set: function (newValue) {
-                    if (newValue != 'modal') return;
-                    if (this.hasPopupTrigger) return;
-                    this.hasPopupTrigger = true;
-                    var $el = $(this);
-                    $el.on('click.modal-target', function(e) {
-                        e.preventDefault();
-                        var $modal = $($(this).attr('href'));
-                        $modal[0].show();
-                    });
-                }
-            }
-        }
-    });
-};
+    }
+}

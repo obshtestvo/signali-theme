@@ -1,10 +1,9 @@
-require('./login-box.scss')
+import './login-box.scss'
+import template from './login-box.html'
+import iconUser from './user.svg'
 
-module.exports = function (componentService) {
-    componentService.register('login-box', {
-        template: require('./login-box.html'),
-        include: {
-            iconUser: require('./user.svg')
-        }
-    })
+export default class {
+    static displayName = 'login-box';
+    static template = template;
+    static include = { iconUser }
 }

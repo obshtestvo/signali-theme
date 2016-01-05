@@ -1,6 +1,28 @@
 {% load restful %}
 {% load thumbnail %}
-<card action="{% url 'contact-point' slug=point.slug %}">
+
+{% if point.is_parent_with_many_children %}
+    <div hidden>
+        <modal id="card_{{ point.id }}_modal">
+            <modal-screen>
+                <headline size="large" density="airy" align="center">
+                    Избери регион
+                </headline>
+                <text>
+                    <select-dropdown links size="small" density="compact" placeholder="Региони..." placeholder-type="vivid">
+                        {% for point_child in point.children.public_base %}
+                            <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area }}</value>
+                        {% endfor %}
+                    </select-dropdown>
+                </text>
+            </modal-screen>
+        </modal>
+    </div>
+{% endif %}
+<card
+      action="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}{% endif %}"
+      {% if point.is_parent_with_many_children %}parent{% endif %}
+>
     {% if point.preview %}
         {% thumbnail point.preview "280x123" crop="center" as img %}
             <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title }}"/>
@@ -20,21 +42,28 @@
            class="location">{{ point.operational_area.title }}</a>
     </card-item>
     <card-item type="tags">
-        <strong>теми</strong>
+        <strong>Ключови думи</strong>
         {% for tag in point.keywords.all|slice:":2" %}
             <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
         {% if point.keywords.count >= 2 %}
-        <a href="{% url 'contact-point' slug=point.slug %}">&hellip;и още {{ point.keywords.count|add:"-2" }}</a>
+        <a href="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}{% endif %}"
+           {% if point.is_parent_with_many_children %}target="modal"{% endif %}
+        >&hellip;и още {{ point.keywords.count|add:"-2" }}</a>
         {% endif %}
     </card-item>
     <card-item type="rating">
         <strong>Оценка</strong>
-        <rating value="{{ point.rating }}" href="{% url 'contact-point' slug=point.slug %}#feedback">
-            <a class="comments" href="{% url 'contact-point' slug=point.slug %}#feedbacklist">({{point.feedback.count}} оценки)</a>
+        <rating value="{{ point.rating }}"
+                target="modal"
+                href="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}#feedback{% endif %}">
+            {% if not point.is_parent_with_many_children %}<a class="comments" href="{% url 'contact-point' slug=point.slug_or_child_slug %}#feedbacklist">({{point.feedback_count}} оценки)</a>{% endif %}
         </rating>
     </card-item>
-    <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{% url 'contact-point' slug=point.slug %}">
+    <action-button link type="secondary"
+                   fill="solid" color="red" size="extralarge"
+                   {% if point.is_parent_with_many_children %}target="modal"{% endif %}
+                   action="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}{% endif %}">
         Подаване на сигнал
     </action-button>
 </card>

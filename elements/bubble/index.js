@@ -1,85 +1,84 @@
-require('animate.css/source/_base.css');
-require('animate.css/source/flippers/flipInX.css');
-require('animate.css/source/fading_exits/fadeOut.css');
-require('animate.css/source/fading_entrances/fadeInUp.css');
-require('./bubble.scss');
+import 'animate.css/source/_base.css';
+import 'animate.css/source/flippers/flipInX.css';
+import 'animate.css/source/fading_exits/fadeOut.css';
+import 'animate.css/source/fading_entrances/fadeInUp.css';
+import './bubble.scss';
+import $ from 'jquery';
+import iconCheck from './check-circle.svg';
+import iconExclamation from './exclamation-circle.svg';
+import iconInfo from './info-circle.svg';
+import iconClose from './close.svg';
+import template from './bubble.html';
+import handleModals from './element-adaptors/modal';
 
-module.exports = function (componentService) {
-    var container = document.createElement('div');
-    var $container = $(container)
-    container.setAttribute('bubble-container', '');
-    document.getElementsByTagName('body')[0].appendChild(container);
+var container = document.createElement('div');
+var $container = $(container);
+container.setAttribute('bubble-container', '');
+document.getElementsByTagName('body')[0].appendChild(container);
+handleModals($container);
 
-    componentService.register('bubble', {
-        template: require('./bubble.html'),
-        include: {
-            iconCheck: require('./check-circle.svg'),
-            iconExclamation: require('./exclamation-circle.svg'),
-            iconInfo: require('./info-circle.svg'),
-            iconClose: require('./close.svg')
-        },
-        created: function() {
-            this.showClass = 'fadeInUp';
-            this.hideClass = 'fadeOut';
-            this.animationDuration = 700;
-            this.showDuration = 2400;
-            var $this = $(this);
+export default class {
+    static displayName = 'bubble';
+    static template = template;
+    static include = { iconCheck, iconExclamation, iconInfo, iconClose };
 
-            $this.click(function() {
-                this.hide()
-            })
-            $this.hover(function() {
-                $this.removeClass(this.hideClass);
-                clearTimeout(this.timeout);
-            }, function() {
-                this.autoclose()
-            });
-            $(document).on("mfpOpen", function() {
-                $container.css('right', $('html').css('margin-right'))
-            });
-            $(document).on("mfpClose", function() {
-                $container.css('right', 0)
-            })
-        },
-        properties: {
-            "information": {
-                get: function () {
-                    return this.getAttribute('type')=='information'
-                }
-            },
-            "success": {
-                get: function () {
-                    return this.getAttribute('type') == 'success'
-                }
-            },
-            "error": {
-                get: function () {
-                    return this.getAttribute('type')=='error'
-                }
+    static created (el) {
+        el.showClass = 'fadeInUp';
+        el.hideClass = 'fadeOut';
+        el.animationDuration = 700;
+        el.showDuration = 2400;
+        var $this = $(el);
+
+        $this.click(function() {
+            this.hide()
+        });
+        $this.hover(function() {
+            $this.removeClass(this.hideClass);
+            clearTimeout(this.timeout);
+        }, function() {
+            this.autoclose()
+        });
+    }
+
+    static properties = {
+        "information": {
+            get (el) {
+                return el.getAttribute('type')=='information'
             }
         },
-        prototype: {
-            autoclose: function() {
-                var self = this;
-                clearTimeout(this.timeout);
-                this.timeout = setTimeout(function() {
-                    self.hide();
-                }, this.showDuration)
-            },
-            show: function () {
-                this.autoclose();
-                document.querySelector('[bubble-container]').appendChild(this);
-                $(this).show()
-            },
-            hide: function () {
-                var $this = $(this)
-                $this.removeClass(this.showClass);
-                $this.addClass(this.hideClass);
-                clearTimeout(this.timeout);
-                this.timeout = setTimeout(function() {
-                    $this.remove()
-                }, this.animationDuration)
+        "success": {
+            get (el) {
+                return el.getAttribute('type') == 'success'
+            }
+        },
+        "error": {
+            get (el) {
+                return el.getAttribute('type')=='error'
             }
         }
-    })
-};
+    };
+
+    autoclose () {
+        var self = this;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(function() {
+            self.hide();
+        }, this.showDuration)
+    }
+
+    show () {
+        this.autoclose();
+        document.querySelector('[bubble-container]').appendChild(this);
+        $(this).show()
+    }
+
+    hide () {
+        var $this = $(this);
+        $this.removeClass(this.showClass);
+        $this.addClass(this.hideClass);
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(function() {
+            $this.remove()
+        }, this.animationDuration)
+    }
+}

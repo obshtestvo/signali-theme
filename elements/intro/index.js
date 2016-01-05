@@ -1,7 +1,7 @@
-require('./intro.scss');
+import './intro.scss'
+import template from './intro.html'
 
-module.exports = function (componentService) {
-    componentService.register('intro', {
-        template: require('./intro.html')
-    })
+export default class {
+    static displayName = 'intro';
+    static template = template;
 }

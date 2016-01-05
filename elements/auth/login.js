@@ -1,5 +1,5 @@
 var AjaxForm = require('./form');
-var toggleFixedHeight = require('service/toggleFixedHeight.js');
+var toggleFixedHeight = require('service/toggleFixedHeight');
 
 function blocked() {
     var $container = $('.blockMsg .animation-container');

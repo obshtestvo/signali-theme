@@ -1,7 +1,7 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
 
-function getCookie(name) {
+export function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
         var cookies = document.cookie.split(';');
@@ -18,12 +18,12 @@ function getCookie(name) {
 }
 
 
-function isCsrfExcempt(method) {
+export function isCsrfExcempt(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
-function isSameOrigin(url) {
+export function isSameOrigin(url) {
     // test that a given url is a same-origin URL
     // url could be relative or scheme relative or absolute
     var host = document.location.host; // host + port
@@ -35,10 +35,4 @@ function isSameOrigin(url) {
         (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
             // or any other URL that isn't scheme relative or absolute i.e relative.
         !(/^(\/\/|http:|https:).*/.test(url));
-}
-
-module.exports = {
-    getCookie: getCookie,
-    isSameOrigin: isSameOrigin,
-    isCsrfExcempt: isCsrfExcempt
 }

@@ -1,7 +1,7 @@
-require('./top-nav.scss')
+import './top-nav.scss'
+import template from './top-nav.html'
 
-module.exports = function (componentService) {
-    componentService.register('top-nav', {
-        template: require('./top-nav.html')
-    })
+export default class {
+    static displayName = 'top-nav';
+    static template = template;
 }

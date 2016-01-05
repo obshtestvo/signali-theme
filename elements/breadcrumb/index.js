@@ -1,7 +1,7 @@
-require('./breadcrumb.scss')
+import './breadcrumb.scss'
+import template from './breadcrumb.html'
 
-module.exports = function (componentService) {
-    componentService.register('breadcrumb', {
-        template: require('./breadcrumb.html')
-    })
+export default class {
+    static displayName = 'breadcrumb';
+    static template = template;
 }

@@ -1,7 +1,7 @@
-require('./leading-area.scss')
+import './leading-area.scss'
+import template from './leading-area.html'
 
-module.exports = function (componentService) {
-    componentService.register('leading-area', {
-        template: require('./leading-area.html')
-    })
+export default class {
+    static displayName = 'leading-area';
+    static template = template;
 }

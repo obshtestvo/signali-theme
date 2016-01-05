@@ -1,48 +1,58 @@
-$ = require('jquery');
+import $ from 'jquery';
+import Auth from './auth';
+import throttle from 'lodash.throttle'
+const slice = [].slice;
 
-var adaptor;
+$(document).on('auth:success', function() {
+    var elements = this.querySelector('[auth-required]');
+    if (!elements) return;
+    slice.call(elements).map(el => el.clearAuthRequirement());
+});
 
-module.exports = function (componentService, adaptors) {
-    adaptor = adaptors[0];
-
-    componentService.register('auth-required', {
-        type: 'attribute',
-        created: function () {
-            var el = this,
-                $form = el.tagName == 'FORM' ? $(el) : $(el.querySelector('form'));
-
-            $form.on('ajax-submit.auth-required submit.auth-required', function (e, originalAjaxForm) {
-                e.preventDefault();
-                if (!el.authContainer) {
-                    el.authContainer = adaptor.attach(el, componentService);
-                    var $auth = $(el.authContainer).find('auth');
-                    $auth.on('auth:success', function (e, data) {
-                        $form.off('.auth-required')
-                        var authScenario = data.is_new ? 'registration' : 'login';
-                        $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
-                        adaptor.dismiss(el, function() {
-                            $form.submit();
-                        }, originalAjaxForm)
-                    });
-                    $auth.on('auth:registration:success', function (e) {
-                        e.preventDefault();
-                    })
-                }
-                adaptor.show(el)
+var handleForm = function (el) {
+    var $form = el.tagName == 'FORM' ? $(el) : $(el.querySelector('form'));
+    if ($form.length > 0) el.__handleForm.cancel();
+    $form.on('ajax-submit.auth-required submit.auth-required', function (e, originalAjaxForm) {
+        e.preventDefault();
+        if (!el.authContainer) {
+            el.authContainer = Auth.attach(el, el.componentService);
+            var $auth = $(el.authContainer).find('auth');
+            $auth.on('auth:success', function (e, data) {
+                $form.off('.auth-required')
+                var authScenario = data.is_new ? 'registration' : 'login';
+                $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
+                Auth.dismiss(el, function() {
+                    $form.submit();
+                }, originalAjaxForm)
             });
-            $(document).on('auth:success', function() {
-                var elements = this.querySelector('[auth-required]');
-                if (!elements) return;
-                elements.clearAuthRequirement();
+            $auth.on('auth:registration:success', function (e) {
+                e.preventDefault();
             })
-        },
-
-        prototype: {
-            clearAuthRequirement: function() {
-                var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));
-                $form.off('.auth-required');
-                this.removeAttribute('auth-required')
-            }
         }
+        Auth.show(el)
     });
 };
+
+export default class AuthRequiredAttribute {
+    static displayName = 'auth-required';
+    static type = 'attribute';
+
+    static created (el) {
+        el.__handleForm =  throttle(handleForm, 50);
+    }
+
+    static properties = {
+        'auth-required': {
+            attribute: true,
+            set: function(el, data) {
+                el.__handleForm(el, data)
+            }
+        }
+    }
+
+    clearAuthRequirement() {
+        var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));
+        $form.off('.auth-required');
+        this.removeAttribute('auth-required')
+    }
+}

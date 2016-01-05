@@ -39,8 +39,11 @@ like [angularjs](https://github.com/angular/angular.js),
 Each have their advantages and each have their drawbacks.
 
 ### Conventions
+
  - **Backend-agnostic**: assets' management should be independent from any chosen backend framework or language
- - **Web components**: they are coming, so their concept should be followed as closely as possible
+ - **Web components**: they are coming, so their concept should be followed as closely as possible.
+   The previous was true at the beginning of this project but since then, web component development slowed down.
+   Also many issues had come up. It's now better to use React.
  - **Modularity**: always think modular, extract all files related to a single element as web-component (styling, scripts, template, images... everything)
  - **Readability & perceived performance over code optimisation**: always write readable code, performance can be achieved through
   best practices and creating a user feeling of a responsive system
@@ -57,13 +60,14 @@ Each have their advantages and each have their drawbacks.
  - **Javascripts**:
    - Should be in a isolated scope
    - Should explicitly state requirements in code (*not comments or meta-lanaguages*)
- 
+
+
 
 ### Specificity
 The conventions are implemented through:
- 
- - emulation of web components via [`skatejs`](http://skatejs.github.io/)
- - [webpack](http://webpack.github.io/docs/) for everything else
+
+ - [webpack](http://webpack.github.io/docs/) for everything besides web components
+ - custom elements via [`skatejs`](http://skatejs.github.io/) and shadowdom-like templating via a project-specific script
 
 #### Webpack
 This projects uses [webpack](http://webpack.github.io/docs/). 
@@ -75,6 +79,8 @@ for any kind of files; It's capable of [compressing js, css, svg; rendering DSLs
 rendering template engines; rendering gettext files into json and many many others](http://webpack.github.io/docs/list-of-loaders.html) 
 
 #### Web components emulation
+**EDIT**: Using skate revealed many drawbacks that are not clearly stated. Currently it's better to do a React-based app.
+
 The project doesn't use the [webcomponents polyfill](https://github.com/webcomponents/webcomponentsjs) 
 because it too cutting-edge and easily causes problems even in modern browsers.
 
@@ -88,27 +94,27 @@ The key aspects of web components that are replicated:
  locations in its template using the `<content select='...'></content>` tag
  - **no shadowdom**
  
-The emulation is happening through a script called [pseudo-webcomponent.skate.js](elements/app/script/service/pseudo-webcomponent.skate.js).
-This is basically a factory-pattern script that can register custom elements in a webcomponent-like manner:
+The emulation is happening by [signali/pseudo-webcomponent](elements/signali/pseudo-webcomponent/index.js).
+This is basically a factory-pattern script that can register custom elements as classes:
 
 *in main script file*:
 ```js
-var ComponentService = require('service/pseudo-webcomponent.skate');
-componentService = new ComponentService()
-var customElement = require('custom');
-customElement(componentService)
+import ComponentService from 'service/pseudo-webcomponent.skate';
+componentService = new ComponentService();
+import customElement from 'custom';
+componentService.register(customElement);
 ```
 
 *in element's file*
 ```js
-module.exports = function (componentService) {
-    componentService.register('custom', {
-        template: require('./custom.html'),
-        created: function () {
-            // javascript to run after the element is rendered in te dom
-            // `this` is the element
-        }
-    })
+import template from './custom.html';
+
+export default class {
+    static displayName = 'custom';
+    static template = template;
+    static created(element) {
+        // javascript to run after the element is initialised
+    }
 }
 ```
 
@@ -146,5 +152,5 @@ will produce final html:
 </custom>
 ```
 
-The remaining unmatched content (`"Left over text"`) will be stored in `$detachedContent` element property.
+The remaining unmatched content (`"Left over text"`) will be stored in `detachedContent` element property.
 If the template included a all-matching `<content></content>` the same would have been inserted there.

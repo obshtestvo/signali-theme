@@ -1,22 +1,22 @@
-var request = require('ajax/request');
+import request from 'ajax/request'
 
-module.exports = function (componentService) {
-    componentService.register('stat-visit', {
-        type: "attribute",
-        created: function() {
-            var el = this,
-                $el = $(el);
-
-            $el.on('click.stat-visit', function(e) {
-                request.json(el.getAttribute('stat-visit'), 'post');
-                $el.off('.stat-visit');
-            })
-        },
-        properties: {
-            statUser: {
-                attr: true
-            }
+export default class {
+    static displayName = 'stat-visit';
+    static type = 'attribute';
+    static properties = {
+        statUser: {
+            attribute: true
         }
-    });
+    };
+    static created (el) {
+        var $el = $(el);
 
-};
+        $el.on('click.stat-visit', function() {
+            request.json({
+                url: el.getAttribute('stat-visit'),
+                method: 'post'
+            });
+            $el.off('.stat-visit');
+        })
+    }
+}

@@ -1,7 +1,7 @@
-require('./footer-wrapper.scss')
+import './footer-wrapper.scss'
+import template from './footer-wrapper.html'
 
-module.exports = function (componentService) {
-    componentService.register('footer-wrapper', {
-        template: require('./footer-wrapper.html')
-    })
+export default class {
+    static displayName = 'footer-wrapper';
+    static template = template;
 }

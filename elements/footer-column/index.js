@@ -1,7 +1,7 @@
-require('./footer-column.scss')
+import './footer-column.scss'
+import template from './footer-column.html'
 
-module.exports = function (componentService) {
-    componentService.register('footer-column', {
-        template: require('./footer-column.html')
-    })
+export default class {
+    static displayName = 'footer-column';
+    static template = template;
 }

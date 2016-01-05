@@ -61,7 +61,7 @@
     Вход
 </login-box>
 <div modal-hider>
-    <modal id="generic-auth" auth-container="main" auth-modal-container>
+    <modal id="generic-auth" auth-modal-container auth-container="main" type="login">
         <modal-screen>
             <headline size="large" density="airy" align="center" for="modal"></headline>
             <auth-container-patch for="registration">
@@ -88,10 +88,10 @@
                         <notification error size="text-field" hidden></notification>
                     </text-field>
                     <div for="reset">
-                        <notification size="small" density="compact" success hidden init-hide>
+                        <notification size="small" density="compact" success hidden>
                             <p>Готово! Получи имейл.</p>
                         </notification>
-                        <notification size="small" density="comfortable" information no-icon hidden init-hide>
+                        <notification size="small" density="comfortable" information no-icon hidden>
                             <p>Кликни на линка в имейла.
                                 Чрез него ще смениш паролата си.
                                 След това можеш да се върнеш тук и да натиснеш <a auth-trigger type="login">вход &raquo;</a>

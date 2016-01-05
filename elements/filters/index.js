@@ -1,23 +1,21 @@
-require('./filters.scss')
+import './filters.scss'
+import template from './filters.html'
+import downIcon from './icon-down.svg'
+import upIcon from './icon-up.svg'
 
-module.exports = function (componentService) {
-    componentService.register('filters', {
-        template: require('./filters.html'),
-        include: {
-            downIcon: require('./icon-down.svg'),
-            upIcon: require('./icon-up.svg')
-        },
-        created: function() {
-            var el = this,
-                $collapseTrigger = $(el.querySelector('div'));
+export default class {
+    static displayName = 'filters';
+    static template = template;
+    static include = { downIcon, upIcon };
+    static ready(el) {
+        var $collapseTrigger = $(el.querySelector('div'));
 
-            $collapseTrigger.on('click', function() {
-                if (el.hasAttribute('collapsed')) {
-                    el.removeAttribute('collapsed')
-                } else {
-                    el.setAttribute('collapsed', '')
-                }
-            })
-        }
-    })
+        $collapseTrigger.on('click', function() {
+            if (el.hasAttribute('collapsed')) {
+                el.removeAttribute('collapsed')
+            } else {
+                el.setAttribute('collapsed', '')
+            }
+        })
+    }
 }

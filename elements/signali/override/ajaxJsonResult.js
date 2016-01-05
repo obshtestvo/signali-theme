@@ -1,6 +1,6 @@
 var getAjaxErors = function($form, response) {
-    var errorKey = 'form';
-    var $prefix = $form.find('input[name="prefix"]');
+    const $prefix = $form.find('input[name="prefix"]')
+    var errors, errorKey = 'form';
     if ($prefix.length) {
         errorKey = $prefix.val() + errorKey
     }
@@ -14,7 +14,7 @@ var getAjaxErors = function($form, response) {
 };
 
 
-module.exports = function(instance, isSuccess, content) {
+export default function(instance, isSuccess, content) {
     var $notifications = instance.$container.find('notification[for="form"]');
     if (!isSuccess) {
         var $container = $notifications.filter('[error]');

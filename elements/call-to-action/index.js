@@ -1,7 +1,7 @@
-require('./call-to-action.scss');
+import './call-to-action.scss'
+import template from './call-to-action.html'
 
-module.exports = function (componentService) {
-    componentService.register('call-to-action', {
-        template: require('./call-to-action.html')
-    })
-};
+export default class {
+    static displayName = 'call-to-action';
+    static template = template;
+}

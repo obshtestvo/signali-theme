@@ -1,17 +1,15 @@
-require('./notification.scss')
+import './notification.scss'
+import template from './notification.html'
+import iconCheck from './check-circle.svg'
+import iconExclamation from './exclamation-circle.svg'
+import iconInfo from './info-circle.svg'
 
-module.exports = function (componentService) {
-    componentService.register('notification', {
-        template: require('./notification.html'),
-        include: {
-            iconCheck: require('./check-circle.svg'),
-            iconExclamation: require('./exclamation-circle.svg'),
-            iconInfo: require('./info-circle.svg')
-        },
-        prototype: {
-            clear: function () {
-                $(this).find('ul,p').remove();
-            }
-        }
-    })
+export default class {
+    static displayName = 'notification';
+    static template = template;
+    static include = { iconCheck, iconExclamation, iconInfo };
+
+    clear () {
+        $(this).find('ul,p').remove();
+    }
 }

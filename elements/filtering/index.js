@@ -1,7 +1,7 @@
-require('./filtering.scss')
+import './filtering.scss'
+import template from './filtering.html'
 
-module.exports = function (componentService) {
-    componentService.register('filtering', {
-        template: require('./filtering.html')
-    })
+export default class {
+    static displayName = 'filtering';
+    static template = template;
 }

@@ -1,22 +1,25 @@
-require('./card.scss');
-require('./no-photo.jpg');
+import './card.scss'
+import './no-photo.jpg'
+import template from './card.html'
 
-module.exports = function (componentService) {
-    componentService.register('card', {
-        template: require('./card.html'),
-        properties: {
-            action: {
-                attr: true,
-                set: function(value) {
-                    this.querySelector('a[main]').setAttribute('href', value);
-                }
-            },
-            target: {
-                attr: true,
-                set: function(value) {
-                    this.querySelector('a[main]').setAttribute('target', value);
-                }
+export default class {
+    static displayName = 'card';
+    static template = template;
+
+    static properties = {
+        action: {
+            attribute: true,
+            set (el, data) {
+                if (!data.newValue) return;
+                el.querySelector('a[main]').setAttribute('href', data.newValue);
+            }
+        },
+        target: {
+            attribute: true,
+            set (el, data) {
+                if (!data.newValue) return;
+                el.querySelector('a[main]').setAttribute('target', data.newValue);
             }
         }
-    })
+    }
 }

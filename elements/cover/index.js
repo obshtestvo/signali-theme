@@ -1,7 +1,7 @@
-require('./cover.scss')
+import './cover.scss'
+import template from './cover.html'
 
-module.exports = function (componentService) {
-    componentService.register('cover', {
-        template: require('./cover.html')
-    })
+export default class {
+    static displayName = 'cover';
+    static template = template;
 }

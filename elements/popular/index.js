@@ -1,7 +1,7 @@
-require('./popular.scss')
+import './popular.scss'
+import template from './popular.html'
 
-module.exports = function (componentService) {
-    componentService.register('popular', {
-        template: require('./popular.html')
-    })
+export default class {
+    static displayName = 'popular';
+    static template = template;
 }
