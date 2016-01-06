@@ -33,7 +33,7 @@ config.plugins = [
     new ExtractTextPlugin("[name].css"),
 ];
 if (process.env.PRODUCTION) {
-    config.plugins.push(new AggressiveMergingPlugin());
+    //config.plugins.push(new AggressiveMergingPlugin());
     config.plugins.push(new webpack.optimize.DedupePlugin())
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         minimize: true,
@@ -103,19 +103,17 @@ config.module = {
     ]
 };
 
-if (process.env.PRODUCTION) {
-    /**************** POSTCSS module ***************/
-    config.postcss = [autoprefixer({ browsers: [
-        'Android 2.3',
-        'Android >= 4',
-        'Chrome >= 35',
-        'Firefox >= 31',
-        'Explorer >= 9',
-        'iOS >= 7',
-        'Opera >= 12',
-        'Safari >= 7.1',
-    ]})];
-}
+/**************** POSTCSS module ***************/
+config.postcss = [autoprefixer({ browsers: [
+    'Android 2.3',
+    'Android >= 4',
+    'Chrome >= 35',
+    'Firefox >= 31',
+    'Explorer >= 9',
+    'iOS >= 7',
+    'Opera >= 12',
+    'Safari >= 7.1',
+]})];
 
 /**************** File changes watching/monitoring options ***************/
 config.watchOptions = {

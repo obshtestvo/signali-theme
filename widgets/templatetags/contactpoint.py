@@ -24,10 +24,10 @@ def contactpoint_stats():
 @register.inclusion_tag('contact/list/_overview.html')
 def overview(request):
     return {
-        "visitedlast_points": ContactPoint.objects.visited_last()[0:4],
-        "effective_points": ContactPoint.objects.most_effective()[0:4],
-        "accessible_points": ContactPoint.objects.most_accessible()[0:4],
-        "addedlast_points": ContactPoint.objects.added_last()[0:4],
+        "visitedlast_points": ContactPoint.objects.parents().visited_last()[0:4],
+        "effective_points": ContactPoint.objects.parents().most_effective()[0:4],
+        "accessible_points": ContactPoint.objects.parents().most_accessible()[0:4],
+        "addedlast_points": ContactPoint.objects.parents().added_last()[0:4],
         "request": request
     }
 
@@ -50,7 +50,7 @@ def feature_item(request, point, name, compare_to, is_negative, display_type, di
 @register.inclusion_tag('contact/list/_featured_overview.html')
 def featured_overview(request):
     return {
-        "contact_points": ContactPoint.objects.featured()[0:4],
+        "contact_points": ContactPoint.objects.parents().featured()[0:4],
         "request": request
     }
 

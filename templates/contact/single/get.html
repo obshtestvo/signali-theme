@@ -6,7 +6,7 @@
 {% load thumbnail %}
 {% load staticfilepaths %}
 
-{% block title %}{% block facebook-title %}{{ point.title }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
+{% block title %}{% block facebook-title %}{{ point.title_or_organisation }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
 
 {% block facebook-image %}{% spaceless %}
     {% with point.rating|floatformat:"0" as rating %}
@@ -32,14 +32,14 @@
             {% include '_topnav.html' with request=request %}
             <intro density="compact" social-insights>
                 <call-to-action align="left" density="compact">
-                    <h1>{{ point.title }}</h1>
+                    <h1>{{ point.title_or_organisation }}</h1>
                 </call-to-action>
                 <breadcrumb>
                     <crumb action="{% url 'home' %}">Начална страница</crumb>
                     <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">
                         {{ point.category.title }}
                     </crumb>
-                    <crumb>{{ point.title }}</crumb>
+                    <crumb>{{ point.title_or_organisation }}</crumb>
                 </breadcrumb>
                 {% include '_share.html' with request=request %}
             </intro>
@@ -86,7 +86,7 @@
                 {% if point.preview %}
                 {% thumbnail point.preview "280x112" crop="center" as img %}
                 <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
-                     alt="Снимка от сайта на {{ point.title }}"/>
+                     alt="Снимка от сайта на {{ point.title_or_organisation }}"/>
                 {% endthumbnail %}
                 {% else %}
                 <p class="img nopreview"></p>
@@ -116,7 +116,7 @@
                     Към сайта
                 </action-button>
                 {% endif %}
-                <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title }}“ сподели
+                <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title_or_organisation }}“ сподели
                     го:</p>
                 <action-button link invert-mobile type="primary" fill="outlined" color="purple" size="large" align="center"
                                action="#feedback">
