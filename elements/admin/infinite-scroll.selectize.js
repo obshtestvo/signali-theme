@@ -1,6 +1,6 @@
-var $ = require('jquery');
-var selectize = require('selectize/dist/js/standalone/selectize');
-var debounce = require('throttle-debounce').debounce;
+import $ from 'jquery';
+import selectize from 'selectize/dist/js/standalone/selectize';
+import debounce from 'lodash.debounce';
 
 
 var createLoadingMore = function () {
@@ -87,7 +87,7 @@ selectize.define('infinite_scroll', function (options) {
 
 
     this.onSearchChange = (function () {
-        return function (value, params) {
+        return debounce(function (value, params) {
             var fn = self.settings.load;
             if (!fn) return;
             if (value) {
@@ -101,7 +101,7 @@ selectize.define('infinite_scroll', function (options) {
             self.load(function(callback) {
                 fn.apply(self, [params, callback]);
             });
-        };
+        }, 300);
     })();
 });
 

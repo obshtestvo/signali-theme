@@ -1,5 +1,5 @@
-var $ = require('jquery');
-require('./auto-width.selectize.js');
+import $ from 'jquery';
+import './auto-width.selectize.js';
 
 $(function () {
     $('select').each(function () {

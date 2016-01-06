@@ -1,4 +1,4 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
 // extracted from /admin/js/admin/RelatedObjectLookups.js
 window.dismissAddRelatedObjectPopup = function (win, newId, newRepr) {

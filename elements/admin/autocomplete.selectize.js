@@ -1,8 +1,8 @@
-var $ = require('jquery');
-var request = require('ajax/request');
-var selectize = require('selectize/dist/css/selectize.bootstrap2.css');
-require('./infinite-scroll.selectize.js');
-require('./auto-width.selectize.js');
+import $ from 'jquery';
+import request from 'ajax/request';
+import selectize from 'selectize/dist/css/selectize.bootstrap2.css';
+import './infinite-scroll.selectize.js';
+import './auto-width.selectize.js';
 
 var init = function ($element, options) {
     $element.selectize(options);
@@ -19,20 +19,24 @@ var initHeavy = function ($element, settings) {
             autowidth: {},
         },
         preload: true,
-        load: function(params, callback) {
-            request.json(url, function(data) {
-                if (!data) {
-                    callback([]);
-                    return;
-                }
-                $element[0].selectize.trigger('load:response', {
-                    results: data.results,
-                    pagination: {
-                        more: data.more
+        load (params, callback) {
+            request.json({
+                url: url,
+                data: $.extend({field_id: fieldId}, params),
+                callback (data) {
+                    if (!data) {
+                        callback([]);
+                        return;
                     }
-                });
-                callback(data.results);
-            }, $.extend({field_id: fieldId}, params));
+                    $element[0].selectize.trigger('load:response', {
+                        results: data.results,
+                        pagination: {
+                            more: data.more
+                        }
+                    });
+                    callback(data.results);
+                }
+            });
         }
     }, settings));
 };
