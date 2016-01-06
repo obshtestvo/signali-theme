@@ -1,13 +1,15 @@
 @import '../styleguide';
 
 redirect {
-  :fullscreen a {
-    display: flex
-  }
   display: block;
   text-align: center;
   a {
+    @extend %small-font;
+    display: block;
+    overflow: hidden;
     color: $secondary-color-100;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     &:hover {
       text-decoration: underline;
     }
