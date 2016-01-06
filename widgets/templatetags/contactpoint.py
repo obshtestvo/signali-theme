@@ -17,7 +17,7 @@ register = template.Library()
 def contactpoint_stats():
     return {
         "organisations_count": Organisation.objects.all().count(),
-        "areas_count": Area.objects.count_size(exclude=setting('contact_address_areasize')),
+        "areas_count": Area.objects.non_address().exclude(contact_points=None).count(),
     }
 
 

@@ -1,3 +1,4 @@
+{% load location %}
 <div style="display:none;">
     <modal id="addnew"
            {% if not request.user.is_authenticated %}auth-required auth-id="addNewAuth"{% endif %}
@@ -31,11 +32,14 @@
                     {% endfor %}
                     <notification error size="text-field" hidden></notification>
                 </select-dropdown>
-                <select-dropdown id="{{prefix}}_area" name="{{form.operational_area.html_name}}" size="full" required>
+                <select-dropdown
+                        id="{{prefix}}_area"
+                        name="{{form.operational_area.html_name}}"
+                        remote-url="{% url 'area-list-search' %}"
+                        size="full"
+                        required>
                     <label>За проблеми от кой регион се приемат сигнали?</label>
-                    {% for id, label in form.operational_area.field.choices %}
-                    {% if id %}<value id="{{id}}">{{label}}</value>{% endif %}
-                    {% endfor %}
+                    {% featured_areas form.fields.operational_area %}
                     <notification error size="text-field" hidden></notification>
                     <notification information size="text-field">Т.е. къде в страната трябва да е проблема, за да реагира организацията на сигнала</notification>
                 </select-dropdown>

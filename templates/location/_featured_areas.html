@@ -1,0 +1,4 @@
+{% load form %}
+{% for area in areas %}
+    <value id="{{area.id}}" {% if area in selected_areas %}selected{% endif %}>{{area}}</value>
+{% endfor %}

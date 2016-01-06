@@ -75,7 +75,6 @@ export class SelectDropdownElement {
             options.plugins.directajax = {};
         }
         if (el.hasAttribute('remote-url')) {
-            options.plugins.directajax =  {};
             var remoteUrl = el.getAttribute('remote-url');
             var remoteGroup = el.hasAttribute('remote-group') ? el.getAttribute('remote-group') : false;
             options.load = function(query, callback) {
@@ -96,14 +95,14 @@ export class SelectDropdownElement {
                             item = {
                                 title: item.title,
                                 href: item.url,
-                                id: item.url,
+                                id: item.id,
                                 description: item.description,
                                 score: item.score
                             };
                             if (remoteGroup !== false) item.group = remoteGroup;
                             results.push(item);
                         }
-                        if (!(remoteGroup in self.optgroups)) {
+                        if (remoteGroup !== false && !(remoteGroup in self.optgroups)) {
                             self.registerOptionGroup({value: remoteGroup, label: remoteGroup});
                         }
                         callback(results);
@@ -127,10 +126,11 @@ export class SelectDropdownElement {
             }
         });
         if (el.getAttribute('location')=='simple') {
-            el.API = new SimpleAdressPicker($input, options);
-            return;
+            var simpleAdressPicker = new SimpleAdressPicker($input, options);
+            el.API = simpleAdressPicker.pickerAPI;
+        } else {
+            el.API = $input.selectize(options)[0].selectize;
         }
-        el.API = $input.selectize(options)[0].selectize;
         blocking = new Blocker(el.querySelector('.selectize-control'));
         el.API.on('change', function() {
             $el.trigger('change')

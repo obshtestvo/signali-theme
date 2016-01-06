@@ -1,10 +1,17 @@
+{% load location %}
 {% load taxonomy %}
 <form action="{% url 'contact-point-list' %}" method="get">
-    <select-dropdown name="{{form.areas.html_name}}" theme="light" placeholder="Избери от падащото меню" location="simple" priority="low" mainsearch>
+    <select-dropdown
+            name="{{form.areas.html_name}}"
+            theme="light"
+            remote-url="{% url 'area-list-search' %}"
+            placeholder="Избери от падащото меню"
+            location="simple"
+            priority="low"
+            mainsearch
+    >
         <label>Къде се е случило?</label>
-        {% for id, label in form.areas.field.choices %}
-        <value id="{{id}}">{{label}}</value>
-        {% endfor %}
+        {% featured_areas form.fields.areas %}
     </select-dropdown>
     <select-dropdown
             theme="light"
@@ -12,7 +19,9 @@
             placeholder="Избери от падащото меню"
             remote-url="{% url 'contact-point-list-search' %}"
             remote-group="Директни съвпадения"
-            multiple mainsearch>
+            multiple
+            links
+            mainsearch>
         <label>Какви категории и ключови думи описват проблема?</label>
         {% taxonomy_mixed_options request form %}
         <div class="filters">
