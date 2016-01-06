@@ -15,7 +15,7 @@ pagination {
         margin: 0 8px;
         background: $grey-color-60;
         &:hover, &:focus {
-            text-decoration: underline;
+            text-decoration: none;
             background: $grey-color-80;
         }
         &:active {
