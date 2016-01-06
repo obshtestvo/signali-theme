@@ -14,7 +14,7 @@ card {
         overflow: hidden;
         background: $white;
         box-shadow: 0 0 5px 0 $grey-color-80;
-        height: 475px;
+        height: 485px;
         padding: 0 0 60px;
         position: relative;
         & > div {
@@ -74,6 +74,17 @@ card {
             @extend %bodytext-large-font;
             strong {
                 font-weight: 400;
+            }
+        }
+        em {
+            font-size: 12px;
+            line-height: 14px;
+            padding: 4px 20px 0 20px;
+            display: block;
+            font-style: normal;
+            color: #68697a;
+            span {
+                color: #a4a6a6;
             }
         }
     }
