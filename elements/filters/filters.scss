@@ -54,7 +54,7 @@ filters {
                 width: $size;
                 top: 0;
                 right: 0;
-                &.up {
+                &.down {
                     display: block;
                 }
                 svg {
@@ -96,10 +96,10 @@ filters {
             height: auto;
         }
         .switch-icons > div.down {
-            display: block;
+            display: none;
         }
         .switch-icons > div.up {
-            display: none;
+            display: block;
         }
         & > div {
             strong {

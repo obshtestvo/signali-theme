@@ -6,6 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var AggressiveMergingPlugin  = require("webpack/lib/optimize/AggressiveMergingPlugin");
 var pwd = __dirname;
 var devtoolModuleFilenameTemplate = process.platform === "win32" ? "[resource-path]" : "file:///[resource-path]";
+var regexPathSep = process.platform === "win32" ? "\\\\" : "\/";
 
 var config = {};
 
@@ -68,8 +69,13 @@ var svgExtraLoaders = '';
 if (process.env.PRODUCTION) {
     svgExtraLoaders = '!svgo';
 }
+var skipProcessingLoader = "imports?this=>window&module=>false&exports=>false&define=>false";
 config.module = {
     loaders: [
+        {
+            test: /block-ui/,
+            loader: skipProcessingLoader
+        },
         {
             test: /\.modernizrrc$/,
             loader: "modernizr"
@@ -86,7 +92,7 @@ config.module = {
         {test: /\.html$/, loader: "mustache"},
         {test: /\.svg$/, loader: "raw"+svgExtraLoaders},
         {
-            test: /(:?elements\/|node_modules\/skate).+\.js$/,
+            test: new RegExp('(:?elements'+regexPathSep+'|node_modules'+regexPathSep+'skate).+\.js$'),
             loader: 'babel',
             query: {
                 cacheDirectory: true,
