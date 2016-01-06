@@ -9,7 +9,7 @@
                     Избери регион
                 </headline>
                 <text>
-                    <select-dropdown links size="small" density="compact" placeholder="Региони..." placeholder-type="vivid">
+                    <select-dropdown links size="full" density="compact" placeholder="Региони..." placeholder-type="vivid">
                         {% for point_child in point.children.public_base %}
                             <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area }}</value>
                         {% endfor %}
