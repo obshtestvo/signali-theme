@@ -203,6 +203,7 @@ import {
     AuthContainerPatchElement,
     AuthRequiredAttribute,
     SocailAuthElement,
+    ResetPasswordElement,
 } from 'auth'
 Auth.setAdapter(AuthModalAdapter);
 componentService.register(AuthElement);
@@ -211,6 +212,7 @@ componentService.register(AuthContainerAttribute);
 componentService.register(AuthContainerPatchElement);
 componentService.register(AuthRequiredAttribute);
 componentService.register(SocailAuthElement);
+componentService.register(ResetPasswordElement);
 
 import GoogleAnalyticsElement from 'google-analytics';
 componentService.register(GoogleAnalyticsElement);

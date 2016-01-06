@@ -4,6 +4,7 @@ import AuthTriggerElement from './trigger';
 import {AuthContainerAttribute, AuthContainerPatchElement} from './container';
 import AuthRequiredAttribute from './required';
 import SocailAuthElement from './social';
+import ResetPasswordElement from './reset-password';
 
 export {
     Auth,
@@ -13,4 +14,5 @@ export {
     AuthContainerPatchElement,
     AuthRequiredAttribute,
     SocailAuthElement,
+    ResetPasswordElement,
 };

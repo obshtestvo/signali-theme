@@ -1,13 +1,40 @@
 {% extends 'layout.html' %}
+{% load settings %}
+{% load restful %}
+
+
+{% block title %}{% block facebook-title %}{{ point.title_or_organisation }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
+
 {% load i18n %}
 {% block content %}
-  <form action="" method="post">
-       {% csrf_token %}
-        <input type="password" class="form-control email" placeholder="password" required name="new_password1"
-               autofodecus>
-        <input type="password" class="form-control email" placeholder="password" required name="new_password2"
-               autofocus>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">{% blocktrans %}Change password{% endblocktrans %}
-        </button>
-  </form>
+{% include "_loader.html" %}
+<page color="semilight">
+    <cover density="compact">
+        {% include '_topnav.html' with request=request %}
+    </cover>
+
+    <modal-inline animation-container>
+        <modal-screen animation-content>
+            <headline size="large" density="airy" align="center">Забравена парола</headline>
+            <password-reset>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <text-field size="full" id="new_password1" type="password" name="new_password1" minlength="6">
+                        Нова парола
+                        <notification error size="text-field" hidden></notification>
+                    </text-field>
+                    <text-field size="full" id="new_password2" type="password" name="new_password2" validate-equalto-form-sibling="#new_password1" validate-validate-if-empty="true">
+                        Нова парола (пак, за да сте сигурни)
+                        <notification error size="text-field" hidden></notification>
+                    </text-field>
+                    <action-button submit type="primary" fill="solid" color="red">
+                        Смени паролата
+                    </action-button>
+                </form>
+            </password-reset>
+        </modal-screen>
+    </modal-inline>
+
+    {% include "_addnew_prompt.html" with request=request %}
+</page>
 {% endblock %}
