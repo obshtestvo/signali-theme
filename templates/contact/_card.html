@@ -46,7 +46,7 @@
         {% for tag in point.keywords.all|slice:":2" %}
             <a href="{% url 'contact-point-list' %}{% query keywords=tag.pk %}">{{ tag.title }}</a>
         {% endfor %}
-        {% if point.keywords.count >= 2 %}
+        {% if point.keywords.count > 2 %}
         <a href="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}{% endif %}"
            {% if point.is_parent_with_many_children %}target="modal"{% endif %}
         >&hellip;и още {{ point.keywords.count|add:"-2" }}</a>
