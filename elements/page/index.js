@@ -1,4 +1,7 @@
 import './page.scss'
+const urlParser = document.createElement('a');
+const currentDomain = window.location.host;
+var url;
 
 export default class {
     static displayName = 'page';
@@ -8,7 +11,12 @@ export default class {
         setTimeout(function(){
             loader.parentNode.removeChild(loader)
         }, 350);
+        $(document).delegate( "a", "focus", function() {
+            url = this.href;
+        });
         window.onbeforeunload = function() {
+            urlParser.href = url;
+            if (urlParser.hostname != currentDomain) return;
             originalLoaderParent.appendChild(loader);
             el.removeAttribute('resolved')
         }
