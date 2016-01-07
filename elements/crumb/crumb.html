@@ -1,13 +1,13 @@
 <li>
     <span class="icon">{{{arrow}}}</span>
-    {{^extended}}
+    {{#action}}
     <a href="{{action}}">
         <content></content>
     </a>
-    {{/extended}}
-    {{#extended}}
+    {{/action}}
+    {{^action}}
     <span class="dropdown">
         <content select="select-dropdown"></content>
     </span>
-    {{/extended}}
+    {{/action}}
 </li>
