@@ -32,7 +32,22 @@ select-dropdown {
     $tag-selected-background: $secondary-color;
     $focus-background: #fefbec;
     &[density="compact"] {
-        margin: 0px;
+        margin: 0;
+    }
+    &[density="micro"] {
+        margin: 0;
+        $padding-vertical-small: 5px;
+        $padding-horizontal-small: 4px;
+        .selectize-control.single .selectize-input {
+            padding: $padding-vertical-small $padding-horizontal-small;
+        }
+        .selectize-dropdown [data-selectable] {
+            padding: $padding-vertical-small $padding-horizontal-small;
+        }
+        .selectize-dropdown, .selectize-input,
+        .selectize-input input {
+            @extend %small-font ;
+        }
     }
     select {
         display: none;

@@ -20,8 +20,8 @@ crumb {
     .dropdown {
         display: inline-block;
         position: relative;
-        margin-top: -17px;
-        bottom: -17px;
+        margin-top: -10px;
+        bottom: -10px;
     }
     a {
         @extend %small-font;
@@ -46,8 +46,9 @@ crumb {
 }
 
 @media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
-    crumb { display: block;
-        a, .icon {
+    crumb {
+        display: block;
+        a, .icon, &[hide-on-small] {
             display: none;
         }
         li {

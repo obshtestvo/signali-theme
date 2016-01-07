@@ -39,16 +39,37 @@
                     <crumb action="{% url 'contact-point-list' %}{% query categories=point.category.pk %}">
                         {{ point.category.title }}
                     </crumb>
-                    <crumb>{{ point.title_or_organisation }}</crumb>
+                    {% if point.parent.is_parent_with_many_children %}
+                        <crumb {% if not point.title %} hide-on-small {% endif %}>{{ point.organisation.title }}</crumb>
+                        {% if point.title %}
+                        <crumb hide-on-small >{{ point.title }}</crumb>
+                        {% endif %}
+                        <crumb extended>
+                            <select-dropdown links size="small" density="micro" align="left">
+                                {% for point_child in point.parent.children.public %}
+                                    <value
+                                            id="{{ point_child.slug }}"
+                                            href="{% url 'contact-point' slug=point_child.slug %}"
+                                            {% if point.operational_area == point_child.operational_area %} selected {% endif %}
+                                    >{{ point_child.operational_area }}</value>
+                                {% endfor %}
+                            </select-dropdown>
+                        </crumb>
+                    {% else %}
+                        <crumb>{{ point.title }}</crumb>
+                    {% endif %}
                 </breadcrumb>
                 {% include '_share.html' with request=request %}
             </intro>
         </cover>
         <resume>
+            {% if not point.url %}
+                <notification information color="white" size="medium">
+                    <p>Този сайт няма форма за подаване онлайн. За да съобщите за проблем изпрате имейл към
+                        <a href="mailto:{{point.email}}">{{point.email}}</a></p>
+                </notification>
+            {% endif %}
             <article>
-                {% if not point.url and point.email %}
-                <p>Пратете имейл на адрес: <strong>{{point.email}}</strong></p>
-                {% endif %}
                 {% if point.description %}
                 <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
                 {{ point.description | safe }}
@@ -115,6 +136,16 @@
                                {% endif %}>
                     Към сайта
                 </action-button>
+                {% else %}
+                    <action-button link
+                                   type="primary"
+                                   fill="solid"
+                                   color="red"
+                                   size="gigalarge"
+                                   align="center"
+                                   action="mailto:{{ point.email }}">
+                        Изпрати имейл
+                    </action-button>
                 {% endif %}
                 <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title_or_organisation }}“ сподели
                     го:</p>
