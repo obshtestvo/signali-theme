@@ -6,7 +6,7 @@
 {% load thumbnail %}
 {% load staticfilepaths %}
 
-{% block title %}{% block facebook-title %}{{ point.title_or_organisation }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
+{% block title %}{% block facebook-title %}{{ point.specific_title_or_organisation }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
 
 {% block facebook-image %}{% spaceless %}
     {% with point.rating|floatformat:"0" as rating %}
@@ -32,7 +32,9 @@
             {% include '_topnav.html' with request=request %}
             <intro density="compact" social-insights>
                 <call-to-action align="left" density="compact">
-                    <h1>{{ point.title_or_organisation }}</h1>
+                    <h1>
+                        {{ point.specific_title_or_organisation }}
+                    </h1>
                 </call-to-action>
                 <breadcrumb>
                     <crumb action="{% url 'home' %}">Начална страница</crumb>
@@ -51,7 +53,7 @@
                                             id="{{ point_child.slug }}"
                                             href="{% url 'contact-point' slug=point_child.slug %}"
                                             {% if point.operational_area == point_child.operational_area %} selected {% endif %}
-                                    >{{ point_child.operational_area }}</value>
+                                    >{{ point_child.operational_area.title }}</value>
                                 {% endfor %}
                             </select-dropdown>
                         </crumb>
@@ -65,8 +67,8 @@
         <resume {% if not point.parent.is_parent_with_many_children %}has-area{% endif %}>
             {% if not point.url %}
                 <notification information color="white" size="medium">
-                    <p>Този сайт няма форма за подаване онлайн. За да съобщите за проблем изпрате имейл към
-                        <a href="mailto:{{point.email}}">{{point.email}}</a></p>
+                    <p>Този сайт няма форма за подаване онлайн. За да съобщите за проблем изпрате имейл към:
+                        <br><a href="mailto:{{point.email}}">{{point.email}}</a></p>
                 </notification>
             {% endif %}
             {% if point.description %}
@@ -77,12 +79,12 @@
             {% endif %}
             {% if not point.parent.is_parent_with_many_children %}
             <section class="locations">
-                <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}">{{ point.operational_area }}</a>
+                <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}">{{ point.operational_area.title }}</a>
             </section>
             {% endif %}
             <section class="tags">
                 {% for k in point.keywords.all %}
-                <a href="#">{{ k.title }}</a>
+                <a href="{% url 'contact-point-list' %}{% query keywords=k.pk %}">{{ k.title }}</a>
                 {% endfor %}
             </section>
             <features>
@@ -109,7 +111,7 @@
                 {% if point.preview %}
                 {% thumbnail point.preview "280x112" crop="center" as img %}
                 <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
-                     alt="Снимка от сайта на {{ point.title_or_organisation }}"/>
+                     alt="Снимка от сайта на {{ point.specific_title_or_organisation }}"/>
                 {% endthumbnail %}
                 {% else %}
                 <p class="img nopreview"></p>
@@ -149,7 +151,7 @@
                         Изпрати имейл
                     </action-button>
                 {% endif %}
-                <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.title_or_organisation }}“ сподели
+                <p>{% if point.url %}или ако{% else %}Ако {% endif %} вече имаш опит с „{{ point.specific_title_or_organisation }}“ сподели
                     го:</p>
                 <action-button link invert-mobile type="primary" fill="outlined" color="purple" size="large" align="center"
                                action="#feedback">

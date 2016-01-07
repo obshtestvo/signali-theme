@@ -25,12 +25,15 @@
 >
     {% if point.preview %}
         {% thumbnail point.preview "280x123" crop="center" as img %}
-            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.title_or_organisation }}"/>
+            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Снимка от сайта на {{ point.specific_title_or_organisation }}"/>
         {% endthumbnail %}
     {% else %}
         <p class="img nopreview"></p>
     {% endif %}
     <strong>{{ point.title_or_organisation|truncatechars:50 }}</strong>
+    {% if point.title %}
+    <em><span>към</span> {{ point.organisation.title }}</em>
+    {% endif %}
     <card-item type="category">
         <strong>категория</strong>
         <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"

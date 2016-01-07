@@ -4,7 +4,7 @@
         method="post"
         id="feedback"
 >
-    <headline size="small" density="compact">Ако вече си подал сигнал, дай своята оценка за „{{contactpoint.title_or_organisation}}“</headline>
+    <headline size="small" density="compact">Ако вече си подал сигнал, дай своята оценка за „{{contactpoint.specific_title_or_organisation}}“</headline>
     {% csrf_token %}
     <input type="hidden" name="prefix" value="{{prefix}}"/>
     <input type="hidden" name="submission" value="new_feedback"/>
