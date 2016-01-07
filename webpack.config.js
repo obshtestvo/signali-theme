@@ -3,7 +3,6 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var AggressiveMergingPlugin  = require("webpack/lib/optimize/AggressiveMergingPlugin");
 var pwd = __dirname;
 var devtoolModuleFilenameTemplate = process.platform === "win32" ? "[resource-path]" : "file:///[resource-path]";
 var regexPathSep = process.platform === "win32" ? "\\\\" : "\/";
@@ -33,7 +32,6 @@ config.plugins = [
     new ExtractTextPlugin("[name].css"),
 ];
 if (process.env.PRODUCTION) {
-    //config.plugins.push(new AggressiveMergingPlugin());
     config.plugins.push(new webpack.optimize.DedupePlugin())
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         minimize: true,
