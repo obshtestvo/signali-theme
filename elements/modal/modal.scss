@@ -37,25 +37,17 @@ modal {
     }
     .footwrap {
         position: relative;
-        background: $grey-color-60;
-        padding: 20px 40px;
-        border-radius: 0 0 4px 4px;
+
     }
     footer {
-        margin: 0 40px 20px;
         position: relative;
         clear: both;
         &[for="login"] {
             margin: 0;
-            font-size: 14px;
-            text-align: center;
-            a {
-                color: $white;
-                &:hover {
-                    text-decoration: underline;
-                    color: rgba($white, .8);
-                }
-            }
+            background: $grey-color-60;
+            padding: 20px 40px;
+            border-radius: 0 0 4px 4px;
+            text-align: right;
         }
     }
     &[density="airy"] {
@@ -101,20 +93,23 @@ modal-screen {
                 right: 10px;
                 top: 10px;
                 z-index: 20;
-                svg{
+                svg {
                     fill: $main-color-100;
                 }
-                &:hover{
-                    svg{
+                &:hover {
+                    svg {
                         fill: $main-color-hover;
                     }
                 }
-                &:active{
-                    svg{
+                &:active {
+                    svg {
                         fill: $main-color-active;
                     }
                 }
             }
+        }
+        footer[for="login"] {
+            text-align: center;
         }
     }
 }
