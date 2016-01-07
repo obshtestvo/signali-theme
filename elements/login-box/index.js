@@ -16,7 +16,7 @@ export default class {
     static include = { iconUser }
 
     static ready (el) {
-        if (is_touch_device()) {
+        if (!el.hasAttribute('anonymous') && is_touch_device()) {
             var trigger = el.querySelector('a');
             trigger.removeAttribute('href');
             trigger.removeAttribute('target');
