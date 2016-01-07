@@ -7,10 +7,12 @@
         </div>
         <content select="article"></content>
         <div class="tags">
+            {{#has-area}}
             <section>
                 <div class="icon">{{{pinIcon}}}</div>
                 <content select=".locations"></content>
             </section>
+            {{/has-area}}
 
             <section>
                 <div class="icon">{{{tagsIcon}}}</div>

@@ -56,32 +56,34 @@
                             </select-dropdown>
                         </crumb>
                     {% else %}
-                        <crumb>{{ point.title }}</crumb>
+                        <crumb>{{ point.title_or_organisation }}</crumb>
                     {% endif %}
                 </breadcrumb>
                 {% include '_share.html' with request=request %}
             </intro>
         </cover>
-        <resume>
+        <resume {% if not point.parent.is_parent_with_many_children %}has-area{% endif %}>
             {% if not point.url %}
                 <notification information color="white" size="medium">
                     <p>Този сайт няма форма за подаване онлайн. За да съобщите за проблем изпрате имейл към
                         <a href="mailto:{{point.email}}">{{point.email}}</a></p>
                 </notification>
             {% endif %}
+            {% if point.description %}
             <article>
-                {% if point.description %}
                 <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
                 {{ point.description | safe }}
-                {% endif %}
             </article>
+            {% endif %}
+            {% if not point.parent.is_parent_with_many_children %}
+            <section class="locations">
+                <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}">{{ point.operational_area }}</a>
+            </section>
+            {% endif %}
             <section class="tags">
                 {% for k in point.keywords.all %}
                 <a href="#">{{ k.title }}</a>
                 {% endfor %}
-            </section>
-            <section class="locations">
-
             </section>
             <features>
                 <headline size="small" density="tight">Хубавото е че:</headline>
