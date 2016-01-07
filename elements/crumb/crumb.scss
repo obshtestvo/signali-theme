@@ -34,14 +34,13 @@ crumb {
             display: none;
         }
     }
-    &:last-child {
+    .no-action {
+        color: $main-color-40;
+        pointer-events: none;
+        cursor: default;
+        @extend %small-font;
         .icon svg {
             fill: $main-color-40;
-        }
-        a {
-            color: $main-color-40;
-            pointer-events: none;
-            cursor: default;
         }
     }
 }

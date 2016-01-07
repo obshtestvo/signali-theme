@@ -5,9 +5,16 @@
         <content></content>
     </a>
     {{/action}}
+
     {{^action}}
+    <span class="no-action">
+        <content></content>
+    </span>
+    {{/action}}
+
+    {{#extended}}
     <span class="dropdown">
         <content select="select-dropdown"></content>
     </span>
-    {{/action}}
+    {{/extended}}
 </li>
