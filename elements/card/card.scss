@@ -83,6 +83,7 @@ card {
             display: block;
             font-style: normal;
             color: #68697a;
+            @extend %text-hidden;
             span {
                 color: #a4a6a6;
             }
