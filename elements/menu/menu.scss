@@ -97,26 +97,42 @@ menu .trigger {
 
 }
 
-@media screen and (max-width: 940px), screen and (max-device-width: 940px) {
+
+@media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {
+    menu {
+        .categories {
+            width: 65%;
+        }
+    }
+}
+
+@media screen and (max-width: $small-desktop-width), screen and (max-device-width: $small-desktop-width) {
+    menu {
+        .categories {
+            width: 75%;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
     menu {
         .categories {
             width: 85%;
         }
     }
 }
-
-@media screen and (max-width: 640px), screen and (max-device-width: 640px) {
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
     menu {
-        .trigger > span {
-            display: none;
+        .categories {
+            width: 100%;
         }
     }
 }
 
-@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
     menu {
-        .categories {
-            width: 100%;
+        .trigger > span {
+            display: none;
         }
     }
 }
