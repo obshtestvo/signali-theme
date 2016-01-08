@@ -463,10 +463,3 @@ select-dropdown {
     }
 }
 
-@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
-    select-dropdown {
-        &[mainsearch] > label {
-            display: none;
-        }
-    }
-}

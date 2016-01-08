@@ -132,10 +132,74 @@ filters {
                     fill: #fff;
                 }
             }
-            &:hover{
+            &:hover {
                 color: $secondary-color-hover;
-                svg{
+                svg {
                     fill: $secondary-color-hover;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+    filters {
+        &[expandable] {
+            padding: 0 0 40px;
+            [content] {
+                max-width: 100%;
+            }
+            & > div {
+                float: none;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                margin: 0;
+                height: 30px;
+                padding: 9px 0;
+                em, strong {
+                    float: none;
+                }
+                .switch-icons {
+                    width: 17px;
+                    height: 14px;
+                    padding: 0px 8px;
+                    top: 8px;
+                    box-shadow: 0 -2px 0 3px $body-text-color;
+                    & > div {
+                        right: 2px;
+                        top: 1px;
+                    }
+                }
+                &:before {
+                    display: block;
+                    top: 49%;
+                    left: 120px;
+                }
+            }
+            &[collapsed] {
+                & > div:before {
+                    left: 155px;;
+                }
+            }
+        }
+        &[theme="light"] {
+            div {
+                & > .switch-icons {
+                    background: $white;
+                    border-radius: 2px;
+                    svg {
+                        fill: $body-text-color;
+                    }
+                }
+
+                &:hover {
+                    &:before {
+                        background: $secondary-color-100;
+                    }
+                    & > .switch-icons {
+                        background: $secondary-color-100;
+                    }
                 }
             }
         }
