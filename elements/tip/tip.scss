@@ -114,6 +114,12 @@ tip {
             fill: $tip-color-light;
         }
     }
+    &[enlargement="compact"]{
+        .helper-wrap{
+            margin: 0;
+            bottom: -1px;
+        }
+    }
     //.content {
     //    @extend %tooltip;
     //}
