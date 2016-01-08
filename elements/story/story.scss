@@ -5,12 +5,12 @@ $page-padding: 50px;
 story {
     @extend %wrapper;
     display: block;
-    padding-bottom: $page-padding;
+    padding: ($page-padding - 20px) 20px $page-padding 20px;
     & > section {
+        margin-top: 20px;
         max-width: 100%;
         line-height: 0;
         img {
-            margin: $page-padding 0 0 0;
             width: 100%;
         }
     }
