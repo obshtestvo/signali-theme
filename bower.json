@@ -6,8 +6,8 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "modernizr": "2.8.3",
     "selectize": "0.12.1",
-    "sass-burger": "~1.1.2"
+    "sass-burger": "~1.1.2",
+    "tooltipster": "~3.3.0"
   }
 }

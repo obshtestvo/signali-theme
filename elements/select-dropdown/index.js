@@ -7,6 +7,7 @@ import extractData from './data-extract';
 import 'selectize/dist/js/standalone/selectize';
 import './selectize.filtering';
 import './selectize.directajax';
+import './selectize.touch';
 import './select-dropdown.scss';
 import removeButtonLabel from 'icons/times-circle.svg';
 
@@ -58,6 +59,7 @@ export class SelectDropdownElement {
             },
             plugins: {
                 //no_results: {}
+                touch: {}
             }
         };
 
@@ -119,12 +121,6 @@ export class SelectDropdownElement {
                 filters: $filters
             };
         }
-        $(document).on('touchend click', function(event) {
-            if(!$(event.target).closest($el).length) {
-                el.API.blur();
-                el.API.close();
-            }
-        });
         if (el.getAttribute('location')=='simple') {
             var simpleAdressPicker = new SimpleAdressPicker($input, options);
             el.API = simpleAdressPicker.pickerAPI;

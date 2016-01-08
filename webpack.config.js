@@ -71,7 +71,7 @@ var skipProcessingLoader = "imports?this=>window&module=>false&exports=>false&de
 config.module = {
     loaders: [
         {
-            test: /block-ui/,
+            test: /block-ui|tooltipster/,
             loader: skipProcessingLoader
         },
         {

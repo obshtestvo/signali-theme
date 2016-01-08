@@ -1,18 +1,93 @@
 @import '../styleguide';
-
 $tip-color-dark: #101240;
 $tip-color-light: $white;
 $border-width: 9px;
+@import './_tooltipster';
+
 /*How To Use*/
 /*Colors: light, dark */
 /*Size: large - 180px , medium - 160px, small - 100 */
 /*Align: center, left, righr */
 [tip-container] {
-    position: relative;
-    &[no-icon]{
-        text-decoration: underline;
-        cursor: pointer;
+    &[no-icon] {
+        text-decoration: dotted;
+        cursor: help;
     }
+}
+
+//%tooltip {
+//    @extend %large-radius, %label-font;
+//    display: block;
+//    padding: 16px 20px;
+//    margin-bottom:$border-width;
+//    position: relative;
+//    &:after {
+//        display: block;
+//        position: absolute;
+//        content: '';
+//        border-style: solid;
+//        width: 0;
+//        height: 0;
+//    }
+//    &[color="light"] {
+//        background: rgba($tip-color-light, 0.9);
+//        color: $tip-color-dark;
+//        &:after {
+//            border-color: rgba($tip-color-light, 0.9);
+//        }
+//    }
+//    &[color="dark"] {
+//        background: rgba($tip-color-dark, 0.9);
+//        color: $tip-color-light;
+//        &:after {
+//            border-color: rgba($tip-color-dark, 0.9);
+//        }
+//    }
+//    &[size="medium"] {
+//        width: 340px;
+//    }
+//    &[size="extralarge"] {
+//        width: 720px;
+//    }
+//    &[size="large"] {
+//        width: 480px;
+//    }
+//    &[size="small"] {
+//        width: 220px;
+//    }
+//    &[position="top"]:after{
+//        @extend %center-x;
+//        bottom: -$border-width;
+//        border-width: $border-width $border-width 0 $border-width;
+//        border-left-color: transparent;
+//        border-right-color: transparent;
+//    }
+//    &[position="left"]:after{
+//        @extend %center-y;
+//        right: -$border-width;
+//        border-width: $border-width 0 $border-width $border-width ;
+//        border-top-color: transparent;
+//        border-bottom-color: transparent;
+//    }
+//    &[position="bottom"]:after{
+//        @extend %center-x;
+//        top: -$border-width;
+//        border-width: 0 $border-width $border-width $border-width;
+//        border-left-color: transparent;
+//        border-right-color: transparent;
+//    }
+//    &[position="right"]:after {
+//        @extend %center-y;
+//        left: -$border-width;
+//        border-width: $border-width $border-width $border-width 0   ;
+//        border-top-color: transparent;
+//        border-bottom-color: transparent;
+//    }
+//}
+
+
+.tooltipster-base .content {
+    //@extend %tooltip;
 }
 
 tip {
@@ -29,97 +104,17 @@ tip {
         cursor: pointer;
         margin: 0 0 -1px 0;
     }
-    .content {
-        position: absolute;
-        @extend %large-radius, %label-font;
-        padding: 16px 20px;
-        &:after {
-            display: block;
-            position: absolute;
-            content: '';
-            border-style: solid;
-            width: 0;
-            height: 0;
-        }
-    }
     &[color="dark"] {
         svg{
             fill: $tip-color-dark;
         }
-        .content {
-            background: rgba($tip-color-dark, 0.9);
-            color: $tip-color-light;
-            &:after {
-                border-color: rgba($tip-color-dark, 0.9);
-            }
-        }
     }
     &[color="light"] {
-        svg{
+        svg {
             fill: $tip-color-light;
         }
-        .content {
-            background: rgba($tip-color-light, 0.9);
-            color: $tip-color-dark;
-            &:after {
-                border-color: rgba($tip-color-light, 0.9);
-            }
-        }
     }
-    &[size="small"] .content{
-        width: 220px;
-    }
-    &[size="medium"] .content{
-        width: 340px;
-    }
-    &[size="large"] .content{
-        width: 480px;
-    }
-    &[size="extralarge"] .content{
-        width: 720px;
-    }
-    &[position="top"] .content {
-        @extend %center-x;
-        top: 0;
-        &:after{
-            @extend %center-x;
-            bottom: -$border-width;
-            border-width: $border-width $border-width 0 $border-width;
-            border-left-color: transparent;
-            border-right-color: transparent;
-        }
-    }
-    &[position="left"] .content {
-        @extend %center-y;
-        right: $border-width*3;
-        &:after{
-            @extend %center-y;
-            right: -$border-width;
-            border-width: $border-width 0 $border-width $border-width ;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-        }
-    }
-    &[position="bottom"] .content {
-        @extend %center-x;
-        bottom: 0;
-        &:after{
-            @extend %center-x;
-            top: -$border-width;
-            border-width: 0 $border-width $border-width  $border-width;
-            border-left-color: transparent;
-            border-right-color: transparent;
-        }
-    }
-    &[position="right"] .content {
-        @extend %center-y;
-        left: $border-width*3;
-        &:after{
-            @extend %center-y;
-            left: -$border-width;
-            border-width: $border-width $border-width $border-width 0   ;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-        }
-    }
+    //.content {
+    //    @extend %tooltip;
+    //}
 }
