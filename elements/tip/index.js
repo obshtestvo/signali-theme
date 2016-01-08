@@ -22,6 +22,12 @@ export default class {
             isTouchMoving = true;
         });
 
+        $container.mousedown(function() {
+            if (!$el.hasClass("active")) {
+                $el.addClass('active');
+                $container.tooltipster('show')
+            }
+        });
         $document.on('touchend mousedown', function(e) {
             if(!isTouchMoving && !$(e.target).closest('.tooltipster-base').length && $el.hasClass("active")) {
                 $container.tooltipster('hide')
@@ -40,12 +46,6 @@ export default class {
             autoClose: false,
             trigger: 'custom',
             content: $(el.querySelector('.content')).clone().removeAttr('hidden').removeAttr('style')
-        });
-        $container.click(function() {
-            if (!$el.hasClass("active")) {
-                $el.addClass('active');
-                $container.tooltipster('show')
-            }
         });
     }
 }
