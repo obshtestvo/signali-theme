@@ -1,0 +1,1082 @@
+<!doctype html>
+<html class="no-js" lang="bg" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="robots" content="all"/>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home</title>
+    <meta name="description" content="Signali.bg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="build/app.css">
+    <script src="build/head.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+Unlucky
+<![endif]-->
+<loader target="page"></loader>
+<page color="semilight">
+    <cover density="airy" src="test/base-header-background.jpg">
+        <top-nav>
+            <menu>
+                Категории
+                <menu-column>
+                    <h2>Граждански</h2>
+                    <ul>
+                        <li><a href="#">Административни неуреди</a></li>
+                        <li><a href="#">Лекарски злоупотреби</a></li>
+                        <li><a href="#">Паркиране</a></li>
+                        <li><a href="#">Интелектуална собственост</a></li>
+                        <li><a href="#">Тютюнопушене на обществени места</a></li>
+                        <li>
+                            <action-button helper density="comfortable" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Престъпност</h2>
+                    <ul>
+                        <li><a href="#">Корупция</a></li>
+                        <li><a href="#">Измами</a></li>
+                        <li><a href="#">Кражби</a></li>
+                        <li><a href="#">Пътно-транспортни</a></li>
+                        <li><a href="#">Бракониерство</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Други</h2>
+                    <ul>
+                        <li><a href="#">Загубени вещи</a></li>
+                        <li><a href="#">Интернет измами</a></li>
+                        <li><a href="#">Бедствия</a></li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Градски</h2>
+                    <ul>
+                        <li><a href="#">Дупки по пътищата</a></li>
+                        <li><a href="#">Опасни елементи</a></li>
+                        <li><a href="#">Натоварено крастовище</a></li>
+                        <li><a href="#">Бездомни кучета</a></li>
+                        <li><a href="#">Велосипедни неуредици</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <menu-column>
+                    <h2>Потребителски</h2>
+                    <ul>
+                        <li><a href="#">ВиК</a></li>
+                        <li><a href="#">Електроснабдяване</a></li>
+                        <li><a href="#">Сметки</a></li>
+                        <li><a href="#">Отказана гаранция</a></li>
+                        <li><a href="#">Проблеми с договори</a></li>
+                        <li>
+                            <action-button helper density="cozy" align="left" action="google.com">
+                                виж всички
+                            </action-button>
+                        </li>
+                    </ul>
+                </menu-column>
+                <a href="www.go-to.all.com/all/more-all/3rd-level-more/so-many-levels-more">Виж всички (143)</a>
+            </menu>
+            <login-box anonymous action="#auth">
+                Вход
+            </login-box>
+            <login-box action="#settings">
+                <img src="">
+                <strong>Boyan Stoychev</strong>
+                <ul>
+                    <li><a href="#settings" target="modal" settings-trigger>Настройки</a></li>
+                    <li><a href="#">Изход</a></li>
+
+                </ul>
+            </login-box>
+            <logo align="center-x" action="home" color="light" size="large"></logo>
+            <action-button link density="compact" type="primary" fill="solid" align="left" color="transparent"
+                           size="extrasmall"
+                           action="google.com">
+                Сподели опит
+            </action-button>
+            <action-button link type="primary" fill="outlined" align="left" color="white" size="small"
+                           action="google.com">
+                добави сайт
+            </action-button>
+        </top-nav>
+        <intro density="airy">
+            <call-to-action align="center" density="airy">
+                <h1>Пoдай сигнал</h1>
+
+                <p>Намери и подай сигнал към над
+                    <underline>121</underline>
+                    институции в над
+                    <underline>23</underline>
+                    области.
+                </p>
+            </call-to-action>
+            <form action="">
+                <select-dropdown id="searchArea" name="areas" location="simple" mainsearch theme="light" priority="low">
+                    <label>Mестност, в която се е случило:</label>
+
+                    <value id="1">Област София (Градска община)</value>
+
+                    <value id="2">Столична община (Област)</value>
+
+                    <value id="3">Община средец (Квартална община)</value>
+
+                    <value id="4">Цялата страна (Национална)</value>
+
+                    <value id="7">гр. София (Град)</value>
+
+                    <value id="8">Благоевград (Град)</value>
+
+                    <value id="9">Бургас (Град)</value>
+
+                    <value id="10">Пловдив (Град)</value>
+
+                    <value id="11">Варна (Град)</value>
+
+                    <value id="12">Русе (Град)</value>
+
+                    <value id="13">Стара Загора (Град)</value>
+
+                </select-dropdown>
+                </select-dropdown>
+                <select-dropdown id="mainsearch" multiple mainsearch theme="light" priority="medium">
+                    <label>За какво се отнася:</label>
+
+
+                    <value
+                            id="2"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-2"
+                            input="categories">Корупция
+                    </value>
+
+                    <value
+                            id="3"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-3"
+                            input="categories">Измами
+                    </value>
+
+                    <value
+                            id="4"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-4"
+                            input="categories">Пътно-транспортни
+                    </value>
+
+                    <value
+                            id="5"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-5"
+                            input="categories">Изборни нарушения
+                    </value>
+
+                    <value
+                            id="6"
+                            suffix="(Престъпност)"
+                            group="Категории"
+                            site-wide-id="taxonomy-category-6"
+                            input="categories">Бракониерство
+                    </value>
+
+
+                    <value
+                            id="1"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-1"
+                            input="keywords">Сеч
+                    </value>
+
+                    <value
+                            id="2"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-2"
+                            input="keywords">Гора
+                    </value>
+
+                    <value
+                            id="3"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-3"
+                            input="keywords">Пушене
+                    </value>
+
+                    <value
+                            id="4"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-4"
+                            input="keywords">Катастрофа
+                    </value>
+
+                    <value
+                            id="5"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-5"
+                            input="keywords">Надценка
+                    </value>
+
+                    <value
+                            id="6"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-6"
+                            input="keywords">Счупен продукт
+                    </value>
+
+                    <value
+                            id="7"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-7"
+                            input="keywords">Кражба
+                    </value>
+
+                    <value
+                            id="8"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-8"
+                            input="keywords">Заплаха
+                    </value>
+
+                    <value
+                            id="9"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-9"
+                            input="keywords">Проблеми с работодателя
+                    </value>
+
+                    <value
+                            id="10"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-10"
+                            input="keywords">Проблеми със служители
+                    </value>
+
+                    <value
+                            id="11"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-11"
+                            input="keywords">Расизъм
+                    </value>
+
+                    <value
+                            id="12"
+                            group="Теми"
+                            site-wide-id="taxonomy-keyword-12"
+                            input="keywords">Ксенофобия
+                    </value>
+
+
+                    <div class="filters">
+                        <p>Допълнителни опции:</p>
+                        <section>
+                            <checkbox id="register" name="register">Не изисква регистрация</checkbox>
+                            <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
+                            <action-button helper density="cozy" align="right" action="/contact-points/">
+                                <span>... още с</span> подробно търсене
+                            </action-button>
+                        </section>
+                    </div>
+                </select-dropdown>
+                <action-button button type="primary" fill="solid" color="red" size="medium" action="google.com"
+                               mainsearch>
+                    търси
+                </action-button>
+
+            </form>
+            <popular>
+                <headline size="small" density="airy">Популярни теми</headline>
+                <a href="#" color="purple">Бездомни кучета</a>
+                <a href="#" color="blue">Пътно-транспортни</a>
+                <a href="#" color="green">Насилие</a>
+                <a href="#" color="yellow">Дупки</a>
+                <a href="#" color="purple">Бездомни кучета</a>
+                <a href="#" color="blue">Пътно-транспортни</a>
+                <a href="#" color="red">Пътно-транспортни</a>
+                <a href="#" color="green">Насилие</a>
+                <a href="#" color="yellow">Дупки по пътищата</a>
+                <a href="#" color="purple">Бездомни кучета</a>
+                <a href="#" color="blue">Пътно-транспортни</a>
+                <a href="#" color="green">Насилие</a>
+            </popular>
+        </intro>
+    </cover>
+    <featured>
+        <cards-area essential density="negative-compact">
+            <header>
+                <headline size="large" align="center" density="comfortable">Популярни сайтове</headline>
+                <tabs align="center">
+                    <li><a href="#">София</a></li>
+                    <li><a href="#">Пловдив</a></li>
+                    <li><a class="active" href="#">Варна</a></li>
+                    <li><a href="#">Бургас</a></li>
+                    <li><a href="#">Стара загора</a></li>
+                </tabs>
+            </header>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="1" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="3" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <action-button helper autoclear density="airy" align="right" action="google.com">
+                <span>или</span>виж всички
+            </action-button>
+        </cards-area>
+        <cards-area essential density="compact">
+            <header>
+                <headline size="large" align="center" density="compact">Изборни нарушения</headline>
+            </header>
+            <card action="gogo">
+                <img src="test/logo1.jpg" alt=""/>
+                <strong>Държавно Горско Стопанство гр. Враца</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo2.png" alt=""/>
+                <strong>Гранична полиция</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card action="go">
+                <img src="test/logo3.jpg" alt=""/>
+                <strong>Омбудсман Република България</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+            <card>
+                <img src="test/logo4.jpg" alt=""/>
+                <strong>Гореща линия за безопасен Интернет</strong>
+                <em><span>към</span> Агенция за социално подпомагане</em>
+                <card-item type="category">
+                    <strong>категория</strong>
+                    <a href="#">Тютюнопушене на обществени места</a>
+                </card-item>
+                <card-item type="location">
+                    <strong>местонахождение</strong>
+                    <a href="#">София - град</a>
+                </card-item>
+                <card-item type="tags">
+                    <strong>етикети</strong>
+                    <a href="google.com">конфликт на интереси</a>
+                    <a href="google.com">полиция</a>
+                    <a href="google.com">граница</a>
+                    <a href="google.com">връзка</a>
+                </card-item>
+                <card-item type="rating">
+                    <strong>Рейтинг</strong>
+                    <rating value="4" size="small" align="left">
+                        <a class="comments" href="#">(14 коментара)</a>
+                    </rating>
+                </card-item>
+                <action-button link type="secondary" fill="solid" color="red" size="extralarge" action="{{action}}">
+                    Подаване на сигнал
+                </action-button>
+            </card>
+
+            <action-button helper autoclear density="airy" align="right" action="google.com">
+                <span>или</span>виж всички
+            </action-button>
+
+        </cards-area>
+        <donation>
+            <p>Този сайт се задвижва благодарение на неговите потребители. Благодарим!</p>
+            <action-button link type="primary" fill="outlined" color="white" align="center" action="#addnew"
+                           target="modal">
+                Добави
+            </action-button>
+        </donation>
+    </featured>
+    <footer-wrapper>
+        <logo action="home" color="dark" size="medium" align="right"></logo>
+        <footer-navigation>
+            <footer-column>
+                <h5>За проекта</h5>
+                <li><a href="#">За нас</a></li>
+                <li><a href="#">За контакти</a></li>
+                <li><a href="#">За Общество.БГ</a></li>
+            </footer-column>
+            <footer-column emphasis>
+                <h5>Избрани категории</h5>
+                <li><a href="#">Бракониерство</a></li>
+                <li><a href="#">Престъпления - кражба, насилие </a></li>
+                <li><a href="#">Изгубени вещи</a></li>
+                <li><a href="#">Пътно-транспортни</a></li>
+                <li><a href="#">Градска среда</a></li>
+                <li><a href="#">Корупция, измама</a></li>
+            </footer-column>
+            <footer-column>
+                <li><a href="#">Бракониерство</a></li>
+                <li><a href="#">Престъпления - кражба, насилие кражба, насилие </a></li>
+                <li><a href="#">Изгубени вещи</a></li>
+                <li><a href="#">Пътно-транспортни</a></li>
+                <li><a href="#">Градска среда</a></li>
+                <li><a href="#">Корупция, измама</a></li>
+            </footer-column>
+        </footer-navigation>
+        <sponsors>
+            <h5>Спонсори</h5>
+            <li><a href="#"><img src="test/sponsor-geagrants.png" alt=""/></a></li>
+            <li><a href="#"><img src="test/sponsor-bluelink.png" alt=""/></a></li>
+            <li><a href="#"><img src="test/sponsor-obhstestvo.png" alt=""/></a></li>
+        </sponsors>
+        <p>Easy one click sign in. We won't post anything without your permission.</p>
+    </footer-wrapper>
+    <modal id="generic-auth" auth-modal-container="" auth-container="main" type="login" resolved="">
+        <section class="modal-box mfp-with-anim" wrapper="">
+            <a class="close-modal" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20.531" height="20.531"
+                     viewBox="37.734 2.734 20.531 20.531">
+                    <path d="M52.406 15.438l-1.97 1.97c-.093.093-.187.14-.28.14a.425.425 0 0 1-.328-.14L48 15.577l-1.828 1.828a.426.426 0 0 1-.328.14c-.094 0-.188-.046-.28-.14l-1.97-1.97c-.094-.093-.14-.187-.14-.28 0-.14.046-.234.14-.328L45.422 13l-1.828-1.828a.426.426 0 0 1-.14-.328c0-.094.046-.188.14-.28l1.97-1.97c.093-.094.187-.14.28-.14.14 0 .234.046.328.14L48 10.422l1.828-1.828a.426.426 0 0 1 .328-.14c.094 0 .188.046.28.14l1.97 1.97c.094.093.14.187.14.28 0 .14-.046.234-.14.328L50.578 13l1.828 1.828c.094.094.14.188.14.328 0 .094-.046.188-.14.282zM55.266 13c0-1.313-.328-2.53-.938-3.656a7.3 7.3 0 0 0-2.672-2.672c-1.125-.61-2.343-.938-3.656-.938s-2.53.328-3.656.938a7.3 7.3 0 0 0-2.672 2.672c-.61 1.125-.938 2.344-.938 3.656s.328 2.53.938 3.656a7.3 7.3 0 0 0 2.672 2.672c1.125.61 2.344.938 3.656.938s2.53-.328 3.656-.938a7.3 7.3 0 0 0 2.672-2.672A7.567 7.567 0 0 0 55.266 13zm3 0c0 1.875-.422 3.61-1.36 5.156a10.272 10.272 0 0 1-3.75 3.75c-1.546.938-3.28 1.36-5.155 1.36s-3.608-.423-5.155-1.36a10.272 10.272 0 0 1-3.75-3.75c-.938-1.547-1.36-3.28-1.36-5.156s.423-3.61 1.36-5.156a10.272 10.272 0 0 1 3.75-3.75c1.546-.938 3.28-1.36 5.155-1.36s3.61.422 5.156 1.36a10.272 10.272 0 0 1 3.75 3.75c.938 1.547 1.36 3.28 1.36 5.156z"></path>
+                </svg>
+            </a>
+            <section animation-container="" modal-animation-container="">
+                <div priority="primary" content="">
+                    <modal-screen resolved="">
+                        <div class="padder clearfix">
+
+                            <headline size="large" density="airy" align="center" for="modal" resolved="">
+                                <h3 title="">Вход
+                                    <content></content>
+                                </h3>
+                                <content select="p"></content>
+                            </headline>
+                            <auth-container-patch for="registration" resolved="" style="display: none;">
+                                <auth-title>Регистрация</auth-title>
+                            </auth-container-patch>
+                            <auth-container-patch for="login" resolved="">
+                                <auth-title>Вход</auth-title>
+                            </auth-container-patch>
+                            <auth-container-patch for="reset" resolved="" style="display: none;">
+                                <auth-title>Забравена парола</auth-title>
+                            </auth-container-patch>
+                            <auth type="login" complete-action="/security/complete/email/"
+                                  reset-action="/user/password/reset" auth-replace="login-box" divided="" resolved="">
+                                <form class="clearfix" action="/security/complete/email/" method="post" novalidate="">
+
+                                    <site-auth registration-action="" login-action="" type="login" size="compact"
+                                               class="half">
+                                        <input type="hidden" name="auth_type" value="login">
+                                        <notification error="" size="nano" density="comfortable" for="form" resolved=""
+                                                      style="display: none;">
+                                            <div class="cell" content="">
+                                                <div class="icon">
+
+                                                    <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M896 128q209 0 385.5 103T1561 510.5 1664 896t-103 385.5-279.5 279.5T896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128zm128 1247v-190q0-14-9-23.5t-22-9.5H801q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8H786q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z"></path>
+                                                    </svg>
+
+                                                </div>
+                                                <content select="strong"></content>
+                                                Прегледайте грешките по-долу
+                                                <content></content>
+                                            </div>
+                                        </notification>
+                                        <bubble size="standart" color="white" auth-type="login" type="success"
+                                                density="compact" class="animated fadeInUp" resolved=""
+                                                style="display: none;">
+                                            <section wrapper="">
+                                                <section content="">
+                                                    <div class="icon">
+
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+                                                    </div>
+
+                                                    Успешно влезе в акаунта си.
+                                                    <content></content>
+                                                </section>
+                                                <a class="close" href="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22.166"
+                                                         height="22.166" viewBox="42.126 -3.292 22.166 22.166">
+                                                        <path d="M56.34 3.553l1.11 1.11c.1.1.15.2.15.302 0 .15-.05.252-.15.353l-2.477 2.474 2.475 2.474c.1.1.15.202.15.354 0 .1-.05.202-.15.302l-1.108 1.11c-.104.1-.204.15-.304.15a.462.462 0 0 1-.354-.15l-2.475-2.475-2.475 2.474c-.1.102-.2.152-.353.152-.103 0-.202-.05-.304-.15l-1.11-1.11c-.1-.102-.15-.203-.15-.303 0-.152.05-.252.15-.353l2.476-2.474-2.475-2.475a.458.458 0 0 1-.15-.354c0-.1.05-.202.15-.303l1.11-1.108c.1-.1.202-.15.3-.15.153 0 .254.05.355.15l2.475 2.475 2.474-2.474a.46.46 0 0 1 .354-.152c.104 0 .204.052.306.153zm2.4-1.293c-.998-1-2.176-1.678-3.497-2.07a7.863 7.863 0 0 0-4.07 0 8.175 8.175 0 0 0-5.567 5.568 7.863 7.863 0 0 0 0 4.07 8.173 8.173 0 0 0 5.568 5.57 7.885 7.885 0 0 0 4.07-.002c1.32-.394 2.498-1.07 3.497-2.07s1.68-2.178 2.07-3.5a7.885 7.885 0 0 0 0-4.068 8.152 8.152 0 0 0-2.07-3.498zm2.285-2.285c1.428 1.428 2.428 3.07 2.892 4.96.5 1.93.5 3.784 0 5.712-.464 1.892-1.463 3.534-2.89 4.96s-3.07 2.427-4.962 2.892c-1.93.498-3.784.5-5.712 0-1.892-.464-3.533-1.464-4.96-2.893-1.43-1.428-2.428-3.07-2.893-4.96a11.07 11.07 0 0 1 0-5.712c.463-1.89 1.462-3.533 2.89-4.96 1.428-1.43 3.07-2.427 4.96-2.893 1.93-.5 3.785-.5 5.713 0 1.894.466 3.536 1.465 4.962 2.893z"></path>
+                                                    </svg>
+                                                </a>
+                                            </section>
+                                        </bubble>
+                                        <bubble size="standart" color="white" auth-type="reset" type="success"
+                                                density="compact" class="animated fadeInUp" resolved=""
+                                                style="display: none;">
+                                            <section wrapper="">
+                                                <section content="">
+                                                    <div class="icon">
+
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+                                                    </div>
+
+                                                    Получи нов имейл.
+                                                    <content></content>
+                                                </section>
+                                                <a class="close" href="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22.166"
+                                                         height="22.166" viewBox="42.126 -3.292 22.166 22.166">
+                                                        <path d="M56.34 3.553l1.11 1.11c.1.1.15.2.15.302 0 .15-.05.252-.15.353l-2.477 2.474 2.475 2.474c.1.1.15.202.15.354 0 .1-.05.202-.15.302l-1.108 1.11c-.104.1-.204.15-.304.15a.462.462 0 0 1-.354-.15l-2.475-2.475-2.475 2.474c-.1.102-.2.152-.353.152-.103 0-.202-.05-.304-.15l-1.11-1.11c-.1-.102-.15-.203-.15-.303 0-.152.05-.252.15-.353l2.476-2.474-2.475-2.475a.458.458 0 0 1-.15-.354c0-.1.05-.202.15-.303l1.11-1.108c.1-.1.202-.15.3-.15.153 0 .254.05.355.15l2.475 2.475 2.474-2.474a.46.46 0 0 1 .354-.152c.104 0 .204.052.306.153zm2.4-1.293c-.998-1-2.176-1.678-3.497-2.07a7.863 7.863 0 0 0-4.07 0 8.175 8.175 0 0 0-5.567 5.568 7.863 7.863 0 0 0 0 4.07 8.173 8.173 0 0 0 5.568 5.57 7.885 7.885 0 0 0 4.07-.002c1.32-.394 2.498-1.07 3.497-2.07s1.68-2.178 2.07-3.5a7.885 7.885 0 0 0 0-4.068 8.152 8.152 0 0 0-2.07-3.498zm2.285-2.285c1.428 1.428 2.428 3.07 2.892 4.96.5 1.93.5 3.784 0 5.712-.464 1.892-1.463 3.534-2.89 4.96s-3.07 2.427-4.962 2.892c-1.93.498-3.784.5-5.712 0-1.892-.464-3.533-1.464-4.96-2.893-1.43-1.428-2.428-3.07-2.893-4.96a11.07 11.07 0 0 1 0-5.712c.463-1.89 1.462-3.533 2.89-4.96 1.428-1.43 3.07-2.427 4.96-2.893 1.93-.5 3.785-.5 5.713 0 1.894.466 3.536 1.465 4.962 2.893z"></path>
+                                                    </svg>
+                                                </a>
+                                            </section>
+                                        </bubble>
+                                        <text-field for="registration" validate-group="registration" size="full"
+                                                    id="fullname" name="fullname" type="text" required="" resolved=""
+                                                    style="display: none;" validate-id="4"><label for="fullnameInput">
+                                            Име
+
+                                            <content></content>
+                                        </label>
+
+                                            <input id="fullnameInput" type="text" name="fullname" value=""
+                                                   placeholder="">
+                                            <notification error="" size="text-field" resolved="" style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M896 128q209 0 385.5 103T1561 510.5 1664 896t-103 385.5-279.5 279.5T896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128zm128 1247v-190q0-14-9-23.5t-22-9.5H801q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8H786q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z"></path>
+                                                        </svg>
+
+                                                    </div>
+                                                    <content select="strong"></content>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <content select="notification"></content>
+
+                                        </text-field>
+                                        <div for="reset" style="display: none;">
+                                            <notification size="small" density="compact" success="" resolved=""
+                                                          style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <content select="strong"></content>
+
+                                                    <p>Готово! Получи имейл.</p>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <notification size="small" density="comfortable" information="" no-icon=""
+                                                          resolved="" style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1152 1376v-160q0-14-9-23t-23-9h-96V672q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zm-128-896V320q0-14-9-23t-23-9H800q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+
+
+                                                    </div>
+                                                    <content select="strong"></content>
+
+                                                    <p>Кликни на линка в имейла.
+                                                        Чрез него ще смениш паролата си.
+                                                        След това можеш да се върнеш тук и да натиснеш <a
+                                                                auth-trigger="" type="login" resolved="">вход »</a>
+                                                    </p>
+
+                                                    <p>Ако има проблем прбовай отново:</p>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                        </div>
+                                        <text-field size="full" id="email"
+                                                    validate-group="[&quot;registration&quot;, &quot;login&quot;, &quot;reset&quot;]"
+                                                    name="email" type="email" state="information" required=""
+                                                    resolved="" validate-id="6"><label for="emailInput">
+                                            имейл адрес
+
+
+                                            <content></content>
+                                        </label>
+
+                                            <input id="emailInput" type="email" name="email" value="" placeholder="">
+                                            <notification error="" size="text-field" resolved="" style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M896 128q209 0 385.5 103T1561 510.5 1664 896t-103 385.5-279.5 279.5T896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128zm128 1247v-190q0-14-9-23.5t-22-9.5H801q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8H786q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z"></path>
+                                                        </svg>
+
+                                                    </div>
+                                                    <content select="strong"></content>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <notification information="" size="text-field" for="registration"
+                                                          style="display: none;" resolved="">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1152 1376v-160q0-14-9-23t-23-9h-96V672q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zm-128-896V320q0-14-9-23t-23-9H800q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+
+
+                                                    </div>
+                                                    <content select="strong"></content>
+
+                                                    <p>
+                                                        Няма да пращаме нежелани съоб­ще­ния
+                                                    </p>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <notification information="" size="text-field" for="reset"
+                                                          style="display: none;" resolved="">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1152 1376v-160q0-14-9-23t-23-9h-96V672q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zm-128-896V320q0-14-9-23t-23-9H800q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                        </svg>
+
+
+                                                    </div>
+                                                    <content select="strong"></content>
+
+                                                    <p>
+                                                        Ще получиш имейл на този адрес с линк за промяна на паролата.
+                                                    </p>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <content select="notification"></content>
+
+                                        </text-field>
+                                        <text-field not-for="reset" size="full" id="new_password1" name="new_password1"
+                                                    validate-name="password"
+                                                    validate-group="[&quot;registration&quot;, &quot;login&quot;]"
+                                                    type="password" required="" minlength="6" resolved=""
+                                                    validate-id="8"><label for="new_password1Input">
+                                            Парола
+
+                                            <content></content>
+                                        </label>
+
+                                            <input id="new_password1Input" type="password" name="new_password1" value=""
+                                                   placeholder="">
+                                            <notification error="" size="text-field" resolved="" style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M896 128q209 0 385.5 103T1561 510.5 1664 896t-103 385.5-279.5 279.5T896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128zm128 1247v-190q0-14-9-23.5t-22-9.5H801q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8H786q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z"></path>
+                                                        </svg>
+
+                                                    </div>
+                                                    <content select="strong"></content>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <content select="notification"></content>
+
+                                        </text-field>
+                                        <text-field for="registration" id="new_password2" name="new_password2"
+                                                    validate-group="registration" size="full" type="password"
+                                                    required="" validate-equalto-form-sibling="#new_password1"
+                                                    resolved="" style="display: none;" validate-id="10"><label
+                                                for="new_password2Input">
+                                            Парола (пак)
+
+                                            <content></content>
+                                        </label>
+
+                                            <input id="new_password2Input" type="password" name="new_password2" value=""
+                                                   placeholder="">
+                                            <notification error="" size="text-field" resolved="" style="display: none;">
+                                                <div class="cell" content="">
+                                                    <div class="icon">
+
+                                                        <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M896 128q209 0 385.5 103T1561 510.5 1664 896t-103 385.5-279.5 279.5T896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128zm128 1247v-190q0-14-9-23.5t-22-9.5H801q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8H786q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z"></path>
+                                                        </svg>
+
+                                                    </div>
+                                                    <content select="strong"></content>
+                                                    <content></content>
+                                                </div>
+                                            </notification>
+                                            <content select="notification"></content>
+
+                                        </text-field>
+                                        <action-button submit="" for="login" type="primary" fill="solid" align="left"
+                                                       color="red" resolved=""><span wrapper="">
+
+
+<button type="submit">
+
+    вход
+    <content></content>
+</button>
+
+
+</span></action-button>
+                                        <action-button submit="" for="reset" type="primary" fill="solid" align="left"
+                                                       color="red" resolved="" style="display: none;"><span wrapper="">
+
+
+<button type="submit">
+
+    изпрати
+    <content></content>
+</button>
+
+
+</span></action-button>
+                                        <action-button submit="" for="registration" type="primary" fill="solid"
+                                                       align="left" color="red" resolved="" style="display: none;"><span
+                                                wrapper="">
+
+
+<button type="submit">
+
+    регистрация
+    <content></content>
+</button>
+
+
+</span></action-button>
+
+                                        <action-button helper="" auth-trigger="" align="right" for="registration"
+                                                       type="login" density="comfortable" resolved=""
+                                                       style="display: none;"><span wrapper="">
+
+
+
+<div class="
+        align-right
+        ">
+    <span>или</span>
+    <content select="span"></content>
+    <a href="">
+
+        вход
+        <content></content>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1536" viewBox="128 128 1536 1536">
+            <path d="M845 1395l454-454c12.667-12.667 19-27.667 19-45s-6.333-32.333-19-45L845 397c-12.667-12.667-27.667-19-45-19s-32.333 6.333-45 19L653 499c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l307 307-307 307c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l102 102c12.667 12.667 27.667 19 45 19s32.333-6.333 45-19zm819-499c0 139.333-34.333 267.833-103 385.5s-161.833 210.833-279.5 279.5-246.167 103-385.5 103-267.833-34.333-385.5-103c-117.667-68.667-210.833-161.833-279.5-279.5S128 1035.333 128 896s34.333-267.833 103-385.5S392.833 299.667 510.5 231 756.667 128 896 128s267.833 34.333 385.5 103 210.833 161.833 279.5 279.5 103 246.167 103 385.5z"></path>
+        </svg>
+    </a>
+</div>
+
+</span></action-button>
+                                        <action-button helper="" auth-trigger="" align="right" for="reset" type="login"
+                                                       density="comfortable" resolved="" style="display: none;"><span
+                                                wrapper="">
+
+
+
+<div class="
+        align-right
+        ">
+    <span>или</span>
+    <content select="span"></content>
+    <a href="">
+
+        вход
+        <content></content>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1536" viewBox="128 128 1536 1536">
+            <path d="M845 1395l454-454c12.667-12.667 19-27.667 19-45s-6.333-32.333-19-45L845 397c-12.667-12.667-27.667-19-45-19s-32.333 6.333-45 19L653 499c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l307 307-307 307c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l102 102c12.667 12.667 27.667 19 45 19s32.333-6.333 45-19zm819-499c0 139.333-34.333 267.833-103 385.5s-161.833 210.833-279.5 279.5-246.167 103-385.5 103-267.833-34.333-385.5-103c-117.667-68.667-210.833-161.833-279.5-279.5S128 1035.333 128 896s34.333-267.833 103-385.5S392.833 299.667 510.5 231 756.667 128 896 128s267.833 34.333 385.5 103 210.833 161.833 279.5 279.5 103 246.167 103 385.5z"></path>
+        </svg>
+    </a>
+</div>
+
+</span></action-button>
+                                        <action-button helper="" auth-trigger="" align="right" for="login" type="reset"
+                                                       density="comfortable" resolved=""><span wrapper="">
+
+
+
+<div class="
+        align-right
+        ">
+    <content select="span"></content>
+    <a href="">
+
+        забравена пароола
+        <content></content>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1536" viewBox="128 128 1536 1536">
+            <path d="M845 1395l454-454c12.667-12.667 19-27.667 19-45s-6.333-32.333-19-45L845 397c-12.667-12.667-27.667-19-45-19s-32.333 6.333-45 19L653 499c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l307 307-307 307c-12.667 12.667-19 27.667-19 45s6.333 32.333 19 45l102 102c12.667 12.667 27.667 19 45 19s32.333-6.333 45-19zm819-499c0 139.333-34.333 267.833-103 385.5s-161.833 210.833-279.5 279.5-246.167 103-385.5 103-267.833-34.333-385.5-103c-117.667-68.667-210.833-161.833-279.5-279.5S128 1035.333 128 896s34.333-267.833 103-385.5S392.833 299.667 510.5 231 756.667 128 896 128s267.833 34.333 385.5 103 210.833 161.833 279.5 279.5 103 246.167 103 385.5z"></path>
+        </svg>
+    </a>
+</div>
+
+</span></action-button>
+                                    </site-auth>
+                                    <social-auth type="login" size="compact" class="half"
+                                                 facebook-app="1623717401196966" facebook-scope="[&quot;email&quot;]"
+                                                 server-gateway="/security/token/facebook/" resolved="">
+                                        <headline size="small" density="comfortable" resolved="">
+                                            <h3 title="">Или влез чрез Facebook
+                                                <content></content>
+                                            </h3>
+                                            <content select="p"></content>
+                                        </headline>
+                                        <notification information="" size="nano" density="compact" no-icon=""
+                                                      resolved="">
+                                            <div class="cell" content="">
+                                                <div class="icon">
+                                                    <svg width="1792" height="1792" viewBox="0 0 1792 1792"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1152 1376v-160q0-14-9-23t-23-9h-96V672q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zm-128-896V320q0-14-9-23t-23-9H800q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1281.5 1561 896 1664t-385.5-103T231 1281.5 128 896t103-385.5T510.5 231 896 128t385.5 103T1561 510.5 1664 896z"></path>
+                                                    </svg>
+
+
+                                                </div>
+                                                <content select="strong"></content>
+
+                                                <p>Няма да пускаме съобщения от ваше име.</p>
+                                                <content></content>
+                                            </div>
+                                        </notification>
+                                        <social-button facebook="" action="/security/login/facebook/" resolved=""><a
+                                                href="/security/login/facebook/">
+    <span class="icon">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="98" height="20" viewBox="0 0 98 20">
+    <path d="M97.02 19.41c-.545 0-.986-.462-.986-1.05 0-.578.44-1.046.98-1.046h.006c.545 0 .98.468.98 1.05s-.436 1.052-.98 1.046zm-6.58 0l-3.646-6.135v6.135h-3.977V1.003l3.977-.668v11.85L90.44 6.36h4.31l-3.98 6.356 3.98 6.694h-4.31zm-14.547.15c-4.676 0-5.813-2.646-5.813-5.374v-2.633c0-2.728 1.138-5.374 5.813-5.374 4.668 0 5.787 2.645 5.787 5.373v2.633c0 2.728-1.12 5.373-5.787 5.373zm1.81-8.37c0-.925-.477-1.67-1.826-1.67s-1.818.745-1.818 1.67v3.384c0 .93.468 1.675 1.817 1.675s1.827-.747 1.827-1.676V11.19zm-14.547 8.37c-4.674 0-5.81-2.646-5.81-5.374v-2.633c0-2.728 1.136-5.374 5.81-5.374 4.672 0 5.79 2.645 5.79 5.373v2.633c0 2.728-1.118 5.373-5.79 5.373zm1.81-8.37c0-.925-.474-1.67-1.823-1.67-1.353 0-1.82.745-1.82 1.67v3.384c0 .93.468 1.675 1.82 1.675 1.35 0 1.822-.747 1.822-1.676V11.19zm-15.09 8.395c-1.96 0-3.11-.175-5.274-.51V1.002l3.976-.668v6.32c.86-.322 1.97-.485 2.984-.485 3.977 0 4.638 1.798 4.638 4.686v3.262c0 3.16-.895 5.467-6.324 5.467zm2.35-8.394c0-.925-.307-1.67-1.66-1.67-.81 0-1.395.27-1.987.54v6.183c.568.056.892.056 1.43.056 1.95 0 2.216-.9 2.216-2.155V11.19zM35.98 14.326c0 1.526.54 1.924 2.32 1.924 1.604 0 2.58-.08 4.64-.438v3.262c-1.985.41-3.02.517-4.97.517-4.27 0-5.967-2.263-5.967-5.535v-2.68c0-2.86 1.26-5.205 5.636-5.205s5.632 2.317 5.632 5.206v2.68H35.98v.27zm3.316-2.95v-.52c0-.924-.308-1.672-1.657-1.672-1.352 0-1.66.748-1.66 1.672v.52h3.316zm-18.414 2.68v-2.343c0-3.274 1.697-5.542 5.967-5.542.993 0 2.17.11 3.977.518V9.95c-2.063-.357-2.655-.436-3.647-.436-1.783 0-2.32.398-2.32 1.923v2.888c0 1.526.537 1.924 2.32 1.924.992 0 1.584-.08 3.647-.438v3.262c-1.807.41-2.984.517-3.978.517-4.27 0-5.968-2.263-5.968-5.535zM16.1 18.59a7.546 7.546 0 0 1-3.757.983c-2.43 0-3.725-1.638-3.725-3.902 0-2.67 1.51-3.624 4.21-3.624h2.75v-.578c0-1.364-.155-1.764-2.235-1.764h-3.4l.332-3.345h3.717c4.563 0 5.564 1.453 5.564 5.135v7.94h-3.314l-.143-.845zm-.522-3.865h-1.775c-.84 0-1.21.156-1.21.894 0 .73.344 1.11 1.1 1.11.812 0 1.292-.266 1.885-.54v-1.465zm-6.96-5.02H5.964v9.705H1.988V9.704H0V6.36h1.988V4.35C1.988 1.623 3.11 0 6.298 0H8.95v3.344H7.294c-1.242 0-1.324.468-1.324 1.34L5.963 6.36H8.97l-.352 3.344z"></path>
+</svg>
+</span>
+                                            <content></content>
+    <span class="arrow">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1728" height="767.957" viewBox="0 511.953 1728 767.957">
+        <path d="M1728 893c0 9.333-3.334 17.333-10 24l-384 354c-10.667 9.333-22.333 11.333-35 6-12.667-6-19-15.667-19-29v-224H32c-9.333 0-17-3-23-9s-9-13.667-9-23V800c0-9.333 3-17 9-23s13.667-9 23-9h1248V544c0-14 6.333-23.667 19-29s24.333-3.667 35 5l384 350c6.666 6.667 10 14.333 10 23z"></path>
+    </svg>
+    </span>
+                                        </a>
+
+
+                                        </social-button>
+
+                                    </social-auth>
+                                    <content></content>
+                                </form>
+                            </auth>
+
+                            <content></content>
+                        </div>
+                        <div class="footwrap clearfix">
+                            <footer for="login">
+                                <!--<a auth-trigger type="registration">Направи си регистрация</a>-->
+                                <notification information inline no-icon color="gray" size="nano"
+                                              density="cozy" align="left">
+
+                                        Easy one click sign in. We won't post anything without your permission.
+
+                                </notification>
+                                <action-button auth-trigger="" type="registration" link="" fill="solid" size="large"
+                                               color="purple">Регистрация</action-button>
+                            </footer>
+                            <content select="footer"></content>
+                        </div>
+                    </modal-screen>
+                </div>
+            </section>
+        </section>
+    </modal>
+
+</page>
+<google-analytics account="asd"></google-analytics>
+<script src="build/app.js"></script>
+</body>
+</html>

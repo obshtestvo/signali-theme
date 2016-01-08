@@ -1,10 +1,11 @@
-Нова оценка за „{{feedback.contactpoint.title|safe}}“
+{% load signali %}
+Нова оценка за „{{feedback.contactpoint.title_or_organisation|safe}}“
 
 Здравейте,
 
-В сайта има нова оценка за „{{feedback.contactpoint.title|safe}}“.
+В сайта има нова оценка за „{{feedback.contactpoint.title_or_organisation|safe}}“.
 
-Вижте я на: {{ feedback.get_absolute_url }}
+Вижте я на: {{ make_absolute feedback.get_absolute_url }}
 
 Ваш покорен,
 Сигнали.бг

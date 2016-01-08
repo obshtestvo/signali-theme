@@ -8,15 +8,15 @@
                 {% csrf_token %}
                 <input type="hidden" name="prefix" value="{{prefix}}"/>
                 <redirect class="half" location="{{contactpoint.url}}">
-                    Пренасочваме те...
+                    Пренасочване...
                 </redirect>
                 <email-signup class="half">
                     <headline size="small" density="comfortable">
                         Искаш ли Signali.bg да ти припомни?
                     </headline>
                     <notification information color="white" no-icon density="compact" size="nano">
-                        Ако оставиш имейл адрес получиш припомняне да провериш,
-                        какво е станало със сигнала, за да не остава проблемът нерешен.
+                        Ако оставиш имейл адрес, ще получиш припомняне да провериш
+                        какво е станало със сигнала, за да не остане проблемът нерешен.
                     </notification>
                     <text-field for="email" size="full" id="subscribe-email" name="{{form.email.html_name}}" type="email"
                                 placeholder="твоята@епоща.бг" required>

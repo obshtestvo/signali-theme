@@ -11,6 +11,7 @@ loader {
     right: 0;
     bottom: 0;
     .loader {
+        z-index:2000;
         @extend preloader;
     }
     svg {
