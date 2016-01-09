@@ -167,5 +167,20 @@ filters {
                 }
             }
         }
+        &[theme="light"] {
+            & >div {
+                &:hover {
+                    background: rgba($white, 0.15);
+                    color: $grey-color-20;
+                    svg {
+                        fill: $grey-color-20;
+                    }
+                }
+                &:focus{
+                    background: rgba($white, 0.25);
+                }
+            }
+
+        }
     }
 }
