@@ -11,7 +11,7 @@ top-nav {
         float: right;
     }
 }
-@media screen and (max-width:940px),screen and (max-device-width:940px){
+@media screen and (max-width: $tablet-portrait-width + 100px),screen and (max-device-width:$tablet-portrait-width + 100px){
     .second-nav{
         display: none;
     }

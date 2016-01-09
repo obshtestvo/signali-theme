@@ -50,6 +50,9 @@ cards-area {
     cards-area {
         card {
             width: 33.33%;
+            &:nth-of-type(4) {
+                margin-top: 15px;
+            }
         }
         &[essential] card {
             padding: 0 2%;
@@ -64,6 +67,9 @@ cards-area {
     cards-area {
         card {
             width: 50%;
+            &:nth-of-type(3) {
+                margin-top: 15px;
+            }
         }
         &[essential] card {
             padding: 0 2%;
@@ -90,10 +96,16 @@ cards-area {
     cards-area {
         card {
             width: 100%;
+            &:nth-of-type(2), &:nth-of-type(1) {
+                margin-top: 15px;
+            }
         }
         &[essential] {
             card {
                 padding: 0 15%;
+                &:nth-of-type(1) {
+                    margin-top: 0;
+                }
                 &:nth-of-type(2) {
                     display: none;
                 }

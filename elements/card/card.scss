@@ -7,7 +7,7 @@ card {
     display: block;
     margin: 15px 0 0 0;
     &[essential], &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4) {
-        margin: 0;
+        margin-top: 0;
     }
     section {
         @extend %small-radius;
@@ -110,7 +110,7 @@ card {
         p {
             @extend %small-font;
             text-align: center;
-            color: $grey-color-100;
+            color: $body-text-color;
             padding: 10px 0 12px 0;
         }
     }

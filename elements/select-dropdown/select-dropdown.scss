@@ -244,7 +244,7 @@ select-dropdown {
         text-transform: uppercase;
     }
     &[theme="light"] > label {
-        color: $grey-color-100;
+        color: $grey-color-60;
     }
 
     &[size="full"] {
@@ -434,7 +434,8 @@ select-dropdown {
     }
 }
 
-@media screen and (max-width: $tablet-portrait-width), screen and (max-device-width: $tablet-portrait-width) {
+@media screen and (max-width: $tablet-portrait-width + 100px), screen and (max-device-width: $tablet-portrait-width + 100px) {
+// + 100px because of too long labels in main-search
     select-dropdown {
         &[mainsearch] {
             &[priority="low"] {

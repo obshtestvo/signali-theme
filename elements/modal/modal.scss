@@ -83,12 +83,9 @@ modal-screen {
     }
 }
 
-@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+@media screen and (max-width: $tablet-landscape-width), screen and (max-device-width: $tablet-landscape-width) {
     modal {
         .modal-box {
-            .padder {
-                padding: 0 30px 30px;
-            }
             .close-modal {
                 right: 10px;
                 top: 10px;
@@ -106,6 +103,16 @@ modal-screen {
                         fill: $main-color-active;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $phone-width), screen and (max-device-width: $phone-width) {
+    modal {
+        .modal-box {
+            .padder {
+                padding: 0 30px 30px;
             }
         }
         footer[for="login"] {
