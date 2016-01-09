@@ -17,9 +17,10 @@
     </intro>
 </cover>
 <cards-area>
+    {% if points.count %}
     <header>
         <filtering secondary sorting>
-            <strong>{{ total }} сайта за подаване на сигнал</strong>
+            <strong>Може да подадеш сигнал в {{ total }} сайта</strong>
             <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
@@ -48,16 +49,22 @@
             </select-dropdown>
         </filtering>
     </header>
-
+    {% endif %}
+    {% if not points.count %}
+        <notification information color="white" density="comfortable" size="large">
+            <h5>Няма сайтове съвпадащи със всички критерии</h5>
+            <p>Пробвай да смениш някой от тях или намалиш броя им.
+               Алтернативно, ако знаеш точно за такъв сайт, помогни на хората търсещи същото <a href="#addnew" target="modal">и го добави</a>.</p>
+        </notification>
+    {% endif %}
     {% if not points.has_search_matches %}
     <notification error color="white" size="medium">
-        <p>Няма съвпадения с нито един от търсените критерии. Ако знаеш за сайт, който съвпада, можеш <a href="#" target="modal">да го добавиш</a>.
+        <p>Няма съвпадения с нито един от търсените критерии. Ако знаеш за сайт, който съвпада, можеш <a href="#addnew" target="modal">да го добавиш</a>.
             По-долу са изредени сайтове, които могат да ти помогнат за друг проблем.</p>
     </notification>
     {% elif points.score < form.max_score  %}
         <notification information color="white" size="medium">
-            <p>Няма съвпадания с всички критерии. Често се случва, когато търсенето е много специфично.
-                По-долу са изредени сайтове, които се най-много доближават до критериите.</p>
+            <p>Сайтовете по-долу съвпадат само с част от търсеното. Често се случва, когато са включени много или разнородни критерии.</p>
         </notification>
     {% endif %}
     {% for point in points %}
