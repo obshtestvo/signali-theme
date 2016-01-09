@@ -1,36 +1,39 @@
 {% load form %}
 {% load location %}
 {% load taxonomy %}
-<filtering primary action="{% url 'contact-point-list' %}">
-    <div class="clearfix">
-        <select-dropdown
-                id="searchArea"
-                name="{{form.areas.html_name}}"
-                theme="light"
-                remote-url="{% url 'area-list-search' %}"
-                placeholder="Избери или търси"
-                location="simple"
-                priority="low"
-                mainsearch>
-            <label>Mестност, в която се е случило:</label>
-            {% featured_areas form.fields.areas form.cleaned_data.areas%}
-        </select-dropdown>
-        <select-dropdown
-                id="mainsearch"
-                theme="light"
-                priority="high"
-                placeholder="Търси по категории, теми или с нещо специфично на ум"
-                remote-url="{% url 'contact-point-list-search' %}"
-                remote-group="Директни съвпадения"
-                multiple
-                links
-                mainsearch>
-            <label>За какво се отнася:</label>
-            {% taxonomy_mixed_options request form %}
-        </select-dropdown>
-    </div>
-    <filters expandable color="light-gray">
-        <strong>Изисквания</strong>
+<form action="{% url 'contact-point-list' %}" method="get">
+    <select-dropdown
+            id="searchArea"
+            name="{{form.areas.html_name}}"
+            theme="light"
+            priority="low"
+            remote-url="{% url 'area-list-search' %}"
+            placeholder="Избери или търси"
+            location="simple"
+            mainsearch>
+        <label>Mестност, в която се е случило:</label>
+        {% featured_areas form.fields.areas form.cleaned_data.areas%}
+    </select-dropdown>
+    <select-dropdown
+            id="mainsearch"
+            theme="light"
+            priority="medium"
+            placeholder="Търси по категории, теми или с нещо специфично на ум"
+            remote-url="{% url 'contact-point-list-search' %}"
+            remote-group="Директни съвпадения"
+            multiple
+            links
+            mainsearch>
+        <label>За какво се отнася:</label>
+        {% taxonomy_mixed_options request form %}
+    </select-dropdown>
+    <action-button submit type="primary" fill="solid" color="red" size="medium" mainsearch>
+        Търси
+    </action-button>
+
+    <filters expandable {% if 'filters' in request.params or form.is_detailed %} expanded {% endif %}color="light-gray" theme="light">
+        <strong>подробно търсене</strong>
+        <em>скрий подробното търсене</em>
         <checkbox id="{{form.is_registration_required.html_name}}"
                   name="{{form.is_registration_required.html_name}}"
                   {% if form|has:form.is_registration_required and not form.is_registration_required.value %} checked {% endif %}
@@ -79,9 +82,6 @@
                   value="">
             Не изисква локация на сигнала
         </checkbox>
-    </filters>
-    <filters expandable collapsed color="light-gray">
-        <strong>Допълнителни критерии</strong>
             <checkbox id="{{form.is_anonymous_allowed.html_name}}"
                       name="{{form.is_anonymous_allowed.html_name}}"
                       {% if form.is_anonymous_allowed.value = form.YES %} checked {% endif %}
@@ -125,10 +125,4 @@
                     Многоезичност
             </checkbox>
     </filters>
-    <action-button submit inline type="primary" fill="solid" color="red" size="medium" align="center" action="{{action}}">
-        Търси
-    </action-button>
-    <action-button helper inline icon="false" density="comfortable" align="center" action="{% url 'contact-point-list' %}">
-        <span>или </span>изчисти критериите
-    </action-button>
-</filtering>
+</form>

@@ -27,9 +27,19 @@
         <div class="filters">
             <p>Допълнителни критерии:</p>
             <section>
-                <checkbox id="register" name="register">Не изисква регистрация</checkbox>
-                <checkbox id="asdasd" name="asdasdasd">Не изисква лични данни</checkbox>
-                <action-button helper density="cozy" align="right" action="{% url 'contact-point-list' %}">
+                <checkbox
+                        id="{{form.is_registration_required.html_name}}"
+                        name="{{form.is_registration_required.html_name}}"
+                        value=""
+                >
+                    Не изисква регистрация
+                </checkbox>
+                <checkbox
+                        id="{{form.is_anonymous_allowed.html_name}}"
+                        name="{{form.is_anonymous_allowed.html_name}}"
+                        value="{{form.YES}}"
+                >Позволява анонимност</checkbox>
+                <action-button helper density="cozy" align="right" action="{% url 'contact-point-list' %}?filters">
                     <span>... още с</span> подробно търсене
                 </action-button>
             </section>
