@@ -8,21 +8,27 @@ export default class {
     static include = {star};
 
     static ready (el) {
+
         var $el = $(el),
+            readonly = el.hasAttribute('readonly'),
             $stars = $el.find('star'),
             $input = $el.find('input');
+
+        if (readonly) return;
+
         $stars.each(function () {
-            var $s = $(this);
-            var $hoverStars = $s.prevAll().add($s);
-            var $nextStars = $s.nextAll();
+            var $s = $(this),
+                $hoverStars = $s.prevAll().add($s),
+                $nextStars = $s.nextAll();
             $s.hover(function () {
                 $hoverStars.addClass('hover')
             }, function () {
                 $hoverStars.removeClass('hover')
             });
             $s.click(function () {
-                if (el.hasAttribute('href')) {
-                    window.location.href = el.getAttribute('href');
+                var href = this.getAttribute('href');
+                if (href) {
+                    window.location.href = href;
                     return;
                 }
                 $stars.attr('type', 'empty');
@@ -35,8 +41,10 @@ export default class {
     }
 
     static properties = {
-        "star-types": {
+        stars: {
             get (el) {
+                var href = el.getAttribute('href');
+                var perStarHref = el.getAttribute('href-type') == 'per-star';
                 var starTypes = [];
                 var rating = parseFloat(el.getAttribute('value'));
                 var afterDecimalPoint = rating % 1;
@@ -56,7 +64,20 @@ export default class {
                     }
                     starTypes.push('empty');
                 }
-                return starTypes
+                return starTypes.map(function(type, i) {
+                    var star = {type};
+                    if (href) star.href = href;
+                    if (perStarHref) {
+                        star.href = star.href + (i+1)
+                    }
+                    return star;
+                });
+            }
+        },
+        value: {
+            set: function(el, data) {
+                if (!data.newValue) return;
+                $(el).find('star').eq(data.newValue-1).click();
             }
         }
     }

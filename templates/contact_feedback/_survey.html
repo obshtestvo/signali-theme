@@ -1,3 +1,9 @@
+{# Workaround for navigation#}
+<a name="feedback_rating_1"></a>
+<a name="feedback_rating_2"></a>
+<a name="feedback_rating_3"></a>
+<a name="feedback_rating_4"></a>
+<a name="feedback_rating_5"></a>
 <survey
         {% if not request.user.is_authenticated %}auth-required auth-id="commentAuth" type="login"{% endif %}
         action="{% url 'contact-point-feedback-list' slug=contactpoint.slug %}"

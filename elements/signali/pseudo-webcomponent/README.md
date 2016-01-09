@@ -6,3 +6,4 @@
 1. Supports `register` event that fires every time element is registered
 1. Attaches `componentService` property to registered custom elements
 1. Supports `upgrade` method that will inject custom behaviour if not loaded
+1. Fires "domRendered" event after initial dom rendering is done
