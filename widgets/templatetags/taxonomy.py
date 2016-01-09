@@ -32,7 +32,7 @@ def taxonomy_mixed_options(request, form):
 @register.inclusion_tag('taxonomy/_popular_categories.html')
 def popular_categories(request):
     return {
-        "categories": Category.objects.popular()[:13],
+        "categories": Category.objects.public().children().non_empty().popular()[:13],
         "request": request
     }
 
