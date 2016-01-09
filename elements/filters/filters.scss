@@ -92,7 +92,7 @@ filters {
             }
         }
     }
-    &[collapsed] {
+    &[expanded] {
         [content] {
             height: auto;
         }
@@ -177,7 +177,7 @@ filters {
                     left: 120px;
                 }
             }
-            &[collapsed] {
+            &[expanded] {
                 & > div:before {
                     left: 155px;;
                 }

@@ -1,4 +1,4 @@
-import selectize from 'selectize/dist/js/standalone/selectize';
+import selectize from 'selectize/dist/js/selectize';
 
 selectize.define('filtering', function (options) {
     var self = this;

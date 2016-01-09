@@ -2,8 +2,10 @@ import 'tooltipster/js/jquery.tooltipster';
 import './tip.scss';
 import template from './tip.html';
 import questionIcon from './questionIcon.svg';
+import $ from 'jquery';
 
 const $document = $(document);
+var i = 1;
 
 export default class {
     static displayName = 'tip';
@@ -13,7 +15,21 @@ export default class {
     static ready (el) {
         var $el = $(el),
             $container = $el.closest('[tip-container]'),
+            eventNS = '.tip' + i,
+            show = function() {
+                $el.closest('.mfp-wrap').on('scroll'+eventNS, function(e) {
+                    $container.tooltipster('reposition')
+                });
+                $el.addClass('active');
+                $container.tooltipster('show')
+            },
+            hide = function() {
+                $container.tooltipster('hide');
+                $el.removeClass('active');
+                $el.closest('.mfp-wrap').off('scroll'+eventNS)
+            },
             isTouchMoving = false;
+        i++;
         if (!$container.length) {
             $container = $(el.querySelector('svg'))
         }
@@ -28,8 +44,7 @@ export default class {
                 if ($target.closest('.tooltipster-base').length || $target.closest($container).length) {
                     return;
                 }
-                $container.tooltipster('hide');
-                $el.removeClass('active');
+                hide()
             }
             isTouchMoving = false;
         });
@@ -39,7 +54,7 @@ export default class {
             arrowColor: '____',
             touchDevices: false,
             contentCloning: false,
-            speed: 250,
+            speed: 200,
             interactive: true,
             autoClose: false,
             trigger: 'custom',
@@ -47,11 +62,9 @@ export default class {
         });
         $container.click(function() {
             if (!$el.hasClass("active")) {
-                $el.addClass('active');
-                $container.tooltipster('show')
+                show()
             } else {
-                $container.tooltipster('hide')
-                $el.removeClass('active');
+                hide()
             }
         });
     }

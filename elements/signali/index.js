@@ -5,6 +5,8 @@ require.context("../", true, /\/autorequire\//)
 window.$ = window.jQuery = require('jquery');
 //require('core-js/es6/symbol');
 
+require('html5-history-api');
+
 if (!Modernizr.es6object || !Modernizr.mutationobserver) {
     require(['babel-polyfill', 'mutation-observer'], () => {
         window.MutationObserver = require('mutation-observer');

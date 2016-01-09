@@ -11,10 +11,10 @@ export default class {
         var $collapseTrigger = $(el.querySelector('div'));
 
         $collapseTrigger.on('click', function() {
-            if (el.hasAttribute('collapsed')) {
-                el.removeAttribute('collapsed')
+            if (el.hasAttribute('expanded')) {
+                el.removeAttribute('expanded')
             } else {
-                el.setAttribute('collapsed', '')
+                el.setAttribute('expanded', '')
             }
         })
     }

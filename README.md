@@ -14,7 +14,7 @@ After OS requirements are satisfied just run:
 
 ```sh
 npm install 
-bower install
+bower install # needed for 2 dependencies that are not available on npm
 ```
 to install the dependencies.
 
@@ -38,6 +38,14 @@ like [angularjs](https://github.com/angular/angular.js),
 [web components](http://www.w3.org/TR/components-intro/) and other frameworks/emerging standards.
 Each have their advantages and each have their drawbacks.
 
+### Shortcomings
+The theme was developed during a time of boom for various frontend technologies/methodologies.
+It's a transitional project between good old server-rendered html and the fully js powered
+custom-element UI that needs to be pre-rendered on the serverside via nodejs for SEO reasons.
+
+Even at the moment of writing this there isn't a well-integrated method that supports wide range of
+server-technologies to do prerendering.
+
 ### Conventions
 
  - **Backend-agnostic**: assets' management should be independent from any chosen backend framework or language
@@ -50,7 +58,7 @@ Each have their advantages and each have their drawbacks.
  - **Compression**:
    - All assets must be compressed (including images) to achieve minimum transfer size
    - Embed small images as base64
-   - All assets [of common file types] must be combined into 1 file
+   - All assets *[of common file types]* must be combined into 1 file
    - The asset combination mechanism should allow splitting into chunks, so that the initial load is not too big
    - Source maps should work in the compiled versions but should be removable for production
  - A **universal import/require** mechanism should be used. It should be capable of importing different type of files:
@@ -74,12 +82,13 @@ This projects uses [webpack](http://webpack.github.io/docs/).
 It handles everything from the conventions except webcomponent-like behavior.
 
 You can read [webpack's documentation](http://webpack.github.io/docs/) for more details. 
-Basically it does everything from rendering `.scss` to `.css` to combining, minifying and splitting chunks
-for any kind of files; It's capable of [compressing js, css, svg; rendering DSLs and dialects,
-rendering template engines; rendering gettext files into json and many many others](http://webpack.github.io/docs/list-of-loaders.html) 
+Basically it does everything from compiling `.scss -> .css` to combining, minifying and splitting chunks
+for any kind of files; It's capable of [compressing js, css, svg; transpiling DSLs and dialects,
+compiling template engines; compiling gettext files into json and many many others](http://webpack.github.io/docs/list-of-loaders.html)
 
 #### Web components emulation
-**EDIT**: Using skate revealed many drawbacks that are not clearly stated. Currently it's better to do a React-based app.
+***EDIT***: Using skate revealed many drawbacks that are not clearly stated by its documentation.
+Currently it's better to do a React-based app.
 
 The project doesn't use the [webcomponents polyfill](https://github.com/webcomponents/webcomponentsjs) 
 because it too cutting-edge and easily causes problems even in modern browsers.
@@ -152,5 +161,5 @@ will produce final html:
 </custom>
 ```
 
-The remaining unmatched content (`"Left over text"`) will be stored in `detachedContent` element property.
-If the template included a all-matching `<content></content>` the same would have been inserted there.
+The remaining unmatched content (`"Left over text"`) will be stored in `detachedContent` property of `<custom>`.
+If the template included an all-matching `<content></content>` the same would have been inserted there.

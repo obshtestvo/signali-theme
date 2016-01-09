@@ -6,12 +6,14 @@
         <modal id="card_{{ point.id }}_modal">
             <modal-screen>
                 <headline size="large" density="airy" align="center">
-                    Избери регион
+                    Къде се е случило?
+                    <p>Срямо населеното място, в което е възникнал проблема, „{{point.title_or_organisation}}“ приема сигнали на различен сайт или имейл.</p>
                 </headline>
                 <text>
-                    <select-dropdown links size="full" density="compact" placeholder="Региони..." placeholder-type="vivid">
+                    <select-dropdown links size="full" density="compact" placeholder-type="vivid">
+                        <label>Изберете един от регионите на „{{point.title_or_organisation}}“: </label>
                         {% for point_child in point.children.public %}
-                            <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area }}</value>
+                            <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area.title }}</value>
                         {% endfor %}
                     </select-dropdown>
                 </text>
@@ -58,8 +60,14 @@
     <card-item type="rating">
         <strong>Оценка</strong>
         <rating value="{{ point.rating }}"
-                target="modal"
-                href="{% if point.is_parent_with_many_children %}#card_{{ point.id }}_modal{% else %}{% url 'contact-point' slug=point.slug_or_child_slug %}#feedback{% endif %}">
+                {% if not point.is_parent_with_many_children %}
+                href="{% url 'contact-point' slug=point.slug_or_child_slug %}#feedback_rating_"
+                href-type="per-star"
+                {% else %}
+                readonly
+{#                target="modal"#}
+{#                href="#card_{{ point.id }}_modal"#}
+                {% endif %}>
             {% if not point.is_parent_with_many_children %}<a class="comments" href="{% url 'contact-point' slug=point.slug_or_child_slug %}#feedbacklist">({{point.feedback_count}} оценки)</a>{% endif %}
         </rating>
     </card-item>

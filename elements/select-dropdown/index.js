@@ -4,7 +4,7 @@ import request from 'ajax/request';
 import Blocker from 'ajax/block';
 import template from './select-dropdown.html';
 import extractData from './data-extract';
-import 'selectize/dist/js/standalone/selectize';
+import 'selectize/dist/js/selectize';
 import './selectize.filtering';
 import './selectize.directajax';
 import './selectize.touch';

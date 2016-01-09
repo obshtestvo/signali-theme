@@ -11,6 +11,10 @@ import modalScreenTemplate from './modal-screen.html';
 import closeIcon from './close.svg';
 
 
+$(window).on('beforeunload', function() {
+    $.magnificPopup.close();
+});
+
 export class ModalElement {
     static displayName = 'modal';
     static template = modalTemplate;

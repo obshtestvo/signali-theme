@@ -1,4 +1,6 @@
 {% load form %}
 {% for area in areas %}
-    <value id="{{area.id}}" {% if area in selected_areas %}selected{% endif %}>{{area}}</value>
+    <value id="{{area.id}}" {% if area in selected_areas %}selected{% endif %}>
+        {% if area.is_root_node %}Няма значение за сигнала{% else %}{{area}}{% endif %}
+    </value>
 {% endfor %}

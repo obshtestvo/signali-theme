@@ -10,24 +10,16 @@
 {% block content %}
 {% include "_loader.html" %}
 <page color="semilight">
-<cover density="comfortable" src="{% setting 'cover_url' %}">
+<cover density="airy" src="{% setting 'cover_url' %}">
     {% include '_topnav.html' with request=request %}
-    <intro density="compact">
-        <call-to-action align="left" density="compact">
-            <h1>Сайтове за подаване на сигнал</h1>
-        </call-to-action>
-        <breadcrumb>
-            <crumb action="{% url 'home' %}">Начало </crumb>
-            <crumb>Резултати от търсене</crumb>
-        </breadcrumb>
+    <intro density="cozy">
+        {% advanced_searchbar request form %}
     </intro>
 </cover>
-<featured>
-{% advanced_searchbar request form %}
-<cards-area density="compact">
+<cards-area>
     <header>
         <filtering secondary sorting>
-            <strong>{{ total }} резултата</strong>
+            <strong>{{ total }} сайта за подаване на сигнал</strong>
             <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
@@ -56,6 +48,9 @@
             </select-dropdown>
         </filtering>
     </header>
+    <notification information color="white" size="medium">
+        <p>Easy one click sign in. We won't post anything without your permission.</p>
+    </notification>
     {% for point in points %}
         {% contactpoint_listing_entry request points point forloop.counter form %}
     {% endfor %}
@@ -82,7 +77,6 @@
     {% endif %}
 </cards-area>
 {% include "_addnew_prompt.html" with request=request %}
-</featured>
 {% include '_footer.html' with request=request %}
 </page>
 {% endblock %}

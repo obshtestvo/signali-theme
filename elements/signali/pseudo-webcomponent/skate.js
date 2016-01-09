@@ -2,6 +2,7 @@ import skate from 'skatejs/src';
 import attrTypeDef from 'skatejs-types/src/attribute';
 import EventEmitter from 'eventemitter3';
 import pseudoShadowDomRender from './template';
+import debounce from 'lodash.debounce';
 import {
     appendChild as appendToShadowTemplateElement,
     clearContent
@@ -20,6 +21,7 @@ class ComponentService extends EventEmitter {
         super();
         this.registered = {};
         this.attributeElementsSetCallbacks = {};
+        this.debouncedRenderEnd = debounce(() => this.emit('domRendered'), 500);
     }
 
     /**
@@ -110,6 +112,7 @@ class ComponentService extends EventEmitter {
             definition = Object.assign(definition, {
                 render (element) {
                     pseudoShadowDomRender(element, definition)
+                    self.debouncedRenderEnd();
                 }
             });
             // the following block is making appendChild magic and ability to clear content tags

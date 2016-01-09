@@ -5,22 +5,39 @@ import ValidationForm from 'validation/form';
 import AjaxForm from 'ajax/form';
 import scrollTo from 'jquery.scrollto';
 import template from './survey.html';
+import $ from 'jquery';
 
 export default class {
     static displayName = 'survey';
     static template = template;
-    
-    static ready (el) {
-        var ratingQuestion = el.querySelector('survey-question[rating]'),
-            $el = $(el),
+
+    static ready(el) {
+        var $el = $(el),
             $form = $el.find('form'),
             $rating = $el.find('rating'),
             fullSurveyShown = false,
-            $hiddenSurveyArea = $('.reveal');
-        $rating.on('change', function() {
+            hashPrefix = `#${el.id}_rating_`,
+            $hiddenSurveyArea = $('.reveal'),
+            hashChange = false;
+
+        var handleHash = function () {
+            var hash = window.location.hash;
+            if (hash.indexOf(hashPrefix) !== 0) return;
+            hashChange = true;
+            window.history.replaceState( {} , 'preventAccidentalRatingLink', '#' );
+            var hashTokens = hash.split('_');
+            var rating = hashTokens[hashTokens.length-1];
+            $rating[0].value = parseInt(rating);
+        }
+
+        $rating.on('change', function () {
             if (fullSurveyShown) return;
             fullSurveyShown = true;
-            scrollTo(ratingQuestion, 300);
+            if (hashChange) {
+                $hiddenSurveyArea.find('.quick').removeAttr('hidden').show();
+                return
+            }
+            scrollTo(el, 300);
             toggleFixedHeight($hiddenSurveyArea, true);
             $hiddenSurveyArea.animateContentSwitch(null, $hiddenSurveyArea.find('.quick'), {
                 width: false,
@@ -39,9 +56,11 @@ export default class {
                 scrollTo(el, 300)
             }
         });
-        validation.on('form:submit', function() {
+        validation.on('form:submit', function () {
             ajaxForm.submit();
             return false;
         });
+        window.addEventListener("hashchange", handleHash, false);
+        handleHash()
     }
 }
