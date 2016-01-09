@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import selectize from 'selectize/dist/js/standalone/selectize';
+import selectize from 'selectize/dist/js/selectize';
 
 selectize.define('autowidth', function (options) {
     var self = this;

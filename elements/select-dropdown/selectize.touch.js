@@ -1,4 +1,4 @@
-import selectize from 'selectize/dist/js/standalone/selectize';
+import selectize from 'selectize/dist/js/selectize';
 
 var $document = $(document);
 selectize.define('touch', function (options) {

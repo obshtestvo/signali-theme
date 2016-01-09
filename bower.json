@@ -6,7 +6,6 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "selectize": "0.12.1",
     "sass-burger": "~1.1.2",
     "tooltipster": "~3.3.0"
   }

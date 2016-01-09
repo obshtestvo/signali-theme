@@ -8,7 +8,7 @@
         <modal-screen {# size="medium" #}>
             <headline size="large" density="airy" align="center">
                 Добави сайт
-                <p>Ако знаеш за страница в интернет, от където може да се подаде сигнал, кажи за нея:</p>
+                <p>Ако знаеш за страница в интернет, от където може да се подаде сигнал, сподели за нея:</p>
             </headline>
             <proposal action="{% url 'contact-point-list' %}">
                 <bubble size="standart" color="white" type="error" density="compact" hidden class="animated fadeInUp">
@@ -36,6 +36,7 @@
                         id="{{prefix}}_area"
                         name="{{form.operational_area.html_name}}"
                         remote-url="{% url 'area-list-search' %}"
+                        placeholder="Избери от падащото меню или търси населено място"
                         size="full"
                         required>
                     <label>За проблеми от кой регион се приемат сигнали?</label>
@@ -62,8 +63,14 @@
                     <checkbox id="{{prefix}}_is_anonymous_allowed" name="{{form.is_anonymous_allowed.html_name}}" value="{{checkbox_value}}">Анонимни сигнали</checkbox>
                     <checkbox id="{{prefix}}_is_mobile_friendly" name="{{form.is_mobile_friendly.html_name}}" value="{{checkbox_value}}">Мобилна версия</checkbox>
                     <checkbox id="{{prefix}}_is_final_destination" name="{{form.is_final_destination.html_name}}" value="{{checkbox_value}}">Крайна точка за сигнала</checkbox>
-                    <checkbox id="{{prefix}}_is_verifiable" name="{{form.is_verifiable.html_name}}" value="{{checkbox_value}}">Верификация на сигнала</checkbox>
-                    <checkbox id="{{prefix}}_is_confirmation_issued" name="{{form.is_confirmation_issued.html_name}}" value="{{checkbox_value}}">Потвърждаване на сигнала</checkbox>
+                    <checkbox id="{{prefix}}_is_verifiable" name="{{form.is_verifiable.html_name}}" value="{{checkbox_value}}" enlargement="compact" >
+                        Проследимост
+                        <tip size="small" color="dark" position="top">Може ли да се проследи развитието по сигнала?</tip>
+                    </checkbox>
+                    <checkbox id="{{prefix}}_is_confirmation_issued" name="{{form.is_confirmation_issued.html_name}}" value="{{checkbox_value}}" enlargement="compact">
+                        Потвърждение
+                        <tip size="small" color="dark" position="top">Изпраща ли се потвърждение за получен сигнал? <em>(пр: имеил или обажндане)</em></tip>
+                    </checkbox>
                     <checkbox id="{{prefix}}_is_multilingual" name="{{form.is_multilingual.html_name}}" value="{{checkbox_value}}">Многоезичност</checkbox>
                 </filters>
                 <text-field required size="full" type="textarea" name="{{ form.notes.html_name }}">

@@ -8,7 +8,7 @@
                 name="{{form.areas.html_name}}"
                 theme="light"
                 remote-url="{% url 'area-list-search' %}"
-                placeholder="Избери от падащото меню"
+                placeholder="Избери или търси"
                 location="simple"
                 priority="low"
                 mainsearch>
@@ -98,7 +98,7 @@
                       name="{{form.is_verifiable.html_name}}"
                       {% if form.is_verifiable.value = form.YES %} checked {% endif %}
                       value="{{form.YES}}">
-                    Верификация на сигнала?
+                    Проследимост на сигнала?
             </checkbox>
             <checkbox id="{{form.is_final_destination.html_name}}"
                       name="{{form.is_final_destination.html_name}}"

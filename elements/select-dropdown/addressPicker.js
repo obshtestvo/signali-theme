@@ -1,4 +1,4 @@
-import 'selectize/dist/js/standalone/selectize';
+import 'selectize/dist/js/selectize';
 import googlemap from 'service/google.maps';
 import './selectize.navarrow';
 
