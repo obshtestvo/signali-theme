@@ -48,6 +48,13 @@ notification {
         .icon svg {
             fill: $white;
         }
+        a {
+            color: $white;
+            text-decoration: underline;
+            &:hover{
+                text-decoration: none;
+            }
+        }
     }
     &[success] {
         background: $success-color;
