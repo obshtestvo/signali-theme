@@ -117,20 +117,14 @@ def advanced_searchbar(request, form=None):
 
 @register.inclusion_tag('contact/list/_entry.html')
 def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, form):
-    score = None
-    separate = False
     is_first = index == 1
     try:
         score = contactpoint.score
-        if is_first:
-            separate = True
-            contactpoint_list.current_score = score
-        if contactpoint_list.current_score != score:
-            separate = True
-            contactpoint_list.current_score = score
+        separate = is_first or contactpoint_list.current_score != score
+        contactpoint_list.current_score = score
     except AttributeError:
-        if is_first:
-            separate = True
+        score = None
+        separate = False
     try:
         area = form.cleaned_data["areas"][0].title
     except:

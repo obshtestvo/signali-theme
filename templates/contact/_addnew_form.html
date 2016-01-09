@@ -68,19 +68,28 @@
                     <checkbox id="{{prefix}}_is_response_guaranteed" name="{{form.is_response_guaranteed.html_name}}" value="{{checkbox_value}}">Гаранция за отговор</checkbox>
                     <checkbox id="{{prefix}}_is_anonymous_allowed" name="{{form.is_anonymous_allowed.html_name}}" value="{{checkbox_value}}">Анонимни сигнали</checkbox>
                     <checkbox id="{{prefix}}_is_mobile_friendly" name="{{form.is_mobile_friendly.html_name}}" value="{{checkbox_value}}">Мобилна версия</checkbox>
-                    <checkbox id="{{prefix}}_is_final_destination" name="{{form.is_final_destination.html_name}}" value="{{checkbox_value}}">
+                    <checkbox id="{{prefix}}_is_final_destination"
+                              name="{{form.is_final_destination.html_name}}"
+                              value="{{checkbox_value}}"
+                              enlargement="compact">
                         Крайна точка за сигнала
-                        <tip size="medium" color="dark" position="top">Организацията, която ще получи сигнала, пряко ли е отговорна за разрешаването му
+                        <tip size="medium" color="dark" position="top" enlargement="compact">Организацията, която ще получи сигнала, пряко ли е отговорна за разрешаването му
                             или е посредник, като примерно НПО, неформална гражданска група?
                         </tip>
                     </checkbox>
-                    <checkbox id="{{prefix}}_is_verifiable" name="{{form.is_verifiable.html_name}}" value="{{checkbox_value}}" enlargement="compact" >
+                    <checkbox id="{{prefix}}_is_verifiable"
+                              name="{{form.is_verifiable.html_name}}"
+                              value="{{checkbox_value}}"
+                              enlargement="compact" >
                         Проследимост
-                        <tip size="small" color="dark" position="top">Може ли да се проследи развитието по сигнала?</tip>
+                        <tip size="small" color="dark" position="top" enlargement="compact">Може ли да се проследи развитието по сигнала?</tip>
                     </checkbox>
-                    <checkbox id="{{prefix}}_is_confirmation_issued" name="{{form.is_confirmation_issued.html_name}}" value="{{checkbox_value}}" enlargement="compact">
+                    <checkbox id="{{prefix}}_is_confirmation_issued"
+                              name="{{form.is_confirmation_issued.html_name}}"
+                              value="{{checkbox_value}}"
+                              enlargement="compact">
                         Потвърждение
-                        <tip size="small" color="dark" position="top">Изпраща ли се потвърждение за получен сигнал? <em>(пр: имеил или обажндане)</em></tip>
+                        <tip size="small" color="dark" position="top" enlargement="compact">Изпраща ли се потвърждение за получен сигнал? <em>(пр: имеил или обажндане)</em></tip>
                     </checkbox>
                     <checkbox id="{{prefix}}_is_multilingual" name="{{form.is_multilingual.html_name}}" value="{{checkbox_value}}">Многоезичност</checkbox>
                 </filters>

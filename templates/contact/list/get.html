@@ -48,9 +48,18 @@
             </select-dropdown>
         </filtering>
     </header>
-    <notification information color="white" size="medium">
-        <p>Easy one click sign in. We won't post anything without your permission.</p>
+
+    {% if not points.has_search_matches %}
+    <notification error color="white" size="medium">
+        <p>Няма съвпадения с нито един от търсените критерии. Ако знаеш за сайт, който съвпада, можеш <a href="#" target="modal">да го добавиш</a>.
+            По-долу са изредени сайтове, които могат да ти помогнат за друг проблем.</p>
     </notification>
+    {% elif points.score < form.max_score  %}
+        <notification information color="white" size="medium">
+            <p>Няма съвпадания с всички критерии. Често се случва, когато търсенето е много специфично.
+                По-долу са изредени сайтове, които се най-много доближават до критериите.</p>
+        </notification>
+    {% endif %}
     {% for point in points %}
         {% contactpoint_listing_entry request points point forloop.counter form %}
     {% endfor %}
