@@ -38,6 +38,12 @@ call-to-action {
         position: relative;
         padding: 0;
     }
+    a {
+        color: $secondary-color-100;
+        &:hover, &:focus {
+            color: $secondary-color-120;
+        }
+    }
 }
 
 @media screen and (max-width: $desktop-width), screen and (max-device-width: $desktop-width) {

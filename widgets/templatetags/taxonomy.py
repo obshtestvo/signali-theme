@@ -7,9 +7,17 @@ register = template.Library()
 @register.inclusion_tag('taxonomy/_categories_menu.html', takes_context=True)
 def categories_menu(context):
     return {
-        "categories": Category.objects.root_categories_plus_children(),
-        "categories_count": Category.objects.public_base().count(),
+        "categories": Category.objects.public().roots().prefetch_children(),
+        "categories_count": Category.objects.public().children().non_empty().count(),
         "request": context.get('request')
+    }
+
+@register.inclusion_tag('taxonomy/_category_menu_column.html')
+def category_menu_column(request, category):
+    return {
+        "category": category,
+        "children": category.children.public().non_empty(),
+        "request": request
     }
 
 @register.inclusion_tag('taxonomy/_mixed_picker_options.html')

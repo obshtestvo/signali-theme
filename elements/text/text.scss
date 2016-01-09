@@ -44,14 +44,14 @@ text {
             }
         }
     }
-    a{
+    a {
         color: $secondary-color-100;
         &:hover{
             color: $secondary-color-hover;
             text-decoration: underline;
         }
     }
-    strong{
+    strong {
         font-weight: 800;
     }
     em{
