@@ -6,12 +6,14 @@
         <modal id="card_{{ point.id }}_modal">
             <modal-screen>
                 <headline size="large" density="airy" align="center">
-                    Избери регион
+                    Къде се е случило?
+                    <p>Срямо населеното място, в което е възникнал проблема, „{{point.title_or_organisation}}“ приема сигнали на различен сайт или имейл.</p>
                 </headline>
                 <text>
-                    <select-dropdown links size="full" density="compact" placeholder="Региони..." placeholder-type="vivid">
+                    <select-dropdown links size="full" density="compact" placeholder-type="vivid">
+                        <label>Изберете един от регионите на „{{point.title_or_organisation}}“: </label>
                         {% for point_child in point.children.public %}
-                            <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area }}</value>
+                            <value id="{{ point_child.slug }}" href="{% url 'contact-point' slug=point_child.slug %}">{{ point_child.operational_area.title }}</value>
                         {% endfor %}
                     </select-dropdown>
                 </text>

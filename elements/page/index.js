@@ -14,11 +14,11 @@ export default class {
         $(document).delegate( "a", "focus", function() {
             url = this.href;
         });
-        window.onbeforeunload = function() {
+        $(window).on('beforeunload', function() {
             urlParser.href = url;
             if (urlParser.hostname != currentDomain) return;
             originalLoaderParent.appendChild(loader);
             el.removeAttribute('resolved')
-        }
+        });
     }
 }

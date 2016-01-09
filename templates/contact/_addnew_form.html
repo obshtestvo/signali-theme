@@ -25,7 +25,13 @@
                     Име на организацията, която ще получи сигнала
                     <notification error size="text-field" hidden></notification>
                 </text-field>
-                <select-dropdown id="{{prefix}}_category" name="{{form.category.html_name}}" size="full" required>
+                <select-dropdown
+                        id="{{prefix}}_category"
+                        placeholder="Натисни тук и избери"
+                        name="{{form.category.html_name}}"
+                        size="full"
+                        required
+                >
                     <label>Каква категория сигнали се приемат?</label>
                     {% for id, label in form.category.field.choices %}
                     {% if id %}<value id="{{id}}">{{label}}</value>{% endif %}
@@ -36,7 +42,7 @@
                         id="{{prefix}}_area"
                         name="{{form.operational_area.html_name}}"
                         remote-url="{% url 'area-list-search' %}"
-                        placeholder="Избери от падащото меню или търси населено място"
+                        placeholder="Избери или търси населено място"
                         size="full"
                         required>
                     <label>За проблеми от кой регион се приемат сигнали?</label>
@@ -62,7 +68,12 @@
                     <checkbox id="{{prefix}}_is_response_guaranteed" name="{{form.is_response_guaranteed.html_name}}" value="{{checkbox_value}}">Гаранция за отговор</checkbox>
                     <checkbox id="{{prefix}}_is_anonymous_allowed" name="{{form.is_anonymous_allowed.html_name}}" value="{{checkbox_value}}">Анонимни сигнали</checkbox>
                     <checkbox id="{{prefix}}_is_mobile_friendly" name="{{form.is_mobile_friendly.html_name}}" value="{{checkbox_value}}">Мобилна версия</checkbox>
-                    <checkbox id="{{prefix}}_is_final_destination" name="{{form.is_final_destination.html_name}}" value="{{checkbox_value}}">Крайна точка за сигнала</checkbox>
+                    <checkbox id="{{prefix}}_is_final_destination" name="{{form.is_final_destination.html_name}}" value="{{checkbox_value}}">
+                        Крайна точка за сигнала
+                        <tip size="medium" color="dark" position="top">Организацията, която ще получи сигнала, пряко ли е отговорна за разрешаването му
+                            или е посредник, като примерно НПО, неформална гражданска група?
+                        </tip>
+                    </checkbox>
                     <checkbox id="{{prefix}}_is_verifiable" name="{{form.is_verifiable.html_name}}" value="{{checkbox_value}}" enlargement="compact" >
                         Проследимост
                         <tip size="small" color="dark" position="top">Може ли да се проследи развитието по сигнала?</tip>
