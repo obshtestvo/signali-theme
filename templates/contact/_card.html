@@ -41,10 +41,21 @@
         <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
            class="category">{{ point.category.title }}</a>
     </card-item>
-    <card-item type="location" {% if point.operational_area.is_root_node %}lowerfirst{% endif %}>
+    <card-item type="location" {% if point.operational_area.is_root_node or point.children.public.first.operational_area.is_root_node %}lowerfirst{% endif %}>
         <strong>Приема сигнали</strong>
-        <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
-           class="location">{% if not point.operational_area.is_root_node %}в {% endif %}{{ point.operational_area.title }}</a>
+        {% if point.is_parent_with_many_children %}
+            {% for point_child in point.children.public|slice:":2" %}
+                <a href="{% url 'contact-point-list' %}{% query areas=point_child.operational_area.pk %}">{{ point_child.operational_area.title }}</a>
+            {% endfor %}
+            {% if point.children.public.count > 2 %}
+                <a href="#card_{{ point.id }}_modal" target="modal">&hellip;и още {{ point.children.public.count|add:"-2" }}</a>
+            {% endif %}
+        {% else %}
+            {% with point.children.public.first as point_child %}
+            <a href="{% url 'contact-point-list' %}{% query areas=point_child.operational_area.pk %}"
+               class="location">{% if not point_child.operational_area.is_root_node %}в {% endif %}{{ point_child.operational_area.title }}</a>
+            {% endwith %}
+        {% endif %}
     </card-item>
     <card-item type="tags">
         <strong>Ключови думи</strong>
