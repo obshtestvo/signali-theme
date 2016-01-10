@@ -41,7 +41,9 @@
         <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
            class="category">{{ point.category.title }}</a>
     </card-item>
-    <card-item type="location" {% if point.operational_area.is_root_node or point.children.public.first.operational_area.is_root_node %}lowerfirst{% endif %}>
+    <card-item
+            {% if point.is_parent_with_many_children %}type="tags"{% else %}type="location"{% endif %}
+            {% if point.operational_area.is_root_node or point.children.public.first.operational_area.is_root_node %}lowerfirst{% endif %}>
         <strong>Приема сигнали</strong>
         {% if point.is_parent_with_many_children %}
             {% for point_child in point.children.public|slice:":2" %}
