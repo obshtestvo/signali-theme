@@ -137,6 +137,8 @@ def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, 
         area = form.cleaned_data["areas"][0]
         if not area.is_root_node() and score is not None:
             score += 1
+        if area.is_root_node():
+            area = None
     except:
         area = None
     return {
