@@ -33,13 +33,13 @@ def overview(request):
 
 
 @register.inclusion_tag('contact/single/_feature.html')
-def feature_item(request, point, name, compare_to, is_negative, display_type, display_size, positive_text, negative_text):
+def feature_item(request, point, name, compare_to, target_value, is_negative, display_type, display_size, positive_text, negative_text):
     return {
         "request": request,
         "point": point,
         "value": getattr(point, name),
         "compare_to": compare_to,
-        "feature_params": {name: "yes"},
+        "feature_params": {name: target_value},
         "text": negative_text if is_negative else positive_text,
         "type": display_type,
         "size": display_size,

@@ -90,12 +90,12 @@
             </section>
             <features>
                 <headline size="small" density="tight">Хубавото е че:</headline>
-                {% include "contact/single/_features.html" with feature_compare=point.YES require_compare=False type="check" form=form %}
+                {% include "contact/single/_features.html" with feature_compare=point.YES require_compare=False require_value="" feature_value=point.YES type="check" form=form %}
             </features>
             {% if point.has_downsides %}
             <features>
                 <headline size="extrasmall" density="cozy">Пречките са:</headline>
-                {% include "contact/single/_features.html" with feature_compare=point.NO require_compare=True size="small" type="none" negative=True form=form%}
+                {% include "contact/single/_features.html" with feature_compare=point.NO require_compare=True require_value="" feature_value=point.YES size="small" type="none" negative=True form=form%}
             </features>
             {% endif %}
             <card resume

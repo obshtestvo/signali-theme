@@ -1,17 +1,17 @@
 {% load contactpoint %}
 
-{% feature_item request point 'is_anonymous_allowed' feature_compare negative type size "Анонимни сигнали" "Няма анонимни сигнали"%}
-{% feature_item request point 'is_registration_required' require_compare negative type size "Не изисква регистрация" "Изисква регистрация"%}
-{% feature_item request point 'is_photo_required' require_compare negative type size "Не изисква снимка" "Изисква снимка на сигнала"%}
-{% feature_item request point 'is_esign_required' require_compare negative type size "Не изисква ел. подпис" "Изисква ел. подпис"%}
-{% feature_item request point 'is_name_required' require_compare negative type size "Не изисква името ти" "Изисква името ти"%}
-{% feature_item request point 'is_email_required' require_compare negative type size "Не изисква имейл адрес" "Изисква имейл адрес"%}
-{% feature_item request point 'is_address_required' require_compare negative type size "Не изисква адреса ти" "Изисква адресът ти"%}
-{% feature_item request point 'is_location_required' require_compare negative type size "Не изисква локация на сигнала" "Изисква локация на сигнала"%}
-{% feature_item request point 'is_registration_required' require_compare negative type size "Не изисква регистрация" "Изисква регистрация"%}
-{% feature_item request point 'is_multilingual' feature_compare negative type size "Многоезичност" "Само на български"%}
-{% feature_item request point 'is_response_guaranteed' feature_compare negative type size "Гарантиран отговор" "Не гарантира отговор"%}
-{% feature_item request point 'is_mobile_friendly' feature_compare negative type size "Мобилна версия" "Няма мобилна версия"%}
-{% feature_item request point 'is_final_destination' feature_compare negative type size "Крайна точка за сигнала" "Само посредник за сигнала"%}
-{% feature_item request point 'is_verifiable' feature_compare negative type size "Позволява следене на прогреса" "Няма как да се проследни прогреса"%}
-{% feature_item request point 'is_confirmation_issued' feature_compare negative type size "Потвърждение на сигнала" "Не потвърждава сигнала"%}
+{% feature_item request point 'is_anonymous_allowed' feature_compare feature_value negative type size "Анонимни сигнали" "Няма анонимни сигнали"%}
+{% feature_item request point 'is_registration_required' require_compare require_value negative type size "Не изисква регистрация" "Изисква регистрация"%}
+{% feature_item request point 'is_photo_required' require_compare require_value negative type size "Не изисква снимка" "Изисква снимка на сигнала"%}
+{% feature_item request point 'is_esign_required' require_compare require_value negative type size "Не изисква ел. подпис" "Изисква ел. подпис"%}
+{% feature_item request point 'is_name_required' require_compare require_value negative type size "Не изисква името ти" "Изисква името ти"%}
+{% feature_item request point 'is_email_required' require_compare require_value negative type size "Не изисква имейл адрес" "Изисква имейл адрес"%}
+{% feature_item request point 'is_address_required' require_compare require_value negative type size "Не изисква адреса ти" "Изисква адресът ти"%}
+{% feature_item request point 'is_location_required' require_compare require_value negative type size "Не изисква локация на сигнала" "Изисква локация на сигнала"%}
+{% feature_item request point 'is_registration_required' require_compare require_value negative type size "Не изисква регистрация" "Изисква регистрация"%}
+{% feature_item request point 'is_multilingual' feature_compare feature_value negative type size "Многоезичност" "Само на български"%}
+{% feature_item request point 'is_response_guaranteed' feature_compare feature_value negative type size "Гарантиран отговор" "Не гарантира отговор"%}
+{% feature_item request point 'is_mobile_friendly' feature_compare feature_value negative type size "Мобилна версия" "Няма мобилна версия"%}
+{% feature_item request point 'is_final_destination' feature_compare feature_value negative type size "Крайна точка за сигнала" "Само посредник за сигнала"%}
+{% feature_item request point 'is_verifiable' feature_compare feature_value negative type size "Позволява следене на прогреса" "Няма как да се проследни прогреса"%}
+{% feature_item request point 'is_confirmation_issued' feature_compare feature_value negative type size "Потвърждение на сигнала" "Не потвърждава сигнала"%}
