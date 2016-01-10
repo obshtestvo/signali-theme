@@ -9,6 +9,7 @@
 {% block title %}{% block facebook-title %}{{ point.specific_title_or_organisation }} — {{ point.category.title }}{% endblock %} — {% setting 'title_short' %}{% endblock %}
 
 {% block facebook-image %}{% spaceless %}
+    {% setting 'cover' as default_cover %}
     {% with point.rating|floatformat:"0" as rating %}
         {% static_filepath "auto/star-"|add:rating|add:".png" as watermark_path %}
         {% if point.cover %}
@@ -16,7 +17,7 @@
                 {{ img.url }}
             {% endthumbnail %}
         {% else %}
-            {% thumbnail point.cover "1000x525" crop="center" overlay="#0b0d2d" overlay_opacity=0.8 watermark=watermark_path as img %}
+            {% thumbnail default_cover "1000x525" crop="center" overlay="#0b0d2d" overlay_opacity=0.8 watermark=watermark_path as img %}
                 {{ img.url }}
             {% endthumbnail %}
         {% endif %}
