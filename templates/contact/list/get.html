@@ -23,10 +23,9 @@
         <filtering secondary sorting>
             <strong>
                 {% if is_loose_search  %}
-                {% blocktrans count total=points.count %}{{ total }} сайт близък до търсеното{% plural %}{{ total }} сайта близки до търсеното{% endblocktrans %}
-                {{ total }} сайта близки до търсеното
+                {% blocktrans count page_total=points.count %}{{ total }} сайт близък до търсеното{% plural %}{{ total }} сайта близки до търсеното{% endblocktrans %}
                 {% else %}
-                Може да подадеш сигнал в {% blocktrans count total=points.count %}{{ total }} сайт{% plural %}{{ total }} сайтa{% endblocktrans %}
+                Може да подадеш сигнал в {% blocktrans count page_total=points.count %}{{ total }} сайт{% plural %}{{ total }} сайтa{% endblocktrans %}
                 {% endif %}
             </strong>
             <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
