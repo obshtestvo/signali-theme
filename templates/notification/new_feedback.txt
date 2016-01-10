@@ -5,7 +5,7 @@
 
 В сайта има нова оценка за „{{feedback.contactpoint.title_or_organisation|safe}}“.
 
-Вижте я на: {{ make_absolute feedback.get_absolute_url }}
+Вижте я на: {% make_absolute feedback.get_absolute_url %}
 
 Ваш покорен,
 Сигнали.бг

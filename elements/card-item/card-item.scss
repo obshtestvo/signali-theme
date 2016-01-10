@@ -44,4 +44,12 @@ card-item {
             text-decoration: underline;
         }
     }
+    &[lowerfirst] {
+        a {
+            display: block;
+            &:first-letter {
+                text-transform: lowercase;
+            }
+        }
+    }
 }

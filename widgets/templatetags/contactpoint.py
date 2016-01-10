@@ -116,20 +116,31 @@ def advanced_searchbar(request, form=None):
 
 
 @register.inclusion_tag('contact/list/_entry.html')
-def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, form):
+def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, form, is_loose_search):
     is_first = index == 1
+    score = None
     try:
         score = contactpoint.score
+    except AttributeError:
+        pass
+    try:
+        score += contactpoint.taxonomy_score
+    except:
+        pass
+
+    try:
         separate = is_first or contactpoint_list.current_score != score
         contactpoint_list.current_score = score
     except AttributeError:
-        score = None
         separate = False
     try:
-        area = form.cleaned_data["areas"][0].title
+        area = form.cleaned_data["areas"][0]
+        if not area.is_root_node() and score is not None:
+            score += 1
     except:
         area = None
     return {
+        "is_loose_search": is_loose_search,
         "score": score,
         "separate": separate,
         "is_first": is_first,

@@ -1,7 +1,9 @@
 import selectize from 'selectize/dist/js/selectize';
 
 selectize.define('directajax', function (options) {
-    var self = this;
+    var self = this,
+        newMatchingIds = [],
+        loadedMatchingIds = [];
     this.addItem = (function () {
         var original = self.addItem;
         return function (value, silent) {
@@ -18,6 +20,47 @@ selectize.define('directajax', function (options) {
             original.apply(self, arguments);
         };
     })();
+
+    this.setup = (function () {
+        var original = self.setup;
+        return function () {
+            var ret = original.apply(this, arguments);
+            if (self.settings.load) {
+                self.settings.load = (function () {
+                    var originalLoadFn = self.settings.load;
+                    return function (query, callback) {
+                        originalLoadFn.call(self, query, function(results) {
+                            newMatchingIds = results.map((item) => {
+                                return item.id;
+                            });
+                            callback(results);
+                        });
+                    };
+                })()
+            }
+            return ret;
+        };
+    })();
+
+    this.onKeyUp = (function () {
+        var original = self.onKeyUp;
+        return function () {
+            console.log('come on')
+            var obsoleteMatchingIds = [];
+            loadedMatchingIds.map((id) => {
+                if (newMatchingIds.indexOf(id) === -1) {
+                    obsoleteMatchingIds.push(id)
+                }
+            });
+            obsoleteMatchingIds.map((id) => {
+                self.removeOption(id);
+            });
+            loadedMatchingIds = newMatchingIds;
+            newMatchingIds = [];
+            original.apply(self, arguments);
+        };
+    })();
+
 });
 
 

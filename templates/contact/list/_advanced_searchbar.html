@@ -8,23 +8,23 @@
             theme="light"
             priority="low"
             remote-url="{% url 'area-list-search' %}"
-            placeholder="Избери или търси"
+            placeholder="Избери или търси населено място"
             location="simple"
             mainsearch>
-        <label>Mестност, в която се е случило:</label>
+        <label>Къде се е случило?</label>
         {% featured_areas form.fields.areas form.cleaned_data.areas%}
     </select-dropdown>
     <select-dropdown
             id="mainsearch"
             theme="light"
             priority="medium"
-            placeholder="Търси по категории, теми или с нещо специфично на ум"
+            placeholder="Избери категории и ключови думи"
             remote-url="{% url 'contact-point-list-search' %}"
             remote-group="Директни съвпадения"
             multiple
             links
             mainsearch>
-        <label>За какво се отнася:</label>
+        <label>Какви категории и ключови думи описват проблема?</label>
         {% taxonomy_mixed_options request form %}
     </select-dropdown>
     <action-button submit type="primary" fill="solid" color="red" size="medium" mainsearch>

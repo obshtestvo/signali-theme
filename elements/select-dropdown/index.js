@@ -33,13 +33,15 @@ export class SelectDropdownElement {
         var options = {
             valueField: 'id',
             labelField: 'title',
-            selectOnTab: true,
+            selectOnTab: !isMultiple,
+            closeAfterSelect: isMultiple,
             score (search) {
                 var textScore = this.getScoreFunction(search);
                 return function(item) {
                     var score =  textScore(item);
                     if (item.score) {
-                        score = score * (1+item.score)
+                        score = score * (1+item.score);
+                        if (score == 0) score = 0.1 * item.score;
                     }
                     return score;
                 };
@@ -81,12 +83,16 @@ export class SelectDropdownElement {
             var remoteGroup = el.hasAttribute('remote-group') ? el.getAttribute('remote-group') : false;
             options.load = function(query, callback) {
                 var self = this;
+                var results = [];
+                if (query.length < 4) {
+                    callback(results);
+                    return;
+                }
                 blocking.block();
                 request.json({
                     url: remoteUrl,
                     data: {query: query},
                     callback (data) {
-                        var results = [];
                         if (!data) {
                             callback([]);
                             blocking.unblock();

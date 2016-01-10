@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% load settings %}
+{% load i18n %}
 {% load static %}
 {% load contactpoint %}
 {% load restful %}
@@ -20,7 +21,14 @@
     {% if points.count %}
     <header>
         <filtering secondary sorting>
-            <strong>Може да подадеш сигнал в {{ total }} сайта</strong>
+            <strong>
+                {% if is_loose_search  %}
+                {% blocktrans count total=points.count %}{{ total }} сайт близък до търсеното{% plural %}{{ total }} сайта близки до търсеното{% endblocktrans %}
+                {{ total }} сайта близки до търсеното
+                {% else %}
+                Може да подадеш сигнал в {% blocktrans count total=points.count %}{{ total }} сайт{% plural %}{{ total }} сайтa{% endblocktrans %}
+                {% endif %}
+            </strong>
             <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
@@ -52,23 +60,24 @@
     {% endif %}
     {% if not points.count %}
         <notification information color="white" density="comfortable" size="large">
-            <h5>Няма сайтове съвпадащи със всички критерии</h5>
+            <h5>Няма сайтове съвпадащи с всички критерии</h5>
             <p>Пробвай да смениш някой от тях или намалиш броя им.
                Алтернативно, ако знаеш точно за такъв сайт, помогни на хората търсещи същото <a href="#addnew" target="modal">и го добави</a>.</p>
         </notification>
     {% endif %}
-    {% if not points.has_search_matches %}
+    {% if is_loose_search and points.zero_score %}
     <notification error color="white" size="medium">
         <p>Няма съвпадения с нито един от търсените критерии. Ако знаеш за сайт, който съвпада, можеш <a href="#addnew" target="modal">да го добавиш</a>.
             По-долу са изредени сайтове, които могат да ти помогнат за друг проблем.</p>
     </notification>
-    {% elif points.score < form.max_score  %}
+    {% elif is_loose_search %}
         <notification information color="white" size="medium">
-            <p>Сайтовете по-долу съвпадат само с част от търсеното. Често се случва, когато са включени много или разнородни критерии.</p>
+            <p>{% if taxonomy_term %}Сайтовете по-долу съвпадат{% else %}Може някои от сайтовете по-долу да съвпадат{% endif %}
+                само с част от търсеното. Ако искаш единствено точни съвпадения, пробвай с избор на по-малко или различни критерии.  </p>
         </notification>
     {% endif %}
     {% for point in points %}
-        {% contactpoint_listing_entry request points point forloop.counter form %}
+        {% contactpoint_listing_entry request points point forloop.counter form is_loose_search %}
     {% endfor %}
 
     {% if pages %}

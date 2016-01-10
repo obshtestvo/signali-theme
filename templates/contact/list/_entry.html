@@ -3,18 +3,20 @@
 <cards-area density="compact">
 {% endif %}
 {% if separate %}
-<header nofloaters card-separator>
-    <filtering secondary exception>
-        <strong>
-            Сайтове
-            {% if area %} приемащи сигнали в „{{area}}“
-                {% if score %} и {% endif %}
-            {% endif %}
-            {% if score %} съвпадащи с {% endif %}
-        </strong>
-        {% if score %}<checkbox readonly>{{score}} от критериите</checkbox>{% endif %}
-    </filtering>
-</header>
+    {% if is_loose_search or not area.is_root_node %}
+    <header nofloaters card-separator>
+        <filtering secondary exception>
+            <strong>
+                Сайтове
+                {% if area and not area.is_root_node %} приемащи сигнали в „{{area.title}}“
+                    {% if is_loose_search %} и {% endif %}
+                {% endif %}
+                {% if is_loose_search %} съвпадащи с {% endif %}
+            </strong>
+            {% if is_loose_search %}<checkbox readonly>{{score}} от критериите</checkbox>{% endif %}
+        </filtering>
+    </header>
+    {% endif %}
 {% endif %}
 
 {% include "contact/_card.html" with point=point request=request %}

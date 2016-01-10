@@ -41,10 +41,10 @@
         <a href="{% url 'contact-point-list' %}{% query categories=point.category.pk %}"
            class="category">{{ point.category.title }}</a>
     </card-item>
-    <card-item type="location">
-        <strong>Приема сигнали от</strong>
+    <card-item type="location" {% if point.operational_area.is_root_node %}lowerfirst{% endif %}>
+        <strong>Приема сигнали</strong>
         <a href="{% url 'contact-point-list' %}{% query areas=point.operational_area.pk %}"
-           class="location">{{ point.operational_area.title }}</a>
+           class="location">{% if not point.operational_area.is_root_node %}в {% endif %}{{ point.operational_area.title }}</a>
     </card-item>
     <card-item type="tags">
         <strong>Ключови думи</strong>
