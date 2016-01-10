@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{% block title %}{% setting 'title' %}{% endblock %}</title>
-        <link rel=canonical href=“http://{% setting 'MAIN_HOST' %}{% block url %}{{request.path}}{% endblock %}” />
+        <link rel=canonical href="http://{% setting 'MAIN_HOST' %}{% block url %}{{request.path}}{% endblock %}" />
         <meta property="og:url" content="http://{% setting 'MAIN_HOST' %}{% block facebook-url %}{{request.path}}{% endblock %}" />
         <meta property="og:title" content="{% block facebook-title %}{% endblock %}" />
         <meta property="og:description" content="{% setting 'description' %}" />
