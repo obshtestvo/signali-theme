@@ -43,14 +43,24 @@
         <checkbox id="{{form.is_photo_required.html_name}}"
                   name="{{form.is_photo_required.html_name}}"
                   {% if form|has:form.is_photo_required and not form.is_photo_required.value %} checked {% endif %}
+                  enlargement="compact"
                   value="">
             Не изисква снимка
+            <tip size="small" color="light" position="top" enlargement="compact">
+                Ако сложиш тикче, ще се търсят само сайтове на организации,
+                които не изискват снимка от мястото на проблема.
+            </tip>
         </checkbox>
         <checkbox id="{{form.is_esign_required.html_name}}"
                   name="{{form.is_esign_required.html_name}}"
                   {% if form|has:form.is_esign_required and not form.is_esign_required.value %} checked {% endif %}
+                  enlargement="compact"
                   value="">
             Не изисква ел. подпис
+            <tip size="small" color="light" position="top" enlargement="compact">
+                Ако сложиш тикче, ще се търсят само сайтове на организации,
+                които не изискват да подпишеш сигнали с електронен подпис
+            </tip>
         </checkbox>
         <checkbox id="{{form.is_name_required.html_name}}"
                   name="{{form.is_name_required.html_name}}"
@@ -91,20 +101,35 @@
             <checkbox id="{{form.is_confirmation_issued.html_name}}"
                       name="{{form.is_confirmation_issued.html_name}}"
                       {% if form.is_confirmation_issued.value = form.YES %} checked {% endif %}
+                      enlargement="compact"
                       value="{{form.YES}}">
-                    Потвърждаване на сигнала?
+                    Потвърждаване на сигнала
+                <tip size="small" color="light" position="top" enlargement="compact">
+                    Ако сложиш тикче, ще се търсят само сайтове на организации,
+                    които изпращат потвърждение при получен сигнал <em>(пр: имеил или обажндане)</em>
+                </tip>
             </checkbox>
             <checkbox id="{{form.is_verifiable.html_name}}"
                       name="{{form.is_verifiable.html_name}}"
                       {% if form.is_verifiable.value = form.YES %} checked {% endif %}
+                      enlargement="compact"
                       value="{{form.YES}}">
-                    Проследимост на сигнала?
+                Проследимост на сигнала
+                <tip size="medium" color="light" position="top" enlargement="compact">
+                    Ако сложиш тикче, е се търсят само сайтове на организации,
+                    които позволяват да се проследи развитието по сигнала
+                </tip>
             </checkbox>
             <checkbox id="{{form.is_final_destination.html_name}}"
                       name="{{form.is_final_destination.html_name}}"
                       {% if form.is_final_destination.value = form.YES %} checked {% endif %}
+                      enlargement="compact"
                       value="{{form.YES}}">
                     Краен приемник
+                <tip size="medium" color="light" position="top" enlargement="compact">
+                    Ако сложиш тикче, ще се търсят само сайтове на организации, които са пряко
+                    отговорни за разрешаването на сигнала. Това ще изключи НПО организации и неформална граждански групи
+                </tip>
             </checkbox>
             <checkbox id="{{form.is_response_guaranteed.html_name}}"
                       name="{{form.is_response_guaranteed.html_name}}"
