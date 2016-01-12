@@ -94,7 +94,7 @@
             </features>
             {% if point.has_downsides %}
             <features>
-                <headline size="extrasmall" density="cozy">Пречките са:</headline>
+                <headline size="extrasmall" density="cozy">Евентуални пречки:</headline>
                 {% include "contact/single/_features.html" with feature_compare=point.NO require_compare=True require_value="" feature_value=point.YES size="small" type="none" negative=True form=form%}
             </features>
             {% endif %}
