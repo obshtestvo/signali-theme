@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {Google as GoogleAdressPicker, Simple as SimpleAdressPicker} from './addressPicker';
+import {Simple as SimpleAdressPicker} from './addressPicker';
 import request from 'ajax/request';
 import Blocker from 'ajax/block';
 import template from './select-dropdown.html';
@@ -21,11 +21,6 @@ export class SelectDropdownElement {
             $filters = $el.find('.filters'),
             isMultiple = el.hasAttribute('multiple'),
             blocking;
-
-        if (el.getAttribute('location')=='google') {
-            el.API = new GoogleAdressPicker($input, $('<h1>').get(0));
-            return;
-        }
 
         var data = extractData($(el.detachedContent).filter('value'));
         el.data = data;
