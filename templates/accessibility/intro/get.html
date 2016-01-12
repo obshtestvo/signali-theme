@@ -4,6 +4,8 @@
 {% load taxonomy %}
 {% load settings %}
 
+{% block facebook-image %}{% setting 'facebook_cover_url' %}{% endblock %}
+
 {% block content %}
 {% include "_loader.html" %}
 <page color="semilight">
