@@ -65,15 +65,15 @@
             </p>
         </notification>
     {% endif %}
-    {% if is_loose_search and points.zero_score %}
+    {% if is_loose_search and points.zero_score and not term%}
     <notification error color="white" size="medium">
         <p>Няма съвпадения с нито един от търсените критерии. Ако знаеш за сайт, който съвпада, можеш <a href="#addnew" target="modal">да го добавиш</a>.
             По-долу са изредени сайтове, които могат да ти помогнат за друг проблем.</p>
     </notification>
     {% elif is_loose_search %}
-        <notification information color="white" size="medium">
-            <p>{% if taxonomy_term %}Сайтовете по-долу съвпадат{% else %}Може някои от сайтовете по-долу да съвпадат{% endif %}
-                само с част от търсеното. Ако искаш единствено точни съвпадения, пробвай с избор на по-малко или различни критерии.  </p>
+        <notification error color="white" size="medium">
+            <h5>Само частични съвпадения</h5>
+            <p>Сайтовете по-долу съвпадат само с част от търсеното. Ако знаеш точно за такъв сайт, помогни на хората търсещи същото <a href="#addnew" target="modal">и го добави</a>. Алтернативно, ако искаш точни съвпадения, пробвай с избор на по-малко или различни критерии.  </p>
         </notification>
     {% endif %}
     {% for point in points %}

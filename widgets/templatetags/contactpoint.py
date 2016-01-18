@@ -123,10 +123,6 @@ def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, 
         score = contactpoint.score
     except AttributeError:
         pass
-    try:
-        score += contactpoint.taxonomy_score
-    except:
-        pass
 
     try:
         separate = is_first or contactpoint_list.current_score != score
@@ -142,7 +138,7 @@ def contactpoint_listing_entry(request, contactpoint_list, contactpoint, index, 
     except:
         area = None
     return {
-        "is_loose_search": is_loose_search,
+        "is_loose_search": is_loose_search and score,
         "score": score,
         "separate": separate,
         "is_first": is_first,
