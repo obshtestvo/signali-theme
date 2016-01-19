@@ -1,6 +1,6 @@
 {% load contactpoint %}
 
-{% feature_item request point 'is_anonymous_allowed' feature_compare feature_value negative type size "Анонимни сигнали" "Няма анонимни сигнали"%}
+{% feature_item request point 'is_anonymous_allowed' feature_compare feature_value negative type size "Има анонимни сигнали" "Няма анонимни сигнали"%}
 {% feature_item request point 'is_registration_required' require_compare require_value negative type size "Не изисква регистрация" "Изисква регистрация"%}
 {% feature_item request point 'is_photo_required' require_compare require_value negative type size "Не изисква снимка" "Изисква снимка на сигнала"%}
 {% feature_item request point 'is_esign_required' require_compare require_value negative type size "Не изисква ел. подпис" "Изисква ел. подпис"%}
