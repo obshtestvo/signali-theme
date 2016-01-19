@@ -28,6 +28,7 @@
                 Може да подадеш сигнал в {% blocktrans count page_total=points.count %}{{ total }} сайт{% plural %}{{ total }} сайтa{% endblocktrans %}
                 {% endif %}
             </strong>
+            {% if points.count > 1 %}
             <select-dropdown links name="sortingfield" size="small" density="compact" placeholder="Подреди сайтовете по" placeholder-type="vivid">
                 <value
                        id="-score"
@@ -54,6 +55,7 @@
                        href="{% url 'contact-point-list' %}{% query sorting='-created_at' start=0%}"
                        {% if sorting == "-created_at" %}current{% endif %}>Скоро добавени</value>
             </select-dropdown>
+            {% endif %}
         </filtering>
     </header>
     {% endif %}
