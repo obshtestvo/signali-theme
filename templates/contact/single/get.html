@@ -66,6 +66,41 @@
             </intro>
         </cover>
         <resume {% if not point.parent.is_parent_with_many_children %}has-area{% endif %}>
+            {% if point.organisation.is_governmental %}
+            <notification information color="white" size="medium">
+                <p>
+                    Ако откажат сигнала, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong>.<br/>
+                    Ако сигналът ти е уважен, максимум до <strong>2 месеца и 7 дни</strong> ще знаеш как ще се разреши
+                    <br/>
+                    Ако случайно сигналът ти не е за <em>
+                    „{{ point.specific_title_or_organisation }}“</em>, ще ти кажат до <strong>7 дни и ще препратят</strong> към когото трябва. <br/>
+                    <em><a href="#legislationfacts" target="modal">&hellip;още</a></em>
+                </p>
+            </notification>
+            <div style="display: none;">
+                <modal id="legislationfacts">
+                    <modal-screen>
+                        <headline size="large" density="airy" align="center">
+                            Важни факти
+                        </headline>
+                        <text>
+                            <ul>
+                                <li>Ако откажат сигнала, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong></li>
+                                <li>Ако сигналът ти е уважен, максимум до <strong>2 месеца и 7 дни</strong> ще знаеш как ще се разреши</li>
+                                <li>Ако случайно сигналът ти не е за <em> „{{ point.specific_title_or_organisation }}“</em>, ще ти кажат до <strong>7 дни и ще препратят</strong> към когото трябва.</li>
+                                <li><em> „{{ point.specific_title_or_organisation }}“</em> трябва да се справи с проблема от <strong>1 до 3 месеца</strong>. Ако е повече от месец,
+                                    <strong>трябва</strong> да ти се опишат особено важни причини за това.</li>
+                                <li>Ако вече има подаден сигнал за проблема, <em> „{{ point.specific_title_or_organisation }}“</em> <strong>няма да ти отговори</strong>, освен
+                                    ако не добавиш нови факти или обясниш защо сега е по-различно.</li>
+                                <li>Глобата за <em> „{{ point.specific_title_or_organisation }}“</em>, ако не спази горното е от <strong>150 до 1500 лв.</strong></li>
+                            </ul>
+                            <p>Горното e указано в <a href="http://sacp.government.bg/normativna-uredba/kodeksi/administrativno-procesualen-kodeks/">
+                                Административнопроцесуалния кодекс</a>.</p>
+                        </text>
+                    </modal-screen>
+                </modal>
+            </div>
+            {% endif %}
             {% if not point.url %}
                 <notification information color="white" size="medium">
                     <p>Този сайт няма форма за подаване онлайн. За да съобщите за проблем изпрате имейл към:
@@ -75,7 +110,7 @@
             {% if point.description %}
             <article>
                 <h4>Какво да очаквам от сайта за подаване на сигнал?</h4>
-                {{ point.description | safe }}
+                <p>{{ point.description | safe }}</p>
             </article>
             {% endif %}
             {% if not point.parent.is_parent_with_many_children %}
