@@ -22,8 +22,8 @@
     <header>
         <filtering secondary sorting>
             <strong>
-                {% if is_loose_search  %}
-                {% blocktrans count page_total=points.count %}{{ total }} сайт близък до търсеното{% plural %}{{ total }} сайта близки до търсеното{% endblocktrans %}
+                {% if is_loose_search and points.count > 1 %}
+                {{ total }} сайта близки до търсеното
                 {% else %}
                 Може да подадеш сигнал в {% blocktrans count page_total=points.count %}{{ total }} сайт{% plural %}{{ total }} сайтa{% endblocktrans %}
                 {% endif %}
