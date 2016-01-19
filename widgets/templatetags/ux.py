@@ -1,4 +1,6 @@
 from django import template
+from django.core import urlresolvers
+from django.contrib.contenttypes.models import ContentType
 
 register = template.Library()
 
@@ -35,3 +37,9 @@ def email_provider_url(email):
         pass
 
     return "http://"+provider
+
+@register.filter
+def admin_url(object):
+    content_type = ContentType.objects.get_for_model(object.__class__)
+    model = content_type.model if content_type.model != 'contactpoint' else 'contactpointgrouped'
+    return urlresolvers.reverse("admin:%s_%s_change" % (content_type.app_label, model), args=(object.id,))
