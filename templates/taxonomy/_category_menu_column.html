@@ -8,7 +8,7 @@
         {% endfor %}
         <li>
             <action-button helper autoclear density="comfortable" align="left"
-                           action="{% url 'contact-point-list' %}{% query categories=category.children.pk_list %}">
+                           action="{% url 'contact-point-list' %}{% query categories=category.children.public.non_empty.pk_list %}">
                 виж всички
             </action-button>
         </li>
