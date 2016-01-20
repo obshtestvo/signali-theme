@@ -70,11 +70,10 @@
             {% if point.organisation.is_governmental %}
             <notification information color="white" size="medium">
                 <p>
-                    Ако откажат сигнала, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong>.<br/>
-                    Ако сигналът ти е уважен, максимум до <strong>2 месеца и 7 дни</strong> ще знаеш как ще се разреши
-                    <br/>
-                    Ако случайно сигналът ти не е за <em>
-                    „{{ point.specific_title_or_organisation }}“</em>, ще ти кажат до <strong>7 дни и ще препратят</strong> към когото трябва. <br/>
+                    Ако сметнат сигнала ти за невалиден, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong>.<br/>
+                    Ако сигналът ти е уважен, максимум до <strong>2 месеца и 7 дни</strong> ще знаеш как ще се разреши.<br/>
+                    Ако случайно сигналът ти не е за <em>„{{ point.specific_title_or_organisation }}“</em>,
+                    те трябва да ти кажат до <strong>7 дни и да препратят</strong> към когото трябва. <br/>
                     <em><a href="#legislationfacts" target="modal">&hellip;още</a></em>
                 </p>
             </notification>
@@ -86,7 +85,7 @@
                         </headline>
                         <text>
                             <ul>
-                                <li>Ако откажат сигнала, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong></li>
+                                <li>Ако сметнат сигнала ти за невалиден, трябва да ти кажат за това до <strong>1 месец и 7 дни</strong></li>
                                 <li>Ако сигналът ти е уважен, максимум до <strong>2 месеца и 7 дни</strong> ще знаеш как ще се разреши</li>
                                 <li>Ако случайно сигналът ти не е за <em> „{{ point.specific_title_or_organisation }}“</em>, ще ти кажат до <strong>7 дни и ще препратят</strong> към когото трябва.</li>
                                 <li><em> „{{ point.specific_title_or_organisation }}“</em> трябва да се справи с проблема от <strong>1 до 3 месеца</strong>. Ако е повече от месец,
