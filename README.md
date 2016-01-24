@@ -6,8 +6,7 @@ Templates (*html and other formats*), styling, scripts.
 ### OS
 
 Requires:
- - `sass` (which requires `ruby`); **versions tested**: sass 3.4.9 and 3.4.13, ruby 2.15 and 2.2
- - `nodejs` (with `npm`); **versions tested**: 0.12
+ - `nodejs` (with `npm`); **versions tested**: 0.12, 5.5.0
 
 ### Project
 After OS requirements are satisfied just run:
@@ -20,13 +19,17 @@ to install the dependencies.
 
 ## Quick start
 
-Open `research` directory in terminal and run `webpack --watch`. Windows-based developers can use `compile.bat` to ease the process.
+Run:
+```sh
+npm run start
+```
+Then visit http://127.0.0.1:8080/
 
 ## Deployment notes:
 
 Compile with:
-```
-(export PRODUCTION=1 && webpack)
+```sh
+npm run build # or with: (export PRODUCTION=1 && webpack)
 ```
 
 And transfer the `build` directory to deployment server.
@@ -68,6 +71,9 @@ server-technologies to do prerendering.
  - **Javascripts**:
    - Should be in a isolated scope
    - Should explicitly state requirements in code (*not comments or meta-lanaguages*)
+ - Minimize mindless work required by developer:
+  - Don't require page reload to update changed styling
+  - If possible don't require page reload even when javascript changes
 
 
 
