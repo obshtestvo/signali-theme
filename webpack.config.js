@@ -56,6 +56,10 @@ config.resolve = {
     // you can now require('file') instead of require('file.js')
     extensions: ['', '.js', '.json']
 };
+config.externals = {
+    fb: "var FB",
+    modernizr: "var Modernizer"
+};
 
 /**************** DEV TOOLS ***************/
 if (!PRODUCTION) {
@@ -77,6 +81,9 @@ var getStylingLoader = function(additionalLoaders) {
     return ExtractTextPlugin.extract(loaders[0], loaders.splice(1).join('!'))
 };
 config.module = {
+    preLoaders:[
+        {test: /\.js$/, loader: "eslint", exclude: /node_modules/}
+    ],
     loaders: [
         {
             test: /block-ui|tooltipster/,
