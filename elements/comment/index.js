@@ -5,5 +5,5 @@ import circle from './circle.svg'
 export default class {
     static displayName = 'comment';
     static template = template;
-    include = { circle }
+    include = { circle };
 }
