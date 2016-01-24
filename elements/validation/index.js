@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Parsley from 'parsleyjs';
 import './i18n.bg';
 
 Parsley.options.namespace = 'validate-';

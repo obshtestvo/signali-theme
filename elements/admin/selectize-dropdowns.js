@@ -1,9 +1,10 @@
 import $ from 'jquery';
 import './auto-width.selectize.js';
+/*global Suit, django */
 
 $(function () {
     $('select').each(function () {
-        var $this = $(this);
+        var $this = $(this), API;
         if ($this.closest('.empty-form').length) return;
         var options = {
             valueField: 'id',
@@ -28,9 +29,9 @@ $(function () {
             if ($this.closest('.inline-related').length) {
                 options.preload = false;
             }
-            var API = $this.djangoSelect2(options)[0].selectize;
+            API = $this.djangoSelect2(options)[0].selectize;
         } else {
-            var API = $this.selectize(options)[0].selectize;
+            API = $this.selectize(options)[0].selectize;
         }
 
         $this.change(function(e, data){
@@ -44,7 +45,7 @@ $(function () {
                 API.updateOption(data.item.id, data.item);
             }
         });
-        API.on('change', function(e) {
+        API.on('change', function() {
            if (API.getValue()) {
                API.$input.find('option').attr('data-name', API.revertSettings.$children.filter('[value]').data('name'))
            }

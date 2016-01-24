@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import AjaxForm from 'ajax/form';
 import Blocker from 'ajax/block';
 import jsonHandler from './ajaxJsonResult';

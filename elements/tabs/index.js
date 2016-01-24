@@ -1,5 +1,6 @@
 import './tabs.scss';
 import 'service/jquery.animateContentSwitch';
+import $ from 'jquery';
 import toggleFixedHeight from 'service/toggleFixedHeight';
 import template from './tabs.html';
 

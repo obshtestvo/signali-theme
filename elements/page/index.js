@@ -1,6 +1,7 @@
 import './page.scss'
 const urlParser = document.createElement('a');
 const currentDomain = window.location.host;
+import $ from 'jquery';
 var url;
 
 export default class {
@@ -11,7 +12,7 @@ export default class {
         setTimeout(function(){
             loader.parentNode.removeChild(loader)
         }, 350);
-        $(document).delegate( "a", "focus", function() {
+        $(document).delegate( 'a', 'focus', function() {
             url = this.href;
         });
         $(window).on('beforeunload', function() {

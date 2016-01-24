@@ -1,7 +1,8 @@
-import './filters.scss'
-import template from './filters.html'
-import downIcon from './icon-down.svg'
-import upIcon from './icon-up.svg'
+import './filters.scss';
+import template from './filters.html';
+import downIcon from './icon-down.svg';
+import upIcon from './icon-up.svg';
+import $ from 'jquery';
 
 export default class {
     static displayName = 'filters';

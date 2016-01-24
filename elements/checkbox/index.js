@@ -7,7 +7,7 @@ export default class {
     static template = template;
     static include = { tick };
     static properties =  {
-        "empty-value": {
+        'empty-value': {
             get (el) {
                 return el.getAttribute('value') == ''
             }

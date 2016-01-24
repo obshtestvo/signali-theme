@@ -1,6 +1,7 @@
 import './rating.scss'
 import template from './rating.html'
 import star from './star.svg'
+import $ from 'jquery';
 
 export default class {
     static displayName = 'rating';

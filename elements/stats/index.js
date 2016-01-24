@@ -1,4 +1,5 @@
 import request from 'ajax/request'
+import $ from 'jquery';
 
 export default class {
     static displayName = 'stat-visit';

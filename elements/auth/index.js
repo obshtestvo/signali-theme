@@ -14,5 +14,5 @@ export {
     AuthContainerPatchElement,
     AuthRequiredAttribute,
     SocailAuthElement,
-    ResetPasswordElement,
+    ResetPasswordElement
 };

@@ -1,7 +1,6 @@
-import $ from 'jquery';
 import selectize from 'selectize/dist/js/selectize';
 
-selectize.define('autowidth', function (options) {
+selectize.define('autowidth', function () {
     var self = this;
     this.positionDropdown = (function () {
         var original = self.positionDropdown;
@@ -18,7 +17,7 @@ selectize.define('autowidth', function (options) {
             }).appendTo('body');
             c.find('.selectize-dropdown-content').css({
                 'overflow-x': 'inherit',
-                'overflow-y': 'scroll',
+                'overflow-y': 'scroll'
             });
             self.$dropdown.width(c.find('.selectize-dropdown').css({
                 width: 'auto',

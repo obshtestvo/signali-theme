@@ -1,3 +1,6 @@
+import $ from 'jquery';
+/*global LANGUAGES, Suit*/
+
 $(function () {
     var $html = $('html');
     var currentLangCode = $html.attr('lang');
@@ -7,7 +10,7 @@ $(function () {
 
     var $originalLangPreview = $(document.getElementById('langPreviewTmpl').text);
     var i18nize = function($context) {
-        for (languageCode in LANGUAGES) {
+        for (var languageCode in LANGUAGES) {
             $context.find('[name$="_'+languageCode+'"]').each(function() {
                 var $input = $(this);
                 var $wrapper = $input.closest('.control-group');
@@ -17,9 +20,9 @@ $(function () {
                 var name = $input.attr('name');
                 var currentLangFieldName = name.replace(new RegExp(languageCode + '$'), currentLangCode);
                 var $transRef = $originalLangPreview.clone().addClass(currentLangFieldName);
-                var $transCollapse = $transRef.find(".collapse");
+                var $transCollapse = $transRef.find('.collapse');
                 $transCollapse.collapse({toggle: false});
-                $transRef.find(".toggle").click(function(e) {
+                $transRef.find('.toggle').click(function(e) {
                     e.preventDefault();
                     $transCollapse.collapse('toggle')
                 });

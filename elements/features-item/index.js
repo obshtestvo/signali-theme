@@ -10,17 +10,17 @@ export default class {
     static include = { checkCircle, closeCircle, questionCircle };
 
     static properties = {
-        "check": {
+        'check': {
             get: function (el) {
                 return el.getAttribute('type')=='check'
             }
         },
-        "none": {
+        'none': {
             get: function (el) {
                 return el.getAttribute('type')=='none'
             }
         },
-        "question": {
+        'question': {
             get: function (el) {
                 return el.getAttribute('type')=='question'
             }

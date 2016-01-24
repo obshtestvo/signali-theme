@@ -44,4 +44,4 @@ export default function ($values) {
         initial: initial,
         selected: selected
     }
-};
+}

@@ -17,4 +17,4 @@ export default function (container, overrideOptions = {}) {
     }, overrideOptions));
     if (container) container.spin(container);
     return spinner;
-};
+}

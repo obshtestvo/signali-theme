@@ -1,4 +1,5 @@
 import $ from 'jquery';
+/*global Suit*/
 
 $(function () {
     Suit.after_inline.register('init_django_selectize', function (inline_prefix, $row) {

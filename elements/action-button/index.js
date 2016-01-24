@@ -9,9 +9,9 @@ export default class {
     static displayName = 'action-button';
     static template = template;
     static include = {
-        "arrow": arrow,
-        "arrow-back": arrowBlack,
-        "reply-icon": replyIcon
+        'arrow': arrow,
+        'arrow-back': arrowBlack,
+        'reply-icon': replyIcon
     };
     static properties = {
         action: {

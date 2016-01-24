@@ -1,5 +1,3 @@
-import skate from 'skatejs/src';
-import filter from './utils/element-filters';
 import fragmentFromString from './utils/fragment-from-string';
 import fragmentFromCollection from './utils/fragment-from-collection';
 import ContentContainer from './content';
@@ -59,4 +57,4 @@ export default function render (element, options) {
     slice.call(templateFragment.childNodes).map(node => {
         Node.prototype.appendChild.call(element, node)
     })
-};
+}

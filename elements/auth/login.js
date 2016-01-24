@@ -1,5 +1,7 @@
+/*eslint-disable */
 var AjaxForm = require('./form');
 var toggleFixedHeight = require('service/toggleFixedHeight');
+
 
 function blocked() {
     var $container = $('.blockMsg .animation-container');
@@ -80,7 +82,7 @@ var signUpSuccess = function (html) {
     var avatar = $form.data('avatar');
     $form.find('.msg.hidden, .personal .hidden').css('display', 'none').removeClass('hidden');
     new AjaxForm($form, {
-        dataType: "html",
+        dataType: 'html',
         pjax: true,
         success: function (html) {
             $.magnificPopup.close();

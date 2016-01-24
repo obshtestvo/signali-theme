@@ -39,7 +39,7 @@ class ComponentService extends EventEmitter {
             }
         });
         if (this.has(name) && (!definition.type || definition.type == 'element')) {
-            throw Error("Component with the same name already exists");
+            throw Error('Component with the same name already exists');
         }
         var elementType = definition.type,
             props = definition.properties;
@@ -132,7 +132,7 @@ class ComponentService extends EventEmitter {
                 delete definition['type'];
             } else {
                 var types = {
-                    "attribute": attrTypeDef,
+                    'attribute': attrTypeDef
                 };
                 definition.type = types[definition.type]
             }

@@ -10,7 +10,7 @@ var createLoadingMore = function () {
         'role="treeitem" aria-disabled="true"></div>'
     );
 
-    $option.html("Зареждат се още...");
+    $option.html('Зареждат се още...');
     return $option;
 };
 

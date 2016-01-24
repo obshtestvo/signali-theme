@@ -31,7 +31,7 @@ export default class {
         });
 
         $document.on('touchend click', function(e) {
-            if(!isTouchMoving && !$(e.target).closest($el).length && $el.hasClass("active")) {
+            if(!isTouchMoving && !$(e.target).closest($el).length && $el.hasClass('active')) {
                 el.toggle()
             }
             isTouchMoving = false;

@@ -1,4 +1,4 @@
-import {nodeMatchSelector} from "./utils/element-filters";
+import {nodeMatchSelector} from './utils/element-filters';
 const NodeList = window.NodeList;
 const slice = [].slice;
 const TEXT_NODE = Node.TEXT_NODE;

@@ -60,7 +60,7 @@ export class ModalElement {
         $.magnificPopup.open({
             items: {
                 src: $el,
-                type: 'inline',
+                type: 'inline'
             },
             callbacks: {
                 open () {
@@ -101,7 +101,7 @@ export class ModalScreenElement {
 export class TargetAttribute {
     static displayName = 'target';
     static extends = 'a';
-    static type = "attribute";
+    static type = 'attribute';
 
     static properties = {
         target: {

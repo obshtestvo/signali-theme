@@ -1,4 +1,4 @@
-
+/*eslint-disable */
 
 function easeInCuaic(t){
     return t*t*t;

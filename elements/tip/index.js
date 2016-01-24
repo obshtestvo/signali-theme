@@ -17,7 +17,7 @@ export default class {
             $container = $el.closest('[tip-container]'),
             eventNS = '.tip' + i,
             show = function() {
-                $el.closest('.mfp-wrap').on('scroll'+eventNS, function(e) {
+                $el.closest('.mfp-wrap').on('scroll'+eventNS, function() {
                     $container.tooltipster('reposition')
                 });
                 $el.addClass('active');
@@ -40,7 +40,7 @@ export default class {
 
         $document.on('touchend mousedown', function(e) {
             var $target = $(e.target);
-            if(!isTouchMoving && $el.hasClass("active")) {
+            if(!isTouchMoving && $el.hasClass('active')) {
                 if ($target.closest('.tooltipster-base').length || $target.closest($container).length) {
                     return;
                 }
@@ -61,7 +61,7 @@ export default class {
             content: $(el.querySelector('.content')).clone().removeAttr('hidden').removeAttr('style')
         });
         $container.click(function() {
-            if (!$el.hasClass("active")) {
+            if (!$el.hasClass('active')) {
                 show()
             } else {
                 hide()

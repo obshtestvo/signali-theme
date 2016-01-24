@@ -6,4 +6,4 @@ export default function ($el, isFixed) {
         $el.css('height', '');
         $el.css('overflow', 'inherit');
     }
-};
+}

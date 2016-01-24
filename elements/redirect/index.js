@@ -51,7 +51,7 @@ export default class {
         }
         this.querySelector('.countdown').removeAttribute('paused');
         el.progress.animate(1, {
-            duration: timeRemaining,
+            duration: timeRemaining
         });
         clearTimeout(this.timeout);
         el.timeout = setTimeout(function() {

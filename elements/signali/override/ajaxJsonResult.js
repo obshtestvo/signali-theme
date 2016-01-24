@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 var getAjaxErors = function($form, response) {
     const $prefix = $form.find('input[name="prefix"]');
     var errors, errorKey = 'form';
@@ -43,4 +45,4 @@ export default function(instance, isSuccess, content) {
         return false;
     }
     return $notifications.filter('[success]');
-};
+}

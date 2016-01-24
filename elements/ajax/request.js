@@ -21,7 +21,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
                 // Send the token to same-origin, relative URLs only.
                 // Send the token only if the method warrants CSRF protection
                 // Using the CSRFToken value acquired earlier
-                xhr.setRequestHeader("X-CSRFToken", csrf.getCookie('csrftoken'));
+                xhr.setRequestHeader('X-CSRFToken', csrf.getCookie('csrftoken'));
             }
             if ($.isFunction(options.beforeSend)) options.beforeSend.call(this, xhr, settings);
         },
@@ -49,7 +49,7 @@ var makeRequest = function(url, method, data, dataType, isPjax, options) {
         }
     };
     if (data) requestOptions.data = data;
-    if (isPjax) requestOptions.headers = {"x-pjax": 1};
+    if (isPjax) requestOptions.headers = {'x-pjax': 1};
     return $.ajax(requestOptions);
 };
 

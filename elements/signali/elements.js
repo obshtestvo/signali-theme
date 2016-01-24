@@ -203,7 +203,7 @@ import {
     AuthContainerPatchElement,
     AuthRequiredAttribute,
     SocailAuthElement,
-    ResetPasswordElement,
+    ResetPasswordElement
 } from 'auth'
 Auth.setAdapter(AuthModalAdapter);
 componentService.register(AuthElement);

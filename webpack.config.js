@@ -2,10 +2,10 @@ var webpack = require('webpack');
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var pwd = __dirname;
-var devtoolModuleFilenameTemplate = process.platform === "win32" ? "[resource-path]" : "file:///[resource-path]";
-var regexPathSep = process.platform === "win32" ? "\\\\" : "\/";
+var devtoolModuleFilenameTemplate = process.platform === 'win32' ? '[resource-path]' : 'file:///[resource-path]';
+var regexPathSep = process.platform === 'win32' ? '\\\\' : '\/';
 var PRODUCTION = process.env.PRODUCTION;
 
 var config = {};
@@ -31,7 +31,7 @@ config.output = {
 /**************** PLUGINS ***************/
 config.plugins = [];
 if (PRODUCTION) {
-    config.plugins.push(new ExtractTextPlugin("[name].css"));
+    config.plugins.push(new ExtractTextPlugin('[name].css'));
     config.plugins.push(new webpack.optimize.DedupePlugin());
     config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -48,22 +48,23 @@ if (PRODUCTION) {
 config.resolve = {
     root: [
         path.normalize(pwd + '/elements/signali'),
-        path.normalize(pwd + '/elements'),
+        path.normalize(pwd + '/elements')
     ],
     alias: {
-        'jquery': 'jquery/dist/jquery',
+        'jquery': 'jquery/dist/jquery'
     },
     // you can now require('file') instead of require('file.js')
     extensions: ['', '.js', '.json']
 };
 config.externals = {
-    fb: "var FB",
-    modernizr: "var Modernizer"
+    fb: 'var FB',
+    'google-analytics': 'var ga',
+    modernizr: 'var Modernizer'
 };
 
 /**************** DEV TOOLS ***************/
 if (!PRODUCTION) {
-    config.devtool = "sourcemap";
+    config.devtool = 'sourcemap';
 }
 
 
@@ -72,9 +73,9 @@ var svgExtraLoaders = '';
 if (PRODUCTION) {
     svgExtraLoaders = '!svgo';
 }
-var skipProcessingLoader = "imports?this=>window&module=>false&exports=>false&define=>false";
+var skipProcessingLoader = 'imports?this=>window&module=>false&exports=>false&define=>false';
 var getStylingLoader = function(additionalLoaders) {
-    var loaders = "style!css?-minimize!postcss";
+    var loaders = 'style!css?-minimize!postcss';
     if (additionalLoaders) loaders += additionalLoaders;
     if (!PRODUCTION) return loaders;
     loaders = loaders.split('!');
@@ -82,7 +83,7 @@ var getStylingLoader = function(additionalLoaders) {
 };
 config.module = {
     preLoaders:[
-        {test: /\.js$/, loader: "eslint", exclude: /node_modules/}
+        {test: /\.js$/, loader: 'eslint', exclude: /node_modules/}
     ],
     loaders: [
         {
@@ -91,19 +92,19 @@ config.module = {
         },
         {
             test: /\.modernizrrc$/,
-            loader: "modernizr"
+            loader: 'modernizr'
         },
         {
             test: /\.scss$/,
             loader: getStylingLoader('!sass')
         },
         {test: /\.css$/, loader: getStylingLoader()},
-        {test: new RegExp('autorequire'+regexPathSep+'.+$'), loader: "file?name=auto/[name].[ext]"},
-        {test: /^(?:(?!autorequire).)+\.gif$/, loader: "url?limit=100000&mimetype=image/gif"},
-        {test: /^(?:(?!autorequire).)+\.png$/, loader: "url?limit=100000&mimetype=image/png"},
-        {test: /^(?:(?!autorequire).)+\.jpg$/, loader: "file"},
-        {test: /\.html$/, loader: "mustache"},
-        {test: /\.svg$/, loader: "raw"+svgExtraLoaders},
+        {test: new RegExp('autorequire'+regexPathSep+'.+$'), loader: 'file?name=auto/[name].[ext]'},
+        {test: /^(?:(?!autorequire).)+\.gif$/, loader: 'url?limit=100000&mimetype=image/gif'},
+        {test: /^(?:(?!autorequire).)+\.png$/, loader: 'url?limit=100000&mimetype=image/png'},
+        {test: /^(?:(?!autorequire).)+\.jpg$/, loader: 'file'},
+        {test: /\.html$/, loader: 'mustache'},
+        {test: /\.svg$/, loader: 'raw'+svgExtraLoaders},
         {
             test: new RegExp('(:?elements'+regexPathSep+'|node_modules'+regexPathSep+'skate).+\.js$'),
             loader: 'babel',
@@ -125,7 +126,7 @@ config.postcss = [autoprefixer({ browsers: [
     'Explorer >= 9',
     'iOS >= 7',
     'Opera >= 12',
-    'Safari >= 7.1',
+    'Safari >= 7.1'
 ]})];
 
 /**************** File changes watching/monitoring options ***************/

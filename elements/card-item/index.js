@@ -5,12 +5,12 @@ export default class {
     static displayName = 'card-item';
     static template = template;
     static properties = {
-        "tags": {
+        'tags': {
             get (el) {
                 return el.getAttribute('type') == 'tags'
             }
         },
-        "rating": {
+        'rating': {
             get (el) {
                 return el.getAttribute('type') == 'rating'
             }

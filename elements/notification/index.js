@@ -1,6 +1,7 @@
 import './notification.scss'
 import template from './notification.html'
 import iconCheck from './check-circle.svg'
+import $ from 'jquery';
 import iconExclamation from './exclamation-circle.svg'
 import iconInfo from './info-circle.svg'
 

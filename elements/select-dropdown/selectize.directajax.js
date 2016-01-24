@@ -45,7 +45,6 @@ selectize.define('directajax', function (options) {
     this.onKeyUp = (function () {
         var original = self.onKeyUp;
         return function () {
-            console.log('come on');
             var obsoleteMatchingIds = [];
             loadedMatchingIds.map((id) => {
                 if (newMatchingIds.indexOf(id) === -1) {

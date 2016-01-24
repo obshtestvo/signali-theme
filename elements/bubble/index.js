@@ -41,17 +41,17 @@ export default class {
     }
 
     static properties = {
-        "information": {
+        'information': {
             get (el) {
                 return el.getAttribute('type')=='information'
             }
         },
-        "success": {
+        'success': {
             get (el) {
                 return el.getAttribute('type') == 'success'
             }
         },
-        "error": {
+        'error': {
             get (el) {
                 return el.getAttribute('type')=='error'
             }

@@ -49,7 +49,7 @@ export class Google {
         })
     }
 
-    _initGeo (gMap, $el, creditsEl, queryTransformation) {
+    _initGeo (gMap, $el, creditsEl/*, queryTransformation*/) {
         var _self = this;
         _self.events = {};
         _self.$el = $el;
@@ -85,12 +85,12 @@ export class Google {
                 if (_self.queryTransformation) query = _self.queryTransformation() + query;
                 _self.autocompleteService.getPlacePredictions($.extend({}, googleOptions, {
                     'input': query
-                }), function (list, status) {
+                }), function (list) {
                     if (list == null || list.length == 0) {
                         _self.geocoder.geocode({
                             address: query,
                             componentRestrictions: googleOptions.componentRestrictions
-                        }, function (list, status) {
+                        }, function (list) {
                             lastResults = {};
                             var results = [];
                             var length = list.length;
@@ -138,7 +138,7 @@ export class Google {
             if (val.indexOf(',')<0) {
                 _self.placesService.getDetails({
                     placeId: val
-                }, function(result, status) {
+                }, function(result) {
                     finish(result);
                 })
             } else {

@@ -60,7 +60,7 @@ export default class {
             ajaxForm.submit();
             return false;
         });
-        window.addEventListener("hashchange", handleHash, false);
+        window.addEventListener('hashchange', handleHash, false);
         handleHash()
     }
 }

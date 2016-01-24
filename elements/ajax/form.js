@@ -98,7 +98,7 @@ class AjaxForm {
         var self = this;
         var $form = self.$form;
 
-        var event = $.Event("ajax-submit");
+        var event = $.Event('ajax-submit');
         self.$form.trigger(event, [self]);
         if (event.isDefaultPrevented()) return;
 

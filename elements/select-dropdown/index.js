@@ -153,10 +153,10 @@ export class SelectDropdownElement {
         for (var i = 0; i < data.initial.length; i++) {
             add(data.initial[i])
         }
-        el.API.on('item_add', function(value, $item) {
+        el.API.on('item_add', function(value) {
             add(this.options[value]);
         });
-        el.API.on('item_remove', function(value, $item) {
+        el.API.on('item_remove', function(value) {
             remove(this.options[value]);
         });
     }
@@ -168,7 +168,7 @@ export class SelectDropdownElement {
                 return el.API.getValue()
             }
         },
-        "validate-trigger": {
+        'validate-trigger': {
             get() {
                 return 'change'
             }

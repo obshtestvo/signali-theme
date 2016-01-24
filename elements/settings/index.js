@@ -1,4 +1,5 @@
 import './settings.scss'
+import $ from 'jquery';
 import ValidationForm from 'validation/form';
 import AjaxForm from 'ajax/form';
 import template from './settings.html'

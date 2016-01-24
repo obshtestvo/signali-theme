@@ -16,7 +16,7 @@ var initHeavy = function ($element, settings) {
         labelField: 'text',
         plugins: {
             infinite_scroll: {},
-            autowidth: {},
+            autowidth: {}
         },
         preload: true,
         load (params, callback) {

@@ -17,8 +17,8 @@ function scrollTo(element, duration) {
 // Element to move, element or px from, element or px to, time in ms to animate
 function scrollToC(element, from, to, duration) {
     if (duration < 0) return;
-    if(typeof from === "object")from=from.offsetTop;
-    if(typeof to === "object")to=to.offsetTop;
+    if(typeof from === 'object')from=from.offsetTop;
+    if(typeof to === 'object')to=to.offsetTop;
 
     scrollToX(element, from, to, 0, 1/duration, 20, easeOutCuaic);
 }

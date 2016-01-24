@@ -53,7 +53,7 @@ $.fn.animateContentSwitch = function (toHide, $toShow, o) {
         toHide = toHide ? toHide : $();
         var $toHide = $.type(toHide) == 'string' ? $this.find(toHide) : toHide;
         if ($toHide.length > 1) {
-            throw "jQuery.animateContentSwitch accepts only single elements";
+            throw 'jQuery.animateContentSwitch accepts only single elements';
         }
         //stop any currently running animations
         $this.dequeue().stop();

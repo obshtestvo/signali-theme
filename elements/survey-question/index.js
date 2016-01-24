@@ -1,5 +1,6 @@
 import './survey-question.scss';
 import template from './survey-question.html';
+import $ from 'jquery';
 
 export default class {
     static displayName = 'survey-question';
@@ -14,18 +15,18 @@ export default class {
             $false.click(function() {
                 $true.attr('fill', 'outlined');
                 $false.attr('fill', 'solid');
-                $input.prop( "checked", false ).change()
+                $input.prop( 'checked', false ).change()
             });
             $true.click(function() {
                 $false.attr('fill', 'outlined');
                 $true.attr('fill', 'solid');
-                $input.prop( "checked", true).change()
+                $input.prop( 'checked', true).change()
             });
         }
     }
 
     static properties = {
-        "value": {
+        'value': {
             get: function(el) {
                 if (el.hasAttribute('checkbox')) {
                     if (el.querySelector('[fill=solid]')) {
@@ -41,7 +42,7 @@ export default class {
                 }
             }
         },
-        "validate-trigger": {
+        'validate-trigger': {
             get: function() {
                 return 'change'
             }
