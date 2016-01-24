@@ -13,8 +13,8 @@ Requires:
 After OS requirements are satisfied just run:
 
 ```sh
-npm install 
-bower install # needed for 2 dependencies that are not available on npm
+npm install bower -g
+npm run provision
 ```
 to install the dependencies.
 
