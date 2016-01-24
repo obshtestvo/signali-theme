@@ -25,7 +25,7 @@ export default class {
             serverGateway: serverGateway
         });
         el.facebook.on('facebook:success', function (data) {
-            $auth.trigger('auth:complete', [data, true])
+            $auth.trigger('auth:complete', [data, true]);
             el.blocker.unblock()
         });
         el.facebook.on('facebook:cancel', function () {

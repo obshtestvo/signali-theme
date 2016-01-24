@@ -1,5 +1,5 @@
 var getAjaxErors = function($form, response) {
-    const $prefix = $form.find('input[name="prefix"]')
+    const $prefix = $form.find('input[name="prefix"]');
     var errors, errorKey = 'form';
     if ($prefix.length) {
         errorKey = $prefix.val() + errorKey
@@ -39,7 +39,7 @@ export default function(instance, isSuccess, content) {
             $item.append(message);
             $container.append($item);
         }
-        instance.unblock()
+        instance.unblock();
         return false;
     }
     return $notifications.filter('[success]');

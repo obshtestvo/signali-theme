@@ -12,7 +12,7 @@ selectize.define('directajax', function (options) {
                 if (item.href) {
                     self.close();
                     self.blur();
-                    if (options.block) options.block()
+                    if (options.block) options.block();
                     window.location.href = item.href;
                     return;
                 }
@@ -45,7 +45,7 @@ selectize.define('directajax', function (options) {
     this.onKeyUp = (function () {
         var original = self.onKeyUp;
         return function () {
-            console.log('come on')
+            console.log('come on');
             var obsoleteMatchingIds = [];
             loadedMatchingIds.map((id) => {
                 if (newMatchingIds.indexOf(id) === -1) {

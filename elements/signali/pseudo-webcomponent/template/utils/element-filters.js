@@ -37,7 +37,7 @@ export default {
                 return false;
             }
             return true;
-        }
+        };
         for (i = 0; i < elements.length; i++) {
             from = i;
             if (!shouldIgnore(elements[i])) break;

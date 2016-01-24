@@ -49,7 +49,7 @@ export default class {
         if (!timeRemaining) {
             timeRemaining = Math.round((1-el.progress.value()) * el.time);
         }
-        this.querySelector('.countdown').removeAttribute('paused')
+        this.querySelector('.countdown').removeAttribute('paused');
         el.progress.animate(1, {
             duration: timeRemaining,
         });

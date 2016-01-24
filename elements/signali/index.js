@@ -1,5 +1,5 @@
 // require all files from `autorequire` subdirectories
-require.context("../", true, /\/autorequire\//)
+require.context("../", true, /\/autorequire\//);
 
 // jquery plugins are not all used to CommonJS or AMD
 window.$ = window.jQuery = require('jquery');

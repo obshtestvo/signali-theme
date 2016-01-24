@@ -8,7 +8,7 @@ import 'service/jquery.animateContentSwitch';
 
 class AjaxForm {
 
-    $container = null
+    $container = null;
     blocker = null;
     $form = null;
     $replaceable = null;

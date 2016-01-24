@@ -26,14 +26,14 @@ export default class {
             interactionContainer: $form.closest('modal'),
             success () {
                 $formControls.off('.signupprompt');
-                el.querySelector('bubble[success]').show()
-                redirect.completeIn(2500)
+                el.querySelector('bubble[success]').show();
+                redirect.completeIn(2500);
                 return false;
             }
         });
 
         validation.on('form:submit', function() {
-            ajaxForm.submit()
+            ajaxForm.submit();
             return false;
         });
     }

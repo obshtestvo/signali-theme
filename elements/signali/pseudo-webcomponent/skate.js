@@ -37,7 +37,7 @@ class ComponentService extends EventEmitter {
                 var clone = skate.fragment(node.__initialOuterHTML);
                 return clone.childNodes[0];
             }
-        })
+        });
         if (this.has(name) && (!definition.type || definition.type == 'element')) {
             throw Error("Component with the same name already exists");
         }
@@ -111,7 +111,7 @@ class ComponentService extends EventEmitter {
         if (definition.template) {
             definition = Object.assign(definition, {
                 render (element) {
-                    pseudoShadowDomRender(element, definition)
+                    pseudoShadowDomRender(element, definition);
                     self.debouncedRenderEnd();
                 }
             });

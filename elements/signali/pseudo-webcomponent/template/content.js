@@ -66,6 +66,6 @@ export function appendChild (waitingToBeAppended) {
 }
 
 export function clearContent() {
-    this.__templateContentTags.specific.map(tag => tag.clear())
+    this.__templateContentTags.specific.map(tag => tag.clear());
     this.__templateContentTags.generic.map(tag => tag.clear())
 }

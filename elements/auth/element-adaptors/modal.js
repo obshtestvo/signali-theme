@@ -26,7 +26,7 @@ export class AuthRemovesModalAttribute {
             handler;
 
         var modalTriggerHandler = function () {
-            var $affected = $el.add($el.find('[target=modal]'))
+            var $affected = $el.add($el.find('[target=modal]'));
             $affected.off('.modal-target');
         };
 
@@ -136,9 +136,9 @@ export default {
     dismiss (el, callback, originalAjaxForm, forceShowForm) {
         if (el.tagName == 'MODAL') {
             if (!forceShowForm) {
-                overrideAjaxResult(originalAjaxForm)
-                originalAjaxForm.setReplaceableElement($(el.authContainer))
-                callback()
+                overrideAjaxResult(originalAjaxForm);
+                originalAjaxForm.setReplaceableElement($(el.authContainer));
+                callback();
                 return;
             }
             var $animationContainer = $(el.querySelector('[animation-container]'));

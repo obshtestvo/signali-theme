@@ -15,7 +15,7 @@ export default class {
         if (!$form.length) return;
         el.hasBeenAttached = true;
 
-        console.log('aasdasd')
+        console.log('aasdasd');
         el.validation = new ValidationForm($form);
         el.ajaxForm = new AjaxForm($form, {
             pjax: true
@@ -37,6 +37,6 @@ export default class {
     }
 }
 function adjustAjaxContainers(el) {
-    el.ajaxForm.setInteractionContainer($(el).closest('[animation-container]'))
+    el.ajaxForm.setInteractionContainer($(el).closest('[animation-container]'));
     el.ajaxForm.setReplaceableElement($(el).closest('[animation-content]'))
 }

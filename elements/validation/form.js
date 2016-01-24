@@ -31,7 +31,7 @@ export default class ValidationForm {
         formValidation.fields.map(field => {
             this.fields.push(field);
             this._upgradeFieldForCustomElements(field)
-        })
+        });
 
         formValidation.on('field:error', function(field) {
             var $errorContainer = field.$element.find('[error]');

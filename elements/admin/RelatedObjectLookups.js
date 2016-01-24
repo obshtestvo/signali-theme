@@ -16,7 +16,7 @@ window.dismissAddRelatedObjectPopup = function (win, newId, newRepr) {
             elem.options[elem.options.length] = o;
             o.selected = true;
             /** START PATCH */
-            $(elem).trigger('change', [{item: {id: newId, text:newRepr}, selected:true, isNew: true}])
+            $(elem).trigger('change', [{item: {id: newId, text:newRepr}, selected:true, isNew: true}]);
             /** END PATCH */
         } else if (elemName == 'INPUT') {
             if (elem.className.indexOf('vManyToManyRawIdAdminField') != -1 && elem.value) {
@@ -34,7 +34,7 @@ window.dismissAddRelatedObjectPopup = function (win, newId, newRepr) {
         SelectBox.redisplay(toId);
     }
     win.close();
-}
+};
 
 window.dismissChangeRelatedObjectPopup = function (win, objId, newRepr, newId) {
     objId = html_unescape(objId);
@@ -49,7 +49,7 @@ window.dismissChangeRelatedObjectPopup = function (win, objId, newRepr, newId) {
         }
     });
     /** START PATCH */
-    $(selectsSelector).trigger('change', [{item: {id: objId, text:newRepr}, selected:true, isNew: false}])
+    $(selectsSelector).trigger('change', [{item: {id: objId, text:newRepr}, selected:true, isNew: false}]);
     django.jQuery(selectsSelector).trigger('change');
     /** END PATCH */
     win.close();

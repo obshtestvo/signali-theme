@@ -26,7 +26,7 @@ export default class {
             pjax: true
         });
         validation.on('form:submit', function() {
-            el.ajaxForm.submit()
+            el.ajaxForm.submit();
             return false;
         });
     }
@@ -37,6 +37,6 @@ function adjustAjaxContainers(el) {
     if (!proposalContainer) return;
     var $interactionContainer = $(proposalContainer.querySelector('[animation-container]'));
     var $replaceableElement =$interactionContainer.find('[content]').eq(0);
-    el.ajaxForm.setInteractionContainer($interactionContainer)
+    el.ajaxForm.setInteractionContainer($interactionContainer);
     el.ajaxForm.setReplaceableElement($replaceableElement)
 }

@@ -18,7 +18,7 @@ var handleForm = function (el) {
             el.authContainer = Auth.attach(el, el.componentService);
             var $auth = $(el.authContainer).find('auth');
             $auth.on('auth:success', function (e, data) {
-                $form.off('.auth-required')
+                $form.off('.auth-required');
                 var authScenario = data.is_new ? 'registration' : 'login';
                 $form.append($('<input type="hidden" name="ui_include_auth">').val(authScenario));
                 Auth.dismiss(el, function() {
@@ -48,7 +48,7 @@ export default class AuthRequiredAttribute {
                 el.__handleForm(el, data)
             }
         }
-    }
+    };
 
     clearAuthRequirement() {
         var $form = this.tagName == 'FORM' ? $(this) : $(this.querySelector('form'));

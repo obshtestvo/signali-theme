@@ -3,7 +3,7 @@ export default function ($values) {
     var selected = [];
     var initial = [];
     var choices = $values.map(function () {
-        if (!this.id) this.id = 'select-dropdown-' + Math.floor(Math.random() * 1000) + '-' + Date.now()
+        if (!this.id) this.id = 'select-dropdown-' + Math.floor(Math.random() * 1000) + '-' + Date.now();
         var item = {id: this.id, value: this.id, title: $(this).text()};
         if (this.hasAttribute('group')) {
             var group = this.getAttribute('group');

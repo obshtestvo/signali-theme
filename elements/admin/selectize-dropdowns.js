@@ -14,7 +14,7 @@ $(function () {
         var placeholder = $this.data('placeholder');
 
         if ($this.is('[multiple]')) {
-            options.plugins.push('remove_button')
+            options.plugins.push('remove_button');
             $this.closest('.controls').find('.help-inline').addClass('hide')
         } else if (placeholder) {
             var suffx = placeholder ? ' <i class="info">('+placeholder+')</i>' : '';
@@ -24,7 +24,7 @@ $(function () {
         }
 
         if ($this.is('.django-select2')) {
-            options = {}
+            options = {};
             if ($this.closest('.inline-related').length) {
                 options.preload = false;
             }
@@ -48,7 +48,7 @@ $(function () {
            if (API.getValue()) {
                API.$input.find('option').attr('data-name', API.revertSettings.$children.filter('[value]').data('name'))
            }
-            django.jQuery($this[0]).trigger('change')
+            django.jQuery($this[0]).trigger('change');
             Suit.$($this[0]).trigger('change')
         });
     });

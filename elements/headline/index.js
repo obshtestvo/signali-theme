@@ -6,7 +6,7 @@ export default class {
     static template = template;
 
     setTitle (title) {
-        if (typeof title == 'string') title = document.createTextNode(title)
+        if (typeof title == 'string') title = document.createTextNode(title);
         this.clearContent();
         this.appendChild(title);
     }

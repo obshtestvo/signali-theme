@@ -35,7 +35,7 @@ export default class {
                     }
                 }
                 if (el.hasAttribute('rating')) {
-                    var rating = $(el.querySelector('rating input')).val()
+                    var rating = $(el.querySelector('rating input')).val();
                     if (rating == '0') return undefined;
                     return rating;
                 }

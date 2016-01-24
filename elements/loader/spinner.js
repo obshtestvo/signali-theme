@@ -15,6 +15,6 @@ export default function (container, overrideOptions = {}) {
         shadow: false, // Whether to render a shadow
         hwaccel: true // Whether to use hardware acceleration
     }, overrideOptions));
-    if (container) container.spin(container)
+    if (container) container.spin(container);
     return spinner;
 };

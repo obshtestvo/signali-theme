@@ -81,8 +81,8 @@ export default class FacebookAuth extends EventEmitter {
         FacebookAuth.popups.map(popup => {
             popup.close()
         });
-        FacebookAuth.popups = []
-    }
+        FacebookAuth.popups = [];
+    };
 
     /**
      * Authenticate user on the server-side

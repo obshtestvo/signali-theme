@@ -12,11 +12,11 @@ var createLoadingMore = function () {
 
     $option.html("Зареждат се още...");
     return $option;
-}
+};
 
 var shouldShowLoadingMore = function (data) {
     return data.pagination && data.pagination.more;
-}
+};
 
 selectize.define('infinite_scroll', function (options) {
     var self = this;
@@ -29,9 +29,9 @@ selectize.define('infinite_scroll', function (options) {
         self.isLoading = true;
         var params = $.extend({}, {page: 1}, self.lastParams);
         params.page++;
-        self.onSearchChange(undefined, params)
+        self.onSearchChange(undefined, params);
         self.lastParams = params
-    }
+    };
 
     this.setup = (function () {
         var original = self.setup;
@@ -93,7 +93,7 @@ selectize.define('infinite_scroll', function (options) {
             if (value) {
                 params = {term: value}
             } else {
-                if (!params) params = {}
+                if (!params) params = {};
                 value = $.param(params)
             }
             if (self.loadedSearches.hasOwnProperty(value)) return;

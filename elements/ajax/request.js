@@ -3,7 +3,7 @@ import * as csrf from './csrf';
 
 var refreshCsrfHolders = function() {
     $('[name="csrfmiddlewaretoken"]').val(csrf.getCookie('csrftoken'));
-}
+};
 
 var makeRequest = function(url, method, data, dataType, isPjax, options) {
     if (!method) method = 'get';

@@ -28,7 +28,7 @@ export default class {
             var hashTokens = hash.split('_');
             var rating = hashTokens[hashTokens.length-1];
             $rating[0].value = parseInt(rating);
-        }
+        };
 
         $rating.on('change', function () {
             if (fullSurveyShown) return;

@@ -55,4 +55,4 @@ export function enableValidationForNonNativeInputs(componentService) {
     for (let elName in componentService.registered) {
         handleNewElement(elName, componentService.registered[elName])
     }
-};
+}

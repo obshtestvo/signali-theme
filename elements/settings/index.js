@@ -28,8 +28,8 @@ export default class {
         el.ajaxForm = new AjaxForm($form, {
             success () {
                 el.ajaxForm.unblock();
-                el.bubble()
-                $('[settings-name]').text($nameInput.val())
+                el.bubble();
+                $('[settings-name]').text($nameInput.val());
                 return false;
             }
         });
@@ -45,7 +45,7 @@ export default class {
     }
 
     bubble (bubbleEl) {
-        if (!bubbleEl) bubbleEl = this.querySelector('bubble[success]').clone()
+        if (!bubbleEl) bubbleEl = this.querySelector('bubble[success]').clone();
         bubbleEl.show()
     }
 }
