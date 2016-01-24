@@ -32,6 +32,9 @@
     "skatejs-types": "skatejs/types#master",
     "spin.js": "2.3.2"
   },
+  "optionalDependencies": {
+    "webpack-dev-server": "^1.14.1"
+  },
   "devDependencies": {
     "autoprefixer": "6.0.2",
     "babel": "^6.3.13",
@@ -64,8 +67,7 @@
     "svgo": "0.6.1",
     "svgo-loader": "1.1.0",
     "url-loader": "0.5.7",
-    "webpack": "1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "1.12.9"
   },
   "repository": {
     "type": "git"
