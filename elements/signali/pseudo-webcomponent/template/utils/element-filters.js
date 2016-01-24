@@ -1,4 +1,4 @@
-import matchesSelector from "skatejs/src/util/matches-selector"
+import matchesSelector from 'skatejs/src/util/matches-selector';
 const slice = Array.prototype.slice;
 
 const NODE_TYPE_ELEMENT = Node.ELEMENT_NODE;

@@ -1,6 +1,7 @@
 import request from 'ajax/request';
 import $ from 'jquery';
 import EventEmitter from 'eventemitter3';
+import FB from 'fb';
 
 const urlParser = document.createElement('a');
 const fDomain = 'facebook.com';
@@ -16,7 +17,7 @@ export default class FacebookAuth extends EventEmitter {
         super();
         var defaultOptions = {
             login: this._createLoginHandler(),
-            serverGateway: "",
+            serverGateway: '',
             serverData: {},
             success: $.noop,
             error: $.noop,
@@ -36,7 +37,7 @@ export default class FacebookAuth extends EventEmitter {
     static setup(appId, postSdkCallback, blockedPopupHandler) {
         FacebookAuth._overrideWindowOpen(blockedPopupHandler);
         $.ajax({
-            dataType: "script",
+            dataType: 'script',
             cache: true,
             url: '//connect.facebook.net/bg_BG/sdk.js',
             success () {
@@ -91,7 +92,7 @@ export default class FacebookAuth extends EventEmitter {
      */
     serverAuth (accessToken) {
         var self = this;
-        var serverData = $.extend({}, {"auth_token": accessToken}, self.options.serverData);
+        var serverData = $.extend({}, {'auth_token': accessToken}, self.options.serverData);
 
         request.json({
             url: self.options.serverGateway,

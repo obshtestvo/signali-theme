@@ -1,6 +1,6 @@
 import ValidationForm from 'validation/form';
 import AjaxForm from 'ajax/form';
-import request from 'ajax/request';
+import $ from 'jquery';
 
 export default class {
     static displayName = 'password-reset';
@@ -15,7 +15,6 @@ export default class {
         if (!$form.length) return;
         el.hasBeenAttached = true;
 
-        console.log('aasdasd');
         el.validation = new ValidationForm($form);
         el.ajaxForm = new AjaxForm($form, {
             pjax: true
@@ -25,17 +24,8 @@ export default class {
             return false;
         });
     }
-
-
-    /* @todo extract method as a class AnimatableMixin */
-    getAnimationContainer () {
-        if (!$container.is('[animation-container]')) {
-            $animationContainer = $($container[0].querySelector('[animation-container]'));
-            if ($animationContainer.length) $container = $animationContainer;
-        }
-        return $container;
-    }
 }
+
 function adjustAjaxContainers(el) {
     el.ajaxForm.setInteractionContainer($(el).closest('[animation-container]'));
     el.ajaxForm.setReplaceableElement($(el).closest('[animation-content]'))

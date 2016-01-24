@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default function ($values) {
     var groups = [];
     var selected = [];
@@ -14,10 +16,10 @@ export default function ($values) {
             item.prefix = this.getAttribute('prefix');
         }
         if (this.hasAttribute('current')) {
-            item["class"] = 'current';
+            item['class'] = 'current';
         }
         if (this.hasAttribute('class')) {
-            item["class"] = this.getAttribute('class');
+            item['class'] = this.getAttribute('class');
         }
         if (this.hasAttribute('href')) {
             item.href = this.getAttribute('href');

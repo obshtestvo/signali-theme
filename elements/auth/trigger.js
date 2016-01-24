@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default class {
     static displayName = 'auth-trigger';
     static type = 'attribute';
@@ -14,10 +16,10 @@ export default class {
             var loginPatch = authContainer.querySelector('auth-container-patch[for="login"]');
             var resetPatch = authContainer.querySelector('auth-container-patch[for="reset"]');
             e.preventDefault();
-            if (type == "registration") {
+            if (type == 'registration') {
                 if (registrationPatch) registrationPatch.applyTo(authContainer);
                 authContainer.type = 'registration';
-            } else if (type == "login") {
+            } else if (type == 'login') {
                 if (loginPatch) loginPatch.applyTo(authContainer);
                 authContainer.type = 'login';
             } else {

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Parsley from 'parsleyjs';
+import 'parsleyjs';
 import deepmerge from 'deepmerge';
 //@todo THIS SHOULD NOT BE INCLUDED.
 import skate from 'skatejs/src';
@@ -49,7 +49,7 @@ export default class ValidationForm {
      */
     on (eventName, handler) {
         this.validation.on(eventName, handler)
-    };
+    }
 
     /*
      * Checks for custom elements that have implemented a `value` and `validate-trigger` properties

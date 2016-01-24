@@ -1,4 +1,5 @@
 import 'selectize/dist/js/selectize';
+import $ from 'jquery';
 import googlemap from 'service/google.maps';
 import './selectize.navarrow';
 
@@ -152,13 +153,13 @@ export class Google {
 
     update (id, text) {
         var pickerAPI = this.pickerAPI;
-        pickerAPI.addOption({"value": id , "text": text });
+        pickerAPI.addOption({'value': id , 'text': text });
         pickerAPI.setValue(id)
     }
 
     destroy () {
         var _self = this;
-        _self.autocomplete.unbind("bounds");
+        _self.autocomplete.unbind('bounds');
         _self.gMap = null;
     }
 }

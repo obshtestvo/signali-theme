@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import request from 'ajax/request';
-import selectize from 'selectize/dist/css/selectize.bootstrap2.css';
+import 'selectize/dist/css/selectize.bootstrap2.css';
 import './infinite-scroll.selectize.js';
 import './auto-width.selectize.js';
 

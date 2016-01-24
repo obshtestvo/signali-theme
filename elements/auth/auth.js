@@ -2,6 +2,7 @@ import ValidationForm from 'validation/form';
 import AjaxForm from 'ajax/form';
 import request from 'ajax/request';
 import template from './auth.html';
+import $ from 'jquery';
 
 var Adapter;
 
@@ -133,8 +134,8 @@ export class AuthElement {
         var $el = $(this);
         var $email = $el.find('input[name="email"]');
         var $name = $el.find('input[name="fullname"]');
-        if ($email.is(":visible")) $email.focus();
-        if ($name.is(":visible")) $name.focus();
+        if ($email.is(':visible')) $email.focus();
+        if ($name.is(':visible')) $name.focus();
     }
 
     cancel () {

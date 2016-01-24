@@ -6,7 +6,7 @@ selectize.define('directajax', function (options) {
         loadedMatchingIds = [];
     this.addItem = (function () {
         var original = self.addItem;
-        return function (value, silent) {
+        return function (value) {
             if (self.isSetup) {
                 var item = this.options[value];
                 if (item.href) {

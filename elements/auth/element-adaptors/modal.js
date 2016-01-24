@@ -3,7 +3,7 @@ import toggleFixedHeight from 'service/toggleFixedHeight';
 import 'service/jquery.animateContentSwitch';
 
 
-var overrideAjaxResult = function (ajaxForm) {
+var overrideAjaxResult = function (/*ajaxForm*/) {
     //var originalApply = ajaxForm.options.applyResult;
     //ajaxForm.options.applyResult = function(instance, isSuccess, content) {
     //    debugger;
@@ -86,7 +86,7 @@ export class AuthModalContainerAttribute {
 
     cloneAuthModal(id) {
         var authModal = this.cloneModal();
-        if (!id) id = "";
+        if (!id) id = '';
         authModal.id = id;
         $(authModal).find('auth-container-patch').remove();
         return authModal;

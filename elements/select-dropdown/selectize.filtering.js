@@ -1,4 +1,5 @@
 import selectize from 'selectize/dist/js/selectize';
+import $ from 'jquery';
 
 selectize.define('filtering', function (options) {
     var self = this;

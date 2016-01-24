@@ -18,7 +18,7 @@ var shouldShowLoadingMore = function (data) {
     return data.pagination && data.pagination.more;
 };
 
-selectize.define('infinite_scroll', function (options) {
+selectize.define('infinite_scroll', function () {
     var self = this;
     self.lastParams = {};
     self.lastData = {};
@@ -76,7 +76,7 @@ selectize.define('infinite_scroll', function (options) {
 
     this.refreshOptions = (function () {
         var original = self.refreshOptions;
-        return function (triggerDropdown) {
+        return function () {
             var ret = original.apply(this, arguments);
             if (shouldShowLoadingMore(self.lastData)) {
                 self.$dropdown_content.append(self.$loadingMore);

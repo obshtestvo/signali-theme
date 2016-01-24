@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export class AuthContainerAttribute {
     static type = 'attribute';
     static displayName = 'auth-container';
@@ -8,13 +10,13 @@ export class AuthContainerAttribute {
             set (el, data) {
                 var $el = $(el);
                 if (data.newValue == 'registration') {
-                    $el.find('[for="registration"], [for="login"], [not-for]').css("display", "");
+                    $el.find('[for="registration"], [for="login"], [not-for]').css('display', '');
                     $el.find('[for="login"], [for="reset"], [not-for="registration"]').hide();
                 } else if (data.newValue == 'login') {
-                    $el.find('[for="registration"], [for="login"], [not-for]').css("display", "");
+                    $el.find('[for="registration"], [for="login"], [not-for]').css('display', '');
                     $el.find('[for="registration"], [for="reset"], [not-for="registration"]').hide();
                 } else {
-                    $el.find('[for="registration"], [for="reset"], [not-for]').css("display", "");
+                    $el.find('[for="registration"], [for="reset"], [not-for]').css('display', '');
                     $el.find('[for="registration"], [for="login"], [not-for="reset"]').hide();
                 }
                 el.auth.type = data.newValue;

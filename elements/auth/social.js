@@ -1,5 +1,6 @@
 import FacebookAuth from './facebook';
 import Blocker from 'ajax/block';
+import $ from 'jquery';
 
 var hasOtherElements = false;
 

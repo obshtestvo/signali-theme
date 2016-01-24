@@ -1,7 +1,8 @@
 import selectize from 'selectize/dist/js/selectize';
+import $ from 'jquery';
 
 var $document = $(document);
-selectize.define('touch', function (options) {
+selectize.define('touch', function () {
     var self = this;
     this.setup = (function () {
         var original = self.setup;
@@ -9,7 +10,7 @@ selectize.define('touch', function (options) {
             var ret = original.apply(this, arguments);
             var isTouchMoving = false;
 
-            $document.on('touchmove' + this.eventNS, function(e) {
+            $document.on('touchmove' + this.eventNS, function() {
                 isTouchMoving = true;
             });
 
