@@ -197,5 +197,5 @@ export class TargetAttribute {
                 });
             }
         }
-    }
+    };
 }

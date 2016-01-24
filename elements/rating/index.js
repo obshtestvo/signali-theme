@@ -80,5 +80,5 @@ export default class {
                 $(el).find('star').eq(data.newValue-1).click();
             }
         }
-    }
+    };
 }

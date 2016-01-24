@@ -21,5 +21,5 @@ export default class {
                 el.querySelector('a[main]').setAttribute('target', data.newValue);
             }
         }
-    }
+    };
 }

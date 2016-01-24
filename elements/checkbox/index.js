@@ -12,5 +12,5 @@ export default class {
                 return el.getAttribute('value') == ''
             }
         }
-    }
+    };
 }

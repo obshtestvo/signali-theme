@@ -15,5 +15,5 @@ export default class {
                 return el.getAttribute('type') == 'rating'
             }
         }
-    }
+    };
 }
