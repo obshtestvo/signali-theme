@@ -21,7 +21,7 @@ to install the dependencies.
 
 Run:
 ```sh
-npm run start
+npm start
 ```
 Then visit http://127.0.0.1:8080/
 

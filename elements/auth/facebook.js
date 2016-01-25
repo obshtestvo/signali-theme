@@ -1,7 +1,7 @@
 import request from 'ajax/request';
 import $ from 'jquery';
 import EventEmitter from 'eventemitter3';
-import FB from 'fb';
+var FB;
 
 const urlParser = document.createElement('a');
 const fDomain = 'facebook.com';
@@ -41,6 +41,7 @@ export default class FacebookAuth extends EventEmitter {
             cache: true,
             url: '//connect.facebook.net/bg_BG/sdk.js',
             success () {
+                FB = window.FB;
                 FB.init({
                     version: 'v2.0',
                     appId: appId,

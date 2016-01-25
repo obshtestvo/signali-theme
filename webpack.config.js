@@ -4,7 +4,6 @@ var autoprefixer = require('autoprefixer');
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var pwd = __dirname;
-var devtoolModuleFilenameTemplate = process.platform === 'win32' ? '[resource-path]' : 'file:///[resource-path]';
 var regexPathSep = process.platform === 'win32' ? '\\\\' : '\/';
 var PRODUCTION = process.env.PRODUCTION;
 
@@ -24,8 +23,7 @@ config.entry = {
 config.output = {
     path: path.normalize(pwd + '/build'),
     filename: '[name].js',
-    publicPath: '/static/',
-    devtoolModuleFilenameTemplate: devtoolModuleFilenameTemplate
+    publicPath: '/static/'
 };
 
 /**************** PLUGINS ***************/
@@ -35,11 +33,7 @@ if (PRODUCTION) {
     config.plugins.push(new webpack.optimize.DedupePlugin());
     config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        minimize: true,
         sourceMap: false,
-        mangle: {
-            except: ['$super', '$', 'exports', 'require']
-        },
         output: {comments: false}
     }));
 }
@@ -57,14 +51,12 @@ config.resolve = {
     extensions: ['', '.js', '.json']
 };
 config.externals = {
-    fb: 'var FB',
-    'google-analytics': 'var ga',
-    modernizr: 'var Modernizer'
+    modernizr: 'var Modernizr'
 };
 
 /**************** DEV TOOLS ***************/
 if (!PRODUCTION) {
-    config.devtool = 'sourcemap';
+    config.devtool = "eval-source-map";
 }
 
 
@@ -75,10 +67,10 @@ if (PRODUCTION) {
 }
 var skipProcessingLoader = 'imports?this=>window&module=>false&exports=>false&define=>false';
 var getStylingLoader = function(additionalLoaders) {
-    var loaders = 'style!css?-minimize!postcss';
-    if (additionalLoaders) loaders += additionalLoaders;
-    if (!PRODUCTION) return loaders;
-    loaders = loaders.split('!');
+    var cssOptions = PRODUCTION ? {discardComments: {removeAll: true}} : {sourceMap: true, minimize: false};
+    var loaders = ['style', 'css?' + JSON.stringify(cssOptions), 'postcss'];
+    if (additionalLoaders) loaders.push(additionalLoaders);
+    if (!PRODUCTION) return loaders.join('!');
     return ExtractTextPlugin.extract(loaders[0], loaders.splice(1).join('!'))
 };
 config.module = {
@@ -96,7 +88,7 @@ config.module = {
         },
         {
             test: /\.scss$/,
-            loader: getStylingLoader('!sass')
+            loader: getStylingLoader('!sass?sourceMap')
         },
         {test: /\.css$/, loader: getStylingLoader()},
         {test: new RegExp('autorequire'+regexPathSep+'.+$'), loader: 'file?name=auto/[name].[ext]'},

@@ -7,7 +7,7 @@
   "scripts": {
     "provision": "bower install && npm install",
     "build": "cross-env PRODUCTION=1 webpack",
-    "start": "webpack-dev-server --inline --hot --content-base ./research --host 0.0.0.0",
+    "start": "webpack-dev-server --inline --info false --hot --content-base ./research --host 0.0.0.0",
     "lint": "eslint . --fix",
     "clean": "rimraf ./build"
   },

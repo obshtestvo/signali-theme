@@ -1,4 +1,3 @@
-import ga from 'google-analytics';
 
 export default class {
     static displayName = 'google-analytics';
@@ -9,7 +8,7 @@ export default class {
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-'+el.getAttribute('account'), 'auto');
-        ga('send', 'pageview');
+        window.ga('create', 'UA-'+el.getAttribute('account'), 'auto');
+        window.ga('send', 'pageview');
     }
 }
