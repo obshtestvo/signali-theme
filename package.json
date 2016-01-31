@@ -29,8 +29,8 @@
     "parsleyjs": "2.2.0-rc1",
     "progressbar.js": "0.9.0",
     "selectize": "^0.12.1",
-    "skatejs": "skatejs/skatejs",
-    "skatejs-types": "skatejs/types#master",
+    "skatejs": "skatejs/skatejs#7fdcd472ea89c676b9f1da43521d831177be5fb0",
+    "skatejs-types": "skatejs/types#c436ed2e015a4115d1842f4d7b3fe9dec0e5b724",
     "spin.js": "2.3.2"
   },
   "optionalDependencies": {
